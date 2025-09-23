@@ -25,6 +25,7 @@ from typing import Any, Dict, List, Tuple
 # ===== Config =====
 IGNORE_DIRS = {".git","node_modules","dist","build","out","bin","obj",".idea",".vscode",".next","coverage","target"}
 MAX_FILE_BYTES = 3_000_000
+ENV_FILE = ".env"
 INDEX_PATH = ".advice_index.jsonl"
 VEC_PATH = ".advice_tfidf.pkl"
 MATRIX_PATH = ".advice_matrix.pkl"
@@ -48,6 +49,27 @@ except Exception:
 
 # ===== Utils =====
 EXT_LANG: Dict[str,str] = {".cs":"csharp",".java":"java",".ts":"typescript",".js":"javascript",".tsx":"typescript",".jsx":"javascript",".html":"html",".css":"css",".pas":"delphi",".dpr":"delphi",".dfm":"delphi_dfm"}
+
+def load_env_from_file(path: pathlib.Path = pathlib.Path(ENV_FILE)) -> None:
+    if not path.exists():
+        return
+    try:
+        for raw in path.read_text(encoding="utf-8").splitlines():
+            line = raw.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if not key:
+                continue
+            os.environ.setdefault(key, value)
+    except Exception:
+        pass
+
+load_env_from_file()
 
 def is_text_file(p: pathlib.Path) -> bool:
     try:

@@ -1,0 +1,6 @@
+.env
+__pycache__/
+.advice_index.jsonl
+.advice_tfidf.pkl
+.advice_matrix.pkl
+reports/

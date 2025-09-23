@@ -7,6 +7,8 @@
 - `README.md` には高レベルの使い方と前提条件がまとまっています。CLI にフラグやモードを追加した場合は、ここに追記して採用者に最新情報を届けます。
 - ドキュメントを拡充する場合は `docs/` ディレクトリを新設し、日本語・英語双方の利用者に配慮した構成を検討してください。
 - インデックス対象は 3MB 以下のテキストのみです。閾値を超えたファイルはスキップされ、`reports/large_files_over_limit.log` に手動解析用の一覧が出力されます。
+- 秘密情報は `.env` に定義します。`.env.example` をコピーして利用し、`.env` はコミット対象外に保ってください。
+- サンプルコードは `src/<language>/` に配置します。既定の `csharp`、`java`、`typescript`、`javascript`、`delphi`、`python` ディレクトリを活用し、不要なものは `.gitignore` で除外してください。
 
 ## ビルド・テスト・開発コマンド
 - `python -m pip install --upgrade pip && pip install chromadb openai scikit-learn joblib regex` で主要依存を導入します。scikit-learn が無い場合でも動作しますが、TF-IDF が無効になる点をチームと共有してください。

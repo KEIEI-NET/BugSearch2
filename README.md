@@ -8,11 +8,16 @@
 - リポジトリ全体をインデックス化し、自然言語で関連コードを探索
 - GitHub Actions (codex-readonly-review.yml) による PR 自動レビュー
 
+## サンプルソース配置
+- ルール検証用のサンプルコードは `src/<language>/` 配下に置いてください。
+- 既定で `csharp`、`java`、`typescript`、`javascript`、`delphi`、`python` のディレクトリを用意しています。利用する言語を追加したい場合は同様にサブディレクトリを作成します。
+- サンプルはローカル検証用途に留め、公開不要なファイルは `.gitignore` で除外するか手動で管理から外してください。
+
 ## 前提条件
 - Python 3.11 以上
 - pip install chromadb openai scikit-learn joblib regex
   - scikit-learn が無い場合、TF-IDF ベクトル化はスキップされます（素朴検索で継続）
-- GPT-5 を利用する場合は OPENAI_API_KEY を環境変数に設定してください
+- ルート直下に配置した `.env` から環境変数を読み込みます。`OPENAI_API_KEY`, `OPENAI_MODEL` などを `.env.example` を参考に設定してください。
 
 ## 使い方
 ### 1. リポジトリのインデックス構築
