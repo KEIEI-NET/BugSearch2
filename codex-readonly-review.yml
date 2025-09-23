@@ -1,0 +1,70 @@
+name: Readonly Review (AI + Rules)
+#GitHub Actions（PRで自動起動）
+
+#リポジトリに以下を追加してください：
+
+#.github/workflows/codex-readonly-review.yml
+
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch: {}
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write   # PRにコメントするため
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install chromadb openai scikit-learn joblib regex
+
+      - name: Build index (read-only)
+        run: |
+          python codex_review.py index .
+
+      - name: Run advisor (hybrid: AI + rules)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-5
+        run: |
+          python codex_review.py advise --mode hybrid --topk 80 --out reports/advise.md
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: readonly-advice
+          path: reports/advise.md
+
+      - name: Comment to PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'reports/advise.md';
+            let body = '';
+            try { body = fs.readFileSync(path, 'utf8'); }
+            catch (e) { body = 'レポートの生成に失敗しました。ログを確認してください。'; }
+            const header = `### 🤖 Readonly Review (AI + Rules)
+            - モード: \`hybrid\`
+            - 重点: 金額/印刷/UI/UX/DB負荷
+            - 生成日時: ${new Date().toISOString()}
+            `;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: header + '\\n\\n' + body.substring(0, 60000) // PRコメント制限内にトリム
+            });
