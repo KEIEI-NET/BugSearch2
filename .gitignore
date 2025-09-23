@@ -4,3 +4,17 @@ __pycache__/
 .advice_tfidf.pkl
 .advice_matrix.pkl
 reports/
+
+# Source code files (exclude from repository)
+src/delphi/*.pas
+src/delphi/*.dpr
+src/delphi/*.dfm
+src/java/*.java
+src/csharp/*.cs
+src/python/*.py
+src/javascript/*.js
+src/typescript/*.ts
+src/typescript/*.tsx
+
+# Keep only .gitkeep files
+!src/*/.gitkeep
