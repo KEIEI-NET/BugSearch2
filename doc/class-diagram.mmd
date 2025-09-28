@@ -1,127 +1,111 @@
 classDiagram
-    %% コードレビューシステム クラス図 v2.1.0
-
     class CodexReviewSeverity {
-        %% メインシステムクラス
-        -VERSION: str = "2.1.0"
-        -MAX_FILE_SIZE_MB: int = 4
-        -BATCH_SIZE: int = 500
-        +main(args: List~str~): void
-        +parse_arguments(): ArgumentParser
-        +handle_index_command(): void
-        +handle_advise_command(): void
-        +get_total_indexed_count(): int
+        -VERSION: string
+        -MAX_FILE_SIZE_MB: int
+        -BATCH_SIZE: int
+        +main(args) void
+        +parse_arguments() ArgumentParser
+        +handle_index_command() void
+        +handle_advise_command() void
+        +get_total_indexed_count() int
     }
 
     class IndexManager {
-        %% インデックス管理クラス
-        -index_file: Path = ".advice_index.pickle"
-        -meta_file: Path = ".advice_index.meta.json"
-        -max_file_size_mb: float = 4
-        -profile_output: Optional~Path~
-        +create_index(path: str, profile: bool): Dict
-        +load_index(): List~Document~
-        +save_index(documents: List): void
-        +save_metadata(stats: Dict): void
-        -check_file_size(path: Path): bool
-        -profile_performance(stats: Dict): void
+        -index_file: Path
+        -meta_file: Path
+        -max_file_size_mb: float
+        -profile_output: Path
+        +create_index(path, profile) Dict
+        +load_index() List
+        +save_index(documents) void
+        +save_metadata(stats) void
+        -check_file_size(path) bool
+        -profile_performance(stats) void
     }
 
     class EncodingDetector {
-        %% エンコーディング検出クラス（v2.1改善）
-        -SUPPORTED_ENCODINGS: List~str~ = ["utf-8", "cp932", "shift-jis", "latin-1"]
-        +detect_encoding(file_path: Path): str
-        -try_decode_utf8(data: bytes): Optional~str~
-        -try_decode_cp932(data: bytes): Optional~str~
-        -try_decode_sjis(data: bytes): Optional~str~
-        -try_decode_latin1(data: bytes): Optional~str~
+        -SUPPORTED_ENCODINGS: List
+        +detect_encoding(file_path) string
+        -try_decode_utf8(data) string
+        -try_decode_cp932(data) string
+        -try_decode_sjis(data) string
+        -try_decode_latin1(data) string
     }
 
     class Document {
-        %% ドキュメントモデル
-        <<dataclass>>
-        +file_path: str
-        +content: str
-        +encoding: str
+        +file_path: string
+        +content: string
+        +encoding: string
         +size_bytes: int
-        +language: str
+        +language: string
         +indexed_at: datetime
     }
 
     class DangerAnalyzer {
-        %% 危険度分析クラス（旧RuleAnalyzer）
-        -PROBLEM_SCORES: Dict~str, int~
-        +analyze_all_files(documents: List, use_all: bool): List~DangerResult~
-        +calculate_severity_score(problems: List): int
-        -detect_n_plus_one(text: str): bool
-        -detect_select_star(text: str): bool
-        -detect_float_money(text: str): bool
-        -detect_xss(text: str): bool
-        -detect_dialog_overuse(text: str): bool
+        -PROBLEM_SCORES: Dict
+        +analyze_all_files(documents, use_all) List
+        +calculate_severity_score(problems) int
+        -detect_n_plus_one(text) bool
+        -detect_select_star(text) bool
+        -detect_float_money(text) bool
+        -detect_xss(text) bool
+        -detect_dialog_overuse(text) bool
     }
 
     class DangerResult {
-        %% 危険度分析結果クラス
-        <<dataclass>>
-        +file_path: str
-        +problems: List~str~
+        +file_path: string
+        +problems: List
         +severity_score: int
-        +language: str
-        +category: str  # "緊急", "高", "中", "低"
+        +language: string
+        +category: string
     }
 
     class OverviewReportGenerator {
-        %% 概要レポート生成クラス
-        +input_file: Path = "src_complete_danger_analysis.md"
-        +output_file: Path = "reports/AI分析.md"
-        +generate(): void
-        +parse_danger_analysis(): List~DangerResult~
-        +categorize_by_priority(): Dict
-        +write_overview_report(data: Dict): void
+        +input_file: Path
+        +output_file: Path
+        +generate() void
+        +parse_danger_analysis() List
+        +categorize_by_priority() Dict
+        +write_overview_report(data) void
     }
 
     class DetailedAnalyzer {
-        %% 詳細分析クラス
-        -batch_size: int = 500
+        -batch_size: int
         -batch_num: int
-        +analyze_batch(batch_num: int): void
-        +read_source_file(path: str): str
-        +analyze_problems(file_info: Dict): str
-        +generate_improvements(problems: List): str
-        +analyze_full_source(source: str): str
-        +write_batch_report(analyses: List): void
+        +analyze_batch(batch_num) void
+        +read_source_file(path) string
+        +analyze_problems(file_info) string
+        +generate_improvements(problems) string
+        +analyze_full_source(source) string
+        +write_batch_report(analyses) void
     }
 
     class ReportMerger {
-        %% レポート統合クラス（v2.1で絵文字削除）
-        +batch_files: List~Path~
-        +output_file: Path = "reports/AI分析_詳細_改善版_完全版.md"
-        +merge_reports(): void
-        +extract_content(batch_file: Path): str
-        +create_header(): str
-        +create_footer(stats: Dict): str
-        -remove_emojis(text: str): str  # v2.1追加
+        +batch_files: List
+        +output_file: Path
+        +merge_reports() void
+        +extract_content(batch_file) string
+        +create_header() string
+        +create_footer(stats) string
+        -remove_emojis(text) string
     }
 
     class BatchController {
-        %% バッチ処理制御クラス
         +auto_detect_files: bool
-        +run_all_phases(): void
-        +execute_index_phase(): int
-        +execute_danger_analysis(file_count: int): void
-        +execute_overview_generation(): void
-        +execute_batch_analysis(): void
-        +execute_report_merge(): void
+        +run_all_phases() void
+        +execute_index_phase() int
+        +execute_danger_analysis(file_count) void
+        +execute_overview_generation() void
+        +execute_batch_analysis() void
+        +execute_report_merge() void
     }
 
     class LargeFileLogger {
-        %% 大容量ファイルログクラス
-        +log_file: Path = "reports/large_files_over_limit.log"
-        +log_large_file(path: Path, size: int): void
-        +get_large_files(): List~Dict~
+        +log_file: Path
+        +log_large_file(path, size) void
+        +get_large_files() List
     }
 
-    %% 関連
     CodexReviewSeverity --> IndexManager : uses
     CodexReviewSeverity --> DangerAnalyzer : uses
     CodexReviewSeverity --> BatchController : delegates
@@ -143,28 +127,3 @@ classDiagram
     DetailedAnalyzer --> DangerResult : reads
 
     ReportMerger --> DetailedAnalyzer : merges output
-
-    %% スタイル定義
-    class CodexReviewSeverity {
-        <<Main System>>
-    }
-
-    class BatchController {
-        <<Controller>>
-    }
-
-    class IndexManager,EncodingDetector {
-        <<Data Processing>>
-    }
-
-    class DangerAnalyzer,DetailedAnalyzer {
-        <<Analysis Engine>>
-    }
-
-    class OverviewReportGenerator,ReportMerger,LargeFileLogger {
-        <<Output Handler>>
-    }
-
-    class Document,DangerResult {
-        <<Data Model>>
-    }
