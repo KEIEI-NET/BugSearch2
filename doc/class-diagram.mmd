@@ -1,38 +1,41 @@
 ```mermaid
 classDiagram
-    %% コードレビューシステム クラス図
+    %% コードレビューシステム クラス図 v2.1.0
 
-    class CodexReviewUltimate {
+    class CodexReviewSeverity {
         %% メインシステムクラス
-        -OPENAI_API_KEY: str
-        -OPENAI_MODEL: str
-        -AI_TIMEOUT: int
-        -AI_MAX_RETRIES: int
-        -AI_MIN_SEVERITY: int
-        -AI_MAX_FILES: int
+        -VERSION: str = "2.1.0"
+        -MAX_FILE_SIZE_MB: int = 4
+        -BATCH_SIZE: int = 500
         +main(args: List~str~): void
         +parse_arguments(): ArgumentParser
-        +load_environment(): void
+        +handle_index_command(): void
+        +handle_advise_command(): void
+        +get_total_indexed_count(): int
     }
 
     class IndexManager {
         %% インデックス管理クラス
-        -index_file: Path
-        -excluded_langs: List~str~
-        -max_file_size_mb: float
-        +create_index(path: str): int
+        -index_file: Path = ".advice_index.pickle"
+        -meta_file: Path = ".advice_index.meta.json"
+        -max_file_size_mb: float = 4
+        -profile_output: Optional~Path~
+        +create_index(path: str, profile: bool): Dict
         +load_index(): List~Document~
         +save_index(documents: List): void
+        +save_metadata(stats: Dict): void
         -check_file_size(path: Path): bool
-        -is_excluded_language(path: Path): bool
+        -profile_performance(stats: Dict): void
     }
 
     class EncodingDetector {
-        %% エンコーディング検出クラス
-        -SUPPORTED_ENCODINGS: List~str~
+        %% エンコーディング検出クラス（v2.1改善）
+        -SUPPORTED_ENCODINGS: List~str~ = ["utf-8", "cp932", "shift-jis", "latin-1"]
         +detect_encoding(file_path: Path): str
-        -try_decode(data: bytes, encoding: str): bool
-        -fallback_detection(data: bytes): str
+        -try_decode_utf8(data: bytes): Optional~str~
+        -try_decode_cp932(data: bytes): Optional~str~
+        -try_decode_sjis(data: bytes): Optional~str~
+        -try_decode_latin1(data: bytes): Optional~str~
     }
 
     class Document {
@@ -43,159 +46,127 @@ classDiagram
         +encoding: str
         +size_bytes: int
         +language: str
-        +timestamp: datetime
+        +indexed_at: datetime
     }
 
-    class RuleAnalyzer {
-        %% ルールベース解析クラス
-        -SEVERITY_SCORES: Dict~str, int~
-        -rules: List~Rule~
-        +analyze_all_files(documents: List): List~RuleResult~
-        +apply_rules(text: str): List~Issue~
-        -detect_n_plus_one(text: str): Optional~Issue~
-        -detect_select_star(text: str): Optional~Issue~
-        -detect_float_money(text: str): Optional~Issue~
-        -detect_xss(text: str): Optional~Issue~
-        -generate_sample_fix(issue: Issue): str
+    class DangerAnalyzer {
+        %% 危険度分析クラス（旧RuleAnalyzer）
+        -PROBLEM_SCORES: Dict~str, int~
+        +analyze_all_files(documents: List, use_all: bool): List~DangerResult~
+        +calculate_severity_score(problems: List): int
+        -detect_n_plus_one(text: str): bool
+        -detect_select_star(text: str): bool
+        -detect_float_money(text: str): bool
+        -detect_xss(text: str): bool
+        -detect_dialog_overuse(text: str): bool
     }
 
-    class Rule {
-        %% ルール定義クラス
-        <<interface>>
-        +name: str
-        +severity: int
-        +pattern: str
-        +detect(text: str): bool
-        +get_fix_suggestion(): str
-    }
-
-    class Issue {
-        %% 問題情報クラス
-        <<dataclass>>
-        +type: str
-        +severity: int
-        +line_number: int
-        +code_sample: str
-        +suggested_fix: str
-        +description: str
-    }
-
-    class RuleResult {
-        %% ルール解析結果クラス
+    class DangerResult {
+        %% 危険度分析結果クラス
         <<dataclass>>
         +file_path: str
-        +issues: List~Issue~
+        +problems: List~str~
         +severity_score: int
-        +has_critical: bool
+        +language: str
+        +category: str  # "緊急", "高", "中", "低"
     }
 
-    class AIAnalyzer {
-        %% AI解析クラス
-        -client: OpenAI
-        -timeout: int
-        -max_retries: int
-        +analyze_with_ai(files: List): List~AIResult~
-        +analyze_single_file(file: RuleResult): AIResult
-        -prepare_prompt(content: str, issues: List): str
-        -call_api_with_timeout(prompt: str): str
-        -parse_response(response: str): Dict
-        -extract_improvements(parsed: Dict): List~Improvement~
+    class OverviewReportGenerator {
+        %% 概要レポート生成クラス
+        +input_file: Path = "src_complete_danger_analysis.md"
+        +output_file: Path = "reports/AI分析.md"
+        +generate(): void
+        +parse_danger_analysis(): List~DangerResult~
+        +categorize_by_priority(): Dict
+        +write_overview_report(data: Dict): void
     }
 
-    class AIResult {
-        %% AI解析結果クラス
-        <<dataclass>>
-        +file_path: str
-        +original_issues: List~Issue~
-        +ai_analysis: str
-        +improvements: List~Improvement~
-        +processing_time: float
-        +success: bool
+    class DetailedAnalyzer {
+        %% 詳細分析クラス
+        -batch_size: int = 500
+        -batch_num: int
+        +analyze_batch(batch_num: int): void
+        +read_source_file(path: str): str
+        +analyze_problems(file_info: Dict): str
+        +generate_improvements(problems: List): str
+        +analyze_full_source(source: str): str
+        +write_batch_report(analyses: List): void
     }
 
-    class Improvement {
-        %% 改善提案クラス
-        <<dataclass>>
-        +issue_type: str
-        +before_code: str
-        +after_code: str
-        +explanation: str
-        +impact: str
+    class ReportMerger {
+        %% レポート統合クラス（v2.1で絵文字削除）
+        +batch_files: List~Path~
+        +output_file: Path = "reports/AI分析_詳細_改善版_完全版.md"
+        +merge_reports(): void
+        +extract_content(batch_file: Path): str
+        +create_header(): str
+        +create_footer(stats: Dict): str
+        -remove_emojis(text: str): str  # v2.1追加
     }
 
-    class VectorManager {
-        %% ベクトル管理クラス
-        -vectorizer: TfidfVectorizer
-        -matrix_file: Path
-        -tfidf_file: Path
-        +create_vectorizer(documents: List): void
-        +load_vectorizer(): TfidfVectorizer
-        +search_similar(query: str, topk: int): List~int~
-        +calculate_similarity(query_vector, doc_vectors): ndarray
+    class BatchController {
+        %% バッチ処理制御クラス
+        +auto_detect_files: bool
+        +run_all_phases(): void
+        +execute_index_phase(): int
+        +execute_danger_analysis(file_count: int): void
+        +execute_overview_generation(): void
+        +execute_batch_analysis(): void
+        +execute_report_merge(): void
     }
 
-    class ReportGenerator {
-        %% レポート生成クラス
-        -output_dir: Path
-        +generate_rules_report(results: List~RuleResult~): void
-        +generate_ai_report(results: List~AIResult~): void
-        -format_severity_emoji(score: int): str
-        -format_issue_section(issue: Issue): str
-        -format_improvement_section(improvement: Improvement): str
-        -write_markdown(path: Path, content: str): void
-    }
-
-    class ProgressTracker {
-        %% 進捗追跡クラス
-        -total: int
-        -current: int
-        +show_progress(current: int, total: int, message: str): void
-        +update(increment: int): void
-        +complete(): void
+    class LargeFileLogger {
+        %% 大容量ファイルログクラス
+        +log_file: Path = "reports/large_files_over_limit.log"
+        +log_large_file(path: Path, size: int): void
+        +get_large_files(): List~Dict~
     }
 
     %% 関連
-    CodexReviewUltimate --> IndexManager : uses
-    CodexReviewUltimate --> RuleAnalyzer : uses
-    CodexReviewUltimate --> AIAnalyzer : uses
-    CodexReviewUltimate --> VectorManager : uses
-    CodexReviewUltimate --> ReportGenerator : uses
-    CodexReviewUltimate --> ProgressTracker : uses
+    CodexReviewSeverity --> IndexManager : uses
+    CodexReviewSeverity --> DangerAnalyzer : uses
+    CodexReviewSeverity --> BatchController : delegates
+
+    BatchController --> IndexManager : controls
+    BatchController --> DangerAnalyzer : controls
+    BatchController --> OverviewReportGenerator : controls
+    BatchController --> DetailedAnalyzer : controls
+    BatchController --> ReportMerger : controls
 
     IndexManager --> EncodingDetector : uses
     IndexManager --> Document : creates
+    IndexManager --> LargeFileLogger : uses
 
-    RuleAnalyzer --> Rule : implements
-    RuleAnalyzer --> Issue : creates
-    RuleAnalyzer --> RuleResult : returns
+    DangerAnalyzer --> DangerResult : creates
 
-    AIAnalyzer --> AIResult : creates
-    AIAnalyzer --> Improvement : creates
+    OverviewReportGenerator --> DangerResult : processes
 
-    ReportGenerator --> RuleResult : processes
-    ReportGenerator --> AIResult : processes
+    DetailedAnalyzer --> DangerResult : reads
 
-    RuleResult o-- Issue : contains
-    AIResult o-- Improvement : contains
+    ReportMerger --> DetailedAnalyzer : merges output
 
     %% スタイル定義
-    class CodexReviewUltimate {
+    class CodexReviewSeverity {
         <<Main System>>
     }
 
-    class IndexManager,EncodingDetector,VectorManager {
+    class BatchController {
+        <<Controller>>
+    }
+
+    class IndexManager,EncodingDetector {
         <<Data Processing>>
     }
 
-    class RuleAnalyzer,AIAnalyzer {
+    class DangerAnalyzer,DetailedAnalyzer {
         <<Analysis Engine>>
     }
 
-    class ReportGenerator,ProgressTracker {
+    class OverviewReportGenerator,ReportMerger,LargeFileLogger {
         <<Output Handler>>
     }
 
-    class Document,Issue,RuleResult,AIResult,Improvement {
+    class Document,DangerResult {
         <<Data Model>>
     }
 ```

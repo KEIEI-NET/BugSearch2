@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Code Review System v2.1.0 Flow">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Code Review System v2.1.0 - Complete Execution Flow" style="text;html=1;fontSize=20;fontStyle=1;fontColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="650" y="20" width="500" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Start Node -->
+        <mxCell id="start" value="開始" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Entry Points Decision -->
+        <mxCell id="entryPoint" value="実行方法" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="800" y="180" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Batch File Entry -->
+        <mxCell id="batchEntry" value="run_detailed_analysis_auto.bat&#xa;実行" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Command Line Entry -->
+        <mxCell id="cmdEntry" value="コマンドライン&#xa;直接実行" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1100" y="300" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Index Creation Phase -->
+        <mxCell id="indexPhase" value="インデックス作成フェーズ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="420" width="300" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- File Scanning -->
+        <mxCell id="fileScanning" value="ファイルスキャン&#xa;対象: 27,884ファイル" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Size Check -->
+        <mxCell id="sizeCheck" value="サイズチェック&#xa;制限: 4MB" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="420" y="520" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Language Filter -->
+        <mxCell id="langFilter" value="言語フィルタ&#xa;適用" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="640" y="520" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Encoding Detection -->
+        <mxCell id="encoding" value="エンコーディング検出&#xa;UTF-8 → CP932 → Shift-JIS → Latin-1" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="860" y="520" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Save Index -->
+        <mxCell id="saveIndex" value="インデックス保存&#xa;.advice_index.pickle&#xa;結果: 15,710ファイル (27.88秒)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1100" y="520" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Danger Analysis Phase -->
+        <mxCell id="dangerPhase" value="危険性分析フェーズ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="650" width="300" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Load Index -->
+        <mxCell id="loadIndex" value="インデックス読込" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="200" y="750" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Apply Rules -->
+        <mxCell id="applyRules" value="ルール適用&#xa;対象: 15,710ファイル" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="400" y="750" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Problem Detection -->
+        <mxCell id="problemDetect" value="問題検出" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="600" y="750" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Severity Calculation -->
+        <mxCell id="severityCalc" value="重要度スコア計算" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="800" y="750" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Categorization -->
+        <mxCell id="categorization" value="カテゴリ分類&#xa;緊急: 392ファイル (15+)&#xa;高: 423ファイル (10-14)&#xa;中: 1,785ファイル (5-9)&#xa;低: 0ファイル (1-4)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1020" y="750" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Generate Danger Report -->
+        <mxCell id="dangerReport" value="危険性分析レポート生成&#xa;src_complete_danger_analysis.md" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="750" y="890" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Overview Report Generation -->
+        <mxCell id="overviewPhase" value="概要レポート生成フェーズ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="1010" width="300" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Execute Overview Script -->
+        <mxCell id="overviewScript" value="create_overview_report.py実行&#xa;危険性分析の解析&#xa;優先度別分類" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="550" y="1110" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Generate Overview -->
+        <mxCell id="generateOverview" value="AI分析.md生成" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="950" y="1110" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Batch Detail Analysis Phase -->
+        <mxCell id="batchPhase" value="バッチ詳細分析フェーズ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="1230" width="300" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Process Files Decision -->
+        <mxCell id="processDecision" value="2,600問題ファイル&#xa;処理中?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="825" y="1330" width="150" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Batch Processing -->
+        <mxCell id="batchProcess" value="バッチ処理実行&#xa;analyze_dangerous_files_detailed.py&#xa;6バッチ (500ファイル×5 + 100ファイル×1)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="550" y="1470" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Generate Batch Reports -->
+        <mxCell id="batchReports" value="バッチレポート生成&#xa;AI分析_詳細_改善版_batch1-6.md" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="950" y="1470" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Report Merging Phase -->
+        <mxCell id="mergePhase" value="レポート統合フェーズ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="1610" width="300" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Execute Merge Script -->
+        <mxCell id="mergeScript" value="merge_detailed_reports.py実行&#xa;6つのバッチレポート統合" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="550" y="1710" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Generate Final Report -->
+        <mxCell id="finalReport" value="最終レポート生成&#xa;AI分析_詳細_改善版_完全版.md&#xa;(24.3MB)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="950" y="1710" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- End Node -->
+        <mxCell id="end" value="完了" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="1830" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Flow Connections -->
+
+        <!-- Start to Entry Point -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="start" target="entryPoint">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Entry Point Branches -->
+        <mxCell id="flowBatch" value="Batch" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="entryPoint" target="batchEntry">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="280" />
+              <mxPoint x="600" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flowCmd" value="CLI" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="entryPoint" target="cmdEntry">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="950" y="280" />
+              <mxPoint x="1200" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Entry Points to Index Phase -->
+        <mxCell id="flowBatchToIndex" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="batchEntry" target="indexPhase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="400" />
+              <mxPoint x="900" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flowCmdToIndex" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="cmdEntry" target="indexPhase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="400" />
+              <mxPoint x="900" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Index Phase to File Processing -->
+        <mxCell id="flowToFileScanning" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="indexPhase" target="fileScanning">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="500" />
+              <mxPoint x="290" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Sequential File Processing -->
+        <mxCell id="flowScanToSize" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="fileScanning" target="sizeCheck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flowSizeToLang" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="sizeCheck" target="langFilter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flowLangToEnc" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="langFilter" target="encoding">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flowEncToSave" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="encoding" target="saveIndex">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Save Index to Danger Phase -->
+        <mxCell id="flowSaveToDanger" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="saveIndex" target="dangerPhase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="630" />
+              <mxPoint x="900" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Danger Phase Processing -->
+        <mxCell id="flowDangerToLoad" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="dangerPhase" target="loadIndex">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="730" />
+              <mxPoint x="280" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Sequential Danger Processing -->
+        <mxCell id="flowLoadToRules" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="loadIndex" target="applyRules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flowRulestoDetect" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="applyRules" target="problemDetect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flowDetectToSeverity" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="problemDetect" target="severityCalc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flowSeverityToCat" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="severityCalc" target="categorization">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Categorization to Danger Report -->
+        <mxCell id="flowCatToDangerReport" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="categorization" target="dangerReport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="870" />
+              <mxPoint x="900" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Danger Report to Overview Phase -->
+        <mxCell id="flowDangerToOverview" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="dangerReport" target="overviewPhase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Overview Phase Processing -->
+        <mxCell id="flowOverviewToScript" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="overviewPhase" target="overviewScript">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="1090" />
+              <mxPoint x="650" y="1090" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flowScriptToGenerate" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="overviewScript" target="generateOverview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Overview to Batch Phase -->
+        <mxCell id="flowOverviewToBatch" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="generateOverview" target="batchPhase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="1210" />
+              <mxPoint x="900" y="1210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Batch Phase to Decision -->
+        <mxCell id="flowBatchToDecision" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="batchPhase" target="processDecision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Decision to Processing -->
+        <mxCell id="flowDecisionToProcess" value="YES" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="processDecision" target="batchProcess">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="1450" />
+              <mxPoint x="675" y="1450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Processing to Reports -->
+        <mxCell id="flowProcessToReports" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="batchProcess" target="batchReports">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Reports to Merge Phase -->
+        <mxCell id="flowReportsToMerge" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="batchReports" target="mergePhase">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1075" y="1590" />
+              <mxPoint x="900" y="1590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Merge Phase Processing -->
+        <mxCell id="flowMergeToScript" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="mergePhase" target="mergeScript">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="1690" />
+              <mxPoint x="650" y="1690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flowMergeScriptToFinal" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="mergeScript" target="finalReport">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Final Report to End -->
+        <mxCell id="flowFinalToEnd" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="finalReport" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1075" y="1810" />
+              <mxPoint x="900" y="1810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Skip Processing Path -->
+        <mxCell id="flowDecisionToEnd" value="NO / 完了" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="processDecision" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="1380" />
+              <mxPoint x="1300" y="1380" />
+              <mxPoint x="1300" y="1860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

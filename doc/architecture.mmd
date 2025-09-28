@@ -1,70 +1,85 @@
 ```mermaid
 graph TB
-    %% コードレビューシステム アーキテクチャ図
+    %% コードレビューシステム アーキテクチャ図 v2.1.0
 
     subgraph "入力層"
-        USER[👤 ユーザー]
-        CLI[📟 コマンドライン]
-        ENV[🔐 環境設定<br/>.env]
+        USER[ユーザー]
+        CLI[コマンドライン]
+        ENV[環境設定<br/>.env]
+        BATCH_SCRIPT[バッチファイル<br/>run_detailed_analysis_auto.bat]
     end
 
     subgraph "メインシステム"
-        MAIN[🎯 codex_review_ultimate.py<br/>メインコントローラー]
+        MAIN[codex_review_severity.py<br/>メインコントローラー v2.1]
 
         subgraph "インデックス処理"
-            INDEX[📚 インデックス作成]
-            ENCODE[🔤 エンコーディング検出<br/>chardet]
-            FILTER[🔍 ファイルフィルター<br/>言語/サイズ]
+            INDEX[インデックス作成<br/>--all オプション対応]
+            ENCODE[エンコーディング検出<br/>UTF-8/CP932/Shift-JIS対応]
+            FILTER[ファイルフィルター<br/>言語/サイズ]
         end
 
         subgraph "解析エンジン"
-            RULES[📏 ルールベース解析<br/>全ファイル対象]
-            SEVERITY[⚖️ 重要度判定<br/>スコアリング]
-            AI[🤖 AI解析<br/>OpenAI GPT-4o]
+            RULES[ルールベース解析<br/>全15,710ファイル対象]
+            SEVERITY[重要度判定<br/>危険度スコアリング]
+            DETAIL[詳細分析<br/>analyze_dangerous_files_detailed.py]
         end
 
         subgraph "データ処理"
-            VECTOR[📊 ベクトル化<br/>TF-IDF]
-            SEARCH[🔎 類似検索<br/>scikit-learn]
-            BATCH[📦 バッチ処理<br/>joblib]
+            VECTOR[ベクトル化<br/>TF-IDF]
+            SEARCH[類似検索<br/>scikit-learn]
+            BATCH[バッチ処理<br/>500ファイル/バッチ]
+        end
+
+        subgraph "レポート生成"
+            OVERVIEW[概要レポート生成<br/>create_overview_report.py]
+            MERGE[レポート統合<br/>merge_detailed_reports.py]
         end
     end
 
     subgraph "出力層"
-        REPORT_RULES[📄 ルールベースレポート<br/>*_rules.md]
-        REPORT_AI[📄 AI詳細レポート<br/>*_ai.md]
-        LOG[📝 ログファイル<br/>large_files.log]
-        CONSOLE[💻 コンソール出力<br/>進捗表示]
+        REPORT_DANGER[危険度分析レポート<br/>src_complete_danger_analysis.md]
+        REPORT_OVERVIEW[概要レポート<br/>AI分析.md]
+        REPORT_BATCH[バッチレポート<br/>AI分析_詳細_改善版_batch1-6.md]
+        REPORT_COMPLETE[統合レポート<br/>AI分析_詳細_改善版_完全版.md]
+        LOG[ログファイル<br/>large_files_over_limit.log]
+        CONSOLE[コンソール出力<br/>進捗表示]
     end
 
     subgraph "データストレージ"
-        JSONL[💾 .advice_index.jsonl]
-        PICKLE1[💾 .advice_matrix.pkl]
-        PICKLE2[💾 .advice_tfidf.pkl]
+        PICKLE[.advice_index.pickle<br/>ベクトルインデックス]
+        META[.advice_index.meta.json<br/>メタデータ]
     end
 
     %% 接続関係
     USER --> CLI
+    USER --> BATCH_SCRIPT
     CLI --> MAIN
+    BATCH_SCRIPT --> MAIN
     ENV --> MAIN
 
     MAIN --> INDEX
     INDEX --> ENCODE
     INDEX --> FILTER
-    ENCODE --> JSONL
-    FILTER --> JSONL
+    ENCODE --> PICKLE
+    FILTER --> PICKLE
+    INDEX --> META
 
-    JSONL --> VECTOR
-    VECTOR --> PICKLE1
-    VECTOR --> PICKLE2
-
-    MAIN --> SEARCH
+    PICKLE --> VECTOR
+    VECTOR --> SEARCH
     SEARCH --> RULES
     RULES --> SEVERITY
-    SEVERITY --> AI
 
-    RULES --> REPORT_RULES
-    AI --> REPORT_AI
+    SEVERITY --> DETAIL
+    DETAIL --> BATCH
+    BATCH --> REPORT_BATCH
+
+    SEVERITY --> OVERVIEW
+    OVERVIEW --> REPORT_OVERVIEW
+
+    REPORT_BATCH --> MERGE
+    MERGE --> REPORT_COMPLETE
+
+    SEVERITY --> REPORT_DANGER
     FILTER --> LOG
     MAIN --> CONSOLE
 
@@ -74,7 +89,8 @@ graph TB
     classDef output fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
     classDef storage fill:#fce4ec,stroke:#880e4f,stroke-width:2px
 
-    class USER,CLI,ENV input
-    class MAIN,INDEX,ENCODE,FILTER,RULES,SEVERITY,AI,VECTOR,SEARCH,BATCH process
-    class REPORT_RULES,REPORT_AI,LOG,CONSOLE output
-    class JSONL,PICKLE1,PICKLE2 storage
+    class USER,CLI,ENV,BATCH_SCRIPT input
+    class MAIN,INDEX,ENCODE,FILTER,RULES,SEVERITY,DETAIL,VECTOR,SEARCH,BATCH,OVERVIEW,MERGE process
+    class REPORT_DANGER,REPORT_OVERVIEW,REPORT_BATCH,REPORT_COMPLETE,LOG,CONSOLE output
+    class PICKLE,META storage
+```
