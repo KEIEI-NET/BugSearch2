@@ -6,6 +6,7 @@
 
 - [セットアップガイド](SETUP_GUIDE.md) - インストールと基本的な使い方
 - [技術文書](doc/TECHNICAL.md) - 詳細な技術仕様とアーキテクチャ
+- [CI 運用ガイド](doc/CI_GUIDE.md) - GitHub Actions を中心としたジョブ構成とパラメータ例
 - [開発履歴](doc/DEVELOPMENT.md) - バージョン履歴と改善内容
 - [テスト結果](doc/TEST_RESULTS.md) - 実行テストとパフォーマンス結果
 
@@ -24,6 +25,14 @@
 - [クラス図](doc/class/code-review-system.drawio)
 
 ## 🚀 特徴
+
+## 🧪 ベンチマークと検証
+
+- インデックス処理はバッチ書き出し・`--max-files`・`--max-seconds` で制御でき、30k ファイル超のリポジトリでも段階的に実行可能です。
+- ストレージがボトルネックの場合は `--worker-count 4` などで並列読み込みを有効化し、共有ストレージでは 2 以下から調整しつつ `--max-seconds` と併用してタイムアウトを避けてください。
+- 詳細な検証手順と推奨コマンドは [`doc/TESTING.md`](doc/TESTING.md) を参照してください（50/500/5000/10000 件のシナリオを収録）。
+- `--profile-index --profile-output reports/profile.csv` を付与すると処理時間・スキップ件数などの統計を取得できます。
+- 長時間処理が予想される場合は `--batch-size 300 --max-files 10000 --max-seconds 900` といった設定で部分的にインデックスを進め、プロファイル出力で進捗を確認してください。
 
 - 📊 **2段階解析システム**: ルールベース解析 → AI詳細解析
 - 🌏 **日本語対応**: 自動エンコーディング検出（UTF-8, Shift_JIS, CP932, EUC-JP）
@@ -48,8 +57,8 @@ OPENAI_MODEL=gpt-4o
 
 ### 3. 基本的な実行
 ```bash
-# インデックス作成（Delphi除外、4MB制限）
-py codex_review_ultimate.py index . --exclude-langs delphi --max-file-mb 4
+# インデックス作成（Delphi除外、4MB制限、並列4スレッド）
+py codex_review_ultimate.py index . --exclude-langs delphi --max-file-mb 4 --worker-count 4
 
 # ベクトル化（オプション、検索精度向上）
 py codex_review_ultimate.py vectorize
