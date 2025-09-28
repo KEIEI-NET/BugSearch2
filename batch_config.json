@@ -1,0 +1,102 @@
+{
+    "batch_processing": {
+        "batch_size": 200,
+        "min_severity": 5,
+        "api_delay": 1.0,
+        "batch_delay": 5,
+        "max_retries": 3,
+        "timeout_per_file": 10,
+        "description": "最適化版バッチ処理設定"
+    },
+    "api_settings": {
+        "model_priority": [
+            "gpt-5-codex",
+            "gpt-5",
+            "gpt-4o"
+        ],
+        "max_tokens": 3000,
+        "temperature": 0.3,
+        "reasoning_effort": "high"
+    },
+    "file_processing": {
+        "max_file_size": 10000,
+        "read_limit": 5000,
+        "encoding": "utf-8",
+        "error_handling": "ignore"
+    },
+    "report_settings": {
+        "individual_batch_prefix": "AI_batch",
+        "final_report_name": "COMPLETE_ANALYSIS_OPTIMIZED_GPT5.md",
+        "max_report_size_mb": 25,
+        "include_original_code": true,
+        "original_code_limit": 1000
+    },
+    "severity_levels": {
+        "critical": {
+            "min_score": 15,
+            "label": "緊急",
+            "priority": 1
+        },
+        "high": {
+            "min_score": 10,
+            "max_score": 14,
+            "label": "高",
+            "priority": 2
+        },
+        "medium": {
+            "min_score": 5,
+            "max_score": 9,
+            "label": "中",
+            "priority": 3
+        }
+    },
+    "performance_tuning": {
+        "parallel_processing": true,
+        "cache_enabled": true,
+        "progress_bar": true,
+        "verbose_logging": true,
+        "resume_on_failure": true
+    },
+    "parallel_config": {
+        "batch_size": 50,
+        "parallel_workers": 10,
+        "api_delay": 0.1,
+        "timeout_per_file": 60,
+        "cache_dir": ".cache/analysis",
+        "rate_limit_per_minute": 100,
+        "model_selection": {
+            "critical": {
+                "threshold": 15,
+                "model": "gpt-5-codex",
+                "reasoning_effort": "high"
+            },
+            "high": {
+                "threshold": 10,
+                "model": "gpt-4o",
+                "reasoning_effort": null
+            },
+            "medium": {
+                "threshold": 5,
+                "model": "gpt-4o-mini",
+                "reasoning_effort": null
+            }
+        }
+    },
+    "platform_specific": {
+        "windows": {
+            "python_command": "py -3",
+            "shell": "cmd",
+            "encoding": "cp932"
+        },
+        "unix": {
+            "python_command": "python3",
+            "shell": "bash",
+            "encoding": "utf-8"
+        }
+    },
+    "notes": {
+        "optimization_reason": "500ファイル/バッチではタイムアウトリスクが高いため200に削減",
+        "estimated_processing_time": "1ファイル約2-3秒、200ファイルで10-15分/バッチ",
+        "total_estimation": "2753ファイル = 14バッチ = 約3-4時間"
+    }
+}

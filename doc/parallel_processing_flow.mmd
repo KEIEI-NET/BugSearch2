@@ -1,0 +1,78 @@
+graph TB
+    %% 並列処理フロー図
+
+    Start([開始]) --> Load[進捗ファイル読み込み]
+    Load --> Check{進捗あり?}
+
+    Check -->|Yes| Resume[中断箇所から再開]
+    Check -->|No| Init[初期化]
+
+    Resume --> Extract
+    Init --> Extract[危険ファイル抽出]
+
+    Extract --> Batch[バッチ作成<br/>50 files/batch]
+
+    Batch --> Parallel[並列処理開始<br/>10 Workers]
+
+    Parallel --> W1[Worker 1]
+    Parallel --> W2[Worker 2]
+    Parallel --> W3[Worker 3]
+    Parallel --> WN[Worker N<br/>...<br/>Worker 10]
+
+    W1 --> Process1[ファイル処理]
+    W2 --> Process2[ファイル処理]
+    W3 --> Process3[ファイル処理]
+    WN --> ProcessN[ファイル処理]
+
+    Process1 --> Cache1{キャッシュ<br/>確認}
+    Process2 --> Cache2{キャッシュ<br/>確認}
+    Process3 --> Cache3{キャッシュ<br/>確認}
+    ProcessN --> CacheN{キャッシュ<br/>確認}
+
+    Cache1 -->|Hit| UseCache1[キャッシュ使用]
+    Cache1 -->|Miss| Model1[モデル選択]
+    Cache2 -->|Hit| UseCache2[キャッシュ使用]
+    Cache2 -->|Miss| Model2[モデル選択]
+    Cache3 -->|Hit| UseCache3[キャッシュ使用]
+    Cache3 -->|Miss| Model3[モデル選択]
+    CacheN -->|Hit| UseCacheN[キャッシュ使用]
+    CacheN -->|Miss| ModelN[モデル選択]
+
+    Model1 --> API1[API呼び出し<br/>Rate Limit対応]
+    Model2 --> API2[API呼び出し<br/>Rate Limit対応]
+    Model3 --> API3[API呼び出し<br/>Rate Limit対応]
+    ModelN --> APIN[API呼び出し<br/>Rate Limit対応]
+
+    UseCache1 --> Collect
+    UseCache2 --> Collect
+    UseCache3 --> Collect
+    UseCacheN --> Collect
+
+    API1 --> Collect
+    API2 --> Collect
+    API3 --> Collect
+    APIN --> Collect[結果収集]
+
+    Collect --> Progress[進捗保存]
+    Progress --> Report[レポート生成]
+
+    Report --> Monitor{監視中?}
+    Monitor -->|Yes| Update[モニター更新]
+    Monitor -->|No| Complete
+
+    Update --> Continue{完了?}
+    Continue -->|No| Parallel
+    Continue -->|Yes| Complete[処理完了]
+
+    Complete --> End([終了])
+
+    %% スタイル定義
+    classDef processStyle fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef workerStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef cacheStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef apiStyle fill:#ffebee,stroke:#b71c1c,stroke-width:2px
+
+    class Process1,Process2,Process3,ProcessN processStyle
+    class W1,W2,W3,WN workerStyle
+    class Cache1,Cache2,Cache3,CacheN,UseCache1,UseCache2,UseCache3,UseCacheN cacheStyle
+    class API1,API2,API3,APIN,Model1,Model2,Model3,ModelN apiStyle

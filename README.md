@@ -1,9 +1,9 @@
-# Codex Review - AI Code Review System v2.1
+# Codex Review - AI Code Review System v3.1
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
 
-**最終更新: 2025年9月28日**
-**バージョン: 3.0.0** - GPT-5/GPT-5-Codex完全対応版
+**最終更新: 2025年9月29日**
+**バージョン: 3.1.0** - 並列処理＆エンコーディング対応版
 
 ## 📚 ドキュメント
 
@@ -27,7 +27,14 @@
 - [シーケンス図](doc/sequence-diagram.drawio)
 - [クラス図](doc/class/code-review-system.drawio)
 
-## 🆕 バージョン3.0の新機能
+## 🆕 バージョン3.1の新機能
+
+### 🚄 並列処理対応（10倍高速化）
+- **並列AI分析**: ThreadPoolExecutor使用、10ワーカー同時実行
+- **動的モデル選択**: 危険度に応じてGPT-5-Codex/GPT-4o/GPT-4o-miniを自動選択
+- **キャッシュ機能**: MD5ハッシュベースでAPI呼び出しを削減
+- **進捗モニタリング**: `monitor_parallel.py`でリアルタイム監視
+- **自動レジューム**: 中断後も`.batch_progress_parallel.json`から再開可能
 
 ### GPT-5シリーズ完全対応
 - **GPT-5-Codex**: Responses API (`/v1/responses`) 経由でコード特化分析
@@ -95,6 +102,9 @@ py codex_review_ultimate.py advise --topk 100 --out reports/full_review
 | ファイル | 用途 | 特徴 |
 |---------|------|------|
 | `codex_review_ultimate.py` | **🌟 推奨** | 2段階解析、エンコード自動検出、タイムアウト対策、進捗表示 |
+| `extract_and_batch_parallel.py` | **⚡ 並列処理** | 10倍高速化、自動レジューム、キャッシュ対応 |
+| `monitor_parallel.py` | 進捗モニター | リアルタイム監視、ETA表示、停滞検出 |
+| `fix_report_encoding.py` | レポート修正 | 文字化け修正、エラー除去 |
 | `codex_review_enhanced.py` | エンコード特化 | 日本語ファイルの文字化け対策 |
 | `codex_review_severity.py` | 重要度ソート | 問題の優先順位付け |
 | `codex_review_with_solutions.py` | AI改善案 | 具体的な修正コード提案 |
