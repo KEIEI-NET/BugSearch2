@@ -1,9 +1,16 @@
 .env
 __pycache__/
 .advice_index.jsonl
+.advice_index.meta.json
+.advice_index.pickle
 .advice_tfidf.pkl
 .advice_matrix.pkl
 reports/
+.venv/
+*.log
+*.csv
+nul
+performance_metrics.json
 
 # Source code files (exclude from repository)
 src/delphi/*.pas

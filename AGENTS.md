@@ -1,47 +1,25 @@
 # Repository Guidelines
 
 ## プロジェクト構成とモジュール配置
-- ルート直下に各 CLI 版 (`codex_review.py`、`codex_review_optimized.py` など) があり、バージョンごとに機能追加を切り分けています。
-- インデックスやベクトルキャッシュ (`.advice_index.jsonl`, `.advice_tfidf.pkl`, `.advice_matrix.pkl`) とレポート (`reports/*.md`) はすべて生成物です。共有時は削除または `.gitignore` に従って無視してください。
-- ドキュメントは `doc/` 配下（`TECHNICAL.md`、Mermaid 図、開発履歴など）。サンプルコードは `src/<language>/` に整理し、空ディレクトリ維持用の `.gitkeep` を残します。
+Root directory hosts the CLI entry points `codex_review.py`, `codex_review_optimized.py`, `codex_review_ultimate.py`, offering baseline, performance, and two-stage review flows. 生成物である `.advice_index.jsonl`, `.advice_tfidf.pkl`, `.advice_matrix.pkl`, `reports/*.md` は共有前に削除または `.gitignore` に従って管理し、長期保存は `reports/archive/` など任意の private パスへ退避してください。Documentation resides in `doc/` where `TECHNICAL.md`, `CI_GUIDE.md`, `TESTING.md`, `DEVELOPMENT.md` capture the latest architecture, workflow, and benchmark notes. Sample repositories and fixtures stay under `src/<language>/`; keep `.gitkeep` so automated tests can rely on deterministic layout. 追加の設計資料や可視化は `doc/flow/` と `doc/class/` に格納されています。
 
 ## ビルド・テスト・開発コマンド
-- 依存導入（仮想環境推奨）:
-  ```bash
-  python3 -m venv .venv
-  . .venv/bin/activate
-  pip install chromadb openai scikit-learn joblib regex chardet
-  ```
-- インデックス作成（読取専用）:
-  ```bash
-  python codex_review.py index /path/to/repo
-  ```
-- TF-IDF ベクトル再構築:
-  ```bash
-  python codex_review.py vectorize --index .advice_index.jsonl
-  ```
-- 助言レポート生成（ハイブリッド）:
-  ```bash
-  python codex_review.py advise --mode hybrid --topk 80 --out reports/advise.md
-  ```
-- 最適化版 / 究極版でも同じサブコマンドが利用可能。2段階解析が必要な場合は `codex_review_ultimate.py` を優先してください。
+作業開始時は仮想環境を作成し依存を導入します。
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+pip install chromadb openai scikit-learn joblib regex chardet
+```
+`python codex_review.py index /path/to/repo` でインデックスを構築し、`python codex_review.py vectorize --index .advice_index.jsonl` で TF-IDF を更新します。レビューは `python codex_review.py advise --mode hybrid --topk 80 --out reports/advise.md` が標準で、二段階解析や進捗監視を使いたい場合は `python codex_review_ultimate.py advise --profile-index --profile-output reports/profile.csv` を利用してください。Large scale runs should combine `--batch-size 300`, `--max-files 10000`, and `--max-seconds 900` to avoid CI timeouts.
 
 ## コーディング規約と命名
-- Python 3.11 以上、4 スペースインデント、UTF-8 I/O。import は標準→サードパーティ→ローカルの順にグルーピング。
-- 関数・変数は `snake_case`、クラスは `CapWords`、定数は `UPPER_CASE`。CLI 全体で共有する定数（例: `INDEX_PATH`, `HYBRID_TOPK_AI`）を流用し、魔法値を避けてください。
-- CLI は単一ファイルで完結するスタイルを維持し、関連ヘルパーは使用箇所の近くにまとめる方針です。
+Python 3.11+, four-space indentation, UTF-8 I/O を必須とし、imports are grouped standard → third-party → local. Functions and variables adopt `snake_case`, classes use `CapWords`, shared constants remain `UPPER_CASE` (e.g. `INDEX_PATH`, `HYBRID_TOPK_AI`). CLI scripts are single-file style; helper functions stay close to their call sites and heavy utilities should receive docstrings describing parameters and side effects. ログメッセージや警告文は英日混在でも良いですが、重要な設定値は英語で明示し国際メンバーにも伝わるようにしてください。
 
 ## テスト指針
-- 公式テストスイートは未整備。`src/` 配下のサンプルリポジトリを使い、`index`・`query`・`advise` コマンドを実行して出力内容を確認します。
-- scikit-learn 未導入時は、TF-IDF スキップメッセージが出ること、およびフォールバック検索で異常終了しないことを確認してください。
-- レポート生成結果（Markdown）を PR に添付、または主要な指摘をサマリして共有するのが推奨です。
+Automated suites are WIP, so rely on `src/` fixtures and manual inspection. 最低限 `index` → `vectorize` → `advise` の順で CLI を実行し、`--profile-index --profile-output reports/profile_latest.jsonl` を付与して統計を残します。`scikit-learn` 未導入時には TF-IDF をスキップする warning が出るため、フォールバック検索が継続しているかログで確認してください。CI 環境では `doc/TESTING.md` に記載の S-50 / S-500 / S-5000 / S-10000 シナリオを参考にし、結果を `reports/` 配下へコミットしないよう注意します。
 
 ## コミットと Pull Request ガイドライン
-- コミットメッセージは命令形・現在形（例: `feat: add HasMorePages guard`, `fix: skip binary index entries`）。論理単位で粒度を保ちます。
-- PR では追加/変更された CLI オプションや影響範囲、実行したコマンド、必要な環境変数（`OPENAI_API_KEY`, `OPENAI_MODEL` など）を記載してください。
-- Issue との関連は `Closes #123` 形式で明記し、ワークフローやシークレットに変更がある場合はレビュアーへ必ず共有します。
+Commits follow imperative present tense such as `feat: add HasMorePages guard` or `fix: skip binary index entries`. 1 つのロジック変更につき 1 コミットを目安とし、生成物を混在させないでください。Pull Request descriptions must list updated CLI options, executed commands, required environment variables (`OPENAI_API_KEY`, `OPENAI_MODEL`), and attach previews or key findings from generated reports. Link issues via `Closes #123` when applicable and document workflow or secrets changes clearly so reviewers can update GitHub Actions and `.env.example` without猜測.
 
-## セキュリティと設定のポイント
-- `.env` はコミットから除外し、`.env.example` を写して使用者がローカルで値を設定する運用としてください。
-- レポートにはコード断片が含まれるため、第三者共有時は機密情報が含まれていないか確認します。
-- GitHub Actions ( `codex-readonly-review*.yml` ) を使用する場合、`OPENAI_API_KEY` など必要なシークレットを事前にリポジトリ設定へ追加し、追加項目があれば README/PR で告知します。
+## セキュリティと設定のヒント
+`.env` はリポジトリに含めず `.env.example` を配布してローカルで値を設定します。助言レポートには confidential snippets が含まれるため、外部共有時は redaction を行い、レビュー履歴は `reports/summary.md` などのサマリに落とし込みます。GitHub Actions (`codex-readonly-review*.yml`) を利用する際は必要な secrets をリポジトリ設定へ登録し、変更があれば README と PR の両方で周知してください。Two-stage pipelines should run in read-only mode and never attempt automatic code mutation; 追加権限が必要な場合は管理者に事前相談を行います。

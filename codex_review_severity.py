@@ -118,11 +118,12 @@ class IndexStats:
         skipped_filter = self.counts.get("skipped_filter", 0)
         limit_stop = self.counts.get("limit_stop", 0)
         timeout_stop = self.counts.get("timeout_stop", 0)
+        reused = self.counts.get("reused", 0)
         avg_read = (self.timings.get("read", 0.0) / indexed) if indexed else 0.0
         return (
             f"[PROFILE] Indexed {indexed}/{seen} files in {total_elapsed:.2f}s\n"
             f"           read={self.timings.get('read', 0.0):.2f}s stat={self.timings.get('stat', 0.0):.2f}s write={self.timings.get('write', 0.0):.2f}s\n"
-            f"           avg_read_per_file={avg_read*1000:.1f}ms large_skipped={skipped_large} binary_skipped={skipped_binary} filter_skipped={skipped_filter} errors={skipped_errors} limits={limit_stop} timeouts={timeout_stop}"
+            f"           avg_read_per_file={avg_read*1000:.1f}ms reused={reused} large_skipped={skipped_large} binary_skipped={skipped_binary} filter_skipped={skipped_filter} errors={skipped_errors} limits={limit_stop} timeouts={timeout_stop}"
         )
 
     def to_rows(self) -> List[Dict[str, Any]]:
@@ -138,6 +139,7 @@ class IndexStats:
             "skipped_filter": self.counts.get("skipped_filter", 0),
             "limit_stop": self.counts.get("limit_stop", 0),
             "timeout_stop": self.counts.get("timeout_stop", 0),
+            "reused_files": self.counts.get("reused", 0),
             "read_seconds": self.timings.get("read", 0.0),
             "stat_seconds": self.timings.get("stat", 0.0),
             "write_seconds": self.timings.get("write", 0.0)
@@ -219,6 +221,49 @@ def iter_files(root: pathlib.Path):
         for fn in filenames:
             yield pathlib.Path(dirpath) / fn
 
+
+def load_meta(meta_path: pathlib.Path) -> Dict[str, Dict[str, Any]]:
+    if not meta_path.exists():
+        return {}
+    try:
+        raw = meta_path.read_text(encoding="utf-8")
+        data = json.loads(raw) if raw.strip() else {}
+        if isinstance(data, dict):
+            return {str(k): v for k, v in data.items() if isinstance(v, dict)}
+    except Exception:
+        pass
+    return {}
+
+
+def write_meta(meta_path: pathlib.Path, meta: Dict[str, Dict[str, Any]]) -> None:
+    try:
+        meta_path.parent.mkdir(parents=True, exist_ok=True)
+        meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    except Exception:
+        pass
+
+
+def load_previous_index(index_path: pathlib.Path) -> Dict[str, Dict[str, Any]]:
+    if not index_path.exists():
+        return {}
+    out: Dict[str, Dict[str, Any]] = {}
+    try:
+        with index_path.open("r", encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    doc = json.loads(line)
+                    rel_path = doc.get("path")
+                    if isinstance(rel_path, str):
+                        out[rel_path] = doc
+                except Exception:
+                    continue
+    except Exception:
+        return {}
+    return out
+
 # ===== Rule engine =====
 def scan_money(text: str) -> List[str]:
     m: List[str] = []
@@ -297,7 +342,7 @@ def cmd_index(
     include_patterns: Optional[List[str]] = None,
     exclude_patterns: Optional[List[str]] = None,
     worker_count: int | None = None,
-):
+): 
     if exclude_langs is None:
         exclude_langs = set()
     if max_file_bytes is None:
@@ -305,6 +350,7 @@ def cmd_index(
 
     repo = repo.resolve()
     count = 0
+    reused_count = 0
     large_files: List[Tuple[str, int]] = []
     stats = IndexStats(enabled=profile)
     norm_include = include_patterns or []
@@ -313,7 +359,12 @@ def cmd_index(
     batch_size = batch_size if batch_size and batch_size > 0 else None
     reader_workers = max(0, worker_count or 0)
 
-    candidates: List[Tuple[pathlib.Path, str]] = []
+    meta_path = index_path.with_name(f"{index_path.stem}.meta.json")
+    prev_meta = load_meta(meta_path)
+    prev_docs = load_previous_index(index_path) if prev_meta else {}
+    new_meta: Dict[str, Dict[str, Any]] = {}
+
+    tasks: List[Tuple[pathlib.Path, str, Optional[Dict[str, Any]], int, int, str]] = []
     for p in iter_files(repo):
         stats.bump("seen")
         rel_norm = normalize_rel_path(repo, p)
@@ -325,63 +376,93 @@ def cmd_index(
             continue
         try:
             stat_start = time.perf_counter()
-            file_size = p.stat().st_size
+            stat = p.stat()
+            file_size = stat.st_size
+            mtime_ns = getattr(stat, "st_mtime_ns", int(stat.st_mtime * 1_000_000_000))
             stats.add_time("stat", time.perf_counter() - stat_start)
         except Exception:
             stats.bump("skipped_errors")
             continue
         if file_size > max_file_bytes:
-            try:
-                rel_large = str(p.relative_to(repo))
-            except ValueError:
-                rel_large = str(p)
-            large_files.append((rel_large, file_size))
+            large_files.append((rel_norm, file_size))
             stats.bump("skipped_large")
             continue
         if not should_index(p, exclude_langs):
             continue
         lang = detect_lang(p)
+        prev_info = prev_meta.get(rel_norm)
+        if prev_info and prev_info.get("size") == file_size and prev_info.get("mtime_ns") == mtime_ns:
+            prev_doc = prev_docs.get(rel_norm)
+            if prev_doc:
+                tasks.append((p, lang, prev_doc, file_size, mtime_ns, rel_norm))
+                continue
         if not is_text_file(p):
             stats.bump("skipped_binary")
             continue
-        candidates.append((p, lang))
+        tasks.append((p, lang, None, file_size, mtime_ns, rel_norm))
 
     def read_document(item: Tuple[pathlib.Path, str]):
-        path, lang = item
+        path, _ = item
         read_start = time.perf_counter()
         try:
             txt = path.read_text(encoding="utf-8", errors="ignore")
             duration = time.perf_counter() - read_start
-            return path, lang, txt, duration, None
+            return path, txt, duration, None
         except Exception as exc:
             duration = time.perf_counter() - read_start
-            return path, lang, None, duration, exc
+            return path, None, duration, exc
 
-    executor: ThreadPoolExecutor | None = None
-    iterator: Any
-    if reader_workers > 1:
-        executor = ThreadPoolExecutor(max_workers=reader_workers)
-        iterator = executor.map(read_document, candidates)
-    else:
-        iterator = map(read_document, candidates)
+    read_targets = [(path, lang) for path, lang, doc, _, _, _ in tasks if doc is None]
+    read_results: Dict[pathlib.Path, Tuple[Optional[str], Optional[Exception]]] = {}
+    if read_targets:
+        executor: ThreadPoolExecutor | None = None
+        iterator: Any
+        if reader_workers > 1:
+            executor = ThreadPoolExecutor(max_workers=reader_workers)
+            iterator = executor.map(read_document, read_targets)
+        else:
+            iterator = map(read_document, read_targets)
+        try:
+            for path, txt, duration, error in iterator:
+                stats.add_time("read", duration)
+                read_results[path] = (txt, error)
+        finally:
+            if executor:
+                executor.shutdown(wait=False)
 
     batch_buffer: List[str] = []
     try:
         with open(index_path, "w", encoding="utf-8") as w:
-            for path, lang, txt, read_duration, error in iterator:
-                stats.add_time("read", read_duration)
-                if error or txt is None:
-                    stats.bump("skipped_errors")
-                    continue
-                if not txt:
-                    continue
-                tags = make_tags(txt)
-                rel_path = str(path.relative_to(repo))
-                encoded = txt.encode("utf-8", errors="ignore")
-                doc = Doc(path=rel_path, lang=lang, size=len(encoded), sha1=sha1_bytes(encoded), tags=tags, summary=make_summary(txt), text=txt)
-                batch_buffer.append(json.dumps(asdict(doc), ensure_ascii=False) + "\n")
-                stats.bump("indexed")
-                count += 1
+            for path, lang, reuse_doc, file_size, mtime_ns, rel_path in tasks:
+                if reuse_doc is not None:
+                    batch_buffer.append(json.dumps(reuse_doc, ensure_ascii=False) + "\n")
+                    stats.bump("indexed")
+                    stats.bump("reused")
+                    reused_count += 1
+                    count += 1
+                    new_meta[rel_path] = {
+                        "size": file_size,
+                        "mtime_ns": mtime_ns,
+                        "sha1": reuse_doc.get("sha1", "")
+                    }
+                else:
+                    txt, error = read_results.get(path, (None, RuntimeError("read_failed")))
+                    if error or txt is None:
+                        stats.bump("skipped_errors")
+                        continue
+                    if not txt:
+                        continue
+                    tags = make_tags(txt)
+                    encoded = txt.encode("utf-8", errors="ignore")
+                    doc = Doc(path=rel_path, lang=lang, size=len(encoded), sha1=sha1_bytes(encoded), tags=tags, summary=make_summary(txt), text=txt)
+                    batch_buffer.append(json.dumps(asdict(doc), ensure_ascii=False) + "\n")
+                    stats.bump("indexed")
+                    count += 1
+                    new_meta[rel_path] = {
+                        "size": file_size,
+                        "mtime_ns": mtime_ns,
+                        "sha1": doc.sha1
+                    }
                 if batch_size and len(batch_buffer) >= batch_size:
                     write_start = time.perf_counter()
                     w.writelines(batch_buffer)
@@ -400,10 +481,30 @@ def cmd_index(
                 stats.add_time("write", time.perf_counter() - write_start)
                 batch_buffer.clear()
     finally:
-        if executor:
-            executor.shutdown(wait=False)
+        write_meta(meta_path, new_meta)
+
+    # [SUMMARY]形式の出力
+    seen_count = stats.counts.get("seen", 0)
+    indexed_count = stats.counts.get("indexed", 0)
+    reused_count = stats.counts.get("reused", 0)
+    skipped_large = stats.counts.get("skipped_large", 0)
+    skipped_binary = stats.counts.get("skipped_binary", 0)
+    skipped_filter = stats.counts.get("skipped_filter", 0)
+    skipped_errors = stats.counts.get("skipped_errors", 0)
+
+    print(f"[SUMMARY] seen={seen_count} indexed={indexed_count} reused={reused_count} skipped_large={skipped_large} skipped_binary={skipped_binary} skipped_filter={skipped_filter} skipped_errors={skipped_errors}")
+
+    # 詳細情報
+    if large_files:
+        print(f"[DETAIL] 大容量スキップ上位: ", end="")
+        top_large = sorted(large_files, key=lambda x: x[1], reverse=True)[:3]
+        details = [f"{name} ({size/1_000_000:.1f}MB)" for name, size in top_large]
+        print(", ".join(details))
 
     print(f"[OK] Indexed {count} files -> {index_path}")
+    if reused_count:
+        print(f"[INFO] Reused {reused_count} files from previous index")
+
     log_path = write_large_file_log(large_files, index_path.parent.resolve(), max_file_bytes)
     if log_path:
         threshold_mb = max_file_bytes / 1_000_000
@@ -564,12 +665,12 @@ def render_report_sorted(title: str, items: List[Dict[str,Any]], ai_summary: str
 
     # 統計情報
     lines += [
-        "## 📊 問題の分布",
-        f"- 🔴 緊急: {len(critical_items)}件",
-        f"- 🟠 高: {len(high_items)}件",
-        f"- 🟡 中: {len(medium_items)}件",
-        f"- 🔵 低: {len(low_items)}件",
-        f"- ⚪ 問題なし: {len(no_issue_items)}件",
+        "## 問題の分布",
+        f"- 緊急: {len(critical_items)}件",
+        f"- 高: {len(high_items)}件",
+        f"- 中: {len(medium_items)}件",
+        f"- 低: {len(low_items)}件",
+        f"- 問題なし: {len(no_issue_items)}件",
         f"- **合計**: {len(items)}件",
         ""
     ]
@@ -651,9 +752,15 @@ def cmd_query(query: str, topk: int, mode: str, index_path: pathlib.Path, out: p
     else:
         print(rep)
 
-def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path|None):
+def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path|None, use_all: bool = False):
     seed_query = "金額 不整合 税 小数 印刷 Print HasMorePages NewPage UI UX アクセシビリティ DB N+1 JOIN 遅い"
     index = load_index(index_path)
+
+    # --all オプションが指定された場合は全ファイルを対象にする
+    if use_all:
+        topk = len(index)
+        print(f"[INFO] --all オプション: 全{topk}ファイルを分析します")
+
     cands = retrieve(seed_query, index, topk=topk)
     items = [make_advice_entry_with_severity(d) for d in cands]
 
@@ -668,6 +775,47 @@ def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path
         print(f"[OK] wrote {out}")
     else:
         print(rep)
+
+def cmd_clean():
+    """生成物をクリーンアップする"""
+    files_to_remove = [
+        ".advice_index.jsonl",
+        ".advice_index.meta.json",
+        ".advice_tfidf.pkl",
+        ".advice_matrix.pkl"
+    ]
+
+    removed = []
+    for file_name in files_to_remove:
+        file_path = pathlib.Path(file_name)
+        if file_path.exists():
+            try:
+                file_path.unlink()
+                removed.append(file_name)
+                print(f"[OK] 削除: {file_name}")
+            except Exception as e:
+                print(f"[ERROR] 削除失敗: {file_name} - {e}")
+
+    # reportsディレクトリの確認
+    reports_dir = pathlib.Path("reports")
+    if reports_dir.exists() and reports_dir.is_dir():
+        try:
+            # ログファイルのみ削除（.mdファイルは保持）
+            log_files = list(reports_dir.glob("*.log")) + list(reports_dir.glob("*.csv")) + list(reports_dir.glob("*.jsonl"))
+            for log_file in log_files:
+                try:
+                    log_file.unlink()
+                    removed.append(log_file.name)
+                    print(f"[OK] 削除: {log_file.name}")
+                except Exception as e:
+                    print(f"[ERROR] 削除失敗: {log_file.name} - {e}")
+        except Exception as e:
+            print(f"[ERROR] reportsディレクトリのクリーンアップ失敗: {e}")
+
+    if removed:
+        print(f"\n[SUMMARY] {len(removed)}個のファイルを削除しました")
+    else:
+        print("[INFO] 削除するファイルがありませんでした")
 
 # ===== CLI =====
 if __name__ == "__main__":
@@ -698,10 +846,13 @@ if __name__ == "__main__":
     ap_q.add_argument("--out", type=str, help="出力ファイル (Markdown)")
 
     ap_adv = sub.add_parser("advise", help="全体助言（重要度順）")
-    ap_adv.add_argument("--topk", type=int, default=80, help="助言対象上位N件")
+    ap_adv.add_argument("--topk", type=int, default=80, help="助言対象上位N件（デフォルト: 80）")
+    ap_adv.add_argument("--all", action="store_true", help="全インデックスファイルを分析（--topkを上書き）")
     ap_adv.add_argument("--mode", choices=["rules","ai","hybrid"], default="hybrid")
     ap_adv.add_argument("--index", type=str, default=INDEX_PATH)
     ap_adv.add_argument("--out", type=str, help="出力ファイル (Markdown)")
+
+    ap_clean = sub.add_parser("clean", help="生成物をクリーンアップ")
 
     args = ap.parse_args()
     if args.cmd == "index":
@@ -730,4 +881,6 @@ if __name__ == "__main__":
         cmd_query(args.query, args.topk, args.mode, pathlib.Path(args.index), out)
     elif args.cmd == "advise":
         out = pathlib.Path(args.out) if args.out else None
-        cmd_advise(args.topk, args.mode, pathlib.Path(args.index), out)
+        cmd_advise(args.topk, args.mode, pathlib.Path(args.index), out, args.all)
+    elif args.cmd == "clean":
+        cmd_clean()
