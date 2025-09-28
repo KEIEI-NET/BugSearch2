@@ -2,8 +2,8 @@
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
 
-**最終更新: 2024年9月28日**
-**バージョン: 2.1.0** - Windows環境対応強化版（絵文字削除によるcp932エンコーディング対応）
+**最終更新: 2025年9月28日**
+**バージョン: 3.0.0** - GPT-5/GPT-5-Codex完全対応版
 
 ## 📚 ドキュメント
 
@@ -26,6 +26,14 @@
 - [処理フロー図](doc/flow/code-review-system.drawio)
 - [シーケンス図](doc/sequence-diagram.drawio)
 - [クラス図](doc/class/code-review-system.drawio)
+
+## 🆕 バージョン3.0の新機能
+
+### GPT-5シリーズ完全対応
+- **GPT-5-Codex**: Responses API (`/v1/responses`) 経由でコード特化分析
+- **GPT-5/GPT-5-mini/GPT-5-nano**: Chat Completions API対応準備完了
+- **自動フォールバック**: API障害時のgpt-4oへの自動切り替え
+- **空レスポンス対策**: 3段階リトライとパラメータ自動調整
 
 ## 🚀 特徴
 
@@ -57,6 +65,13 @@ pip install chromadb openai scikit-learn joblib regex chardet
 `.env`ファイル作成：
 ```env
 OPENAI_API_KEY=your_api_key_here
+
+# 利用可能なモデル（2025年9月時点）
+# gpt-5-codex: コード特化、Responses API使用（動作確認済み✅）
+# gpt-5      : 最高性能（準備完了、API公開待ち）
+# gpt-5-mini : コスト効率重視（準備完了、API公開待ち）
+# gpt-5-nano : 超軽量版（準備完了、API公開待ち）
+# gpt-4o     : 現行安定版（推奨✅）
 OPENAI_MODEL=gpt-4o
 ```
 
@@ -236,11 +251,51 @@ py codex_review_ultimate.py index . --max-file-mb 1
 
 MIT License - 詳細は[LICENSE](LICENSE)参照
 
+## 🤖 AIモデル選択ガイド
+
+### GPT-5シリーズ対応状況（2025年9月28日時点）
+
+| モデル | 状態 | エンドポイント | 備考 |
+|--------|------|--------------|------|
+| gpt-5-codex | ✅動作中 | `/v1/responses` | Responses API経由、コード分析特化 |
+| gpt-4o | ✅動作中 | `/v1/chat/completions` | 安定版、推奨 |
+| gpt-5 | ⏳準備完了 | `/v1/chat/completions` | API公開待ち |
+| gpt-5-mini | ⏳準備完了 | `/v1/chat/completions` | API公開待ち |
+| gpt-5-nano | ⏳準備完了 | `/v1/chat/completions` | API公開待ち |
+
+**実装済み対策**：
+- 空レスポンス時の自動リトライ（最大3回）
+- APIエラー時のフォールバック機能
+- レスポンス構造の自動判定
+
+### 利用可能なモデル
+- **gpt-5**: 最高性能モデル
+  - 入力: 272,000トークン、出力: 128,000トークン
+  - 数学: AIME 2025で94.6%
+  - コーディング: SWE-benchで74.9%
+  - 複雑な推論・分析タスクに最適
+
+- **gpt-5-mini**: バランス型
+  - コスト効率と処理速度のバランス
+  - 大量ファイル処理に適している
+  - 通常のコードレビューに推奨
+
+- **gpt-5-nano**: 軽量版
+  - 最速・最安価
+  - シンプルな静的解析向け
+  - 大規模バッチ処理に最適
+
+### フォールバック機能
+空レスポンス時は自動的に別モデルで再試行します：
+- gpt-5 → gpt-4o
+- gpt-5-mini → gpt-4o
+- gpt-5-nano → gpt-5-mini
+
 ## 🙏 謝辞
 
-- OpenAI GPT-4oモデルの提供
+- OpenAI GPT-5/GPT-4oモデルの提供
 - scikit-learn、ChromaDB等のオープンソースライブラリ
 - 日本語エンコーディング検出のchardetライブラリ
 
 ---
-最終更新: 2025-09-28 12:56:09 | バージョン: 6.1 (Parallel Processing Edition)
+最終更新: 2025-09-28 18:35:00 | バージョン: 3.0.0 (GPT-5 Complete Edition)

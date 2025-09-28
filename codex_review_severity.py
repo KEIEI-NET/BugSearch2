@@ -11,7 +11,7 @@ codex_review_severity.py — 重要度順ソート版
   4) 印刷系（途中停止/ページ欠け/レポート系）- 低程度
 
 pip install chromadb openai scikit-learn joblib regex
-環境変数: OPENAI_API_KEY（必須: AIモード）, OPENAI_MODEL（任意: 既定 'gpt-5'）
+環境変数: OPENAI_API_KEY（必須: AIモード）, OPENAI_MODEL（任意: 既定 'gpt-4o'）
 """
 from __future__ import annotations
 import argparse, hashlib, json, os, pathlib, re, sys, time
@@ -615,31 +615,205 @@ def get_severity_level(score: int) -> str:
         return "⚪ 問題なし"
 
 # ===== GPT-5 =====
+def call_gpt5_codex_responses_api(prompt: str, api_key: str, model: str = "gpt-5-codex") -> str:
+    """
+    GPT-5-Codex Responses API (/v1/responses) を使用
+    公式ドキュメントに基づく正しい実装
+    """
+    try:
+        from openai import OpenAI
+
+        # OpenAI公式クライアントを使用
+        client = OpenAI(api_key=api_key)
+
+        # inputパラメータは必須
+        if not prompt or not prompt.strip():
+            print("[WARNING] Input prompt is empty, using default prompt")
+            prompt = "# Write a simple hello world function"
+
+        print(f"[INFO] Calling GPT-5-Codex via Responses API with {len(prompt)} chars input")
+
+        # 公式ドキュメントの形式に従う
+        response = client.responses.create(
+            model=model,
+            input=prompt,
+            reasoning={"effort": "high"}  # リファクタリングや複雑な解析向け
+        )
+
+        # レスポンス構造の解析（テスト結果から判明した実際の構造）
+        # 1. まず直接output_textを確認（OpenAIクライアントの場合）
+        if hasattr(response, 'output_text'):
+            output = response.output_text
+            if output and output.strip():
+                print(f"[SUCCESS] Got response from output_text: {len(output)} chars")
+                return output.strip()
+
+        # 2. outputフィールドを確認（HTTP直接呼び出しの場合の構造）
+        if hasattr(response, 'output') and response.output:
+            for item in response.output:
+                if item.get('type') == 'message' and 'content' in item:
+                    for content in item['content']:
+                        if content.get('type') == 'output_text':
+                            text = content.get('text', '')
+                            if text and text.strip():
+                                print(f"[SUCCESS] Got response from nested structure: {len(text)} chars")
+                                return text.strip()
+
+        print(f"[WARNING] Could not extract text from response structure")
+
+    except Exception as e:
+        error_msg = str(e)
+        print(f"[ERROR] Responses API call failed: {error_msg[:200]}")
+
+        # エラー内容に基づく詳細診断
+        if "400" in error_msg or "invalid_request_error" in error_msg:
+            print("[INFO] Error 400 - Check: input not empty, model name correct, valid JSON")
+        elif "401" in error_msg:
+            print("[INFO] Error 401 - Check API key authentication")
+        elif "404" in error_msg:
+            print("[INFO] Error 404 - Model may not be available yet")
+
+    # フォールバック処理は呼び出し元で行う
+    return None
+
 def ai_review(query: str, snippets: List[str]) -> str:
     if not OPENAI_OK: return "(AI未有効: openai未導入)"
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key: return "(AI未有効: OPENAI_API_KEY 未設定)"
-    # GPT-5が空の応答を返すため、gpt-4oを使用
+    # 環境変数からモデルを取得（デフォルト: gpt-4o）
+    # 利用可能: gpt-5-codex, gpt-5, gpt-5-mini, gpt-5-nano, gpt-4o（推奨）
     model = os.environ.get("OPENAI_MODEL", "gpt-4o")
     client = OpenAI(api_key=api_key)
 
+    print(f"[INFO] 使用モデル: {model}")
+
+    # GPT-5-Codex用のシステムメッセージ
+    system_content = "You are a senior code reviewer specializing in identifying performance issues, security vulnerabilities, and code quality problems. Focus on practical, actionable advice."
+
     prompt = (
-        "あなたはシニアコードレビュアーです。ユーザー報告: \n" +
+        "ユーザー報告: \n" +
         json.dumps(query, ensure_ascii=False) +
         "\n次のコード断片を根拠に、(1)金額 (2)印刷 (3)UI/UX (4)DB負荷 を重点に助言だけを出してください。\n" +
         "確度が低い指摘は『可能性』と明記。修正コードは出力しない。\n=== 候補コード ===\n" +
         json.dumps(snippets, ensure_ascii=False)[:5000]
     )
+    # GPT-5-CodexはResponses API使用
+    if "gpt-5-codex" in model.lower():
+        result = call_gpt5_codex_responses_api(prompt, api_key, model)
+        if result:
+            return result
+        # Responses APIが失敗した場合はgpt-4oにフォールバック
+        print("[INFO] Falling back to gpt-4o due to Responses API failure")
+        model = "gpt-4o"
+
     try:
-        resp = client.chat.completions.create(
-            model=model,
-            messages=[{"role":"user","content":prompt}],
-            temperature=1,
-            timeout=60
-        )
-        return resp.choices[0].message.content.strip()
+        # API呼び出しパラメータ準備
+        messages = [
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": prompt}
+        ]
+
+        params = {
+            "model": model,
+            "messages": messages,
+            "timeout": AI_TIMEOUT
+        }
+
+        # モデル別パラメータ設定（空レスポンス対策強化）
+        if False:  # gpt-5-codexは上で処理済み
+            # GPT-5-Codex専用パラメータ
+            params["temperature"] = 0.3  # やや高めに調整（0.2→0.3）
+            params["max_output_tokens"] = 4000  # 十分な出力トークン数
+            params["max_tokens"] = 4000  # フォールバック
+            params["verbosity"] = "medium"  # lowだと空になりやすいため
+            params["reasoning_effort"] = "medium"  # minimalは空レスポンスリスク
+            params["presence_penalty"] = 0.1  # 控えめに
+            params["response_format"] = {"type": "text"}  # 明示的にテキスト形式指定
+            params["seed"] = 42
+        elif "gpt-5" in model:
+            # GPT-5系の共通設定（空レスポンス対策）
+            params["temperature"] = 0.7  # 1.0は制限があるため調整
+            params["max_completion_tokens"] = 4000  # 増量
+            params["max_output_tokens"] = 4000  # 念のため両方設定
+            params["verbosity"] = "medium"
+            params["reasoning_effort"] = "medium"
+            params["response_format"] = {"type": "text"}
+        else:
+            # GPT-4o等の従来モデル
+            params["temperature"] = 0.5
+            params["max_tokens"] = 3000  # 増量
+
+        # 最大3回まで再試行（パラメータ調整含む）
+        max_retries = 3
+        retry_count = 0
+
+        while retry_count < max_retries:
+            try:
+                resp = client.chat.completions.create(**params)
+
+                # レスポンス内容確認
+                if resp.choices and resp.choices[0].message.content:
+                    content = resp.choices[0].message.content.strip()
+                    if content:  # 空文字でないことを確認
+                        return content
+
+                # 空レスポンスの場合
+                print(f"[WARNING] {model}から空のレスポンスを受信（試行{retry_count + 1}/{max_retries}）")
+
+                # パラメータ調整して再試行
+                retry_count += 1
+                if retry_count < max_retries:
+                    if "gpt-5" in model:
+                        # GPT-5系の調整
+                        params["max_output_tokens"] = params.get("max_output_tokens", 2000) * 2
+                        params["max_completion_tokens"] = params.get("max_completion_tokens", 2000) * 2
+                        params["verbosity"] = "high"  # より詳細な出力を要求
+                        params["reasoning_effort"] = "maximal"
+                        # プロンプトに明示的な指示を追加
+                        messages[-1]["content"] = messages[-1]["content"] + "\n\n必ず具体的な助言を出力してください。"
+                        print(f"[INFO] パラメータ調整: max_output_tokens={params.get('max_output_tokens')}, verbosity=high")
+                    else:
+                        # GPT-4o等の調整
+                        params["max_tokens"] = params.get("max_tokens", 2000) * 1.5
+                        params["temperature"] = min(params.get("temperature", 0.5) + 0.2, 1.0)
+                        print(f"[INFO] パラメータ調整: max_tokens={params.get('max_tokens')}, temperature={params.get('temperature')}")
+
+                    # 少し待機
+                    time.sleep(1)
+
+            except Exception as e:
+                print(f"[ERROR] API呼び出しエラー（試行{retry_count + 1}）: {str(e)[:100]}")
+                retry_count += 1
+                if retry_count < max_retries:
+                    time.sleep(2)  # エラー時は長めに待機
+
+        # 全試行失敗後、フォールバックモデルで最終試行
+        fallback_model = "gpt-4o" if model != "gpt-4o" else "gpt-3.5-turbo"
+        print(f"[INFO] 最終フォールバック: {fallback_model} で再試行中...")
+
+        fallback_params = {
+            "model": fallback_model,
+            "messages": messages,
+            "temperature": 0.7,
+            "max_tokens": 3000,
+            "timeout": AI_TIMEOUT
+        }
+
+        try:
+            resp = client.chat.completions.create(**fallback_params)
+            if resp.choices and resp.choices[0].message.content:
+                content = resp.choices[0].message.content.strip()
+                if content:
+                    return content
+        except Exception as e:
+            print(f"[ERROR] フォールバックも失敗: {str(e)[:100]}")
+
+        return "(AI応答: 複数回の試行後も空のレスポンス。手動レビューを推奨)"
+
     except Exception as e:
-        return f"(AIエラー: {str(e)[:100]})"
+        error_msg = str(e)[:100]
+        print(f"[ERROR] AI呼び出しエラー: {error_msg}")
+        return f"(AIエラー: {error_msg})"
 
 # ===== Report (重要度順) =====
 def render_report_sorted(title: str, items: List[Dict[str,Any]], ai_summary: str|None) -> str:

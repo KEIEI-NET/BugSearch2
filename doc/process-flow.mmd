@@ -1,7 +1,14 @@
 flowchart TD
-    %% コードレビュー処理フロー図 v2.1.0
+    %% コードレビュー処理フロー図 v3.0.0 - GPT-5対応版
 
-    Start([開始]) --> INPUT{実行方法}
+    Start([開始]) --> ENV_CHECK[環境設定確認<br/>.env: OPENAI_MODEL]
+    ENV_CHECK --> MODEL_ROUTE{モデル判定}
+
+    MODEL_ROUTE -->|gpt-5-codex| RESPONSES_API[Responses API<br/>/v1/responses]
+    MODEL_ROUTE -->|gpt-4o/gpt-5系| CHAT_API[Chat Completions API<br/>/v1/chat/completions]
+
+    RESPONSES_API --> INPUT{実行方法}
+    CHAT_API --> INPUT
 
     INPUT -->|バッチファイル| BATCH[run_detailed_analysis_auto.bat]
     INPUT -->|コマンドライン| CMD{コマンド判定}
@@ -84,7 +91,10 @@ flowchart TD
     BATCH5 --> DETAIL5[analyze_dangerous_files_detailed.py 5]
     BATCH6 --> DETAIL6[analyze_dangerous_files_detailed.py 6]
 
-    DETAIL1 --> RPT1[AI分析_詳細_改善版_batch1.md]
+    DETAIL1 --> AI_API{AI API呼び出し}
+    AI_API -->|成功| RPT1[AI分析_詳細_改善版_batch1.md]
+    AI_API -->|失敗| FALLBACK[フォールバック<br/>gpt-4o]
+    FALLBACK --> RPT1
     DETAIL2 --> RPT2[AI分析_詳細_改善版_batch2.md]
     DETAIL3 --> RPT3[AI分析_詳細_改善版_batch3.md]
     DETAIL4 --> RPT4[AI分析_詳細_改善版_batch4.md]
