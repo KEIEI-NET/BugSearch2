@@ -1,62 +1,128 @@
-# Readonly Review ツール
+# Codex Review - AI Code Review System
 
-このリポジトリは、Pull Request 向けの読取専用コードレビュー支援ツールです。codex_review.py でルールベースと GPT-5 を組み合わせたアドバイスを生成し、GitHub Actions から自動でレポートを出力・コメント投稿できます。
+静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
+
+## 📚 ドキュメント
+
+- [セットアップガイド](SETUP_GUIDE.md) - インストールと基本的な使い方
+- [技術文書](doc/TECHNICAL.md) - 詳細な技術仕様とアーキテクチャ
+- [開発履歴](doc/DEVELOPMENT.md) - バージョン履歴と改善内容
+
+### 📊 システム図
+
+- [アーキテクチャ図](doc/architecture.mmd) - システム全体構成
+- [処理フロー図](doc/process-flow.mmd) - 詳細な処理の流れ
+- [シーケンス図](doc/sequence-diagram.mmd) - コンポーネント間の相互作用
+- [クラス図](doc/class-diagram.mmd) - クラス構造と関係
 
 ## 特徴
-- 金額・印刷・UI/UX・DB負荷に焦点を当てた静的チェック
-- OpenAI GPT-5 を使った要約アドバイス（ハイブリッド/AIモード）
-- リポジトリ全体をインデックス化し、自然言語で関連コードを探索
-- GitHub Actions (codex-readonly-review.yml) による PR 自動レビュー
 
-## サンプルソース配置
-- ルール検証用のサンプルコードは `src/<language>/` 配下に置いてください。
-- 既定で `csharp`、`java`、`typescript`、`javascript`、`delphi`、`python` のディレクトリを用意しています。利用する言語を追加したい場合は同様にサブディレクトリを作成します。
-- サンプルはローカル検証用途に留め、公開不要なファイルは `.gitignore` で除外するか手動で管理から外してください。
+- 📊 **2段階解析システム**: ルールベース解析 → AI詳細解析
+- 🌏 **日本語対応**: 自動エンコーディング検出（UTF-8, Shift_JIS, CP932, EUC-JP）
+- 🎯 **重要度ソート**: 問題を重要度スコアで自動ランク付け
+- 🤖 **AI改善提案**: OpenAI GPT-4oによる具体的な修正コード生成
+- ⚡ **大規模対応**: バッチ処理とタイムアウト管理で数万ファイル処理可能
+
+## クイックスタート
+
+### 1. インストール
+```bash
+pip install chromadb openai scikit-learn joblib regex chardet
+```
+
+### 2. 環境設定
+`.env`ファイル作成：
+```
+OPENAI_API_KEY=your_api_key_here
+OPENAI_MODEL=gpt-4o
+```
+
+### 3. 実行
+```bash
+# インデックス作成（Delphi除外、4MB制限）
+py codex_review_ultimate.py index . --exclude-langs delphi --max-file-mb 4
+
+# レビュー実行
+py codex_review_ultimate.py query "データベース" --topk 50 --out reports/review
+```
+
+## 利用可能なバージョン
+
+| ファイル | 用途 | 特徴 |
+|---------|------|------|
+| `codex_review_ultimate.py` | **推奨** | 2段階解析、エンコード自動検出、タイムアウト対策 |
+| `codex_review_enhanced.py` | エンコード特化 | 日本語ファイルの文字化け対策 |
+| `codex_review_severity.py` | 重要度ソート | 問題の優先順位付け |
+| `codex_review_with_solutions.py` | AI改善案 | 具体的な修正コード提案 |
+| `codex_review_optimized.py` | 大規模処理 | 数万ファイル対応 |
+| `codex_review.py` | 基本版 | 軽量・シンプル |
+
+## 検出可能な問題
+
+### データベース関連
+- N+1問題（ループ内SELECT）
+- SELECT * の使用
+- インデックス未使用
+- トランザクション未使用
+
+### セキュリティ
+- XSS脆弱性
+- SQLインジェクション
+- 入力検証不足
+- エラー情報漏洩
+
+### パフォーマンス
+- 非効率なループ
+- メモリリーク
+- 不要な再計算
+- 大量データの一括取得
+
+### コード品質
+- 金額計算でのfloat使用
+- エラーハンドリング不足
+- マジックナンバー
+- 重複コード
+
+## 出力レポート
+
+### ルールベースレポート（*_rules.md）
+- 全ファイルの静的解析結果
+- 問題箇所のコードサンプル
+- 簡易的な修正例
+
+### AI詳細レポート（*_ai.md）
+- 高重要度ファイルの詳細解析
+- Before/After形式の改善コード
+- 詳細な説明と影響範囲
+
+## GitHub Actions連携
+
+`.github/workflows/codex-readonly-review.yml`でPR自動レビュー：
+1. ソースチェックアウト
+2. 依存ライブラリセットアップ
+3. インデックス作成・解析実行
+4. レポートをアーティファクト化
+5. PRにコメント投稿
 
 ## 前提条件
-- Python 3.11 以上
-- pip install chromadb openai scikit-learn joblib regex
-  - scikit-learn が無い場合、TF-IDF ベクトル化はスキップされます（素朴検索で継続）
-- ルート直下に配置した `.env` から環境変数を読み込みます。`OPENAI_API_KEY`, `OPENAI_MODEL` などを `.env.example` を参考に設定してください。
 
-## 使い方
-### 1. リポジトリのインデックス構築
-    python codex_review.py index /path/to/repo
-- .advice_index.jsonl を生成し、可能であれば TF-IDF ベクトル (.advice_tfidf.pkl, .advice_matrix.pkl) を作成します。
+- Python 3.11以上
+- OpenAI APIキー
+- 十分なディスク容量（インデックス用）
 
-### 2. オプション: ベクトル再構築
-    python codex_review.py vectorize --index .advice_index.jsonl
-- インデックスの内容から再度 TF-IDF モデルを構築します。
+## 制限事項
 
-### 3. 自然言語で検索・アドバイス取得
-    python codex_review.py query "印刷が途中で止まる" --mode hybrid --topk 30 --out reports/print.md
-- 指定クエリに関連するコード片を検索し、ルール検知と GPT-5 のコメントをレポート化します。
-- --mode は rules, ai, hybrid から選択できます。
+- ファイルサイズ上限: デフォルト4MB（変更可）
+- AI解析: 最大20ファイル/実行（高負荷回避）
+- タイムアウト: API呼び出し60秒/ファイル
 
-### 4. 横断チェックの自動助言
-    python codex_review.py advise --mode hybrid --topk 80 --out reports/advise.md
-- 金額/印刷/UI/DB に関連する兆候が強いファイルを横断的に抽出し、重点指摘をまとめます。
+## サポート
 
-## GitHub Actions 連携
-.github/workflows/codex-readonly-review.yml に本リポジトリの codex-readonly-review.yml を配置すると、PR オープン・同期時に以下を実行します。
-1. ソースをチェックアウト
-2. Python 3.11 と依存ライブラリをセットアップ
-3. python codex_review.py index . でリポジトリを読取専用でスキャン
-4. python codex_review.py advise --mode hybrid --topk 80 --out reports/advise.md で助言レポート生成
-5. レポートをアーティファクト化 (readonly-advice)
-6. PR に結果サマリをコメント投稿
-
-GitHub Actions から GPT-5 を利用する場合、リポジトリシークレットに OPENAI_API_KEY を設定してください。モデルを変更したい場合は OPENAI_MODEL シークレットを追加します。
-
-## 生成物
-- .advice_index.jsonl: インデックス化されたソース情報
-- .advice_tfidf.pkl, .advice_matrix.pkl: TF-IDF モデル（scikit-learn 利用時）
-- reports/*.md: ルール/GPT の助言レポート
-
-## 注意事項
-- ツールはソースを読み取り、指摘のみを出力します。自動修正は行いません。
-- 大きすぎるファイル（既定で 3MB 超）はインデックス対象外で、`reports/large_files_over_limit.log` に一覧を出力します。
-- OPENAI_API_KEY が未設定の場合、AI モードは “AI未有効” のメッセージを返します。
+問題が発生した場合:
+1. [SETUP_GUIDE.md](SETUP_GUIDE.md)のトラブルシューティング参照
+2. `reports/IMPORTANT_RESULTS.md`で既知の問題確認
+3. GitHubでIssue作成
 
 ## ライセンス
-- ライセンスは未指定です。必要に応じて追記してください。
+
+MIT License - 詳細は[LICENSE](LICENSE)参照

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Code Review System Class Diagram">
+    <mxGraphModel dx="2000" dy="1200" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル -->
+        <mxCell id="title" value="Code Review System Class Diagram" style="text;html=1;fontSize=20;fontStyle=1;fontColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="800" y="50" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 1: Main System Classes (Light Blue) -->
+        <mxCell id="CodexReviewUltimate" value="CodexReviewUltimate&#xa;────────────────────────────────────&#xa;- OPENAI_API_KEY: str&#xa;- OPENAI_MODEL: str&#xa;- AI_TIMEOUT: int&#xa;- AI_MAX_RETRIES: int&#xa;- AI_MIN_SEVERITY: int&#xa;- AI_MAX_FILES: int&#xa;────────────────────────────────────&#xa;+ main(args: List[str]): void&#xa;+ parse_arguments(): ArgumentParser&#xa;+ load_environment(): void"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="400" height="250" as="geometry" />
+        </mxCell>
+
+        <mxCell id="VectorManager" value="VectorManager&#xa;────────────────────────────────────&#xa;- vectorizer: TfidfVectorizer&#xa;- matrix_file: Path&#xa;- tfidf_file: Path&#xa;────────────────────────────────────&#xa;+ create_vectorizer(documents: List): void&#xa;+ load_vectorizer(): TfidfVectorizer&#xa;+ search_similar(query: str, topk: int): List[int]&#xa;+ calculate_similarity(query_vector, doc_vectors): ndarray"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="1100" y="150" width="450" height="250" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ProgressTracker" value="ProgressTracker&#xa;────────────────────────────────────&#xa;- total: int&#xa;- current: int&#xa;────────────────────────────────────&#xa;+ show_progress(current: int, total: int, message: str): void&#xa;+ update(increment: int): void&#xa;+ complete(): void"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="1600" y="150" width="400" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 2: Data Processing Classes (Light Orange) -->
+        <mxCell id="IndexManager" value="IndexManager&#xa;────────────────────────────────────&#xa;- index_file: Path&#xa;- excluded_langs: List[str]&#xa;- max_file_size_mb: float&#xa;────────────────────────────────────&#xa;+ create_index(path: str): int&#xa;+ load_index(): List[Document]&#xa;+ save_index(documents: List): void&#xa;- check_file_size(path: Path): bool&#xa;- is_excluded_language(path: Path): bool"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="350" y="450" width="400" height="250" as="geometry" />
+        </mxCell>
+
+        <mxCell id="EncodingDetector" value="EncodingDetector&#xa;────────────────────────────────────&#xa;- SUPPORTED_ENCODINGS: List[str]&#xa;────────────────────────────────────&#xa;+ detect_encoding(file_path: Path): str&#xa;- try_decode(data: bytes, encoding: str): bool&#xa;- fallback_detection(data: bytes): str"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="850" y="450" width="400" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ReportGenerator" value="ReportGenerator&#xa;────────────────────────────────────&#xa;- output_dir: Path&#xa;────────────────────────────────────&#xa;+ generate_rules_report(results: List[RuleResult]): void&#xa;+ generate_ai_report(results: List[AIResult]): void&#xa;- format_severity_emoji(score: int): str&#xa;- format_issue_section(issue: Issue): str&#xa;- format_improvement_section(improvement: Improvement): str&#xa;- write_markdown(path: Path, content: str): void"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="1350" y="450" width="450" height="250" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 3: Analysis Engine Classes (Light Green) -->
+        <mxCell id="RuleAnalyzer" value="RuleAnalyzer&#xa;────────────────────────────────────&#xa;- SEVERITY_SCORES: Dict[str, int]&#xa;- rules: List[Rule]&#xa;────────────────────────────────────&#xa;+ analyze_all_files(documents: List): List[RuleResult]&#xa;+ apply_rules(text: str): List[Issue]&#xa;- detect_n_plus_one(text: str): Optional[Issue]&#xa;- detect_select_star(text: str): Optional[Issue]&#xa;- detect_float_money(text: str): Optional[Issue]&#xa;- detect_xss(text: str): Optional[Issue]&#xa;- generate_sample_fix(issue: Issue): str"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="100" y="750" width="450" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="AIAnalyzer" value="AIAnalyzer&#xa;────────────────────────────────────&#xa;- client: OpenAI&#xa;- timeout: int&#xa;- max_retries: int&#xa;────────────────────────────────────&#xa;+ analyze_with_ai(files: List): List[AIResult]&#xa;+ analyze_single_file(file: RuleResult): AIResult&#xa;- prepare_prompt(content: str, issues: List): str&#xa;- call_api_with_timeout(prompt: str): str&#xa;- parse_response(response: str): Dict&#xa;- extract_improvements(parsed: Dict): List[Improvement]"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="600" y="750" width="450" height="250" as="geometry" />
+        </mxCell>
+
+        <!-- Data Model Classes (Light Pink) -->
+        <mxCell id="Document" value="&lt;&lt;dataclass&gt;&gt;&#xa;Document&#xa;────────────────────────────────────&#xa;+ file_path: str&#xa;+ content: str&#xa;+ encoding: str&#xa;+ size_bytes: int&#xa;+ language: str&#xa;+ timestamp: datetime"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="1100" y="750" width="300" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Issue" value="&lt;&lt;dataclass&gt;&gt;&#xa;Issue&#xa;────────────────────────────────────&#xa;+ type: str&#xa;+ severity: int&#xa;+ line_number: int&#xa;+ code_sample: str&#xa;+ suggested_fix: str&#xa;+ description: str"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="1450" y="750" width="300" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="RuleResult" value="&lt;&lt;dataclass&gt;&gt;&#xa;RuleResult&#xa;────────────────────────────────────&#xa;+ file_path: str&#xa;+ issues: List[Issue]&#xa;+ severity_score: int&#xa;+ has_critical: bool"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="1800" y="750" width="300" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="AIResult" value="&lt;&lt;dataclass&gt;&gt;&#xa;AIResult&#xa;────────────────────────────────────&#xa;+ file_path: str&#xa;+ original_issues: List[Issue]&#xa;+ ai_analysis: str&#xa;+ improvements: List[Improvement]&#xa;+ processing_time: float&#xa;+ success: bool"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="100" y="1080" width="350" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Improvement" value="&lt;&lt;dataclass&gt;&gt;&#xa;Improvement&#xa;────────────────────────────────────&#xa;+ issue_type: str&#xa;+ before_code: str&#xa;+ after_code: str&#xa;+ explanation: str&#xa;+ impact: str"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="500" y="1080" width="300" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="Rule" value="&lt;&lt;interface&gt;&gt;&#xa;Rule&#xa;────────────────────────────────────&#xa;+ name: str&#xa;+ severity: int&#xa;+ pattern: str&#xa;────────────────────────────────────&#xa;+ detect(text: str): bool&#xa;+ get_fix_suggestion(): str"
+                style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2"
+                vertex="1" parent="1">
+          <mxGeometry x="850" y="1080" width="300" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+
+        <!-- CodexReviewUltimate uses other managers -->
+        <mxCell id="rel1" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="CodexReviewUltimate" target="IndexManager">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="410" />
+              <mxPoint x="550" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel2" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="CodexReviewUltimate" target="RuleAnalyzer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="400" />
+              <mxPoint x="300" y="400" />
+              <mxPoint x="300" y="710" />
+              <mxPoint x="325" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel3" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="CodexReviewUltimate" target="AIAnalyzer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="710" />
+              <mxPoint x="825" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel4" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="CodexReviewUltimate" target="VectorManager">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel5" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="CodexReviewUltimate" target="ReportGenerator">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="410" />
+              <mxPoint x="1575" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel6" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="CodexReviewUltimate" target="ProgressTracker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- IndexManager uses EncodingDetector -->
+        <mxCell id="rel7" value="uses" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="IndexManager" target="EncodingDetector">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="575" />
+              <mxPoint x="850" y="575" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- IndexManager creates Document -->
+        <mxCell id="rel8" value="creates" style="endArrow=open;endSize=12;dashed=0;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="IndexManager" target="Document">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="710" />
+              <mxPoint x="1250" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- RuleAnalyzer implements Rule -->
+        <mxCell id="rel9" value="implements" style="endArrow=block;endSize=16;endFill=0;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="RuleAnalyzer" target="Rule">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="1040" />
+              <mxPoint x="1000" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- RuleAnalyzer returns RuleResult -->
+        <mxCell id="rel10" value="returns" style="endArrow=open;endSize=12;dashed=0;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="RuleAnalyzer" target="RuleResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="890" />
+              <mxPoint x="1950" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- RuleAnalyzer creates Issue -->
+        <mxCell id="rel11" value="creates" style="endArrow=open;endSize=12;dashed=0;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="RuleAnalyzer" target="Issue">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="850" />
+              <mxPoint x="1600" y="850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- AIAnalyzer creates AIResult -->
+        <mxCell id="rel12" value="creates" style="endArrow=open;endSize=12;dashed=0;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="AIAnalyzer" target="AIResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="625" y="1000" />
+              <mxPoint x="275" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- AIAnalyzer creates Improvement -->
+        <mxCell id="rel13" value="creates" style="endArrow=open;endSize=12;dashed=0;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="AIAnalyzer" target="Improvement">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="725" y="1000" />
+              <mxPoint x="650" y="1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- RuleResult contains Issue -->
+        <mxCell id="rel14" value="contains" style="endArrow=diamond;endSize=16;endFill=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="RuleResult" target="Issue">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1800" y="850" />
+              <mxPoint x="1600" y="850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- AIResult contains Improvement -->
+        <mxCell id="rel15" value="contains" style="endArrow=diamond;endSize=16;endFill=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="AIResult" target="Improvement">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="1170" />
+              <mxPoint x="500" y="1170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ReportGenerator processes results -->
+        <mxCell id="rel16" value="processes" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="ReportGenerator" target="RuleResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1650" y="700" />
+              <mxPoint x="1950" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel17" value="processes" style="endArrow=open;endSize=12;dashed=1;html=1;strokeColor=#666666;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;fontColor=#333333;fontSize=11;labelBackgroundColor=#FFFFFF;labelBorderColor=none" edge="1" parent="1" source="ReportGenerator" target="AIResult">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="700" />
+              <mxPoint x="1200" y="700" />
+              <mxPoint x="1200" y="1200" />
+              <mxPoint x="275" y="1200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

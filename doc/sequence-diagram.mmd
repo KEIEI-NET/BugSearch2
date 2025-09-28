@@ -1,0 +1,126 @@
+```mermaid
+sequenceDiagram
+    %% コードレビューシステム シーケンス図
+
+    participant User as 👤 ユーザー
+    participant CLI as 📟 CLI
+    participant Main as 🎯 メインシステム
+    participant Index as 📚 インデックス
+    participant Encoder as 🔤 エンコーダー
+    participant Rules as 📏 ルール解析
+    participant AI as 🤖 AI解析
+    participant Report as 📄 レポート
+
+    %% インデックス作成シーケンス
+    rect rgb(240, 248, 255)
+        note over User,Report: Phase 1: インデックス作成
+        User->>CLI: py codex_review_ultimate.py index .
+        CLI->>Main: parse_args(["index", "."])
+        Main->>Index: create_index(path, exclude_langs, max_file_mb)
+
+        loop 各ファイル
+            Index->>Index: check_file_size()
+            alt ファイルサイズOK
+                Index->>Encoder: detect_encoding(file_path)
+                Encoder-->>Index: encoding (utf-8/cp932/euc-jp)
+                Index->>Index: read_file(encoding)
+                Index->>Index: save_to_jsonl()
+            else ファイルサイズ超過
+                Index->>Index: log_large_file()
+            end
+        end
+
+        Index-->>Main: index_complete
+        Main-->>CLI: "Indexed X files"
+        CLI-->>User: 完了メッセージ
+    end
+
+    %% ベクトル化シーケンス
+    rect rgb(255, 243, 224)
+        note over User,Report: Phase 2: ベクトル化（オプション）
+        User->>CLI: py codex_review_ultimate.py vectorize
+        CLI->>Main: parse_args(["vectorize"])
+        Main->>Index: load_index()
+        Index-->>Main: documents
+        Main->>Main: create_tfidf_vectorizer()
+        Main->>Main: fit_transform(documents)
+        Main->>Main: save_vectorizer()
+        Main-->>CLI: "Vectorization complete"
+        CLI-->>User: 完了メッセージ
+    end
+
+    %% レビュー実行シーケンス
+    rect rgb(240, 255, 240)
+        note over User,Report: Phase 3: レビュー実行
+        User->>CLI: py codex_review_ultimate.py query "keyword" --topk 50
+        CLI->>Main: parse_args(["query", "keyword", "--topk", "50"])
+        Main->>Index: load_index()
+        Main->>Main: search_similar(keyword, topk)
+
+        %% ルールベース解析
+        rect rgb(255, 240, 245)
+            note over Main,Report: Sub-Phase 3.1: ルールベース解析
+            Main->>Rules: analyze_all_files(documents)
+
+            loop 各ドキュメント
+                Rules->>Rules: apply_rules(text)
+                Rules->>Rules: detect_n_plus_one()
+                Rules->>Rules: detect_select_star()
+                Rules->>Rules: detect_float_money()
+                Rules->>Rules: detect_xss()
+                Rules->>Rules: calculate_severity_score()
+                Rules->>Rules: generate_sample_fix()
+            end
+
+            Rules->>Rules: sort_by_severity()
+            Rules->>Report: write_rules_report()
+            Rules-->>Main: rule_results
+        end
+
+        %% AI解析
+        rect rgb(245, 245, 255)
+            note over Main,Report: Sub-Phase 3.2: AI解析（高重要度のみ）
+            Main->>Main: filter_high_severity(rule_results)
+            Main->>AI: analyze_with_ai(high_severity_files)
+
+            loop 各高重要度ファイル (最大20)
+                AI->>AI: show_progress(i/total)
+                AI->>AI: prepare_prompt(file_content, issues)
+                AI->>AI: call_openai_api(timeout=60)
+
+                alt API成功
+                    AI->>AI: parse_response()
+                    AI->>AI: extract_before_after()
+                    AI->>AI: format_improvements()
+                else タイムアウト/エラー
+                    alt リトライ可能
+                        AI->>AI: retry_api_call()
+                    else リトライ不可
+                        AI->>AI: log_skip()
+                    end
+                end
+            end
+
+            AI->>Report: write_ai_report()
+            AI-->>Main: ai_results
+        end
+
+        Main-->>CLI: "Analysis complete"
+        CLI-->>User: レポート生成完了
+    end
+
+    %% エラーハンドリング
+    rect rgb(255, 230, 230)
+        note over User,Report: エラーハンドリング
+        alt OpenAI APIエラー
+            AI->>Main: APIException
+            Main->>Main: handle_api_error()
+            Main-->>CLI: エラーメッセージ
+        else エンコーディングエラー
+            Encoder->>Index: EncodingError
+            Index->>Index: try_alternative_encoding()
+        else 大容量ファイル
+            Index->>Index: log_and_skip()
+        end
+    end
+```

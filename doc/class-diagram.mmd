@@ -1,0 +1,201 @@
+```mermaid
+classDiagram
+    %% コードレビューシステム クラス図
+
+    class CodexReviewUltimate {
+        %% メインシステムクラス
+        -OPENAI_API_KEY: str
+        -OPENAI_MODEL: str
+        -AI_TIMEOUT: int
+        -AI_MAX_RETRIES: int
+        -AI_MIN_SEVERITY: int
+        -AI_MAX_FILES: int
+        +main(args: List~str~): void
+        +parse_arguments(): ArgumentParser
+        +load_environment(): void
+    }
+
+    class IndexManager {
+        %% インデックス管理クラス
+        -index_file: Path
+        -excluded_langs: List~str~
+        -max_file_size_mb: float
+        +create_index(path: str): int
+        +load_index(): List~Document~
+        +save_index(documents: List): void
+        -check_file_size(path: Path): bool
+        -is_excluded_language(path: Path): bool
+    }
+
+    class EncodingDetector {
+        %% エンコーディング検出クラス
+        -SUPPORTED_ENCODINGS: List~str~
+        +detect_encoding(file_path: Path): str
+        -try_decode(data: bytes, encoding: str): bool
+        -fallback_detection(data: bytes): str
+    }
+
+    class Document {
+        %% ドキュメントモデル
+        <<dataclass>>
+        +file_path: str
+        +content: str
+        +encoding: str
+        +size_bytes: int
+        +language: str
+        +timestamp: datetime
+    }
+
+    class RuleAnalyzer {
+        %% ルールベース解析クラス
+        -SEVERITY_SCORES: Dict~str, int~
+        -rules: List~Rule~
+        +analyze_all_files(documents: List): List~RuleResult~
+        +apply_rules(text: str): List~Issue~
+        -detect_n_plus_one(text: str): Optional~Issue~
+        -detect_select_star(text: str): Optional~Issue~
+        -detect_float_money(text: str): Optional~Issue~
+        -detect_xss(text: str): Optional~Issue~
+        -generate_sample_fix(issue: Issue): str
+    }
+
+    class Rule {
+        %% ルール定義クラス
+        <<interface>>
+        +name: str
+        +severity: int
+        +pattern: str
+        +detect(text: str): bool
+        +get_fix_suggestion(): str
+    }
+
+    class Issue {
+        %% 問題情報クラス
+        <<dataclass>>
+        +type: str
+        +severity: int
+        +line_number: int
+        +code_sample: str
+        +suggested_fix: str
+        +description: str
+    }
+
+    class RuleResult {
+        %% ルール解析結果クラス
+        <<dataclass>>
+        +file_path: str
+        +issues: List~Issue~
+        +severity_score: int
+        +has_critical: bool
+    }
+
+    class AIAnalyzer {
+        %% AI解析クラス
+        -client: OpenAI
+        -timeout: int
+        -max_retries: int
+        +analyze_with_ai(files: List): List~AIResult~
+        +analyze_single_file(file: RuleResult): AIResult
+        -prepare_prompt(content: str, issues: List): str
+        -call_api_with_timeout(prompt: str): str
+        -parse_response(response: str): Dict
+        -extract_improvements(parsed: Dict): List~Improvement~
+    }
+
+    class AIResult {
+        %% AI解析結果クラス
+        <<dataclass>>
+        +file_path: str
+        +original_issues: List~Issue~
+        +ai_analysis: str
+        +improvements: List~Improvement~
+        +processing_time: float
+        +success: bool
+    }
+
+    class Improvement {
+        %% 改善提案クラス
+        <<dataclass>>
+        +issue_type: str
+        +before_code: str
+        +after_code: str
+        +explanation: str
+        +impact: str
+    }
+
+    class VectorManager {
+        %% ベクトル管理クラス
+        -vectorizer: TfidfVectorizer
+        -matrix_file: Path
+        -tfidf_file: Path
+        +create_vectorizer(documents: List): void
+        +load_vectorizer(): TfidfVectorizer
+        +search_similar(query: str, topk: int): List~int~
+        +calculate_similarity(query_vector, doc_vectors): ndarray
+    }
+
+    class ReportGenerator {
+        %% レポート生成クラス
+        -output_dir: Path
+        +generate_rules_report(results: List~RuleResult~): void
+        +generate_ai_report(results: List~AIResult~): void
+        -format_severity_emoji(score: int): str
+        -format_issue_section(issue: Issue): str
+        -format_improvement_section(improvement: Improvement): str
+        -write_markdown(path: Path, content: str): void
+    }
+
+    class ProgressTracker {
+        %% 進捗追跡クラス
+        -total: int
+        -current: int
+        +show_progress(current: int, total: int, message: str): void
+        +update(increment: int): void
+        +complete(): void
+    }
+
+    %% 関連
+    CodexReviewUltimate --> IndexManager : uses
+    CodexReviewUltimate --> RuleAnalyzer : uses
+    CodexReviewUltimate --> AIAnalyzer : uses
+    CodexReviewUltimate --> VectorManager : uses
+    CodexReviewUltimate --> ReportGenerator : uses
+    CodexReviewUltimate --> ProgressTracker : uses
+
+    IndexManager --> EncodingDetector : uses
+    IndexManager --> Document : creates
+
+    RuleAnalyzer --> Rule : implements
+    RuleAnalyzer --> Issue : creates
+    RuleAnalyzer --> RuleResult : returns
+
+    AIAnalyzer --> AIResult : creates
+    AIAnalyzer --> Improvement : creates
+
+    ReportGenerator --> RuleResult : processes
+    ReportGenerator --> AIResult : processes
+
+    RuleResult o-- Issue : contains
+    AIResult o-- Improvement : contains
+
+    %% スタイル定義
+    class CodexReviewUltimate {
+        <<Main System>>
+    }
+
+    class IndexManager,EncodingDetector,VectorManager {
+        <<Data Processing>>
+    }
+
+    class RuleAnalyzer,AIAnalyzer {
+        <<Analysis Engine>>
+    }
+
+    class ReportGenerator,ProgressTracker {
+        <<Output Handler>>
+    }
+
+    class Document,Issue,RuleResult,AIResult,Improvement {
+        <<Data Model>>
+    }
+```

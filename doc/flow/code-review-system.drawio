@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Code Review System Flow">
+    <mxGraphModel dx="3000" dy="2000" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル -->
+        <mxCell id="title" value="Code Review System Process Flow" style="text;html=1;fontSize=20;fontStyle=1;fontColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="850" y="30" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- 開始ノード -->
+        <mxCell id="start" value="Start" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="925" y="100" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- コマンド判定 -->
+        <mxCell id="command_decision" value="Command&#xa;Decision?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="900" y="200" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- INDEX ブランチ -->
+        <mxCell id="file_scan" value="File Scan" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="150" y="350" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="file_size_check" value="File Size Check&#xa;(4MB limit)?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="125" y="450" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="language_check" value="Language Check&#xa;(exclude certain)?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="125" y="590" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="encoding_detection" value="Encoding Detection" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="150" y="730" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="try_utf8" value="Try UTF-8?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="125" y="830" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="try_shiftjis" value="Try Shift_JIS&#xa;/CP932?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="400" y="830" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="try_eucjp" value="Try EUC-JP?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="675" y="830" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="read_file" value="Read File" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="150" y="950" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="save_index" value="Save to Index&#xa;(.jsonl)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1f5fe;strokeColor=#01579b;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="150" y="1050" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_complete" value="Index Complete" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="1150" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="skip_file" value="Skip File" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="950" y="830" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- VECTORIZE ブランチ -->
+        <mxCell id="load_index" value="Load Index" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="925" y="350" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="create_tfidf" value="Create TF-IDF" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="925" y="450" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="save_vector" value="Save Vector&#xa;(.pkl)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1f5fe;strokeColor=#01579b;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="925" y="550" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vectorization_complete" value="Vectorization&#xa;Complete" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="925" y="650" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- REVIEW ブランチ -->
+        <mxCell id="phase1_marker" value="Phase 1: Rule-based Analysis" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1650" y="350" width="250" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="load_data" value="Load Data" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1700" y="450" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="search_similar" value="Search Similar Files&#xa;(TopK)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1700" y="550" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="apply_rules" value="Apply Rules&#xa;(N+1, SELECT *, XSS, etc.)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1700" y="650" width="150" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="calculate_severity" value="Calculate&#xa;Severity Score" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1700" y="770" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="save_rule_results" value="Save Rule Results" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1700" y="870" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sort_severity" value="Sort by Severity" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1700" y="970" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="generate_rules_report" value="Generate Rules Report&#xa;(*_rules.md)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1f5fe;strokeColor=#01579b;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1700" y="1070" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="phase2_marker" value="Phase 2: AI Analysis" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2050" y="350" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="filter_high_severity" value="Filter High Severity&#xa;(score &gt;= 7, max 20)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2075" y="450" width="150" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="show_progress" value="Show Progress&#xa;(XX/YY)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2075" y="570" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="call_openai" value="Call OpenAI API&#xa;(60s timeout)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2075" y="670" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="timeout_check" value="Timeout?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2100" y="770" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="retry_check" value="Retry &lt; 2?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2350" y="770" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="parse_response" value="Parse Response" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2075" y="890" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="extract_code" value="Extract Before/After&#xa;Code" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2075" y="990" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="save_ai_results" value="Save AI Results" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2075" y="1090" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="generate_ai_report" value="Generate AI Report&#xa;(*_ai.md)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1f5fe;strokeColor=#01579b;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2075" y="1190" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 終了ノード -->
+        <mxCell id="end" value="Complete" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="925" y="1300" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- メインフロー接続線 -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="start" target="command_decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- INDEX分岐 -->
+        <mxCell id="flow_index" value="INDEX" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="command_decision" target="file_scan">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="250" />
+              <mxPoint x="225" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- VECTORIZE分岐 -->
+        <mxCell id="flow_vectorize" value="VECTORIZE" style="endArrow=classic;html=1;strokeColor=#1976d2;strokeWidth=2;fontColor=#1976d2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="command_decision" target="load_index">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- REVIEW分岐 -->
+        <mxCell id="flow_review" value="REVIEW" style="endArrow=classic;html=1;strokeColor=#7b1fa2;strokeWidth=2;fontColor=#7b1fa2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="command_decision" target="phase1_marker">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1775" y="250" />
+              <mxPoint x="1775" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- INDEX プロセス接続線 -->
+        <mxCell id="flow_index_1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="file_scan" target="file_size_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_2" value="OK" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="file_size_check" target="language_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_3" value="Target" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="language_check" target="encoding_detection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_4" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="encoding_detection" target="try_utf8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_5" value="Fail" style="endArrow=classic;html=1;strokeColor=#c62828;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="try_utf8" target="try_shiftjis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_6" value="Fail" style="endArrow=classic;html=1;strokeColor=#c62828;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="try_shiftjis" target="try_eucjp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_7" value="Fail" style="endArrow=classic;html=1;strokeColor=#c62828;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="try_eucjp" target="skip_file">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_8" value="Success" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="try_utf8" target="read_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_index_9" value="Success" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="try_shiftjis" target="read_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="930" />
+              <mxPoint x="225" y="930" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_index_10" value="Success" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="try_eucjp" target="read_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="775" y="930" />
+              <mxPoint x="225" y="930" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_index_11" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="read_file" target="save_index">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index_12" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="save_index" target="index_complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- VECTORIZE プロセス接続線 -->
+        <mxCell id="flow_vectorize_1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="load_index" target="create_tfidf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_vectorize_2" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="create_tfidf" target="save_vector">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_vectorize_3" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="save_vector" target="vectorization_complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- REVIEW Phase 1 接続線 -->
+        <mxCell id="flow_review_1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="phase1_marker" target="load_data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_2" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="load_data" target="search_similar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_3" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="search_similar" target="apply_rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_4" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="apply_rules" target="calculate_severity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_5" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="calculate_severity" target="save_rule_results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_6" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="save_rule_results" target="sort_severity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_7" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="sort_severity" target="generate_rules_report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_8" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="generate_rules_report" target="phase2_marker">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1775" y="1150" />
+              <mxPoint x="2150" y="1150" />
+              <mxPoint x="2150" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- REVIEW Phase 2 接続線 -->
+        <mxCell id="flow_review_9" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="phase2_marker" target="filter_high_severity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_10" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="filter_high_severity" target="show_progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_11" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="show_progress" target="call_openai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_12" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="call_openai" target="timeout_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_13" value="YES" style="endArrow=classic;html=1;strokeColor=#c62828;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="timeout_check" target="retry_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_14" value="YES" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="retry_check" target="call_openai">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2400" y="650" />
+              <mxPoint x="2150" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_review_15" value="NO" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="timeout_check" target="parse_response">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_16" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="parse_response" target="extract_code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_17" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="extract_code" target="save_ai_results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_review_18" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="save_ai_results" target="generate_ai_report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 完了への接続線 -->
+        <mxCell id="flow_complete_1" value="" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_complete" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="1330" />
+              <mxPoint x="1000" y="1330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_complete_2" value="" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="vectorization_complete" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="710" />
+              <mxPoint x="1000" y="1300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_complete_3" value="" style="endArrow=classic;html=1;strokeColor=#2e7d32;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="generate_ai_report" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2150" y="1330" />
+              <mxPoint x="1000" y="1330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ループ接続線 -->
+        <mxCell id="loop_all_files" value="All Files" style="endArrow=classic;html=1;strokeColor=#ff6f00;strokeWidth=2;fontColor=#ff6f00;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle;dashed=1" edge="1" parent="1" source="save_index" target="file_scan">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="1080" />
+              <mxPoint x="50" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="loop_rule_files" value="Loop All Files" style="endArrow=classic;html=1;strokeColor=#ff6f00;strokeWidth=2;fontColor=#ff6f00;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle;dashed=1" edge="1" parent="1" source="save_rule_results" target="apply_rules">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1550" y="900" />
+              <mxPoint x="1550" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="loop_ai_files" value="Loop Selected Files" style="endArrow=classic;html=1;strokeColor=#ff6f00;strokeWidth=2;fontColor=#ff6f00;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle;dashed=1" edge="1" parent="1" source="save_ai_results" target="show_progress">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1950" y="1120" />
+              <mxPoint x="1950" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- スキップファイルへの分岐線 -->
+        <mxCell id="skip_size" value="Too Large" style="endArrow=classic;html=1;strokeColor=#c62828;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="file_size_check" target="skip_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="500" />
+              <mxPoint x="1025" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="skip_language" value="Exclude" style="endArrow=classic;html=1;strokeColor=#c62828;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="language_check" target="skip_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="640" />
+              <mxPoint x="1025" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="skip_retry" value="NO" style="endArrow=classic;html=1;strokeColor=#c62828;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="retry_check" target="show_progress">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2400" y="600" />
+              <mxPoint x="2150" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

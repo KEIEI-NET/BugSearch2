@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Codex Review Optimized Flow">
+    <mxGraphModel dx="3200" dy="2000" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル -->
+        <mxCell id="title" value="Codex Review Optimized - 統合フロー図" style="text;html=1;fontSize=24;fontStyle=1;fontColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="1400" y="30" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- メインエントリーポイント -->
+        <mxCell id="main_start" value="プログラム開始&#xa;CLI引数解析" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1575" y="100" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- コマンド分岐 -->
+        <mxCell id="cmd_decision" value="コマンド種別?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1600" y="230" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ====== INDEX コマンド ====== -->
+        <mxCell id="index_start" value="INDEX コマンド&#xa;リポジトリ解析開始" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="200" y="380" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="scan_files" value="ファイルスキャン&#xa;- .git, node_modules除外&#xa;- 言語検出&#xa;- サイズチェック (3MB制限)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="200" y="530" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="size_check" value="ファイルサイズ&#xa;3MB以下?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="225" y="700" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="large_file_log" value="大容量ファイル&#xa;ログ記録&#xa;(reports/large_files.log)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="500" y="700" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="process_file" value="ファイル処理&#xa;- テキスト読込&#xa;- 言語検出&#xa;- タグ付け&#xa;- SHA1計算" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="200" y="850" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tag_analysis" value="タグ解析&#xa;- money (金額関連)&#xa;- print (印刷関連)&#xa;- uiux (UI/UX関連)&#xa;- db (DB関連)&#xa;- net, io" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="200" y="1020" width="250" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_save" value="インデックス保存&#xa;(.advice_index.jsonl)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="200" y="1210" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ====== VECTORIZE コマンド ====== -->
+        <mxCell id="vectorize_start" value="VECTORIZE コマンド&#xa;TF-IDF ベクトル化" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="650" y="380" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sklearn_check" value="scikit-learn&#xa;利用可能?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="675" y="530" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tfidf_process" value="TF-IDF処理&#xa;- max_features=5000&#xa;- ngram_range=(1,2)&#xa;- テキスト前処理" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="650" y="680" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vector_save" value="ベクトル保存&#xa;(.advice_tfidf.pkl)&#xa;(.advice_matrix.pkl)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="650" y="850" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ====== QUERY コマンド ====== -->
+        <mxCell id="query_start" value="QUERY コマンド&#xa;自然言語検索" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1100" y="380" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="search_method" value="検索方法選択" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1125" y="530" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tfidf_search" value="TF-IDF検索&#xa;コサイン類似度" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="900" y="680" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="naive_search" value="単純検索&#xa;単語マッチング" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1350" y="680" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ====== ADVISE コマンド ====== -->
+        <mxCell id="advise_start" value="ADVISE コマンド&#xa;横断的助言" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2050" y="380" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="seed_query" value="シードクエリ実行&#xa;&#34;金額 不整合 税 小数&#xa;印刷 UI UX DB N+1&#34;" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="2050" y="530" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ====== 共通処理: ルールエンジン ====== -->
+        <mxCell id="rule_engine" value="ルールエンジン処理&#xa;4カテゴリ解析" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1575" y="800" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ルール詳細 -->
+        <mxCell id="money_rules" value="金額ルール&#xa;- float型での金額計算&#xa;- 税込/税抜・端数処理" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1200" y="950" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="print_rules" value="印刷ルール&#xa;- エラー処理なし&#xa;- 改ページ判定不足" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1450" y="950" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ui_rules" value="UI/UXルール&#xa;- 多重クリック防止&#xa;- XSS脆弱性&#xa;- 入力検証" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1700" y="950" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="db_rules" value="DBルール&#xa;- SELECT * 使用&#xa;- N+1クエリ&#xa;- 多重JOIN&#xa;- 大OFFSET" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1950" y="950" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ====== GPT-5 バッチ処理 ====== -->
+        <mxCell id="ai_mode_check" value="AIモード?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1600" y="1100" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gpt5_batch" value="GPT-5 バッチ処理&#xa;全ファイル対応" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1575" y="1250" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- GPT-5 詳細処理 -->
+        <mxCell id="batch_split" value="バッチ分割&#xa;10ファイル/バッチ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1400" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="prompt_build" value="プロンプト構築&#xa;- クエリ追加&#xa;- コード断片追加&#xa;- サイズ制限 (10K文字)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1575" y="1400" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gpt5_call" value="GPT-5 API呼び出し&#xa;- 240秒タイムアウト&#xa;- temperature=1&#xa;- エラー処理" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1850" y="1400" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="batch_complete" value="全バッチ完了?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1600" y="1550" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ====== レポート生成 ====== -->
+        <mxCell id="report_gen" value="レポート生成" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1575" y="1700" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="combine_results" value="結果統合&#xa;- AIレビュー要約&#xa;- ルールベース指摘&#xa;- ファイル一覧&#xa;- スコア・タグ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1575" y="1850" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="output_decision" value="出力先指定?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1600" y="2020" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="file_output" value="Markdownファイル出力" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1350" y="2170" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="console_output" value="コンソール出力" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1850" y="2170" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="end" value="処理完了" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1575" y="2300" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ===== 接続線 ===== -->
+
+        <!-- メインフロー -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="main_start" target="cmd_decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- コマンド分岐 -->
+        <mxCell id="flow_index" value="index" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="cmd_decision" target="index_start">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="280" />
+              <mxPoint x="325" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_vectorize" value="vectorize" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1976d2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="cmd_decision" target="vectorize_start">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="280" />
+              <mxPoint x="775" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_query" value="query" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;fontColor=#7b1fa2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="cmd_decision" target="query_start">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="280" />
+              <mxPoint x="1225" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_advise" value="advise" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontColor=#f57c00;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="cmd_decision" target="advise_start">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1900" y="280" />
+              <mxPoint x="2175" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- INDEX フロー -->
+        <mxCell id="flow_index_scan" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_start" target="scan_files">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_scan_size" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="scan_files" target="size_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_size_large" value="3MB超過" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="size_check" target="large_file_log">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="750" />
+              <mxPoint x="625" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_size_ok" value="3MB以下" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="size_check" target="process_file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="810" />
+              <mxPoint x="325" y="850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_process_tag" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="process_file" target="tag_analysis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_tag_save" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tag_analysis" target="index_save">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- VECTORIZE フロー -->
+        <mxCell id="flow_vec_sklearn" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="vectorize_start" target="sklearn_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_sklearn_yes" value="利用可能" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="sklearn_check" target="tfidf_process">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="775" y="650" />
+              <mxPoint x="775" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_tfidf_save" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tfidf_process" target="vector_save">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- QUERY フロー -->
+        <mxCell id="flow_query_search" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_start" target="search_method">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_search_tfidf" value="TF-IDF" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;fontColor=#7b1fa2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="search_method" target="tfidf_search">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="580" />
+              <mxPoint x="1000" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_search_naive" value="単純検索" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontColor=#f57c00;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="search_method" target="naive_search">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1350" y="580" />
+              <mxPoint x="1450" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ADVISE フロー -->
+        <mxCell id="flow_advise_seed" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_start" target="seed_query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 共通: ルールエンジンへ -->
+        <mxCell id="flow_to_rules" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tfidf_search" target="rule_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="760" />
+              <mxPoint x="1500" y="760" />
+              <mxPoint x="1700" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_to_rules2" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="naive_search" target="rule_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="760" />
+              <mxPoint x="1700" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_to_rules3" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="seed_query" target="rule_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2175" y="760" />
+              <mxPoint x="1700" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ルール詳細への接続 -->
+        <mxCell id="flow_rules_money" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=1;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="rule_engine" target="money_rules">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1600" y="920" />
+              <mxPoint x="1300" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_rules_print" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=1;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="rule_engine" target="print_rules">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1650" y="920" />
+              <mxPoint x="1550" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_rules_ui" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=1;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="rule_engine" target="ui_rules">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="920" />
+              <mxPoint x="1800" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_rules_db" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=1;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="rule_engine" target="db_rules">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1750" y="920" />
+              <mxPoint x="2050" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- AIモード分岐 -->
+        <mxCell id="flow_rules_ai" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="rule_engine" target="ai_mode_check">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="1050" />
+              <mxPoint x="1700" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_ai_yes" value="AI/hybrid" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="ai_mode_check" target="gpt5_batch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="1200" />
+              <mxPoint x="1700" y="1250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_ai_no" value="rules" style="endArrow=classic;html=1;strokeColor=#b85450;strokeWidth=2;fontColor=#c62828;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="ai_mode_check" target="report_gen">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1900" y="1150" />
+              <mxPoint x="1900" y="1650" />
+              <mxPoint x="1700" y="1650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- GPT-5 詳細フロー -->
+        <mxCell id="flow_batch_split" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=1;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="gpt5_batch" target="batch_split">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1600" y="1380" />
+              <mxPoint x="1400" y="1380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_batch_prompt" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=1;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="gpt5_batch" target="prompt_build">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="1380" />
+              <mxPoint x="1700" y="1400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_batch_call" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=1;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="gpt5_batch" target="gpt5_call">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1800" y="1380" />
+              <mxPoint x="1975" y="1380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_call_complete" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="gpt5_call" target="batch_complete">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1975" y="1520" />
+              <mxPoint x="1700" y="1520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_batch_loop" value="継続" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontColor=#f57c00;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="batch_complete" target="gpt5_batch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1500" y="1600" />
+              <mxPoint x="1500" y="1300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_batch_done" value="完了" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="batch_complete" target="report_gen">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1700" y="1650" />
+              <mxPoint x="1700" y="1700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- レポート生成フロー -->
+        <mxCell id="flow_report_combine" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="report_gen" target="combine_results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_combine_output" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="combine_results" target="output_decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_output_file" value="ファイル指定" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;fontColor=#2e7d32;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="output_decision" target="file_output">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1600" y="2070" />
+              <mxPoint x="1450" y="2070" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_output_console" value="コンソール" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontColor=#f57c00;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="output_decision" target="console_output">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1800" y="2070" />
+              <mxPoint x="1950" y="2070" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 終了への接続 -->
+        <mxCell id="flow_file_end" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="file_output" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="2270" />
+              <mxPoint x="1700" y="2270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_console_end" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="console_output" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1950" y="2270" />
+              <mxPoint x="1700" y="2270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_index_end" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_save" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="325" y="2340" />
+              <mxPoint x="1700" y="2340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_vec_end" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="vector_save" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="775" y="2340" />
+              <mxPoint x="1700" y="2340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

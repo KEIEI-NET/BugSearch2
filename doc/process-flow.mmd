@@ -1,0 +1,117 @@
+```mermaid
+flowchart TD
+    %% コードレビュー処理フロー図
+
+    Start([🚀 開始]) --> CMD{コマンド判定}
+
+    CMD -->|index| INDEX_START[インデックス作成開始]
+    CMD -->|vectorize| VECTOR_START[ベクトル化開始]
+    CMD -->|query/advise| REVIEW_START[レビュー開始]
+
+    %% インデックス処理フロー
+    INDEX_START --> SCAN[ファイルスキャン]
+    SCAN --> SIZE_CHECK{ファイルサイズ<br/>チェック}
+    SIZE_CHECK -->|4MB以下| LANG_CHECK{言語チェック}
+    SIZE_CHECK -->|4MB超| LOG_LARGE[大容量ファイル<br/>ログ記録]
+    LOG_LARGE --> NEXT_FILE
+
+    LANG_CHECK -->|除外言語| NEXT_FILE[次のファイル]
+    LANG_CHECK -->|対象言語| DETECT_ENCODING[エンコーディング検出]
+
+    DETECT_ENCODING --> TRY_UTF8{UTF-8?}
+    TRY_UTF8 -->|成功| READ_FILE[ファイル読み込み]
+    TRY_UTF8 -->|失敗| TRY_SJIS{Shift_JIS/CP932?}
+    TRY_SJIS -->|成功| READ_FILE
+    TRY_SJIS -->|失敗| TRY_EUC{EUC-JP?}
+    TRY_EUC -->|成功| READ_FILE
+    TRY_EUC -->|失敗| SKIP_FILE[ファイルスキップ]
+
+    READ_FILE --> SAVE_INDEX[インデックス保存<br/>.jsonl形式]
+    SKIP_FILE --> NEXT_FILE
+    SAVE_INDEX --> NEXT_FILE
+
+    NEXT_FILE --> MORE_FILES{残ファイル<br/>あり?}
+    MORE_FILES -->|はい| SCAN
+    MORE_FILES -->|いいえ| INDEX_COMPLETE([インデックス完了])
+
+    %% ベクトル化フロー
+    VECTOR_START --> LOAD_INDEX[インデックス読み込み]
+    LOAD_INDEX --> CREATE_TFIDF[TF-IDF作成]
+    CREATE_TFIDF --> SAVE_VECTOR[ベクトル保存<br/>.pkl形式]
+    SAVE_VECTOR --> VECTOR_COMPLETE([ベクトル化完了])
+
+    %% レビュー処理フロー
+    REVIEW_START --> LOAD_DATA[データ読み込み]
+    LOAD_DATA --> SEARCH_FILES[類似ファイル検索<br/>TopK取得]
+
+    SEARCH_FILES --> PHASE1[📏 Phase 1: ルールベース解析]
+
+    PHASE1 --> RULE_LOOP[全ファイルループ]
+    RULE_LOOP --> APPLY_RULES[ルール適用]
+
+    APPLY_RULES --> CHECK_N1{N+1問題?}
+    CHECK_N1 -->|あり| ADD_N1[問題追加<br/>スコア:10]
+    CHECK_N1 -->|なし| CHECK_SELECT
+    ADD_N1 --> CHECK_SELECT
+
+    CHECK_SELECT{SELECT *?} -->|あり| ADD_SELECT[問題追加<br/>スコア:8]
+    CHECK_SELECT -->|なし| CHECK_FLOAT
+    ADD_SELECT --> CHECK_FLOAT
+
+    CHECK_FLOAT{金額float?} -->|あり| ADD_FLOAT[問題追加<br/>スコア:9]
+    CHECK_FLOAT -->|なし| CHECK_XSS
+    ADD_FLOAT --> CHECK_XSS
+
+    CHECK_XSS{XSS脆弱性?} -->|あり| ADD_XSS[問題追加<br/>スコア:8]
+    CHECK_XSS -->|なし| CHECK_MORE
+    ADD_XSS --> CHECK_MORE
+
+    CHECK_MORE{他の問題?} -->|あり| ADD_MORE[問題追加]
+    CHECK_MORE -->|なし| CALC_SCORE
+    ADD_MORE --> CALC_SCORE
+
+    CALC_SCORE[重要度スコア計算] --> SAVE_RULE[ルール結果保存]
+    SAVE_RULE --> NEXT_RULE{次のファイル?}
+    NEXT_RULE -->|あり| RULE_LOOP
+    NEXT_RULE -->|なし| SORT_SEVERITY[重要度でソート]
+
+    SORT_SEVERITY --> WRITE_RULES[ルールレポート生成<br/>*_rules.md]
+
+    WRITE_RULES --> PHASE2[🤖 Phase 2: AI解析]
+
+    PHASE2 --> FILTER_HIGH{高重要度<br/>ファイル選択}
+    FILTER_HIGH --> AI_LOOP[AI解析ループ<br/>最大20ファイル]
+
+    AI_LOOP --> SHOW_PROGRESS[進捗表示<br/>XX/YY]
+    SHOW_PROGRESS --> AI_CALL[OpenAI API呼び出し]
+
+    AI_CALL --> AI_TIMEOUT{タイムアウト<br/>60秒?}
+    AI_TIMEOUT -->|はい| RETRY{リトライ<br/>残あり?}
+    AI_TIMEOUT -->|いいえ| PARSE_RESPONSE[レスポンス解析]
+
+    RETRY -->|はい| AI_CALL
+    RETRY -->|いいえ| SKIP_AI[AI解析スキップ]
+
+    PARSE_RESPONSE --> EXTRACT_CODE[Before/After<br/>コード抽出]
+    SKIP_AI --> NEXT_AI
+    EXTRACT_CODE --> SAVE_AI[AI結果保存]
+
+    SAVE_AI --> NEXT_AI{次のファイル?}
+    NEXT_AI -->|あり| AI_LOOP
+    NEXT_AI -->|いいえ| WRITE_AI[AIレポート生成<br/>*_ai.md]
+
+    WRITE_AI --> End([✅ 完了])
+
+    %% スタイル定義
+    classDef startEnd fill:#4caf50,stroke:#2e7d32,stroke-width:3px,color:#fff
+    classDef process fill:#2196f3,stroke:#1565c0,stroke-width:2px,color:#fff
+    classDef decision fill:#ff9800,stroke:#e65100,stroke-width:2px,color:#fff
+    classDef phase fill:#9c27b0,stroke:#6a1b9a,stroke-width:3px,color:#fff
+    classDef output fill:#00bcd4,stroke:#00838f,stroke-width:2px,color:#fff
+
+    class Start,End,INDEX_COMPLETE,VECTOR_COMPLETE startEnd
+    class INDEX_START,VECTOR_START,REVIEW_START,SCAN,DETECT_ENCODING,READ_FILE,SAVE_INDEX,LOAD_INDEX,CREATE_TFIDF,SAVE_VECTOR,LOAD_DATA,SEARCH_FILES,APPLY_RULES,CALC_SCORE,SAVE_RULE,SORT_SEVERITY,AI_CALL,PARSE_RESPONSE,EXTRACT_CODE,SAVE_AI,SHOW_PROGRESS process
+    class CMD,SIZE_CHECK,LANG_CHECK,TRY_UTF8,TRY_SJIS,TRY_EUC,MORE_FILES,CHECK_N1,CHECK_SELECT,CHECK_FLOAT,CHECK_XSS,CHECK_MORE,NEXT_RULE,FILTER_HIGH,AI_TIMEOUT,RETRY,NEXT_AI decision
+    class PHASE1,PHASE2 phase
+    class WRITE_RULES,WRITE_AI,LOG_LARGE output
+```

@@ -1,0 +1,81 @@
+```mermaid
+graph TB
+    %% コードレビューシステム アーキテクチャ図
+
+    subgraph "入力層"
+        USER[👤 ユーザー]
+        CLI[📟 コマンドライン]
+        ENV[🔐 環境設定<br/>.env]
+    end
+
+    subgraph "メインシステム"
+        MAIN[🎯 codex_review_ultimate.py<br/>メインコントローラー]
+
+        subgraph "インデックス処理"
+            INDEX[📚 インデックス作成]
+            ENCODE[🔤 エンコーディング検出<br/>chardet]
+            FILTER[🔍 ファイルフィルター<br/>言語/サイズ]
+        end
+
+        subgraph "解析エンジン"
+            RULES[📏 ルールベース解析<br/>全ファイル対象]
+            SEVERITY[⚖️ 重要度判定<br/>スコアリング]
+            AI[🤖 AI解析<br/>OpenAI GPT-4o]
+        end
+
+        subgraph "データ処理"
+            VECTOR[📊 ベクトル化<br/>TF-IDF]
+            SEARCH[🔎 類似検索<br/>scikit-learn]
+            BATCH[📦 バッチ処理<br/>joblib]
+        end
+    end
+
+    subgraph "出力層"
+        REPORT_RULES[📄 ルールベースレポート<br/>*_rules.md]
+        REPORT_AI[📄 AI詳細レポート<br/>*_ai.md]
+        LOG[📝 ログファイル<br/>large_files.log]
+        CONSOLE[💻 コンソール出力<br/>進捗表示]
+    end
+
+    subgraph "データストレージ"
+        JSONL[💾 .advice_index.jsonl]
+        PICKLE1[💾 .advice_matrix.pkl]
+        PICKLE2[💾 .advice_tfidf.pkl]
+    end
+
+    %% 接続関係
+    USER --> CLI
+    CLI --> MAIN
+    ENV --> MAIN
+
+    MAIN --> INDEX
+    INDEX --> ENCODE
+    INDEX --> FILTER
+    ENCODE --> JSONL
+    FILTER --> JSONL
+
+    JSONL --> VECTOR
+    VECTOR --> PICKLE1
+    VECTOR --> PICKLE2
+
+    MAIN --> SEARCH
+    SEARCH --> RULES
+    RULES --> SEVERITY
+    SEVERITY --> AI
+
+    RULES --> REPORT_RULES
+    AI --> REPORT_AI
+    FILTER --> LOG
+    MAIN --> CONSOLE
+
+    %% スタイル
+    classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef process fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef output fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef storage fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+
+    class USER,CLI,ENV input
+    class MAIN,INDEX,ENCODE,FILTER,RULES,SEVERITY,AI,VECTOR,SEARCH,BATCH process
+    class REPORT_RULES,REPORT_AI,LOG,CONSOLE output
+    class JSONL,PICKLE1,PICKLE2 storage
+```

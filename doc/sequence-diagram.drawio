@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="DrawIO" version="21.0.0">
+  <diagram name="Sequence-Diagram" id="sequence-1">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="コードレビューシステム シーケンス図" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Participants -->
+        <mxCell id="user" value="👤 ユーザー" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cli" value="📟 CLI" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="280" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="main" value="🎯 メインシステム" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="460" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index" value="📚 インデックス" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#f3e5f5;strokeColor=#6a1b9a;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="640" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="encoder" value="🔤 エンコーダー" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#f3e5f5;strokeColor=#6a1b9a;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="820" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rules" value="📏 ルール解析" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="1000" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ai" value="🤖 AI解析" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="1180" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="report" value="📄 レポート" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#e8f5e9;strokeColor=#1b5e20;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="1360" y="100" width="120" height="900" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 1: Index Creation -->
+        <mxCell id="phase1-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f8ff;strokeColor=#0066cc;strokeWidth=1;opacity=30" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="1420" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="phase1-label" value="Phase 1: インデックス作成" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#0066cc" vertex="1" parent="1">
+          <mxGeometry x="90" y="185" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Index Creation Messages -->
+        <mxCell id="msg1" value="py codex_review_ultimate.py index ." style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066cc" edge="1" parent="1" source="user" target="cli">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="220" as="sourcePoint" />
+            <mxPoint x="340" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg2" value="parse_args([&quot;index&quot;, &quot;.&quot;])" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066cc" edge="1" parent="1" source="cli" target="main">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="240" as="sourcePoint" />
+            <mxPoint x="520" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg3" value="create_index(path, exclude_langs, max_file_mb)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#0066cc" edge="1" parent="1" source="main" target="index">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="260" as="sourcePoint" />
+            <mxPoint x="700" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Loop for each file -->
+        <mxCell id="loop1" value="loop" style="shape=umlFrame;whiteSpace=wrap;html=1;width=40;height=20;fillColor=#ffe6e6;strokeColor=#cc0000" vertex="1" parent="1">
+          <mxGeometry x="650" y="280" width="320" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg4" value="detect_encoding(file_path)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#cc0000" edge="1" parent="1" source="index" target="encoder">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="300" as="sourcePoint" />
+            <mxPoint x="880" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg5" value="encoding (utf-8/cp932/euc-jp)" style="endArrow=classic;html=1;dashed=1;strokeWidth=2;strokeColor=#cc0000" edge="1" parent="1" source="encoder" target="index">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="320" as="sourcePoint" />
+            <mxPoint x="700" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg6" value="&quot;Indexed X files&quot;" style="endArrow=classic;html=1;dashed=1;strokeWidth=2;strokeColor=#0066cc" edge="1" parent="1" source="main" target="cli">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="370" as="sourcePoint" />
+            <mxPoint x="340" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phase 2: Vectorization -->
+        <mxCell id="phase2-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ff9900;strokeWidth=1;opacity=30" vertex="1" parent="1">
+          <mxGeometry x="80" y="390" width="1420" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="phase2-label" value="Phase 2: ベクトル化（オプション）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#ff9900" vertex="1" parent="1">
+          <mxGeometry x="90" y="395" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Vectorization Messages -->
+        <mxCell id="msg7" value="py codex_review_ultimate.py vectorize" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#ff9900" edge="1" parent="1" source="user" target="cli">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="430" as="sourcePoint" />
+            <mxPoint x="340" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg8" value="create_tfidf_vectorizer()" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#ff9900" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="460" as="sourcePoint" />
+            <mxPoint x="520" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="460" />
+              <mxPoint x="560" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Phase 3: Review Execution -->
+        <mxCell id="phase3-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0fff0;strokeColor=#00cc00;strokeWidth=1;opacity=30" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="1420" height="460" as="geometry" />
+        </mxCell>
+
+        <mxCell id="phase3-label" value="Phase 3: レビュー実行" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=1;fontColor=#00cc00" vertex="1" parent="1">
+          <mxGeometry x="90" y="525" width="180" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Sub-Phase 3.1: Rule-based Analysis -->
+        <mxCell id="subphase1-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff0f5;strokeColor=#ff1493;strokeWidth=1;opacity=30" vertex="1" parent="1">
+          <mxGeometry x="500" y="560" width="980" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="subphase1-label" value="Sub-Phase 3.1: ルールベース解析" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#ff1493" vertex="1" parent="1">
+          <mxGeometry x="510" y="565" width="220" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg9" value="py codex_review_ultimate.py query &quot;keyword&quot;" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#00cc00" edge="1" parent="1" source="user" target="cli">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="590" as="sourcePoint" />
+            <mxPoint x="340" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg10" value="analyze_all_files(documents)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#ff1493" edge="1" parent="1" source="main" target="rules">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="620" as="sourcePoint" />
+            <mxPoint x="1060" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Loop for rules -->
+        <mxCell id="loop2" value="loop" style="shape=umlFrame;whiteSpace=wrap;html=1;width=40;height=20;fillColor=#ffe6e6;strokeColor=#cc0000" vertex="1" parent="1">
+          <mxGeometry x="1010" y="640" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg11" value="apply_rules(text)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#cc0000" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1060" y="660" as="sourcePoint" />
+            <mxPoint x="1060" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1100" y="660" />
+              <mxPoint x="1100" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg12" value="write_rules_report()" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#ff1493" edge="1" parent="1" source="rules" target="report">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1060" y="730" as="sourcePoint" />
+            <mxPoint x="1420" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Sub-Phase 3.2: AI Analysis -->
+        <mxCell id="subphase2-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5ff;strokeColor=#4169e1;strokeWidth=1;opacity=30" vertex="1" parent="1">
+          <mxGeometry x="500" y="750" width="980" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="subphase2-label" value="Sub-Phase 3.2: AI解析（高重要度のみ）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontStyle=1;fontColor=#4169e1" vertex="1" parent="1">
+          <mxGeometry x="510" y="755" width="250" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg13" value="filter_high_severity(rule_results)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#4169e1" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="780" as="sourcePoint" />
+            <mxPoint x="520" y="800" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="780" />
+              <mxPoint x="560" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg14" value="analyze_with_ai(high_severity_files)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#4169e1" edge="1" parent="1" source="main" target="ai">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="820" as="sourcePoint" />
+            <mxPoint x="1240" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Loop for AI analysis -->
+        <mxCell id="loop3" value="loop (最大20ファイル)" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=20;fillColor=#ffe6e6;strokeColor=#cc0000" vertex="1" parent="1">
+          <mxGeometry x="1190" y="840" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="msg15" value="call_openai_api(timeout=60)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#cc0000" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1240" y="860" as="sourcePoint" />
+            <mxPoint x="1240" y="880" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1280" y="860" />
+              <mxPoint x="1280" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg16" value="show_progress(i/total)" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#cc0000" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1240" y="900" as="sourcePoint" />
+            <mxPoint x="1240" y="920" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1280" y="900" />
+              <mxPoint x="1280" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg17" value="write_ai_report()" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#4169e1" edge="1" parent="1" source="ai" target="report">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1240" y="950" as="sourcePoint" />
+            <mxPoint x="1420" y="950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg18" value="&quot;Analysis complete&quot;" style="endArrow=classic;html=1;dashed=1;strokeWidth=2;strokeColor=#00cc00" edge="1" parent="1" source="main" target="cli">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="970" as="sourcePoint" />
+            <mxPoint x="340" y="970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg19" value="レポート生成完了" style="endArrow=classic;html=1;dashed=1;strokeWidth=2;strokeColor=#00cc00" edge="1" parent="1" source="cli" target="user">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="990" as="sourcePoint" />
+            <mxPoint x="160" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

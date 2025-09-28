@@ -29,7 +29,7 @@ ENV_FILE = ".env"
 INDEX_PATH = ".advice_index.jsonl"
 VEC_PATH = ".advice_tfidf.pkl"
 MATRIX_PATH = ".advice_matrix.pkl"
-HYBRID_TOPK_AI = 12
+HYBRID_TOPK_AI = 5  # GPT-5向けに削減
 
 # ===== Optional deps =====
 SKLEARN_OK = False
@@ -66,8 +66,8 @@ def load_env_from_file(path: pathlib.Path = pathlib.Path(ENV_FILE)) -> None:
             if not key:
                 continue
             os.environ.setdefault(key, value)
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"⚠️ Failed to read environment file {path}: {exc}", file=sys.stderr)
 
 load_env_from_file()
 
@@ -163,7 +163,7 @@ def cmd_index(repo: pathlib.Path, index_path: pathlib.Path):
             encoded = txt.encode("utf-8", errors="ignore")
             doc = Doc(path=rel_path, lang=lang, size=len(encoded), sha1=sha1_bytes(encoded), tags=tags, summary=make_summary(txt), text=txt)
             w.write(json.dumps(asdict(doc), ensure_ascii=False) + "\n"); count += 1
-    print(f"✅ Indexed {count} files -> {index_path}")
+    print(f"[OK] Indexed {count} files -> {index_path}")
     log_path = write_large_file_log(large_files, index_path.parent.resolve())
     if log_path:
         threshold_mb = MAX_FILE_BYTES / 1_000_000
@@ -171,7 +171,7 @@ def cmd_index(repo: pathlib.Path, index_path: pathlib.Path):
             rel_log = log_path.relative_to(index_path.parent.resolve())
         except ValueError:
             rel_log = log_path
-        print(f"⚠️ Skipped {len(large_files)} files exceeding ~{threshold_mb:.1f} MB. Details: {rel_log}")
+        print(f"[WARNING] Skipped {len(large_files)} files exceeding ~{threshold_mb:.1f} MB. Details: {rel_log}")
 
 # ===== Retrieval =====
 def load_index(index_path: pathlib.Path) -> List[Dict[str,Any]]:
@@ -266,10 +266,18 @@ def ai_review(query: str, snippets: List[str]) -> str:
         json.dumps(query, ensure_ascii=False) +
         "\n次のコード断片を根拠に、(1)金額 (2)印刷 (3)UI/UX (4)DB負荷 を重点に助言だけを出してください。\n" +
         "確度が低い指摘は『可能性』と明記。修正コードは出力しない。\n=== 候補コード ===\n" +
-        json.dumps(snippets, ensure_ascii=False)[:120000]
+        json.dumps(snippets, ensure_ascii=False)[:5000]  # データサイズを5000文字に制限
     )
-    resp = client.chat.completions.create(model=model, messages=[{"role":"user","content":prompt}], temperature=0.2)
-    return resp.choices[0].message.content.strip()
+    try:
+        resp = client.chat.completions.create(
+            model=model,
+            messages=[{"role":"user","content":prompt}],
+            temperature=1,
+            timeout=60  # 60秒でタイムアウト
+        )
+        return resp.choices[0].message.content.strip()
+    except Exception as e:
+        return f"(AIエラー: {str(e)[:100]})"
 
 # ===== Report =====
 def render_report(title: str, items: List[Dict[str,Any]], ai_summary: str|None) -> str:
@@ -293,7 +301,7 @@ def cmd_query(query: str, topk: int, mode: str, index_path: pathlib.Path, out: p
     if mode in ("ai","hybrid"):
         ai_summary = ai_review(query, [d["text"] for d in cands[:HYBRID_TOPK_AI]])
     rep = render_report(f"検索レポート: {query}", items, ai_summary)
-    if out: out.parent.mkdir(parents=True, exist_ok=True); out.write_text(rep, encoding="utf-8"); print(f"✅ wrote {out}")
+    if out: out.parent.mkdir(parents=True, exist_ok=True); out.write_text(rep, encoding="utf-8"); print(f"[OK] wrote {out}")
     else: print(rep)
 
 def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path|None):
@@ -304,7 +312,7 @@ def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path
     if mode in ("ai","hybrid"):
         ai_summary = ai_review("横断助言（金額/印刷/UI/DB）", [d["text"] for d in cands[:HYBRID_TOPK_AI]])
     rep = render_report("全体助言（横断チェック）", items, ai_summary)
-    if out: out.parent.mkdir(parents=True, exist_ok=True); out.write_text(rep, encoding="utf-8"); print(f"✅ wrote {out}")
+    if out: out.parent.mkdir(parents=True, exist_ok=True); out.write_text(rep, encoding="utf-8"); print(f"[OK] wrote {out}")
     else: print(rep)
 
 # ===== CLI =====

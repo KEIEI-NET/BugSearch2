@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Code Review System Architecture">
+    <mxGraphModel dx="2400" dy="1600" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Code Review System Architecture" style="text;html=1;fontSize=24;fontStyle=1;fontColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="800" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Input Layer Header -->
+        <mxCell id="inputHeader" value="Input Layer" style="text;html=1;fontSize=16;fontStyle=1;fontColor=#1565c0" vertex="1" parent="1">
+          <mxGeometry x="200" y="80" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Input Components (Blue) -->
+        <mxCell id="user" value="👤&#xa;User" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#bbdefb;strokeColor=#1976d2;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cli" value="💻&#xa;CLI Interface" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#bbdefb;strokeColor=#1976d2;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="260" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="envSettings" value="⚙️&#xa;Environment&#xa;Settings (.env)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#bbdefb;strokeColor=#1976d2;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="420" y="120" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Main System Header -->
+        <mxCell id="mainHeader" value="Main System" style="text;html=1;fontSize=16;fontStyle=1;fontColor=#e65100" vertex="1" parent="1">
+          <mxGeometry x="650" y="80" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Main Controller (Orange) -->
+        <mxCell id="mainController" value="🎯&#xa;Main Controller&#xa;(codex_review_ultimate.py)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="650" y="120" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Index Processing Section -->
+        <mxCell id="indexHeader" value="Index Processing" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#e65100" vertex="1" parent="1">
+          <mxGeometry x="600" y="240" width="150" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="indexCreation" value="📄&#xa;Index Creation" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="550" y="270" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="encodingDetect" value="🔍&#xa;Encoding Detection&#xa;(chardet)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="690" y="270" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="fileFilter" value="🗂️&#xa;File Filter&#xa;(language/size)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="830" y="270" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Analysis Engine Section -->
+        <mxCell id="analysisHeader" value="Analysis Engine" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#e65100" vertex="1" parent="1">
+          <mxGeometry x="600" y="380" width="150" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ruleAnalysis" value="📋&#xa;Rule-based Analysis&#xa;(for all files)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="550" y="410" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="severityScore" value="⚡&#xa;Severity Scoring" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="690" y="410" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aiAnalysis" value="🤖&#xa;AI Analysis&#xa;(OpenAI GPT-4o)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="830" y="410" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Data Processing Section -->
+        <mxCell id="dataHeader" value="Data Processing" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#e65100" vertex="1" parent="1">
+          <mxGeometry x="600" y="520" width="150" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vectorization" value="🧮&#xa;Vectorization&#xa;(TF-IDF)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="550" y="550" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="similarity" value="🔎&#xa;Similarity Search&#xa;(scikit-learn)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="690" y="550" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="batchProcess" value="⚙️&#xa;Batch Processing&#xa;(joblib)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="830" y="550" width="120" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Data Storage Header -->
+        <mxCell id="storageHeader" value="Data Storage" style="text;html=1;fontSize=16;fontStyle=1;fontColor=#ad1457" vertex="1" parent="1">
+          <mxGeometry x="1100" y="80" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Data Storage Components (Pink) -->
+        <mxCell id="adviceIndex" value="💾&#xa;.advice_index.jsonl" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8bbd9;strokeColor=#e91e63;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1050" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="adviceMatrix" value="💾&#xa;.advice_matrix.pkl" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8bbd9;strokeColor=#e91e63;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1050" y="210" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="adviceTfidf" value="💾&#xa;.advice_tfidf.pkl" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f8bbd9;strokeColor=#e91e63;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1050" y="300" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Output Layer Header -->
+        <mxCell id="outputHeader" value="Output Layer" style="text;html=1;fontSize=16;fontStyle=1;fontColor=#2e7d32" vertex="1" parent="1">
+          <mxGeometry x="1300" y="80" width="150" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Output Components (Green) -->
+        <mxCell id="ruleReport" value="📊&#xa;Rule-based Report&#xa;(*_rules.md)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#c8e6c9;strokeColor=#4caf50;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1250" y="120" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aiReport" value="🤖&#xa;AI Detail Report&#xa;(*_ai.md)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#c8e6c9;strokeColor=#4caf50;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1250" y="210" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="logFiles" value="📋&#xa;Log Files&#xa;(large_files.log)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#c8e6c9;strokeColor=#4caf50;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1250" y="300" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="consoleOutput" value="💻&#xa;Console Output&#xa;(progress display)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#c8e6c9;strokeColor=#4caf50;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1250" y="390" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Data Flow Arrows -->
+
+        <!-- Input to Main Controller -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#1976d2;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="user" target="mainController">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="220" />
+              <mxPoint x="600" y="220" />
+              <mxPoint x="600" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow2" value="" style="endArrow=classic;html=1;strokeColor=#1976d2;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="cli" target="mainController">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="220" />
+              <mxPoint x="600" y="220" />
+              <mxPoint x="600" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow3" value="" style="endArrow=classic;html=1;strokeColor=#1976d2;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="envSettings" target="mainController">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="220" />
+              <mxPoint x="600" y="220" />
+              <mxPoint x="600" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Main Controller to Index Processing -->
+        <mxCell id="flow4" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="mainController" target="indexCreation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="230" />
+              <mxPoint x="610" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow5" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="mainController" target="encodingDetect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow6" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="mainController" target="fileFilter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="230" />
+              <mxPoint x="890" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Index Processing to Analysis Engine -->
+        <mxCell id="flow7" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="indexCreation" target="ruleAnalysis">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow8" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="encodingDetect" target="severityScore">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow9" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="fileFilter" target="aiAnalysis">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Analysis Engine to Data Processing -->
+        <mxCell id="flow10" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="ruleAnalysis" target="vectorization">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow11" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="severityScore" target="similarity">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow12" value="" style="endArrow=classic;html=1;strokeColor=#f57c00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="aiAnalysis" target="batchProcess">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Data Processing to Storage -->
+        <mxCell id="flow13" value="" style="endArrow=classic;html=1;strokeColor=#e91e63;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="vectorization" target="adviceIndex">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="650" />
+              <mxPoint x="1000" y="650" />
+              <mxPoint x="1000" y="155" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow14" value="" style="endArrow=classic;html=1;strokeColor=#e91e63;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="similarity" target="adviceMatrix">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="650" />
+              <mxPoint x="1000" y="650" />
+              <mxPoint x="1000" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow15" value="" style="endArrow=classic;html=1;strokeColor=#e91e63;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="batchProcess" target="adviceTfidf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="650" />
+              <mxPoint x="1000" y="650" />
+              <mxPoint x="1000" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Processing to Output -->
+        <mxCell id="flow16" value="" style="endArrow=classic;html=1;strokeColor=#4caf50;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="ruleAnalysis" target="ruleReport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="680" />
+              <mxPoint x="1200" y="680" />
+              <mxPoint x="1200" y="155" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow17" value="" style="endArrow=classic;html=1;strokeColor=#4caf50;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="aiAnalysis" target="aiReport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="680" />
+              <mxPoint x="1200" y="680" />
+              <mxPoint x="1200" y="245" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow18" value="" style="endArrow=classic;html=1;strokeColor=#4caf50;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="fileFilter" target="logFiles">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="680" />
+              <mxPoint x="1200" y="680" />
+              <mxPoint x="1200" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow19" value="" style="endArrow=classic;html=1;strokeColor=#4caf50;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="mainController" target="consoleOutput">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="680" />
+              <mxPoint x="1200" y="680" />
+              <mxPoint x="1200" y="425" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legendTitle" value="Legend:" style="text;html=1;fontSize=14;fontStyle=1;fontColor=#000000" vertex="1" parent="1">
+          <mxGeometry x="100" y="700" width="80" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legendInput" value="Input Components" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;fillColor=#bbdefb;strokeColor=#1976d2;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="100" y="730" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legendProcess" value="Processing Components" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;fillColor=#ffcc80;strokeColor=#f57c00;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="240" y="730" width="140" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legendOutput" value="Output Components" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;fillColor=#c8e6c9;strokeColor=#4caf50;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="400" y="730" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legendStorage" value="Storage Components" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;fillColor=#f8bbd9;strokeColor=#e91e63;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="540" y="730" width="120" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
