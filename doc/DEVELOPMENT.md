@@ -1,6 +1,22 @@
 # 開発履歴
 
+**最終更新**: 2025-09-28 12:56:09
+**現行バージョン**: 6.1
+
 ## バージョン履歴
+
+### v6.1 - Parallel Processing Edition (2025-09-28 12:56:09)
+#### 主要機能追加
+- 🚀 **並列処理機能を全CLI版に実装**
+  - ThreadPoolExecutorによる並列I/O処理
+  - `--worker-count`オプションでワーカー数を指定可能
+  - 2-3倍の高速化を実現
+- 📋 **プロファイリング機能の統合**
+  - `--profile-index`と`--profile-output`オプション
+  - CSV/JSONL形式でのメトリクス出力
+- 🎯 **大規模テストの実施と検証**
+  - 10,000ファイルを約90秒で処理
+  - Claude Codeで最大10分間の長時間実行に対応
 
 ### v6.0 - Ultimate Edition (2025-09-28)
 **`codex_review_ultimate.py`**

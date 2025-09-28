@@ -238,4 +238,4 @@ MIT License - 詳細は[LICENSE](LICENSE)参照
 - 日本語エンコーディング検出のchardetライブラリ
 
 ---
-最終更新: 2025-09-28 | バージョン: 6.0 (Ultimate Edition)
+最終更新: 2025-09-28 12:56:09 | バージョン: 6.1 (Parallel Processing Edition)
