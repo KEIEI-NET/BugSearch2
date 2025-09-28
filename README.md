@@ -7,23 +7,32 @@
 - [セットアップガイド](SETUP_GUIDE.md) - インストールと基本的な使い方
 - [技術文書](doc/TECHNICAL.md) - 詳細な技術仕様とアーキテクチャ
 - [開発履歴](doc/DEVELOPMENT.md) - バージョン履歴と改善内容
+- [テスト結果](doc/TEST_RESULTS.md) - 実行テストとパフォーマンス結果
 
 ### 📊 システム図
 
+#### Mermaid形式
 - [アーキテクチャ図](doc/architecture.mmd) - システム全体構成
 - [処理フロー図](doc/process-flow.mmd) - 詳細な処理の流れ
 - [シーケンス図](doc/sequence-diagram.mmd) - コンポーネント間の相互作用
 - [クラス図](doc/class-diagram.mmd) - クラス構造と関係
 
-## 特徴
+#### DrawIO形式
+- [アーキテクチャ図](doc/flow/code-review-system-architecture.drawio)
+- [処理フロー図](doc/flow/code-review-system.drawio)
+- [シーケンス図](doc/sequence-diagram.drawio)
+- [クラス図](doc/class/code-review-system.drawio)
+
+## 🚀 特徴
 
 - 📊 **2段階解析システム**: ルールベース解析 → AI詳細解析
 - 🌏 **日本語対応**: 自動エンコーディング検出（UTF-8, Shift_JIS, CP932, EUC-JP）
 - 🎯 **重要度ソート**: 問題を重要度スコアで自動ランク付け
 - 🤖 **AI改善提案**: OpenAI GPT-4oによる具体的な修正コード生成
 - ⚡ **大規模対応**: バッチ処理とタイムアウト管理で数万ファイル処理可能
+- 📈 **進捗表示**: リアルタイムな処理状況表示（XX/YYファイル）
 
-## クイックスタート
+## 📋 クイックスタート
 
 ### 1. インストール
 ```bash
@@ -32,97 +41,192 @@ pip install chromadb openai scikit-learn joblib regex chardet
 
 ### 2. 環境設定
 `.env`ファイル作成：
-```
+```env
 OPENAI_API_KEY=your_api_key_here
 OPENAI_MODEL=gpt-4o
 ```
 
-### 3. 実行
+### 3. 基本的な実行
 ```bash
 # インデックス作成（Delphi除外、4MB制限）
 py codex_review_ultimate.py index . --exclude-langs delphi --max-file-mb 4
 
+# ベクトル化（オプション、検索精度向上）
+py codex_review_ultimate.py vectorize
+
 # レビュー実行
-py codex_review_ultimate.py query "データベース" --topk 50 --out reports/review
+py codex_review_ultimate.py query "データベース N+1" --topk 50 --out reports/review
+
+# 全体的な助言
+py codex_review_ultimate.py advise --topk 100 --out reports/full_review
 ```
 
-## 利用可能なバージョン
+## 📦 利用可能なバージョン
 
 | ファイル | 用途 | 特徴 |
 |---------|------|------|
-| `codex_review_ultimate.py` | **推奨** | 2段階解析、エンコード自動検出、タイムアウト対策 |
+| `codex_review_ultimate.py` | **🌟 推奨** | 2段階解析、エンコード自動検出、タイムアウト対策、進捗表示 |
 | `codex_review_enhanced.py` | エンコード特化 | 日本語ファイルの文字化け対策 |
 | `codex_review_severity.py` | 重要度ソート | 問題の優先順位付け |
 | `codex_review_with_solutions.py` | AI改善案 | 具体的な修正コード提案 |
 | `codex_review_optimized.py` | 大規模処理 | 数万ファイル対応 |
 | `codex_review.py` | 基本版 | 軽量・シンプル |
 
-## 検出可能な問題
+## 🔍 検出可能な問題
 
 ### データベース関連
-- N+1問題（ループ内SELECT）
-- SELECT * の使用
-- インデックス未使用
-- トランザクション未使用
+- **N+1問題**（ループ内SELECT） - 重要度: 10
+- **SELECT \*** の使用 - 重要度: 8
+- **多重JOIN** - 重要度: 7
+- **大OFFSET** - 重要度: 6
 
 ### セキュリティ
-- XSS脆弱性
-- SQLインジェクション
-- 入力検証不足
-- エラー情報漏洩
+- **金額計算でのfloat使用** - 重要度: 9
+- **XSS脆弱性** - 重要度: 8
+- **入力検証不足** - 重要度: 5
+- **エラー情報漏洩** - 重要度: 5
 
 ### パフォーマンス
-- 非効率なループ
-- メモリリーク
-- 不要な再計算
-- 大量データの一括取得
+- **非効率なループ**
+- **メモリリーク**
+- **不要な再計算**
+- **大量データの一括取得**
 
 ### コード品質
-- 金額計算でのfloat使用
-- エラーハンドリング不足
-- マジックナンバー
-- 重複コード
+- **エラーハンドリング不足**
+- **マジックナンバー**
+- **重複コード**
+- **未使用変数**
 
-## 出力レポート
+## 📄 出力レポート
 
 ### ルールベースレポート（*_rules.md）
+```markdown
+# ルールベース解析レポート
 - 全ファイルの静的解析結果
+- 問題の重要度分布（🔴緊急 🟠高 🟡中 🔵低 ⚪なし）
 - 問題箇所のコードサンプル
 - 簡易的な修正例
+```
 
 ### AI詳細レポート（*_ai.md）
+```markdown
+# AI改善案付き解析レポート
 - 高重要度ファイルの詳細解析
 - Before/After形式の改善コード
 - 詳細な説明と影響範囲
+- パフォーマンス改善の期待値
+```
 
-## GitHub Actions連携
+## 🎯 実績・パフォーマンス
+
+### テスト環境
+- **対象ファイル**: 14,355個のC#ソースファイル
+- **総コード行数**: 約200万行
+- **テスト日時**: 2025-09-28
+
+### 処理性能
+| 処理 | ファイル数 | 実行時間 | 備考 |
+|------|-----------|---------|------|
+| インデックス作成 | 1,195 | 約30秒 | 1MB制限、Delphi除外 |
+| ルール解析 | 50 | 約5秒 | 全ファイル対象 |
+| AI解析 | 5 | 約60秒 | 高重要度のみ |
+
+### 検出実績
+- 🔴 **緊急問題**: 5件（N+1問題、SELECT *）
+- 🟡 **中程度問題**: 7件（入力検証、エラー処理）
+- ⚪ **問題なし**: 38件
+
+## 🔧 カスタマイズ
+
+### 設定値の調整
+```python
+# codex_review_ultimate.py の設定値
+AI_TIMEOUT = 60         # AI解析タイムアウト（秒）
+AI_MAX_RETRIES = 2      # AIリトライ回数
+AI_MIN_SEVERITY = 7     # AI解析する最小重要度スコア
+AI_MAX_FILES = 20       # AI解析する最大ファイル数
+```
+
+### 除外ディレクトリ
+```python
+IGNORE_DIRS = {
+    ".git", "node_modules", "dist", "build",
+    ".venv", "venv", "__pycache__", ".idea"
+}
+```
+
+## 🚦 GitHub Actions連携
 
 `.github/workflows/codex-readonly-review.yml`でPR自動レビュー：
-1. ソースチェックアウト
-2. 依存ライブラリセットアップ
-3. インデックス作成・解析実行
-4. レポートをアーティファクト化
-5. PRにコメント投稿
 
-## 前提条件
+```yaml
+name: Code Review
+on:
+  pull_request:
+    types: [opened, synchronize]
 
-- Python 3.11以上
-- OpenAI APIキー
-- 十分なディスク容量（インデックス用）
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - run: pip install -r requirements.txt
+      - run: python codex_review_ultimate.py index .
+      - run: python codex_review_ultimate.py advise --topk 50
+      - uses: actions/upload-artifact@v3
+```
 
-## 制限事項
+## ⚠️ 制限事項
 
-- ファイルサイズ上限: デフォルト4MB（変更可）
-- AI解析: 最大20ファイル/実行（高負荷回避）
-- タイムアウト: API呼び出し60秒/ファイル
+- **ファイルサイズ上限**: デフォルト4MB（`--max-file-mb`で変更可）
+- **AI解析**: 最大20ファイル/実行（高負荷回避）
+- **タイムアウト**: API呼び出し60秒/ファイル
+- **エンコーディング**: 主要な日本語エンコーディングのみ対応
 
-## サポート
+## 🛠️ トラブルシューティング
+
+### よくある問題
+
+#### エンコーディングエラー
+```bash
+# UTF-8以外のファイルがある場合
+py codex_review_enhanced.py  # または ultimate.py（自動検出機能あり）
+```
+
+#### タイムアウトエラー
+```bash
+# ファイル数を減らす
+py codex_review_ultimate.py query "keyword" --topk 20
+
+# タイムアウト値を調整（ソースコード編集必要）
+AI_TIMEOUT = 120  # 60秒から120秒に変更
+```
+
+#### メモリ不足
+```bash
+# ファイルサイズ制限を厳しくする
+py codex_review_ultimate.py index . --max-file-mb 1
+```
+
+## 📞 サポート
 
 問題が発生した場合:
 1. [SETUP_GUIDE.md](SETUP_GUIDE.md)のトラブルシューティング参照
-2. `reports/IMPORTANT_RESULTS.md`で既知の問題確認
-3. GitHubでIssue作成
+2. [TEST_RESULTS.md](doc/TEST_RESULTS.md)で動作確認済み環境を確認
+3. `reports/IMPORTANT_RESULTS.md`で既知の問題確認
+4. [GitHubでIssue作成](https://github.com/KEIEI-NET/BugSerch/issues)
 
-## ライセンス
+## 📜 ライセンス
 
 MIT License - 詳細は[LICENSE](LICENSE)参照
+
+## 🙏 謝辞
+
+- OpenAI GPT-4oモデルの提供
+- scikit-learn、ChromaDB等のオープンソースライブラリ
+- 日本語エンコーディング検出のchardetライブラリ
+
+---
+最終更新: 2025-09-28 | バージョン: 6.0 (Ultimate Edition)

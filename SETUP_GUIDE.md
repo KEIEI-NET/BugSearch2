@@ -1,13 +1,15 @@
 # コードレビューツール セットアップガイド
 
-## 推奨使用バージョン
+## 🎯 推奨使用バージョン
 
-### 🎯 最終版（推奨）
+### 最終版（強く推奨）
 **`codex_review_ultimate.py`** - 2段階解析システム
-- ルールベース全ファイル解析 → AI詳細解析
-- 2種類のレポート生成（rules/AI）
-- エンコーディング自動検出
-- タイムアウト対策実装済み
+- ✅ ルールベース全ファイル解析 → AI詳細解析
+- ✅ 2種類のレポート生成（rules/AI）
+- ✅ エンコーディング自動検出
+- ✅ タイムアウト対策実装済み
+- ✅ 進捗表示機能
+- ✅ Windows環境での権限エラー対策済み
 
 ### その他のバージョン（特定用途向け）
 - `codex_review_enhanced.py` - エンコーディング自動検出特化版
@@ -87,6 +89,19 @@ AI_MAX_FILES = 20       # AI解析する最大ファイル数
 
 ### メモリ不足
 → `codex_review_optimized.py`を使用するか、`--max-file-mb`でファイルサイズを制限
+
+### Windows権限エラー（WinError 1920）
+→ `codex_review_ultimate.py`は.venvディレクトリを自動的に除外します
+
+### 大量ファイルでの処理遅延
+→ 段階的に実行:
+```bash
+# 1. 小規模なディレクトリから開始
+py codex_review_ultimate.py index src/module1 --max-file-mb 1
+
+# 2. 問題なければ全体へ
+py codex_review_ultimate.py index . --max-file-mb 2
+```
 
 ## サポート
 

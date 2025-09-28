@@ -24,7 +24,7 @@ import chardet
 from datetime import datetime
 
 # ===== Config =====
-IGNORE_DIRS = {".git","node_modules","dist","build","out","bin","obj",".idea",".vscode",".next","coverage","target"}
+IGNORE_DIRS = {".git","node_modules","dist","build","out","bin","obj",".idea",".vscode",".next","coverage","target",".venv","venv","env","lib64","lib","__pycache__",".mypy_cache",".pytest_cache",".tox"}
 DEFAULT_MAX_FILE_BYTES = 4_000_000
 ENV_FILE = ".env"
 INDEX_PATH = ".advice_index.jsonl"
@@ -351,18 +351,35 @@ def cmd_index(repo: pathlib.Path, index_path: pathlib.Path, exclude_langs: set =
     paths = []
     large_files = []
 
-    for p in repo.rglob("*"):
-        if p.is_file() and not any(d in p.parts for d in IGNORE_DIRS):
-            file_size = p.stat().st_size
+    # Use os.walk instead of rglob to handle permission errors better
+    for root, dirs, files in os.walk(repo):
+        # Remove ignored directories from dirs to prevent descending into them
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
+
+        root_path = pathlib.Path(root)
+        for file in files:
+            p = root_path / file
+
+            try:
+                file_size = p.stat().st_size
+            except (OSError, PermissionError):
+                continue
+
             if file_size > max_file_bytes:
                 large_files.append((str(p.relative_to(repo)), file_size))
                 continue
+
             if should_index(p, exclude_langs):
                 paths.append(p)
 
     count = 0
+    total_files = len(paths)
+    print(f"インデックス化対象ファイル数: {total_files}")
+
     with open(index_path, "w", encoding="utf-8") as w:
-        for p in sorted(paths):
+        for idx, p in enumerate(sorted(paths)):
+            if idx % 100 == 0:
+                print(f"処理中... {idx}/{total_files} ファイル")
             lang = detect_lang(p)
             try:
                 txt, encoding = read_file_with_encoding(p)
