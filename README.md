@@ -36,6 +36,12 @@
 - **進捗モニタリング**: `monitor_parallel.py`でリアルタイム監視
 - **自動レジューム**: 中断後も`.batch_progress_parallel.json`から再開可能
 
+### 🌏 PHP言語サポート追加
+- **セキュリティ脆弱性検出**: SQLインジェクション、XSS、ファイルインクルード等
+- **非推奨関数検出**: mysql_*関数、eval()、extract()の危険な使用
+- **パフォーマンス問題**: N+1問題、大量データ取得、非効率なループ
+- **サンプルファイル**: src/php/に脆弱性テスト用サンプル配置
+
 ### GPT-5シリーズ完全対応
 - **GPT-5-Codex**: Responses API (`/v1/responses`) 経由でコード特化分析
 - **GPT-5/GPT-5-mini/GPT-5-nano**: Chat Completions API対応準備完了
@@ -87,16 +93,19 @@ OPENAI_MODEL=gpt-4o
 #### 方法1: 標準分析
 ```bash
 # インデックス作成（Delphi除外、4MB制限、並列4スレッド）
-py codex_review_ultimate.py index . --exclude-langs delphi --max-file-mb 4 --worker-count 4
+py codex_review_severity.py index . --exclude-langs delphi --max-file-mb 4 --worker-count 4
+
+# PHPファイルのみインデックス作成
+py codex_review_severity.py index ./src/php
 
 # ベクトル化（オプション、検索精度向上）
-py codex_review_ultimate.py vectorize
+py codex_review_severity.py vectorize
 
 # レビュー実行
-py codex_review_ultimate.py query "データベース N+1" --topk 50 --out reports/review
+py codex_review_severity.py query "データベース N+1" --topk 50 --out reports/review
 
 # 全体的な助言
-py codex_review_ultimate.py advise --topk 100 --out reports/full_review
+py codex_review_severity.py advise --topk 100 --out reports/full_review
 ```
 
 #### 方法2: 改良版分析（完全コード提供）
@@ -115,16 +124,12 @@ run_enhanced_analysis.bat
 
 | ファイル | 用途 | 特徴 |
 |---------|------|------|
-| `codex_review_ultimate.py` | **🌟 推奨** | 2段階解析、エンコード自動検出、タイムアウト対策、進捗表示 |
+| `codex_review_severity.py` | **🌟 推奨** | PHP対応、重要度ソート、問題の優先順位付け |
 | `extract_and_batch_parallel_enhanced.py` | **🎯 改良版** | 完全な修正コード提供、詳細な問題説明、並列処理 |
 | `extract_and_batch_parallel.py` | **⚡ 並列処理** | 10倍高速化、自動レジューム、キャッシュ対応 |
 | `monitor_parallel.py` | 進捗モニター | リアルタイム監視、ETA表示、停滞検出 |
 | `fix_report_encoding.py` | レポート修正 | 文字化け修正、エラー除去 |
-| `codex_review_enhanced.py` | エンコード特化 | 日本語ファイルの文字化け対策 |
-| `codex_review_severity.py` | 重要度ソート | 問題の優先順位付け |
-| `codex_review_with_solutions.py` | AI改善案 | 具体的な修正コード提案 |
-| `codex_review_optimized.py` | 大規模処理 | 数万ファイル対応 |
-| `codex_review.py` | 基本版 | 軽量・シンプル |
+| `PHP_SUPPORT.md` | PHPガイド | PHP検出機能の詳細ドキュメント |
 
 ## 🔍 検出可能な問題
 
@@ -151,6 +156,31 @@ run_enhanced_analysis.bat
 - **マジックナンバー**
 - **重複コード**
 - **未使用変数**
+
+### 言語固有の問題
+
+#### PHP（新規追加）
+- **SQLインジェクション脆弱性** - 重要度: 10
+- **コマンドインジェクション** - 重要度: 10
+- **ファイルインクルード脆弱性** - 重要度: 9
+- **XSS脆弱性（未エスケープ出力）** - 重要度: 9
+- **ディレクトリトラバーサル** - 重要度: 9
+- **eval()の使用** - 重要度: 9
+- **セッション固定化攻撃** - 重要度: 8
+- **CSRF対策不足** - 重要度: 8
+- **mysql_*関数（非推奨）** - 重要度: 7
+
+#### Go
+- **エラーチェック不足** - 重要度: 8
+- **goroutineリーク** - 重要度: 9
+- **チャネルデッドロック** - 重要度: 7
+- **defer忘れ** - 重要度: 6
+
+#### C++
+- **メモリリーク** - 重要度: 10
+- **バッファオーバーフロー** - 重要度: 10
+- **未初期化ポインタ** - 重要度: 9
+- **RAII違反** - 重要度: 7
 
 ## 📄 出力レポート
 
