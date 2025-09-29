@@ -83,6 +83,8 @@ OPENAI_MODEL=gpt-4o
 ```
 
 ### 3. 基本的な実行
+
+#### 方法1: 標準分析
 ```bash
 # インデックス作成（Delphi除外、4MB制限、並列4スレッド）
 py codex_review_ultimate.py index . --exclude-langs delphi --max-file-mb 4 --worker-count 4
@@ -97,11 +99,24 @@ py codex_review_ultimate.py query "データベース N+1" --topk 50 --out repor
 py codex_review_ultimate.py advise --topk 100 --out reports/full_review
 ```
 
+#### 方法2: 改良版分析（完全コード提供）
+```bash
+# 危険ファイル抽出
+py codex_review_severity.py analyze . --topk 100
+
+# 並列AI分析（改良版・完全コード）
+py extract_and_batch_parallel_enhanced.py
+
+# または実行スクリプト使用
+run_enhanced_analysis.bat
+```
+
 ## 📦 利用可能なバージョン
 
 | ファイル | 用途 | 特徴 |
 |---------|------|------|
 | `codex_review_ultimate.py` | **🌟 推奨** | 2段階解析、エンコード自動検出、タイムアウト対策、進捗表示 |
+| `extract_and_batch_parallel_enhanced.py` | **🎯 改良版** | 完全な修正コード提供、詳細な問題説明、並列処理 |
 | `extract_and_batch_parallel.py` | **⚡ 並列処理** | 10倍高速化、自動レジューム、キャッシュ対応 |
 | `monitor_parallel.py` | 進捗モニター | リアルタイム監視、ETA表示、停滞検出 |
 | `fix_report_encoding.py` | レポート修正 | 文字化け修正、エラー除去 |
