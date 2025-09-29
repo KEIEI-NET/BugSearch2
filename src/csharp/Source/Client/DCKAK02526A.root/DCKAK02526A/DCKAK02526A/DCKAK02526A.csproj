@@ -1,0 +1,120 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7AA26DE7-ECF1-4E08-9EDE-0A20997DCC90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Application.Controller</RootNamespace>
+    <AssemblyName>DCKAK02526A</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>DCKAK02526A.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>DCKAK02526A.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DCKAK02524E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DCKAK02525E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DCKAK02533G, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DCVSS\DistributionCore[110]\Assembly\Client\DCKAK02533G.dll</HintPath>
+    </Reference>
+    <Reference Include="DCKAK02535O, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DCVSS\DistributionCore[110]\Assembly\Server\DCKAK02535O.dll</HintPath>
+    </Reference>
+    <Reference Include="DCKAK02536D, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\DCVSS\DistributionCore[110]\Assembly\Server\DCKAK02536D.dll</HintPath>
+    </Reference>
+    <Reference Include="SFANL09041E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFANL09041E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFANL09042A, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFANL09042A.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00002C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00006C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00006C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00036C">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00036C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00212I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00212I.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00615C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00651C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00651C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00654D, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFSIR09021E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFSIR09022A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFTOK09381E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKK09041E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFUKK09041E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKK09042A, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFUKK09042A.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DCKAK02526AA.cs" />
+    <Compile Include="Properties\DCKAK02526AInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

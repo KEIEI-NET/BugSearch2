@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMIT10202A", "SFMIT10202A\SFMIT10202A.csproj", "{DFC3B89D-96D1-4782-8844-9B40165DAF6A}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SFMIT10202A\\SFMIT10202A.csproj
+		SccProjectName1 = \u0022$/Partsman.NS[060]/Source/Client/SFMIT10202A.root/SFMIT10202A/SFMIT10202A\u0022,\u0020ZQVPAAAA
+		SccLocalPath1 = SFMIT10202A
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFC3B89D-96D1-4782-8844-9B40165DAF6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC3B89D-96D1-4782-8844-9B40165DAF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC3B89D-96D1-4782-8844-9B40165DAF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC3B89D-96D1-4782-8844-9B40165DAF6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

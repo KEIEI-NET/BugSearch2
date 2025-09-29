@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>従業員ガイド</FormTitle>
+		<FormMassge>従業員を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>645</FormHeight>
+		<FormWidth>400</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+	</GuideDef>
+	<!-- 子ガイドの設定  -->
+	<InnerFormDef>
+		<InnerGuide>2</InnerGuide>
+		<InnerGuideDefRoot>
+			<InnerGuideDef GType="TableGuide">SECINFOSETGUIDE.XML</InnerGuideDef>
+			<InnerGuideDef GType="TableGuide">EMPLOYEEGUIDE.XML</InnerGuideDef>
+		</InnerGuideDefRoot>
+	</InnerFormDef>
+  <!-- 起動時の初期データ設定  -->
+  <DefaultSetDataDef>
+    <DefaultSetDataRoot>
+      <DefaultSetDataTarget>
+        <TargetGuide>SECINFOSETGUIDE.XML</TargetGuide>
+        <DefaultData DataSource="InitDefSectionCode">SectionCode</DefaultData>
+      </DefaultSetDataTarget>
+    </DefaultSetDataRoot>
+  </DefaultSetDataDef>
+</definfo>

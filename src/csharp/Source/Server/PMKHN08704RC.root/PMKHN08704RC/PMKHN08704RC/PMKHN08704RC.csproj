@@ -1,0 +1,82 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F968E327-1670-44C2-9BE0-772AA3E534EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Application.Remoting</RootNamespace>
+    <AssemblyName>PMKHN08704RC</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMKHN08704RC.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DCKHN09166D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAKHN09176D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAKHN09286D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMCMN00110C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="PMKEN06064D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00006C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00007C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00009C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00010C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00011I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00012C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00014R, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00015O, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00021C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00036C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00036C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00615C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00615C.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PMKHN08704RCA.cs" />
+    <Compile Include="Properties\PMKHN08704RCInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMKHN08705OC\PMKHN08705OC.csproj">
+      <Project>{8BF7EEDB-4085-41C5-BF9C-3064309024A1}</Project>
+      <Name>PMKHN08705OC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMKHN08706DC\PMKHN08706DC.csproj">
+      <Project>{6F23B941-2E74-4079-A6CB-348C190C1252}</Project>
+      <Name>PMKHN08706DC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

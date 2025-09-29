@@ -1,0 +1,841 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND01304D</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork">
+            public class name:   ConsStockRepWarehouseParamWork
+            <summary>
+                                 委託在庫補充の倉庫情報検索条件ワーク
+            </summary>
+            <remarks>
+            <br>note             :   委託在庫補充のの倉庫情報検索条件ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   2017/08/11</br>
+            <br>Genarated Date   :   2017/08/11  (CSharp File Generated Date)</br>
+            <br>Update Note      :   </br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork._enterpriseCode">
+            <summary>企業コード</summary>
+            <remarks>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork._machineName">
+            <summary>コンピュータ名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork._employeeCode">
+            <summary>従業員コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork._warehouseCode">
+            <summary>委託倉庫コード</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork.#ctor">
+            <summary>
+            委託在庫補充の倉庫情報取得条件ワークコンストラクタ
+            </summary>
+            <returns>ConsStockRepWarehouseParamWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepWarehouseParamWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork.EnterpriseCode">
+            public propaty name  :  EnterpriseCode
+            <summary>企業コードプロパティ</summary>
+            <value>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   企業コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork.MachineName">
+            public propaty name  :  MachineName
+            <summary>コンピュータ名プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   コンピュータ名プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork.EmployeeCode">
+            public propaty name  :  EmployeeCode
+            <summary>従業員コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   従業員コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseParamWork.WarehouseCode">
+            public propaty name  :  WarehouseCode
+            <summary>委託倉庫コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   委託倉庫コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork">
+            public class name:   ConsStockRepWarehouseRetWork
+            <summary>
+                                 委託在庫補充の倉庫情報取得結果ワーク
+            </summary>
+            <remarks>
+            <br>note             :   委託在庫補充の倉庫情報取得結果ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   2017/08/11</br>
+            <br>Genarated Date   :   2017/08/11  (CSharp File Generated Date)</br>
+            <br>Update Note      :   </br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork._consignWarehouseCode">
+            <summary>委託倉庫コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork._consignWarehouseName">
+            <summary>委託倉庫名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork._mainMngWarehouseCd">
+            <summary>主管元倉庫コード</summary>
+            <remarks>委託の場合に在庫補充を行う元の倉庫</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork._mainMngWarehouseName">
+            <summary>主管元倉庫名称</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork.#ctor">
+            <summary>
+            委託在庫補充の倉庫情報取得結果ワークコンストラクタ
+            </summary>
+            <returns>ConsStockRepWarehouseRetWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepWarehouseRetWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork.ConsignWarehouseCode">
+            public propaty name  :  ConsignWarehouseCode
+            <summary>委託倉庫コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   委託倉庫コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork.ConsignWarehouseName">
+            public propaty name  :  ConsignWarehouseName
+            <summary>委託倉庫名称プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   委託倉庫名称プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork.MainMngWarehouseCd">
+            public propaty name  :  MainMngWarehouseCd
+            <summary>主管元倉庫コードプロパティ</summary>
+            <value>委託の場合に在庫補充を行う元の倉庫</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   主管元倉庫コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork.MainMngWarehouseName">
+            public propaty name  :  MainMngWarehouseName
+            <summary>主管元倉庫名称プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   主管元倉庫名称プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork_SerializationSurrogate_For_V51010">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです。
+            </summary>
+            <returns>ConsStockRepWarehouseRetWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepWarehouseRetWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork_SerializationSurrogate_For_V51010.currentMemberCount">
+            <summary>
+            ConsStockRepWarehouseRetWorkメンバ数(publicプロパティ数)
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork_SerializationSurrogate_For_V51010.Serialize(System.IO.BinaryWriter,System.Object)">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepWarehouseRetWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork_SerializationSurrogate_For_V51010.SetConsStockRepWarehouseRetWork(System.IO.BinaryWriter,Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork)">
+            <summary>
+             ConsStockRepWarehouseRetWorkインスタンス書き込み
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepWarehouseRetWorkのインスタンスを書き込み</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork_SerializationSurrogate_For_V51010.GetConsStockRepWarehouseRetWork(System.IO.BinaryReader,Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo)">
+            <summary>
+             ConsStockRepWarehouseRetWorkインスタンス取得
+            </summary>
+            <returns>ConsStockRepWarehouseRetWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepWarehouseRetWorkのインスタンスを取得します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepWarehouseRetWork_SerializationSurrogate_For_V51010.Deserialize(System.IO.BinaryReader)">
+            <summary>
+             Ver5.10.1.0用のカスタムデシリアライザです
+            </summary>
+            <returns>ConsStockRepWarehouseRetWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepWarehouseRetWorkクラスのカスタムデシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork">
+            public class name:   ConsStockRepInspectParamWork
+            <summary>
+                                 委託在庫補充の検品情報取得条件ワーク
+            </summary>
+            <remarks>
+            <br>note             :   委託在庫補充の検品情報取得条件ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   2017/08/11</br>
+            <br>Genarated Date   :   2017/08/11  (CSharp File Generated Date)</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork._enterpriseCode">
+            <summary>企業コード</summary>
+            <remarks>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork._machineName">
+            <summary>コンピュータ名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork._employeeCode">
+            <summary>従業員コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork._consignWarehouseCode">
+            <summary>委託倉庫コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork._shipmentDay">
+            <summary>出荷日付</summary>
+            <remarks>YYYYMMDD</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork._mainMngWarehouseCode">
+            <summary>主管倉庫コード</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork.#ctor">
+            <summary>
+            委託在庫補充の検品情報取得条件ワークコンストラクタ
+            </summary>
+            <returns>ConsStockRepInspectParamWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectParamWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork.EnterpriseCode">
+            public propaty name  :  EnterpriseCode
+            <summary>企業コードプロパティ</summary>
+            <value>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   企業コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork.MachineName">
+            public propaty name  :  MachineName
+            <summary>コンピュータ名プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   コンピュータ名プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork.EmployeeCode">
+            public propaty name  :  EmployeeCode
+            <summary>従業員コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   従業員コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork.ConsignWarehouseCode">
+            public propaty name  :  ConsignWarehouseCode
+            <summary>委託倉庫コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   委託倉庫コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork.ShipmentDay">
+            public propaty name  :  ShipmentDay
+            <summary>出荷日付プロパティ</summary>
+            <value>YYYYMMDD</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   出荷日付プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectParamWork.MainMngWarehouseCode">
+            public propaty name  :  MainMngWarehouseCode
+            <summary>主管倉庫コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   主管倉庫コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork">
+            public class name:   ConsStockRepInspectRetWork
+            <summary>
+                                 委託在庫補充の検品情報取得結果ワーク
+            </summary>
+            <remarks>
+            <br>note             :   委託在庫補充の検品情報取得結果ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   2017/08/11</br>
+            <br>Genarated Date   :   2017/08/11  (CSharp File Generated Date)</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._stockAdjustSlipNo">
+            <summary>在庫調整伝票番号</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._stockAdjustRowNo">
+            <summary>在庫調整行番号</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._adjustDate">
+            <summary>調整日付</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._goodsMakerCd">
+            <summary>商品メーカーコード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._goodsNo">
+            <summary>商品番号</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._goodsName">
+            <summary>商品名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._adjustCount">
+            <summary>調整数</summary>
+            <remarks>変更前と変更後の仕入在庫数の差を登録する。</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._warehouseCode">
+            <summary>倉庫コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._warehouseName">
+            <summary>倉庫名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._warehouseShelfNo">
+            <summary>倉庫棚番</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._goodsBarCode">
+            <summary>商品バーコード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._inspectStatus">
+            <summary>検品ステータス</summary>
+            <remarks>1:検品中 2:ピッキング済み 3:検品済み　一括検品で"2"を登録します。</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._inspectCode">
+            <summary>検品区分</summary>
+            <remarks>1:通常 2:手動検品 </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork._inspectCnt">
+            <summary>検品数</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.#ctor">
+            <summary>
+            委託在庫補充の検品情報取得結果ワークコンストラクタ
+            </summary>
+            <returns>ConsStockRepInspectRetWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectRetWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.StockAdjustSlipNo">
+            public propaty name  :  StockAdjustSlipNo
+            <summary>在庫調整伝票番号プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   在庫調整伝票番号プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.StockAdjustRowNo">
+            public propaty name  :  StockAdjustRowNo
+            <summary>在庫調整行番号プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   在庫調整行番号プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.AdjustDate">
+            public propaty name  :  AdjustDate
+            <summary>調整日付プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   調整日付プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.GoodsMakerCd">
+            public propaty name  :  GoodsMakerCd
+            <summary>商品メーカーコードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   商品メーカーコードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.GoodsNo">
+            public propaty name  :  GoodsNo
+            <summary>商品番号プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   商品番号プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.GoodsName">
+            public propaty name  :  GoodsName
+            <summary>商品名称プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   商品名称プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.AdjustCount">
+            public propaty name  :  AdjustCount
+            <summary>調整数プロパティ</summary>
+            <value>変更前と変更後の仕入在庫数の差を登録する。</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   調整数プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.WarehouseCode">
+            public propaty name  :  WarehouseCode
+            <summary>倉庫コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   倉庫コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.WarehouseName">
+            public propaty name  :  WarehouseName
+            <summary>倉庫名称プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   倉庫名称プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.WarehouseShelfNo">
+            public propaty name  :  WarehouseShelfNo
+            <summary>倉庫棚番プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   倉庫棚番プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.GoodsBarCode">
+            public propaty name  :  GoodsBarCode
+            <summary>商品バーコードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   商品バーコードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.InspectStatus">
+            public propaty name  :  InspectStatus
+            <summary>検品ステータスプロパティ</summary>
+            <value>1:検品中 2:ピッキング済み 3:検品済み　一括検品で"2"を登録します。</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   検品ステータスプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.InspectCode">
+            public propaty name  :  InspectCode
+            <summary>検品区分プロパティ</summary>
+            <value>1:通常 2:手動検品 </value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   検品区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork.InspectCnt">
+            public propaty name  :  InspectCnt
+            <summary>検品数プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   検品数プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork_SerializationSurrogate_For_V51010">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです。
+            </summary>
+            <returns>ConsStockRepInspectRetWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectRetWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork_SerializationSurrogate_For_V51010.currentMemberCount">
+            <summary>
+            ConsStockRepInspectRetWorkメンバ数(publicプロパティ数)
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork_SerializationSurrogate_For_V51010.Serialize(System.IO.BinaryWriter,System.Object)">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectRetWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork_SerializationSurrogate_For_V51010.SetConsStockRepInspectRetWork(System.IO.BinaryWriter,Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork)">
+            <summary>
+             ConsStockRepInspectRetWorkインスタンス書き込み
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectRetWorkのインスタンスを書き込み</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork_SerializationSurrogate_For_V51010.GetConsStockRepInspectRetWork(System.IO.BinaryReader,Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo)">
+            <summary>
+             ConsStockRepInspectRetWorkインスタンス取得
+            </summary>
+            <returns>ConsStockRepInspectRetWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectRetWorkのインスタンスを取得します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectRetWork_SerializationSurrogate_For_V51010.Deserialize(System.IO.BinaryReader)">
+            <summary>
+             Ver5.10.1.0用のカスタムデシリアライザです
+            </summary>
+            <returns>ConsStockRepInspectRetWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectRetWorkクラスのカスタムデシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork">
+            public class name:   ConsStockRepInspectDataParamWork
+            <summary>
+                                 委託在庫補充の検品情報保存条件ワーク
+            </summary>
+            <remarks>
+            <br>note             :   委託在庫補充の検品情報保存条件ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   2017/08/11</br>
+            <br>Genarated Date   :   2017/08/11  (CSharp File Generated Date)</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._enterpriseCode">
+            <summary>企業コード</summary>
+            <remarks>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._acPaySlipCd">
+            <summary>受払元伝票区分</summary>
+            <remarks>10:仕入,11:受託,12:受計上,13:在庫仕入20:売上,21:売計上,22:貸出,23:売切,30:移動出荷,31:移動入荷,40:調整,41:半黒,42:マスタメンテ,50:棚卸,60:組立,61:分解,70:補充入庫,71:補充出庫</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._acPaySlipNum">
+            <summary>委託先在庫調整伝票番号</summary>
+            <remarks>「受払元伝票」の伝票番号を格納</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._acPaySlipRowNo">
+            <summary>委託先在庫調整行番号</summary>
+            <remarks>「受払元伝票」の伝票行番号を格納</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._acPayTransCd">
+            <summary>受払元取引区分</summary>
+            <remarks>10:通常伝票,11:返品,12:値引,20:赤伝,21:削除,30:在庫数調整,31:原価調整,32:製番調整,33:不良品,34:抜出,35:消去,40:過不足更新,90:取消</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._goodsMakerCd">
+            <summary>商品メーカーコード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._goodsNo">
+            <summary>商品番号</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._warehouseCode">
+            <summary>委託先倉庫コード</summary>
+            <remarks>在庫管理なしは"0"</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._inspectDateTime">
+            <summary>検品日時</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._inspectStatus">
+            <summary>検品ステータス</summary>
+            <remarks>1:検品中 2:ピッキング済み 3:検品済み　一括検品で"2"を登録します。</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._inspectCode">
+            <summary>検品区分</summary>
+            <remarks>1:通常 2:手動検品 </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._inspectCnt">
+            <summary>検品数</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._handTerminalCode">
+            <summary>ハンディターミナル区分</summary>
+            <remarks>1:ハンディターミナル 9:その他</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._machineName">
+            <summary>コンピュータ名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._employeeCode">
+            <summary>従業員コード</summary>
+            <remarks>検品従業員</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork._opDiv">
+            <summary>処理区分</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.#ctor">
+            <summary>
+            委託在庫補充の検品情報保存条件ワークコンストラクタ
+            </summary>
+            <returns>ConsStockRepInspectDataParamWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectDataParamWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.EnterpriseCode">
+            public propaty name  :  EnterpriseCode
+            <summary>企業コードプロパティ</summary>
+            <value>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   企業コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.AcPaySlipCd">
+            public propaty name  :  AcPaySlipCd
+            <summary>受払元伝票区分プロパティ</summary>
+            <value>10:仕入,11:受託,12:受計上,13:在庫仕入20:売上,21:売計上,22:貸出,23:売切,30:移動出荷,31:移動入荷,40:調整,41:半黒,42:マスタメンテ,50:棚卸,60:組立,61:分解,70:補充入庫,71:補充出庫</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   受払元伝票区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.AcPaySlipNum">
+            public propaty name  :  AcPaySlipNum
+            <summary>委託先在庫調整伝票番号プロパティ</summary>
+            <value>「受払元伝票」の伝票番号を格納</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   委託先在庫調整伝票番号プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.AcPaySlipRowNo">
+            public propaty name  :  AcPaySlipRowNo
+            <summary>委託先在庫調整行番号プロパティ</summary>
+            <value>「受払元伝票」の伝票行番号を格納</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   委託先在庫調整行番号プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.AcPayTransCd">
+            public propaty name  :  AcPayTransCd
+            <summary>受払元取引区分プロパティ</summary>
+            <value>10:通常伝票,11:返品,12:値引,20:赤伝,21:削除,30:在庫数調整,31:原価調整,32:製番調整,33:不良品,34:抜出,35:消去,40:過不足更新,90:取消</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   受払元取引区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.GoodsMakerCd">
+            public propaty name  :  GoodsMakerCd
+            <summary>商品メーカーコードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   商品メーカーコードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.GoodsNo">
+            public propaty name  :  GoodsNo
+            <summary>商品番号プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   商品番号プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.WarehouseCode">
+            public propaty name  :  WarehouseCode
+            <summary>委託先倉庫コードプロパティ</summary>
+            <value>在庫管理なしは"0"</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   委託先倉庫コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.InspectDateTime">
+            public propaty name  :  InspectDateTime
+            <summary>検品日時プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   検品日時プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.InspectStatus">
+            public propaty name  :  InspectStatus
+            <summary>検品ステータスプロパティ</summary>
+            <value>1:検品中 2:ピッキング済み 3:検品済み　一括検品で"2"を登録します。</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   検品ステータスプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.InspectCode">
+            public propaty name  :  InspectCode
+            <summary>検品区分プロパティ</summary>
+            <value>1:通常 2:手動検品 </value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   検品区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.InspectCnt">
+            public propaty name  :  InspectCnt
+            <summary>検品数プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   検品数プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.HandTerminalCode">
+            public propaty name  :  HandTerminalCode
+            <summary>ハンディターミナル区分プロパティ</summary>
+            <value>1:ハンディターミナル 9:その他</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   ハンディターミナル区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.MachineName">
+            public propaty name  :  MachineName
+            <summary>コンピュータ名プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   コンピュータ名プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.EmployeeCode">
+            public propaty name  :  EmployeeCode
+            <summary>従業員コードプロパティ</summary>
+            <value>検品従業員</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   従業員コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork.OpDiv">
+            public propaty name  :  OpDiv
+            <summary>処理区分プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   処理区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork_SerializationSurrogate_For_V51010">
+            <summary>
+             Ver5.10.1.0用のカスタムシライアライザです。
+            </summary>
+            <returns>ConsStockRepInspectDataParamWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectDataParamWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork_SerializationSurrogate_For_V51010.currentMemberCount">
+            <summary>
+            ConsStockRepInspectDataParamWorkメンバ数(publicプロパティ数)
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork_SerializationSurrogate_For_V51010.Serialize(System.IO.BinaryWriter,System.Object)">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectDataParamWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork_SerializationSurrogate_For_V51010.SetConsStockRepInspectDataParamWork(System.IO.BinaryWriter,Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork)">
+            <summary>
+             ConsStockRepInspectDataParamWorkインスタンス書き込み
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectDataParamWorkのインスタンスを書き込み</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork_SerializationSurrogate_For_V51010.GetConsStockRepInspectDataParamWork(System.IO.BinaryReader,Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo)">
+            <summary>
+             ConsStockRepInspectDataParamWorkインスタンス取得
+            </summary>
+            <returns>ConsStockRepInspectDataParamWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectDataParamWorkのインスタンスを取得します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.ConsStockRepInspectDataParamWork_SerializationSurrogate_For_V51010.Deserialize(System.IO.BinaryReader)">
+            <summary>
+             Ver5.10.1.0用のカスタムデシリアライザです
+            </summary>
+            <returns>ConsStockRepInspectDataParamWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   ConsStockRepInspectDataParamWorkクラスのカスタムデシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

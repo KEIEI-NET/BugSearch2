@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09516R", "PMKHN09516R\PMKHN09516R.csproj", "{629351BD-6123-40EF-9F09-EBF43044A25C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09515G", "PMKHN09515G\PMKHN09515G.csproj", "{C91FD496-ADCD-477F-A97E-5274735D60D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09518D", "PMKHN09518D\PMKHN09518D.csproj", "{F44C01F8-EFB1-4BC3-9454-B7B9C18076F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09517O", "PMKHN09517O\PMKHN09517O.csproj", "{2015A8EB-65A9-40A4-B0DC-0AF4234128DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplicationWork", "ConsoleApplicationWork\ConsoleApplicationWork.csproj", "{1517D3BE-9A3E-437C-ADFC-85D54695B07E}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMKHN09516R\\PMKHN09516R.csproj
+		SccProjectName1 = \u0022$/Partsman.NS[060]/Source/Server/PMKHN09516R.root/PMKHN09516R/PMKHN09516R\u0022,\u0020LBVPAAAA
+		SccLocalPath1 = PMKHN09516R
+		SccProjectUniqueName2 = PMKHN09515G\\PMKHN09515G.csproj
+		SccProjectName2 = \u0022$/Partsman.NS[060]/Source/Server/PMKHN09516R.root/PMKHN09516R/PMKHN09515G\u0022,\u0020GBVPAAAA
+		SccLocalPath2 = PMKHN09515G
+		SccProjectUniqueName3 = PMKHN09518D\\PMKHN09518D.csproj
+		SccProjectName3 = \u0022$/Partsman.NS[060]/Source/Server/PMKHN09516R.root/PMKHN09516R/PMKHN09518D\u0022,\u0020VBVPAAAA
+		SccLocalPath3 = PMKHN09518D
+		SccProjectUniqueName4 = PMKHN09517O\\PMKHN09517O.csproj
+		SccProjectName4 = \u0022$/Partsman.NS[060]/Source/Server/PMKHN09516R.root/PMKHN09516R/PMKHN09517O\u0022,\u0020QBVPAAAA
+		SccLocalPath4 = PMKHN09517O
+		SccProjectUniqueName5 = ConsoleApplicationWork\\ConsoleApplicationWork.csproj
+		SccProjectName5 = \u0022$/Partsman.NS[060]/Source/Server/PMKHN09516R.root/PMKHN09516R/ConsoleApplicationWork\u0022,\u0020ABVPAAAA
+		SccLocalPath5 = ConsoleApplicationWork
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{629351BD-6123-40EF-9F09-EBF43044A25C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629351BD-6123-40EF-9F09-EBF43044A25C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629351BD-6123-40EF-9F09-EBF43044A25C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629351BD-6123-40EF-9F09-EBF43044A25C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91FD496-ADCD-477F-A97E-5274735D60D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91FD496-ADCD-477F-A97E-5274735D60D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91FD496-ADCD-477F-A97E-5274735D60D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91FD496-ADCD-477F-A97E-5274735D60D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F44C01F8-EFB1-4BC3-9454-B7B9C18076F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F44C01F8-EFB1-4BC3-9454-B7B9C18076F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F44C01F8-EFB1-4BC3-9454-B7B9C18076F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F44C01F8-EFB1-4BC3-9454-B7B9C18076F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2015A8EB-65A9-40A4-B0DC-0AF4234128DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2015A8EB-65A9-40A4-B0DC-0AF4234128DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2015A8EB-65A9-40A4-B0DC-0AF4234128DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2015A8EB-65A9-40A4-B0DC-0AF4234128DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1517D3BE-9A3E-437C-ADFC-85D54695B07E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1517D3BE-9A3E-437C-ADFC-85D54695B07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1517D3BE-9A3E-437C-ADFC-85D54695B07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1517D3BE-9A3E-437C-ADFC-85D54695B07E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,99 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN07504U", "PMKHN07504U.csproj", "{6C6D2802-CE8B-4C80-9829-AFB503458B30}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN07501C", "..\PMKHN07501C\PMKHN07501C.csproj", "{916F4C49-3967-43BD-B372-EAEC3BB958EB}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN07502I", "..\PMKHN07502I\PMKHN07502I.csproj", "{3985F2C2-7C63-46C7-8981-0CEF034BE222}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN07503E", "..\..\PMKHN07503E.root\PMKHN07503E\PMKHN07503E.csproj", "{9C6D1632-29C6-4EB6-B691-6BC47AE5CF79}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN07505C", "..\..\PMKHN07505C.root\PMKHN07505C\PMKHN07505C\PMKHN07505C.csproj", "{47C028E8-AACE-49A7-9496-4C3466CD80E5}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN07506A", "..\..\PMKHN07506A.root\PMKHN07506A\PMKHN07506A\PMKHN07506A.csproj", "{1861EBBA-5975-481F-ACF7-38461D796386}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 7
+		SccProjectUniqueName0 = ..\\..\\PMKHN07503E.root\\PMKHN07503E\\PMKHN07503E.csproj
+		SccProjectName0 = \u0022$/Partsman[810]/Source/Client/PMKHN07503E.root/PMKHN07503E\u0022,\u0020ZRVCAAAA
+		SccLocalPath0 = ..\\..\\PMKHN07503E.root\\PMKHN07503E
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMKHN07504U.root/PMKHN07504U\u0022,\u0020MSVCAAAA
+		SccLocalPath1 = ..\\..
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectFilePathRelativizedFromConnection1 = PMKHN07504U.root\\PMKHN07504U\\
+		SccProjectUniqueName2 = ..\\PMKHN07501C\\PMKHN07501C.csproj
+		SccLocalPath2 = ..\\..
+		SccProjectFilePathRelativizedFromConnection2 = PMKHN07504U.root\\PMKHN07501C\\
+		SccProjectUniqueName3 = ..\\PMKHN07502I\\PMKHN07502I.csproj
+		SccLocalPath3 = ..\\..
+		SccProjectFilePathRelativizedFromConnection3 = PMKHN07504U.root\\PMKHN07502I\\
+		SccProjectUniqueName4 = PMKHN07504U.csproj
+		SccLocalPath4 = ..\\..
+		SccProjectFilePathRelativizedFromConnection4 = PMKHN07504U.root\\PMKHN07504U\\
+		SccProjectUniqueName5 = ..\\..\\PMKHN07505C.root\\PMKHN07505C\\PMKHN07505C\\PMKHN07505C.csproj
+		SccLocalPath5 = ..\\..
+		SccProjectFilePathRelativizedFromConnection5 = PMKHN07505C.root\\PMKHN07505C\\PMKHN07505C\\
+		SccProjectUniqueName6 = ..\\..\\PMKHN07506A.root\\PMKHN07506A\\PMKHN07506A\\PMKHN07506A.csproj
+		SccLocalPath6 = ..\\..
+		SccProjectFilePathRelativizedFromConnection6 = PMKHN07506A.root\\PMKHN07506A\\PMKHN07506A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C6D2802-CE8B-4C80-9829-AFB503458B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C6D2802-CE8B-4C80-9829-AFB503458B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C6D2802-CE8B-4C80-9829-AFB503458B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C6D2802-CE8B-4C80-9829-AFB503458B30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{916F4C49-3967-43BD-B372-EAEC3BB958EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{916F4C49-3967-43BD-B372-EAEC3BB958EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{916F4C49-3967-43BD-B372-EAEC3BB958EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{916F4C49-3967-43BD-B372-EAEC3BB958EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3985F2C2-7C63-46C7-8981-0CEF034BE222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3985F2C2-7C63-46C7-8981-0CEF034BE222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3985F2C2-7C63-46C7-8981-0CEF034BE222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3985F2C2-7C63-46C7-8981-0CEF034BE222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C6D1632-29C6-4EB6-B691-6BC47AE5CF79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C6D1632-29C6-4EB6-B691-6BC47AE5CF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C6D1632-29C6-4EB6-B691-6BC47AE5CF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C6D1632-29C6-4EB6-B691-6BC47AE5CF79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47C028E8-AACE-49A7-9496-4C3466CD80E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47C028E8-AACE-49A7-9496-4C3466CD80E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47C028E8-AACE-49A7-9496-4C3466CD80E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47C028E8-AACE-49A7-9496-4C3466CD80E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1861EBBA-5975-481F-ACF7-38461D796386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1861EBBA-5975-481F-ACF7-38461D796386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1861EBBA-5975-481F-ACF7-38461D796386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1861EBBA-5975-481F-ACF7-38461D796386}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

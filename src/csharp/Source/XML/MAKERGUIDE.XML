@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>メーカーガイド</FormTitle>
+		<FormMassge>メーカーを選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>635</FormHeight>
+		<FormWidth>830</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<SearchType>2</SearchType>
+		<SearchCondition>
+			<ColName>絞込名称</ColName>
+			<ColKey>MakerName</ColKey>
+			<ColLength>15</ColLength>
+			<ColImeMode>1</ColImeMode>
+		</SearchCondition>
+		<SearchCondition>
+			<ColName>名称(ｶﾅ)</ColName>
+			<ColKey>MakerKanaName</ColKey>
+			<ColLength>20</ColLength>
+			<ColImeMode>2</ColImeMode>
+		</SearchCondition>
+		<ViewerSW>
+			<SWName>通常表示</SWName>
+			<SWParam>0</SWParam>
+		</ViewerSW>
+		<ViewerSW>
+			<SWName>全メーカー表示</SWName>
+			<SWParam>10</SWParam>
+		</ViewerSW>
+	</GuideDef>
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>メーカーコード</ColName>
+			<ColKey>GoodsMakerCd</ColKey>
+			<ColWith>120</ColWith>
+			<ColDataType>int</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>メーカー名称</ColName>
+			<ColKey>MakerName</ColKey>
+			<ColWith>280</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>カナ名称</ColName>
+			<ColKey>MakerKanaName</ColKey>
+			<ColWith>280</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>提供区分</ColName>
+			<ColKey>DivisionName</ColKey>
+			<ColWith>100</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.MakerAcs</SerchName>
+		<SerchAssm>MAKHN09112A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="string">EnterpriseCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">EnterpriseCode</SelectedInfo>
+		<SelectedInfo type="int">GoodsMakerCd</SelectedInfo>
+		<SelectedInfo type="string">MakerName</SelectedInfo>
+		<SelectedInfo type="string">MakerShortName</SelectedInfo>
+		<SelectedInfo type="string">MakerKanaName</SelectedInfo>
+		<SelectedInfo type="int">DisplayOrder</SelectedInfo>
+		<SelectedInfo type="int">Division</SelectedInfo>
+		<SelectedInfo type="string">DivisionName</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

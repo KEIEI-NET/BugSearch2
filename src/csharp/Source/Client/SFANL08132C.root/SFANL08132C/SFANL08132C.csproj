@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BEB76F83-A29D-4816-8BDB-C1C81C03D4E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Application.Common</RootNamespace>
+    <AssemblyName>SFANL08132C</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>r:\sfnetasm\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>r:\sfnetasm\SFANL08132C.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Viewer3, Version=5.2.3.713, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\ActiveReports.Viewer3.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports3, Version=5.2.3.713, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\ActiveReports3.dll</HintPath>
+    </Reference>
+    <Reference Include="PMCMN00007A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMCMN00007A.dll</HintPath>
+    </Reference>
+    <Reference Include="SFANL08120E, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFANL08120E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFANL08123D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFANL08141E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFANL08141E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFANL08237D, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFANL08237D.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00001U, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00001U.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00002C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00002C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00009C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00009C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00011I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00011I.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00013C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00013C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00027C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00027C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00036C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00036C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00297C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00297C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00501C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00501C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN09081E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN09081E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFTKD08113D, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFTKD08113D.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFTKD08153D, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFTKD08153D.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Infragistics2.Shared.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Shared.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.Misc.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinEditors.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinToolbars.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SFANL08132CA.cs" />
+    <Compile Include="Properties\SFANL08132CInfo.cs" />
+    <Compile Include="SFANL08132CB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SFANL08132CB.Designer.cs">
+      <DependentUpon>SFANL08132CB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFANL08132CC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SFANL08132CC.Designer.cs">
+      <DependentUpon>SFANL08132CC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFANL08132CD.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SFANL08132CD.Designer.cs">
+      <DependentUpon>SFANL08132CD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFANL08132CE.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SFANL08132CE.Designer.cs">
+      <DependentUpon>SFANL08132CE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFANL08132CF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SFANL08132CF.Designer.cs">
+      <DependentUpon>SFANL08132CF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFANL08132CG.cs" />
+    <Compile Include="SFANL08132CH.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SFANL08132CH.Designer.cs">
+      <DependentUpon>SFANL08132CH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFANL08132CI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SFANL08132CB.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFANL08132CB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFANL08132CC.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFANL08132CC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFANL08132CD.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFANL08132CD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFANL08132CE.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFANL08132CE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFANL08132CF.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFANL08132CF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFANL08132CH.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFANL08132CH.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="shift_jis"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{033EE8A6-3E8E-4DD0-9736-785F7DE1E8CA}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>PMKHN09560U</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Broadleaf.Windows.Forms</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DCCMN00002U, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DCCMN00003C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MACMN00001C, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFCMN00001U">
+      <Name>sfcmn00001u</Name>
+      <HintPath>r:\sfnetasm\sfcmn00001u.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00002C">
+      <Name>SFCMN00002C</Name>
+      <HintPath>r:\sfnetasm\SFCMN00002C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00006C">
+      <Name>SFCMN00006C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00006C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00008C">
+      <Name>SFCMN00008C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00008C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00009C, Version=5.10.1.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="SFCMN00013C">
+      <Name>SFCMN00013C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00013C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00212I">
+      <Name>SFCMN00212I</Name>
+      <HintPath>R:\SFNETASM\SFCMN00212I.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00505C, Version=5.10.1.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="SFCMN00651C">
+      <Name>SFCMN00651C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00651C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN09002I">
+      <Name>SFCMN09002I</Name>
+      <HintPath>R:\SFNETASM\SFCMN09002I.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN09004C">
+      <Name>SFCMN09004C</Name>
+      <HintPath>R:\SFNETASM\SFCMN09004C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFKTN01210A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFKTN09001E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFCMN00036C">
+      <Name>SFCMN00036C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00036C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFKTN09002A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="Infragistics2.Shared.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Shared.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.Misc.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinDock.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinDock.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinEditors.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinExplorerBar.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinExplorerBar.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinGrid.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinMaskedEdit.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinMaskedEdit.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinSchedule.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinStatusBar.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinStatusBar.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.UltraWinTabControl.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Infragistics\NetAdvantage for .NET (JP) 2007 Volume 1 CLR 2.0\windows forms\bin\Infragistics2.Win.v7.1.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="licenses.licx" />
+    <EmbeddedResource Include="PMKHN09560UA.resx">
+      <DependentUpon>PMKHN09560UA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="PMKHN09560UA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMKHN09560UAInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\PMKHN09561E.root\PMKHN09561E\PMKHN09561E\PMKHN09561E.csproj">
+      <Project>{E9A97E05-D0C6-4F61-B38F-B07C9EF4E481}</Project>
+      <Name>PMKHN09561E</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\PMKHN09562A.root\PMKHN09562A\PMKHN09562A\PMKHN09562A.csproj">
+      <Project>{1E1D6483-1725-4AE9-9F2A-0A815E551FD2}</Project>
+      <Name>PMKHN09562A</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

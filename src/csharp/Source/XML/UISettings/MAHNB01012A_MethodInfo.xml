@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<KoeiMethodInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--アセンブリ名称-->
+  <AssemblyName>ExtCalcSalesPrice</AssemblyName>
+  <!--クラス名称-->
+  <ClassName>Class1</ClassName>
+  <!--メソッド名称-->
+  <MethodName>pllngBaika</MethodName>
+</KoeiMethodInfo>

@@ -53,6 +53,34 @@ SEVERITY_SCORES = {
     # 印刷関連（低程度: 2点）
     "印刷: エラー処理なし→途中停止リスク": 4,
     "印刷: 改ページ判定が不十分": 2,
+
+    # Go言語関連（重要: 6-9点）
+    "Go: エラーチェック不足": 8,
+    "Go: goroutineリークの可能性": 9,
+    "Go: チャネルデッドロックの危険": 7,
+    "Go: リソース解放漏れ（defer不足）": 6,
+    "Go: panicリカバリ処理なし": 5,
+
+    # C++関連（最重要: 7-10点）
+    "C++: メモリリーク（delete/スマートポインタ不足）": 10,
+    "C++: バッファオーバーフローリスク": 10,
+    "C++: 未初期化ポインタの危険": 9,
+    "C++: RAII違反（リソース管理）": 7,
+    "C++: 例外安全性の欠如": 6,
+
+    # PHP関連（重要: 5-10点）
+    "PHP: SQLインジェクション脆弱性": 10,
+    "PHP: XSS脆弱性（未エスケープ出力）": 9,
+    "PHP: ファイルインクルード脆弱性": 9,
+    "PHP: コマンドインジェクション": 10,
+    "PHP: セッション固定化攻撃の危険": 8,
+    "PHP: CSRF対策不足": 8,
+    "PHP: ディレクトリトラバーサル": 9,
+    "PHP: mysql_*関数は非推奨（PDO/mysqli使用推奨）": 7,
+    "PHP: extract()の危険な使用": 6,
+    "PHP: eval()の使用（セキュリティリスク）": 9,
+    "PHP: エラー表示が有効（本番環境リスク）": 5,
+    "PHP: 例外処理不足": 4,
 }
 
 # ===== Optional deps =====
@@ -303,6 +331,135 @@ def scan_db(text: str) -> List[str]:
         m.append("DB: 大OFFSET→遅延。IDカーソル推奨")
     return m
 
+def scan_go(text: str) -> List[str]:
+    """Go言語固有の問題を検出"""
+    m: List[str] = []
+    lines = text.split('\n')
+
+    # エラーチェック不足 - _ でエラーを明示的に無視している
+    if re.search(r",\s*_\s*:=.*\(", text) or re.search(r"_\s*,.*:=.*\(", text):
+        m.append("Go: エラーチェック不足（エラー無視）")
+
+    # 関数呼び出し後のエラーチェック不足
+    for i, line in enumerate(lines):
+        if re.search(r"err\s*:=.*\(", line) or re.search(r",\s*err\s*:=", line):
+            # 次の数行内にエラーチェックがあるか確認
+            has_err_check = False
+            for j in range(i, min(i + 5, len(lines))):
+                if re.search(r"if\s+err\s*!=\s*nil", lines[j]):
+                    has_err_check = True
+                    break
+            if not has_err_check:
+                m.append("Go: エラーチェック不足")
+                break
+
+    # goroutineリーク - 無限ループのgoroutine
+    if re.search(r"go\s+func", text):
+        # 無限ループで終了条件がない
+        if re.search(r"for\s*\{", text) and not re.search(r"(select|return|break|<-.*Done|<-.*done|context\.Done)", text):
+            m.append("Go: goroutineリークの可能性")
+
+    # チャネルデッドロック - バッファなしチャネルへの同期送信
+    if re.search(r"make\(chan\s+", text) and not re.search(r"make\(chan\s+\w+\s*,\s*\d+", text):
+        # バッファなしチャネルで、goroutineなしの送信
+        if re.search(r"ch\s*<-", text) and not re.search(r"go\s+", text):
+            m.append("Go: チャネルデッドロックの危険")
+
+    # defer忘れ - リソース管理
+    if re.search(r"os\.Open\(", text) and not re.search(r"defer.*\.Close\(\)", text):
+        m.append("Go: ファイルクローズ忘れ（defer不足）")
+    if re.search(r"\.Lock\(\)", text) and not re.search(r"defer.*\.Unlock\(\)", text):
+        m.append("Go: ロック解放忘れ（defer不足）")
+
+    # ループ内のdefer
+    if re.search(r"for\s+.*\{.*defer.*\}", text, re.DOTALL):
+        m.append("Go: ループ内のdefer（メモリリーク）")
+
+    # panicリカバリ不足
+    if re.search(r"panic\(", text) and not re.search(r"defer.*recover\(\)", text):
+        m.append("Go: panicリカバリ処理なし")
+
+    return m
+
+def scan_cpp(text: str) -> List[str]:
+    """C++固有の問題を検出"""
+    m: List[str] = []
+    # メモリリーク
+    if re.search(r"new\s+\w+", text) and not re.search(r"(delete|unique_ptr|shared_ptr|make_unique|make_shared)", text):
+        m.append("C++: メモリリーク（delete/スマートポインタ不足）")
+    # バッファオーバーフロー
+    if re.search(r"(strcpy|strcat|sprintf|gets)\s*\(", text):
+        m.append("C++: バッファオーバーフローリスク")
+    # 未初期化ポインタ
+    if re.search(r"\*\s*\w+\s*;", text) and not re.search(r"=\s*(nullptr|NULL|new|&)", text):
+        m.append("C++: 未初期化ポインタの危険")
+    # リソースRAII違反
+    if re.search(r"(fopen|CreateFile|socket|open)\s*\(", text) and not re.search(r"(fclose|CloseHandle|close|RAII|unique_ptr|shared_ptr)", text):
+        m.append("C++: RAII違反（リソース管理）")
+    # 例外安全性
+    if re.search(r"throw\s+", text) and not re.search(r"(try|catch|noexcept)", text):
+        m.append("C++: 例外安全性の欠如")
+    return m
+
+def scan_php(text: str) -> List[str]:
+    """PHP固有の問題を検出"""
+    m: List[str] = []
+
+    # SQLインジェクション
+    if re.search(r'\$_(GET|POST|REQUEST)\[.*?\].*?(mysql_query|mysqli_query|query|exec|execute)', text, re.IGNORECASE):
+        if not re.search(r'(prepare|bind_param|bindParam|quote|escape|real_escape)', text, re.IGNORECASE):
+            m.append("PHP: SQLインジェクション脆弱性")
+
+    # XSS脆弱性
+    if re.search(r'echo\s+\$_(GET|POST|REQUEST|COOKIE)\[', text):
+        if not re.search(r'(htmlspecialchars|htmlentities|strip_tags|filter_var)', text):
+            m.append("PHP: XSS脆弱性（未エスケープ出力）")
+
+    # ファイルインクルード
+    if re.search(r'(include|require|include_once|require_once)\s*\(\s*\$_(GET|POST|REQUEST)', text):
+        m.append("PHP: ファイルインクルード脆弱性")
+
+    # コマンドインジェクション
+    if re.search(r'(exec|system|shell_exec|passthru|`.*\$_(GET|POST|REQUEST).*`)', text):
+        m.append("PHP: コマンドインジェクション")
+
+    # セッション固定化
+    if re.search(r'session_start\(\)', text) and not re.search(r'session_regenerate_id', text):
+        m.append("PHP: セッション固定化攻撃の危険")
+
+    # CSRF対策
+    if re.search(r'<form.*method=["\']post["\']', text, re.IGNORECASE):
+        if not re.search(r'(csrf|token|nonce)', text, re.IGNORECASE):
+            m.append("PHP: CSRF対策不足")
+
+    # ディレクトリトラバーサル
+    if re.search(r'(file_get_contents|fopen|include|require).*\$_(GET|POST|REQUEST)', text):
+        if not re.search(r'(basename|realpath|preg_match.*\.\./)', text):
+            m.append("PHP: ディレクトリトラバーサル")
+
+    # 非推奨関数
+    if re.search(r'mysql_(connect|query|fetch|close)', text):
+        m.append("PHP: mysql_*関数は非推奨（PDO/mysqli使用推奨）")
+
+    # extract()の危険な使用
+    if re.search(r'extract\s*\(\s*\$_(GET|POST|REQUEST)', text):
+        m.append("PHP: extract()の危険な使用")
+
+    # eval()の使用
+    if re.search(r'eval\s*\(', text):
+        m.append("PHP: eval()の使用（セキュリティリスク）")
+
+    # エラー表示
+    if re.search(r'display_errors\s*=\s*["\']?(on|1)', text, re.IGNORECASE):
+        m.append("PHP: エラー表示が有効（本番環境リスク）")
+
+    # 例外処理
+    if re.search(r'(mysql_query|mysqli_query|PDO|fopen|file_get_contents)', text):
+        if not re.search(r'(try|catch|throw|Exception)', text):
+            m.append("PHP: 例外処理不足")
+
+    return m
+
 def make_tags(text: str) -> List[str]:
     t = []
     if re.search(r"\b(price|cost|money|amount|tax|total|sum|charge|fee|pay|invoice|billing|currency|decimal|round)", text, re.IGNORECASE): t.append("money")
@@ -311,6 +468,19 @@ def make_tags(text: str) -> List[str]:
     if re.search(r"\b(SELECT|INSERT|UPDATE|DELETE|JOIN|WHERE|FROM|query|sql|database|transaction|connection)", text, re.IGNORECASE): t.append("db")
     if re.search(r"\b(api|http|fetch|axios|request|response|endpoint|REST|webhook|curl)", text, re.IGNORECASE): t.append("net")
     if re.search(r"\b(file|fs|stream|read|write|upload|download|path|directory|folder)", text, re.IGNORECASE): t.append("io")
+
+    # Go固有タグ
+    if re.search(r"\b(goroutine|channel|defer|panic|recover|context|sync\.WaitGroup)", text, re.IGNORECASE):
+        t.append("go-concurrent")
+
+    # C++固有タグ
+    if re.search(r"\b(new|delete|malloc|free|unique_ptr|shared_ptr|make_unique|make_shared)", text, re.IGNORECASE):
+        t.append("cpp-memory")
+
+    # PHP固有タグ
+    if re.search(r"\b(\$_(GET|POST|REQUEST|SESSION|COOKIE)|session_start|mysql_|mysqli_|PDO|include|require)", text):
+        t.append("php-web")
+
     return sorted(set(t))
 
 # ===== Indexer =====
@@ -570,12 +740,24 @@ def cmd_vectorize(index_path: pathlib.Path):
 # ===== Advice rules =====
 def rule_advices(d: Dict[str,Any]) -> List[str]:
     text = d.get("text", "")[:20000]
+    lang = d.get("lang", "")
     out: List[str] = []
+
+    # 共通のスキャン
     out += scan_money(text)
     out += scan_print(text)
     out += scan_ui(text)
     out += scan_db(text)
-    return out[:8]
+
+    # 言語固有のスキャン
+    if lang == "go":
+        out += scan_go(text)
+    elif lang in ("cpp", "c"):
+        out += scan_cpp(text)
+    elif lang == "php":
+        out += scan_php(text)
+
+    return out[:10]  # 8→10に増やす
 
 # ===== 重要度スコア計算 =====
 def calculate_severity_score(suspicions: List[str]) -> int:
@@ -603,16 +785,16 @@ def make_advice_entry_with_severity(d: Dict[str,Any]) -> Dict[str,Any]:
 
 def get_severity_level(score: int) -> str:
     """スコアから重要度レベルを判定"""
-    if score >= 10:
-        return "🔴 緊急"
-    elif score >= 7:
-        return "🟠 高"
-    elif score >= 4:
-        return "🟡 中"
+    if score >= 15:
+        return "[緊急]"  # エモジ除去
+    elif score >= 10:
+        return "[高]"
+    elif score >= 5:
+        return "[中]"
     elif score >= 1:
-        return "🔵 低"
+        return "[低]"
     else:
-        return "⚪ 問題なし"
+        return "[問題なし]"
 
 # ===== GPT-5 =====
 def call_gpt5_codex_responses_api(prompt: str, api_key: str, model: str = "gpt-5-codex") -> str:
@@ -851,27 +1033,27 @@ def render_report_sorted(title: str, items: List[Dict[str,Any]], ai_summary: str
 
     # 重要度別に出力
     if critical_items:
-        lines.append("## 🔴 緊急対応が必要な問題\n")
+        lines.append("## [緊急] 緊急対応が必要な問題\n")
         for i, it in enumerate(critical_items, 1):
             lines += format_item(i, it)
 
     if high_items:
-        lines.append("## 🟠 高優先度の問題\n")
+        lines.append("## [高] 高優先度の問題\n")
         for i, it in enumerate(high_items, len(critical_items) + 1):
             lines += format_item(i, it)
 
     if medium_items:
-        lines.append("## 🟡 中優先度の問題\n")
+        lines.append("## [中] 中優先度の問題\n")
         for i, it in enumerate(medium_items, len(critical_items) + len(high_items) + 1):
             lines += format_item(i, it)
 
     if low_items:
-        lines.append("## 🔵 低優先度の問題\n")
+        lines.append("## [低] 低優先度の問題\n")
         for i, it in enumerate(low_items, len(critical_items) + len(high_items) + len(medium_items) + 1):
             lines += format_item(i, it)
 
     if no_issue_items:
-        lines.append("## ⚪ 問題が検出されなかったファイル\n")
+        lines.append("## [問題なし] 問題が検出されなかったファイル\n")
         for i, it in enumerate(no_issue_items, len(items) - len(no_issue_items) + 1):
             lines += format_item_minimal(i, it)
 
@@ -892,8 +1074,8 @@ def format_item(num: int, item: Dict[str,Any]) -> List[str]:
     if susp:
         for s in susp:
             severity = SEVERITY_SCORES.get(s, 1)
-            emoji = "🔴" if severity >= 8 else "🟠" if severity >= 5 else "🟡" if severity >= 3 else "🔵"
-            lines.append(f"  - {emoji} {s}")
+            priority = "[緊急]" if severity >= 8 else "[高]" if severity >= 5 else "[中]" if severity >= 3 else "[低]"
+            lines.append(f"  - {priority} {s}")
     else:
         lines.append("  - (なし)")
 

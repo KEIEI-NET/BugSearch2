@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>倉庫ガイド</FormTitle>
+		<FormMassge>倉庫を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>645</FormHeight>
+		<FormWidth>430</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+	</GuideDef>
+	
+	<!-- 子ガイドの設定  -->
+	<InnerFormDef>
+		<InnerGuide>1</InnerGuide>
+		<InnerGuideDefRoot>
+			<InnerGuideDef GType="TableGuide">WAREHOUSEGUIDE.XML</InnerGuideDef>
+		</InnerGuideDefRoot>
+	</InnerFormDef>
+</definfo>

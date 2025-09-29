@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CN00001" xml:space="preserve">
+    <value>選択した行を削除しますか？</value>
+  </data>
+  <data name="CN00002" xml:space="preserve">
+    <value>データを削除しますか？</value>
+  </data>
+  <data name="VL00001" xml:space="preserve">
+    <value>自社締日が未入力です。</value>
+  </data>
+  <data name="VL00002" xml:space="preserve">
+    <value>自社締日の入力範囲に誤りがあります。</value>
+  </data>
+  <data name="VL00003" xml:space="preserve">
+    <value>会計年度が未入力です。</value>
+  </data>
+  <data name="VL00004" xml:space="preserve">
+    <value>期首年月日が未入力です。</value>
+  </data>
+  <data name="VL00005" xml:space="preserve">
+    <value>期首年月日の入力に誤りがあります。</value>
+  </data>
+  <data name="VL00006" xml:space="preserve">
+    <value>会社名１が未入力です。</value>
+  </data>
+  <data name="VL00007" xml:space="preserve">
+    <value>自社名称コードを入力してください。</value>
+  </data>
+  <data name="VL00008" xml:space="preserve">
+    <value>自社名称を入力してください。</value>
+  </data>
+  <data name="ER00001" xml:space="preserve">
+    <value>オフライン状態で本機能はご使用できません。</value>
+  </data>
+  <data name="ER00002" xml:space="preserve">
+    <value>アプリケーション起動中エラーが発生しました。</value>
+  </data>
+  <data name="ER00003" xml:space="preserve">
+    <value>従業員ログオフされました。アプリケーションを終了します。</value>
+  </data>
+  <data name="ER00004" xml:space="preserve">
+    <value>プログラムＩＤが設定されていません。</value>
+  </data>
+  <data name="ER00005" xml:space="preserve">
+    <value>検索条件に一致するデータは見つかりません。</value>
+  </data>
+  <data name="ER00006" xml:space="preserve">
+    <value>読み込みに失敗しました。</value>
+  </data>
+  <data name="ER00007" xml:space="preserve">
+    <value>既に他端末より削除されています。</value>
+    <comment>選択中のデータは既に削除されています。</comment>
+  </data>
+  <data name="ER00008" xml:space="preserve">
+    <value>{0}の選択中のデータが既に削除されているため、{1}の新規登録は出来ません。</value>
+  </data>
+  <data name="ER00009" xml:space="preserve">
+    <value>登録に失敗しました。</value>
+  </data>
+  <data name="ER00010" xml:space="preserve">
+    <value>自社マスタの読み込みに失敗しました。</value>
+  </data>
+  <data name="ER00011" xml:space="preserve">
+    <value>画像情報が取得できません。</value>
+  </data>
+  <data name="ER00012" xml:space="preserve">
+    <value>画像情報取得に失敗しました。</value>
+  </data>
+  <data name="ER00013" xml:space="preserve">
+    <value>このコードは既に使用されています。</value>
+  </data>
+  <data name="ER00014" xml:space="preserve">
+    <value>このレコードは拠点設定で使用されているため削除できません。</value>
+  </data>
+  <data name="ER00015" xml:space="preserve">
+    <value>削除に失敗しました。</value>
+  </data>
+  <data name="ER00016" xml:space="preserve">
+    <value>復活に失敗しました。</value>
+  </data>
+  <data name="ER00017" xml:space="preserve">
+    <value>既に他端末より更新されています。</value>
+  </data>
+  <data name="ST00001" xml:space="preserve">
+    <value>マスタメンテナンス</value>
+  </data>
+  <data name="ST00002" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="ST00003" xml:space="preserve">
+    <value>件</value>
+  </data>
+  <data name="ST00004" xml:space="preserve">
+    <value>再開</value>
+  </data>
+  <data name="ST00005" xml:space="preserve">
+    <value>中断</value>
+  </data>
+  <data name="ST00006" xml:space="preserve">
+    <value>全ての列</value>
+  </data>
+  <data name="ST00007" xml:space="preserve">
+    <value>設定項目</value>
+  </data>
+  <data name="ST00008" xml:space="preserve">
+    <value>設定値</value>
+  </data>
+  <data name="ST00009" xml:space="preserve">
+    <value>未設定</value>
+  </data>
+  <data name="ST00010" xml:space="preserve">
+    <value>新規モード</value>
+  </data>
+  <data name="ST00011" xml:space="preserve">
+    <value>更新モード</value>
+  </data>
+  <data name="ST00012" xml:space="preserve">
+    <value>削除モード</value>
+  </data>
+  <data name="ST00013" xml:space="preserve">
+    <value>翌年</value>
+  </data>
+  <data name="ST00014" xml:space="preserve">
+    <value>前年</value>
+  </data>
+  <data name="ST00015" xml:space="preserve">
+    <value>翌月</value>
+  </data>
+  <data name="ST00016" xml:space="preserve">
+    <value>前月</value>
+  </data>
+  <data name="ST00017" xml:space="preserve">
+    <value>拠点</value>
+  </data>
+  <data name="ST00018" xml:space="preserve">
+    <value>拠点＋部</value>
+  </data>
+  <data name="ST00019" xml:space="preserve">
+    <value>企業コード</value>
+  </data>
+  <data name="ST00020" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="ST00021" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="ST00022" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="ST00023" xml:space="preserve">
+    <value>削除日</value>
+  </data>
+  <data name="ST00024" xml:space="preserve">
+    <value>コード</value>
+  </data>
+  <data name="ST00025" xml:space="preserve">
+    <value>自社名称</value>
+  </data>
+  <data name="ST00026" xml:space="preserve">
+    <value>自社設定摘要１</value>
+  </data>
+  <data name="ST00027" xml:space="preserve">
+    <value>自社設定摘要２</value>
+  </data>
+  <data name="ST00028" xml:space="preserve">
+    <value>自社ＰＲ文１</value>
+  </data>
+  <data name="ST00029" xml:space="preserve">
+    <value>自社ＰＲ文２</value>
+  </data>
+  <data name="ST00030" xml:space="preserve">
+    <value>画像情報区分</value>
+  </data>
+  <data name="ST00031" xml:space="preserve">
+    <value>画像情報コード</value>
+  </data>
+  <data name="ST00032" xml:space="preserve">
+    <value>画像印字用コメント１</value>
+  </data>
+  <data name="ST00033" xml:space="preserve">
+    <value>画像印字用コメント２</value>
+  </data>
+  <data name="ST00034" xml:space="preserve">
+    <value>住所ガイド</value>
+  </data>
+</root>

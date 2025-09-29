@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReceiveInfoDataSet" targetNamespace="http://tempuri.org/ReceiveInfoDataSet.xsd" xmlns:mstns="http://tempuri.org/ReceiveInfoDataSet.xsd" xmlns="http://tempuri.org/ReceiveInfoDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReceiveInfoDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ReceiveInfoDataSet" msprop:Generator_DataSetName="ReceiveInfoDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReceiveInfo" msprop:Generator_UserTableName="ReceiveInfo" msprop:Generator_RowDeletedName="ReceiveInfoRowDeleted" msprop:Generator_TableClassName="ReceiveInfoDataTable" msprop:Generator_RowChangedName="ReceiveInfoRowChanged" msprop:Generator_RowClassName="ReceiveInfoRow" msprop:Generator_RowChangingName="ReceiveInfoRowChanging" msprop:Generator_RowEvArgName="ReceiveInfoRowChangeEvent" msprop:Generator_RowEvHandlerName="ReceiveInfoRowChangeEventHandler" msprop:Generator_TablePropName="ReceiveInfo" msprop:Generator_TableVarName="tableReceiveInfo" msprop:Generator_RowDeletingName="ReceiveInfoRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNo" msdata:Caption="No." msprop:Generator_UserColumnName="RowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="MasterName" msdata:Caption="マスタ名称" msprop:Generator_UserColumnName="MasterName" msprop:Generator_ColumnPropNameInRow="MasterName" msprop:Generator_ColumnVarNameInTable="columnMasterName" msprop:Generator_ColumnPropNameInTable="MasterNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DisplayOrder" msprop:Generator_UserColumnName="DisplayOrder" msprop:Generator_ColumnPropNameInRow="DisplayOrder" msprop:Generator_ColumnVarNameInTable="columnDisplayOrder" msprop:Generator_ColumnPropNameInTable="DisplayOrderColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:ReceiveInfo" />
+      <xs:field xpath="mstns:RowNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

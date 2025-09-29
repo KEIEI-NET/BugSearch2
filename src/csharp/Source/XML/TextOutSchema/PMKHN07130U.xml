@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>メーカーマスタ（エクスポート）</SchemaName>
+    <SchemaFileName>PMKHN07130U.xml</SchemaFileName>
+    <Writer />
+    <Date>2009/05/13</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="GoodsMakerCd">
+      <ColKey>GoodsMakerCd</ColKey>
+      <ColName>メーカーコード</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="MakerName">
+      <ColKey>MakerName</ColKey>
+      <ColName>メーカー名</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="MakerKanaName">
+      <ColKey>MakerKanaName</ColKey>
+      <ColName>カナ</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+        <ColInfo key="DisplayOrder">
+      <ColKey>DisplayOrder</ColKey>
+      <ColName>表示順位</ColName>
+      <ColNameChange />
+      <ColWidth>3</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

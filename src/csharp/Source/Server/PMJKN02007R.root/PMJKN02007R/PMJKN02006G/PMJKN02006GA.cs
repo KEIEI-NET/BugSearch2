@@ -1,0 +1,62 @@
+//****************************************************************************//
+// システム         : PM.NS
+// プログラム名称   : 自由検索型式マスタ印刷
+// プログラム概要   : 自由検索型式マスタ印刷 DB仲介クラス
+//----------------------------------------------------------------------------//
+//                (c)Copyright  2010 Broadleaf Co.,Ltd.
+//============================================================================//
+// 履歴
+//----------------------------------------------------------------------------//
+// 管理番号              作成担当 : 王海立
+// 作 成 日  2010/04/27  修正内容 : 新規作成
+//----------------------------------------------------------------------------//
+// 管理番号              作成担当 : 
+// 修 正 日              修正内容 : 
+//----------------------------------------------------------------------------//
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+using Broadleaf.Application.Remoting;
+using Broadleaf.Application.Common;
+using Broadleaf.Application.Resources;
+
+namespace Broadleaf.Application.Remoting.Adapter
+{
+    /// <summary>
+    /// 自由検索型式マスタ印刷 DB仲介クラス
+    /// </summary>
+    /// <remarks>
+    /// <br>Note       : このクラスは自由検索型式マスタ印刷検索DBクラスオブジェクトをGetObjectで戻します。</br>
+    /// <br>             完全スタンドアロンにする場合にはこのクラスで直接SupplierDBを</br>
+    /// <br>             インスタンス化して戻します。</br>
+    /// <br>Programmer : 王海立</br>
+    /// <br>Date       : 2010/04/27</br>
+    /// </remarks>
+    public class MediationFreeSearchModelPrintDB
+    {
+        /// <summary>
+        /// 自由検索型式マスタ印刷 DB仲介クラスコンストラクタ
+        /// </summary>
+        /// <remarks>
+        /// <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+        /// <br>Programmer : 王海立</br>
+        /// <br>Date       : 2010/04/27</br>
+        /// </remarks>
+        public MediationFreeSearchModelPrintDB()
+        {
+        }
+        /// <summary>
+        /// ISupplierChangeProcDBインターフェース取得
+        /// </summary>
+        /// <returns>ISupplierChangeProcDBオブジェクト</returns>
+        public static IFreeSearchModelPrintDB GetFreeSearchModelPrintDB()
+        {
+            //USERデータアプリケーションサーバーのPathを取得（提供データAPサーバーの場合には引数を変える）
+            string wkStr = LoginInfoAcquisition.GetAPServiceTargetDomain(ConstantManagement_SF_PRO.ServerCode_UserAP);
+
+            //AppSettingsからの取得は行わず自分で引数文字列を生成する
+            return (IFreeSearchModelPrintDB)Activator.GetObject(typeof(IFreeSearchModelPrintDB), string.Format("{0}/MyAppFreeSearchModelPrint", wkStr));
+        }
+    }
+}

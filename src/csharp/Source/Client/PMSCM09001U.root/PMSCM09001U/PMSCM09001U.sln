@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM09001U", "PMSCM09001U\PMSCM09001U.csproj", "{DC946A0E-4504-4473-A01D-8478868BEC62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM09003A", "..\..\PMSCM09003A.root\PMSCM09003A\PMSCM09003A\PMSCM09003A.csproj", "{7B8F5994-3A65-4012-8966-7B41B4D278A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM09002E", "..\..\PMSCM09002E.root\PMSCM09002E\PMSCM09002E\PMSCM09002E.csproj", "{F76A0885-B555-4502-8476-DFE1BA56C6B5}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccProjectUniqueName0 = ..\\..\\PMSCM09003A.root\\PMSCM09003A\\PMSCM09003A\\PMSCM09003A.csproj
+		SccProjectName0 = \u0022$/Partsman[810]/Source/Client/PMSCM09003A.root/PMSCM09003A/PMSCM09003A\u0022,\u0020ZDDCAAAA
+		SccLocalPath0 = ..\\..\\PMSCM09003A.root\\PMSCM09003A\\PMSCM09003A
+		SccProjectUniqueName1 = ..\\..\\PMSCM09002E.root\\PMSCM09002E\\PMSCM09002E\\PMSCM09002E.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMSCM09002E.root/PMSCM09002E/PMSCM09002E\u0022,\u0020ODDCAAAA
+		SccLocalPath1 = ..\\..\\PMSCM09002E.root\\PMSCM09002E\\PMSCM09002E
+		SccLocalPath2 = .
+		SccProjectUniqueName3 = PMSCM09001U\\PMSCM09001U.csproj
+		SccProjectName3 = \u0022$/Partsman[810]/Source/Client/PMSCM09001U.root/PMSCM09001U/PMSCM09001U\u0022,\u0020JEDCAAAA
+		SccLocalPath3 = PMSCM09001U
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

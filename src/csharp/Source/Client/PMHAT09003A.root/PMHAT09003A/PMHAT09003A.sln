@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMHAT09003A", "PMHAT09003A\PMHAT09003A.csproj", "{43913B83-5486-47E4-8D16-409D2ED060BA}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMHAT09003A\\PMHAT09003A.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMHAT09003A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43913B83-5486-47E4-8D16-409D2ED060BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43913B83-5486-47E4-8D16-409D2ED060BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43913B83-5486-47E4-8D16-409D2ED060BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43913B83-5486-47E4-8D16-409D2ED060BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

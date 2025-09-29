@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D05E182-8401-4027-B4E8-3487C9235994}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Application.Controller</RootNamespace>
+    <AssemblyName>PMSCM01012A</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMSCM01012A.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\sfnetasm\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMSCM01012A.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DCCMN02000U, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DCCMN02001A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCHNB01826D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCHNB01863G, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCHNB01865O, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCHNB01866D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCHNB09111E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCHNB09112A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKHN01060C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKHN09091E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DCKHN09092A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DCKHN09131E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKHN09132A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKHN09211E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKHN09212A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKHN09231E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKHN09232A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKON09101E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCKON09102A, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCMIT09011E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DCMIT09012A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAHNB01011E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAHNB01012A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAKHN04111E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAKHN04112A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAKHN09176D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAKHN09281E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAKHN09331E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAKHN09332A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAKON01826D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MAPOS09152A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAZAI04131E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMCMN00007A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMCMN00102A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMCMN00180C, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMCMN00181E, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMCMN00190A, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMHNB09002E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMHNB09003A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMJUT01813D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKEN01010E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKEN01020E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKEN08000U, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKEN08010U, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKEN08020U, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09011E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09012A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09022A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09046D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09171E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09172A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09552E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09553A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09602E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09603A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMKHN09622E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09623A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09702E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09703A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09013G, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09015O, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09016D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09003G, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09005O, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09006D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09041E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMPCC09042A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMSCM01001I, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM01020G, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM01022O, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM01023D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM01030A, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM01103A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09002E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09003A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09021E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09022A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMSCM09031E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09032A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09051E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09052A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09061E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSCM09062A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMSYR09013D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMTKD06010B, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMTKD06020B, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMTKD06160G, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMTKD06162O, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMTKD06163D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMTKD09030G, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMTKD09032O, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMTKD09033D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMTKD09063D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMUOE01053D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RcdsWebService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00001U, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00006C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00011I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00013C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00021C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00212I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00501C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00505C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00615C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00651C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00654D, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN01501C, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN01503D, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN02502A, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN02504E, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN09061E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN09062A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFKTN01210A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFKTN09001E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFKTN09002A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFTOK09381E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFTOK09382A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKK01343D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKK01346D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKK01450E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKK09001E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKK09002A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFUKN09001E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFUKN09002A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFURI09021E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFURI09022A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\AcptAnOdrTtlStAgent.cs" />
+    <Compile Include="Agent\AutoAnsItemStAgent.cs" />
+    <Compile Include="Agent\CalculatorAgent.cs" />
+    <Compile Include="Agent\CustRateGroupAgent.cs" />
+    <Compile Include="Agent\CustSlipMngAgent.cs" />
+    <Compile Include="Agent\EmployeeAgent.cs" />
+    <Compile Include="Agent\EstimateDefSetAgent.cs" />
+    <Compile Include="Agent\GoodsAcsAgent.cs" />
+    <Compile Include="Agent\PriceSelectSetAgent.cs" />
+    <Compile Include="Agent\SalesProcMoneyAgent.cs" />
+    <Compile Include="Agent\SCMIOWriterAgent.cs" />
+    <Compile Include="Agent\SCMTtlStAgent.cs" />
+    <Compile Include="Agent\USBOptionAgent.cs" />
+    <Compile Include="Auto\SCMAutoSalesListEssence.cs" />
+    <Compile Include="SCMManualConfig.cs" />
+    <Compile Include="Manual\SCMManualSalesListEssence.cs" />
+    <Compile Include="Other\OtherAppComponent.cs" />
+    <Compile Include="Agent\SalesSlipIOAgent.cs" />
+    <Compile Include="Agent\SalesTtlStAgent.cs" />
+    <Compile Include="Agent\SCMDeliveryDateSettingAgent.cs" />
+    <Compile Include="Agent\SCMPrioritySettingAgent.cs" />
+    <Compile Include="Agent\SCMPrtSettingAgent.cs" />
+    <Compile Include="Agent\SCMMarketPriceAgent.cs" />
+    <Compile Include="Agent\SecInfoSetAgent.cs" />
+    <Compile Include="Agent\SlipPrtSetAgent.cs" />
+    <Compile Include="Agent\SupplierAgent.cs" />
+    <Compile Include="Agent\TaxRateSetAgent.cs" />
+    <Compile Include="Agent\WarehouseAgent.cs" />
+    <Compile Include="Auto\SCMAutoSalesDataMaker.cs" />
+    <Compile Include="Manual\SCMManualSalesDataMaker.cs" />
+    <Compile Include="Other\SlipPrinter.cs" />
+    <Compile Include="SCMEstimateSlipDataFactory.cs" />
+    <Compile Include="SCMMarketGoodsUnitData.cs" />
+    <Compile Include="SCMOrderSlipDataFactory.cs" />
+    <Compile Include="SCMOutEquipment.cs" />
+    <Compile Include="SCMSalesDataPrinter.cs" />
+    <Compile Include="SCMSalesSlipDataFactory.cs" />
+    <Compile Include="SCMSlipDataFactory.cs" />
+    <Compile Include="Util\EasyLogger.cs" />
+    <Compile Include="Util\ListIterator.cs" />
+    <Compile Include="Util\ListUtil.cs" />
+    <Compile Include="Util\LogHelper.cs" />
+    <Compile Include="Util\NullGoodsUnitData.cs" />
+    <Compile Include="Util\SalesDetailListFactory.cs" />
+    <Compile Include="Util\SalesSlipWriterItem.cs" />
+    <Compile Include="Util\SalesSlipWriterParameter.cs" />
+    <Compile Include="Util\SingletonInstance.cs" />
+    <Compile Include="Util\Tuple.cs" />
+    <Compile Include="Properties\PMSCM01012AInfo.cs" />
+    <Compile Include="SCMAnswerSender.cs" />
+    <Compile Include="Auto\SCMAutoReferee.cs" />
+    <Compile Include="Auto\SCMAutoRespondent.cs" />
+    <Compile Include="Auto\SCMAutoSearcher.cs" />
+    <Compile Include="Manual\SCMManualReferee.cs" />
+    <Compile Include="Manual\SCMManualRespondent.cs" />
+    <Compile Include="Manual\SCMManualSearcher.cs" />
+    <Compile Include="SCMPriceCalcurator.cs" />
+    <Compile Include="SCMRespondent.cs" />
+    <Compile Include="SCMReferee.cs" />
+    <Compile Include="SCMSalesDataMaker.cs" />
+    <Compile Include="SCMSalesListEssence.cs" />
+    <Compile Include="SCMSearcher.cs" />
+    <Compile Include="SCMSearchedResult.cs" />
+    <Compile Include="Util\CampaignInformation.cs" />
+    <Compile Include="SCMGoodsUnitData.cs" />
+    <Compile Include="Util\SCMDataHelper.cs" />
+    <Compile Include="Util\SCMSobaResponseHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMSCM01011E\PMSCM01011E.csproj">
+      <Project>{6376B369-9414-4E1B-8E2C-876C1382180C}</Project>
+      <Name>PMSCM01011E</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

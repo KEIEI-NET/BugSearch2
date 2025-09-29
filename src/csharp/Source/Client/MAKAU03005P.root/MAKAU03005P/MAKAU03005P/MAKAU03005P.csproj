@@ -1,0 +1,187 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B79346ED-05F8-407F-8538-E40ED505ED7C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>MAKAU03005P</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MAKAU03005P</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports3, Version=5.2.3.713, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="MAKAU03003A, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="MAKAU03004E, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="PMCMN02001C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFANL09041E">
+      <Name>SFANL09041E</Name>
+      <HintPath>R:\SFNETASM\SFANL09041E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00001U">
+      <Name>SFCMN00001U</Name>
+      <HintPath>R:\SFNETASM\SFCMN00001U.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00002C">
+      <Name>SFCMN00002C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00002C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00006C">
+      <Name>SFCMN00006C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00006C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00013C">
+      <Name>SFCMN00013C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00013C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00031C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00031C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00292I">
+      <Name>SFCMN00292I</Name>
+      <HintPath>R:\SFNETASM\SFCMN00292I.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00293U">
+      <Name>SFCMN00293U</Name>
+      <HintPath>R:\SFNETASM\SFCMN00293U.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00331C">
+      <Name>SFCMN00331C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00331C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00381C">
+      <Name>SFCMN00381C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00381C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00392I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00392I.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN06002C">
+      <Name>SFCMN06002C</Name>
+      <HintPath>R:\SFNETASM\SFCMN06002C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN09161E, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN09161E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00036C">
+      <Name>SFCMN00036C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00036C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MAKAU03005PA.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MAKAU03005PInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

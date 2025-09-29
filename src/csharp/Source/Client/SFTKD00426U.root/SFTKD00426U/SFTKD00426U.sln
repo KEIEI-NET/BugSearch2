@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFTKD00420A", "SFTKD00420A\SFTKD00420A.csproj", "{210408AD-D069-4365-BAA9-653172CD380D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFTKD00426U", "SFTKD00426U\SFTKD00426U.csproj", "{D327C56F-C198-4BD8-A49F-2B72E3152E18}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SFTKD00420A\\SFTKD00420A.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = SFTKD00420A\\
+		SccProjectUniqueName2 = SFTKD00426U\\SFTKD00426U.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = SFTKD00426U\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{210408AD-D069-4365-BAA9-653172CD380D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210408AD-D069-4365-BAA9-653172CD380D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210408AD-D069-4365-BAA9-653172CD380D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210408AD-D069-4365-BAA9-653172CD380D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D327C56F-C198-4BD8-A49F-2B72E3152E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D327C56F-C198-4BD8-A49F-2B72E3152E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D327C56F-C198-4BD8-A49F-2B72E3152E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D327C56F-C198-4BD8-A49F-2B72E3152E18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

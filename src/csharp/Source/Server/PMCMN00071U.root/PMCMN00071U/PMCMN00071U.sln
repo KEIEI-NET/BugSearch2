@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMCMN00071U", "PMCMN00071U\PMCMN00071U.csproj", "{CFCC54E4-9788-4A6D-8EC5-165D0ADE3DCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMCMN00071UNUTEST", "PMCMN00071UNUTEST\PMCMN00071UNUTEST.csproj", "{40C27CA1-7B7D-4DFE-8499-986283368872}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMCMN00071U\\PMCMN00071U.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMCMN00071U\\
+		SccProjectUniqueName2 = PMCMN00071UNUTEST\\PMCMN00071UNUTEST.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PMCMN00071UNUTEST\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFCC54E4-9788-4A6D-8EC5-165D0ADE3DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCC54E4-9788-4A6D-8EC5-165D0ADE3DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCC54E4-9788-4A6D-8EC5-165D0ADE3DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCC54E4-9788-4A6D-8EC5-165D0ADE3DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40C27CA1-7B7D-4DFE-8499-986283368872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40C27CA1-7B7D-4DFE-8499-986283368872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40C27CA1-7B7D-4DFE-8499-986283368872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40C27CA1-7B7D-4DFE-8499-986283368872}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

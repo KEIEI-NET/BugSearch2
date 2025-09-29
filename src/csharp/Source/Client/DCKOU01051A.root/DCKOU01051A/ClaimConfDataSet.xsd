@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ClaimConfDataSet" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="NotPublic" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ClaimConfDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ClaimConfDataSet" msprop:Generator_DataSetName="ClaimConfDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SalesProcMoney" msprop:Generator_UserTableName="SalesProcMoney" msprop:Generator_RowDeletedName="SalesProcMoneyRowDeleted" msprop:Generator_TableClassName="SalesProcMoneyDataTable" msprop:Generator_RowChangedName="SalesProcMoneyRowChanged" msprop:Generator_RowClassName="SalesProcMoneyRow" msprop:Generator_RowChangingName="SalesProcMoneyRowChanging" msprop:Generator_RowEvArgName="SalesProcMoneyRowChangeEvent" msprop:Generator_RowEvHandlerName="SalesProcMoneyRowChangeEventHandler" msprop:Generator_TablePropName="SalesProcMoney" msprop:Generator_TableVarName="tableSalesProcMoney" msprop:Generator_RowDeletingName="SalesProcMoneyRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FracProcMoneyDiv" msprop:Generator_UserColumnName="FracProcMoneyDiv" msprop:Generator_ColumnPropNameInRow="FracProcMoneyDiv" msprop:Generator_ColumnVarNameInTable="columnFracProcMoneyDiv" msprop:Generator_ColumnPropNameInTable="FracProcMoneyDivColumn" type="xs:int" default="0" />
+              <xs:element name="FractionProcCode" msprop:Generator_UserColumnName="FractionProcCode" msprop:Generator_ColumnPropNameInRow="FractionProcCode" msprop:Generator_ColumnVarNameInTable="columnFractionProcCode" msprop:Generator_ColumnPropNameInTable="FractionProcCodeColumn" type="xs:int" default="0" />
+              <xs:element name="UpperLimitPrice" msprop:Generator_UserColumnName="UpperLimitPrice" msprop:Generator_ColumnPropNameInRow="UpperLimitPrice" msprop:Generator_ColumnVarNameInTable="columnUpperLimitPrice" msprop:Generator_ColumnPropNameInTable="UpperLimitPriceColumn" type="xs:double" default="0" />
+              <xs:element name="FractionProcUnit" msprop:Generator_UserColumnName="FractionProcUnit" msprop:Generator_ColumnPropNameInRow="FractionProcUnit" msprop:Generator_ColumnVarNameInTable="columnFractionProcUnit" msprop:Generator_ColumnPropNameInTable="FractionProcUnitColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="FractionProcCd" msprop:Generator_UserColumnName="FractionProcCd" msprop:Generator_ColumnPropNameInRow="FractionProcCd" msprop:Generator_ColumnVarNameInTable="columnFractionProcCd" msprop:Generator_ColumnPropNameInTable="FractionProcCdColumn" type="xs:int" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="StockProcMoney" msprop:Generator_UserTableName="StockProcMoney" msprop:Generator_RowDeletedName="StockProcMoneyRowDeleted" msprop:Generator_TableClassName="StockProcMoneyDataTable" msprop:Generator_RowChangedName="StockProcMoneyRowChanged" msprop:Generator_RowClassName="StockProcMoneyRow" msprop:Generator_RowChangingName="StockProcMoneyRowChanging" msprop:Generator_RowEvArgName="StockProcMoneyRowChangeEvent" msprop:Generator_RowEvHandlerName="StockProcMoneyRowChangeEventHandler" msprop:Generator_TablePropName="StockProcMoney" msprop:Generator_TableVarName="tableStockProcMoney" msprop:Generator_RowDeletingName="StockProcMoneyRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FracProcMoneyDiv" msprop:Generator_UserColumnName="FracProcMoneyDiv" msprop:Generator_ColumnPropNameInRow="FracProcMoneyDiv" msprop:Generator_ColumnVarNameInTable="columnFracProcMoneyDiv" msprop:Generator_ColumnPropNameInTable="FracProcMoneyDivColumn" type="xs:int" default="0" />
+              <xs:element name="FractionProcCode" msprop:Generator_UserColumnName="FractionProcCode" msprop:Generator_ColumnPropNameInRow="FractionProcCode" msprop:Generator_ColumnVarNameInTable="columnFractionProcCode" msprop:Generator_ColumnPropNameInTable="FractionProcCodeColumn" type="xs:int" default="0" />
+              <xs:element name="UpperLimitPrice" msprop:Generator_UserColumnName="UpperLimitPrice" msprop:Generator_ColumnPropNameInRow="UpperLimitPrice" msprop:Generator_ColumnVarNameInTable="columnUpperLimitPrice" msprop:Generator_ColumnPropNameInTable="UpperLimitPriceColumn" type="xs:double" default="0" />
+              <xs:element name="FractionProcUnit" msprop:Generator_UserColumnName="FractionProcUnit" msprop:Generator_ColumnPropNameInRow="FractionProcUnit" msprop:Generator_ColumnVarNameInTable="columnFractionProcUnit" msprop:Generator_ColumnPropNameInTable="FractionProcUnitColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="FractionProcCd" msprop:Generator_UserColumnName="FractionProcCd" msprop:Generator_ColumnPropNameInRow="FractionProcCd" msprop:Generator_ColumnVarNameInTable="columnFractionProcCd" msprop:Generator_ColumnPropNameInTable="FractionProcCdColumn" type="xs:int" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SalesProcMoney" />
+      <xs:field xpath="mstns:FracProcMoneyDiv" />
+      <xs:field xpath="mstns:FractionProcCode" />
+      <xs:field xpath="mstns:UpperLimitPrice" />
+    </xs:unique>
+    <xs:unique name="StockProcMoney_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:StockProcMoney" />
+      <xs:field xpath="mstns:UpperLimitPrice" />
+      <xs:field xpath="mstns:FractionProcCode" />
+      <xs:field xpath="mstns:FracProcMoneyDiv" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

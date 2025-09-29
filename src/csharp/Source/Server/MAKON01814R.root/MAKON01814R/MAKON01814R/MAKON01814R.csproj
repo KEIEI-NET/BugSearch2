@@ -1,0 +1,163 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{18FA369B-C010-439F-900E-248635F5676F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MAKON01814R</RootNamespace>
+    <AssemblyName>MAKON01814R</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DCHNB01866D, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DCJUT01804R, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DCJUT01806D, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAKON01839C, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAZAI04134R, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="MAZAI04135O, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="MAZAI04136D, Version=1.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="PMCMN00005C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="PMKHN09110R, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09111R, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKOU01111R, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKOU01112O, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKOU01113D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00006C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00006C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00011I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00011I.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00012C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00012C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00014R, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00014R.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00015O, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00015O.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00021C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00021C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00034C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00034C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00036C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00036C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00610R, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00610R.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00615C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00615C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00656C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00657I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFSIR02140D, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MAKON01814RA.cs" />
+    <Compile Include="Properties\MAKON01814RInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DCKOU01064R\DCKOU01064R.csproj">
+      <Project>{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}</Project>
+      <Name>DCKOU01064R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DCKOU01065O\DCKOU01065O.csproj">
+      <Project>{E0368338-B87F-4A0E-9C76-D60808E53227}</Project>
+      <Name>DCKOU01065O</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DCKOU01066D\DCKOU01066D.csproj">
+      <Project>{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}</Project>
+      <Name>DCKOU01066D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAKON01824R\MAKON01824R.csproj">
+      <Project>{3071DD4F-C47B-4D15-8881-39CC08B72557}</Project>
+      <Name>MAKON01824R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAKON01826D\MAKON01826D.csproj">
+      <Project>{C6056A38-2115-4EF0-BAD8-A21DE42B60C8}</Project>
+      <Name>MAKON01826D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAKON01825O\MAKON01825O.csproj">
+      <Project>{1E4BFCF1-B84F-4C0F-B91A-360FA9525C68}</Project>
+      <Name>MAKON01825O</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAKON01816D\MAKON01816D.csproj">
+      <Project>{8812788A-50A1-4E77-8865-E601F2ACCA41}</Project>
+      <Name>MAKON01816D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAKON01815O\MAKON01815O.csproj">
+      <Project>{A27A555E-0309-43BB-9DD5-DC91E8A0C8D8}</Project>
+      <Name>MAKON01815O</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAKON01914R\MAKON01914R.csproj">
+      <Project>{1A20AE4C-1B50-47B8-9B48-4A88E45A02DD}</Project>
+      <Name>MAKON01914R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAKON01924R\MAKON01924R.csproj">
+      <Project>{174CA02F-FDC1-40CC-83D1-C19A45160CC8}</Project>
+      <Name>MAKON01924R</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

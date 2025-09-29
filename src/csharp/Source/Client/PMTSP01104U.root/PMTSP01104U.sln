@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMTSP01104U", "PMTSP01104U\PMTSP01104U.csproj", "{4DF32EE0-A0DD-4D0D-BAB3-39A4E91A9371}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DF32EE0-A0DD-4D0D-BAB3-39A4E91A9371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF32EE0-A0DD-4D0D-BAB3-39A4E91A9371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF32EE0-A0DD-4D0D-BAB3-39A4E91A9371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF32EE0-A0DD-4D0D-BAB3-39A4E91A9371}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

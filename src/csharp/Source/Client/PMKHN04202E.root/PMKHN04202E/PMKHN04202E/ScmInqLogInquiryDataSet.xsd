@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ScmInqLogDataSet" targetNamespace="http://tempuri.org/ScmInqLogDataSet.xsd" xmlns:mstns="http://tempuri.org/ScmInqLogDataSet.xsd" xmlns="http://tempuri.org/ScmInqLogDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ScmInqLogDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ScmInqLogDataSet" msprop:Generator_DataSetName="ScmInqLogDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ScmInqLogInquiry" msprop:Generator_UserTableName="ScmInqLogInquiry" msprop:Generator_RowDeletedName="ScmInqLogInquiryRowDeleted" msprop:Generator_RowChangedName="ScmInqLogInquiryRowChanged" msprop:Generator_RowClassName="ScmInqLogInquiryRow" msprop:Generator_RowChangingName="ScmInqLogInquiryRowChanging" msprop:Generator_RowEvArgName="ScmInqLogInquiryRowChangeEvent" msprop:Generator_RowEvHandlerName="ScmInqLogInquiryRowChangeEventHandler" msprop:Generator_TableClassName="ScmInqLogInquiryDataTable" msprop:Generator_TableVarName="tableScmInqLogInquiry" msprop:Generator_RowDeletingName="ScmInqLogInquiryRowDeleting" msprop:Generator_TablePropName="ScmInqLogInquiry">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNo" msdata:Caption="No." msprop:Generator_UserColumnName="RowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" type="xs:int" />
+              <xs:element name="CreateDate" msdata:Caption="日付" msprop:Generator_UserColumnName="CreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CnectOriginalEpNm" msdata:Caption="問合せ元企業" msprop:Generator_UserColumnName="CnectOriginalEpNm" msprop:Generator_ColumnPropNameInRow="CnectOriginalEpNm" msprop:Generator_ColumnVarNameInTable="columnCnectOriginalEpNm" msprop:Generator_ColumnPropNameInTable="CnectOriginalEpNmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UseSystem" msdata:Caption="利用システム" msprop:Generator_UserColumnName="UseSystem" msprop:Generator_ColumnPropNameInRow="UseSystem" msprop:Generator_ColumnVarNameInTable="columnUseSystem" msprop:Generator_ColumnPropNameInTable="UseSystemColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ScmInqContents" msdata:Caption="問合せ内容" msprop:Generator_UserColumnName="ScmInqContents" msprop:Generator_ColumnPropNameInRow="ScmInqContents" msprop:Generator_ColumnVarNameInTable="columnScmInqContents" msprop:Generator_ColumnPropNameInTable="ScmInqContentsColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CreateTime" msdata:Caption="時刻" msprop:Generator_UserColumnName="CreateTime" msprop:Generator_ColumnPropNameInRow="CreateTime" msprop:Generator_ColumnVarNameInTable="columnCreateTime" msprop:Generator_ColumnPropNameInTable="CreateTimeColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ScmInqLogInquiry" />
+      <xs:field xpath="mstns:RowNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

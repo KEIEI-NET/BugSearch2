@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09470U</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Windows.Forms.PMKHN09470U">
+            <summary>
+            掛率設定マスタ（掛率優先管理パターン）
+            </summary>
+            <remarks>
+            Note       : 掛率設定マスタ（掛率優先管理パターン）設定処理です。<br />
+            Programmer : 呉元嘯<br />
+            Date       : 2010/08/10<br />
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09470U.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09470U.PMKHN09470UA_Load(System.Object,System.EventArgs)">
+            <summary>
+            フォームロードイベント処理
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09470U.PMKHN09470UA_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>
+            画面閉じる処理
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Windows.Forms.PMKHN09470U.components">
+            <summary>
+            必要なデザイナ変数です。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09470U.Dispose(System.Boolean)">
+            <summary>
+            使用中のリソースをすべてクリーンアップします。
+            </summary>
+            <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09470U.InitializeComponent">
+            <summary>
+            デザイナ サポートに必要なメソッドです。このメソッドの内容を
+            コード エディタで変更しないでください。
+            </summary>
+        </member>
+        <member name="T:Broadleaf.Windows.Forms.RateProtyMngConstruction">
+            <summary>
+            掛率設定マスタメン用ユーザー設定クラス
+            </summary>
+            <remarks>
+            <br>Note        : 掛率設定マスタメン用のユーザー設定情報を管理するクラスです。</br>
+            <br>Programmer	: 朱 猛</br>
+            <br>Date		: 2010/09/29</br>
+            <br></br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.RateProtyMngConstruction.#ctor">
+            <summary>
+            掛率設定マスタメン用ユーザー設定クラス
+            </summary>
+            <remarks>
+            <br>Note        : 掛率設定マスタメン用ユーザー設定クラスの新しいインスタンスを初期化します。</br>
+            <br>Programmer	: 朱 猛</br>
+            <br>Date		: 2010/09/29</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.RateProtyMngConstruction.#ctor(System.Int32)">
+            <summary>
+            掛率設定マスタメン用ユーザー設定クラス
+            </summary>
+            <remarks>
+            <br>Note        : 掛率設定マスタメン用ユーザー設定クラスの新しいインスタンスを初期化します。</br>
+            <br>Programmer	: 朱 猛</br>
+            <br>Date		: 2010/09/29</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.RateProtyMngConstruction.Clone">
+            <summary>
+            掛率設定マスタメン用ユーザー設定クラス複製処理
+            </summary>
+            <returns>掛率設定マスタメン用ユーザー設定クラス</returns>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.RateProtyMngConstruction.CellMoveValue">
+            <summary>セル移動設定プロパティ</summary>
+        </member>
+        <member name="T:Broadleaf.Windows.Forms.Program">
+            <summary>
+            掛率設定マスタ（掛率優先管理パターン）
+            </summary>
+            <remarks>
+            Note       : 掛率設定マスタ（掛率優先管理パターン）設定処理です。<br />
+            Programmer : 呉元嘯<br />
+            Date       : 2010/08/10<br />
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.Program.Main(System.String[])">
+            <summary>
+            アプリケーションのメイン エントリ ポイントです。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.Program.ApplicationReleased(System.Object,System.EventArgs)">
+            <summary>
+            アプリケーション終了イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+        </member>
+        <member name="T:Broadleaf.Windows.Forms.Properties.Resources">
+            <summary>
+              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+            </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.Properties.Resources.ResourceManager">
+            <summary>
+              このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+            </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.Properties.Resources.Culture">
+            <summary>
+              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+            </summary>
+        </member>
+    </members>
+</doc>

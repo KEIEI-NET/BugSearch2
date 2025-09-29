@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKYO07700G", "PMKYO07700G\PMKYO07700G.csproj", "{DB37ACEC-F6DA-4941-9981-162B8CBE5DDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKYO07701R", "PMKYO07701R\PMKYO07701R.csproj", "{97697B5B-A2FD-4E9D-AC89-5DA368691D66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKYO07702O", "PMKYO07702O\PMKYO07702O.csproj", "{F88CD2DA-FD05-4CDE-9228-FCE4A0667F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServerWorker7701", "ConsoleServerWorker7701\ConsoleServerWorker7701.csproj", "{653448F2-786E-48C1-AFEB-570C5D87741E}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ConsoleServerWorker7701\\ConsoleServerWorker7701.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = ConsoleServerWorker7701\\
+		SccProjectUniqueName2 = PMKYO07700G\\PMKYO07700G.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PMKYO07700G\\
+		SccProjectUniqueName3 = PMKYO07701R\\PMKYO07701R.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = PMKYO07701R\\
+		SccProjectUniqueName4 = PMKYO07702O\\PMKYO07702O.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = PMKYO07702O\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB37ACEC-F6DA-4941-9981-162B8CBE5DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB37ACEC-F6DA-4941-9981-162B8CBE5DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB37ACEC-F6DA-4941-9981-162B8CBE5DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB37ACEC-F6DA-4941-9981-162B8CBE5DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97697B5B-A2FD-4E9D-AC89-5DA368691D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97697B5B-A2FD-4E9D-AC89-5DA368691D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97697B5B-A2FD-4E9D-AC89-5DA368691D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97697B5B-A2FD-4E9D-AC89-5DA368691D66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88CD2DA-FD05-4CDE-9228-FCE4A0667F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88CD2DA-FD05-4CDE-9228-FCE4A0667F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88CD2DA-FD05-4CDE-9228-FCE4A0667F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88CD2DA-FD05-4CDE-9228-FCE4A0667F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653448F2-786E-48C1-AFEB-570C5D87741E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653448F2-786E-48C1-AFEB-570C5D87741E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653448F2-786E-48C1-AFEB-570C5D87741E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653448F2-786E-48C1-AFEB-570C5D87741E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

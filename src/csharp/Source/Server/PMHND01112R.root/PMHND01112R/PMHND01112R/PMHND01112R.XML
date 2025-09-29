@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND01112R</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.HandyStockSupplierDB">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）リモートオブジェクト
+            </summary>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）リモートオブジェクトです。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            <br>Update Note: Redmine#49751 検品管理 在庫入庫更新PKG差異対応</br>
+            <br>Programmer : 呉軍</br>
+            <br>Date       : 2018/09/14</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.SystemDivCdData0">
+            <summary>システム区分「0:手入力」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.SystemDivCdData1">
+            <summary>システム区分「1:伝発」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.SystemDivCdData2">
+            <summary>システム区分「2:検索」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.SystemDivCdData3">
+            <summary>システム区分「3：一括」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.EnterUpdDivSecData0">
+            <summary>入庫更新区分（拠点）「0:未入庫」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.EnterUpdDivBO1Data0">
+            <summary>入庫更新区分（BO1）「0:未入庫」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.EnterUpdDivBO2Data0">
+            <summary>入庫更新区分（BO2）「0:未入庫」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.EnterUpdDivBO3Data0">
+            <summary>入庫更新区分（BO3）「0:未入庫」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.EnterUpdDivMakerData0">
+            <summary>入庫更新区分（ﾒｰｶｰ）「0:未入庫」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.EnterUpdDivEOData0">
+            <summary>入庫更新区分（EO）「0:未入庫」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.WarehousingDivCdData1">
+            <summary>入庫区分「1:拠点」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.WarehousingDivCdData2">
+            <summary>入庫区分「2:BO1」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.WarehousingDivCdData3">
+            <summary>入庫区分「3:BO2」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.WarehousingDivCdData4">
+            <summary>入庫区分「4:BO3」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.WarehousingDivCdData5">
+            <summary>入庫区分「5:ﾒｰｶｰ」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.WarehousingDivCdData6">
+            <summary>入庫区分「6：EO」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.DataSendCodeData9">
+            <summary>データ送信区分「9:正常終了」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.DataRecoverDivData9">
+            <summary>データ復旧区分「9:正常終了」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.OpdivData1">
+            <summary>処理区分「1:在庫一括分」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.OpdivData2">
+            <summary>処理区分「2:その他」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.InspectWriteModeData0">
+            <summary>検品データ登録区分「0:検品データ登録」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.SupplierFormalData2">
+            <summary>仕入形式「2:発注」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.SupplierFormalSrcData2">
+            <summary>仕入形式（元）「2:発注」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.OrderRemainCntData0">
+            <summary>発注残数（範囲検索用）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.WayToOrderData0">
+            <summary>注文方法「0:発注書発注」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.AcPaySlipCdData10">
+            <summary>受払元伝票区分「10:仕入」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.AcPaySlipCdData13">
+            <summary>受払元伝票区分「13:在庫仕入」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.AcPayTransCdData10">
+            <summary>受払元取引区分「10:通常伝票」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.HandTerminalCodeData1">
+            <summary>ハンディターミナル区分「1:ハンディターミナル」</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.HandyStockSupplierDB.ToriyoseWarehouseCd">
+            <summary>取寄品倉庫コード</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.#ctor">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）リモートオブジェクトクラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特になし</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchStockSupplierList(System.Byte[],System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_一覧抽出処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retListObj">検索結果</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）_一覧情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchStockSupplierListProc(Broadleaf.Application.Remoting.ParamData.HandyUOEOrderListParamWork,System.Collections.ArrayList@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_一覧情報を抽出します
+            </summary>
+            <param name="condWork">検索条件</param>
+            <param name="handyUOEOrderList">検索結果</param>
+            <param name="sqlConnection">SQLコネクション</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）_一覧情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.CopyToHandyUOEOrderListWorkFromReader(System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → HandyUOEOrderListWork
+            </summary>
+            <param name="myReader">読込結果</param>
+            <returns>ハンディターミナル在庫仕入（入庫更新）_一覧情報</returns>
+            <remarks>
+            <br>Note       : クラス格納処理を行います。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchHandyStockSupplierSlipNum(System.Byte[],System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_明細情報取得処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retListObj">検索結果</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）_明細情報を検索します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchHandyStockSupplierSlipNumProc(Broadleaf.Application.Remoting.ParamData.HandyUOEOrderDtlParamWork,System.Collections.ArrayList@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_明細情報を抽出します
+            </summary>
+            <param name="condWork">検索条件</param>
+            <param name="handyUOEOrderDtlList">検索結果</param>
+            <param name="sqlConnection">SQLコネクション</param>
+            <returns>ハンディターミナル在庫仕入（入庫更新）_明細情報</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）_明細情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            <br>Update Note: Redmine#49751 検品管理 在庫入庫更新PKG差異対応</br>
+            <br>Programmer : 呉軍</br>
+            <br>Date       : 2018/09/14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.CopyToHandyUOEOrderDtlListWorkFromReader(Broadleaf.Application.Remoting.ParamData.HandyUOEOrderDtlParamWork,System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → HandyUOEOrderResultDtlWorkData
+            </summary>
+            <param name="condWork">検索条件ワーク</param>
+            <param name="myReader">読込結果</param>
+            <returns>ハンディターミナル在庫仕入（入庫更新）_明細情報</returns>
+            <remarks>
+            <br>Note       : クラス格納処理を行います。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.WriteStockSupplier(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_登録処理
+            </summary>
+            <param name="writeListObj">検品登録オブジェクト</param>
+            <param name="uoeStcUpdDataListObj">発注登録オブジェクト</param>
+            <returns>登録結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）を登録します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            <br>Update Note: Redmine#49751 検品管理 在庫入庫更新PKG差異対応</br>
+            <br>Programmer : 呉軍</br>
+            <br>Date       : 2018/09/14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchNonUOEStockSupplier(System.Byte[],System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入(UOE以外)明細抽出処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retListObj">検索結果</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入(UOE以外)明細情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchNonUOEStockSupplierProc(Broadleaf.Application.Remoting.ParamData.HandyNonUOEStockParamWork,System.Collections.ArrayList@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            ハンディターミナル在庫仕入(UOE以外)明細情報を抽出します
+            </summary>
+            <param name="condWork">検索条件</param>
+            <param name="handyNonUOEList">検索結果</param>
+            <param name="sqlConnection">SQLコネクション</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入(UOE以外)明細情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.CopyToHandyNonUOEListWorkFromReader(System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → HandyNonUOEStockResultWork
+            </summary>
+            <param name="myReader">読込結果</param>
+            <returns>ハンディターミナル在庫仕入(UOE以外)明細情報</returns>
+            <remarks>
+            <br>Note       : クラス格納処理を行います。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchHandyNonUOESlipInfo(System.Byte[],System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入(UOE以外)伝票情報抽出処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retListObj">検索結果</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入(UOE以外)伝票情報情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.SearchHandyNonUOESlipInfoProc(Broadleaf.Application.Remoting.ParamData.HandyNonUOEInspectParamWork,System.Collections.ArrayList@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            ハンディターミナル在庫仕入(UOE以外)明細情報を抽出します
+            </summary>
+            <param name="condWork">検索条件</param>
+            <param name="handyNonUOESlipInfoList">検索結果</param>
+            <param name="sqlConnection">SQLコネクション</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入(UOE以外)明細情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.CopyToHandyNonUOESlipInfoListWorkFromReader(System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → OrderListResultWork
+            </summary>
+            <param name="myReader">読込結果</param>
+            <returns>ハンディターミナル在庫仕入(UOE以外)明細情報</returns>
+            <remarks>
+            <br>Note       : クラス格納処理を行います。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.WriteHandyStockData(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（UOE以外）_登録処理
+            </summary>
+            <param name="inspectListObj">検品登録オブジェクト</param>
+            <param name="stockWriteDataListObj">発注登録オブジェクト</param>
+            <returns>登録結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（UOE以外）を登録します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockSupplierDB.CreateSqlConnection">
+            <summary>
+            SQLコネクション生成処理
+            </summary>
+            <returns>SQLコネクション</returns>
+            <remarks>
+            <br>Note       : SQLコネクションを生成します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

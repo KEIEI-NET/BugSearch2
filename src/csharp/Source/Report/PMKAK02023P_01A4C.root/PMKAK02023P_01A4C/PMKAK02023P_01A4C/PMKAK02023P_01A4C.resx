@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LastTimeAccPay.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ThisTimePayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ThisTimeTtlBlcAcPay.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ThisTimeStockPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ThisRgdsDisPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SumPayeeCode.OutputFormat" xml:space="preserve">
+    <value>000000</value>
+  </data>
+  <data name="SumPayeeSnm.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="PureStock.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="OfsThisStockTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StockSlipCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StockPricTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckTtlAccPayBalance.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CashPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TrfrPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CheckPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DraftPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="OffsetPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="FundTransferPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="OthsPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ThisTimeFeePayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ThisTimeDisPayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="tb_PrintDate.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_PrintPage.OutputFormat" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tb_AddUpSecName_Title.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Total_LastTimeAccPay.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Total_ThisTimePayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Total_ThisTimeTtlBlcAcPay.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_PureStock.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_ThisTimeStockPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_ThisRgdsDisPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Total_OfsThisStockTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Total_StockSlipCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Total_StockPricTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Total_StckTtlAccPayBalance.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_CashPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TrfrPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_CheckPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_DraftPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_OffsetPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_FundTransferPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_OthsPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_ThisTimeFeePayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_ThisTimeDisPayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SumAddUpSecCode.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MonAddUpNonProc.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MONEYKINDNAME13.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_LastTimeAccPay.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_ThisTimePayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_ThisTimeTtlBlcAcPay.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_OfsThisStockTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_ThisTimeStockPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_ThisRgdsDisPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_PureStock.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_StockSlipCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_StockPricTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_StckTtlAccPayBalance.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_CashPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TrfrPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_CheckPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_DraftPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_OffsetPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_FundTransferPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_OthsPayment.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_ThisTimeFeePayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_ThisTimeDisPayNrml.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox21.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox22.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox23.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox24.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox25.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox26.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox27.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox28.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox29.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox30.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_CashPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TrfrPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_CheckPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_DraftPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_OffsetPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_OthsPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_FundTransferPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_ThisTimeFeePayNrml2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_ThisTimeDisPayNrml2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox58.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox59.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox60.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox61.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox62.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox63.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox64.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox65.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox66.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox67.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox68.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox69.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox70.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox71.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox72.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox73.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox74.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox75.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox18.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox19.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox20.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox31.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox32.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox33.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_CashPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TrfrPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_CheckPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_DraftPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_OffsetPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_OthsPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_FundTransferPayment2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_ThisTimeFeePayNrml2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_ThisTimeDisPayNrml2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox40.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox41.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox42.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox43.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox44.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox45.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox46.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox47.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox48.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox49.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox50.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox51.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox52.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox53.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox54.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox55.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox56.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox57.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox13.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox14.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox15.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox16.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox17.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.StyleSheet" xml:space="preserve">
+    <value>font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 128; font-family: ＭＳ 明朝; </value>
+  </data>
+</root>

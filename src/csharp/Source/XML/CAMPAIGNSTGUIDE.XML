@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>キャンペーンガイド</FormTitle>
+		<FormMassge>キャンペーンを選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>635</FormHeight>
+		<FormWidth>450</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<ViewerSW>
+			<SWName>通常表示</SWName>
+			<SWParam>0</SWParam>
+		</ViewerSW>
+		<ViewerSW>
+			<SWName>全メーカー表示</SWName>
+			<SWParam>10</SWParam>
+		</ViewerSW>
+	</GuideDef>
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>キャンペーンコード</ColName>
+			<ColKey>CampaignCode</ColKey>
+			<ColWith>150</ColWith>
+			<ColDataType>int</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>キャンペーン名称</ColName>
+			<ColKey>CampaignName</ColKey>
+			<ColWith>280</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.CampaignStAcs</SerchName>
+		<SerchAssm>PMKHN09562A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="string">EnterpriseCode</SerchInfo>
+			<SerchInfo type="string">SectionCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">EnterpriseCode</SelectedInfo>
+		<SelectedInfo type="int">CampaignCode</SelectedInfo>
+		<SelectedInfo type="string">CampaignName</SelectedInfo>
+		<SelectedInfo type="int">CampaignObjDiv</SelectedInfo>
+		<SelectedInfo type="DateTime">ApplyStaDate</SelectedInfo>
+		<SelectedInfo type="DateTime">ApplyEndDate</SelectedInfo>
+		<SelectedInfo type="long">SalesTargetMoney</SelectedInfo>
+		<SelectedInfo type="long">SalesTargetProfit</SelectedInfo>
+		<SelectedInfo type="long">SalesTargetCount</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

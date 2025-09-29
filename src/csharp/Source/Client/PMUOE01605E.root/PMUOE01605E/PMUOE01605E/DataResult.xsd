@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataResult" targetNamespace="http://tempuri.org/DataResult.xsd" xmlns:mstns="http://tempuri.org/DataResult.xsd" xmlns="http://tempuri.org/DataResult.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataResult" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataResult" msprop:Generator_DataSetName="DataResult">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SlipNoAlwc" msprop:Generator_UserTableName="SlipNoAlwc" msprop:Generator_RowDeletedName="SlipNoAlwcRowDeleted" msprop:Generator_TableClassName="SlipNoAlwcDataTable" msprop:Generator_RowChangedName="SlipNoAlwcRowChanged" msprop:Generator_RowClassName="SlipNoAlwcRow" msprop:Generator_RowChangingName="SlipNoAlwcRowChanging" msprop:Generator_RowEvArgName="SlipNoAlwcRowChangeEvent" msprop:Generator_RowEvHandlerName="SlipNoAlwcRowChangeEventHandler" msprop:Generator_TablePropName="SlipNoAlwc" msprop:Generator_TableVarName="tableSlipNoAlwc" msprop:Generator_RowDeletingName="SlipNoAlwcRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SupplierDate" msdata:Caption="仕入日" msprop:Generator_UserColumnName="SupplierDate" msprop:Generator_ColumnPropNameInRow="SupplierDate" msprop:Generator_ColumnVarNameInTable="columnSupplierDate" msprop:Generator_ColumnPropNameInTable="SupplierDateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OrderDate" msdata:Caption="注文日" msprop:Generator_UserColumnName="OrderDate" msprop:Generator_ColumnPropNameInRow="OrderDate" msprop:Generator_ColumnVarNameInTable="columnOrderDate" msprop:Generator_ColumnPropNameInTable="OrderDateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OldSupplierSlipNo" msdata:Caption="元仕入伝票番号" msprop:Generator_UserColumnName="OldSupplierSlipNo" msprop:Generator_ColumnPropNameInRow="OldSupplierSlipNo" msprop:Generator_ColumnVarNameInTable="columnOldSupplierSlipNo" msprop:Generator_ColumnPropNameInTable="OldSupplierSlipNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SupplierSlipNo" msdata:Caption="仕入伝票番号" msprop:Generator_UserColumnName="SupplierSlipNo" msprop:Generator_ColumnPropNameInRow="SupplierSlipNo" msprop:Generator_ColumnVarNameInTable="columnSupplierSlipNo" msprop:Generator_ColumnPropNameInTable="SupplierSlipNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="GoodsNo" msprop:Generator_ColumnPropNameInRow="GoodsNo" msprop:Generator_ColumnVarNameInTable="columnGoodsNo" msprop:Generator_ColumnPropNameInTable="GoodsNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GoodsName" msdata:Caption="品名" msprop:Generator_UserColumnName="GoodsName" msprop:Generator_ColumnPropNameInRow="GoodsName" msprop:Generator_ColumnVarNameInTable="columnGoodsName" msprop:Generator_ColumnPropNameInTable="GoodsNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdatePrice" msdata:Caption="更新前単価" msprop:Generator_UserColumnName="UpdatePrice" msprop:Generator_ColumnPropNameInRow="UpdatePrice" msprop:Generator_ColumnVarNameInTable="columnUpdatePrice" msprop:Generator_ColumnPropNameInTable="UpdatePriceColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msdata:Caption="単価" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInTable="PriceColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FilesName" msdata:Caption="お買上一覧ファイル名称" msprop:Generator_UserColumnName="FilesName" msprop:Generator_ColumnPropNameInRow="FilesName" msprop:Generator_ColumnVarNameInTable="columnFilesName" msprop:Generator_ColumnPropNameInTable="FilesNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdateResult" msdata:Caption="引当結果" msprop:Generator_UserColumnName="UpdateResult" msprop:Generator_ColumnPropNameInRow="UpdateResult" msprop:Generator_ColumnVarNameInTable="columnUpdateResult" msprop:Generator_ColumnPropNameInTable="UpdateResultColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

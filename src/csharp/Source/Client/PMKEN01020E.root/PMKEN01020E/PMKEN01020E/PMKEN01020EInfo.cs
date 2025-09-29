@@ -1,0 +1,39 @@
+﻿//**********************************************************************//
+// System           :   ＰＭ．ＮＳ　                                    //
+// Sub System       :                                                   //
+// Program name     :                                                   //
+//                  :   PMKEN01020E.DLL                                 //
+// Name Space       :   Broadleaf.Application.Controller                //
+// Programmer       :   -                                               //
+// Date             :   -                                               //
+//----------------------------------------------------------------------//
+// Update Date      :   2018/04/05 30757 佐々木　貴英                   //
+//                  :   NS3Ai対応（BL統一部品コード対応）          　　 //
+//----------------------------------------------------------------------//
+//                Copyright(c)2018 Broadleaf Co.,Ltd.                   //
+//**********************************************************************//
+using System.Reflection;
+using Broadleaf.Library;
+
+// アセンブリに関する一般情報は以下の属性セットをとおして制御されます。 
+// アセンブリに関連付けられている情報を変更するには、
+// これらの属性値を変更してください。
+[assembly: AssemblyTitle("PMKEN01020E")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Broadleaf Co.,Ltd.")]
+[assembly: AssemblyProduct("Partsman")]
+[assembly: AssemblyCopyright("(c)2018 Broadleaf Co.,Ltd.")]
+[assembly: AssemblyTrademark("Partsman")]
+[assembly: AssemblyCulture("")]
+[assembly: AssemblyDeployment(DeployPosition.Client)]
+
+// アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+[assembly: AssemblyVersion("8.10.1.0")]
+[assembly: AssemblyFileVersion("8.10.1.0")]

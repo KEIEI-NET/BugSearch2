@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMSYA04001UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tEdit_BlGroupCode</ItemName>
+          <ItemDDName>BLGloupCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_BlGoodsCode</ItemName>
+          <ItemDDName>BLGoodsCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_WarehouseCd</ItemName>
+          <ItemDDName>WarehouseCode</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

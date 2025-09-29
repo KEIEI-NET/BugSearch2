@@ -1,0 +1,1128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GoodsMakerCd.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GoodsLGroupCode.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="GoodsMGroupCode.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="BLGroupCode.OutputFormat" xml:space="preserve">
+    <value>00000</value>
+  </data>
+  <data name="BLGoodsCode.OutputFormat" xml:space="preserve">
+    <value>00000</value>
+  </data>
+  <data name="SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CodeNameHalf20.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GoodsNo.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GoodsNameKana.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CodeNameFull20.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CustomerCode.OutputFormat" xml:space="preserve">
+    <value>00000000</value>
+  </data>
+  <data name="EmployeeCode.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="SectionCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="SupplierCode.OutputFormat" xml:space="preserve">
+    <value>000000</value>
+  </data>
+  <data name="tb_PrintDate.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_PrintPage.OutputFormat" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Ttl_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Ttl_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecHd_AddUpSecCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="SecHd_SectionGuideNm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sec_Title.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SecFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusHd_AddUpSecCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="CusHd_SectionGuideNm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CusHd_CustomerCode.OutputFormat" xml:space="preserve">
+    <value>00000000</value>
+  </data>
+  <data name="CusHd_CustomerSnm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cus_Title.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CusFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox31.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_BLGoodsCode.OutputFormat" xml:space="preserve">
+    <value>00000</value>
+  </data>
+  <data name="BlFt_BLGoodsFullName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BlFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="BlFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox33.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_GoodsMGroupCode.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="MggFt_GoodsMGroupName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MggFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MggFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox32.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_BLGroupCode.OutputFormat" xml:space="preserve">
+    <value>00000</value>
+  </data>
+  <data name="DggFt_BLGroupCodeName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DggFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DggFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox34.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_GoodsLGroupCode.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="LggFt_GoodsLGroupName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LggFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="LggFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox35.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_GoodsMakerCd.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="MakFt_MakerName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MakFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MakFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpHd_AddUpSecCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="EmpHd_SectionGuideNm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmpHd_EmployeeCode.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="EmpHd_EmployeeName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox36.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="EmpFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupHd_AddUpSecCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="SupHd_SectionGuideNm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SupHd_SupplierCode.OutputFormat" xml:space="preserve">
+    <value>000000</value>
+  </data>
+  <data name="SupHd_SupplierSnm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sup_Title.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_SalesMoney10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount12.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TotalSalesCount10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TtlTotalSalesCount.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupFt_TtlSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.StyleSheet" xml:space="preserve">
+    <value>font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 128; font-family: ＭＳ 明朝; </value>
+  </data>
+</root>

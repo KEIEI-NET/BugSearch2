@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAZAI04350U", "MAZAI04350\MAZAI04350U.csproj", "{9AF6EDA8-3CDE-4097-8860-172633969FC8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BB91D35A-855C-46FC-B8FE-C4500C930266} = {BB91D35A-855C-46FC-B8FE-C4500C930266}
+		{D8B39E80-1C9D-4934-9821-D05206C1218F} = {D8B39E80-1C9D-4934-9821-D05206C1218F}
+		{2156E2DF-5528-45ED-9356-91093F92B09A} = {2156E2DF-5528-45ED-9356-91093F92B09A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAZAI04360U", "..\..\MAZAI04360U.root\MAZAI04360U\MAZAI04360U.csproj", "{D8B39E80-1C9D-4934-9821-D05206C1218F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BB91D35A-855C-46FC-B8FE-C4500C930266} = {BB91D35A-855C-46FC-B8FE-C4500C930266}
+		{2156E2DF-5528-45ED-9356-91093F92B09A} = {2156E2DF-5528-45ED-9356-91093F92B09A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAZAI04361E", "..\..\MAZAI04361E.root\MAZAI04361E\MAZAI04361E.csproj", "{2156E2DF-5528-45ED-9356-91093F92B09A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAZAI04362A", "..\..\MAZAI04362A.root\MAZAI04362A\MAZAI04362A.csproj", "{BB91D35A-855C-46FC-B8FE-C4500C930266}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2156E2DF-5528-45ED-9356-91093F92B09A} = {2156E2DF-5528-45ED-9356-91093F92B09A}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccProjectName0 = \u0022$/Partsman.NS[019]/Source/Client/MAZAI04350U.root/MAZAI04350U\u0022,\u0020YLMHAAAA
+		SccLocalPath0 = ..\\..
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectFilePathRelativizedFromConnection0 = MAZAI04350U.root\\MAZAI04350U\\
+		SccProjectUniqueName1 = MAZAI04350\\MAZAI04350U.csproj
+		SccLocalPath1 = ..\\..
+		SccProjectFilePathRelativizedFromConnection1 = MAZAI04350U.root\\MAZAI04350U\\MAZAI04350\\
+		SccProjectUniqueName2 = ..\\..\\MAZAI04360U.root\\MAZAI04360U\\MAZAI04360U.csproj
+		SccLocalPath2 = ..\\..
+		SccProjectFilePathRelativizedFromConnection2 = MAZAI04360U.root\\MAZAI04360U\\
+		SccProjectUniqueName3 = ..\\..\\MAZAI04361E.root\\MAZAI04361E\\MAZAI04361E.csproj
+		SccLocalPath3 = ..\\..
+		SccProjectFilePathRelativizedFromConnection3 = MAZAI04361E.root\\MAZAI04361E\\
+		SccProjectUniqueName4 = ..\\..\\MAZAI04362A.root\\MAZAI04362A\\MAZAI04362A.csproj
+		SccLocalPath4 = ..\\..
+		SccProjectFilePathRelativizedFromConnection4 = MAZAI04362A.root\\MAZAI04362A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AF6EDA8-3CDE-4097-8860-172633969FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF6EDA8-3CDE-4097-8860-172633969FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF6EDA8-3CDE-4097-8860-172633969FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF6EDA8-3CDE-4097-8860-172633969FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2156E2DF-5528-45ED-9356-91093F92B09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2156E2DF-5528-45ED-9356-91093F92B09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2156E2DF-5528-45ED-9356-91093F92B09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2156E2DF-5528-45ED-9356-91093F92B09A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB91D35A-855C-46FC-B8FE-C4500C930266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB91D35A-855C-46FC-B8FE-C4500C930266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB91D35A-855C-46FC-B8FE-C4500C930266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB91D35A-855C-46FC-B8FE-C4500C930266}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

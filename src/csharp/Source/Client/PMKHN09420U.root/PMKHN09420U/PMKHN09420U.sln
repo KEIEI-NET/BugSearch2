@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09420U", "PMKHN09420U\PMKHN09420U.csproj", "{64FDAA81-3FF9-4279-9D25-E1D1CAD6011F}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMKHN09420U\\PMKHN09420U.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMKHN09420U\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64FDAA81-3FF9-4279-9D25-E1D1CAD6011F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64FDAA81-3FF9-4279-9D25-E1D1CAD6011F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64FDAA81-3FF9-4279-9D25-E1D1CAD6011F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64FDAA81-3FF9-4279-9D25-E1D1CAD6011F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,592 @@
+﻿/* -------------------------------------------------- */
+/* 共通スタイル                                       */
+/* -------------------------------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* body */
+body {
+	/* マージン・パッディング */
+	margin: 0;
+	padding: 0;
+	
+	/* フォントの種類 */
+	font-family: 'ＭＳ ゴシック',sans-serif;
+	/* 行間 */
+	line-height: 1.1;
+}
+
+/* img */
+img {
+	border-style: none;
+}
+
+/* 定義リスト */
+dl {
+}
+dt, dd {
+	/* 表示・配置設定 */
+	display: inline;
+	
+	/* フォント設定 */
+	font-size: small;
+	
+	/* ボーダー */
+	border-style: none;
+	
+	/* テキスト設定 */
+	text-align: left;
+}
+dt {
+	/* 前景・背景 */
+	color: gray;
+	
+	/* フォント設定 */
+	font-weight: bold;
+}
+dd {
+	/* 余白 */
+	margin-left: 0.5em;
+	
+	/* 前景・背景 */
+	color: #333333;
+}
+
+/* アンカー */
+a:link {
+	/* 前景・背景 */
+/*	color: #333333;*/
+}
+a:visited {
+	/* 前景・背景 */
+/*	color: #333333;*/
+}
+a:hover {
+	/* 前景・背景 */
+/*	color: gray;*/
+}
+a:active {
+	/* 前景・背景 */
+/*	color: gray;*/
+}
+
+/* -------------------------------------------------- */
+/* ヘッダ                                             */
+/* -------------------------------------------------- */
+/* ヘッダ全体 */
+div#header {
+	/* 前景・背景 */
+	background: white url(images/header_title_background.png) repeat-x left top;
+}
+
+/* ヘッダータイトル */
+div#header h1 {
+	/* 表示・配置設定 */
+	height: 64px;    /* ヘッダの背景画像・タイトル画像と同じ高さに設定 */
+	
+	/* 前景・背景 */
+	color: black;
+}
+
+/* ヘッダーナビゲーター */
+div#header div#navigator {
+	/* 表示・配置設定 */
+	clear: both;
+	
+	/* マージン・パッディング */
+	margin: 0.2em;
+	
+	/* フォント設定 */
+	font-size: small;
+}
+
+/* ヘッダ区切り */
+div#header hr {
+	/* 表示・配置設定 */
+	clear: both;
+	
+	margin: 0;
+	padding: 0;
+}
+
+/* -------------------------------------------------- */
+/* ボディエリア                                       */
+/* -------------------------------------------------- */
+div#body {
+	/* 表示・配置設定 */
+	clear: both;
+	
+	/* マージン・パッディング */
+	padding: 0.5px;
+}
+
+/* -------------------------------------------------- */
+/* メニューバー全体 */
+div#menubar {
+	/* 表示・配置設定 */
+	float: left;
+	width: 280px;
+	
+	/* マージン・パッディング */
+	margin-right: 10px;
+}
+
+/* -------------------------------------------------- */
+/* コンテンツエリア全体 */
+div#contents {
+	/* 表示・配置設定 */
+	float: left;
+	
+	/* マージン・パッディング */
+	margin-left: 10px;
+}
+
+
+/* -------------------------------------------------- */
+/* フッタ                                             */
+/* -------------------------------------------------- */
+/* フッタ全体 */
+div#footer {
+	/* 表示・配置設定 */
+	clear: both;
+	
+	/* マージン・パッディング */
+	margin-top: 0.2em;
+	
+	/* 前景・背景 */
+	background: white url(images/footer_background.png) repeat-x left top;
+}
+
+/* 著作権表示 */
+div#footer address {
+	/* 前景・背景 */
+	color: gray;
+	
+	/* マージン・パッディング */
+	margin-right: 0.5em;
+	padding-top: 26px;    /* フッタの背景画像と同じ高さ + 2px に設定 */
+	
+	/* フォント設定 */
+	font-style: italic;
+	font-size: x-small;
+	
+	/* テキスト設定 */
+	text-align: right;
+}
+
+/* -------------------------------------------------- */
+/* コンテンツエリア                                   */
+/* -------------------------------------------------- */
+
+/* -------------------------------------------------- */
+/* セクション                                         */
+
+/* セクション全体 */
+div#contents div.section {
+	/* マージン・パッディング */
+	margin-bottom: 0.5em;
+}
+
+/* サブセクション全体 */
+div#contents div.sub_section {
+	/* マージン・パッディング */
+	margin-bottom: 1em;
+	/* 英文、和文共に単語の途中でも改行 (IE 5.0以上のみ)*/
+	word-break: break-all;
+	/*overflow: auto;*/
+}
+
+/* -------------------------------------------------- */
+/* セクションタイトル                                 */
+
+/* セクションタイトル */
+div#contents h2 {
+	/* 表示・配置設定 */
+	clear: both;
+	height: 24px;
+	
+	/* マージン・パッディング */
+	padding-left: 26px;    /* ヘッダマーカーのサイズ(24px) ＋ 2px */
+	
+	/* 前景・背景 */
+	color: #333333;
+	background: white url(images/marker_h2.png) no-repeat left top;
+	
+	/* ボーダー */
+	border-style: none;
+	/*
+	border-style: solid;
+	border-color: #333333;
+	border-width: 0 0 1px 0;
+	*/
+	
+	/* カーソル形状 */
+	/*cursor:pointer;*/
+}
+
+/* サブセクションタイトル */
+div#contents h3 {
+	/* 表示・配置設定 */
+	height: 16px;
+	
+	/* マージン・パッディング */
+	padding-left: 18px;    /* ヘッダマーカーのサイズ(16px) ＋ 2px */
+	
+	/* 前景・背景 */
+	color: #333333;
+	background: white url(images/marker_h3.png) no-repeat left top;
+	
+	/* ボーダー */
+	border-style: none;
+	
+	border-color: #333333;
+	border-width: 0 0 1px 0;
+}
+
+/* サブセクションタイトル */
+div#contents h3.subh3 {
+	/* 表示・配置設定 */
+	height: 16px;
+	
+	/* マージン・パッディング */
+	padding-left: 18px;    /* ヘッダマーカーのサイズ(16px) ＋ 2px */
+	
+	/* 前景・背景 */
+	color: #333333;
+	background: white url(images/marker_h3.png) no-repeat left top;
+	
+	/* ボーダー */	
+	border-style:solid; 
+	padding-bottom:3px; 
+	border-width: 0 0 1px 0; 
+	padding-right: 0;
+	border-color: #333333;
+}
+
+/* Newイメージ */
+div#contents h4 {
+	/* 表示・配置設定 */
+	clear: both;
+	height: 24px;
+	
+	/* マージン・パッディング */
+	padding-left: 42px;    /* ヘッダマーカーのサイズ(40px) ＋ 2px */
+	
+	/* 前景・背景 */
+	color: #333333;
+	background: white url(images/new_h4.png) no-repeat left top;
+	
+	/* ボーダー */
+	border-style: none;
+}
+
+/* -------------------------------------------------- */
+/* セクションコンテンツ                               */
+
+/* セクションコンテンツ */
+div#contents div.section div.section_contents {
+	/* マージン・パッディング */
+	margin-top: 0.5em;
+	margin-left: 1em;    /* 上下: 0.5em, 左右: 1em */
+}
+
+/* サブセクションコンテンツ */
+div#contents div.sub_section_contents {
+	/* マージン・パッディング */
+	margin-top: 0.4em;
+	margin-left: 1em;
+}
+
+/* -------------------------------------------------- */
+/* .NS 配信情報                                       */
+
+/* 配信日付 */
+dl.multicast_date {
+	/* 表示・配置設定 */
+	display: inline !important;
+}
+
+/* 配信システム区分 */
+dl.multicast_system_div {
+	/* 表示・配置設定 */
+	display: inline !important;
+}
+
+/* 帳票名称 */
+dl.multicast_print_name {
+	/* 表示・配置設定 */
+	display: inline !important;
+}
+
+/* 配信情報リスト */
+ul.malticast_info {
+	/* 余白 */
+	margin-left: 0.5em;
+	/* リスト設定 */
+	list-style-type: disc;
+	list-style-image: none;
+	list-style-position: outside;
+}
+ul.malticast_info li {
+	/* 余白 */
+	margin-bottom: 0.2em;
+}
+
+/* 別紙情報 */
+dl.another_sheet {
+	/* 表示・配置設定 */
+	display: inline !important;
+	
+	/* 余白 */
+	margin-left: 1em;
+}
+dl.another_sheet dd {
+	/* 余白 */
+	margin-left: 0;
+}
+
+/* 変更プログラム名称 */
+dl.multicast_pg_name {
+}
+
+/* 変更内容 */
+p.change_contents {
+	/* 余白 */
+	margin-top: 0.5em;
+}
+
+/* -------------------------------------------------- */
+/* 配信詳細情報                                       */
+/* 配信情報リスト */
+ul.dtl_malticast_info {
+	/* 余白 */
+	margin-left: 0.5em;
+	/* リスト設定 */
+	list-style-type: disc;
+	list-style-image: none;
+	list-style-position: outside;
+}
+ul.dtl_malticast_info li {
+}
+
+/* 配信システム区分 */
+dl.dtl_multicast_system_div {
+	/* 表示・配置設定 */
+	display: inline !important;
+}
+
+/* 変更プログラム名称 */
+dl.dtl_multicast_pg_name {
+	/* 表示・配置設定 */
+	display: inline !important;
+}
+
+/* 変更内容 */
+p.dtl_change_contents {
+	/* 余白 */
+	margin-top: 0.5em;
+}
+
+/* -------------------------------------------------- */
+/* メンテナンス情報                                   */
+/* メンテナンス日付 */
+p.server_mainte_message {
+	/* フォント設定 */
+	font-size: small;
+}
+
+/* -------------------------------------------------- */
+/* メニューバー                                       */
+/* -------------------------------------------------- */
+/* メニューバー全体 */
+div#menubar {
+	/* 表示・配置設定 */
+	float: left;
+	width: 280px;
+	
+	/* マージン・パッディング */
+	margin: 0.2em;
+}
+
+/* メニュー全体 */
+div#menubar div.menu {
+}
+
+/* メニュータイトル */
+div#menubar div.menu h2 {
+}
+
+/* -------------------------------------------------- */
+/* 検索ボックス                                       */
+div#menubar div.search_box {
+	/* 余白 */
+	margin-bottom: 0.5em;
+	padding-top: 16px;    /* 背景の高さ分 */
+	
+	/* 前景・背景 */
+	background: white url(images/search_box_top.png) no-repeat left top;
+}
+
+/* 検索ボックス リスト */
+div#menubar div.search_box ul {
+	/* 余白 */
+	padding-bottom: 16px;    /* 背景の高さ分 */
+
+	/* 前景・背景 */
+	background: white url(images/search_box_bottom.png) no-repeat left bottom;
+	
+	/* リスト設定 */	
+	list-style-type: disc;
+	list-style-image: url(images/menu_marker_h3.png);
+	list-style-position: inside;
+}
+
+/* 検索ボックス リストアイテム */
+div#menubar div.search_box li {
+	/* 余白 */
+	padding-left: 10px;
+	padding-bottom: 1px;
+	
+	/* 前景・背景 */
+	background: white url(images/search_box_body.png) repeat-y left top;
+}
+/* 検索ボックス リストアイテム 検索・クリアボタン用 */
+div#menubar div.search_box li.search_submit {
+	/* リスト設定 */	
+	list-style-type: none !important;
+	list-style-image: none;
+	list-style-position: inside;
+}
+
+/* 検索ボックス アイテムボックスタイトル */
+div#menubar div.search_box h3 {
+	/* 余白 */
+	padding-left: 5px;
+}
+
+/* 検索ボックス 検索アイテム */
+div#menubar div.search_box div.search_item {
+	/* 余白 */
+	margin-bottom: 0.4em;
+	padding-left: 24px;
+
+	/* テキスト設定 */	
+	vertical-align: middle;
+}
+
+/* 検索条件入力項目 */
+div#menubar div.search_box div.search_item input {
+	/* テキスト設定 */	
+	vertical-align: middle;
+}
+
+/* 検索条件イメージ */
+div#menubar div.search_box div.search_item img {
+	/* 余白 */
+	margin-left: 2px;
+	
+	/* テキスト設定 */	
+	vertical-align: middle;
+}
+
+/* 検証コントロール用 */
+div#menubar div.search_box div.validator_ctrl {
+	padding-left: 24px;
+}
+
+/* 検索中プログレス用 */
+div#menubar div.search_box div.searching_progress {
+	margin-top: 0.5em;
+	padding-left: 24px;
+}
+
+/* 詳細検索展開リンク */
+#detailsearch_disp a:link {
+	/* 前景・背景 */
+	color: #333333;
+}
+#detailsearch_disp a:visited {
+	/* 前景・背景 */
+	color: #333333;
+}
+#detailsearch_disp a:hover {
+	/* 前景・背景 */
+	color: gray;
+}
+#detailsearch_disp a:active {
+	/* 前景・背景 */
+	color: gray;
+}
+
+/* 簡易検索展開リンク */
+#simplesearch_disp a:link {
+	/* 前景・背景 */
+	color: #333333;
+}
+#simplesearch_disp a:visited {
+	/* 前景・背景 */
+	color: #333333;
+}
+#simplesearch_disp a:hover {
+	/* 前景・背景 */
+	color: gray;
+}
+#simplesearch_disp a:active {
+	/* 前景・背景 */
+	color: gray;
+}
+
+
+/* -------------------------------------------------- */
+/* インプット系                                       */
+/* -------------------------------------------------- */
+/* キーワード入力 */
+input.input_keyword {
+	/* 表示・配置設定 */
+	width: 150px;
+	
+	/* テキスト設定 */
+	text-align: left;
+}
+
+/* バージョン入力 */
+input.input_version {
+	/* 表示・配置設定 */
+	width: 80px;
+	
+	/* テキスト設定 */
+	text-align: left;
+}
+
+/* -------------------------------------------------- */
+/* その他                                             */
+.align_center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+hr.invisible {
+	clear: both;
+	display: block;
+	visibility: hidden;
+	height: 0;
+	margin: 0px;
+}
+
+.imgnew {
+	padding-left: 1.0em;
+}
+
+/* -------------------------------------------------- */
+/* 印刷用制御                                         */
+/* -------------------------------------------------- */
+/* メニューバーを非表示 */
+@media print {
+	div#menubar {
+		/* 表示・配置設定 */
+		display: none;
+	}
+}

@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplicationWork", "ConsoleApplicationWork\ConsoleApplicationWork.csproj", "{0D9BE9C7-2575-4F0F-BFC1-7DB6DB2618B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCTOK02083G", "DCTOK02083G\DCTOK02083G.csproj", "{5022485A-0734-4CC7-AC66-79C3A81E1F1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCTOK02084R", "DCTOK02084R\DCTOK02084R.csproj", "{9B4B7687-37D4-4FC7-8BA4-3AEBDC9B04EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCTOK02085O", "DCTOK02085O\DCTOK02085O.csproj", "{EAF0664B-6F6E-4AA5-9E26-8FB22C38C004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCTOK02086D", "DCTOK02086D\DCTOK02086D.csproj", "{E273BB5D-0498-44DD-95EB-2A51105EBB63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApplicationWork", "WindowsApplicationWork\WindowsApplicationWork.csproj", "{8600E1DA-8F1F-461D-8016-653B1DC65E75}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 7
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ConsoleApplicationWork\\ConsoleApplicationWork.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = ConsoleApplicationWork\\
+		SccProjectUniqueName2 = DCTOK02083G\\DCTOK02083G.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = DCTOK02083G\\
+		SccProjectUniqueName3 = DCTOK02084R\\DCTOK02084R.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = DCTOK02084R\\
+		SccProjectUniqueName4 = DCTOK02085O\\DCTOK02085O.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = DCTOK02085O\\
+		SccProjectUniqueName5 = DCTOK02086D\\DCTOK02086D.csproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = DCTOK02086D\\
+		SccProjectUniqueName6 = WindowsApplicationWork\\WindowsApplicationWork.csproj
+		SccLocalPath6 = .
+		SccProjectFilePathRelativizedFromConnection6 = WindowsApplicationWork\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D9BE9C7-2575-4F0F-BFC1-7DB6DB2618B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9BE9C7-2575-4F0F-BFC1-7DB6DB2618B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9BE9C7-2575-4F0F-BFC1-7DB6DB2618B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9BE9C7-2575-4F0F-BFC1-7DB6DB2618B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5022485A-0734-4CC7-AC66-79C3A81E1F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5022485A-0734-4CC7-AC66-79C3A81E1F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5022485A-0734-4CC7-AC66-79C3A81E1F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5022485A-0734-4CC7-AC66-79C3A81E1F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B4B7687-37D4-4FC7-8BA4-3AEBDC9B04EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B4B7687-37D4-4FC7-8BA4-3AEBDC9B04EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B4B7687-37D4-4FC7-8BA4-3AEBDC9B04EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B4B7687-37D4-4FC7-8BA4-3AEBDC9B04EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAF0664B-6F6E-4AA5-9E26-8FB22C38C004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF0664B-6F6E-4AA5-9E26-8FB22C38C004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF0664B-6F6E-4AA5-9E26-8FB22C38C004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF0664B-6F6E-4AA5-9E26-8FB22C38C004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E273BB5D-0498-44DD-95EB-2A51105EBB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E273BB5D-0498-44DD-95EB-2A51105EBB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E273BB5D-0498-44DD-95EB-2A51105EBB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E273BB5D-0498-44DD-95EB-2A51105EBB63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8600E1DA-8F1F-461D-8016-653B1DC65E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8600E1DA-8F1F-461D-8016-653B1DC65E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8600E1DA-8F1F-461D-8016-653B1DC65E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8600E1DA-8F1F-461D-8016-653B1DC65E75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

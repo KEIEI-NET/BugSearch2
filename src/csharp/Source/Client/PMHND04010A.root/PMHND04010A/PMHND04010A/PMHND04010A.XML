@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND04010A</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Controller.HandyInspectTotalAcs">
+            <summary>
+            検品対象取得(一括検品)アクセスクラス
+            </summary>
+            <remarks>
+            <br>Note       : 検品対象取得(一括検品)アクセスクラスです。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/13</br>
+            <br></br>
+            <br>Update Note:</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.DefaultEncode">
+            <summary>デフォルトエンコード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.PathLog">
+            <summary>ログパス</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.DefaultNamePgid">
+            <summary>デフォルトログファイル名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.DefaultNameFile">
+            <summary>デフォルトログファイル名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.DefaultNameTime">
+            <summary>デフォルトログファイル名称日期フォーマット</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.DefaultLogFormat">
+            <summary>デフォルトログ内容フォーマット</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.EnterpriseCode">
+            <summary>企業コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.EmployeeCode">
+            <summary>従業員コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.MachineName">
+            <summary>コンピュータ名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.ProcDiv">
+            <summary>処理区分</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.SlipNum">
+            <summary>伝票番号</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.ErrorMsgNull">
+            <summary>パラメータnullメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.ErrorMsgParam">
+            <summary>パラメータエラーメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandyInspectTotalAcs.LogLockObj">
+            <summary>ログ用ロック</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.HandyInspectTotalAcs.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : コンストラクタです。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/13</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.HandyInspectTotalAcs.SearchHandyInspectData(System.Object,System.Object@)">
+            <summary>
+            検品対象取得(一括検品)処理
+            </summary>
+            <param name="condObj">検索条件オブジェクト</param>
+            <param name="retObj">検索結果オブジェクト</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 検品対象取得(一括検品)を取得します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/13</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.HandyInspectTotalAcs.WriteLog(Broadleaf.Application.Remoting.ParamData.HandyInspectCondWork,System.String)">
+            <summary>
+            エラーログ出力処理
+            </summary>
+            <param name="handyInspectCondWork">検索条件オブジェクト</param>
+            <param name="errMsg">エラーメッセージ</param>
+            <returns>なし</returns>
+            <remarks>
+            <br>Note       : エラーログ情報を出力します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09483O</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.IRateProtyMngPatternDB">
+            <summary>
+            掛率設定マスタメン（掛率優先管理パターン）DBインターフェース
+            </summary>
+            <remarks>
+            <br>Note       : 掛率設定マスタメン（掛率優先管理パターン）DBインターフェースです。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IRateProtyMngPatternDB.Search(System.Object@,System.Object,System.Int32,Broadleaf.Library.Resources.ConstantManagement.LogicalMode)">
+            <summary>
+            掛率優先管理マスタ情報のリストを取得します。
+            </summary>
+            <param name="outRateProtyMngList">検索結果</param>
+            <param name="paraRateProtyMngWork">検索条件</param>
+            <param name="readMode">検索区分</param>
+            <param name="logicalMode">論理削除区分(0:正規ﾃﾞｰﾀのみ 1:削除ﾃﾞｰﾀのみ 2:保留ﾃﾞｰﾀのみ 3:完全削除ﾃﾞｰﾀのみ 4:全件 5:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ 6:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ+保留ﾃﾞｰﾀ)</param>
+            <returns>STATUS</returns>
+            <br>Note       : 検索条件により掛率優先管理マスタ情報のリストを取得します。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IRateProtyMngPatternDB.SearchRateRelationData(System.Object@,System.Object@,System.Object,System.Int32,System.Int32,Broadleaf.Library.Resources.ConstantManagement.LogicalMode)">
+            <summary>
+            抽出条件によってで掛率掛率マスタとマスタを読み込み処理
+            </summary>
+            <param name="newList">新規リスト</param>
+            <param name="updateList">掛率マスタ(更新リスト)</param>
+            <param name="paraRateProtyMngPatternWork">rateProtyMngPatternWork</param>
+            <param name="patternMode">モード(0:BLコード;1:品番指定;2:品番指定;3:品番指定;4:商品掛率G指定;5:商品掛率G指定;6:商品掛率G指定;7:メーカー指定)</param>
+            <param name="readMode">readMode</param>
+            <param name="logicalMode">logicalMode</param>
+            <returns>抽出状態</returns>
+            <remarks>
+            <br>Note       : 抽出条件によってで掛率掛率マスタとマスタを読み込みます。 </br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IRateProtyMngPatternDB.WriteRateRelationData(System.Collections.ArrayList,System.Collections.ArrayList,System.Int32,System.String@)">
+            <summary>
+            掛率マスタ情報を登録、更新します
+            </summary>
+            <param name="updateList">掛率マスタリスト(更新用)</param>
+            <param name="deleteList">掛率マスタリスト(削除用)</param>
+            <param name="patternMode">patternMode(0:通常;1:層別)</param>
+            <param name="retMessage">エラーメッセージ</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 掛率マスタ情報を登録、更新します</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

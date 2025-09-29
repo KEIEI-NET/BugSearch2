@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMKEN09090UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>ChgDestMakerCd_tNedit</ItemName>
+          <ItemDDName>GoodsMakerCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>ChgSrcMakerCd_tNedit</ItemName>
+          <ItemDDName>GoodsMGroup</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>ChgDestGoodsNo_tEdit</ItemName>
+          <ItemDDName>GoodsNo</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>ChgSrcGoodsNo_tEdit</ItemName>
+          <ItemDDName>GoodsNo</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

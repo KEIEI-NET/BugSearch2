@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFCMN00776C", "SFCMN00776C.csproj", "{AAEC18B1-2710-4619-8E22-598877C8975C}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SFCMN00776C.csproj
+		SccLocalPath1 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAEC18B1-2710-4619-8E22-598877C8975C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAEC18B1-2710-4619-8E22-598877C8975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAEC18B1-2710-4619-8E22-598877C8975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAEC18B1-2710-4619-8E22-598877C8975C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

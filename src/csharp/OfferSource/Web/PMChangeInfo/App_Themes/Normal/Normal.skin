@@ -1,0 +1,39 @@
+﻿<%--
+既定のスキン テンプレート。次のスキンは例としてのみ提供されています。
+
+1. 名前付きコントロール スキン。一意の SkinId を定義する必要があります。同じテーマ内で、各コントロール型に対して重複 SkinId を使用することはできません。
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. 既定のスキン。SkinId は定義されていません。同じテーマ内で、各コントロール型に対して使用できる既定のコントロール スキンは 1 つだけです。
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<%-- ページヘッダータイトル --%>
+<%--<asp:Image SkinID="PageHeaderTitle_image" ImageUrl="images/header_title.png" runat="server" />--%>
+<asp:Image SkinID="PageHeaderTitle_image" ImageUrl="images/header_title2.png" runat="server" />
+
+<%-- トップページリンクメニューボタン --%>
+<asp:ImageButton SkinID="MenuTopPage_imageButton" ImageUrl="./images/menu_button_top.png" runat="server"/>
+<%-- 検索ページリンクメニューボタン --%>
+<%--<asp:ImageButton SkinID="MenuSearch_imageButton" ImageUrl="./images/menu_button_search.png" runat="server"/>--%>
+<asp:ImageButton SkinID="MenuSearch_imageButton" ImageUrl="./images/menu_button_search2.png" runat="server"/>
+
+<%-- 検索実行ボタン --%>
+<asp:ImageButton SkinID="Search_imageButton" ImageUrl="images/search_button_submit.png" runat="server" />
+<%-- 入力クリアボタン --%>
+<asp:ImageButton SkinID="Clear_imageButton" ImageUrl="images/search_button_clear.png" runat="server" />
+<asp:Image SkinID="Clear_image" ImageUrl="images/search_button_clear.png" runat="server" />
+
+<%-- ドロップダウンボタンイメージ --%>
+<asp:Image SkinID="DropDown_image" ImageUrl="images/drop_down_button.png" runat="server" />
+
+<%-- 検索タイトル --%>
+<%--<asp:Image SkinID="SearchTitle_image" ImageUrl="images/menu_button_search.png" runat="server" />--%>
+<asp:Image SkinID="SearchTitle_image" ImageUrl="images/menu_button_search2.png" runat="server" />
+
+<%-- 縮小・展開イメージ --%>
+<asp:Image SkinID="CollapseExpand_image" ImageUrl="images/box_expand_button.png" runat="server" />

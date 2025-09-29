@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND04300A</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Controller.HandySupplierGuideAcs">
+            <summary>
+            ハンディターミナル発注先ガイド情報取得アクセスクラス
+            </summary>
+            <remarks>
+            <br>Note       : ハンディターミナル発注先ガイド情報取得アクセスクラスです。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.DefaultEncode">
+            <summary>デフォルトエンコード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.PathLog">
+            <summary>ログパス</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.DefaultNamePgid">
+            <summary>デフォルトログファイル名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.DefaultNameFile">
+            <summary>デフォルトログファイル名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.DefaultNameTime">
+            <summary>デフォルトログファイル名称日期フォーマット</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.DefaultLogFormat">
+            <summary>デフォルトログ内容フォーマット</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.EnterpriseCode">
+            <summary>企業コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.EmployeeCode">
+            <summary>従業員コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.MachineName">
+            <summary>コンピュータ名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.ErrorMsgNull">
+            <summary>パラメータnullメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.ErrorMsgParam">
+            <summary>パラメータエラーメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.HandySupplierGuideAcs.LogLockObj">
+            <summary>ログ用ロック</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.HandySupplierGuideAcs.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : コンストラクタです。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.HandySupplierGuideAcs.SearchHandySupplierGuide(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル発注先ガイド情報取得処理
+            </summary>
+            <param name="paraHandySupplierGuideCondObj">検索条件オブジェクト</param>
+            <param name="resultHandySupplierGuideObj">検索結果オブジェクト</param>
+            <returns>検索結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル発注先ガイド情報を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.HandySupplierGuideAcs.WriteLog(Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork,System.String)">
+            <summary>
+            エラーログ出力処理
+            </summary>
+            <param name="supplierGuideParamWork">検索条件オブジェクト</param>
+            <param name="errMsg">エラーメッセージ</param>
+            <returns>なし</returns>
+            <remarks>
+            <br>Note       : エラーログ情報を出力します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

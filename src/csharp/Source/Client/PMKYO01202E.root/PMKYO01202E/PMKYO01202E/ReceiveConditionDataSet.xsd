@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReceiveConditionDataSet" targetNamespace="http://tempuri.org/ReceiveConditionDataSet.xsd" xmlns:mstns="http://tempuri.org/ReceiveConditionDataSet.xsd" xmlns="http://tempuri.org/ReceiveConditionDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReceiveConditionDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ReceiveConditionDataSet" msprop:Generator_DataSetName="ReceiveConditionDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReceiveCondition" msprop:Generator_UserTableName="ReceiveCondition" msprop:Generator_RowDeletedName="ReceiveConditionRowDeleted" msprop:Generator_RowChangedName="ReceiveConditionRowChanged" msprop:Generator_RowClassName="ReceiveConditionRow" msprop:Generator_RowChangingName="ReceiveConditionRowChanging" msprop:Generator_RowEvArgName="ReceiveConditionRowChangeEvent" msprop:Generator_RowEvHandlerName="ReceiveConditionRowChangeEventHandler" msprop:Generator_TableClassName="ReceiveConditionDataTable" msprop:Generator_TableVarName="tableReceiveCondition" msprop:Generator_RowDeletingName="ReceiveConditionRowDeleting" msprop:Generator_TablePropName="ReceiveCondition">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EnterpriseCode" msdata:Caption="送信元企業コード" msprop:Generator_UserColumnName="EnterpriseCode" msprop:Generator_ColumnPropNameInRow="EnterpriseCode" msprop:Generator_ColumnVarNameInTable="columnEnterpriseCode" msprop:Generator_ColumnPropNameInTable="EnterpriseCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="BaseCode" msdata:Caption="送信元拠点コード" msprop:Generator_UserColumnName="BaseCode" msprop:Generator_ColumnPropNameInRow="BaseCode" msprop:Generator_ColumnVarNameInTable="columnBaseCode" msprop:Generator_ColumnPropNameInTable="BaseCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="BaseName" msdata:Caption="送信元拠点名称" msprop:Generator_UserColumnName="BaseName" msprop:Generator_ColumnPropNameInRow="BaseName" msprop:Generator_ColumnVarNameInTable="columnBaseName" msprop:Generator_ColumnPropNameInTable="BaseNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ExtraCondDiv" msprop:Generator_UserColumnName="ExtraCondDiv" msprop:Generator_ColumnVarNameInTable="columnExtraCondDiv" msprop:Generator_ColumnPropNameInRow="ExtraCondDiv" msprop:Generator_ColumnPropNameInTable="ExtraCondDivColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ExtraCondDivNm" msdata:Caption="抽出条件区分" msprop:Generator_UserColumnName="ExtraCondDivNm" msprop:Generator_ColumnVarNameInTable="columnExtraCondDivNm" msprop:Generator_ColumnPropNameInRow="ExtraCondDivNm" msprop:Generator_ColumnPropNameInTable="ExtraCondDivNmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SndRcvHisConsNo" msdata:Caption="送信番号" msprop:Generator_UserColumnName="SndRcvHisConsNo" msprop:Generator_ColumnVarNameInTable="columnSndRcvHisConsNo" msprop:Generator_ColumnPropNameInRow="SndRcvHisConsNo" msprop:Generator_ColumnPropNameInTable="SndRcvHisConsNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BeginningDate" msdata:Caption="開始日付" msprop:Generator_UserColumnName="BeginningDate" msprop:Generator_ColumnPropNameInRow="BeginningDate" msprop:Generator_ColumnVarNameInTable="columnBeginningDate" msprop:Generator_ColumnPropNameInTable="BeginningDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BeginningTime" msdata:Caption="開始時間" msprop:Generator_UserColumnName="BeginningTime" msprop:Generator_ColumnPropNameInRow="BeginningTime" msprop:Generator_ColumnVarNameInTable="columnBeginningTime" msprop:Generator_ColumnPropNameInTable="BeginningTimeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EndDate" msdata:Caption="終了日付" msprop:Generator_UserColumnName="EndDate" msprop:Generator_ColumnPropNameInRow="EndDate" msprop:Generator_ColumnVarNameInTable="columnEndDate" msprop:Generator_ColumnPropNameInTable="EndDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EndTime" msdata:Caption="終了時間" msprop:Generator_UserColumnName="EndTime" msprop:Generator_ColumnPropNameInRow="EndTime" msprop:Generator_ColumnVarNameInTable="columnEndTime" msprop:Generator_ColumnPropNameInTable="EndTimeColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

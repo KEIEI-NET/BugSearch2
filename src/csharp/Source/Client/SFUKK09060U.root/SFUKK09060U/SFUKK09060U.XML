@@ -1,0 +1,476 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SFUKK09060U</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Windows.Forms.SFUKK09060UA">
+            <summary>
+            入金設定入力フォームクラス
+            </summary>
+            <remarks>
+            <br>Note       : 入金設定を行います。
+                             IMasterMaintenanceMultiTypeを実装しています。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            <br></br>
+            <br>Update Note : 2005.09.03 23006 高橋 明子</br>
+            <br>					・閉じるボタンへのフォーカスセット処理</br>
+            <br></br>
+            <br>Update Note : 2005.09.08  23006 高橋 明子</br>
+            <br>				    ・企業コード取得処理</br>
+            <br></br>
+            <br>Update Note : 2005.09.21  23006 高橋 明子</br>
+            <br>				    ・金種コード参照対応、入力チェック修正</br>
+            <br></br>
+            <br>Update Note : 2005.09.24  23006 高橋 明子</br>
+            <br>				    ・TMsgDisp部品対応</br>
+            <br></br>
+            <br>Update Note: 2005.10.07  23006 高橋 明子</br>
+            <br>			        ・ガイドボタン実装対応</br>
+            <br></br>
+            <br>Update Note: 2005.10.18  23006 高橋 明子</br>
+            <br>			        ・ガイドボタンフォーカス制御対応</br>
+            <br></br>
+            <br>Update Note : 2005.10.19  23006 高橋 明子</br>
+            <br>				    ・UI子画面Hide時のOwner.Activate処理追加</br>
+            <br></br>
+            <br>Update Note : 2005.12.20  23006 高橋 明子</br>
+            <br>				    ・親マスタ反映同期対応</br>
+            <br></br>
+            <br>Update Note : 2006.01.13  23006 高橋 明子</br>
+            <br>                    ・コード参照項目の入力変更フラグを立てるときの条件修正</br>
+            <br></br>
+            <br>Update Note : 2007.05.23  980023 飯谷 耕平</br>
+            <br>                    ・マスメンのガイドはリモートを参照するように修正</br>
+            <br></br>
+            <br>Update Note : 2007.05.27  30005 木建 翼</br>
+            <br>                    ・金額種別名称取得処理の修正</br>
+            <br></br>
+            <br>UpdateNote   : 2008/10/10 30462 行澤 仁美　バグ修正</br>
+            <br></br>
+            <br>UpdateNote   : 2009/06/22       照田 貴志</br>
+            <br>                    ・不具合対応[13580]</br>
+            <br>                    ・未使用で警告が出ている変数を削除</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.#ctor">
+            <summary>
+            入金設定入力フォームクラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 入金設定入力フォームクラスの新しいインスタンスを初期化します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.Dispose(System.Boolean)">
+            <summary>
+            使用されているリソースに後処理を実行します。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.InitializeComponent">
+            <summary>
+            デザイナ サポートに必要なメソッドです。このメソッドの内容を
+            コード エディタで変更しないでください。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.Main">
+            <summary>
+            アプリケーションのメイン エントリ ポイントです。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.Print">
+            <summary>
+            印刷処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : （未実装）</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.GetHtmlCode">
+            <summary>
+            HTMLコード取得処理
+            </summary>
+            <returns>HTMLコード</returns>
+            <remarks>
+            <br>Note       : ビュー用のＨＴＭＬコードを取得します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.ScreenInitialSetting">
+            <summary>
+            画面初期設定処理
+            </summary>
+            <remarks>
+            <br>Note       : 画面の初期設定を行います。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.ScreenToDepositSt">
+            <summary>
+            入金設定クラスデータ格納処理（画面情報⇒入金設定クラス）
+            </summary>
+            <remarks>
+            <br>Note       : 画面情報から入金設定クラスにデータを格納します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStToScreen">
+            <summary>
+            入金設定クラスデータ展開処理（入金設定クラス⇒画面情報）
+            </summary>
+            <remarks>
+            <br>Note       : 入金設定クラスから画面にデータを展開します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.ScreenClear">
+            <summary>
+            画面初期化処理
+            </summary>
+            <remarks>
+            <br>Note       : 画面の初期化を行います。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.ScreenReconstruction">
+            <summary>
+            画面再構築処理
+            </summary>
+            <remarks>
+            <br>Note       : モードに基づいて画面を再構築します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.checkDisplay(System.String@)">
+            <summary>
+            入金設定画面入力チェック処理
+            </summary>
+            <param name="checkMessage">エラーメッセージ</param>
+            <returns>エラーコード</returns>
+            <remarks>
+            <br>Note       : 入金設定画面の入力チェックをします。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.SaveDepositSt">
+            <summary>
+            入金設定保存処理
+            </summary>
+            <returns>エラーコード</returns>
+            <remarks>
+            <br>Note       : 入金設定情報の保存を行います。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.ExclusiveTransaction(System.Int32)">
+            <summary>
+            排他処理
+            </summary>
+            <param name="status">ステータス</param>
+            <remarks>
+            <br>Note       : データ更新時の排他処理を行います。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.StartGuidProc(System.String)">
+            <summary>
+            ガイド起動処理
+            </summary>
+            <remarks>
+            <br>Note		: ガイドを起動し、選択内容を画面に適用します。</br>
+            <br>Programmer	: 23006	 高橋 明子</br>
+            <br>Date		: 2005.10.07</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.SFUKK09060UA_Load(System.Object,System.EventArgs)">
+            <summary>
+            Form.Load イベント(SFUKK09060UA)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : ユーザーがフォームを読み込むときに発生します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.SFUKK09060UA_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Form.Closing イベント(SFUKK09060UA)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">キャンセルできるイベントのデータを提供するクラス</param>
+            <remarks>
+            <br>Note       : フォームを閉じる前に、ユーザーがフォームを閉じようとしたときに発生します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.SFUKK09060UA_VisibleChanged(System.Object,System.EventArgs)">
+            <summary>
+            Form.VisibleChanged イベント(SFUKK09060UA)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : 画面の表示、非表示が変わった時に発生します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.Ok_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント(Ok_Button)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : 保存ボタンコントロールがクリックされたときに発生します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.Cancel_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント(Cancel_Button)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : 閉じるボタンコントロールがクリックされたときに発生します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.MoneyKindGuide_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント(Guide_Button)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : ガイドボタンコントロールがクリックされたときに発生します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.timer1_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Timer.Tick イベント(SFUKK09060UA)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : タイマーが起動するときに発生します。</br>
+            <br>Programmer : 23013 牧　将人</br>
+            <br>Date       : 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.tNedit_Enter(System.Object,System.EventArgs)">
+            <summary>
+            Control.Enter イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">キー情報</param>
+            <remarks>
+            <br>Note			:	Controlがアクティブになった際に発生します。</br>
+            <br>Programmer		:	23013 牧　将人</br>
+            <br>Date			:	2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            Control.Leave イベント(tNedit)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note　　　  : 初期選択金種コードtNeditを抜けた時に発生します。</br>
+            <br>Programmer	: 23006  高橋 明子</br>
+            <br>Date		: 2005.09.21</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.tNedit_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Control.ValueChanged イベント(tNedit)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note　　　  : tNedit内のデータが変更された際に発生します。</br>
+            <br>Programmer	: 23006  高橋 明子</br>
+            <br>Date		: 2006.01.13</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.InitSelMoneyKindCdInfoChange(System.Int32)">
+            <summary>
+            金種情報変更処理(InitSelMoneyKindCdInfoChange)
+            </summary>
+            <param name="ix">メッセージ表示有無 (0:メッセージ表示する  1:メッセージ表示しない)</param>
+            <remarks>
+            <br>Note		: 入金コードにあわせて表示されている入金情報の変更を行います。</br>
+            <br>Programmer	: 23006  高橋 明子</br>
+            <br>Date		: 2005.12.20</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.SetControlTable">
+            <summary>
+            コンポーネントをハッシュに格納処理
+            </summary>
+            <remarks>
+            <br>Note		: コンポーネントをハッシュに格納処理を行います。</br>
+            <br>Programmer	: 23013 牧　将人</br>
+            <br>Date		: 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.GetAllControls(System.Windows.Forms.Control)">
+            <summary>
+            コンポーネントをハッシュに格納処理
+            </summary>
+            <remarks>
+            <br>Note		: コンポーネントをハッシュに格納処理を行います。</br>
+            <br>Programmer	: 23013 牧　将人</br>
+            <br>Date		: 2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            Control.Leaveイベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">キー情報</param>
+            <remarks>
+            <br>Programmer		:	23013 牧　将人</br>
+            <br>Date			:	2005.08.05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd1_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd2_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd3_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd4_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd5_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd6_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd7_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd8_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd9_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCd10_tNedit_Leave(System.Object,System.EventArgs)">
+            <summary>
+            フィールドごとLeaveメソッド
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.DepositStKindCdInfoChange(System.Int32,Broadleaf.Library.Windows.Forms.TNedit,Broadleaf.Library.Windows.Forms.TEdit)">
+            <summary>
+            金種情報変更処理(DepositStKindCdInfoChange)
+            </summary>
+            <param name="ix">メッセージ表示有無 (0:メッセージ表示する  1:メッセージ表示しない)</param>
+            <param name="depositStKindCd_tNedit">金額種別TNedit</param>
+            <param name="depositStKindCdNm_tEdit">金額種別TEdit</param>
+            <remarks>
+            <br>Note		: 入金コードにあわせて表示されている入金情報の変更を行います。</br>
+            <br>Programmer	: 23006  高橋 明子</br>
+            <br>Date		: 2005.12.20</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.SFUKK09060UA.EnableMonKindCodeFields(System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            画面上のボタンおよびコード入力欄をEnable/Disableに
+            </summary>
+            <param name="initialSetting"></param>
+            <param name="codeNumber"></param>
+            <param name="enable"></param>
+        </member>
+        <member name="E:Broadleaf.Windows.Forms.SFUKK09060UA.UnDisplaying">
+            <summary>
+            画面非表示イベント
+            画面が非表示状態になった際に発生します。
+            </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.SFUKK09060UA.CanPrint">
+            <summary>
+            印刷プロパティ
+            </summary>
+            <remarks>
+            印刷可能かどうかの設定を取得します。（false固定）
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.SFUKK09060UA.CanClose">
+            <summary>
+            画面クローズプロパティ
+            </summary>
+            <remarks>
+            画面クローズを許可するかどうかの設定を取得または設定します。
+            falseの場合は、画面を閉じる際、CloseではなくHide(非表示)を実行します。
+            </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>MAHNB02340UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tEdit_SalesInputCode_Ed</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_SalesInputCode_St</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

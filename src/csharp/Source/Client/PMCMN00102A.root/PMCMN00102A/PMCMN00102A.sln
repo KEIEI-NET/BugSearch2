@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMCMN00102A", "PMCMN00102A\PMCMN00102A.csproj", "{61E596BA-1722-4DBB-856F-DF822D530904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMCMN00101E", "PMCMN00101E\PMCMN00101E.csproj", "{F83B253E-A878-4200-BD13-2180FACCBE79}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMCMN00101E\\PMCMN00101E.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMCMN00101E\\
+		SccProjectUniqueName2 = PMCMN00102A\\PMCMN00102A.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PMCMN00102A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83B253E-A878-4200-BD13-2180FACCBE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83B253E-A878-4200-BD13-2180FACCBE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83B253E-A878-4200-BD13-2180FACCBE79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83B253E-A878-4200-BD13-2180FACCBE79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

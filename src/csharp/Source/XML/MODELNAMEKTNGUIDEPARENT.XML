@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>車種選択ガイド</FormTitle>
+		<FormMassge>車種を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>300</FormHeight>
+		<FormWidth>600</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+	</GuideDef>
+	<!-- 子ガイドの設定  -->
+	<InnerFormDef>
+		<InnerGuide>2</InnerGuide>
+		<InnerGuideDefRoot>
+			<InnerGuideDef GType="TableGuide">MAKERGUIDE3.XML</InnerGuideDef>
+			<InnerGuideDef GType="TableGuide">MODELNAMEGUIDE2.XML</InnerGuideDef>
+		</InnerGuideDefRoot>
+	</InnerFormDef>
+</definfo>

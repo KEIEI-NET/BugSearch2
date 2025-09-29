@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMUOE02060UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tNedit_SupplierCd1</ItemName>
+          <ItemDDName>SupplierCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_SupplierCd2</ItemName>
+          <ItemDDName>SupplierCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_SupplierCd3</ItemName>
+          <ItemDDName>SupplierCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_SupplierCd4</ItemName>
+          <ItemDDName>SupplierCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_SupplierCd5</ItemName>
+          <ItemDDName>SupplierCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_SupplierCd6</ItemName>
+          <ItemDDName>SupplierCd</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

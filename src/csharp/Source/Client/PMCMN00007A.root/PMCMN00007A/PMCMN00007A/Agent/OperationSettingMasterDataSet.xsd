@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OperationSettingMasterDataSet" targetNamespace="http://tempuri.org/OperationSettingMasterDataSet.xsd" xmlns:mstns="http://tempuri.org/OperationSettingMasterDataSet.xsd" xmlns="http://tempuri.org/OperationSettingMasterDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OperationSettingMasterDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="OperationSettingMasterDataSet" msprop:Generator_DataSetName="OperationSettingMasterDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OperationSettingMaster" msprop:Generator_UserTableName="OperationSettingMaster" msprop:Generator_RowDeletedName="OperationSettingMasterRowDeleted" msprop:Generator_RowChangedName="OperationSettingMasterRowChanged" msprop:Generator_RowClassName="OperationSettingMasterRow" msprop:Generator_RowChangingName="OperationSettingMasterRowChanging" msprop:Generator_RowEvArgName="OperationSettingMasterRowChangeEvent" msprop:Generator_RowEvHandlerName="OperationSettingMasterRowChangeEventHandler" msprop:Generator_TableClassName="OperationSettingMasterDataTable" msprop:Generator_TableVarName="tableOperationSettingMaster" msprop:Generator_RowDeletingName="OperationSettingMasterRowDeleting" msprop:Generator_TablePropName="OperationSettingMaster">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CreateDateTime" msdata:Caption="作成日時" msprop:Generator_UserColumnName="CreateDateTime" msprop:Generator_ColumnVarNameInTable="columnCreateDateTime" msprop:Generator_ColumnPropNameInRow="CreateDateTime" msprop:Generator_ColumnPropNameInTable="CreateDateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UpdateDateTime" msdata:Caption="更新日時" msprop:Generator_UserColumnName="UpdateDateTime" msprop:Generator_ColumnVarNameInTable="columnUpdateDateTime" msprop:Generator_ColumnPropNameInRow="UpdateDateTime" msprop:Generator_ColumnPropNameInTable="UpdateDateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EnterpriseCode" msdata:Caption="企業コード" msprop:Generator_UserColumnName="EnterpriseCode" msprop:Generator_ColumnVarNameInTable="columnEnterpriseCode" msprop:Generator_ColumnPropNameInRow="EnterpriseCode" msprop:Generator_ColumnPropNameInTable="EnterpriseCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FileHeaderGuid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="GUID" msprop:Generator_UserColumnName="FileHeaderGuid" msprop:Generator_ColumnVarNameInTable="columnFileHeaderGuid" msprop:Generator_ColumnPropNameInRow="FileHeaderGuid" msprop:Generator_ColumnPropNameInTable="FileHeaderGuidColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdEmployeeCode" msdata:Caption="更新従業員コード" msprop:Generator_UserColumnName="UpdEmployeeCode" msprop:Generator_ColumnVarNameInTable="columnUpdEmployeeCode" msprop:Generator_ColumnPropNameInRow="UpdEmployeeCode" msprop:Generator_ColumnPropNameInTable="UpdEmployeeCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdAssemblyId1" msdata:Caption="更新アセンブリID1" msprop:Generator_UserColumnName="UpdAssemblyId1" msprop:Generator_ColumnVarNameInTable="columnUpdAssemblyId1" msprop:Generator_ColumnPropNameInRow="UpdAssemblyId1" msprop:Generator_ColumnPropNameInTable="UpdAssemblyId1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdAssemblyId2" msdata:Caption="更新アセンブリID2" msprop:Generator_UserColumnName="UpdAssemblyId2" msprop:Generator_ColumnVarNameInTable="columnUpdAssemblyId2" msprop:Generator_ColumnPropNameInRow="UpdAssemblyId2" msprop:Generator_ColumnPropNameInTable="UpdAssemblyId2Column" type="xs:string" minOccurs="0" />
+              <xs:element name="LogicalDeleteCode" msdata:Caption="論理削除区分" msprop:Generator_UserColumnName="LogicalDeleteCode" msprop:Generator_ColumnVarNameInTable="columnLogicalDeleteCode" msprop:Generator_ColumnPropNameInRow="LogicalDeleteCode" msprop:Generator_ColumnPropNameInTable="LogicalDeleteCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="OperationStDiv" msdata:Caption="オペレーション設定区分" msprop:Generator_UserColumnName="OperationStDiv" msprop:Generator_ColumnVarNameInTable="columnOperationStDiv" msprop:Generator_ColumnPropNameInRow="OperationStDiv" msprop:Generator_ColumnPropNameInTable="OperationStDivColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CategoryCode" msdata:Caption="カテゴリーコード" msprop:Generator_UserColumnName="CategoryCode" msprop:Generator_ColumnVarNameInTable="columnCategoryCode" msprop:Generator_ColumnPropNameInRow="CategoryCode" msprop:Generator_ColumnPropNameInTable="CategoryCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="PgId" msdata:Caption="プログラムＩＤ" msprop:Generator_UserColumnName="PgId" msprop:Generator_ColumnVarNameInTable="columnPgId" msprop:Generator_ColumnPropNameInRow="PgId" msprop:Generator_ColumnPropNameInTable="PgIdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OperationCode" msdata:Caption="オペレーションコード" msprop:Generator_UserColumnName="OperationCode" msprop:Generator_ColumnVarNameInTable="columnOperationCode" msprop:Generator_ColumnPropNameInRow="OperationCode" msprop:Generator_ColumnPropNameInTable="OperationCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="AuthorityLevel1" msdata:Caption="権限レベル1" msprop:Generator_UserColumnName="AuthorityLevel1" msprop:Generator_ColumnVarNameInTable="columnAuthorityLevel1" msprop:Generator_ColumnPropNameInRow="AuthorityLevel1" msprop:Generator_ColumnPropNameInTable="AuthorityLevel1Column" type="xs:int" minOccurs="0" />
+              <xs:element name="AuthorityLevel2" msdata:Caption="権限レベル2" msprop:Generator_UserColumnName="AuthorityLevel2" msprop:Generator_ColumnVarNameInTable="columnAuthorityLevel2" msprop:Generator_ColumnPropNameInRow="AuthorityLevel2" msprop:Generator_ColumnPropNameInTable="AuthorityLevel2Column" type="xs:int" minOccurs="0" />
+              <xs:element name="EmployeeCode" msdata:Caption="従業員コード" msprop:Generator_UserColumnName="EmployeeCode" msprop:Generator_ColumnVarNameInTable="columnEmployeeCode" msprop:Generator_ColumnPropNameInRow="EmployeeCode" msprop:Generator_ColumnPropNameInTable="EmployeeCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LimitDiv" msdata:Caption="制限区分" msprop:Generator_UserColumnName="LimitDiv" msprop:Generator_ColumnVarNameInTable="columnLimitDiv" msprop:Generator_ColumnPropNameInRow="LimitDiv" msprop:Generator_ColumnPropNameInTable="LimitDivColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ApplyStartDate" msdata:Caption="適用開始日" msprop:Generator_UserColumnName="ApplyStartDate" msprop:Generator_ColumnVarNameInTable="columnApplyStartDate" msprop:Generator_ColumnPropNameInRow="ApplyStartDate" msprop:Generator_ColumnPropNameInTable="ApplyStartDateColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ApplyEndDate" msdata:Caption="適用終了日" msprop:Generator_UserColumnName="ApplyEndDate" msprop:Generator_ColumnVarNameInTable="columnApplyEndDate" msprop:Generator_ColumnPropNameInRow="ApplyEndDate" msprop:Generator_ColumnPropNameInTable="ApplyEndDateColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

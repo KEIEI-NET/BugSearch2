@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TermSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="OrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalOrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalStockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="TotalGrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalOrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalCostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalDifference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="OrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TermStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Difference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalStockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="YearSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="YearStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DetailLine.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DetailLineName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalMoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TotalMoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalSalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalGrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_PrintDate.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_PrintPage.OutputFormat" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="g_TermSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_StockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalStockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_GrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalGrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_GrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="g_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="g_CostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalCostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_YearSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_SalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_StockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalOrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_YearStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_OrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalOrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_OrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_StockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalStockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TermStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_Difference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalDifference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_MoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalMoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_MoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_TotalMoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_SalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="g_TotalSalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="g_GrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="g_TotalGrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SectionHeaderLine.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SectionHeaderLineName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SectionTitle.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TermSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_StockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_GrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalStockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalGrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_GrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="s_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="s_CostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalCostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_YearSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalOrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_StockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalOrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_SalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_OrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_OrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_StockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalStockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TermStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_YearStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_Difference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalDifference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_MoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalMoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_MoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_TotalMoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_SalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="s_TotalSalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="s_GrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="s_TotalGrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DailyTitle.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TermSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_StockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalStockSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_GrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_GrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="d_CostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalGrossMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="d_TotalCostMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_YearSalesComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_SalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalOrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_StockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalOrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_YearStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_OrderSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalSalesMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_OrderStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_StockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalStockStockMoney.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TermStockComp.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_Difference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalDifference.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_MoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalMoveShipmentPrice.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_MoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_TotalMoveArrivalPric.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="d_SalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="d_GrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="d_TotalSalesMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="d_TotalGrossMoneyOrg.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.StyleSheet" xml:space="preserve">
+    <value>font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 128; font-family: ＭＳ 明朝; </value>
+  </data>
+</root>

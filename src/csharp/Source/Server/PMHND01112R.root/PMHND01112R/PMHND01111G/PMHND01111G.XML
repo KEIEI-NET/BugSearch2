@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND01111G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationHandyStockSupplierDB">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）DB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスはIHandyStockSupplierDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>			 完全スタンドアロンにする場合にはこのクラスで直接HandyStockSupplierDBを</br>
+            <br>			 インスタンス化して戻します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationHandyStockSupplierDB.#ctor">
+            <summary>
+            HandyStockSupplierDB仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationHandyStockSupplierDB.GetHandyStockSuppliersDB">
+            <summary>
+            IHandyStockSupplierDBインターフェース取得
+            </summary>
+            <returns>IHandyLoginInfoDBオブジェクト</returns>
+            <remarks>
+            <br>Note       : IHandyStockSupplierDBインターフェースを取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

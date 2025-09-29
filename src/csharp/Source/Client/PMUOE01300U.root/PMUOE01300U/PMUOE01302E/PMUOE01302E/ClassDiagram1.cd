@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="MS UI Gothic" Size="9" />
+  <Class Name="Broadleaf.Application.UIData.SlipGroupListHelper">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>PMUOE01302EH.cs</FileName>
+      <HashCode>AAAAAAAAAgAQSAAAAAABAACgAAAIAAACAAAAiAAAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Broadleaf.Application.UIData.SumUpInformation">
+    <Position X="3.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <FileName>PMUOE01302EH.cs</FileName>
+      <HashCode>AAAABAgAAQAAAAAAAAAAAAAAAAIAAAAAGAAEACAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Broadleaf.Application.UIData.SumUpStockAdjust">
+    <Position X="6.25" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>PMUOE01302EH.cs</FileName>
+      <HashCode>kQAAAAAAAQAAgAACABAAAAAAQAKAAAAAAAAEgAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Broadleaf.Application.UIData.SumUpStockData">
+    <Position X="6.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>PMUOE01302EH.cs</FileName>
+      <HashCode>IAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Broadleaf.Application.UIData.OrderInformation">
+    <Position X="3.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>PMUOE01302EH.cs</FileName>
+      <HashCode>AAAAAAAAAQAIAAAAAAAAAgAAEAAAAAAAGBAEAAgAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

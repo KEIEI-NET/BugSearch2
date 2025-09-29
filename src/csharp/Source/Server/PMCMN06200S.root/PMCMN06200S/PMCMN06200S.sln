@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMCMN06200S", "PMCMN06200S\PMCMN06200S.csproj", "{59D01AF3-C1CC-403A-B8C2-447075DB1FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMCMN06200SNUTEST", "PMCMN06200SNUTEST\PMCMN06200SNUTEST.csproj", "{736622AF-B648-40F1-BBC6-77F4286193C4}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMCMN06200S\\PMCMN06200S.csproj
+		SccProjectName1 = \u0022$/Partsman.NS[043]/Source/Server/PMCMN06200S.root/PMCMN06200S/PMCMN06200S\u0022,\u0020MAKOAAAA
+		SccLocalPath1 = PMCMN06200S
+		SccProjectUniqueName2 = PMCMN06200SNUTEST\\PMCMN06200SNUTEST.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PMCMN06200SNUTEST\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59D01AF3-C1CC-403A-B8C2-447075DB1FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D01AF3-C1CC-403A-B8C2-447075DB1FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D01AF3-C1CC-403A-B8C2-447075DB1FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D01AF3-C1CC-403A-B8C2-447075DB1FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{736622AF-B648-40F1-BBC6-77F4286193C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{736622AF-B648-40F1-BBC6-77F4286193C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{736622AF-B648-40F1-BBC6-77F4286193C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{736622AF-B648-40F1-BBC6-77F4286193C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

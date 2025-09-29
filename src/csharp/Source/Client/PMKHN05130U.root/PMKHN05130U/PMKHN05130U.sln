@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN05130U", "PMKHN05130U\PMKHN05130U.csproj", "{82A5902F-7D83-491C-AF26-5619E65A4A4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82A5902F-7D83-491C-AF26-5619E65A4A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82A5902F-7D83-491C-AF26-5619E65A4A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82A5902F-7D83-491C-AF26-5619E65A4A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82A5902F-7D83-491C-AF26-5619E65A4A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

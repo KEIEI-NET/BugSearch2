@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAZAI02111E", "MAZAI02111E\MAZAI02111E.csproj", "{D99CB36E-A86F-4F72-B6EB-E23881D38180}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MAZAI02111E\\MAZAI02111E.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = MAZAI02111E\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D99CB36E-A86F-4F72-B6EB-E23881D38180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99CB36E-A86F-4F72-B6EB-E23881D38180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99CB36E-A86F-4F72-B6EB-E23881D38180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99CB36E-A86F-4F72-B6EB-E23881D38180}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

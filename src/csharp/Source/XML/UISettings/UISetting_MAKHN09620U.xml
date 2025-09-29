@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>MAKHN09620UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>ParentMakerCode_tNedit</ItemName>
+          <ItemDDName>GoodsMakerCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>ParentGoodsCode_tEdit</ItemName>
+          <ItemDDName>GoodsNo</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

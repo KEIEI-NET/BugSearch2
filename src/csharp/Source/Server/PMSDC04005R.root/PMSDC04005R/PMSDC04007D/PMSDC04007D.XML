@@ -1,0 +1,503 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMSDC04007D</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork">
+            public class name:   SalCprtSndLogListCndtnWork
+            <summary>
+            売上データ送信ログ一覧抽出条件パラメータワーク
+            </summary>
+            <remarks>
+            <br>note             :   売上データ送信ログ一覧抽出条件パラメータワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   </br>
+            <br>Genarated Date   :   2019/12/02  (CSharp File Generated Date)</br>
+            <br>Update Note      :   </br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork._enterpriseCode">
+            <summary>企業コード</summary>
+            <remarks>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork._sectionCodes">
+            <summary>拠点コード</summary>
+            <remarks>拠点コード</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork._sendDateTimeStart">
+            <summary>送信日時（開始）</summary>
+            <remarks>送信日時（開始）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork._sendDateTimeEnd">
+            <summary>送信日時（終了）</summary>
+            <remarks>送信日時（終了）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork._sAndEAutoSendDiv">
+            <summary>自動送信区分</summary>
+            <remarks>0:手動,1:自動</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork._maxSearchCt">
+            <summary>抽出最大件数設定</summary>
+            <remarks>抽出最大件数設定</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork._searchOverFlg">
+            <summary>抽出件数超過フラグ</summary>
+            <remarks>抽出件数超過フラグ</remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.#ctor">
+            <summary>
+            売上データ送信ログ一覧抽出条件パラメータワークコンストラクタ
+            </summary>
+            <returns>SalCprtSndLogListCndtnWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SalCprtSndLogListCndtnWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.EnterpriseCode">
+            public propaty name  :  EnterpriseCode
+            <summary>企業コードプロパティ</summary>
+            <value>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   企業コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.SectionCodes">
+            public propaty name  :  SectionCodes
+            <summary>拠点コード</summary>
+            <value>拠点コード</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   拠点コード</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.SendDateTimeStart">
+            public propaty name  :  SendDateTimeStart
+            <summary>送信日時（開始）</summary>
+            <value>送信日時（開始）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信日時（開始）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.SendDateTimeEnd">
+            public propaty name  :  SendDateTimeEnd
+            <summary>送信日時（終了）</summary>
+            <value>送信日時（終了）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信日時（終了）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.SAndEAutoSendDiv">
+            public propaty name  :  SAndEAutoSendDiv
+            <summary>自動送信区分</summary>
+            <value>0:手動,1:自動</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   自動送信区分</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.MaxSearchCt">
+            public propaty name  :  MaxSearchCt
+            <summary>抽出最大件数設定プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   抽出最大件数設定プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListCndtnWork.SearchOverFlg">
+            public propaty name  :  SearchOverFlg
+            <summary>抽出件数超過フラグプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   抽出件数超過フラグプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork">
+            public class name:   SalCprtSndLogListResultWork
+            <summary>
+            売上データ送信ログワーク
+            </summary>
+            <remarks>
+            <br>note             :   売上データ送信ログワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   </br>
+            <br>Genarated Date   :   2019/12/02  (CSharp File Generated Date)</br>
+            <br>Update Note      :   </br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._createDateTime">
+            <summary>作成日時</summary>
+            <remarks>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._updateDateTime">
+            <summary>更新日時</summary>
+            <remarks>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._enterpriseCode">
+            <summary>企業コード</summary>
+            <remarks>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._fileHeaderGuid">
+            <summary>GUID</summary>
+            <remarks>共通ファイルヘッダ</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._updEmployeeCode">
+            <summary>更新従業員コード</summary>
+            <remarks>共通ファイルヘッダ</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._updAssemblyId1">
+            <summary>更新アセンブリID1</summary>
+            <remarks>共通ファイルヘッダ（UI側の更新アセンブリID+「:」+バージョン）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._updAssemblyId2">
+            <summary>更新アセンブリID2</summary>
+            <remarks>共通ファイルヘッダ（Server側の更新アセンブリID+「:」+バージョン）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._logicalDeleteCode">
+            <summary>論理削除区分</summary>
+            <remarks>共通ファイルヘッダ(0:有効,1:論理削除,2:保留,3:完全削除)</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sectionCode">
+            <summary>拠点コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sAndEAutoSendDiv">
+            <summary>自動送信区分</summary>
+            <remarks>0:手動,1:自動</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendDateTimeStart">
+            <summary>送信日時（開始）</summary>
+            <remarks>送信開始時間（200601011212(西暦日付＋時分）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendDateTimeEnd">
+            <summary>送信日時（終了）</summary>
+            <remarks>送信完了時間（200601011212(西暦日付＋時分）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendObjDateStart">
+            <summary>送信対象日付（開始）</summary>
+            <remarks>YYYYMMDD</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendObjDateEnd">
+            <summary>送信対象日付（終了）</summary>
+            <remarks>YYYYMMDD</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendObjCustStart">
+            <summary>送信対象得意先（開始）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendObjCustEnd">
+            <summary>送信対象得意先（終了）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendObjDiv">
+            <summary>送信対象区分</summary>
+            <remarks>0:全て,1:未送信,2：送信済</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendResults">
+            <summary>送信結果</summary>
+            <remarks>0:正常完了,1：失敗</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendErrorContents">
+            <summary>送信エラー内容</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendSlipCount">
+            <summary>送信伝票枚数</summary>
+            <remarks>送信した伝票枚数</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendSlipDtlCnt">
+            <summary>送信伝票明細数</summary>
+            <remarks>送信した伝票明細数表示</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork._sendSlipTotalMny">
+            <summary>送信伝票合計金額</summary>
+            <remarks>送信した伝票の合計金額</remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.#ctor">
+            <summary>
+            売上データ送信ログワークコンストラクタ
+            </summary>
+            <returns>SalCprtSndLogListResultWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SalCprtSndLogListResultWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.CreateDateTime">
+            public propaty name  :  CreateDateTime
+            <summary>作成日時</summary>
+            <value>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   作成日時</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.UpdateDateTime">
+            public propaty name  :  UpdateDateTime
+            <summary>更新日時</summary>
+            <value>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新日時</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.EnterpriseCode">
+            public propaty name  :  EnterpriseCode
+            <summary>企業コード</summary>
+            <value>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   企業コード</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.FileHeaderGuid">
+            public propaty name  :  FileHeaderGuid
+            <summary>GUID</summary>
+            <value>共通ファイルヘッダ</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   GUID</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.UpdEmployeeCode">
+            public propaty name  :  UpdEmployeeCode
+            <summary>更新従業員コード</summary>
+            <value>共通ファイルヘッダ</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新従業員コード</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.UpdAssemblyId1">
+            public propaty name  :  UpdAssemblyId1
+            <summary>更新アセンブリID1</summary>
+            <value>共通ファイルヘッダ（UI側の更新アセンブリID+「:」+バージョン）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新アセンブリID1</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.UpdAssemblyId2">
+            public propaty name  :  UpdAssemblyId2
+            <summary>更新アセンブリID2</summary>
+            <value>共通ファイルヘッダ（Server側の更新アセンブリID+「:」+バージョン）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新アセンブリID2</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.LogicalDeleteCode">
+            public propaty name  :  LogicalDeleteCode
+            <summary>論理削除区分</summary>
+            <value>共通ファイルヘッダ(0:有効,1:論理削除,2:保留,3:完全削除)</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   論理削除区分</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SectionCode">
+            public propaty name  :  SectionCode
+            <summary>拠点コード</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   拠点コード</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SAndEAutoSendDiv">
+            public propaty name  :  SAndEAutoSendDiv
+            <summary>自動送信区分</summary>
+            <value>0:手動,1:自動</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   自動送信区分</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendDateTimeStart">
+            public propaty name  :  SendDateTimeStart
+            <summary>送信日時（開始）</summary>
+            <value>送信開始時間（200601011212(西暦日付＋時分）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信日時（開始）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendDateTimeEnd">
+            public propaty name  :  SendDateTimeEnd
+            <summary>送信日時（終了）</summary>
+            <value>送信完了時間（200601011212(西暦日付＋時分）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信日時（終了）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendObjDateStart">
+            public propaty name  :  SendObjDateStart
+            <summary>送信対象日付（開始）</summary>
+            <value>YYYYMMDD</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信対象日付（開始）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendObjDateEnd">
+            public propaty name  :  SendObjDateEnd
+            <summary>送信対象日付（終了）</summary>
+            <value>YYYYMMDD</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信対象日付（終了）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendObjCustStart">
+            public propaty name  :  SendObjCustStart
+            <summary>送信対象得意先（開始）</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信対象得意先（開始）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendObjCustEnd">
+            public propaty name  :  SendObjCustEnd
+            <summary>送信対象得意先（終了）</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信対象得意先（終了）</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendObjDiv">
+            public propaty name  :  SendObjDiv
+            <summary>送信対象区分</summary>
+            <value>0:全て,1:未送信,2：送信済</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信対象区分</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendResults">
+            public propaty name  :  SendResults
+            <summary>送信結果</summary>
+            <value>0:正常完了,1：失敗</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信結果</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendErrorContents">
+            public propaty name  :  SendErrorContents
+            <summary>送信エラー内容</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信エラー内容</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendSlipCount">
+            public propaty name  :  SendSlipCount
+            <summary>送信伝票枚数</summary>
+            <value>送信した伝票枚数</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信伝票枚数</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendSlipDtlCnt">
+            public propaty name  :  SendSlipDtlCnt
+            <summary>送信伝票明細数</summary>
+            <value>送信した伝票明細数表示</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信伝票明細数</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork.SendSlipTotalMny">
+            public propaty name  :  SendSlipTotalMny
+            <summary>送信伝票合計金額</summary>
+            <value>送信した伝票の合計金額</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   送信伝票合計金額</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork_SerializationSurrogate_For_V51010">
+            <summary>
+             Ver5.10.1.0用のカスタムシライアライザです。
+            </summary>
+            <returns>SalCprtSndLogListResultWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SalCprtSndLogListResultWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork_SerializationSurrogate_For_V51010.currentMemberCount">
+            <summary>
+            SalCprtSndLogListResultWorkメンバ数(publicプロパティ数)
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork_SerializationSurrogate_For_V51010.Serialize(System.IO.BinaryWriter,System.Object)">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   SalCprtSndLogListResultWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork_SerializationSurrogate_For_V51010.SetSalCprtSndLogListResultWork(System.IO.BinaryWriter,Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork)">
+            <summary>
+             SalCprtSndLogListResultWorkインスタンス書き込み
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   SalCprtSndLogListResultWorkのインスタンスを書き込み</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork_SerializationSurrogate_For_V51010.GetSalCprtSndLogListResultWork(System.IO.BinaryReader,Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo)">
+            <summary>
+             SalCprtSndLogListResultWorkインスタンス取得
+            </summary>
+            <returns>SalCprtSndLogListResultWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SalCprtSndLogListResultWorkのインスタンスを取得します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SalCprtSndLogListResultWork_SerializationSurrogate_For_V51010.Deserialize(System.IO.BinaryReader)">
+            <summary>
+             Ver5.10.1.0用のカスタムデシリアライザです
+            </summary>
+            <returns>SalCprtSndLogListResultWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SalCprtSndLogListResultWorkクラスのカスタムデシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

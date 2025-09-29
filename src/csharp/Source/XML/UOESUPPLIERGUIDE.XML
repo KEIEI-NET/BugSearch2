@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>UOE発注先ガイド</FormTitle>
+		<FormMassge>発注先コードを選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>635</FormHeight>
+		<FormWidth>430</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<SearchType>1</SearchType>
+		<SearchCondition>
+			<ColName>絞込名称</ColName>
+			<ColKey>UOESupplierName</ColKey>
+			<ColLength>30</ColLength>
+			<ColImeMode>1</ColImeMode>
+		</SearchCondition>
+		<ViewerSW>
+			<SWName>通常表示</SWName>
+			<SWParam>0</SWParam>
+		</ViewerSW>
+		<ViewerSW>
+			<SWName>全車種表示</SWName>
+			<SWParam>10</SWParam>
+		</ViewerSW>
+	</GuideDef>
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>発注先コード</ColName>
+			<ColKey>UOESupplierCd</ColKey>
+			<ColWith>100</ColWith>
+			<ColDataType>int</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>発注先名称</ColName>
+			<ColKey>UOESupplierName</ColKey>
+			<ColWith>280</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.UOESupplierAcs</SerchName>
+		<SerchAssm>PMUOE09022A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="string">EnterpriseCode</SerchInfo>
+			<SerchInfo type="string">SectionCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">EnterpriseCode</SelectedInfo>
+		<SelectedInfo type="string">SectionCode</SelectedInfo>
+		<SelectedInfo type="int">UOESupplierCd</SelectedInfo>
+		<SelectedInfo type="string">UOESupplierName</SelectedInfo>
+		<SelectedInfo type="int">GoodsMakerCd</SelectedInfo>
+		<SelectedInfo type="int">SupplierCd</SelectedInfo>
+		<SelectedInfo type="string">TelNo</SelectedInfo>
+		<SelectedInfo type="string">UOETerminalCd</SelectedInfo>
+		<SelectedInfo type="string">UOEHostCode</SelectedInfo>
+		<SelectedInfo type="string">UOEConnectPassword</SelectedInfo>
+		<SelectedInfo type="string">UOEConnectUserId</SelectedInfo>
+		<SelectedInfo type="string">UOEIDNum</SelectedInfo>
+		<SelectedInfo type="string">CommAssemblyId</SelectedInfo>
+		<SelectedInfo type="string">ConnectVersionDiv</SelectedInfo>
+		<SelectedInfo type="string">UOEShipSectCd</SelectedInfo>
+		<SelectedInfo type="string">UOESalSectCd</SelectedInfo>
+		<SelectedInfo type="string">UOEReservSectCd</SelectedInfo>
+		<SelectedInfo type="int">ReceiveCondition</SelectedInfo>
+		<SelectedInfo type="int">SubstPartsNoDiv</SelectedInfo>
+		<SelectedInfo type="int">PartsNoPrtCd</SelectedInfo>
+		<SelectedInfo type="int">ListPriceUseDiv</SelectedInfo>
+		<SelectedInfo type="int">StockSlipDtRecvDiv</SelectedInfo>
+		<SelectedInfo type="int">CheckCodeDiv</SelectedInfo>
+		<SelectedInfo type="int">BusinessCode</SelectedInfo>
+		<SelectedInfo type="string">UOEResvdSection</SelectedInfo>
+		<SelectedInfo type="string">EmployeeCode</SelectedInfo>
+		<SelectedInfo type="string">UOEDeliGoodsDiv</SelectedInfo>
+		<SelectedInfo type="string">BoCode</SelectedInfo>
+		<SelectedInfo type="string">UOEOrderRate</SelectedInfo>
+		<SelectedInfo type="string">instrumentNo</SelectedInfo>
+		<SelectedInfo type="string">UOETestMode</SelectedInfo>
+		<SelectedInfo type="string">UOEItemCd</SelectedInfo>
+		<SelectedInfo type="string">HondaSectionCode</SelectedInfo>
+		<SelectedInfo type="string">AnswerSaveFolder</SelectedInfo>
+		<SelectedInfo type="string">MazdaSectionCode</SelectedInfo>
+		<SelectedInfo type="string">EmergencyDiv</SelectedInfo>
+		<SelectedInfo type="int">EnableOdrMakerCd1</SelectedInfo>
+		<SelectedInfo type="int">EnableOdrMakerCd2</SelectedInfo>
+		<SelectedInfo type="int">EnableOdrMakerCd3</SelectedInfo>
+		<SelectedInfo type="int">EnableOdrMakerCd4</SelectedInfo>
+		<SelectedInfo type="int">EnableOdrMakerCd5</SelectedInfo>
+		<SelectedInfo type="int">EnableOdrMakerCd6</SelectedInfo>
+		<SelectedInfo type="string">UOELoginUrl</SelectedInfo>
+		<SelectedInfo type="string">UOEOrderUrl</SelectedInfo>
+		<SelectedInfo type="string">UOEStockCheckUrl</SelectedInfo>
+		<SelectedInfo type="string">UOEForcedTermUrl</SelectedInfo>
+		<SelectedInfo type="int">InqOrdDivCd</SelectedInfo>
+		<SelectedInfo type="int">LoginTimeoutVal</SelectedInfo>
+		<SelectedInfo type="string">EPartsUserId</SelectedInfo>
+		<SelectedInfo type="string">EPartsPassWord</SelectedInfo>
+		<SelectedInfo type="string">BLMngUserCode</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

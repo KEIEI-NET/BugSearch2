@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND09411G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationIPrmGoodsBarCodeRevnUpdateDB">
+            <summary>
+            商品バーコード更新DB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスはIPrmGoodsBarCodeRevnUpdateDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>			完全スタンドアロンにする場合にはこのクラスで直接PrmGoodsBarCodeRevnUpdateDBを</br>
+            <br>			インスタンス化して戻します。</br>
+            <br>Programmer : 30757 佐々木　貴英</br>
+            <br>Date       : 2017/09/20</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationIPrmGoodsBarCodeRevnUpdateDB.#ctor">
+            <summary>
+            商品バーコード更新DB仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 30757 佐々木　貴英</br>
+            <br>Date       : 2017/09/20</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationIPrmGoodsBarCodeRevnUpdateDB.GetIPrmGoodsBarCodeRevnUpdateDB">
+            <summary>
+            商品バーコード更新インターフェース取得
+            </summary>
+            <remarks>
+            <br>Note       : UserAPプロキシサービスより商品バーコード更新インターフェース型のオブジェクトを取得する</br>
+            <br>Programmer : 30757 佐々木　貴英</br>
+            <br>Date       : 2017/09/20</br>
+            </remarks>
+            <returns>商品バーコード更新インターフェース型オブジェクト</returns>
+        </member>
+    </members>
+</doc>

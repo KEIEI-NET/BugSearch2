@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>車輌管理マスタ.CSV</SchemaName>
+    <SchemaFileName>CarManagement.xml</SchemaFileName>
+    <Writer>李占川</Writer>
+    <Date>2009/09/10</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="CustomerCode">
+      <ColKey>CustomerCode</ColKey>
+      <ColName>得意先コード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CarMngCode">
+      <ColKey>CarMngCode</ColKey>
+      <ColName>管理番号</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ModelDesignationNo">
+      <ColKey>ModelDesignationNo</ColKey>
+      <ColName>型式指定番号</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CategoryNo">
+      <ColKey>CategoryNo</ColKey>
+      <ColName>類別番号</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EngineModelNm">
+      <ColKey>EngineModelNm</ColKey>
+      <ColName>エンジン型式</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MakerCode">
+      <ColKey>MakerCode</ColKey>
+      <ColName>メーカーコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ModelCode">
+      <ColKey>ModelCode</ColKey>
+      <ColName>車種コード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ModelSubCode">
+      <ColKey>ModelSubCode</ColKey>
+      <ColName>呼称コード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ModelFullName">
+      <ColKey>ModelFullName</ColKey>
+      <ColName>車種名称</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="FullModel">
+      <ColKey>FullModel</ColKey>
+      <ColName>型式</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="FirstEntryDate">
+      <ColKey>FirstEntryDate</ColKey>
+      <ColName>年度</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="FrameNo">
+      <ColKey>FrameNo</ColKey>
+      <ColName>車台番号</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ColorCode">
+      <ColKey>ColorCode</ColKey>
+      <ColName>カラーコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ColorName1">
+      <ColKey>ColorName1</ColKey>
+      <ColName>カラー名称1</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="TrimCode">
+      <ColKey>TrimCode</ColKey>
+      <ColName>トリムコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="TrimName">
+      <ColKey>TrimName</ColKey>
+      <ColName>トリム名称</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EngineModel">
+      <ColKey>EngineModel</ColKey>
+      <ColName>原動機型式</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CarAddInfo1">
+      <ColKey>CarAddInfo1</ColKey>
+      <ColName>追加情報１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CarAddInfo2">
+      <ColKey>CarAddInfo2</ColKey>
+      <ColName>追加情報２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NumberPlate1Code">
+      <ColKey>NumberPlate1Code</ColKey>
+      <ColName>陸運事務所番号</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NumberPlate1Name">
+      <ColKey>NumberPlate1Name</ColKey>
+      <ColName>陸運事務所名称</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NumberPlate2">
+      <ColKey>NumberPlate2</ColKey>
+      <ColName>車両登録番号（種別）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NumberPlate3">
+      <ColKey>NumberPlate3</ColKey>
+      <ColName>車両登録番号（カナ）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NumberPlate4">
+      <ColKey>NumberPlate4</ColKey>
+      <ColName>車両登録番号（プレート番号）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Mileage">
+      <ColKey>Mileage</ColKey>
+      <ColName>走行距離</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EntryDate">
+      <ColKey>EntryDate</ColKey>
+      <ColName>登録年月日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="LTimeCiMatDate">
+      <ColKey>LTimeCiMatDate</ColKey>
+      <ColName>前回車検日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="InspectMaturityDate">
+      <ColKey>InspectMaturityDate</ColKey>
+      <ColName>次回車検日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CarInspectYear">
+      <ColKey>CarInspectYear</ColKey>
+      <ColName>車検期間</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CarNote">
+      <ColKey>CarNote</ColKey>
+      <ColName>備考</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CarMngDivName">
+      <ColKey>CarMngDivName</ColKey>
+      <ColName>車輌管理区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

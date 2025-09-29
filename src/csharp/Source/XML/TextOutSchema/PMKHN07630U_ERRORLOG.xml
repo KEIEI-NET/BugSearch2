@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>商品マスタ（エラーログ出力用）</SchemaName>
+    <SchemaFileName>PMKHN07630U_ERRORLOG.xml</SchemaFileName>
+    <Writer />
+    <Date>2012/06/12</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="GoodsNoRF">
+      <ColKey>GoodsNoRF</ColKey>
+      <ColName>品番</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsMakerCdRF">
+      <ColKey>GoodsMakerCdRF</ColKey>
+      <ColName>メーカー</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsNameRF">
+      <ColKey>GoodsNameRF</ColKey>
+      <ColName>品名</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsNameKanaRF">
+      <ColKey>GoodsNameKanaRF</ColKey>
+      <ColName>品名カナ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="JanRF">
+      <ColKey>JanRF</ColKey>
+      <ColName>ＪＡＮコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="BLGoodsCodeRF">
+      <ColKey>BLGoodsCodeRF</ColKey>
+      <ColName>ＢＬコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EnterpriseGanreCodeRF">
+      <ColKey>EnterpriseGanreCodeRF</ColKey>
+      <ColName>商品区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsRateRankRF">
+      <ColKey>GoodsRateRankRF</ColKey>
+      <ColName>層別</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsKindCodeRF">
+      <ColKey>GoodsKindCodeRF</ColKey>
+      <ColName>純優区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="TaxationDivCdRF">
+      <ColKey>TaxationDivCdRF</ColKey>
+      <ColName>課税区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsNote1RF">
+      <ColKey>GoodsNote1RF</ColKey>
+      <ColName>商品備考１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsNote2RF">
+      <ColKey>GoodsNote2RF</ColKey>
+      <ColName>商品備考２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsSpecialNoteRF">
+      <ColKey>GoodsSpecialNoteRF</ColKey>
+      <ColName>規格・特記事項</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="PriceStartDateRF1">
+      <ColKey>PriceStartDateRF1</ColKey>
+      <ColName>価格開始年月日１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceRF1">
+      <ColKey>ListPriceRF1</ColKey>
+      <ColName>価格１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OpenPriceDivRF1">
+      <ColKey>OpenPriceDivRF1</ColKey>
+      <ColName>オープン価格区分１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockRateRF1">
+      <ColKey>StockRateRF1</ColKey>
+      <ColName>仕入率１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnitCostRF1">
+      <ColKey>SalesUnitCostRF1</ColKey>
+      <ColName>原単価１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="PriceStartDateRF2">
+      <ColKey>PriceStartDateRF2</ColKey>
+      <ColName>価格開始年月日２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceRF2">
+      <ColKey>ListPriceRF2</ColKey>
+      <ColName>価格２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OpenPriceDivRF2">
+      <ColKey>OpenPriceDivRF2</ColKey>
+      <ColName>オープン価格区分２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockRateRF2">
+      <ColKey>StockRateRF2</ColKey>
+      <ColName>仕入率２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnitCostRF2">
+      <ColKey>SalesUnitCostRF2</ColKey>
+      <ColName>原単価２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="PriceStartDateRF3">
+      <ColKey>PriceStartDateRF3</ColKey>
+      <ColName>価格開始年月日３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceRF3">
+      <ColKey>ListPriceRF3</ColKey>
+      <ColName>価格３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OpenPriceDivRF3">
+      <ColKey>OpenPriceDivRF3</ColKey>
+      <ColName>オープン価格区分３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockRateRF3">
+      <ColKey>StockRateRF3</ColKey>
+      <ColName>仕入率３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnitCostRF3">
+      <ColKey>SalesUnitCostRF3</ColKey>
+      <ColName>原単価３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+        <ColInfo key="PriceStartDateRF4">
+      <ColKey>PriceStartDateRF4</ColKey>
+      <ColName>価格開始年月日４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceRF4">
+      <ColKey>ListPriceRF4</ColKey>
+      <ColName>価格４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OpenPriceDivRF4">
+      <ColKey>OpenPriceDivRF4</ColKey>
+      <ColName>オープン価格区分４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockRateRF4">
+      <ColKey>StockRateRF4</ColKey>
+      <ColName>仕入率４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnitCostRF4">
+      <ColKey>SalesUnitCostRF4</ColKey>
+      <ColName>原単価４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    
+     <ColInfo key="PriceStartDateRF5">
+      <ColKey>PriceStartDateRF5</ColKey>
+      <ColName>価格開始年月日５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceRF5">
+      <ColKey>ListPriceRF5</ColKey>
+      <ColName>価格５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OpenPriceDivRF5">
+      <ColKey>OpenPriceDivRF5</ColKey>
+      <ColName>オープン価格区分５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockRateRF5">
+      <ColKey>StockRateRF5</ColKey>
+      <ColName>仕入率５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnitCostRF5">
+      <ColKey>SalesUnitCostRF5</ColKey>
+      <ColName>原単価５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ErrorMessage">
+      <ColKey>ErrorMessage</ColKey>
+      <ColName>エラー内容</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

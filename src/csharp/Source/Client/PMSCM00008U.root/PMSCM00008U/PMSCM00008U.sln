@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM00009U", "PMSCM00009U\PMSCM00009U.csproj", "{17F2DE9D-F271-499E-B90C-7B60F76401AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM00008U", "PMSCM00008U\PMSCM00008U.csproj", "{42471306-1905-442B-8C93-FB30C581CB6B}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMSCM00008U\\PMSCM00008U.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMSCM00008U.root/PMSCM00008U/PMSCM00008U\u0022,\u0020CTWCAAAA
+		SccLocalPath1 = PMSCM00008U
+		SccProjectUniqueName2 = PMSCM00009U\\PMSCM00009U.csproj
+		SccProjectName2 = \u0022$/Partsman[810]/Source/Client/PMSCM00008U.root/PMSCM00008U/PMSCM00009U\u0022,\u0020TTWCAAAA
+		SccLocalPath2 = PMSCM00009U
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17F2DE9D-F271-499E-B90C-7B60F76401AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F2DE9D-F271-499E-B90C-7B60F76401AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F2DE9D-F271-499E-B90C-7B60F76401AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F2DE9D-F271-499E-B90C-7B60F76401AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42471306-1905-442B-8C93-FB30C581CB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42471306-1905-442B-8C93-FB30C581CB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42471306-1905-442B-8C93-FB30C581CB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42471306-1905-442B-8C93-FB30C581CB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

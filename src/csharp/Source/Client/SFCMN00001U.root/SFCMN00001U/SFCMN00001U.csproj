@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{7B2748A3-0FD4-42EC-A72B-EBA7382C24F9}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>SFCMN00001U</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <RootNamespace>Broadleaf.Windows.Forms</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>R:\SFNETASM\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>R:\SFNETASM\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v7.1" />
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v7.1" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Infragistics2.Win.Misc.v7.1" />
+    <Reference Include="Infragistics2.Win.v7.1" />
+    <Reference Include="SFCMN00036C" />
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v7.1" />
+    <Reference Include="Infragistics2.Win.UltraWinMaskedEdit.v7.1" />
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v7.1" />
+    <Reference Include="Infragistics2.Shared.v7.1" />
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v7.1" />
+    <Reference Include="SFCMN00002C" />
+    <Reference Include="SFCMN00505C" />
+    <Reference Include="SFCMN00501C" />
+    <Reference Include="Infragistics2.Win.UltraWinExplorerBar.v7.1" />
+    <Reference Include="Infragistics2.Win.UltraWinDock.v7.1" />
+    <Reference Include="System.Xml" />
+    <Reference Include="SFCMN00027C" />
+    <Reference Include="SFCMN00509C" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Broadleaf.Library.ComponentModel\TbsBaseComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms.Design\TExtCaseEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms.Design\TExtEditEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms.Design\TNumEditEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\align.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\BarcodeReadedEventArgs.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\BarcodeReadedEventHandler.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\ChangeFocusEventArgs.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\ChangeFocusEventHandler.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\eColType.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emAllowStyle.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emCalcDisp.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emCursorPosition.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emDateFormat.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emDateSequence.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emErrorLevel.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emFocusStyle.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emInitFocus.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emLineStyle.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emLineType.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emShapeRotation.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emShapeStyle.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\emZeroSupp.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\KeyEventHandlerEx.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\MouseEventArgsEx.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\MouseEventHandlerEx.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\MouseWheelEventArgsEx.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\MouseWheelEventHandlerEx.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\SafeNativeMethods.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\stNumStrAttr.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\stSHIFTSTAT.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TArrowKeyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TAttack25.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TBarcodeReader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TbsMessageFilter.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TComboEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TDateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TDateEdit2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TDateEditOptions.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TEditValueEditor.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TEnableChars.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TEnableEditors.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TExtCase.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TExtEdit.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TGraphicControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\THelpSocket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\THtmlGenerate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TImeControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TImeMessageFilter.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TLib.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TMemPos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TMsgDisp.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TNecessaryEditors.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TNedit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TNumEdit.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TNumEditValueEditor.cs" />
+    <Compile Include="Broadleaf.Library.Windows.Forms\TRetKeyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TShape.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Broadleaf.Library.Windows.Forms\TToolbarsManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms.Design\TExtCaseEditorForm.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms.Design\TExtEditEditorForm.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms.Design\TNumEditEditorForm.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\CalcBtn.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TArrowKeyControl.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TAttack25.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TAttack25.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TBarcodeReader.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TBarcodeReader.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TComboEditor.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TComboEditor.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TDateEdit.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TDateEdit.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TDateEdit2.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TDateEdit2.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TEdit.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TEdit.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TGraphicControl.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\THelpSocket.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\THelpSocket.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\THtmlGenerate.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TImeControl.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TImeControl.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TLine.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TLine.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TMemPos.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TMemPos.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TNedit.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TNedit.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TRetKeyControl.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TShape.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TShape.resources" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TToolbarsManager.bmp" />
+    <EmbeddedResource Include="Broadleaf.Library.Windows.Forms\TToolbarsManager.resources" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

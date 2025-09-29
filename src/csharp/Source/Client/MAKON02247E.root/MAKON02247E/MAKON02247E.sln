@@ -1,0 +1,26 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKON02247E", "MAKON02247E\MAKON02247E.csproj", "{74455CA9-CC88-4E8B-B56E-A35C0F0DF5D0}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MAKON02247E\\MAKON02247E.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = MAKON02247E\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74455CA9-CC88-4E8B-B56E-A35C0F0DF5D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74455CA9-CC88-4E8B-B56E-A35C0F0DF5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74455CA9-CC88-4E8B-B56E-A35C0F0DF5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74455CA9-CC88-4E8B-B56E-A35C0F0DF5D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

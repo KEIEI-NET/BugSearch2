@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMZAI02030U", "PMZAI02030U\PMZAI02030U.csproj", "{1E22344E-63A0-40A3-A5D2-FA5A04B41CDC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F5E9090D-EA08-4F37-A4A5-29E2C7DFD466} = {F5E9090D-EA08-4F37-A4A5-29E2C7DFD466}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMZAI02031U", "PMZAI02031U\PMZAI02031U.csproj", "{F5E9090D-EA08-4F37-A4A5-29E2C7DFD466}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4E98EAAA-E7F4-4941-9D1E-5BA28E4E1F03} = {4E98EAAA-E7F4-4941-9D1E-5BA28E4E1F03}
+		{E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA} = {E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMZAI02032E", "PMZAI02032E\PMZAI02032E.csproj", "{E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMZAI02033A", "PMZAI02033A\PMZAI02033A.csproj", "{4E98EAAA-E7F4-4941-9D1E-5BA28E4E1F03}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA} = {E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMZAI02030U\\PMZAI02030U.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMZAI02030U.root/PMZAI02030U/PMZAI02030U\u0022,\u0020YQLBAAAA
+		SccLocalPath1 = PMZAI02030U
+		SccProjectUniqueName2 = PMZAI02031U\\PMZAI02031U.csproj
+		SccProjectName2 = \u0022$/Partsman[810]/Source/Client/PMZAI02030U.root/PMZAI02030U/PMZAI02031U\u0022,\u0020MRLBAAAA
+		SccLocalPath2 = PMZAI02031U
+		SccProjectUniqueName3 = PMZAI02032E\\PMZAI02032E.csproj
+		SccProjectName3 = \u0022$/Partsman[810]/Source/Client/PMZAI02030U.root/PMZAI02030U/PMZAI02032E\u0022,\u0020BSLBAAAA
+		SccLocalPath3 = PMZAI02032E
+		SccProjectUniqueName4 = PMZAI02033A\\PMZAI02033A.csproj
+		SccProjectName4 = \u0022$/Partsman[810]/Source/Client/PMZAI02030U.root/PMZAI02030U/PMZAI02033A\u0022,\u0020HSLBAAAA
+		SccLocalPath4 = PMZAI02033A
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E22344E-63A0-40A3-A5D2-FA5A04B41CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E22344E-63A0-40A3-A5D2-FA5A04B41CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E22344E-63A0-40A3-A5D2-FA5A04B41CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E22344E-63A0-40A3-A5D2-FA5A04B41CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E9090D-EA08-4F37-A4A5-29E2C7DFD466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E9090D-EA08-4F37-A4A5-29E2C7DFD466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E9090D-EA08-4F37-A4A5-29E2C7DFD466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E9090D-EA08-4F37-A4A5-29E2C7DFD466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6DA38FD-CAF9-4AFF-AFA0-4E374F53FBBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E98EAAA-E7F4-4941-9D1E-5BA28E4E1F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E98EAAA-E7F4-4941-9D1E-5BA28E4E1F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E98EAAA-E7F4-4941-9D1E-5BA28E4E1F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E98EAAA-E7F4-4941-9D1E-5BA28E4E1F03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

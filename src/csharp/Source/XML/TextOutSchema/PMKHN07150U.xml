@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>BLグループマスタ（エクスポート）</SchemaName>
+    <SchemaFileName>PMKHN07150U.xml</SchemaFileName>
+    <Writer />
+    <Date>2009/05/13</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="BLGroupCode">
+      <ColKey>BLGroupCode</ColKey>
+      <ColName>グループコード</ColName>
+      <ColNameChange />
+      <ColWidth>5</ColWidth>
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="BLGroupName">
+      <ColKey>BLGroupName</ColKey>
+      <ColName>グループコード名</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="BLGroupKanaName">
+      <ColKey>BLGroupKanaName</ColKey>
+      <ColName>グループコード名カナ</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsLGroup">
+      <ColKey>GoodsLGroup</ColKey>
+      <ColName>商品大分類</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsMGroup">
+      <ColKey>GoodsMGroup</ColKey>
+      <ColName>商品中分類</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesCode">
+      <ColKey>SalesCode</ColKey>
+      <ColName>販売区分</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

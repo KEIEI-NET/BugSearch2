@@ -1,0 +1,74 @@
+package HSS100;
+
+{$R *.res}
+{$R 'HSS100.DCR'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'High Speed Super Package 10.0'}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vclx,
+  vcl,
+  dbrtl,
+  adortl,
+  dsnap,
+  vclimg,
+  asgd2010;
+
+contains
+  HVersion in 'PAS\HVersion.pas',
+  HCheckListBox in 'PAS\HCheckListBox.pas',
+  HComBox in 'PAS\HComBox.pas',
+  HDate in 'PAS\HDate.pas',
+  Hdblbtn in 'PAS\Hdblbtn.pas',
+  HDedit in 'PAS\HDedit.pas',
+  HDlgForm in 'PAS\HDlgForm.pas' {HDlgFormF},
+  HDllCall in 'PAS\HDllCall.pas',
+  HDspHelpPara in 'PAS\HDspHelpPara.pas',
+  HDSPVERPARA in 'PAS\HDSPVERPARA.PAS',
+  HEdit in 'PAS\HEdit.pas',
+  HFocus in 'PAS\HFocus.pas',
+  HFrame in 'PAS\HFrame.pas',
+  HFslLib in 'PAS\HFslLib.pas',
+  HFuncKey in 'PAS\HFuncKey.pas',
+  HHlpSct in 'PAS\HHlpSct.pas',
+  HImage in 'PAS\HImage.pas',
+  HInitProc in 'PAS\HInitProc.pas',
+  HLabel in 'PAS\HLabel.pas',
+  HLib in 'PAS\HLib.pas',
+  Hline in 'PAS\Hline.pas',
+  HMemPos in 'PAS\HMemPos.pas',
+  Hreg in 'PAS\Hreg.pas',
+  HRSC2Ctl in 'PAS\HRSC2Ctl.pas',
+  HRscCtl in 'PAS\HRscCtl.pas',
+  HShrPara in 'PAS\HShrPara.pas',
+  HSpdExtBtn in 'PAS\HSpdExtBtn.pas',
+  HADOACS in 'PAS\HADOACS.pas',
+  HTable in 'PAS\HTable.pas',
+  HTreeView in 'PAS\HTreeView.pas',
+  HGRIDS in 'PAS\HGRIDS.PAS';
+
+end.
+
+

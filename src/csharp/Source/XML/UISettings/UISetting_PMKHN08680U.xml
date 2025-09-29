@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMKHN08680UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tNedit_PartsPosCode_Ed</ItemName>
+          <ItemDDName>PartsPosCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_PartsPosCode_St</ItemName>
+          <ItemDDName>PartsPosCode</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD>
+    <UiSet>
+      <Remarks>部位コード</Remarks>
+      <ItemDDName>PartsPosCode</ItemDDName>
+      <Column>2</Column>
+      <AllowAlpha>false</AllowAlpha>
+      <AllowKana>false</AllowKana>
+      <AllowNum>true</AllowNum>
+      <AllowNumSign>false</AllowNumSign>
+      <AllowSign>false</AllowSign>
+      <AllowSpace>false</AllowSpace>
+      <AllowWord>false</AllowWord>
+      <HAlign>Right</HAlign>
+      <PadZero>true</PadZero>
+      <ImeMode>Close</ImeMode>
+      <AllowZeroCode>false</AllowZeroCode>
+    </UiSet>
+  </UISetDD>
+</UiSetByAssembly>

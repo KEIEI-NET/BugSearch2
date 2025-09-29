@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApplication1", "WindowsApplication1\WindowsApplication1.csproj", "{2112BDE8-90BC-4E58-B77F-6D3A44480A27}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C050FD07-DBB6-4B24-8894-2BB98F54F0B1} = {C050FD07-DBB6-4B24-8894-2BB98F54F0B1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM00208C", "PMSCM00208C\PMSCM00208C.csproj", "{C050FD07-DBB6-4B24-8894-2BB98F54F0B1}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMSCM00208C\\PMSCM00208C.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMSCM00208C\\
+		SccProjectUniqueName2 = WindowsApplication1\\WindowsApplication1.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = WindowsApplication1\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2112BDE8-90BC-4E58-B77F-6D3A44480A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2112BDE8-90BC-4E58-B77F-6D3A44480A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2112BDE8-90BC-4E58-B77F-6D3A44480A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2112BDE8-90BC-4E58-B77F-6D3A44480A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C050FD07-DBB6-4B24-8894-2BB98F54F0B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C050FD07-DBB6-4B24-8894-2BB98F54F0B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C050FD07-DBB6-4B24-8894-2BB98F54F0B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C050FD07-DBB6-4B24-8894-2BB98F54F0B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

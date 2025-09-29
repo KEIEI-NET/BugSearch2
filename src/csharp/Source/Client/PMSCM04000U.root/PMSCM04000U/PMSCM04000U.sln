@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04001U", "PMSCM04001U\PMSCM04001U.csproj", "{E24BAA81-1C65-4C54-B785-BF71351C5F74}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656} = {45113E56-EE8B-45BA-99FF-1CD632DC8656}
+		{26DC54A3-C144-4D37-B87C-F453958CC04F} = {26DC54A3-C144-4D37-B87C-F453958CC04F}
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20} = {8C1975D1-917B-408E-BE6C-78E59F35AB20}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04000U", "PMSCM04000U\PMSCM04000U.csproj", "{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74} = {E24BAA81-1C65-4C54-B785-BF71351C5F74}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04002I", "PMSCM04002I\PMSCM04002I.csproj", "{26DC54A3-C144-4D37-B87C-F453958CC04F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656} = {45113E56-EE8B-45BA-99FF-1CD632DC8656}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04003E", "PMSCM04003E\PMSCM04003E.csproj", "{45113E56-EE8B-45BA-99FF-1CD632DC8656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04004A", "PMSCM04004A\PMSCM04004A.csproj", "{8C1975D1-917B-408E-BE6C-78E59F35AB20}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656} = {45113E56-EE8B-45BA-99FF-1CD632DC8656}
+		{26DC54A3-C144-4D37-B87C-F453958CC04F} = {26DC54A3-C144-4D37-B87C-F453958CC04F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMSCM04000U\\PMSCM04000U.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMSCM04000U\\
+		SccProjectUniqueName2 = PMSCM04001U\\PMSCM04001U.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PMSCM04001U\\
+		SccProjectUniqueName3 = PMSCM04002I\\PMSCM04002I.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = PMSCM04002I\\
+		SccProjectUniqueName4 = PMSCM04003E\\PMSCM04003E.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = PMSCM04003E\\
+		SccProjectUniqueName5 = PMSCM04004A\\PMSCM04004A.csproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = PMSCM04004A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26DC54A3-C144-4D37-B87C-F453958CC04F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26DC54A3-C144-4D37-B87C-F453958CC04F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26DC54A3-C144-4D37-B87C-F453958CC04F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26DC54A3-C144-4D37-B87C-F453958CC04F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMHAT02027R", "PMHAT02027R\PMHAT02027R.csproj", "{002CCF72-3539-4FFA-8688-B151EA67BCF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMHAT02029D", "PMHAT02029D\PMHAT02029D.csproj", "{0DA99219-3BA2-4B8A-A267-54DF4177C71D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMHAT02028O", "PMHAT02028O\PMHAT02028O.csproj", "{5BCBC252-9CC6-4412-8FFC-D2003C52C4CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMHAT02026G", "PMHAT02026G\PMHAT02026G.csproj", "{5045C504-6032-49DE-8833-F3551349C2FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServerWorker", "ConsoleServerWorker\ConsoleServerWorker.csproj", "{56E7B8A7-763D-4F73-9ABE-4910909AAB09}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ConsoleServerWorker\\ConsoleServerWorker.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = ConsoleServerWorker\\
+		SccProjectUniqueName2 = PMHAT02026G\\PMHAT02026G.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PMHAT02026G\\
+		SccProjectUniqueName3 = PMHAT02027R\\PMHAT02027R.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = PMHAT02027R\\
+		SccProjectUniqueName4 = PMHAT02028O\\PMHAT02028O.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = PMHAT02028O\\
+		SccProjectUniqueName5 = PMHAT02029D\\PMHAT02029D.csproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = PMHAT02029D\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{002CCF72-3539-4FFA-8688-B151EA67BCF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{002CCF72-3539-4FFA-8688-B151EA67BCF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{002CCF72-3539-4FFA-8688-B151EA67BCF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{002CCF72-3539-4FFA-8688-B151EA67BCF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA99219-3BA2-4B8A-A267-54DF4177C71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA99219-3BA2-4B8A-A267-54DF4177C71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA99219-3BA2-4B8A-A267-54DF4177C71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA99219-3BA2-4B8A-A267-54DF4177C71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BCBC252-9CC6-4412-8FFC-D2003C52C4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BCBC252-9CC6-4412-8FFC-D2003C52C4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BCBC252-9CC6-4412-8FFC-D2003C52C4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BCBC252-9CC6-4412-8FFC-D2003C52C4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5045C504-6032-49DE-8833-F3551349C2FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5045C504-6032-49DE-8833-F3551349C2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5045C504-6032-49DE-8833-F3551349C2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5045C504-6032-49DE-8833-F3551349C2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E7B8A7-763D-4F73-9ABE-4910909AAB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E7B8A7-763D-4F73-9ABE-4910909AAB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E7B8A7-763D-4F73-9ABE-4910909AAB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E7B8A7-763D-4F73-9ABE-4910909AAB09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

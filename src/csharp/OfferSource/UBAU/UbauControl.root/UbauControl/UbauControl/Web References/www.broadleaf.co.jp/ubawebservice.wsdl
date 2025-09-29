@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://broadleaf.co.jp/UBAWebService/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://broadleaf.co.jp/UBAWebService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://broadleaf.co.jp/UBAWebService/">
+      <s:element name="CompanyLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loginIdentity" type="tns:LoginIdentity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginIdentity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="USBIdentity" type="tns:USBIdentity" />
+          <s:element minOccurs="1" maxOccurs="1" name="MachineIdentity" type="tns:MachineIdentity" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestTimeStamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="USBIdentity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TsubasaCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USBCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MachineIdentity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MacAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MachineName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DotNetFramework" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CompanyLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyLoginResult" type="tns:LoginToken" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginToken">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Identified" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyStatus" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginTicket" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductIdentityList" type="tns:ArrayOfProductIdentity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProductIdentity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductIdentity" type="tns:ProductIdentity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductIdentity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccessTicket" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="tns:AccessToken" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AccessToken">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LoginFlag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessTicket" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="tns:CompanyInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Product" type="tns:ProductInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemoteServiceInfoArray" type="tns:ArrayOfRemoteServiceInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleInfoArray" type="tns:ArrayOfRoleInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoftwareInfoArray" type="tns:ArrayOfSoftwareInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRemoteServiceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteServiceInfo" nillable="true" type="tns:RemoteServiceInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteServiceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceTargetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Domain" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Port" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Protocol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLoginService" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConnectionInfo" type="tns:ArrayOfConnectionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConnectionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConnectionInfo" nillable="true" type="tns:ConnectionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConnectionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ConnectionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConnectionText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminConnectionText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndexName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndexCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DBEncryptionInfo" type="tns:ArrayOfDBEncryptionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDBEncryptionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DBEncryptionInfo" nillable="true" type="tns:DBEncryptionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DBEncryptionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeyPWD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Identifier" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRoleInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RoleInfo" nillable="true" type="tns:RoleInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RoleInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RoleCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionInfoArray" type="tns:ArrayOfFunctionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFunctionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FunctionInfo" nillable="true" type="tns:FunctionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FunctionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSoftwareInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SoftwareInfo" nillable="true" type="tns:SoftwareInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SoftwareInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SoftwareCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoftwareName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoftwareDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SoftwareType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PurchaseStatus" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RemainingDays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUSBAccessPermitted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CompanyLogin2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loginIdentity" type="tns:LoginIdentity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginIdentity2">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="USBIdentity" type="tns:USBIdentity" />
+          <s:element minOccurs="1" maxOccurs="1" name="MachineIdentity" type="tns:MachineIdentity" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestTimeStamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GenerationIdentity" type="tns:ArrayOfGenerationIdentity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGenerationIdentity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GenerationIdentity" type="tns:GenerationIdentity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GenerationIdentity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GenerationCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CompanyLogin2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyLogin2Result" type="tns:LoginToken" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompanyLoginLSM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loginIdentity" type="tns:LoginIdentity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompanyLoginLSMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyLoginLSMResult" type="tns:LoginToken" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestAccessTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestAccessTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestAccessTicketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyAccessTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccessTicket" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyAccessTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerifyAccessTicketResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestAccessToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GenerationCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestAccessTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestAccessTokenResult" type="tns:AccessToken" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerMaintenance">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerMaintenanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerMaintenanceResult" type="tns:ServerMaintenance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServerMaintenance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleStatus" type="tns:ScheduleStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaintenaceStartTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaintenaceEndTime" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ScheduleStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Shceduled" />
+          <s:enumeration value="NotScheduled" />
+          <s:enumeration value="UnderMaintenance" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetProductServerMaintenance">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProductServerMaintenanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductServerMaintenanceResult" type="tns:ArrayOfProductServerMaintenance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProductServerMaintenance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductServerMaintenance" nillable="true" type="tns:ProductServerMaintenance" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductServerMaintenance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleStatus" type="tns:ScheduleStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaintenaceStartTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaintenaceEndTime" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestDBManageToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ServerIdentity" type="tns:ServerIdentity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServerIdentity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DBTableNameList" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="USBIdentity" type="tns:USBIdentity" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestDBManageTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestDBManageTokenResult" type="tns:DBManageToken" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DBManageToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DBUserInfo" type="tns:DBUserInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="DBEncryptionInfoList" type="tns:ArrayOfDBEncryptionInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="RelatedDBInfoList" type="tns:ArrayOfRelatedDBInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DBUserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AdminID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminPWD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessPWD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRelatedDBInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RelatedDBInfo" nillable="true" type="tns:RelatedDBInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RelatedDBInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DBUserInfo" type="tns:DBUserInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetInstallationLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InstallationIdentity" type="tns:InstallationIdentity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InstallationIdentity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ServerIdentity" type="tns:ServerIdentity" />
+          <s:element minOccurs="0" maxOccurs="1" name="OSAdminID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OSAdminPWD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallationManager" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetInstallationLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetInstallationLogResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoteTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="RemoteTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoteTestResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSCIStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSCIStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetSCIStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestSCICode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="usbIdentity" type="tns:USBIdentity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestSCICodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestSCICodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CompanyLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:CompanyLogin" />
+  </wsdl:message>
+  <wsdl:message name="CompanyLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:CompanyLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompanyLogin2SoapIn">
+    <wsdl:part name="parameters" element="tns:CompanyLogin2" />
+  </wsdl:message>
+  <wsdl:message name="CompanyLogin2SoapOut">
+    <wsdl:part name="parameters" element="tns:CompanyLogin2Response" />
+  </wsdl:message>
+  <wsdl:message name="CompanyLoginLSMSoapIn">
+    <wsdl:part name="parameters" element="tns:CompanyLoginLSM" />
+  </wsdl:message>
+  <wsdl:message name="CompanyLoginLSMSoapOut">
+    <wsdl:part name="parameters" element="tns:CompanyLoginLSMResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestAccessTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestAccessTicket" />
+  </wsdl:message>
+  <wsdl:message name="RequestAccessTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestAccessTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAccessTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifyAccessTicket" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAccessTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyAccessTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestAccessTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestAccessToken" />
+  </wsdl:message>
+  <wsdl:message name="RequestAccessTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestAccessTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerMaintenanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerMaintenance" />
+  </wsdl:message>
+  <wsdl:message name="GetServerMaintenanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerMaintenanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductServerMaintenanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductServerMaintenance" />
+  </wsdl:message>
+  <wsdl:message name="GetProductServerMaintenanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductServerMaintenanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestDBManageTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestDBManageToken" />
+  </wsdl:message>
+  <wsdl:message name="RequestDBManageTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestDBManageTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetInstallationLogSoapIn">
+    <wsdl:part name="parameters" element="tns:SetInstallationLog" />
+  </wsdl:message>
+  <wsdl:message name="SetInstallationLogSoapOut">
+    <wsdl:part name="parameters" element="tns:SetInstallationLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoteTestSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoteTest" />
+  </wsdl:message>
+  <wsdl:message name="RemoteTestSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoteTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetSCIStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SetSCIStatus" />
+  </wsdl:message>
+  <wsdl:message name="SetSCIStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SetSCIStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestSCICodeSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestSCICode" />
+  </wsdl:message>
+  <wsdl:message name="RequestSCICodeSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestSCICodeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UBAWebServiceSoap">
+    <wsdl:operation name="CompanyLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">企業ログイン</wsdl:documentation>
+      <wsdl:input message="tns:CompanyLoginSoapIn" />
+      <wsdl:output message="tns:CompanyLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLogin2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">企業ログイン2</wsdl:documentation>
+      <wsdl:input message="tns:CompanyLogin2SoapIn" />
+      <wsdl:output message="tns:CompanyLogin2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLoginLSM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">企業ログイン（LSM）</wsdl:documentation>
+      <wsdl:input message="tns:CompanyLoginLSMSoapIn" />
+      <wsdl:output message="tns:CompanyLoginLSMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestAccessTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">アクセスチケット発行：チケットを返す</wsdl:documentation>
+      <wsdl:input message="tns:RequestAccessTicketSoapIn" />
+      <wsdl:output message="tns:RequestAccessTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccessTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">アクセスチケット確認：成否を返す</wsdl:documentation>
+      <wsdl:input message="tns:VerifyAccessTicketSoapIn" />
+      <wsdl:output message="tns:VerifyAccessTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestAccessToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">企業＋製品情報取得：アクセストークンを返す</wsdl:documentation>
+      <wsdl:input message="tns:RequestAccessTokenSoapIn" />
+      <wsdl:output message="tns:RequestAccessTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerMaintenance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">サーバメンテ確認：サーバメンテ情報を返す</wsdl:documentation>
+      <wsdl:input message="tns:GetServerMaintenanceSoapIn" />
+      <wsdl:output message="tns:GetServerMaintenanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductServerMaintenance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">製品サーバメンテ確認：製品別のサーバメンテ情報を返す</wsdl:documentation>
+      <wsdl:input message="tns:GetProductServerMaintenanceSoapIn" />
+      <wsdl:output message="tns:GetProductServerMaintenanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestDBManageToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">DB管理情報発行：DB管理トークンを返す</wsdl:documentation>
+      <wsdl:input message="tns:RequestDBManageTokenSoapIn" />
+      <wsdl:output message="tns:RequestDBManageTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetInstallationLog">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">インストール履歴</wsdl:documentation>
+      <wsdl:input message="tns:SetInstallationLogSoapIn" />
+      <wsdl:output message="tns:SetInstallationLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoteTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">リモート接続テスト</wsdl:documentation>
+      <wsdl:input message="tns:RemoteTestSoapIn" />
+      <wsdl:output message="tns:RemoteTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSCIStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">コンバートステータス変更</wsdl:documentation>
+      <wsdl:input message="tns:SetSCIStatusSoapIn" />
+      <wsdl:output message="tns:SetSCIStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestSCICode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">コンバートコード取得</wsdl:documentation>
+      <wsdl:input message="tns:RequestSCICodeSoapIn" />
+      <wsdl:output message="tns:RequestSCICodeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UBAWebServiceSoap" type="tns:UBAWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CompanyLogin">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/CompanyLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLogin2">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/CompanyLogin2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLoginLSM">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/CompanyLoginLSM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestAccessTicket">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestAccessTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccessTicket">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/VerifyAccessTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestAccessToken">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestAccessToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerMaintenance">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/GetServerMaintenance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductServerMaintenance">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/GetProductServerMaintenance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestDBManageToken">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestDBManageToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetInstallationLog">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/SetInstallationLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoteTest">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/RemoteTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSCIStatus">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/SetSCIStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestSCICode">
+      <soap:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestSCICode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UBAWebServiceSoap12" type="tns:UBAWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CompanyLogin">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/CompanyLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLogin2">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/CompanyLogin2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompanyLoginLSM">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/CompanyLoginLSM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestAccessTicket">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestAccessTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccessTicket">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/VerifyAccessTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestAccessToken">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestAccessToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerMaintenance">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/GetServerMaintenance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductServerMaintenance">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/GetProductServerMaintenance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestDBManageToken">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestDBManageToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetInstallationLog">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/SetInstallationLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoteTest">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/RemoteTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSCIStatus">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/SetSCIStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestSCICode">
+      <soap12:operation soapAction="http://broadleaf.co.jp/UBAWebService/RequestSCICode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UBAWebService">
+    <wsdl:port name="UBAWebServiceSoap" binding="tns:UBAWebServiceSoap">
+      <soap:address location="http://10.30.20.162/ubawebservice/ubawebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UBAWebServiceSoap12" binding="tns:UBAWebServiceSoap12">
+      <soap12:address location="http://10.30.20.162/ubawebservice/ubawebservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

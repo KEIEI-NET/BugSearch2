@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MakerGoodsPtrnHisDataSet" targetNamespace="http://tempuri.org/MakerGoodsPtrnHisDataSet.xsd" xmlns:mstns="http://tempuri.org/MakerGoodsPtrnHisDataSet.xsd" xmlns="http://tempuri.org/MakerGoodsPtrnHisDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MakerGoodsPtrnHisDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="MakerGoodsPtrnHisDataSet" msprop:Generator_DataSetName="MakerGoodsPtrnHisDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MakerGoodsPtrnHisList" msprop:Generator_UserTableName="MakerGoodsPtrnHisList" msprop:Generator_RowDeletedName="MakerGoodsPtrnHisListRowDeleted" msprop:Generator_RowChangedName="MakerGoodsPtrnHisListRowChanged" msprop:Generator_RowClassName="MakerGoodsPtrnHisListRow" msprop:Generator_RowChangingName="MakerGoodsPtrnHisListRowChanging" msprop:Generator_RowEvArgName="MakerGoodsPtrnHisListRowChangeEvent" msprop:Generator_RowEvHandlerName="MakerGoodsPtrnHisListRowChangeEventHandler" msprop:Generator_TableClassName="MakerGoodsPtrnHisListDataTable" msprop:Generator_TableVarName="tableMakerGoodsPtrnHisList" msprop:Generator_RowDeletingName="MakerGoodsPtrnHisListRowDeleting" msprop:Generator_TablePropName="MakerGoodsPtrnHisList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MakerGoodsSerchHisNo" msdata:Caption="パターン検索履歴通番" msprop:Generator_UserColumnName="MakerGoodsSerchHisNo" msprop:Generator_ColumnVarNameInTable="columnMakerGoodsSerchHisNo" msprop:Generator_ColumnPropNameInRow="MakerGoodsSerchHisNo" msprop:Generator_ColumnPropNameInTable="MakerGoodsSerchHisNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SearchDate" msdata:Caption="最終日付" msprop:Generator_UserColumnName="SearchDate" msprop:Generator_ColumnVarNameInTable="columnSearchDate" msprop:Generator_ColumnPropNameInRow="SearchDate" msprop:Generator_ColumnPropNameInTable="SearchDateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GoodsMakerName" msdata:Caption="メーカー名" msprop:Generator_UserColumnName="GoodsMakerName" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerName" msprop:Generator_ColumnPropNameInRow="GoodsMakerName" msprop:Generator_ColumnPropNameInTable="GoodsMakerNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GoodsMakerCd" msdata:Caption="メーカー" msprop:Generator_UserColumnName="GoodsMakerCd" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerCd" msprop:Generator_ColumnPropNameInRow="GoodsMakerCd" msprop:Generator_ColumnPropNameInTable="GoodsMakerCdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="BarCodeData" msdata:Caption="バーコード" msprop:Generator_UserColumnName="BarCodeData" msprop:Generator_ColumnVarNameInTable="columnBarCodeData" msprop:Generator_ColumnPropNameInRow="BarCodeData" msprop:Generator_ColumnPropNameInTable="BarCodeDataColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MakerGoodsPtrnNo" msdata:Caption="パターンNo." msprop:Generator_UserColumnName="MakerGoodsPtrnNo" msprop:Generator_ColumnVarNameInTable="columnMakerGoodsPtrnNo" msprop:Generator_ColumnPropNameInRow="MakerGoodsPtrnNo" msprop:Generator_ColumnPropNameInTable="MakerGoodsPtrnNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SearchGoodsNo" msdata:Caption="検索品番" msprop:Generator_UserColumnName="SearchGoodsNo" msprop:Generator_ColumnVarNameInTable="columnSearchGoodsNo" msprop:Generator_ColumnPropNameInRow="SearchGoodsNo" msprop:Generator_ColumnPropNameInTable="SearchGoodsNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EntryGoodsNo" msdata:Caption="確定商品" msprop:Generator_UserColumnName="EntryGoodsNo" msprop:Generator_ColumnVarNameInTable="columnEntryGoodsNo" msprop:Generator_ColumnPropNameInRow="EntryGoodsNo" msprop:Generator_ColumnPropNameInTable="EntryGoodsNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UseCount" msdata:Caption="回数" msprop:Generator_UserColumnName="UseCount" msprop:Generator_ColumnVarNameInTable="columnUseCount" msprop:Generator_ColumnPropNameInRow="UseCount" msprop:Generator_ColumnPropNameInTable="UseCountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="UoeOrderDtlKind" msdata:Caption="発注" msprop:Generator_UserColumnName="UoeOrderDtlKind" msprop:Generator_ColumnPropNameInRow="UoeOrderDtlKind" msprop:Generator_ColumnVarNameInTable="columnUoeOrderDtlKind" msprop:Generator_ColumnPropNameInTable="UoeOrderDtlKindColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EntryStatus" msdata:Caption="結果" msprop:Generator_UserColumnName="EntryStatus" msprop:Generator_ColumnVarNameInTable="columnEntryStatus" msprop:Generator_ColumnPropNameInRow="EntryStatus" msprop:Generator_ColumnPropNameInTable="EntryStatusColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UseCountFilter" msprop:Generator_UserColumnName="UseCountFilter" msprop:Generator_ColumnVarNameInTable="columnUseCountFilter" msprop:Generator_ColumnPropNameInRow="UseCountFilter" msprop:Generator_ColumnPropNameInTable="UseCountFilterColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

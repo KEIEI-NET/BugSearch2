@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>従業員マスタ（エクスポート）</SchemaName>
+    <SchemaFileName>PMKHN07210U.xml</SchemaFileName>
+    <Writer />
+    <Date>2009/05/26</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="EmployeeCodeRF">
+      <ColKey>EmployeeCodeRF</ColKey>
+      <ColName>担当者コード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NameRF">
+      <ColKey>NameRF</ColKey>
+      <ColName>担当者名</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="KanaRF">
+      <ColKey>KanaRF</ColKey>
+      <ColName>担当者名カナ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ShortNameRF">
+      <ColKey>ShortNameRF</ColKey>
+      <ColName>担当者略称</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CompanyTelNoRF">
+      <ColKey>CompanyTelNoRF</ColKey>
+      <ColName>電話番号（会社）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="PortableTelNoRF">
+      <ColKey>PortableTelNoRF</ColKey>
+      <ColName>電話番号（携帯）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailAddress1RF">
+      <ColKey>MailAddress1RF</ColKey>
+      <ColName>メール（会社）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailAddress2RF">
+      <ColKey>MailAddress2RF</ColKey>
+      <ColName>メール（携帯）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SexNameRF">
+      <ColKey>SexNameRF</ColKey>
+      <ColName>性別</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="BirthdayRF">
+      <ColKey>BirthdayRF</ColKey>
+      <ColName>生年月日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EnterCompanyDateRF">
+      <ColKey>EnterCompanyDateRF</ColKey>
+      <ColName>入社日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="RetirementDateRF">
+      <ColKey>RetirementDateRF</ColKey>
+      <ColName>退社日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="BelongSectionCodeRF">
+      <ColKey>BelongSectionCodeRF</ColKey>
+      <ColName>所属拠点</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="BelongSubSectionCodeRF">
+      <ColKey>BelongSubSectionCodeRF</ColKey>
+      <ColName>所属部門</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="UOESnmDivRF">
+      <ColKey>UOESnmDivRF</ColKey>
+      <ColName>ＵＯＥ略称区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AuthorityLevel1RF">
+      <ColKey>AuthorityLevel1RF</ColKey>
+      <ColName>ロール（業務）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AuthorityLevel2RF">
+      <ColKey>AuthorityLevel2RF</ColKey>
+      <ColName>ロール（権限）</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EmployAnalysCode1RF">
+      <ColKey>EmployAnalysCode1RF</ColKey>
+      <ColName>従業員分析コード１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EmployAnalysCode2RF">
+      <ColKey>EmployAnalysCode2RF</ColKey>
+      <ColName>従業員分析コード２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EmployAnalysCode3RF">
+      <ColKey>EmployAnalysCode3RF</ColKey>
+      <ColName>従業員分析コード３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EmployAnalysCode4RF">
+      <ColKey>EmployAnalysCode4RF</ColKey>
+      <ColName>従業員分析コード４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EmployAnalysCode5RF">
+      <ColKey>EmployAnalysCode5RF</ColKey>
+      <ColName>従業員分析コード５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EmployAnalysCode6RF">
+      <ColKey>EmployAnalysCode6RF</ColKey>
+      <ColName>従業員分析コード６</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

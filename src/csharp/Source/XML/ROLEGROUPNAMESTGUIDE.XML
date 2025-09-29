@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+    <!-- ガイドフォームの設定  -->
+    <GuideDef>
+        <FormTitle>ロールグループ名称ガイド</FormTitle>
+        <FormMassge>ロールグループを選択してください</FormMassge>
+        <FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+        <FormHeight>635</FormHeight>
+        <FormWidth>450</FormWidth>
+        <StyleMode>new</StyleMode>
+        <StartPosition>CenterParent</StartPosition>
+        <StartPositionTop>0</StartPositionTop>
+        <StartPositionLeft>0</StartPositionLeft>
+        <ViewerSW>
+            <SWName>通常表示</SWName>
+            <SWParam>0</SWParam>
+        </ViewerSW>
+        <ViewerSW>
+            <SWName>全メーカー表示</SWName>
+            <SWParam>10</SWParam>
+        </ViewerSW>
+    </GuideDef>
+    <!-- 選択対象データViewerの設定  -->
+    <ViewerDef>
+        <ViewerInfo>
+            <ColName>ロールグループコード</ColName>
+            <ColKey>RoleGroupCode</ColKey>
+            <ColWith>150</ColWith>
+            <ColDataType>int</ColDataType>
+        </ViewerInfo>
+        <ViewerInfo>
+            <ColName>ロールグループ名称</ColName>
+            <ColKey>RoleGroupName</ColKey>
+            <ColWith>280</ColWith>
+            <ColDataType>string</ColDataType>
+        </ViewerInfo>
+    </ViewerDef>
+    <!-- 選択対象データの検索条件設定  -->
+    <SearchDef>
+        <SerchName>Broadleaf.Application.Controller.RoleGroupNameStAcs</SerchName>
+        <SerchAssm>PMKHN09723A.DLL</SerchAssm>
+        <SerchInfoRoot>
+            <SerchInfo type="string">EnterpriseCode</SerchInfo>
+        </SerchInfoRoot>
+    </SearchDef>
+    <!-- 選択結果の設定  -->
+    <SelectedInfoDef>
+        <SelectedInfo type="string">EnterpriseCode</SelectedInfo>
+        <SelectedInfo type="int">RoleGroupCode</SelectedInfo>
+        <SelectedInfo type="string">RoleGroupName</SelectedInfo>
+    </SelectedInfoDef>
+</definfo>

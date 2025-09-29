@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SalesReportDataSet" targetNamespace="http://tempuri.org/SalesReportDataSet.xsd" xmlns:mstns="http://tempuri.org/SalesReportDataSet.xsd" xmlns="http://tempuri.org/SalesReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SalesReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SalesReportDataSet" msprop:Generator_DataSetName="SalesReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SalesReportResult" msprop:Generator_UserTableName="SalesReportResult" msprop:Generator_RowDeletedName="SalesReportResultRowDeleted" msprop:Generator_TableClassName="SalesReportResultDataTable" msprop:Generator_RowChangedName="SalesReportResultRowChanged" msprop:Generator_RowClassName="SalesReportResultRow" msprop:Generator_RowChangingName="SalesReportResultRowChanging" msprop:Generator_RowEvArgName="SalesReportResultRowChangeEvent" msprop:Generator_RowEvHandlerName="SalesReportResultRowChangeEventHandler" msprop:Generator_TablePropName="SalesReportResult" msprop:Generator_TableVarName="tableSalesReportResult" msprop:Generator_RowDeletingName="SalesReportResultRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNo" msprop:Generator_UserColumnName="RowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="EnterpriseCode" msprop:Generator_UserColumnName="EnterpriseCode" msprop:Generator_ColumnPropNameInRow="EnterpriseCode" msprop:Generator_ColumnVarNameInTable="columnEnterpriseCode" msprop:Generator_ColumnPropNameInTable="EnterpriseCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SectionCode" msprop:Generator_UserColumnName="SectionCode" msprop:Generator_ColumnPropNameInRow="SectionCode" msprop:Generator_ColumnVarNameInTable="columnSectionCode" msprop:Generator_ColumnPropNameInTable="SectionCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SectionGuideSnm" msprop:Generator_UserColumnName="SectionGuideSnm" msprop:Generator_ColumnPropNameInRow="SectionGuideSnm" msprop:Generator_ColumnVarNameInTable="columnSectionGuideSnm" msprop:Generator_ColumnPropNameInTable="SectionGuideSnmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SalesTotalTaxExc" msprop:Generator_UserColumnName="SalesTotalTaxExc" msprop:Generator_ColumnPropNameInRow="SalesTotalTaxExc" msprop:Generator_ColumnVarNameInTable="columnSalesTotalTaxExc" msprop:Generator_ColumnPropNameInTable="SalesTotalTaxExcColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="SalesTargetMoney" msprop:Generator_UserColumnName="SalesTargetMoney" msprop:Generator_ColumnPropNameInRow="SalesTargetMoney" msprop:Generator_ColumnVarNameInTable="columnSalesTargetMoney" msprop:Generator_ColumnPropNameInTable="SalesTargetMoneyColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="AchievementRateNet" msprop:Generator_UserColumnName="AchievementRateNet" msprop:Generator_ColumnPropNameInRow="AchievementRateNet" msprop:Generator_ColumnVarNameInTable="columnAchievementRateNet" msprop:Generator_ColumnPropNameInTable="AchievementRateNetColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="GrossMargin" msprop:Generator_UserColumnName="GrossMargin" msprop:Generator_ColumnPropNameInRow="GrossMargin" msprop:Generator_ColumnVarNameInTable="columnGrossMargin" msprop:Generator_ColumnPropNameInTable="GrossMarginColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="SalesTargetProfit" msprop:Generator_UserColumnName="SalesTargetProfit" msprop:Generator_ColumnPropNameInRow="SalesTargetProfit" msprop:Generator_ColumnVarNameInTable="columnSalesTargetProfit" msprop:Generator_ColumnPropNameInTable="SalesTargetProfitColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="AchievementRateGross" msprop:Generator_UserColumnName="AchievementRateGross" msprop:Generator_ColumnPropNameInRow="AchievementRateGross" msprop:Generator_ColumnVarNameInTable="columnAchievementRateGross" msprop:Generator_ColumnPropNameInTable="AchievementRateGrossColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="OperationDay" msprop:Generator_UserColumnName="OperationDay" msprop:Generator_ColumnPropNameInRow="OperationDay" msprop:Generator_ColumnVarNameInTable="columnOperationDay" msprop:Generator_ColumnPropNameInTable="OperationDayColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="OperationDayString" msprop:Generator_UserColumnName="OperationDayString" msprop:Generator_ColumnPropNameInRow="OperationDayString" msprop:Generator_ColumnVarNameInTable="columnOperationDayString" msprop:Generator_ColumnPropNameInTable="OperationDayStringColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKOU04000U", "PMKOU04000U\PMKOU04000U.csproj", "{44CC937B-2A74-4CED-B1C2-09472EA35452}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKOU04001U", "PMKOU04001U\PMKOU04001U.csproj", "{F72679D5-C744-4619-BEF3-B942E97B34FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKOU04002E", "PMKOU04002E\PMKOU04002E.csproj", "{46E355EF-9D52-4C81-AA00-AA22F90D4538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKOU04003A", "PMKOU04003A\PMKOU04003A.csproj", "{87929754-0595-4561-85AB-8731997C608F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKOU04004U", "PMKOU04004U\PMKOU04004U.csproj", "{E3D44D99-F68C-4319-A831-D448D31D33DB}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMKOU04000U\\PMKOU04000U.csproj
+		SccProjectName1 = \u0022$/Partsman.NS[057]/Source/Client/PMKOU04000U.root/PMKOU04000U/PMKOU04000U\u0022,\u0020GEQPAAAA
+		SccLocalPath1 = PMKOU04000U
+		SccProjectUniqueName2 = PMKOU04001U\\PMKOU04001U.csproj
+		SccProjectName2 = \u0022$/Partsman.NS[057]/Source/Client/PMKOU04000U.root/PMKOU04000U/PMKOU04001U\u0022,\u0020VEQPAAAA
+		SccLocalPath2 = PMKOU04001U
+		SccProjectUniqueName3 = PMKOU04002E\\PMKOU04002E.csproj
+		SccProjectName3 = \u0022$/Partsman.NS[057]/Source/Client/PMKOU04000U.root/PMKOU04000U/PMKOU04002E\u0022,\u0020MFQPAAAA
+		SccLocalPath3 = PMKOU04002E
+		SccProjectUniqueName4 = PMKOU04003A\\PMKOU04003A.csproj
+		SccProjectName4 = \u0022$/Partsman.NS[057]/Source/Client/PMKOU04000U.root/PMKOU04000U/PMKOU04003A\u0022,\u0020TFQPAAAA
+		SccLocalPath4 = PMKOU04003A
+		SccProjectUniqueName5 = PMKOU04004U\\PMKOU04004U.csproj
+		SccProjectName5 = \u0022$/Partsman.NS[057]/Source/Client/PMKOU04000U.root/PMKOU04000U/PMKOU04004U\u0022,\u0020FGQPAAAA
+		SccLocalPath5 = PMKOU04004U
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44CC937B-2A74-4CED-B1C2-09472EA35452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44CC937B-2A74-4CED-B1C2-09472EA35452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44CC937B-2A74-4CED-B1C2-09472EA35452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44CC937B-2A74-4CED-B1C2-09472EA35452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72679D5-C744-4619-BEF3-B942E97B34FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72679D5-C744-4619-BEF3-B942E97B34FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72679D5-C744-4619-BEF3-B942E97B34FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72679D5-C744-4619-BEF3-B942E97B34FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46E355EF-9D52-4C81-AA00-AA22F90D4538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E355EF-9D52-4C81-AA00-AA22F90D4538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E355EF-9D52-4C81-AA00-AA22F90D4538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E355EF-9D52-4C81-AA00-AA22F90D4538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87929754-0595-4561-85AB-8731997C608F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87929754-0595-4561-85AB-8731997C608F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87929754-0595-4561-85AB-8731997C608F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87929754-0595-4561-85AB-8731997C608F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D44D99-F68C-4319-A831-D448D31D33DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D44D99-F68C-4319-A831-D448D31D33DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D44D99-F68C-4319-A831-D448D31D33DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D44D99-F68C-4319-A831-D448D31D33DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

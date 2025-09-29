@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Subst" targetNamespace="http://tempuri.org/Subst.xsd" xmlns:mstns="http://tempuri.org/Subst.xsd" xmlns="http://tempuri.org/Subst.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="NotPublic" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Subst" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Subst" msprop:Generator_DataSetName="Subst">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="UsrSubstParts" msprop:Generator_UserTableName="UsrSubstParts" msprop:Generator_RowDeletedName="UsrSubstPartsRowDeleted" msprop:Generator_RowChangedName="UsrSubstPartsRowChanged" msprop:Generator_RowClassName="UsrSubstPartsRow" msprop:Generator_RowChangingName="UsrSubstPartsRowChanging" msprop:Generator_RowEvArgName="UsrSubstPartsRowChangeEvent" msprop:Generator_RowEvHandlerName="UsrSubstPartsRowChangeEventHandler" msprop:Generator_TableClassName="UsrSubstPartsDataTable" msprop:Generator_TableVarName="tableUsrSubstParts" msprop:Generator_RowDeletingName="UsrSubstPartsRowDeleting" msprop:Generator_TablePropName="UsrSubstParts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChgSrcMakerCd" msdata:Caption="代替元メーカーコード" msprop:Generator_UserColumnName="ChgSrcMakerCd" msprop:Generator_ColumnVarNameInTable="columnChgSrcMakerCd" msprop:Generator_ColumnPropNameInRow="ChgSrcMakerCd" msprop:Generator_ColumnPropNameInTable="ChgSrcMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="ChgSrcGoodsNo" msdata:Caption="代替元品番(-付品番)" msprop:Generator_UserColumnName="ChgSrcGoodsNo" msprop:Generator_ColumnVarNameInTable="columnChgSrcGoodsNo" msprop:Generator_ColumnPropNameInRow="ChgSrcGoodsNo" msprop:Generator_ColumnPropNameInTable="ChgSrcGoodsNoColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChgDestMakerCd" msdata:Caption="代替先メーカーコード" msprop:Generator_UserColumnName="ChgDestMakerCd" msprop:Generator_ColumnVarNameInTable="columnChgDestMakerCd" msprop:Generator_ColumnPropNameInRow="ChgDestMakerCd" msprop:Generator_ColumnPropNameInTable="ChgDestMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="ChgDestGoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="ChgDestGoodsNo" msprop:Generator_ColumnVarNameInTable="columnChgDestGoodsNo" msprop:Generator_ColumnPropNameInRow="ChgDestGoodsNo" msprop:Generator_ColumnPropNameInTable="ChgDestGoodsNoColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ApplyStDate" msdata:Caption="適用開始年月日" msprop:Generator_UserColumnName="ApplyStDate" msprop:Generator_ColumnVarNameInTable="columnApplyStDate" msprop:Generator_ColumnPropNameInRow="ApplyStDate" msprop:Generator_ColumnPropNameInTable="ApplyStDateColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="ApplyEdDate" msdata:Caption="適用終了年月日" msprop:Generator_UserColumnName="ApplyEdDate" msprop:Generator_ColumnVarNameInTable="columnApplyEdDate" msprop:Generator_ColumnPropNameInRow="ApplyEdDate" msprop:Generator_ColumnPropNameInTable="ApplyEdDateColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="MakerNm" msdata:Caption="メーカー" msprop:Generator_UserColumnName="MakerNm" msprop:Generator_ColumnVarNameInTable="columnMakerNm" msprop:Generator_ColumnPropNameInRow="MakerNm" msprop:Generator_ColumnPropNameInTable="MakerNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="GoodsNm" msdata:Caption="品名" msprop:Generator_UserColumnName="GoodsNm" msprop:Generator_ColumnVarNameInTable="columnGoodsNm" msprop:Generator_ColumnPropNameInRow="GoodsNm" msprop:Generator_ColumnPropNameInTable="GoodsNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Price" msdata:Caption="標準価格" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Genka" msdata:Caption="原単価" msprop:Generator_UserColumnName="Genka" msprop:Generator_ColumnVarNameInTable="columnGenka" msprop:Generator_ColumnPropNameInRow="Genka" msprop:Generator_ColumnPropNameInTable="GenkaColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Urika" msdata:Caption="売単価" msprop:Generator_UserColumnName="Urika" msprop:Generator_ColumnVarNameInTable="columnUrika" msprop:Generator_ColumnPropNameInRow="Urika" msprop:Generator_ColumnPropNameInTable="UrikaColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Gokan" msdata:DataType="System.Drawing.Image, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msdata:Caption="互換" msprop:Generator_UserColumnName="Gokan" msprop:Generator_ColumnVarNameInTable="columnGokan" msprop:Generator_ColumnPropNameInRow="Gokan" msprop:Generator_ColumnPropNameInTable="GokanColumn" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Comment" msdata:Caption="摘要" msprop:Generator_UserColumnName="Comment" msprop:Generator_ColumnPropNameInRow="Comment" msprop:Generator_ColumnVarNameInTable="columnComment" msprop:Generator_ColumnPropNameInTable="CommentColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="QTY" msprop:Generator_UserColumnName="QTY" msprop:Generator_ColumnVarNameInTable="columnQTY" msprop:Generator_ColumnPropNameInRow="QTY" msprop:Generator_ColumnPropNameInTable="QTYColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="SelImage" msdata:DataType="System.Drawing.Image, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msdata:Caption="選択" msprop:Generator_UserColumnName="SelImage" msprop:Generator_ColumnVarNameInTable="columnSelImage" msprop:Generator_ColumnPropNameInRow="SelImage" msprop:Generator_ColumnPropNameInTable="SelImageColumn" type="xs:anyType" minOccurs="0" />
+              <xs:element name="WarehouseCode" msprop:Generator_UserColumnName="WarehouseCode" msprop:Generator_ColumnVarNameInTable="columnWarehouseCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="WarehouseCode" msprop:Generator_ColumnPropNameInTable="WarehouseCodeColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="StockCnt" msdata:Caption="現在庫数" msprop:Generator_UserColumnName="StockCnt" msprop:Generator_ColumnVarNameInTable="columnStockCnt" msprop:Generator_ColumnPropNameInRow="StockCnt" msprop:Generator_ColumnPropNameInTable="StockCntColumn" type="xs:double" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DUsrSubstParts" msprop:Generator_UserTableName="DUsrSubstParts" msprop:Generator_RowDeletedName="DUsrSubstPartsRowDeleted" msprop:Generator_RowChangedName="DUsrSubstPartsRowChanged" msprop:Generator_RowClassName="DUsrSubstPartsRow" msprop:Generator_RowChangingName="DUsrSubstPartsRowChanging" msprop:Generator_RowEvArgName="DUsrSubstPartsRowChangeEvent" msprop:Generator_RowEvHandlerName="DUsrSubstPartsRowChangeEventHandler" msprop:Generator_TableClassName="DUsrSubstPartsDataTable" msprop:Generator_TableVarName="tableDUsrSubstParts" msprop:Generator_RowDeletingName="DUsrSubstPartsRowDeleting" msprop:Generator_TablePropName="DUsrSubstParts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChgSrcMakerCd" msdata:Caption="代替元メーカーコード" msprop:Generator_UserColumnName="ChgSrcMakerCd" msprop:Generator_ColumnPropNameInRow="ChgSrcMakerCd" msprop:Generator_ColumnVarNameInTable="columnChgSrcMakerCd" msprop:Generator_ColumnPropNameInTable="ChgSrcMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="ChgSrcGoodsNo" msdata:Caption="代替元品番(-付品番)" msprop:Generator_UserColumnName="ChgSrcGoodsNo" msprop:Generator_ColumnPropNameInRow="ChgSrcGoodsNo" msprop:Generator_ColumnVarNameInTable="columnChgSrcGoodsNo" msprop:Generator_ColumnPropNameInTable="ChgSrcGoodsNoColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChgDestMakerCd" msdata:Caption="代替先メーカーコード" msprop:Generator_UserColumnName="ChgDestMakerCd" msprop:Generator_ColumnPropNameInRow="ChgDestMakerCd" msprop:Generator_ColumnVarNameInTable="columnChgDestMakerCd" msprop:Generator_ColumnPropNameInTable="ChgDestMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="ChgDestGoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="ChgDestGoodsNo" msprop:Generator_ColumnPropNameInRow="ChgDestGoodsNo" msprop:Generator_ColumnVarNameInTable="columnChgDestGoodsNo" msprop:Generator_ColumnPropNameInTable="ChgDestGoodsNoColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ApplyStDate" msdata:Caption="適用開始年月日" msprop:Generator_UserColumnName="ApplyStDate" msprop:Generator_ColumnPropNameInRow="ApplyStDate" msprop:Generator_ColumnVarNameInTable="columnApplyStDate" msprop:Generator_ColumnPropNameInTable="ApplyStDateColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="ApplyEdDate" msdata:Caption="適用終了年月日" msprop:Generator_UserColumnName="ApplyEdDate" msprop:Generator_ColumnPropNameInRow="ApplyEdDate" msprop:Generator_ColumnVarNameInTable="columnApplyEdDate" msprop:Generator_ColumnPropNameInTable="ApplyEdDateColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="MakerNm" msdata:Caption="メーカー" msprop:Generator_UserColumnName="MakerNm" msprop:Generator_ColumnPropNameInRow="MakerNm" msprop:Generator_ColumnVarNameInTable="columnMakerNm" msprop:Generator_ColumnPropNameInTable="MakerNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="GoodsNm" msdata:Caption="品名" msprop:Generator_UserColumnName="GoodsNm" msprop:Generator_ColumnPropNameInRow="GoodsNm" msprop:Generator_ColumnVarNameInTable="columnGoodsNm" msprop:Generator_ColumnPropNameInTable="GoodsNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Price" msdata:Caption="標準価格" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInTable="PriceColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Genka" msdata:Caption="原単価" msprop:Generator_UserColumnName="Genka" msprop:Generator_ColumnPropNameInRow="Genka" msprop:Generator_ColumnVarNameInTable="columnGenka" msprop:Generator_ColumnPropNameInTable="GenkaColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Urika" msdata:Caption="売単価" msprop:Generator_UserColumnName="Urika" msprop:Generator_ColumnPropNameInRow="Urika" msprop:Generator_ColumnVarNameInTable="columnUrika" msprop:Generator_ColumnPropNameInTable="UrikaColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Comment" msdata:Caption="摘要" msprop:Generator_UserColumnName="Comment" msprop:Generator_ColumnPropNameInRow="Comment" msprop:Generator_ColumnVarNameInTable="columnComment" msprop:Generator_ColumnPropNameInTable="CommentColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="SelImage" msdata:DataType="System.Drawing.Image, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msdata:Caption="選択" msprop:Generator_UserColumnName="SelImage" msprop:Generator_ColumnVarNameInTable="columnSelImage" msprop:Generator_ColumnPropNameInRow="SelImage" msprop:Generator_ColumnPropNameInTable="SelImageColumn" type="xs:anyType" minOccurs="0" />
+              <xs:element name="QTY" msprop:Generator_UserColumnName="QTY" msprop:Generator_ColumnVarNameInTable="columnQTY" msprop:Generator_ColumnPropNameInRow="QTY" msprop:Generator_ColumnPropNameInTable="QTYColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="WarehouseCode" msprop:Generator_UserColumnName="WarehouseCode" msprop:Generator_ColumnVarNameInTable="columnWarehouseCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="WarehouseCode" msprop:Generator_ColumnPropNameInTable="WarehouseCodeColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="StockCnt" msdata:Caption="現在庫数" msprop:Generator_UserColumnName="StockCnt" msprop:Generator_ColumnVarNameInTable="columnStockCnt" msprop:Generator_ColumnPropNameInRow="StockCnt" msprop:Generator_ColumnPropNameInTable="StockCntColumn" type="xs:double" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OriginParts" msprop:Generator_UserTableName="OriginParts" msprop:Generator_RowDeletedName="OriginPartsRowDeleted" msprop:Generator_RowChangedName="OriginPartsRowChanged" msprop:Generator_RowClassName="OriginPartsRow" msprop:Generator_RowChangingName="OriginPartsRowChanging" msprop:Generator_RowEvArgName="OriginPartsRowChangeEvent" msprop:Generator_RowEvHandlerName="OriginPartsRowChangeEventHandler" msprop:Generator_TableClassName="OriginPartsDataTable" msprop:Generator_TableVarName="tableOriginParts" msprop:Generator_RowDeletingName="OriginPartsRowDeleting" msprop:Generator_TablePropName="OriginParts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChgSrcMakerCd" msdata:Caption="代替元メーカーコード" msprop:Generator_UserColumnName="ChgSrcMakerCd" msprop:Generator_ColumnPropNameInRow="ChgSrcMakerCd" msprop:Generator_ColumnVarNameInTable="columnChgSrcMakerCd" msprop:Generator_ColumnPropNameInTable="ChgSrcMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="ChgSrcGoodsNo" msdata:Caption="代替元品番(-付品番)" msprop:Generator_UserColumnName="ChgSrcGoodsNo" msprop:Generator_ColumnPropNameInRow="ChgSrcGoodsNo" msprop:Generator_ColumnVarNameInTable="columnChgSrcGoodsNo" msprop:Generator_ColumnPropNameInTable="ChgSrcGoodsNoColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChgDestMakerCd" msdata:Caption="代替先メーカーコード" msprop:Generator_UserColumnName="ChgDestMakerCd" msprop:Generator_ColumnPropNameInRow="ChgDestMakerCd" msprop:Generator_ColumnVarNameInTable="columnChgDestMakerCd" msprop:Generator_ColumnPropNameInTable="ChgDestMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="ChgDestGoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="ChgDestGoodsNo" msprop:Generator_ColumnPropNameInRow="ChgDestGoodsNo" msprop:Generator_ColumnVarNameInTable="columnChgDestGoodsNo" msprop:Generator_ColumnPropNameInTable="ChgDestGoodsNoColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ApplyStDate" msdata:Caption="適用開始年月日" msprop:Generator_UserColumnName="ApplyStDate" msprop:Generator_ColumnPropNameInRow="ApplyStDate" msprop:Generator_ColumnVarNameInTable="columnApplyStDate" msprop:Generator_ColumnPropNameInTable="ApplyStDateColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="ApplyEdDate" msdata:Caption="適用終了年月日" msprop:Generator_UserColumnName="ApplyEdDate" msprop:Generator_ColumnPropNameInRow="ApplyEdDate" msprop:Generator_ColumnVarNameInTable="columnApplyEdDate" msprop:Generator_ColumnPropNameInTable="ApplyEdDateColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="MakerNm" msdata:Caption="メーカー" msprop:Generator_UserColumnName="MakerNm" msprop:Generator_ColumnPropNameInRow="MakerNm" msprop:Generator_ColumnVarNameInTable="columnMakerNm" msprop:Generator_ColumnPropNameInTable="MakerNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="GoodsNm" msdata:Caption="品名" msprop:Generator_UserColumnName="GoodsNm" msprop:Generator_ColumnPropNameInRow="GoodsNm" msprop:Generator_ColumnVarNameInTable="columnGoodsNm" msprop:Generator_ColumnPropNameInTable="GoodsNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Price" msdata:Caption="標準価格" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInTable="PriceColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Genka" msdata:Caption="原単価" msprop:Generator_UserColumnName="Genka" msprop:Generator_ColumnPropNameInRow="Genka" msprop:Generator_ColumnVarNameInTable="columnGenka" msprop:Generator_ColumnPropNameInTable="GenkaColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Urika" msdata:Caption="売単価" msprop:Generator_UserColumnName="Urika" msprop:Generator_ColumnPropNameInRow="Urika" msprop:Generator_ColumnVarNameInTable="columnUrika" msprop:Generator_ColumnPropNameInTable="UrikaColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="Gokan" msdata:DataType="System.Drawing.Image, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msdata:Caption="互換" msprop:Generator_UserColumnName="Gokan" msprop:Generator_ColumnPropNameInRow="Gokan" msprop:Generator_ColumnVarNameInTable="columnGokan" msprop:Generator_ColumnPropNameInTable="GokanColumn" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Comment" msdata:Caption="摘要" msprop:Generator_UserColumnName="Comment" msprop:Generator_ColumnPropNameInRow="Comment" msprop:Generator_ColumnVarNameInTable="columnComment" msprop:Generator_ColumnPropNameInTable="CommentColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="QTY" msprop:Generator_UserColumnName="QTY" msprop:Generator_ColumnVarNameInTable="columnQTY" msprop:Generator_ColumnPropNameInRow="QTY" msprop:Generator_ColumnPropNameInTable="QTYColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="SelImage" msdata:DataType="System.Drawing.Image, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msdata:Caption="選択" msprop:Generator_UserColumnName="SelImage" msprop:Generator_ColumnVarNameInTable="columnSelImage" msprop:Generator_ColumnPropNameInRow="SelImage" msprop:Generator_ColumnPropNameInTable="SelImageColumn" type="xs:anyType" minOccurs="0" />
+              <xs:element name="WarehouseCode" msprop:Generator_UserColumnName="WarehouseCode" msprop:Generator_ColumnVarNameInTable="columnWarehouseCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="WarehouseCode" msprop:Generator_ColumnPropNameInTable="WarehouseCodeColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="StockCnt" msdata:Caption="現在庫数" msprop:Generator_UserColumnName="StockCnt" msprop:Generator_ColumnVarNameInTable="columnStockCnt" msprop:Generator_ColumnPropNameInRow="StockCnt" msprop:Generator_ColumnPropNameInTable="StockCntColumn" type="xs:double" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Stock" msprop:Generator_UserTableName="Stock" msprop:Generator_RowDeletedName="StockRowDeleted" msprop:Generator_RowChangedName="StockRowChanged" msprop:Generator_RowClassName="StockRow" msprop:Generator_RowChangingName="StockRowChanging" msprop:Generator_RowEvArgName="StockRowChangeEvent" msprop:Generator_RowEvHandlerName="StockRowChangeEventHandler" msprop:Generator_TableClassName="StockDataTable" msprop:Generator_TableVarName="tableStock" msprop:Generator_RowDeletingName="StockRowDeleting" msprop:Generator_TablePropName="Stock">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="WarehouseCode" msdata:Caption="倉庫コード" msprop:Generator_UserColumnName="WarehouseCode" msprop:Generator_ColumnVarNameInTable="columnWarehouseCode" msprop:Generator_ColumnPropNameInRow="WarehouseCode" msprop:Generator_ColumnPropNameInTable="WarehouseCodeColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GoodsMakerCd" msdata:Caption="商品メーカー" msprop:Generator_UserColumnName="GoodsMakerCd" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerCd" msprop:Generator_ColumnPropNameInRow="GoodsMakerCd" msprop:Generator_ColumnPropNameInTable="GoodsMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="GoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="GoodsNo" msprop:Generator_ColumnVarNameInTable="columnGoodsNo" msprop:Generator_ColumnPropNameInRow="GoodsNo" msprop:Generator_ColumnPropNameInTable="GoodsNoColumn" default="">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipmentPosCnt" msdata:Caption="現在庫数" msprop:Generator_UserColumnName="ShipmentPosCnt" msprop:Generator_ColumnVarNameInTable="columnShipmentPosCnt" msprop:Generator_ColumnPropNameInRow="ShipmentPosCnt" msprop:Generator_ColumnPropNameInTable="ShipmentPosCntColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="MinimumStockCnt" msdata:Caption="最低在庫数" msprop:Generator_UserColumnName="MinimumStockCnt" msprop:Generator_ColumnVarNameInTable="columnMinimumStockCnt" msprop:Generator_ColumnPropNameInRow="MinimumStockCnt" msprop:Generator_ColumnPropNameInTable="MinimumStockCntColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="MaximumStockCnt" msdata:Caption="最高在庫数" msprop:Generator_UserColumnName="MaximumStockCnt" msprop:Generator_ColumnVarNameInTable="columnMaximumStockCnt" msprop:Generator_ColumnPropNameInRow="MaximumStockCnt" msprop:Generator_ColumnPropNameInTable="MaximumStockCntColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="WarehouseShelfNo" msdata:Caption="棚番" msprop:Generator_UserColumnName="WarehouseShelfNo" msprop:Generator_ColumnVarNameInTable="columnWarehouseShelfNo" msprop:Generator_ColumnPropNameInRow="WarehouseShelfNo" msprop:Generator_ColumnPropNameInTable="WarehouseShelfNoColumn" default="" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WarehouseName" msdata:Caption="倉庫" msprop:Generator_UserColumnName="WarehouseName" msprop:Generator_ColumnVarNameInTable="columnWarehouseName" msprop:Generator_ColumnPropNameInRow="WarehouseName" msprop:Generator_ColumnPropNameInTable="WarehouseNameColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="SelectionState" msprop:Generator_UserColumnName="SelectionState" msprop:Generator_ColumnVarNameInTable="columnSelectionState" msprop:Generator_ColumnPropNameInRow="SelectionState" msprop:Generator_ColumnPropNameInTable="SelectionStateColumn" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="SelImage" msdata:DataType="System.Drawing.Image, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msdata:Caption="選択" msprop:Generator_UserColumnName="SelImage" msprop:Generator_ColumnVarNameInTable="columnSelImage" msprop:Generator_ColumnPropNameInRow="SelImage" msprop:Generator_ColumnPropNameInTable="SelImageColumn" type="xs:anyType" minOccurs="0" />
+              <xs:element name="SortDiv" msdata:Caption="ソート区分" msprop:Generator_UserColumnName="SortDiv" msprop:Generator_ColumnVarNameInTable="columnSortDiv" msprop:Generator_ColumnPropNameInRow="SortDiv" msprop:Generator_ColumnPropNameInTable="SortDivColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Stock" />
+      <xs:field xpath="mstns:WarehouseCode" />
+      <xs:field xpath="mstns:GoodsMakerCd" />
+      <xs:field xpath="mstns:GoodsNo" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="UsrSubstParts_DUsrSubstParts" msdata:parent="UsrSubstParts" msdata:child="DUsrSubstParts" msdata:parentkey="ChgDestGoodsNo ChgDestMakerCd" msdata:childkey="ChgSrcGoodsNo ChgSrcMakerCd" msprop:Generator_UserRelationName="UsrSubstParts_DUsrSubstParts" msprop:Generator_RelationVarName="relationUsrSubstParts_DUsrSubstParts" msprop:Generator_UserChildTable="DUsrSubstParts" msprop:Generator_UserParentTable="UsrSubstParts" msprop:Generator_ParentPropName="UsrSubstPartsRowParent" msprop:Generator_ChildPropName="GetDUsrSubstPartsRows" />
+      <msdata:Relationship name="OriginParts_UsrSubstParts" msdata:parent="OriginParts" msdata:child="UsrSubstParts" msdata:parentkey="ChgDestMakerCd ChgDestGoodsNo" msdata:childkey="ChgSrcMakerCd ChgSrcGoodsNo" msprop:Generator_UserRelationName="OriginParts_UsrSubstParts" msprop:Generator_RelationVarName="relationOriginParts_UsrSubstParts" msprop:Generator_UserChildTable="UsrSubstParts" msprop:Generator_UserParentTable="OriginParts" msprop:Generator_ParentPropName="OriginPartsRowParent" msprop:Generator_ChildPropName="GetUsrSubstPartsRows" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

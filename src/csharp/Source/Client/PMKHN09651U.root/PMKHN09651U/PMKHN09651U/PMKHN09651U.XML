@@ -1,0 +1,1160 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09651U</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Windows.Forms.PMKHN09651UA">
+            <summary>
+            キャンペーン目標設定フォームクラス
+            </summary>
+            <remarks>
+            <br>Note       : キャンペーン目標設定フォームクラス</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22743 目標値が全て0でも登録可能の対応</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Windows.Forms.PMKHN09651UA.components">
+            <summary>
+            必要なデザイナ変数です。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.Dispose(System.Boolean)">
+            <summary>
+            使用中のリソースをすべてクリーンアップします。
+            </summary>
+            <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.InitializeComponent">
+            <summary>
+            デザイナ サポートに必要なメソッドです。このメソッドの内容を
+            コード エディタで変更しないでください。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.#ctor">
+            <summary>
+            キャンペーン目標設定フォームクラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : キャンペーン目標設定フォームクラス</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.BeforeClose">
+            <summary>
+            終了前処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 終了前処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.Save">
+            <summary>
+            保存処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 保存処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.New">
+            <summary>
+            新規処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 新規処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.Revival">
+            <summary>
+            復活処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 復活処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.LogicalDelete">
+            <summary>
+            論理削除処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 論理削除処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.Delete">
+            <summary>
+            物理削除処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 物理削除処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.Undo">
+            <summary>
+            元に戻す処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 元に戻す処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.Guide">
+            <summary>
+            ガイド処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : ガイド処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.Renewal">
+            <summary>
+            最新情報取得処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 最新情報を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetFocus">
+            <summary>
+            フォーカス設定処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : フォーカス設定処理を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.InitialToolbarSetting">
+            <summary>
+            ツールバー初期設定処理
+            </summary>
+            <remarks>
+            <br>Note       : ツールバーの初期設定を行う</br>
+            <br>Programer  : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetToolButtonVisible(System.Windows.Forms.Form)">
+            <summary>
+            ツールボタンEnable設定処理
+            </summary>
+            <remarks>
+            <br>Note       : ツールボタンEnableを設定する</br>
+            <br>Programer  : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadMaster">
+            <summary>
+            各種マスタ読込処理
+            </summary>
+            <returns>ステータス(True:正常 False:異常)</returns>
+            <remarks>
+            <br>Note       : 各種マスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetCampaignStList">
+            <summary>
+            キャンペーン設定リスト取得
+            </summary>
+            <remarks>
+            <br>Note       : キャンペーン設定マスタの取得を行います。</br>
+            <br></br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadCampaignSt(System.Int32)">
+            <summary>
+            キャンペーン設定マスタ読込処理
+            </summary>
+            <param name="campaignCode">キャンペーンコード</param>
+            <returns>キャンペーン設定データクラス</returns>
+            <remarks>
+            <br>Note       : キャンペーン設定マスタの取得を行います。</br>
+            <br></br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadSecInfoSet">
+            <summary>
+            拠点マスタ読込処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 拠点マスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadCustomer">
+            <summary>
+            得意先マスタ読込処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 得意先マスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadEmployee">
+            <summary>
+            従業員マスタ読込処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 従業員マスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadSalesArea">
+            <summary>
+            地区マスタ読込処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 地区マスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadBLGroup">
+            <summary>
+            BLグループマスタ読込処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : BLグループマスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadSalesCode">
+            <summary>
+            販売区分マスタ読込処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 販売区分マスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadBLGoodsCd">
+            <summary>
+            BLコードガイドマスタ読込処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : BLコードガイドマスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ReadUserGdBd(System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.String}@)">
+            <summary>
+            ユーザーガイドマスタ読込処理
+            </summary>
+            <param name="userGuideDivCd">ガイド区分</param>
+            <param name="targetDic">対象Dictionary</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : ユーザーガイドマスタを読み込み、バッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetCampaignName(System.Int32)">
+            <summary>
+            キャンペーン名称取得
+            </summary>
+            <param name="campaignCode">キャンペーンコード</param>
+            <returns>キャンペーン名称</returns>
+            <remarks>
+            <br>Note       : キャンペーン名称の取得を行います。</br>
+            <br></br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetSectionName(System.String)">
+            <summary>
+            拠点名取得処理
+            </summary>
+            <param name="sectionCode">拠点コード</param>
+            <returns>拠点名</returns>
+            <remarks>
+            <br>Note       : 拠点名を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetCustomerName(System.Int32)">
+            <summary>
+            得意先名取得処理
+            </summary>
+            <param name="customerCode">得意先コード</param>
+            <returns>得意先名</returns>
+            <remarks>
+            <br>Note       : 得意先名を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetEmployeeName(System.String)">
+            <summary>
+            従業員名取得処理
+            </summary>
+            <param name="employeeCode">従業員コード</param>
+            <returns>従業員名</returns>
+            <remarks>
+            <br>Note       : 従業員名を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetSalesAreaName(System.Int32)">
+            <summary>
+            地区名取得処理
+            </summary>
+            <param name="salesAreaCode">地区コード</param>
+            <returns>地区名</returns>
+            <remarks>
+            <br>Note       : 地区名を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetBLGroupName(System.Int32)">
+            <summary>
+            BLグループ取得処理
+            </summary>
+            <param name="blGroupCode">BLグループコード</param>
+            <returns>BLグループ名称</returns>
+            <remarks>
+            <br>Note       : BLグループ名称を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetSalesCodeName(System.Int32)">
+            <summary>
+            販売区分名取得処理
+            </summary>
+            <param name="salesCode">販売区分コード</param>
+            <returns>販売区分名</returns>
+            <remarks>
+            <br>Note       : 販売区分名を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetBLGoodsName(System.Int32)">
+            <summary>
+            BL名称取得処理
+            </summary>
+            <param name="blGoodsCode">BLコード</param>
+            <returns>BL名称</returns>
+            <remarks>
+            <br>Note       : BL名称を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CheckCustomer(System.Int32)">
+            <summary>
+            得意先存在チェック処理
+            </summary>
+            <param name="customerCode">得意先コード</param>
+            <returns>true：OK、false：NG</returns>
+            <remarks>
+            <br>Note       : 得意先が存在するかチェックします。</br>
+            <br></br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetFinancialYearTable(System.Int32)">
+            <summary>
+            会計年度テーブル取得処理
+            </summary>
+            <param name="addYearFromThis">当年からの差分</param>
+            <remarks>
+            <br>Note       : 会計年度テーブルを取得し、会計年度情報をバッファに保持します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ClearScreen">
+            <summary>
+            画面情報初期化処理
+            </summary>
+            <remarks>
+            <br>Note       : 画面情報を初期化します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ComboChgClearScreen">
+            <summary>
+            画面情報初期化処理
+            </summary>
+            <remarks>
+            <br>Note       : 画面情報を初期化します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ClearGrid">
+            <summary>
+            グリッド初期化処理
+            </summary>
+            <remarks>
+            <br>Note       : グリッド情報を初期化します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetControlSize">
+            <summary>
+            コントロールサイズ設定処理
+            </summary>
+            <remarks>
+            <br>Note       : コントロールサイズを設定します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetScreenInitialSetting">
+            <summary>
+            画面初期設定処理
+            </summary>
+            <remarks>
+            <br>Note       : 画面情報の初期設定を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ChangeTargetContrastControl(System.Int32)">
+            <summary>
+            設定区分条件コントロールEnabled制御処理
+            </summary>
+            <param name="targetContrastCd">設定区分コード</param>
+            <remarks>
+            <br>Note       : 設定区分の値によってコントロールの制御を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetControlEnabled(System.String)">
+            <summary>
+            コントロールEnabled制御処理
+            </summary>
+            <param name="editMode">編集モード</param>
+            <remarks>
+            <br>Note       : コントロールのEnabled制御を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetKeyControlDisable">
+            <summary>
+            キーコントロールDisable制御処理
+            </summary>
+            <remarks>
+            <br>Note       : キーコントロールのDisable制御を行います。</br>
+            <br></br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetNextControl(System.Windows.Forms.Control,System.Windows.Forms.Control@)">
+            <summary>
+            Nextコントロール取得処理
+            </summary>
+            <param name="prevControl">現在コントロール</param>
+            <param name="nextControl">Nextコントロール</param>
+            <remarks>
+            <br>Note       : Nextコントロールを取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetNextCell(Broadleaf.Library.Windows.Forms.ChangeFocusEventArgs@,System.Boolean)">
+            <summary>
+            NextCell設定処理
+            </summary>
+            <param name="e">イベントハンドら</param>
+            <param name="shiftFlg">ShiftKey押下フラグ(True:押下 Flase:押下せず)</param>
+            <remarks>
+            <br>Note       : NextCellを設定します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SaveProc">
+            <summary>
+            保存処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定を保存します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SaveCampaignTarget">
+            <summary>
+            保存処理(キャンペーン目標)
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定を保存します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.UndoProc">
+            <summary>
+            元に戻す処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 画面状態を元に戻します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.LogicalDeleteProc">
+            <summary>
+            論理削除処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定を論理削除します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.LogicalDeleteCampaignTarget">
+            <summary>
+            論理削除処理(キャンペーン目標)
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定を論理削除します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.DeleteProc">
+            <summary>
+            物理削除処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定を物理削除します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.RevivalProc">
+            <summary>
+            復活処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定を復活します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.RevivalCampaignTarget">
+            <summary>
+            復活処理(キャンペーン目標)
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定を復活します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.RenewalProc">
+            <summary>
+            最新情報取得処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 最新情報を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CheckScreenInput(System.Boolean)">
+            <summary>
+            入力チェック処理
+            </summary>
+            <param name="beforeSaveFlg">保存前フラグ(True:保存前 False:検索時)</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 画面情報の入力チェックを行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CheckCondition(System.Boolean)">
+            <summary>
+            入力チェック処理(条件)
+            </summary>
+            <param name="beforeSaveFlg">保存前フラグ(True:保存前 False:検索時)</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 画面情報の入力チェックを行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CheckSalesTarget">
+            <summary>
+            入力チェック処理(目標)
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 画面情報の入力チェックを行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CompareInputScreen">
+            <summary>
+            画面情報変更チェック処理
+            </summary>
+            <returns>ステータス(True:変更なし　False:変更あり)</returns>
+            <remarks>
+            <br>Note       : 画面情報が変更されているかどうかチェックします。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CompareInputGrid">
+            <summary>
+            グリッド情報変更チェック処理
+            </summary>
+            <returns>ステータス(True:変更なし　False:変更あり)</returns>
+            <remarks>
+            <br>Note       : グリッドが変更されているかどうかチェックします。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CheckSaveConfirm">
+            <summary>
+            情報保存チェック処理
+            </summary>
+            <returns>ステータス(True:保存可能　False:保存不可)</returns>
+            <remarks>
+            <br>Note       : 情報保存されるかどうかチェックします。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SearchProc">
+            <summary>
+            検索処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定マスタを検索します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SearchCampaignTarget">
+            <summary>
+            検索処理(キャンペーン目標)
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標設定マスタを検索します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetTotalTarget(System.Int32)">
+            <summary>
+            合計目標取得処理
+            </summary>
+            <param name="columnIndex">列インデックス(2:売上目標 3:粗利目標 4:数量目標)</param>
+            <returns>合計目標</returns>
+            <remarks>
+            <br>Note       : 合計目標を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ChangeCellValue(System.Object)">
+            <summary>
+            セル値変換処理(セル値→Double型)
+            </summary>
+            <param name="cellValue">セル値</param>
+            <returns>セル値</returns>
+            <remarks>
+            <br>Note       : セル値をDouble型に変換します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ChangeValue(Broadleaf.Library.Windows.Forms.TNedit,System.Int32)">
+            <summary>
+            変換処理(セル値→string型)
+            </summary>
+            <param name="tNedit">tNedit</param>
+            <param name="columNum">columNum</param>
+            <returns>セル値</returns>
+            <remarks>
+            <br>Note       : 値をDouble型に変換します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetSearchCampaignTargetPara(Broadleaf.Application.UIData.CampaignTarget@)">
+            <summary>
+            検索条件設定処理(キャンペーン目標)
+            </summary>
+            <param name="searchPara">キャンペーン目標検索条件</param>
+            <remarks>
+            <br>Note       : 検索条件を設定します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ScreenToCampaignTargetList(System.Collections.Generic.List{Broadleaf.Application.UIData.CampaignTarget}@)">
+            <summary>
+            画面情報取得処理(キャンペーン目標設定マスタ)
+            </summary>
+            <remarks>
+            <br>Note       : 画面情報を取得します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 Redmine#22743 目標値が全て0でも登録可能の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CampaignTargetToScreen(System.Collections.Generic.Dictionary{System.String,Broadleaf.Application.UIData.CampaignTarget})">
+            <summary>
+            画面展開処理(キャンペーン目標)
+            </summary>
+            <param name="campaignTargetDic">キャンペーン目標リスト</param>
+            <remarks>
+            <br>Note       : キャンペーン目標リストを画面展開します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SetCellValue(System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            画面展開処理(キャンペーン目標)1
+            </summary>
+            <param name="salesTargetMoney">売上目標金額</param>
+            <param name="salesTargetProfit">売上目標粗利額</param>
+            <param name="salesTargetCount">売上目標数量</param>
+            <param name="index"></param>
+            <remarks>
+            <br>Note       : キャンペーン目標)リストを画面展開します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ExclusiveTransaction(System.Int32)">
+            <summary>
+            排他処理
+            </summary>
+            <param name="status">ステータス</param>
+            <remarks>
+            <br>Note       : 排他制御を行います。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ExecuteGuide">
+            <summary>
+            「ガイド」処理
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SettingGuideButtonToolEnabled(System.Windows.Forms.Control)">
+            <summary>
+            ボタンツール有効無効設定処理
+            </summary>
+            <param name="nextControl">次のコントロール</param>
+            <remarks>
+            <br>Note		: ボタンツール有効無効設定処理</br>
+            <br>Programmer  : 李占川</br>
+            <br>Date        : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ShowMessageBox(Broadleaf.Library.Windows.Forms.emErrorLevel,System.String,System.Int32,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary>
+            メッセージボックス表示処理
+            </summary>
+            <param name="errLevel">エラーレベル</param>
+            <param name="message">表示するメッセージ</param>
+            <param name="status">ステータス値</param>
+            <param name="msgButton">表示するボタン</param>
+            <param name="defaultButton">初期表示ボタン</param>
+            <returns>DialogResult</returns>
+            <remarks>
+            <br>Note       : メッセージボックスを表示します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.ShowMessageBox(Broadleaf.Library.Windows.Forms.emErrorLevel,System.String,System.String,System.Int32,System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            メッセージボックス表示処理
+            </summary>
+            <param name="errLevel">エラーレベル</param>
+            <param name="methodName">処理名称</param>
+            <param name="message">表示するメッセージ</param>
+            <param name="status">ステータス値</param>
+            <param name="msgButton">表示するボタン</param>
+            <returns>DialogResult</returns>
+            <remarks>
+            <br>Note       : メッセージボックスを表示します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.RemoveCommaPeriod(System.String,System.String@,System.Boolean)">
+            <summary>
+            カンマ・ピリオド削除処理
+            </summary>
+            <param name="targetText">カンマ・ピリオド削除前テキスト</param>
+            <param name="retText">カンマ・ピリオド削除済みテキスト</param>
+            <param name="periodDelFlg">ピリオド削除フラグ(True:カンマ・ピリオド削除  False:カンマ削除)</param>
+            <remarks>
+            <br>Note		: 対象のテキストからカンマ・ピリオドを削除します。</br>
+            <br>Programmer	: 徐佳</br>
+            <br>Date		: 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GetDecimal(System.String,System.String@)">
+            <summary>
+            小数点取得処理
+            </summary>
+            <param name="targetText">チェック対象テキスト</param>
+            <param name="retText">小数部分テキスト</param>
+            <remarks>
+            <br>Note		: 対象のテキストから小数部分のみを返します。</br>
+            <br>Programmer	: 徐佳</br>
+            <br>Date		: 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.PMKHN09651UA_Load(System.Object,System.EventArgs)">
+            <summary>
+            Load イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : Form_Load時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CampaignGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : キャンペーンコードガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SectionGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : 拠点ガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CustomerGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : 得意先ガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.CustomerSearchForm_CustomerSelect(System.Object,Broadleaf.Application.UIData.CustomerSearchRet)">
+            <summary>
+            得意先選択時発生イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="customerSearchRet">得意先検索戻り値クラス</param>
+            <remarks>
+            <br>Note       : 得意先選択時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.EmployeeGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : 従業員ガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SalesAreaGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : 地区ガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.BLGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント(BLGuide_Button)
+            </summary>
+            <param name="sender">イベントオブジェクト</param>
+            <param name="e">イベント情報</param>
+            <remarks>
+            <br>Note		: ＢＬコードガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer  : 徐佳</br>
+            <br>Date        : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.GroupGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント(GroupGuide_Button)
+            </summary>
+            <param name="sender">イベントオブジェクト</param>
+            <param name="e">イベント情報</param>
+            <remarks>
+            <br>Note		: グループコードガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer  : 徐佳</br>
+            <br>Date        : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SalesCodeGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : 販売区分ガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SalesTarget_uGrid_AfterEnterEditMode(System.Object,System.EventArgs)">
+            <summary>
+            AfterEnterEditMode イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : セルが編集モードになった時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SalesTarget_uGrid_AfterExitEditMode(System.Object,System.EventArgs)">
+            <summary>
+            AfterExitEditMode イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : セルの編集モードが終了した時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SalesTarget_uGrid_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            KeyDown イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : グリッドがアクティブ状態でキーが押された時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SalesTarget_uGrid_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            KeyPress イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : グリッドがアクティブ状態でキーが押された時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.SalesTarget_uGrid_Leave(System.Object,System.EventArgs)">
+            <summary>
+            Leave イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : グリッドからフォーカスが離れた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.tComboEditor_TargetContrastCd_SelectionChangeCommitted(System.Object,System.EventArgs)">
+            <summary>
+            SelectionChangeCommitted イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : 設定区分の値が変更された時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.tRetKeyControl1_ChangeFocus(System.Object,Broadleaf.Library.Windows.Forms.ChangeFocusEventArgs)">
+            <summary>
+            ChangeFocus イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : コントロールのフォーカスが変更された時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            <br>Update Note: 2011/07/05 譚洪 Redmine#22750 フォーカス制御障害の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.timer_SetFocus_Tick(System.Object,System.EventArgs)">
+            <summary>
+            フォーカス設定
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.MsgDispProc(Broadleaf.Library.Windows.Forms.emErrorLevel,System.String,System.Int32)">
+            <summary>
+            エラーメッセージ表示処理
+            </summary>
+            <param name="iLevel">エラーレベル</param>
+            <param name="message">表示メッセージ</param>
+            <param name="status">ステータス</param>
+            <remarks>
+            <br>Note        : エラーメッセージ表示処理</br>
+            <br>Programmer  : 徐佳</br>
+            <br>Date        : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09651UA.tToolsManager_MainMenu_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            フォームロードイベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note	   : フォームが読み込まれた時に発生します。</br>
+            <br>Programmer : 徐佳</br>
+            <br>Date       : 2011/04/25</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsClose">
+            <summary> 終了ボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsSave">
+            <summary> 保存ボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsNew">
+            <summary> 新規ボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsRevival">
+            <summary> 復活ボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsLogicalDelete">
+            <summary> 論理削除ボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsDelete">
+            <summary> 完全削除ボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsUndo">
+            <summary> 元に戻すボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsRenewal">
+            <summary> 最新情報ボタンVisibleプロパティ </summary>
+        </member>
+        <member name="P:Broadleaf.Windows.Forms.PMKHN09651UA.IsGuide">
+            <summary> ガイド報ボタンVisibleプロパティ </summary>
+        </member>
+    </members>
+</doc>

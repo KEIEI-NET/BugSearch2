@@ -1,0 +1,343 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+using Broadleaf.Library.Resources;
+using Broadleaf.Application.Common;
+using Broadleaf.Application.Controller;
+using Broadleaf.Application.UIData;
+using Broadleaf.Library.Windows.Forms;
+using System.Windows.Forms;
+using System.Reflection;
+
+namespace Broadleaf.Windows.Forms
+{
+    /// <summary>
+    /// コンボエディタデータ取得タイプ
+    /// </summary>
+    internal enum ComboEditorGetDataType : int
+    {
+        VALUE = 0,
+        TAG = 1
+    }
+
+    /// <summary>
+    /// コンボエディタ制御
+    /// </summary>
+    internal class ComboEditorItemControl
+    {
+        /// <summary>
+        /// コンボエディタアイテムインデックス設定処理
+        /// </summary>
+        /// <param name="sender">対象となるコンボエディタ</param>
+        /// <param name="dataValue">設定値</param>
+        /// <param name="nonDataClear">データ無し時クリア</param>
+        internal static bool SetComboEditorItemIndex(TComboEditor sender, int dataValue, bool nonDataClear)
+        {
+            int index = -1;
+
+            for (int i = 0; i < sender.Items.Count; i++)
+            {
+                if ((sender.Items[i].DataValue is int) && ((int)sender.Items[i].DataValue == dataValue))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            sender.SelectedIndex = index;
+
+            if (index == -1)
+            {
+                if (nonDataClear)
+                {
+                    sender.Text = "";
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// コンボエディタ選択アイテムテキスト取得処理
+        /// </summary>
+        /// <param name="sender">対象となるコンボエディタ</param>
+        /// <param name="dataValue">設定値</param>
+        /// <returns></returns>
+        internal static string GetComboEditorText(TComboEditor sender, int dataValue)
+        {
+            int index = -1;
+            for (int i = 0; i < sender.Items.Count; i++)
+            {
+                if ((sender.Items[i].DataValue is int) && ((int)sender.Items[i].DataValue == dataValue))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index == -1)
+            {
+                return "";
+            }
+            else
+            {
+                return sender.Items[index].DisplayText.Trim();
+            }
+        }
+
+        /// <summary>
+        /// コンボエディタ選択値取得処理
+        /// </summary>
+        /// <param name="sender">対象となるコンボエディタ</param>
+        /// <returns>選択値</returns>
+        internal static int GetComboEditorValue(TComboEditor sender, ComboEditorGetDataType getDataType)
+        {
+            int index = -1;
+
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"^[0-99]+$");
+            if (regex.IsMatch(sender.Text.Trim()))
+            {
+                // 数値のみが入力されている場合は、入力値とTagを比較する。
+                int dataValue = 0;
+
+                try
+                {
+                    dataValue = Convert.ToInt32(sender.Text.Trim());
+                }
+                catch (OverflowException)
+                {
+                    // 
+                }
+
+                switch (getDataType)
+                {
+                    case ComboEditorGetDataType.TAG:
+                        {
+                            for (int i = 0; i < sender.Items.Count; i++)
+                            {
+                                if ((sender.Items[i].Tag is Int32) && ((Int32)sender.Items[i].Tag == dataValue))
+                                {
+                                    index = i;
+                                    break;
+                                }
+                            }
+
+                            break;
+                        }
+                    case ComboEditorGetDataType.VALUE:
+                        {
+                            for (int i = 0; i < sender.Items.Count; i++)
+                            {
+                                if ((sender.Items[i].DataValue is int) && ((int)sender.Items[i].DataValue == dataValue))
+                                {
+                                    index = i;
+                                    break;
+                                }
+                            }
+
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                // コンボエディタ選択値取得処理（テキストから）
+                int selectedIndex = GetComboEditorValueFromText(sender);
+                return selectedIndex;
+            }
+
+            // 上記の比較で該当データが存在しなかった場合は、入力値とDisplayTextを比較する。
+            if (index == -1)
+            {
+                string selectText = sender.Text.Trim();
+
+                for (int i = 0; i < sender.Items.Count; i++)
+                {
+                    if (sender.Items[i].DisplayText.Trim() == selectText)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+
+            // 該当データが存在しない場合は-1とする。
+            if (index == -1)
+            {
+                return -1;
+            }
+            else
+            {
+                return (int)sender.Items[index].DataValue;
+            }
+        }
+
+        /// <summary>
+        /// コンボエディタ選択値取得処理（テキストから）
+        /// </summary>
+        /// <param name="sender">対象となるコンボエディタ</param>
+        /// <returns>選択値</returns>
+        internal static int GetComboEditorValueFromText(TComboEditor sender)
+        {
+            int index = -1;
+            string selectText = sender.Text.Trim();
+
+            for (int i = 0; i < sender.Items.Count; i++)
+            {
+                if (sender.Items[i].DisplayText.Trim() == selectText)
+                {
+                    index = (int)sender.Items[i].DataValue;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
+    }
+
+    /// <summary>
+    /// コンポーネント一括制御
+    /// </summary>
+    internal class ComponentBlanketControl
+    {
+        /// <summary>
+        /// BeginUpdate一括実行
+        /// </summary>
+        /// <param name="?"></param>
+        internal static void BeginUpdate(List<Control> controlList)
+        {
+            foreach (Control target in controlList)
+            {
+                MethodInfo method = target.GetType().GetMethod("BeginUpdate", new Type[0]);
+
+                if (method != null)
+                {
+                    method.Invoke(target, null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// EndUpdate一括実行
+        /// </summary>
+        /// <param name="?"></param>
+        internal static void EndUpdate(List<Control> controlList)
+        {
+            foreach (Control target in controlList)
+            {
+                MethodInfo method = target.GetType().GetMethod("EndUpdate", new Type[0]);
+
+                if (method != null)
+                {
+                    method.Invoke(target, null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// SuspendLayout一括実行
+        /// </summary>
+        /// <param name="?"></param>
+        internal static void SuspendLayout(List<Control> controlList)
+        {
+            foreach (Control target in controlList)
+            {
+                MethodInfo method = target.GetType().GetMethod("SuspendLayout", new Type[0]);
+
+                if (method != null)
+                {
+                    method.Invoke(target, null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// ResumeLayout一括実行
+        /// </summary>
+        /// <param name="?"></param>
+        internal static void ResumeLayout(List<Control> controlList)
+        {
+            foreach (Control target in controlList)
+            {
+                MethodInfo method = target.GetType().GetMethod("ResumeLayout", new Type[0]);
+
+                if (method != null)
+                {
+                    method.Invoke(target, null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 一括クリア
+        /// </summary>
+        /// <param name="?"></param>
+        internal static void Clear(List<Control> controlList)
+        {
+            foreach (Control target in controlList)
+            {
+                if (target is TEdit)
+                {
+                    ((TEdit)target).Text = "";
+                }
+                else if (target is TNedit)
+                {
+                    ((TNedit)target).SetValue(0);
+                }
+                else if (target is TDateEdit)
+                {
+                    ((TDateEdit)target).SetDateTime(DateTime.MinValue);
+                }
+                else if (target is Infragistics.Win.Misc.UltraLabel)
+                {
+                    ((Infragistics.Win.Misc.UltraLabel)target).Text = "";
+                }
+                else if (target is TComboEditor)
+                {
+                    ((TComboEditor)target).SelectedIndex = -1;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Enableプロパティ一括制御
+        /// </summary>
+        /// <param name="?"></param>
+        internal static void SetEnabled(List<Control> controlList, bool enabled)
+        {
+            foreach (Control target in controlList)
+            {
+                PropertyInfo property = target.GetType().GetProperty("Enabled", typeof(bool));
+
+                if (property != null)
+                {
+                    property.SetValue(target, enabled, null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Visibleプロパティ一括制御
+        /// </summary>
+        /// <param name="?"></param>
+        internal static void SetVisible(List<Control> controlList, bool visible)
+        {
+            foreach (Control target in controlList)
+            {
+                PropertyInfo property = target.GetType().GetProperty("Visible", typeof(bool));
+
+                if (property != null)
+                {
+                    property.SetValue(target, visible, null);
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CN00001" xml:space="preserve">
+    <value>Do you delete the selected row?</value>
+  </data>
+  <data name="CN00002" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00001" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00002" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00003" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00004" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00005" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00006" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00007" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="VL00008" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ER00001" xml:space="preserve">
+    <value>This application is not avaliable at offline.</value>
+  </data>
+  <data name="ER00002" xml:space="preserve">
+    <value>It has failed to run this application.</value>
+  </data>
+  <data name="ER00003" xml:space="preserve">
+    <value>The Employee has logout. The application is shut down.</value>
+  </data>
+  <data name="ER00004" xml:space="preserve">
+    <value>Program ID is required.</value>
+  </data>
+  <data name="ER00005" xml:space="preserve">
+    <value>There is no data satisfying the search condition</value>
+  </data>
+  <data name="ER00006" xml:space="preserve">
+    <value>Reading failure.</value>
+  </data>
+  <data name="ER00007" xml:space="preserve">
+    <value>The selected data is already deleted.</value>
+  </data>
+  <data name="ER00008" xml:space="preserve">
+    <value>{1} couldn't be registered because selected data {0} is already deleted.</value>
+  </data>
+  <data name="ER00009" xml:space="preserve">
+    <value>Registering Failure</value>
+  </data>
+  <data name="ER00010" xml:space="preserve">
+    <value>Reading Company Master has failed.</value>
+  </data>
+  <data name="ER00011" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ER00012" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ER00013" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ER00014" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ER00015" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ER00016" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ER00017" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ST00001" xml:space="preserve">
+    <value>Master Maintenance</value>
+  </data>
+  <data name="ST00002" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="ST00003" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="ST00004" xml:space="preserve">
+    <value>resume</value>
+  </data>
+  <data name="ST00005" xml:space="preserve">
+    <value>stop</value>
+  </data>
+  <data name="ST00006" xml:space="preserve">
+    <value>All columns</value>
+  </data>
+  <data name="ST00007" xml:space="preserve">
+    <value>Setting Item</value>
+  </data>
+  <data name="ST00008" xml:space="preserve">
+    <value>Setting Value</value>
+  </data>
+  <data name="ST00009" xml:space="preserve">
+    <value>No Data Available</value>
+  </data>
+  <data name="ST00010" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ST00011" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ST00012" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ST00013" xml:space="preserve">
+    <value>Next Year</value>
+  </data>
+  <data name="ST00014" xml:space="preserve">
+    <value>Previous Year</value>
+  </data>
+  <data name="ST00015" xml:space="preserve">
+    <value>Next Month</value>
+  </data>
+  <data name="ST00016" xml:space="preserve">
+    <value>Previous Month</value>
+  </data>
+  <data name="ST00017" xml:space="preserve">
+    <value>Regional Base</value>
+  </data>
+  <data name="ST00018" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="ST00019" xml:space="preserve">
+    <value>Enterprise Code</value>
+  </data>
+  <data name="ST00020" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="ST00021" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="ST00022" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ST00023" xml:space="preserve">
+    <value>Delete Day</value>
+  </data>
+  <data name="ST00024" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="ST00025" xml:space="preserve">
+    <value>CompanyName</value>
+  </data>
+  <data name="ST00026" xml:space="preserve">
+    <value>SummaryNote1</value>
+  </data>
+  <data name="ST00027" xml:space="preserve">
+    <value>SummaryNote2</value>
+  </data>
+  <data name="ST00028" xml:space="preserve">
+    <value>CompanyPR1</value>
+  </data>
+  <data name="ST00029" xml:space="preserve">
+    <value>CompanyPR2</value>
+  </data>
+  <data name="ST00030" xml:space="preserve">
+    <value>ImageInfo</value>
+  </data>
+  <data name="ST00031" xml:space="preserve">
+    <value>ImageInfoCode</value>
+  </data>
+  <data name="ST00032" xml:space="preserve">
+    <value>ImagePrintComment1</value>
+  </data>
+  <data name="ST00033" xml:space="preserve">
+    <value>ImagePrintComment2</value>
+  </data>
+  <data name="ST00034" xml:space="preserve">
+    <value>AddressGuide</value>
+  </data>
+</root>

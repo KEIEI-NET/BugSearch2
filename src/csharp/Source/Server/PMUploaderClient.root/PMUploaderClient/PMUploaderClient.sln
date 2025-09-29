@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PutUserDataTool", "PutUserDataTool\PutUserDataTool.csproj", "{6628DDA1-94A7-4680-B875-E02562DD528C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMUploaderLogImpotor", "PMUploaderLogImpotor\PMUploaderLogImpotor.csproj", "{BAA66A1E-5B61-44DA-BE76-9A5D00559A0F}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMUploaderLogImpotor\\PMUploaderLogImpotor.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMUploaderLogImpotor\\
+		SccProjectUniqueName2 = PutUserDataTool\\PutUserDataTool.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PutUserDataTool\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6628DDA1-94A7-4680-B875-E02562DD528C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6628DDA1-94A7-4680-B875-E02562DD528C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6628DDA1-94A7-4680-B875-E02562DD528C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6628DDA1-94A7-4680-B875-E02562DD528C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA66A1E-5B61-44DA-BE76-9A5D00559A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA66A1E-5B61-44DA-BE76-9A5D00559A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA66A1E-5B61-44DA-BE76-9A5D00559A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA66A1E-5B61-44DA-BE76-9A5D00559A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

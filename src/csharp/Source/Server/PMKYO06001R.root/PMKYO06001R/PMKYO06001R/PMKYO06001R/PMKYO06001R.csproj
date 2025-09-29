@@ -1,0 +1,261 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C5B827E9-75DC-4868-ADCE-FFB3FECFF879}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Application.Remoting</RootNamespace>
+    <AssemblyName>PMKYO06001R</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMKYO06001R.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PMCMN00005C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00006C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00007C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00009C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00010C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00011I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00012C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00014R, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00015O, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00021C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00036C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00615C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PMKYO06001RA.cs" />
+    <Compile Include="PMKYO06001RInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PMKYO06002O\PMKYO06002O.csproj">
+      <Project>{DB0451A6-FD6D-4AAA-926C-67209726B997}</Project>
+      <Name>PMKYO06002O</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06003D\PMKYO06003D.csproj">
+      <Project>{24AA38C9-A0FE-4ADE-9CC1-BA56DBDCAD32}</Project>
+      <Name>PMKYO06003D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06100R\PMKYO06100R.csproj">
+      <Project>{DE10AC25-767F-4CC6-AD72-21EA8BD030F8}</Project>
+      <Name>PMKYO06100R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06101D\PMKYO06101D.csproj">
+      <Project>{52D1F0A0-9DBF-4B1E-B843-9AF80ACAFE29}</Project>
+      <Name>PMKYO06101D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06110R\PMKYO06110R.csproj">
+      <Project>{D76CCB0D-75AA-488E-B726-6BD7E03DBE60}</Project>
+      <Name>PMKYO06110R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06111D\PMKYO06111D.csproj">
+      <Project>{7BF5F4AF-7DF6-41F1-9718-2D5C3E167AAD}</Project>
+      <Name>PMKYO06111D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06120R\PMKYO06120R.csproj">
+      <Project>{59C2F734-02B1-481E-A0A2-B3F57768BE56}</Project>
+      <Name>PMKYO06120R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06121D\PMKYO06121D.csproj">
+      <Project>{4238546E-566B-4732-B575-4F243AE543C0}</Project>
+      <Name>PMKYO06121D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06130R\PMKYO06130R.csproj">
+      <Project>{31AF85E3-BC01-4278-94C0-D7CCF6A2F423}</Project>
+      <Name>PMKYO06130R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06131D\PMKYO06131D.csproj">
+      <Project>{6B87E3C9-6B20-4C74-91F8-858DB38C03C8}</Project>
+      <Name>PMKYO06131D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06140R\PMKYO06140R.csproj">
+      <Project>{9F9C471B-ACF6-441C-898B-4E2071697842}</Project>
+      <Name>PMKYO06140R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06141D\PMKYO06141D.csproj">
+      <Project>{57F09CD4-B38C-4411-A230-796B21B64A58}</Project>
+      <Name>PMKYO06141D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06150R\PMKYO06150R.csproj">
+      <Project>{EB8EC15B-3E84-4FEC-BF9F-CF8648B261CE}</Project>
+      <Name>PMKYO06150R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06151D\PMKYO06151D.csproj">
+      <Project>{734AC3F3-3C94-4509-9DCA-E858C8F99EB5}</Project>
+      <Name>PMKYO06151D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06160R\PMKYO06160R.csproj">
+      <Project>{8D9141A8-8E7A-474A-96E4-FCB1FBB40D5A}</Project>
+      <Name>PMKYO06160R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06161D\PMKYO06161D.csproj">
+      <Project>{D38A386B-DF3A-4414-BF6B-D8C2F6C4A6FC}</Project>
+      <Name>PMKYO06161D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06170R\PMKYO06170R.csproj">
+      <Project>{20F2B822-C599-4E17-8A3A-894E688FDEB8}</Project>
+      <Name>PMKYO06170R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06171D\PMKYO06171D.csproj">
+      <Project>{61765E3C-04B4-4C01-9EF5-BD6F75514304}</Project>
+      <Name>PMKYO06171D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06180R\PMKYO06180R.csproj">
+      <Project>{E59E5360-ADA2-47F5-9219-D8DF292E31CA}</Project>
+      <Name>PMKYO06180R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06181D\PMKYO06181D.csproj">
+      <Project>{7B430D0F-4FB0-42D0-8BA6-7EBCCC3473DC}</Project>
+      <Name>PMKYO06181D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06190R\PMKYO06190R.csproj">
+      <Project>{9DFD6F83-DD44-4A68-AC98-1CD5F9A6085C}</Project>
+      <Name>PMKYO06190R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06191D\PMKYO06191D.csproj">
+      <Project>{3442DE19-4F6A-4ACD-8568-84A47FC4996C}</Project>
+      <Name>PMKYO06191D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06200R\PMKYO06200R.csproj">
+      <Project>{224281EA-AD5E-4C85-9466-D5136069F170}</Project>
+      <Name>PMKYO06200R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06201D\PMKYO06201D.csproj">
+      <Project>{0DB9EEA4-D500-4ED3-A3AE-D86821406D3B}</Project>
+      <Name>PMKYO06201D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06210R\PMKYO06210R.csproj">
+      <Project>{99F92D38-DFEF-443D-B5B8-7B85DBC163DE}</Project>
+      <Name>PMKYO06210R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06211D\PMKYO06211D.csproj">
+      <Project>{BA47CC99-D480-408A-8D30-A051BA265C9B}</Project>
+      <Name>PMKYO06211D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06220R\PMKYO06220R.csproj">
+      <Project>{757750E4-B5BB-422F-AEB4-1E30769B7F4D}</Project>
+      <Name>PMKYO06220R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06221D\PMKYO06221D.csproj">
+      <Project>{A4CA6489-9378-474E-BDB3-E02E18C5A895}</Project>
+      <Name>PMKYO06221D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06230R\PMKYO06230R.csproj">
+      <Project>{4860F277-F485-4A76-A2B4-BD75F43DEC26}</Project>
+      <Name>PMKYO06230R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06231D\PMKYO06231D.csproj">
+      <Project>{C1D01C15-D35D-45F1-B0A6-38CFE60CCB88}</Project>
+      <Name>PMKYO06231D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06240R\PMKYO06240R.csproj">
+      <Project>{8129D294-E3CA-4569-9528-CE6AF43E6E53}</Project>
+      <Name>PMKYO06240R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06241D\PMKYO06241D.csproj">
+      <Project>{7E08CE45-E3BC-42FA-B4A9-B714B5E3AD74}</Project>
+      <Name>PMKYO06241D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06250R\PMKYO06250R.csproj">
+      <Project>{799FA785-AA36-48F4-BF49-1226C47B7E51}</Project>
+      <Name>PMKYO06250R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06251D\PMKYO06251D.csproj">
+      <Project>{C7B3FF17-41B9-4938-AF76-44FB6C82B013}</Project>
+      <Name>PMKYO06251D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06260R\PMKYO06260R.csproj">
+      <Project>{17828E73-F5DD-4146-BAED-C20CD021CD3A}</Project>
+      <Name>PMKYO06260R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06261D\PMKYO06261D.csproj">
+      <Project>{EDDB9A71-4AD3-473D-814E-6E2CE3D98C08}</Project>
+      <Name>PMKYO06261D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06270R\PMKYO06270R.csproj">
+      <Project>{04EFA4B7-B1C2-43C5-8B46-ECE22DEDB4DB}</Project>
+      <Name>PMKYO06270R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06271D\PMKYO06271D.csproj">
+      <Project>{F46F1AA8-2318-442C-9ABA-2BAD7824ED34}</Project>
+      <Name>PMKYO06271D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06280R\PMKYO06280R.csproj">
+      <Project>{96DD179F-C92E-421C-896B-46FA935735EA}</Project>
+      <Name>PMKYO06280R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06281D\PMKYO06281D.csproj">
+      <Project>{93A2D07C-6635-4095-8E87-B1AC76F4FCF3}</Project>
+      <Name>PMKYO06281D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06290R\PMKYO06290R.csproj">
+      <Project>{88B407AC-CB23-46C4-94AE-A7DC2A74B91C}</Project>
+      <Name>PMKYO06290R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06291D\PMKYO06291D.csproj">
+      <Project>{B7411DB4-E306-4B60-BCCB-D01CC6A6DFB8}</Project>
+      <Name>PMKYO06291D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06300R\PMKYO06300R.csproj">
+      <Project>{AD0C08B7-A80A-4825-AEDA-30B3BC8E0F0B}</Project>
+      <Name>PMKYO06300R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06301D\PMKYO06301D.csproj">
+      <Project>{0EBED638-9084-42FB-8D79-B57CB382B646}</Project>
+      <Name>PMKYO06301D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06310R\PMKYO06310R.csproj">
+      <Project>{945A44D8-40D6-42EE-8D74-D35D24D6022E}</Project>
+      <Name>PMKYO06310R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06311D\PMKYO06311D.csproj">
+      <Project>{E3354C41-0609-4E88-AC33-B9D05BD94C36}</Project>
+      <Name>PMKYO06311D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06320R\PMKYO06320R.csproj">
+      <Project>{C5178639-D43F-4294-B27C-DCE9926CDDBB}</Project>
+      <Name>PMKYO06320R</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PMKYO06321D\PMKYO06321D.csproj">
+      <Project>{7ECEFBFF-DD3C-49BA-9377-53F2CBED6D76}</Project>
+      <Name>PMKYO06321D</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

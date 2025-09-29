@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND00012R</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.HandyLoginInfoDB">
+            <summary>
+            ハンディターミナルログイン情報取得リモートオブジェクト
+            </summary>
+            <remarks>
+            <br>Note       : ハンディターミナルログイン情報取得リモートオブジェクトです。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            <br></br>
+            <br>Update Note:</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyLoginInfoDB.#ctor">
+            <summary>
+            ハンディターミナルログイン情報取得リモートオブジェクトクラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特になし</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyLoginInfoDB.Search(System.Byte[],System.Byte[]@)">
+            <summary>
+            ハンディターミナルログイン情報取得処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retByte">検索結果</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナルログイン情報を検索します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyLoginInfoDB.SearchProc(Broadleaf.Application.Remoting.ParamData.HandyLoginInfoCondWork,Broadleaf.Application.Remoting.ParamData.HandyLoginInfoWork@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            指定された条件の掛率優先管理マスタ情報LISTを戻します
+            </summary>
+            <param name="condWork">検索条件</param>
+            <param name="handyLoginInfoWork">検索結果</param>
+            <param name="sqlConnection">SQLコネクション</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 指定された条件の掛率優先管理マスタ情報LISTを戻します</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyLoginInfoDB.CopyToHandyLoginInfoWorkFromReader(System.Int32[],System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → HandyLoginInfoWork
+            </summary>
+            <param name="indexs">列の序数配列</param>
+            <param name="myReader">SqlDataReader</param>
+            <returns>HandyLoginInfoWork</returns>
+            <remarks>
+            <br>Note       : クラス格納処理を行います。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyLoginInfoDB.CreateSqlConnection">
+            <summary>
+            SqlConnection生成処理
+            </summary>
+            <returns>SqlConnection</returns>
+            <remarks>
+            <br>Note       : SqlConnectionを生成します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

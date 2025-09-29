@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>BLｺｰﾄﾞｶﾞｲﾄﾞ</FormTitle>
+		<FormMassge>BLｺｰﾄﾞを選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>635</FormHeight>
+		<FormWidth>430</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<ViewerSW>
+			<SWName>通常表示</SWName>
+			<SWParam>0</SWParam>
+		</ViewerSW>
+		<ViewerSW>
+			<SWName>全BL表示</SWName>
+			<SWParam>10</SWParam>
+		</ViewerSW>
+	</GuideDef>
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>BLｺｰﾄﾞ</ColName>
+			<ColKey>TbsPartsCode</ColKey>
+			<ColWith>100</ColWith>
+			<ColDataType>int</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>BLｺｰﾄﾞ名</ColName>
+			<ColKey>TbsPartsName</ColKey>
+			<ColWith>280</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.PartsPosCodeUAcs</SerchName>
+		<SerchAssm>PMKHN09052A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="int">SearchPartsPosCode</SerchInfo>
+			<SerchInfo type="string">EnterpriseCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">EnterpriseCode</SelectedInfo>
+		<SelectedInfo type="int">SearchPartsPosCode</SelectedInfo>
+		<SelectedInfo type="string">SearchPartsPosName</SelectedInfo>
+		<SelectedInfo type="int">PosDispOrder</SelectedInfo>
+		<SelectedInfo type="int">TbsPartsCode</SelectedInfo>
+		<SelectedInfo type="int">TbsPartsCdDerivedNo</SelectedInfo>
+		<SelectedInfo type="string">TbsPartsName</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

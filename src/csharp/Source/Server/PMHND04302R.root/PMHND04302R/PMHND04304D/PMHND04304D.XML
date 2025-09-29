@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND04304D</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork">
+            public class name:   SupplierGuideResultWork
+            <summary>
+                                 ハンディターミナル発注先ガイド検索結果ワーク
+            </summary>
+            <remarks>
+            <br>note             :   ハンディターミナル発注先ガイド検索結果ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   2017/08/11</br>
+            <br>Genarated Date   :   2017/08/11  (CSharp File Generated Date)</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork._uOESupplierCd">
+            <summary>UOE発注先コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork._uOESupplierName">
+            <summary>UOE発注先名称</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork.#ctor">
+            <summary>
+            発注先ガイド検索結果ワークコンストラクタ
+            </summary>
+            <returns>SupplierGuideResultWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SupplierGuideResultWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork.UOESupplierCd">
+            public propaty name  :  UOESupplierCd
+            <summary>UOE発注先コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   UOE発注先コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork.UOESupplierName">
+            public propaty name  :  UOESupplierName
+            <summary>UOE発注先名称プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   UOE発注先名称プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork_SerializationSurrogate_For_V51010">
+            <summary>
+             Ver5.10.1.0用のカスタムシライアライザです。
+            </summary>
+            <returns>SupplierGuideResultWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SupplierGuideResultWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork_SerializationSurrogate_For_V51010.currentMemberCount">
+            <summary>
+            SupplierGuideResultWorkメンバ数(publicプロパティ数)
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork_SerializationSurrogate_For_V51010.Serialize(System.IO.BinaryWriter,System.Object)">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   SupplierGuideResultWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork_SerializationSurrogate_For_V51010.SetSupplierGuideResultWork(System.IO.BinaryWriter,Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork)">
+            <summary>
+             SupplierGuideResultWorkインスタンス書き込み
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   SupplierGuideResultWorkのインスタンスを書き込み</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork_SerializationSurrogate_For_V51010.GetSupplierGuideResultWork(System.IO.BinaryReader,Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo)">
+            <summary>
+             SupplierGuideResultWorkインスタンス取得
+            </summary>
+            <returns>SupplierGuideResultWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SupplierGuideResultWorkのインスタンスを取得します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SupplierGuideResultWork_SerializationSurrogate_For_V51010.Deserialize(System.IO.BinaryReader)">
+            <summary>
+             Ver5.10.1.0用のカスタムデシリアライザです
+            </summary>
+            <returns>SupplierGuideResultWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SupplierGuideResultWorkクラスのカスタムデシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork">
+            public class name:   SupplierGuideParamWork
+            <summary>
+                                 発注先ガイド検索条件ワーク
+            </summary>
+            <remarks>
+            <br>note             :   発注先ガイド検索条件ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Date             :   2017/08/11</br>
+            <br>Genarated Date   :   2017/08/11  (CSharp File Generated Date)</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork._enterpriseCode">
+            <summary>企業コード</summary>
+            <remarks>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork._employeeCode">
+            <summary>従業員コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork._machineName">
+            <summary>コンピュータ名</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork.#ctor">
+            <summary>
+            発注先ガイド検索条件ワークコンストラクタ
+            </summary>
+            <returns>SupplierGuideParamWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   SupplierGuideParamWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork.EnterpriseCode">
+            public propaty name  :  EnterpriseCode
+            <summary>企業コードプロパティ</summary>
+            <value>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   企業コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork.EmployeeCode">
+            public propaty name  :  EmployeeCode
+            <summary>従業員コードプロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   従業員コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.SupplierGuideParamWork.MachineName">
+            public propaty name  :  MachineName
+            <summary>コンピュータ名プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   コンピュータ名プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

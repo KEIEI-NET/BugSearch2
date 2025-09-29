@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MailHisResultDataSet" targetNamespace="http://tempuri.org/MailHisResultDataSet.xsd" xmlns:mstns="http://tempuri.org/MailHisResultDataSet.xsd" xmlns="http://tempuri.org/MailHisResultDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MailHisResultDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="MailHisResultDataSet" msprop:Generator_DataSetName="MailHisResultDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MailHistResult" msprop:Generator_UserTableName="MailHistResult" msprop:Generator_RowDeletedName="MailHistResultRowDeleted" msprop:Generator_RowChangedName="MailHistResultRowChanged" msprop:Generator_RowClassName="MailHistResultRow" msprop:Generator_RowChangingName="MailHistResultRowChanging" msprop:Generator_RowEvArgName="MailHistResultRowChangeEvent" msprop:Generator_RowEvHandlerName="MailHistResultRowChangeEventHandler" msprop:Generator_TableClassName="MailHistResultDataTable" msprop:Generator_TableVarName="tableMailHistResult" msprop:Generator_RowDeletingName="MailHistResultRowDeleting" msprop:Generator_TablePropName="MailHistResult">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FileName" msdata:Caption="メールファイル名" msprop:Generator_UserColumnName="FileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="QRCode" msdata:Caption="QRコードファイル名" msprop:Generator_UserColumnName="QRCode" msprop:Generator_ColumnPropNameInRow="QRCode" msprop:Generator_ColumnVarNameInTable="columnQRCode" msprop:Generator_ColumnPropNameInTable="QRCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TransmitDate" msdata:Caption="送信日付" msprop:Generator_UserColumnName="TransmitDate" msprop:Generator_ColumnPropNameInRow="TransmitDate" msprop:Generator_ColumnVarNameInTable="columnTransmitDate" msprop:Generator_ColumnPropNameInTable="TransmitDateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployeeName" msdata:Caption="受信者名称" msprop:Generator_UserColumnName="EmployeeName" msprop:Generator_ColumnPropNameInRow="EmployeeName" msprop:Generator_ColumnVarNameInTable="columnEmployeeName" msprop:Generator_ColumnPropNameInTable="EmployeeNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CCInfo" msdata:Caption="CC情報" msprop:Generator_UserColumnName="CCInfo" msprop:Generator_ColumnPropNameInRow="CCInfo" msprop:Generator_ColumnVarNameInTable="columnCCInfo" msprop:Generator_ColumnPropNameInTable="CCInfoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Title" msdata:Caption="件名" msprop:Generator_UserColumnName="Title" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInTable="TitleColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TransmitDateTime" msdata:Caption="送信日時" msprop:Generator_UserColumnName="TransmitDateTime" msprop:Generator_ColumnVarNameInTable="columnTransmitDateTime" msprop:Generator_ColumnPropNameInRow="TransmitDateTime" msprop:Generator_ColumnPropNameInTable="TransmitDateTimeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="QRCodeDisplay" msdata:Caption="QRコード" msprop:Generator_UserColumnName="QRCodeDisplay" msprop:Generator_ColumnPropNameInRow="QRCodeDisplay" msprop:Generator_ColumnVarNameInTable="columnQRCodeDisplay" msprop:Generator_ColumnPropNameInTable="QRCodeDisplayColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

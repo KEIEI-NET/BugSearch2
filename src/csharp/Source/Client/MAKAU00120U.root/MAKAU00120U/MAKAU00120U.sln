@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKAU00120U", "MAKAU00120\MAKAU00120U.csproj", "{F6A8CB09-22DD-4629-8F16-B9258FA42087}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKAU00121E", "MAKAU00121E\MAKAU00121E.csproj", "{B1D9C4D5-453D-4A2B-92A1-5BCDB6FD23E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKAU00122A", "MAKAU00122A\MAKAU00122A.csproj", "{61E596BA-1722-4DBB-856F-DF822D530904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKAU00128U", "MAKAU00128U\MAKAU00128U.csproj", "{15BF19F1-62EA-4BE3-8D16-FAD4B5428309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKAU00129U", "MAKAU00129U\MAKAU00129U.csproj", "{D8B39E80-1C9D-4934-9821-D05206C1218F}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MAKAU00120\\MAKAU00120U.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = MAKAU00120\\
+		SccProjectUniqueName2 = MAKAU00121E\\MAKAU00121E.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = MAKAU00121E\\
+		SccProjectUniqueName3 = MAKAU00122A\\MAKAU00122A.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = MAKAU00122A\\
+		SccProjectUniqueName4 = MAKAU00128U\\MAKAU00128U.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = MAKAU00128U\\
+		SccProjectUniqueName5 = MAKAU00129U\\MAKAU00129U.csproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = MAKAU00129U\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6A8CB09-22DD-4629-8F16-B9258FA42087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A8CB09-22DD-4629-8F16-B9258FA42087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A8CB09-22DD-4629-8F16-B9258FA42087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A8CB09-22DD-4629-8F16-B9258FA42087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D9C4D5-453D-4A2B-92A1-5BCDB6FD23E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D9C4D5-453D-4A2B-92A1-5BCDB6FD23E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D9C4D5-453D-4A2B-92A1-5BCDB6FD23E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D9C4D5-453D-4A2B-92A1-5BCDB6FD23E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15BF19F1-62EA-4BE3-8D16-FAD4B5428309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15BF19F1-62EA-4BE3-8D16-FAD4B5428309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15BF19F1-62EA-4BE3-8D16-FAD4B5428309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15BF19F1-62EA-4BE3-8D16-FAD4B5428309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B39E80-1C9D-4934-9821-D05206C1218F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

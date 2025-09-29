@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>掛率設定区分ガイド</FormTitle>
+		<FormMassge>掛率設定区分を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>400</FormHeight>
+		<FormWidth>500</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<ViewerSW>
+			<SWName>通常表示</SWName>
+			<SWParam>0</SWParam>
+		</ViewerSW>
+		<ViewerSW>
+			<SWName>全商品区分グループ表示</SWName>
+			<SWParam>10</SWParam>
+		</ViewerSW>
+	</GuideDef>
+	<!-- 選択対象データViewerの設定  -->
+  <ViewerDef>
+		<ViewerInfo>
+			<ColName>表示順位</ColName>
+			<ColKey>RatePriorityOrder</ColKey>
+			<ColWith>120</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>掛率設定区分</ColName>
+			<ColKey>RateSettingDivide</ColKey>
+			<ColWith>120</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>掛率設定内容</ColName>
+			<ColKey>RateSettingDivideNm</ColKey>
+			<ColWith>800</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.RateProtyMngAcs</SerchName>
+		<SerchAssm>DCKHN09102A.dll</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="string">SectionCode</SerchInfo>
+			<SerchInfo type="int">EnterpriseCode</SerchInfo>
+			<SerchInfo type="int">UnitPriceKind</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">RateSettingDivide</SelectedInfo>
+		<SelectedInfo type="string">RateMngGoodsCd</SelectedInfo>
+		<SelectedInfo type="string">RateMngCustCd</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

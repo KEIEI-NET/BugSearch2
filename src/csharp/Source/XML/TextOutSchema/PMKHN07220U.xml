@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>倉庫マスタ（エクスポート）</SchemaName>
+    <SchemaFileName>PMKHN07220U.xml</SchemaFileName>
+    <Writer />
+    <Date>2009/05/14</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="WarehouseCodeRF">
+      <ColKey>WarehouseCodeRF</ColKey>
+      <ColName>倉庫コード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="WarehouseNameRF">
+      <ColKey>WarehouseNameRF</ColKey>
+      <ColName>倉庫名</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SectionCodeRF">
+      <ColKey>SectionCodeRF</ColKey>
+      <ColName>管理拠点</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustomerCodeRF">
+      <ColKey>CustomerCodeRF</ColKey>
+      <ColName>得意先</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MainMngWarehouseCdRF">
+      <ColKey>MainMngWarehouseCdRF</ColKey>
+      <ColName>主管倉庫</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockBlnktRemark1RF">
+      <ColKey>StockBlnktRemark1RF</ColKey>
+      <ColName>在庫一括リマーク１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockBlnktRemark2RF">
+      <ColKey>StockBlnktRemark2RF</ColKey>
+      <ColName>在庫一括リマーク２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="WarehouseNote1RF">
+      <ColKey>WarehouseNote1RF</ColKey>
+      <ColName>倉庫備考</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

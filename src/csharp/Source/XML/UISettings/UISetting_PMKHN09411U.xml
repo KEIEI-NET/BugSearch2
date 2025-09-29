@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMKHN09411UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tNedit_AfCustomerCode</ItemName>
+          <ItemDDName>CustomerCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_BfCustomerCode</ItemName>
+          <ItemDDName>CustomerCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_AfSectionCode</ItemName>
+          <ItemDDName>SectionCodeAllowZero</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_BfSectionCode</ItemName>
+          <ItemDDName>SectionCodeAllowZero</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04120U", "PMSCM04120U\PMSCM04120U\PMSCM04120U.csproj", "{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04120UPMCClient", "PMSCM04120UPMCClient\PMSCM04120UPMCClient.csproj", "{EF8F720E-5FF5-474D-93EF-37EAFC124AC4}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMSCM04120U\\PMSCM04120U\\PMSCM04120U.csproj
+		SccProjectName1 = \u0022$/Partsman.NS[035]_SCM高速化/Source/Server/PMSCM04120U.root/PMSCM04120U/PMSCM04120U/PMSCM04120U\u0022,\u0020HGGNAAAA
+		SccLocalPath1 = PMSCM04120U\\PMSCM04120U
+		SccProjectUniqueName2 = PMSCM04120UPMCClient\\PMSCM04120UPMCClient.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = PMSCM04120UPMCClient\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8F720E-5FF5-474D-93EF-37EAFC124AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8F720E-5FF5-474D-93EF-37EAFC124AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8F720E-5FF5-474D-93EF-37EAFC124AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8F720E-5FF5-474D-93EF-37EAFC124AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

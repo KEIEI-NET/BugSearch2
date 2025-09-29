@@ -1,0 +1,144 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9CEAC2ED-7A6D-482A-AC69-5C266350148A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Windows.Forms</RootNamespace>
+    <AssemblyName>NSChangeInfoEditor</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SFCMN00006C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00006C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00775C, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00775C.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00777A, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00777A.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00778D, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00778D.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00779D, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00779D.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleMasterMaintenanceCmn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SimpleMasterMaintenance\bin\SimpleMasterMaintenanceCmn.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleMasterMaintenanceMulti, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SimpleMasterMaintenance\bin\SimpleMasterMaintenanceMulti.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChangGidnc.cs">
+      <DependentUpon>ChangGidnc.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ChangGidnc.Designer.cs">
+      <DependentUpon>ChangGidnc.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ComboItem.cs" />
+    <Compile Include="MulticastInfoEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MulticastInfoEditor.designer.cs">
+      <DependentUpon>MulticastInfoEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MulticastInfoEditorSetting.cs" />
+    <Compile Include="MulticastInfoSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MulticastInfoSettingForm.Designer.cs">
+      <DependentUpon>MulticastInfoSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="McastMainteInfoEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="McastMainteInfoEditor.designer.cs">
+      <DependentUpon>McastMainteInfoEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="McastPrintPointInfoEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="McastPrintPointInfoEditor.designer.cs">
+      <DependentUpon>McastPrintPointInfoEditor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MulticastInfoEditor.resx">
+      <DependentUpon>MulticastInfoEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MulticastInfoSettingForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MulticastInfoSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="McastMainteInfoEditor.resx">
+      <DependentUpon>McastMainteInfoEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="McastPrintPointInfoEditor.resx">
+      <DependentUpon>McastPrintPointInfoEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="ChangGidnc.xsc">
+      <DependentUpon>ChangGidnc.xsd</DependentUpon>
+    </None>
+    <None Include="ChangGidnc.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ChangGidnc.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ChangGidnc.xss">
+      <DependentUpon>ChangGidnc.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

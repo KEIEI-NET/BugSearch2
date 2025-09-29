@@ -1,0 +1,71 @@
+﻿//*************************************************************************************//
+// System			:	Partsman									                   //
+// Sub System       :				     								               //
+// Program name     :	レコメンド商品関連設定マスタ	　　　　　　                   //
+//					:	PMREC09010U.DLL									               //
+// Name Space		:	Broadleaf.Windows.Forms							               //
+// Programmer		:	宮本利明                                                       //
+// Date				:	2015/01/20                                                     //
+//-------------------------------------------------------------------------------------//
+// 管理番号  11070266-00 作成担当 : 宮本利明                                           //
+// 作 成 日  2015/01/20  修正内容 : 新規作成                                           //
+//-------------------------------------------------------------------------------------//
+//                (c)Copyright  2011 Broadleaf Co.,Ltd.                                //
+//*************************************************************************************//
+
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Broadleaf.Library;
+
+// アセンブリに関する一般情報は以下の属性セットをとおして制御されます。 
+// アセンブリに関連付けられている情報を変更するには、
+// これらの属性値を変更してください。
+[assembly: AssemblyTitle("レコメンド商品関連設定マスタ")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Broadleaf Co.,Ltd.")]
+[assembly: AssemblyProduct("Partsman")]
+[assembly: AssemblyCopyright("(c)2011 Broadleaf Co.,Ltd.")]
+[assembly: AssemblyTrademark("Partsman")]
+[assembly: AssemblyCulture("")]
+[assembly: AssemblyDeployment(DeployPosition.Client)]
+
+// アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+[assembly: AssemblyVersion("8.10.1.0")]
+[assembly: AssemblyFileVersion("8.10.1.0")]
+
+//
+// アセンブリに署名するには、使用するキーを指定しなければなりません。 
+// アセンブリ署名に関する詳細については、Microsoft .NET Framework ドキュメントを参照してください。
+//
+// 下記の属性を使って、署名に使うキーを制御します。 
+//
+// メモ : 
+//   (*) キーが指定されないと、アセンブリは署名されません。
+//   (*) KeyName は、コンピュータにインストールされている
+//        暗号サービス プロバイダ (CSP) のキーを表します。KeyFile は、
+//       キーを含むファイルです。
+//   (*) KeyFile および KeyName の値が共に指定されている場合は、 
+//       以下の処理が行われます :
+//       (1) KeyName が CSP に見つかった場合、そのキーが使われます。
+//       (2) KeyName が存在せず、KeyFile が存在する場合、 
+//           KeyFile にあるキーが CSP にインストールされ、使われます。
+//   (*) KeyFile を作成するには、sn.exe (厳密な名前) ユーティリティを使ってください。
+//       KeyFile を指定するとき、KeyFile の場所は、
+//       プロジェクト出力 ディレクトリへの相対パスでなければなりません。
+//       パスは、%Project Directory%\obj\<configuration> です。たとえば、KeyFile がプロジェクト ディレクトリにある場合、
+//       AssemblyKeyFile 属性を 
+//       [assembly: AssemblyKeyFile("..\\..\\mykey.snk")] として指定します。
+//   (*) 遅延署名は高度なオプションです。
+//       詳細については Microsoft .NET Framework ドキュメントを参照してください。
+//
+[assembly: AssemblyDelaySign(false)]
+[assembly: AssemblyKeyFile("")]
+[assembly: AssemblyKeyName("")]

@@ -1,0 +1,8 @@
+{
+  "path": "src/csharp/Source/Client/DCKHN06060L.root/DCKHN06060L/DCKHN06060L/DCKHN06060LA.cs",
+  "severity": 16,
+  "problems": [],
+  "original_code": "using System;\nusing System.Collections;\nusing System.Data;\nusing System.Data.SqlClient;\nusing System.Text;\nusing System.Collections.Generic;\nusing Broadleaf.Library.Resources;\nusing Broadleaf.Library.Data;\nusing Broadleaf.Library.Data.SqlTypes;\nusing Broadleaf.Library.Data.SqlClient;\nusing Broadleaf.Library.Diagnostics;\nusing Broadleaf.Application.Resources;\nusing Broadleaf.Application.Remoting.ParamData;\nusing Broadleaf.Application.Common;\n\nnamespace Broadleaf.Application.LocalAccess\n{\n    /// <summary>\n    /// 󔭒S̐ݒ}X^LC[JDBIuWFNg\n    /// </summary>\n    /// <remarks>\n    /// <br>Note       : 󔭒S̐ݒ}X^LC̃[JDBf[^sNXłB</br>\n    /// <br>Programmer : 980081 Rc F</br>\n    /// <br>Date       : 2008.01.24</br>\n    /// <br></br>\n    /// <br>Update Note: 2008.06.09 Dc El</br>\n    /// <br>           : ol.mrpɕύX</br>\n    /// <br>Update Note: </br>\n    /// </remarks>\n    public class AcptAnOdrTtlStLcDB : IWriteSyncLocalData\n    {\n        /// <summary>\n        /// 󔭒S̐ݒ}X^LC[JDBIuWFNgNXRXgN^\n        /",
+  "analysis": "申し訳ありませんが、提示いただいたコードが途中で途切れており、`SearchAcptAnOdrTtlStProcProc` メソッド以降の内容が確認できないため、危険箇所を特定できません。ファイル全体、もしくは少なくとも `SearchAcptAnOdrTtlStProcProc` メソッド以降のコードをご提供いただければ、詳細な分析と改善案をご提示できます。",
+  "model_used": "gpt-5-codex"
+}

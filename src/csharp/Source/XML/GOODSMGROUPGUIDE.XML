@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>商品中分類ガイド</FormTitle>
+		<FormMassge>商品中分類を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>635</FormHeight>
+		<FormWidth>430</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<SearchType>1</SearchType>
+		<SearchCondition>
+			<ColName>絞込名称</ColName>
+			<ColKey>GoodsMGroupName</ColKey>
+			<ColLength>20</ColLength>
+			<ColImeMode>1</ColImeMode>
+		</SearchCondition>
+	</GuideDef>
+	
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>商品中分類コード</ColName>
+			<ColKey>GoodsMGroup</ColKey>
+			<ColWith>60</ColWith>
+			<ColDataType>int</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>商品中分類名</ColName>
+			<ColKey>GoodsMGroupName</ColKey>
+			<ColWith>250</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.GoodsGroupUAcs</SerchName>
+		<SerchAssm>PMKHN09072A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="string">EnterpriseCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">GoodsMGroup</SelectedInfo>
+		<SelectedInfo type="string">GoodsMGroupName</SelectedInfo>
+		<SelectedInfo type="string">DivisionCode</SelectedInfo>
+		<SelectedInfo type="string">DivisionName</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

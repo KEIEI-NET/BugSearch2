@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <!--情報をチェックする時間間隔 (分単位)-->
+    <add key="CheckInterval" value="60"/>
+  </appSettings>
+</configuration>

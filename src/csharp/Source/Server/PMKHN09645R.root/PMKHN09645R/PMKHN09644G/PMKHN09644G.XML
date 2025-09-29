@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09644G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationCampaignGoodsStDB">
+            <summary>
+            キャンペーン対象商品設定マスタ一括削除DB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスは受信データDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>             完全スタンドアロンにする場合にはこのクラスで直接SupplierDBを</br>
+            <br>             インスタンス化して戻します。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationCampaignGoodsStDB.#ctor">
+            <summary>
+            キャンペーン対象商品設定マスタ一括削除仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationCampaignGoodsStDB.GetCampaignGoodsStDB">
+            <summary>
+            ICampaignGoodsStDBインターフェース取得
+            </summary>
+            <returns>ICampaignGoodsStDBオブジェクト</returns>
+        </member>
+    </members>
+</doc>

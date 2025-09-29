@@ -1,0 +1,62 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFTKD00421G", "SFTKD00421G\SFTKD00421G.csproj", "{DF5D182D-E389-4DDA-93B8-F7BA69A33206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFTKD00422R", "SFTKD00422R\SFTKD00422R.csproj", "{7EC46F98-7AE8-4321-9448-272A13CA92F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFTKD00423O", "SFTKD00423O\SFTKD00423O.csproj", "{B61F0C2C-C630-42AB-A715-61CA3636435F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFTKD00424D", "SFTKD00424D\SFTKD00424D.csproj", "{7E9618B7-F370-4AAB-9639-4591B09A9885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressInfoServer", "AddressInfoServer\AddressInfoServer.csproj", "{F75D2FA6-0071-44C8-9D6C-7882D49CD3D2}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AddressInfoServer\\AddressInfoServer.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = AddressInfoServer\\
+		SccProjectUniqueName2 = SFTKD00421G\\SFTKD00421G.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = SFTKD00421G\\
+		SccProjectUniqueName3 = SFTKD00422R\\SFTKD00422R.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = SFTKD00422R\\
+		SccProjectUniqueName4 = SFTKD00423O\\SFTKD00423O.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = SFTKD00423O\\
+		SccProjectUniqueName5 = SFTKD00424D\\SFTKD00424D.csproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = SFTKD00424D\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF5D182D-E389-4DDA-93B8-F7BA69A33206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF5D182D-E389-4DDA-93B8-F7BA69A33206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF5D182D-E389-4DDA-93B8-F7BA69A33206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF5D182D-E389-4DDA-93B8-F7BA69A33206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC46F98-7AE8-4321-9448-272A13CA92F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC46F98-7AE8-4321-9448-272A13CA92F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC46F98-7AE8-4321-9448-272A13CA92F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC46F98-7AE8-4321-9448-272A13CA92F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B61F0C2C-C630-42AB-A715-61CA3636435F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B61F0C2C-C630-42AB-A715-61CA3636435F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B61F0C2C-C630-42AB-A715-61CA3636435F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B61F0C2C-C630-42AB-A715-61CA3636435F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9618B7-F370-4AAB-9639-4591B09A9885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9618B7-F370-4AAB-9639-4591B09A9885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9618B7-F370-4AAB-9639-4591B09A9885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9618B7-F370-4AAB-9639-4591B09A9885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75D2FA6-0071-44C8-9D6C-7882D49CD3D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75D2FA6-0071-44C8-9D6C-7882D49CD3D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75D2FA6-0071-44C8-9D6C-7882D49CD3D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75D2FA6-0071-44C8-9D6C-7882D49CD3D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

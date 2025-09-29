@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MarketPriceInfoDataSet" targetNamespace="Broadleaf.Application.Controller" xmlns:mstns="Broadleaf.Application.Controller" xmlns="Broadleaf.Application.Controller" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MarketPriceInfoDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="MarketPriceInfoDataSet" msprop:Generator_DataSetName="MarketPriceInfoDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MarketPriceInfo" msprop:Generator_UserTableName="MarketPriceInfo" msprop:Generator_RowDeletedName="MarketPriceInfoRowDeleted" msprop:Generator_RowChangedName="MarketPriceInfoRowChanged" msprop:Generator_RowClassName="MarketPriceInfoRow" msprop:Generator_RowChangingName="MarketPriceInfoRowChanging" msprop:Generator_RowEvArgName="MarketPriceInfoRowChangeEvent" msprop:Generator_RowEvHandlerName="MarketPriceInfoRowChangeEventHandler" msprop:Generator_TableClassName="MarketPriceInfoDataTable" msprop:Generator_TableVarName="tableMarketPriceInfo" msprop:Generator_RowDeletingName="MarketPriceInfoRowDeleting" msprop:Generator_TablePropName="MarketPriceInfo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Selected" msdata:Caption="選択" msprop:Generator_UserColumnName="Selected" msprop:Generator_ColumnVarNameInTable="columnSelected" msprop:Generator_ColumnPropNameInRow="Selected" msprop:Generator_ColumnPropNameInTable="SelectedColumn" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="Priority" msprop:Generator_UserColumnName="Priority" msprop:Generator_ColumnVarNameInTable="columnPriority" msprop:Generator_ColumnPropNameInRow="Priority" msprop:Generator_ColumnPropNameInTable="PriorityColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="MarketPriceAreaCd" msprop:Generator_UserColumnName="MarketPriceAreaCd" msprop:Generator_ColumnVarNameInTable="columnMarketPriceAreaCd" msprop:Generator_ColumnPropNameInRow="MarketPriceAreaCd" msprop:Generator_ColumnPropNameInTable="MarketPriceAreaCdColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="MarketPriceAreaNm" msprop:Generator_UserColumnName="MarketPriceAreaNm" msprop:Generator_ColumnVarNameInTable="columnMarketPriceAreaNm" msprop:Generator_ColumnPropNameInRow="MarketPriceAreaNm" msprop:Generator_ColumnPropNameInTable="MarketPriceAreaNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="MarketPriceKindCd" msprop:Generator_UserColumnName="MarketPriceKindCd" msprop:Generator_ColumnVarNameInTable="columnMarketPriceKindCd" msprop:Generator_ColumnPropNameInRow="MarketPriceKindCd" msprop:Generator_ColumnPropNameInTable="MarketPriceKindCdColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="MarketPriceKindNm" msdata:Caption="種別" msprop:Generator_UserColumnName="MarketPriceKindNm" msprop:Generator_ColumnVarNameInTable="columnMarketPriceKindNm" msprop:Generator_ColumnPropNameInRow="MarketPriceKindNm" msprop:Generator_ColumnPropNameInTable="MarketPriceKindNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="MarketPriceQualityCd" msprop:Generator_UserColumnName="MarketPriceQualityCd" msprop:Generator_ColumnVarNameInTable="columnMarketPriceQualityCd" msprop:Generator_ColumnPropNameInRow="MarketPriceQualityCd" msprop:Generator_ColumnPropNameInTable="MarketPriceQualityCdColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="MarketPriceQualityNm" msdata:Caption="品質" msprop:Generator_UserColumnName="MarketPriceQualityNm" msprop:Generator_ColumnVarNameInTable="columnMarketPriceQualityNm" msprop:Generator_ColumnPropNameInRow="MarketPriceQualityNm" msprop:Generator_ColumnPropNameInTable="MarketPriceQualityNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="DstrMarketPrice" msprop:Generator_UserColumnName="DstrMarketPrice" msprop:Generator_ColumnVarNameInTable="columnDstrMarketPrice" msprop:Generator_ColumnPropNameInRow="DstrMarketPrice" msprop:Generator_ColumnPropNameInTable="DstrMarketPriceColumn" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="MarketPrice" msdata:Caption="相場価格" msprop:Generator_UserColumnName="MarketPrice" msprop:Generator_ColumnVarNameInTable="columnMarketPrice" msprop:Generator_ColumnPropNameInRow="MarketPrice" msprop:Generator_ColumnPropNameInTable="MarketPriceColumn" type="xs:long" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

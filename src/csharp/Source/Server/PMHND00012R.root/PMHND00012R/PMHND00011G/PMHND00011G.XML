@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND00011G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationHandyLoginInfoDB">
+            <summary>
+            ハンディターミナルログイン情報取得DB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスはIHandyLoginInfoDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>			 完全スタンドアロンにする場合にはこのクラスで直接HandyLoginInfoDBを</br>
+            <br>			 インスタンス化して戻します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationHandyLoginInfoDB.#ctor">
+            <summary>
+            HandyLoginInfoDB仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationHandyLoginInfoDB.GetHandyLoginInfoDB">
+            <summary>
+            IHandyLoginInfoDBインターフェース取得
+            </summary>
+            <returns>IHandyLoginInfoDBオブジェクト</returns>
+            <remarks>
+            <br>Note       : IHandyLoginInfoDBインターフェースを取得します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09600U", "PMKHN09600U\PMKHN09600U.csproj", "{D62ABFB0-F7E4-4530-9FA7-8BFCEDD20A69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09601U", "..\..\PMKHN09601U.root\PMKHN09601U\PMKHN09601U\PMKHN09601U.csproj", "{DC946A0E-4504-4473-A01D-8478868BEC62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09603A", "..\..\PMKHN09603A.root\PMKHN09603A\PMKHN09603A\PMKHN09603A.csproj", "{7B8F5994-3A65-4012-8966-7B41B4D278A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09602E", "..\..\PMKHN09602E.root\PMKHN09602E\PMKHN09602E\PMKHN09602E.csproj", "{F76A0885-B555-4502-8476-DFE1BA56C6B5}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMKHN09600U\\PMKHN09600U.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMKHN09600U\\
+		SccProjectUniqueName2 = ..\\..\\PMKHN09601U.root\\PMKHN09601U\\PMKHN09601U\\PMKHN09601U.csproj
+		SccProjectName2 = \u0022$/Partsman[810]/Source/Client/PMKHN09601U.root/PMKHN09601U/PMKHN09601U\u0022,\u0020QCECAAAA
+		SccLocalPath2 = ..\\..\\PMKHN09601U.root\\PMKHN09601U\\PMKHN09601U
+		SccProjectUniqueName3 = ..\\..\\PMKHN09603A.root\\PMKHN09603A\\PMKHN09603A\\PMKHN09603A.csproj
+		SccProjectName3 = \u0022$/Partsman[810]/Source/Client/PMKHN09603A.root/PMKHN09603A/PMKHN09603A\u0022,\u0020GCECAAAA
+		SccLocalPath3 = ..\\..\\PMKHN09603A.root\\PMKHN09603A\\PMKHN09603A
+		SccProjectUniqueName4 = ..\\..\\PMKHN09602E.root\\PMKHN09602E\\PMKHN09602E\\PMKHN09602E.csproj
+		SccProjectName4 = \u0022$/Partsman[810]/Source/Client/PMKHN09602E.root/PMKHN09602E/PMKHN09602E\u0022,\u0020VBECAAAA
+		SccLocalPath4 = ..\\..\\PMKHN09602E.root\\PMKHN09602E\\PMKHN09602E
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D62ABFB0-F7E4-4530-9FA7-8BFCEDD20A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62ABFB0-F7E4-4530-9FA7-8BFCEDD20A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62ABFB0-F7E4-4530-9FA7-8BFCEDD20A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62ABFB0-F7E4-4530-9FA7-8BFCEDD20A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC946A0E-4504-4473-A01D-8478868BEC62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8F5994-3A65-4012-8966-7B41B4D278A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76A0885-B555-4502-8476-DFE1BA56C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

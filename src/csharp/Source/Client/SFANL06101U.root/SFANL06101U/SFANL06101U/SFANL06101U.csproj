@@ -1,0 +1,199 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{44C49C1B-D1CF-44DC-900C-A33CC697007F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>SFANL06101U</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Broadleaf.Windows.Forms</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>SFANL06101U.xml</DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Infragistics2.Shared.v5.3">
+      <Name>Infragistics2.Shared.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Shared.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v5.3">
+      <Name>Infragistics2.Win.Misc.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.Misc.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinDataSource.v5.3">
+      <Name>Infragistics2.Win.UltraWinDataSource.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.UltraWinDataSource.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v5.3">
+      <Name>Infragistics2.Win.UltraWinEditors.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.UltraWinEditors.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinExplorerBar.v5.3">
+      <Name>Infragistics2.Win.UltraWinExplorerBar.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.UltraWinExplorerBar.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v5.3">
+      <Name>Infragistics2.Win.UltraWinSchedule.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.UltraWinSchedule.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v5.3">
+      <Name>Infragistics2.Win.UltraWinToolbars.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.UltraWinToolbars.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTree.v5.3">
+      <Name>Infragistics2.Win.UltraWinTree.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.UltraWinTree.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v5.3">
+      <Name>Infragistics2.Win.v5.3</Name>
+      <HintPath>C:\Program Files\NetAdvantage20053\CLR2\windows forms\bin\Infragistics2.Win.v5.3.dll</HintPath>
+      <AssemblyFolderKey>hklm\Infragistics.WinAssemblies.20053.CLR20</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="SFCMN00001U, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00001U.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00040C, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00040C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00081I, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00081I.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00331C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00331C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00651C">
+      <Name>SFCMN00651C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00651C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFTOK09381E">
+      <Name>SFTOK09381E</Name>
+      <HintPath>R:\SFNETASM\SFTOK09381E.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SFCMN00036C">
+      <Name>SFCMN00036C</Name>
+      <HintPath>R:\SFNETASM\SFCMN00036C.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="licenses.licx" />
+    <EmbeddedResource Include="SFANL06101UA.resx">
+      <DependentUpon>SFANL06101UA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="SFANL06101UA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFANL06101UInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

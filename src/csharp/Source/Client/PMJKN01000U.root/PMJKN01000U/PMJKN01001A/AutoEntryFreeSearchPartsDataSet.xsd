@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AutoEntryFreeSearchPartsDataSet" targetNamespace="http://tempuri.org/AutoEntryFreeSearchPartsDataSet.xsd" xmlns:mstns="http://tempuri.org/AutoEntryFreeSearchPartsDataSet.xsd" xmlns="http://tempuri.org/AutoEntryFreeSearchPartsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AutoEntryFreeSearchPartsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="AutoEntryFreeSearchPartsDataSet" msprop:Generator_DataSetName="AutoEntryFreeSearchPartsDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AutoEntryFreeSearchParts" msprop:Generator_UserTableName="AutoEntryFreeSearchParts" msprop:Generator_RowDeletedName="AutoEntryFreeSearchPartsRowDeleted" msprop:Generator_RowChangedName="AutoEntryFreeSearchPartsRowChanged" msprop:Generator_RowClassName="AutoEntryFreeSearchPartsRow" msprop:Generator_RowChangingName="AutoEntryFreeSearchPartsRowChanging" msprop:Generator_RowEvArgName="AutoEntryFreeSearchPartsRowChangeEvent" msprop:Generator_RowEvHandlerName="AutoEntryFreeSearchPartsRowChangeEventHandler" msprop:Generator_TableClassName="AutoEntryFreeSearchPartsDataTable" msprop:Generator_TableVarName="tableAutoEntryFreeSearchParts" msprop:Generator_RowDeletingName="AutoEntryFreeSearchPartsRowDeleting" msprop:Generator_TablePropName="_AutoEntryFreeSearchParts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DtlRelationGuid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="共通キー" msprop:Generator_UserColumnName="DtlRelationGuid" msprop:Generator_ColumnVarNameInTable="columnDtlRelationGuid" msprop:Generator_ColumnPropNameInRow="DtlRelationGuid" msprop:Generator_ColumnPropNameInTable="DtlRelationGuidColumn" type="xs:string" />
+              <xs:element name="RowNo" msdata:Caption="№" msprop:Generator_UserColumnName="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="GoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="GoodsNo" msprop:Generator_ColumnVarNameInTable="columnGoodsNo" msprop:Generator_ColumnPropNameInRow="GoodsNo" msprop:Generator_ColumnPropNameInTable="GoodsNoColumn" type="xs:string" default="" />
+              <xs:element name="GoodsMakerCd" msdata:Caption="ﾒｰｶｰ" msprop:Generator_UserColumnName="GoodsMakerCd" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerCd" msprop:Generator_ColumnPropNameInRow="GoodsMakerCd" msprop:Generator_ColumnPropNameInTable="GoodsMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="GoodsName" msdata:Caption="品名" msprop:Generator_UserColumnName="GoodsName" msprop:Generator_ColumnVarNameInTable="columnGoodsName" msprop:Generator_ColumnPropNameInRow="GoodsName" msprop:Generator_ColumnPropNameInTable="GoodsNameColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="BLGoodsCode" msdata:Caption="BLｺｰﾄﾞ" msprop:Generator_UserColumnName="BLGoodsCode" msprop:Generator_ColumnVarNameInTable="columnBLGoodsCode" msprop:Generator_ColumnPropNameInRow="BLGoodsCode" msprop:Generator_ColumnPropNameInTable="BLGoodsCodeColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="BLGoodsFullName" msdata:Caption="BLコード名称" msprop:Generator_UserColumnName="BLGoodsFullName" msprop:Generator_ColumnVarNameInTable="columnBLGoodsFullName" msprop:Generator_ColumnPropNameInRow="BLGoodsFullName" msprop:Generator_ColumnPropNameInTable="BLGoodsFullNameColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Checked" msdata:Caption="選択" msprop:Generator_UserColumnName="Checked" msprop:Generator_ColumnVarNameInTable="columnChecked" msprop:Generator_ColumnPropNameInRow="Checked" msprop:Generator_ColumnPropNameInTable="CheckedColumn" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="ModelDesignationNo" msprop:Generator_UserColumnName="ModelDesignationNo" msprop:Generator_ColumnPropNameInRow="ModelDesignationNo" msprop:Generator_ColumnVarNameInTable="columnModelDesignationNo" msprop:Generator_ColumnPropNameInTable="ModelDesignationNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CategoryNo" msprop:Generator_UserColumnName="CategoryNo" msprop:Generator_ColumnPropNameInRow="CategoryNo" msprop:Generator_ColumnVarNameInTable="columnCategoryNo" msprop:Generator_ColumnPropNameInTable="CategoryNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="EngineModelNm" msprop:Generator_UserColumnName="EngineModelNm" msprop:Generator_ColumnPropNameInRow="EngineModelNm" msprop:Generator_ColumnVarNameInTable="columnEngineModelNm" msprop:Generator_ColumnPropNameInTable="EngineModelNmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FullModel" msprop:Generator_UserColumnName="FullModel" msprop:Generator_ColumnPropNameInRow="FullModel" msprop:Generator_ColumnVarNameInTable="columnFullModel" msprop:Generator_ColumnPropNameInTable="FullModelColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MakerCode" msprop:Generator_UserColumnName="MakerCode" msprop:Generator_ColumnPropNameInRow="MakerCode" msprop:Generator_ColumnVarNameInTable="columnMakerCode" msprop:Generator_ColumnPropNameInTable="MakerCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ModelCode" msprop:Generator_UserColumnName="ModelCode" msprop:Generator_ColumnPropNameInRow="ModelCode" msprop:Generator_ColumnVarNameInTable="columnModelCode" msprop:Generator_ColumnPropNameInTable="ModelCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ModelSubCode" msprop:Generator_UserColumnName="ModelSubCode" msprop:Generator_ColumnPropNameInRow="ModelSubCode" msprop:Generator_ColumnVarNameInTable="columnModelSubCode" msprop:Generator_ColumnPropNameInTable="ModelSubCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ModelFullName" msprop:Generator_UserColumnName="ModelFullName" msprop:Generator_ColumnPropNameInRow="ModelFullName" msprop:Generator_ColumnVarNameInTable="columnModelFullName" msprop:Generator_ColumnPropNameInTable="ModelFullNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FirstEntryDate" msprop:Generator_UserColumnName="FirstEntryDate" msprop:Generator_ColumnPropNameInRow="FirstEntryDate" msprop:Generator_ColumnVarNameInTable="columnFirstEntryDate" msprop:Generator_ColumnPropNameInTable="FirstEntryDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ProduceFrameNo" msprop:Generator_UserColumnName="ProduceFrameNo" msprop:Generator_ColumnPropNameInRow="ProduceFrameNo" msprop:Generator_ColumnVarNameInTable="columnProduceFrameNo" msprop:Generator_ColumnPropNameInTable="ProduceFrameNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CarSelectNo" msprop:Generator_UserColumnName="CarSelectNo" msprop:Generator_ColumnVarNameInTable="columnCarSelectNo" msprop:Generator_ColumnPropNameInRow="CarSelectNo" msprop:Generator_ColumnPropNameInTable="CarSelectNoColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CarModel" msprop:Generator_UserTableName="CarModel" msprop:Generator_RowDeletedName="CarModelRowDeleted" msprop:Generator_RowChangedName="CarModelRowChanged" msprop:Generator_RowClassName="CarModelRow" msprop:Generator_RowChangingName="CarModelRowChanging" msprop:Generator_RowEvArgName="CarModelRowChangeEvent" msprop:Generator_RowEvHandlerName="CarModelRowChangeEventHandler" msprop:Generator_TableClassName="CarModelDataTable" msprop:Generator_TableVarName="tableCarModel" msprop:Generator_RowDeletingName="CarModelRowDeleting" msprop:Generator_TablePropName="CarModel">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ModelDesignationNo" msprop:Generator_UserColumnName="ModelDesignationNo" msprop:Generator_ColumnPropNameInRow="ModelDesignationNo" msprop:Generator_ColumnVarNameInTable="columnModelDesignationNo" msprop:Generator_ColumnPropNameInTable="ModelDesignationNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CategoryNo" msprop:Generator_UserColumnName="CategoryNo" msprop:Generator_ColumnPropNameInRow="CategoryNo" msprop:Generator_ColumnVarNameInTable="columnCategoryNo" msprop:Generator_ColumnPropNameInTable="CategoryNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="EngineModelNm" msprop:Generator_UserColumnName="EngineModelNm" msprop:Generator_ColumnPropNameInRow="EngineModelNm" msprop:Generator_ColumnVarNameInTable="columnEngineModelNm" msprop:Generator_ColumnPropNameInTable="EngineModelNmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FullModel" msprop:Generator_UserColumnName="FullModel" msprop:Generator_ColumnPropNameInRow="FullModel" msprop:Generator_ColumnVarNameInTable="columnFullModel" msprop:Generator_ColumnPropNameInTable="FullModelColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MakerCode" msprop:Generator_UserColumnName="MakerCode" msprop:Generator_ColumnPropNameInRow="MakerCode" msprop:Generator_ColumnVarNameInTable="columnMakerCode" msprop:Generator_ColumnPropNameInTable="MakerCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ModelCode" msprop:Generator_UserColumnName="ModelCode" msprop:Generator_ColumnPropNameInRow="ModelCode" msprop:Generator_ColumnVarNameInTable="columnModelCode" msprop:Generator_ColumnPropNameInTable="ModelCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ModelSubCode" msprop:Generator_UserColumnName="ModelSubCode" msprop:Generator_ColumnPropNameInRow="ModelSubCode" msprop:Generator_ColumnVarNameInTable="columnModelSubCode" msprop:Generator_ColumnPropNameInTable="ModelSubCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ModelFullName" msprop:Generator_UserColumnName="ModelFullName" msprop:Generator_ColumnPropNameInRow="ModelFullName" msprop:Generator_ColumnVarNameInTable="columnModelFullName" msprop:Generator_ColumnPropNameInTable="ModelFullNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FirstEntryDate" msprop:Generator_UserColumnName="FirstEntryDate" msprop:Generator_ColumnPropNameInRow="FirstEntryDate" msprop:Generator_ColumnVarNameInTable="columnFirstEntryDate" msprop:Generator_ColumnPropNameInTable="FirstEntryDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ProduceFrameNo" msprop:Generator_UserColumnName="ProduceFrameNo" msprop:Generator_ColumnPropNameInRow="ProduceFrameNo" msprop:Generator_ColumnVarNameInTable="columnProduceFrameNo" msprop:Generator_ColumnPropNameInTable="ProduceFrameNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CarSelectNo" msprop:Generator_UserColumnName="CarSelectNo" msprop:Generator_ColumnVarNameInTable="columnCarSelectNo" msprop:Generator_ColumnPropNameInRow="CarSelectNo" msprop:Generator_ColumnPropNameInTable="CarSelectNoColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="CarModelKey1">
+      <xs:selector xpath=".//mstns:CarModel" />
+      <xs:field xpath="mstns:FullModel" />
+      <xs:field xpath="mstns:MakerCode" />
+      <xs:field xpath="mstns:ModelCode" />
+      <xs:field xpath="mstns:ModelSubCode" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

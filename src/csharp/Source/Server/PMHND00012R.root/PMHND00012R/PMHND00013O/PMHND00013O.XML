@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND00013O</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.IHandyLoginInfoDB">
+            <summary>
+            ハンディターミナルログイン情報取得リモートオブジェクト インターフェース
+            </summary>
+            <remarks>
+            <br>Note       : ハンディターミナルログイン情報取得リモートオブジェクト インターフェースです。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IHandyLoginInfoDB.Search(System.Byte[],System.Byte[]@)">
+            <summary>
+            ハンディターミナルログイン情報の取得処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retByte">検索結果</param>
+            <returns>ステータス</returns>
+            <br>Note       : ハンディターミナルログイン情報を検索します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+        </member>
+    </members>
+</doc>

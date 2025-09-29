@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RecGoodsLkDataSet" targetNamespace="http://tempuri.org/RecGoodsLkDataSet.xsd" xmlns:mstns="http://tempuri.org/RecGoodsLkDataSet.xsd" xmlns="http://tempuri.org/RecGoodsLkDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RecGoodsLkDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="RecGoodsLkDataSet" msprop:Generator_DataSetName="RecGoodsLkDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RecGoodsLk" msprop:Generator_UserTableName="RecGoodsLk" msprop:Generator_RowDeletedName="RecGoodsLkRowDeleted" msprop:Generator_RowChangedName="RecGoodsLkRowChanged" msprop:Generator_RowClassName="RecGoodsLkRow" msprop:Generator_RowChangingName="RecGoodsLkRowChanging" msprop:Generator_RowEvArgName="RecGoodsLkRowChangeEvent" msprop:Generator_RowEvHandlerName="RecGoodsLkRowChangeEventHandler" msprop:Generator_TableClassName="RecGoodsLkDataTable" msprop:Generator_TableVarName="tableRecGoodsLk" msprop:Generator_RowDeletingName="RecGoodsLkRowDeleting" msprop:Generator_TablePropName="RecGoodsLk">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNo" msdata:Caption="No." msprop:Generator_UserColumnName="RowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" type="xs:int" default="0" />
+              <xs:element name="UpdateTime" msdata:Caption="削除日" msprop:Generator_UserColumnName="UpdateTime" msprop:Generator_ColumnPropNameInRow="UpdateTime" msprop:Generator_ColumnVarNameInTable="columnUpdateTime" msprop:Generator_ColumnPropNameInTable="UpdateTimeColumn" type="xs:string" default="" />
+              <xs:element name="InqOtherSecCd" msdata:Caption="拠点" msprop:Generator_UserColumnName="InqOtherSecCd" msprop:Generator_ColumnPropNameInRow="InqOtherSecCd" msprop:Generator_ColumnVarNameInTable="columnInqOtherSecCd" msprop:Generator_ColumnPropNameInTable="InqOtherSecCdColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InqOtherSecNm" msdata:Caption="拠点名" msprop:Generator_UserColumnName="InqOtherSecNm" msprop:Generator_ColumnPropNameInRow="InqOtherSecNm" msprop:Generator_ColumnVarNameInTable="columnInqOtherSecNm" msprop:Generator_ColumnPropNameInTable="InqOtherSecNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="CustomerCode" msdata:Caption="得意先ｺｰﾄﾞ" msprop:Generator_UserColumnName="CustomerCode" msprop:Generator_ColumnPropNameInRow="CustomerCode" msprop:Generator_ColumnVarNameInTable="columnCustomerCode" msprop:Generator_ColumnPropNameInTable="CustomerCodeColumn" type="xs:string" default="" />
+              <xs:element name="CustomerSnm" msdata:Caption="得意先名" msprop:Generator_UserColumnName="CustomerSnm" msprop:Generator_ColumnPropNameInRow="CustomerSnm" msprop:Generator_ColumnVarNameInTable="columnCustomerSnm" msprop:Generator_ColumnPropNameInTable="CustomerSnmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="RecSourceBLGoodsCd" msdata:Caption="元BLｺｰﾄﾞ" msprop:Generator_UserColumnName="RecSourceBLGoodsCd" msprop:Generator_ColumnPropNameInRow="RecSourceBLGoodsCd" msprop:Generator_ColumnVarNameInTable="columnRecSourceBLGoodsCd" msprop:Generator_ColumnPropNameInTable="RecSourceBLGoodsCdColumn" type="xs:int" default="0" />
+              <xs:element name="RecSourceBLGoodsNm" msdata:Caption="推奨元BLｺｰﾄﾞ名" msprop:Generator_UserColumnName="RecSourceBLGoodsNm" msprop:Generator_ColumnPropNameInRow="RecSourceBLGoodsNm" msprop:Generator_ColumnVarNameInTable="columnRecSourceBLGoodsNm" msprop:Generator_ColumnPropNameInTable="RecSourceBLGoodsNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="RecDestBLGoodsCd" msdata:Caption="先BLｺｰﾄﾞ" msprop:Generator_UserColumnName="RecDestBLGoodsCd" msprop:Generator_ColumnPropNameInRow="RecDestBLGoodsCd" msprop:Generator_ColumnVarNameInTable="columnRecDestBLGoodsCd" msprop:Generator_ColumnPropNameInTable="RecDestBLGoodsCdColumn" type="xs:int" default="0" />
+              <xs:element name="RecDestBLGoodsNm" msdata:Caption="推奨先BLｺｰﾄﾞ名" msprop:Generator_UserColumnName="RecDestBLGoodsNm" msprop:Generator_ColumnPropNameInRow="RecDestBLGoodsNm" msprop:Generator_ColumnVarNameInTable="columnRecDestBLGoodsNm" msprop:Generator_ColumnPropNameInTable="RecDestBLGoodsNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="GoodsComment" msdata:Caption="パーツ説明" msprop:Generator_UserColumnName="GoodsComment" msprop:Generator_ColumnVarNameInTable="columnGoodsComment" msprop:Generator_ColumnPropNameInRow="GoodsComment" msprop:Generator_ColumnPropNameInTable="GoodsCommentColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InqOriginalEpCd" msdata:Caption="問合せ元企業コード" msprop:Generator_UserColumnName="InqOriginalEpCd" msprop:Generator_ColumnVarNameInTable="columnInqOriginalEpCd" msprop:Generator_ColumnPropNameInRow="InqOriginalEpCd" msprop:Generator_ColumnPropNameInTable="InqOriginalEpCdColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InqOriginalSecCd" msdata:Caption="問合せ元拠点コード" msprop:Generator_UserColumnName="InqOriginalSecCd" msprop:Generator_ColumnVarNameInTable="columnInqOriginalSecCd" msprop:Generator_ColumnPropNameInRow="InqOriginalSecCd" msprop:Generator_ColumnPropNameInTable="InqOriginalSecCdColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InqOtherEpCd" msdata:Caption="問合せ先企業コード" msprop:Generator_UserColumnName="InqOtherEpCd" msprop:Generator_ColumnVarNameInTable="columnInqOtherEpCd" msprop:Generator_ColumnPropNameInRow="InqOtherEpCd" msprop:Generator_ColumnPropNameInTable="InqOtherEpCdColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="FilterGuid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="FilterGuid" msprop:Generator_ColumnPropNameInRow="FilterGuid" msprop:Generator_ColumnVarNameInTable="columnFilterGuid" msprop:Generator_ColumnPropNameInTable="FilterGuidColumn" type="xs:string" />
+              <xs:element name="RowDeleteFlg" msdata:Caption="行削除フラグ" msprop:Generator_UserColumnName="RowDeleteFlg" msprop:Generator_ColumnPropNameInRow="RowDeleteFlg" msprop:Generator_ColumnVarNameInTable="columnRowDeleteFlg" msprop:Generator_ColumnPropNameInTable="RowDeleteFlgColumn" type="xs:int" default="0" />
+              <xs:element name="RowStatus" msprop:Generator_UserColumnName="RowStatus" msprop:Generator_ColumnVarNameInTable="columnRowStatus" msprop:Generator_ColumnPropNameInRow="RowStatus" msprop:Generator_ColumnPropNameInTable="RowStatusColumn" type="xs:int" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RecGoodsLk" />
+      <xs:field xpath="mstns:RowNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

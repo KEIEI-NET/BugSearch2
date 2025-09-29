@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAHNB04310R", "MAHNB04310R.csproj", "{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAHNB04311D", "..\MAHNB04311D\MAHNB04311D.csproj", "{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectName0 = \u0022$/Partsman[810]/Source/Server/MAHNB04310R.root/MAHNB04310R\u0022,\u0020GCJBAAAA
+		SccLocalPath0 = ..
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectFilePathRelativizedFromConnection0 = MAHNB04310R\\
+		SccProjectUniqueName1 = MAHNB04310R.csproj
+		SccLocalPath1 = ..
+		SccProjectFilePathRelativizedFromConnection1 = MAHNB04310R\\
+		SccProjectUniqueName2 = ..\\MAHNB04311D\\MAHNB04311D.csproj
+		SccLocalPath2 = ..
+		SccProjectFilePathRelativizedFromConnection2 = MAHNB04311D\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

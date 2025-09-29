@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MenuSetting>
+  <MenuItems>
+    <MenuItem Type="2" Title="プログラム配信案内 設定" AssemblyFileName="NSChangeInfoEditor.dll" ClassName="Broadleaf.Windows.Forms.MulticastInfoEditor" />
+    <MenuItem Type="2" Title="サーバーメンテナンス 設定" AssemblyFileName="NSChangeInfoEditor.dll" ClassName="Broadleaf.Windows.Forms.McastMainteInfoEditor" />
+    <MenuItem Type="2" Title="データメンテナンス 設定" AssemblyFileName="NSChangeInfoEditor.dll" ClassName="Broadleaf.Windows.Forms.McasDataMainteInfoEditor" />
+    <MenuItem Type="2" Title="印字位置リリース 設定" AssemblyFileName="NSChangeInfoEditor.dll" ClassName="Broadleaf.Windows.Forms.McastPrintPointInfoEditor" />
+  </MenuItems>
+</MenuSetting>

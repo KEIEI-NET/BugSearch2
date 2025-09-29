@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMUOE01620U", "PMUOE01620U\PMUOE01620U.csproj", "{06B620AA-B627-4ED2-99E5-5DB09CE6936C}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMUOE01620U\\PMUOE01620U.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMUOE01620U.root/PMUOE01620U/PMUOE01620U\u0022,\u0020HBRCAAAA
+		SccLocalPath1 = PMUOE01620U
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06B620AA-B627-4ED2-99E5-5DB09CE6936C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B620AA-B627-4ED2-99E5-5DB09CE6936C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B620AA-B627-4ED2-99E5-5DB09CE6936C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B620AA-B627-4ED2-99E5-5DB09CE6936C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

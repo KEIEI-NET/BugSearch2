@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMIT10203E", "SFMIT10203E\SFMIT10203E.csproj", "{B9A7BBD4-A4F9-4660-96B5-943EF9C9BA1A}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SFMIT10203E\\SFMIT10203E.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = SFMIT10203E\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9A7BBD4-A4F9-4660-96B5-943EF9C9BA1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A7BBD4-A4F9-4660-96B5-943EF9C9BA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A7BBD4-A4F9-4660-96B5-943EF9C9BA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A7BBD4-A4F9-4660-96B5-943EF9C9BA1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

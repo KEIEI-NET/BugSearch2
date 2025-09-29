@@ -1,0 +1,399 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09411U</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Windows.Forms.PMKHN09411UA">
+            <summary>
+            掛率マスタ引用登録フォームクラス
+            </summary>
+            <remarks>
+            <br>Note       : 掛率マスタ引用登録を行います。</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2008.03.27</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.#ctor">
+            <summary>
+            掛率マスタ引用登録フォームクラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note		: 掛率マスタ引用登録フォームクラスの新しいインスタンスを初期化します。</br>
+            <br>Programmer	: 劉洋</br>
+            <br>Date		: 2008.03.27</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.ButtonInitialSetting">
+            <summary>
+            ボタン設定
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.ComboBoxSetting">
+            <summary>
+            コンボクス
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.SetItemObjectDistinction">
+            <summary>
+            対象区分
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.SetItemUpdateDistinction">
+            <summary>
+            対象区分
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.SetDisplay(Broadleaf.Application.UIData.StockQuoteData)">
+            <summary>
+            画面表示
+            </summary>
+            <param name="stockQuoteData">画面データ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.Clear">
+            <summary>
+            画面初期化
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.Save">
+            <summary>
+            画面更新
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.BeforeSaveCheck">
+            <summary>
+            画面更新前チェック
+            </summary>
+            <returns></returns>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.GetSectionName(System.String)">
+            <summary>
+            拠点略称取得処理
+            </summary>
+            <param name="sectionCode">拠点コード</param>
+            <returns>拠点名</returns>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.ReadSecInfoSet">
+            <summary>
+            拠点情報マスタ読込処理
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.GetCustRateGrpName(System.Int32)">
+            <summary>
+            得意先掛率グループ名称取得処理
+            </summary>
+            <param name="custRateGrpCode">得意先掛率グループコード</param>
+            <returns>得意先掛率グループ名称</returns>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.GetCustRateGrp">
+            <summary>
+            得意先掛率グループ情報取得処理
+            </summary>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.GetUserGuideBd(System.Collections.ArrayList@,System.Int32)">
+            <summary>
+            ユーザーガイドデータ取得処理
+            </summary>
+            <param name="retList">ユーザーガイドボディデータリスト</param>
+            <param name="userGuideDivCd">ガイド区分</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.GetCustomerName(System.Int32)">
+            <summary>
+            得意先名称取得処理
+            </summary>
+            <param name="customerCode">得意先コード</param>
+            <returns>得意先名称</returns>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.LoadCustomerSearchRet">
+            <summary>
+            得意先検索マスタ読込処理
+            </summary>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.PMKHN09411U_Load(System.Object,System.EventArgs)">
+            <summary>
+            Form.Load イベント(PMKHN09411U)
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note		: ユーザーがフォームを読み込むときに発生します。</br>
+            <br>Programmer	: 劉洋</br>
+            <br>Date		: 2008.03.27</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.tToolsManager_MainMenu_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.tRetKeyControl1_ChangeFocus(System.Object,Broadleaf.Library.Windows.Forms.ChangeFocusEventArgs)">
+            <summary>
+            ChangeFocus イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.BfCustRateGrpGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.BfSectionGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.BfCustomerNameGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.BfCustomerSearchForm_CustomerSelect(System.Object,Broadleaf.Application.UIData.CustomerSearchRet)">
+            <summary>
+            得意先選択時発生イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="customerSearchRet">得意先検索戻り値クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.AfSectionGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.AfCustRateGrpGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.AfCustomerNameGuide_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Control.Click イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータ</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.AfCustomerSearchForm_CustomerSelect(System.Object,Broadleaf.Application.UIData.CustomerSearchRet)">
+            <summary>
+            得意先選択時発生イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="customerSearchRet">得意先検索戻り値クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.timer_SetFocus_Tick(System.Object,System.EventArgs)">
+            <summary>
+            フォーカス設定
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.ObjectDistinction_tComEditor_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            対象区分設定
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.UpdateDistinction_tComEditor_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            更新区分設定
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.tEdit_AfCustRateGrpCode_Enter(System.Object,System.EventArgs)">
+            <summary>
+            得意先掛率グループ設定
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.tEdit_BfCustRateGrpCode_Enter(System.Object,System.EventArgs)">
+            <summary>
+            得意先掛率グループ設定
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">クラス</param>
+            <remarks>
+            <br>Note       : なし</br>
+            <br>Programmer : 劉洋</br>
+            <br>Date       : 2009.05.14</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Windows.Forms.PMKHN09411UA.components">
+            <summary>
+            必要なデザイナ変数です。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.Dispose(System.Boolean)">
+            <summary>
+            使用中のリソースをすべてクリーンアップします。
+            </summary>
+            <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09411UA.InitializeComponent">
+            <summary>
+            デザイナ サポートに必要なメソッドです。このメソッドの内容を
+            コード エディタで変更しないでください。
+            </summary>
+        </member>
+    </members>
+</doc>

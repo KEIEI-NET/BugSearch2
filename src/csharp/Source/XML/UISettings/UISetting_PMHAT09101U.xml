@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMHAT09101UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tNEdit_PatterNo</ItemName>
+          <ItemDDName>PatterNo</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

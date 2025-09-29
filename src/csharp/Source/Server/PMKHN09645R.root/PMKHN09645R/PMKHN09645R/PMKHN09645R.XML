@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09645R</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.CampaignGoodsStDB">
+            <summary>
+            キャンペーン対象商品設定マスタ一括削除リモートオブジェクト
+            </summary>
+            <remarks>
+            <br>Note       : キャンペーン対象商品設定マスタ一括削除の実データ操作を行うクラスです。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            <br></br>
+            <br>Update Note: 2011/07/28 Redmine#23278 ユーザー先では発生しないが複数の企業が混載する営業デモ機などで発生するの対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.Search(System.Object,System.Object@)">
+            <summary>
+            キャンペーン管理マスタのリストを取得します。
+            </summary>
+            <remarks>
+            <param name="objCampaignMngStWorkList">検索結果</param>
+            <param name="searchParaObj">検索条件</param>
+            <returns>STATUS</returns>
+            <br>Note       : キャンペーン管理マスタのキー値が一致する、全てのキャンペーン管理マスタ情報を取得します。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.SearchProc(Broadleaf.Application.Remoting.ParamData.CampaignGoodsDataWork,System.Collections.ArrayList@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            キャンペーン管理マスタ情報を取得します。
+            </summary>
+            <remarks>
+            <param name="campaignMngStWorkList">検索結果</param>
+            <param name="campaignGoodsDataWork">検索パラメータ</param>
+            <param name="sqlConnection">データベース接続情報</param>
+            <returns>STATUS</returns>
+            <br>Note       : キャンペーン管理マスタのキー値が一致する、全てのキャンペーン管理マスタ情報を取得します。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            <br>Update Note: 2011/07/28 Redmine#23278 ユーザー先では発生しないが複数の企業が混載する営業デモ機などで発生するの対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.DeleteAll(System.Object,System.Object@)">
+            <summary>
+            一括削除処理
+            </summary>
+            <param name="deleteParaObj">削除条件と結果</param>
+            <param name="campaignGoodsListobj">排他処理条件</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 一括削除処理を行う。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.DeleteAllProc(Broadleaf.Application.Remoting.ParamData.CampaignGoodsDataWork@,System.Collections.ArrayList,System.Data.SqlClient.SqlConnection@,System.Data.SqlClient.SqlTransaction@)">
+            <summary>
+            一括削除処理
+            </summary>
+            <param name="campaignGoodsDataWork">削除条件と結果</param>
+            <param name="campaignGoodsList">排他処理処理</param>
+            <param name="sqlConnection">コネクション</param>
+            <param name="sqlTransaction">SqlTransaction</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 一括削除処理を行い。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.DeleteCampaignMng(Broadleaf.Application.Remoting.ParamData.CampaignGoodsDataWork@,Broadleaf.Application.Remoting.ParamData.CampaignMngStWork,System.Int32@,System.Data.SqlClient.SqlCommand@,System.Data.SqlClient.SqlConnection@,System.Data.SqlClient.SqlTransaction@)">
+            <summary>
+            キャンペーン管理マスタの削除処理
+            </summary>
+            <param name="campaignGoodsDataWork">削除条件</param>
+            <param name="campaignMngStWork">排他条件</param>
+            <param name="deleteCount">削除件数</param>
+            <param name="sqlCommand">sqlCommand</param>
+            <param name="sqlConnection">データベース接続情報</param>
+            <param name="sqlTransaction">トランザクション情報</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン管理マスタ情報を物理削除します。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.DeleteCampaignSt(Broadleaf.Application.Remoting.ParamData.CampaignGoodsDataWork@,System.Data.SqlClient.SqlConnection@,System.Data.SqlClient.SqlTransaction@,System.String)">
+            <summary>
+            キャンペーン設定マスタの整理
+            </summary>
+            <param name="campaignGoodsDataWork">削除条件</param>
+            <param name="sqlConnection">データベース接続情報</param>
+            <param name="sqlTransaction">トランザクション情報</param>
+            <param name="str">CAMPAIGNCODE範囲</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン設定マスタ情報を整理します。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.DeleteCampaignLink(Broadleaf.Application.Remoting.ParamData.CampaignGoodsDataWork@,System.Data.SqlClient.SqlConnection@,System.Data.SqlClient.SqlTransaction@,System.String)">
+            <summary>
+            キャンペーン関連マスタの整理
+            </summary>
+            <param name="campaignGoodsDataWork">削除条件</param>
+            <param name="sqlConnection">データベース接続情報</param>
+            <param name="sqlTransaction">トランザクション情報</param>
+            <param name="str">CAMPAIGNCODE範囲</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン関連マスタ情報を整理します。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.DeleteCampaignTarget(Broadleaf.Application.Remoting.ParamData.CampaignGoodsDataWork@,System.Data.SqlClient.SqlConnection@,System.Data.SqlClient.SqlTransaction@,System.String)">
+            <summary>
+            キャンペーン目標マスタの整理
+            </summary>
+            <param name="campaignGoodsDataWork">削除条件</param>
+            <param name="sqlConnection">データベース接続情報</param>
+            <param name="sqlTransaction">トランザクション情報</param>
+            <param name="str">CAMPAIGNCODE範囲</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : キャンペーン目標マスタを整理します。</br>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.CopyToCampaignMngStWorkFromReader(System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → CampaignMngStWork
+            </summary>
+            <param name="myReader">SqlDataReader</param>
+            <returns>CampaignMngStWork</returns>
+            <remarks>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.CreateSqlConnection(System.Boolean)">
+            <summary>
+            SqlConnection生成処理
+            </summary>
+            <param name="open">true:DBへ接続する　false:DBへ接続しない</param>
+            <returns>生成されたSqlConnection、生成に失敗した場合はNullを返す。</returns>
+            <remarks>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.CampaignGoodsStDB.CreateTransaction(System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            SqlTransaction生成処理
+            </summary>
+            <param name="sqlConnection"></param>
+            <returns>生成されたSqlTransaction、生成に失敗した場合はNullを返す。</returns>
+            <remarks>
+            <br>Programmer : 李占川</br>
+            <br>Date       : 2011/04/26</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

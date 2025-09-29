@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAHNB04110U", "MAHNB04110U\MAHNB04110U.csproj", "{DBC4DF15-2465-4813-9CFF-F933FE914FEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAHNB04112A", "MAHNB04112A\MAHNB04112A.csproj", "{97A27887-8ACB-45C3-9288-0C3FA558B644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAHNB04111E", "MAHNB04111E\MAHNB04111E.csproj", "{13965E1B-F027-4D10-819A-A083664B3CF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCHNB04120U", "DCHNB04120U\DCHNB04120U.csproj", "{E51B66D2-80E3-46DF-AEF3-900E39537850}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DCHNB04120U\\DCHNB04120U.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = DCHNB04120U\\
+		SccProjectUniqueName2 = MAHNB04110U\\MAHNB04110U.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = MAHNB04110U\\
+		SccProjectUniqueName3 = MAHNB04111E\\MAHNB04111E.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = MAHNB04111E\\
+		SccProjectUniqueName4 = MAHNB04112A\\MAHNB04112A.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = MAHNB04112A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBC4DF15-2465-4813-9CFF-F933FE914FEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBC4DF15-2465-4813-9CFF-F933FE914FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBC4DF15-2465-4813-9CFF-F933FE914FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBC4DF15-2465-4813-9CFF-F933FE914FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97A27887-8ACB-45C3-9288-0C3FA558B644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97A27887-8ACB-45C3-9288-0C3FA558B644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97A27887-8ACB-45C3-9288-0C3FA558B644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97A27887-8ACB-45C3-9288-0C3FA558B644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13965E1B-F027-4D10-819A-A083664B3CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13965E1B-F027-4D10-819A-A083664B3CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13965E1B-F027-4D10-819A-A083664B3CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13965E1B-F027-4D10-819A-A083664B3CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

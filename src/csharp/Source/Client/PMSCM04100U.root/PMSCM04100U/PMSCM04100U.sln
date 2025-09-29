@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04101U", "PMSCM04101U\PMSCM04101U.csproj", "{E24BAA81-1C65-4C54-B785-BF71351C5F74}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656} = {45113E56-EE8B-45BA-99FF-1CD632DC8656}
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20} = {8C1975D1-917B-408E-BE6C-78E59F35AB20}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04100U", "PMSCM04100U\PMSCM04100U.csproj", "{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74} = {E24BAA81-1C65-4C54-B785-BF71351C5F74}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04102E", "PMSCM04102E\PMSCM04102E.csproj", "{45113E56-EE8B-45BA-99FF-1CD632DC8656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM04103A", "PMSCM04103A\PMSCM04103A.csproj", "{8C1975D1-917B-408E-BE6C-78E59F35AB20}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656} = {45113E56-EE8B-45BA-99FF-1CD632DC8656}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMSCM04103A\\PMSCM04103A.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMSCM04100U.root/PMSCM04100U/PMSCM04103A\u0022,\u0020OIOCAAAA
+		SccLocalPath1 = PMSCM04103A
+		SccProjectUniqueName2 = PMSCM04102E\\PMSCM04102E.csproj
+		SccProjectName2 = \u0022$/Partsman[810]/Source/Client/PMSCM04100U.root/PMSCM04100U/PMSCM04102E\u0022,\u0020IIOCAAAA
+		SccLocalPath2 = PMSCM04102E
+		SccProjectUniqueName3 = PMSCM04101U\\PMSCM04101U.csproj
+		SccProjectName3 = \u0022$/Partsman[810]/Source/Client/PMSCM04100U.root/PMSCM04100U/PMSCM04101U\u0022,\u0020ZHOCAAAA
+		SccLocalPath3 = PMSCM04101U
+		SccProjectUniqueName4 = PMSCM04100U\\PMSCM04100U.csproj
+		SccProjectName4 = \u0022$/Partsman[810]/Source/Client/PMSCM04100U.root/PMSCM04100U/PMSCM04100U\u0022,\u0020KHOCAAAA
+		SccLocalPath4 = PMSCM04100U
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E24BAA81-1C65-4C54-B785-BF71351C5F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87EC7FEB-8AB8-4E29-A609-BAD8120BBF3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45113E56-EE8B-45BA-99FF-1CD632DC8656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1975D1-917B-408E-BE6C-78E59F35AB20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

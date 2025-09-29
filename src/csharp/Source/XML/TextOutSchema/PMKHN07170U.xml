@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>結合マスタ（エクスポート）</SchemaName>
+    <SchemaFileName>PMKHN07170U.xml</SchemaFileName>
+    <Writer />
+    <Date>2009/05/14</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="JoinSourPartsNoWithH">
+      <ColKey>JoinSourPartsNoWithH</ColKey>
+      <ColName>結合元品番（ハイフン付き）</ColName>
+      <ColNameChange />
+      <ColWidth>24</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="JoinSourceMakerCode">
+      <ColKey>JoinSourceMakerCode</ColKey>
+      <ColName>結合元メーカー</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="JoinSourPartsNoNoneH">
+      <ColKey>JoinSourPartsNoNoneH</ColKey>
+      <ColName>結合元品番（ハイフン無し）</ColName>
+      <ColNameChange />
+      <ColWidth>24</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="JoinDispOrder">
+      <ColKey>JoinDispOrder</ColKey>
+      <ColName>順位</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="JoinDestPartsNo">
+      <ColKey>JoinDestPartsNo</ColKey>
+      <ColName>結合先品番</ColName>
+      <ColNameChange />
+      <ColWidth>24</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="JoinDestMakerCd">
+      <ColKey>JoinDestMakerCd</ColKey>
+      <ColName>結合先メーカー</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="JoinQty">
+      <ColKey>JoinQty</ColKey>
+      <ColName>ＱＴＹ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="JoinSpecialNote">
+      <ColKey>JoinSpecialNote</ColKey>
+      <ColName>結合規格・特記事項</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND00220C</name>
+    </assembly>
+    <members>
+        <member name="T:PMHND00220C.PMHND00220C">
+            <summary>
+            商品バーコード関連付けファイル削除処理
+            </summary>
+            <remarks>
+            <br>Note       : 商品バーコード関連付けファイル削除処理</br>
+            <br>Programmer : 3H 余斐</br>
+            <br>Date       : 2017/07/20</br>
+            <br>Update Note: 2018/10/16 陳艶丹</br>
+            <br>　　　　　 : ハンディターミナル五次対応</br>
+            </remarks>
+        </member>
+        <member name="F:PMHND00220C.PMHND00220C.ThresholdSpan">
+            <summary>ファイル削除期限 ※単位：分（24H）</summary>
+        </member>
+        <member name="F:PMHND00220C.PMHND00220C.XmlFileName">
+            <summary>設定XMLファイル名</summary>
+        </member>
+        <member name="F:PMHND00220C.PMHND00220C.InspectXmlFileName">
+            <summary>検品照会設定XMLファイル名</summary>
+        </member>
+        <member name="F:PMHND00220C.PMHND00220C.UserSetting">
+            <summary>ユーザー設定</summary>
+        </member>
+        <member name="F:PMHND00220C.PMHND00220C.InspectInfoSetting">
+            <summary>検品照会ユーザー設定</summary>
+        </member>
+        <member name="M:PMHND00220C.PMHND00220C.Main(System.String[])">
+            <summary>
+            商品バーコード関連付けファイル削除処理メインメソッド
+            </summary>
+            <param name="args">起動パラメータ</param>
+            <remarks>
+            <br>Note       : 商品バーコード関連付けファイル削除処理メインメソッド</br>
+            <br>Programmer : 3H 余斐</br>
+            <br>Date       : 2017/07/20</br>
+            <br>Update Note: 2018/10/16 陳艶丹</br>
+            <br>　　　　　 : ハンディターミナル五次対応</br>
+            </remarks>
+        </member>
+        <member name="M:PMHND00220C.PMHND00220C.ApplicationReleased(System.Object,System.EventArgs)">
+            <summary>
+            アプリケーション終了イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントハンドラ</param>
+            <remarks>
+            <br>Note       : アプリケーション終了イベント</br>
+            <br>Programmer : 3H 余斐</br>
+            <br>Date       : 2017/07/20</br>
+            </remarks>
+        </member>
+        <member name="M:PMHND00220C.PMHND00220C.DeleteTxtFile(System.String,System.DateTime)">
+            <summary>
+            商品バーコード関連付けファイル削除処理
+            </summary>
+            <param name="exportDirPath">商品バーコード関連付けファイルの出力パス</param>
+            <param name="now">ファイル作成の経過時間の基準時刻</param>
+            <remarks>
+            <br>Note       : 指定ディレクトリ配下の対象ファイルを検索・削除する</br>
+            <br>Programmer : 3H 余斐</br>
+            <br>Date       : 2017/07/20</br>
+            </remarks>
+        </member>
+        <member name="M:PMHND00220C.PMHND00220C.GetTextFileExportDirPath">
+            <summary>
+            商品バーコード関連付けファイル出力ディレクトリ取得
+            </summary>
+            <returns>商品バーコード関連付けファイル出力ディレクトリ</returns>
+            <remarks>
+            <br>Note       : 商品バーコード関連付けファイル出力ディレクトリ取得</br>
+            <br>Programer  : 3H 余斐</br>
+            <br>Date       : 2017/07/20</br>
+            </remarks>
+        </member>
+        <member name="M:PMHND00220C.PMHND00220C.GetInspectFileExportDirPath">
+            <summary>
+            検品照会関連付けファイル出力ディレクトリ取得
+            </summary>
+            <returns>検品照会関連付けファイル出力ディレクトリ</returns>
+            <remarks>
+            <br>Note       : 検品照会関連付けファイル出力ディレクトリ取得</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2018/10/16</br>
+            </remarks>
+        </member>
+        <member name="T:PMHND00220C.GoodsBarCodeRevnExtractTextUserConst">
+            <summary>
+            商品バーコード一括登録用ユーザー設定クラス
+            </summary>
+            <remarks>
+            <br>Note       : 商品バーコード一括登録のユーザー設定情報を管理するクラス</br>
+            <br>Programmer : 3H 余斐</br>
+            <br>Date       : 2017/07/20</br>
+            </remarks>
+        </member>
+        <member name="P:PMHND00220C.GoodsBarCodeRevnExtractTextUserConst.OutputFilePath">
+            <summary>出力パス</summary>
+        </member>
+        <member name="P:PMHND00220C.GoodsBarCodeRevnExtractTextUserConst.OutputFileName">
+            <summary>出力ファイル名</summary>
+        </member>
+        <member name="T:PMHND00220C.PrevInputValue">
+            <summary>
+            検品照会ユーザー設定クラス
+            </summary>
+            <remarks>
+            <br>Note       : 検品照会ユーザー設定情報を管理するクラス</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2018/10/16</br>
+            </remarks>
+        </member>
+        <member name="M:PMHND00220C.PrevInputValue.#ctor">
+            <summary>
+            検品照会ユーザー設定クラス
+            </summary>
+        </member>
+        <member name="P:PMHND00220C.PrevInputValue.OrderDivCd">
+            <summary>
+            取寄区分
+            </summary>
+        </member>
+        <member name="P:PMHND00220C.PrevInputValue.PatternDiv">
+            <summary>
+            パターン区分
+            </summary>
+        </member>
+        <member name="P:PMHND00220C.PrevInputValue.OutputFilePath">
+            <summary>
+            出力パス
+            </summary>
+        </member>
+        <member name="P:PMHND00220C.PrevInputValue.OutputFileName">
+            <summary>
+            出力ファイル名
+            </summary>
+        </member>
+    </members>
+</doc>

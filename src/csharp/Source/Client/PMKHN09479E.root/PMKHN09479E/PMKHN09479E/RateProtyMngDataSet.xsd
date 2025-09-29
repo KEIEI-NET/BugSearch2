@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RateProtyMngDataSet" targetNamespace="http://tempuri.org/RateProtyMngDataSet.xsd" xmlns:mstns="http://tempuri.org/RateProtyMngDataSet.xsd" xmlns="http://tempuri.org/RateProtyMngDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RateProtyMngDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="RateProtyMngDataSet" msprop:Generator_DataSetName="RateProtyMngDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RateProtyMng" msprop:Generator_UserTableName="RateProtyMng" msprop:Generator_RowDeletedName="RateProtyMngRowDeleted" msprop:Generator_RowChangedName="RateProtyMngRowChanged" msprop:Generator_RowClassName="RateProtyMngRow" msprop:Generator_RowChangingName="RateProtyMngRowChanging" msprop:Generator_RowEvArgName="RateProtyMngRowChangeEvent" msprop:Generator_RowEvHandlerName="RateProtyMngRowChangeEventHandler" msprop:Generator_TableClassName="RateProtyMngDataTable" msprop:Generator_TableVarName="tableRateProtyMng" msprop:Generator_RowDeletingName="RateProtyMngRowDeleting" msprop:Generator_TablePropName="RateProtyMng">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RatePriorityOrder" msdata:Caption="掛率優先順位" msprop:Generator_UserColumnName="RatePriorityOrder" msprop:Generator_ColumnVarNameInTable="columnRatePriorityOrder" msprop:Generator_ColumnPropNameInRow="RatePriorityOrder" msprop:Generator_ColumnPropNameInTable="RatePriorityOrderColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="RateMngGoodsNm" msdata:Caption="掛率設定名称(商品)" msprop:Generator_UserColumnName="RateMngGoodsNm" msprop:Generator_ColumnVarNameInTable="columnRateMngGoodsNm" msprop:Generator_ColumnPropNameInRow="RateMngGoodsNm" msprop:Generator_ColumnPropNameInTable="RateMngGoodsNmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RateMngCustNm" msdata:Caption="掛率設定名称(得意先)" msprop:Generator_UserColumnName="RateMngCustNm" msprop:Generator_ColumnVarNameInTable="columnRateMngCustNm" msprop:Generator_ColumnPropNameInRow="RateMngCustNm" msprop:Generator_ColumnPropNameInTable="RateMngCustNmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RateSettingDivide" msprop:Generator_UserColumnName="RateSettingDivide" msprop:Generator_ColumnPropNameInRow="RateSettingDivide" msprop:Generator_ColumnVarNameInTable="columnRateSettingDivide" msprop:Generator_ColumnPropNameInTable="RateSettingDivideColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UnitPriceKind" msprop:Generator_UserColumnName="UnitPriceKind" msprop:Generator_ColumnVarNameInTable="columnUnitPriceKind" msprop:Generator_ColumnPropNameInRow="UnitPriceKind" msprop:Generator_ColumnPropNameInTable="UnitPriceKindColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="SectionCode" msprop:Generator_UserColumnName="SectionCode" msprop:Generator_ColumnPropNameInRow="SectionCode" msprop:Generator_ColumnVarNameInTable="columnSectionCode" msprop:Generator_ColumnPropNameInTable="SectionCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RateMngGoodsCd" msdata:Caption="掛率設定区分（商品）" msprop:Generator_UserColumnName="RateMngGoodsCd" msprop:Generator_ColumnPropNameInRow="RateMngGoodsCd" msprop:Generator_ColumnVarNameInTable="columnRateMngGoodsCd" msprop:Generator_ColumnPropNameInTable="RateMngGoodsCdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RateMngCustCd" msdata:Caption="掛率設定区分（得意先）" msprop:Generator_UserColumnName="RateMngCustCd" msprop:Generator_ColumnPropNameInRow="RateMngCustCd" msprop:Generator_ColumnVarNameInTable="columnRateMngCustCd" msprop:Generator_ColumnPropNameInTable="RateMngCustCdColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

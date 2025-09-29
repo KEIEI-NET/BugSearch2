@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMHNB02140UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tNedit_PureGoodsMakerCd_Ed</ItemName>
+          <ItemDDName>PureMakerCd</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_PureGoodsMakerCd_St</ItemName>
+          <ItemDDName>PureMakerCd</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD>
+    <UiSet>
+      <Remarks>純正メーカーコード</Remarks>
+      <ItemDDName>PureMakerCd</ItemDDName>
+      <Column>2</Column>
+      <AllowAlpha>false</AllowAlpha>
+      <AllowKana>false</AllowKana>
+      <AllowNum>true</AllowNum>
+      <AllowNumSign>false</AllowNumSign>
+      <AllowSign>false</AllowSign>
+      <AllowSpace>false</AllowSpace>
+      <AllowWord>false</AllowWord>
+      <HAlign>Right</HAlign>
+      <PadZero>true</PadZero>
+      <ImeMode>Close</ImeMode>
+      <AllowZeroCode>false</AllowZeroCode>
+    </UiSet>
+  </UISetDD>
+</UiSetByAssembly>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<TableInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TableList>
+    <TableItem>
+      <TableID>CUSTOMERRF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+    <TableItem>
+      <TableID>BLGOODSCDURF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+    <TableItem>
+      <TableID>GOODSURF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+    <TableItem>
+      <TableID>GOODSPRICEURF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+    <TableItem>
+      <TableID>STOCKRF</TableID>
+      <ReferenceTableList/>
+    </TableItem>
+    <TableItem>
+      <TableID>BLGROUPURF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+    <TableItem>
+      <TableID>PRMSETTINGURF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+    <TableItem>
+      <TableID>ISOLISLANDPRCRF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+    <TableItem>
+      <TableID>AUTOANSITEMSTRF</TableID>
+      <ReferenceTableList />
+    </TableItem>
+  </TableList>
+</TableInfo>

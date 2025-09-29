@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>MAHNB02010UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tNedit_DepositSlipNo_Ed</ItemName>
+          <ItemDDName>SlipNo</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_DepositSlipNo_St</ItemName>
+          <ItemDDName>SlipNo</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

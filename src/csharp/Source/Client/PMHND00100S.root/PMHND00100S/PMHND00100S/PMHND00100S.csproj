@@ -1,0 +1,176 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{62C56A75-A8B8-4B65-AE02-344F9FC4A54B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PMHND00100S</RootNamespace>
+    <AssemblyName>PMHND00100S</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\sfnetasm\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MAKHN09116D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="MAKHN09336D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMHND00002I, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND00002I.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND00014D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND00014D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND00213D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND00213D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND01114D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND01114D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND01214D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND01214D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND01234D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMHND01304D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND01304D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND04004D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND04004D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND04104D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND04104D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND04304D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND04304D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND05504D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND05504D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMHND09308D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\PMHND09308D.dll</HintPath>
+    </Reference>
+    <Reference Include="PMKHN09026D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00011I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFNETASM\SFCMN00011I.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\clsBtConst.cs" />
+    <Compile Include="Common\clsCommon.cs" />
+    <Compile Include="PMHND00100S.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMHND00100S.Designer.cs">
+      <DependentUpon>PMHND00100S.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelayInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelayInstaller.Designer.cs">
+      <DependentUpon>RelayInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessingResultOfCommunication.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Socket\clsBarcodeInsert.cs" />
+    <Compile Include="Socket\clsFileTransferInfo.cs" />
+    <Compile Include="Socket\clsHacList.cs" />
+    <Compile Include="Socket\clsIdoSlipInfo.cs" />
+    <Compile Include="Socket\clsIdoSlipInsert.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Socket\clsItakuSlipInfo.cs" />
+    <Compile Include="Socket\clsItakuSlipInsert.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Socket\clsLoginInfo.cs" />
+    <Compile Include="Socket\clsNotUoeSlipInfo.cs" />
+    <Compile Include="Socket\clsNotUoeSlipInsert.cs" />
+    <Compile Include="Socket\clsNyuSlipInfo.cs" />
+    <Compile Include="Socket\clsNyuSlipInsert.cs" />
+    <Compile Include="Socket\clsNyuSlipList.cs" />
+    <Compile Include="Socket\clsNyuSyuSlipInfo.cs" />
+    <Compile Include="Socket\clsNyuSyuSlipInsert.cs" />
+    <Compile Include="Socket\clsSlipInfo.cs" />
+    <Compile Include="Socket\clsSlipInsert.cs" />
+    <Compile Include="Socket\clsSokoInfo.cs" />
+    <Compile Include="Socket\clsSokoList.cs" />
+    <Compile Include="Socket\clsSyohinInfo.cs" />
+    <Compile Include="Socket\clsSyohinInsert.cs" />
+    <Compile Include="Socket\clsTanaIsseiCheck.cs" />
+    <Compile Include="Socket\clsTanaIsseiInfo.cs" />
+    <Compile Include="Socket\clsTanaIsseiInsert.cs" />
+    <Compile Include="Socket\clsTanaJyunCheck.cs" />
+    <Compile Include="Socket\clsTanaJyunInfo.cs" />
+    <Compile Include="Socket\clsTanaJyunInsert.cs" />
+    <Compile Include="Socket\clsZaikoInfo.cs" />
+    <Compile Include="Socket\clsMakerList.cs" />
+    <Compile Include="Socket\clsMakerInfo.cs" />
+    <Compile Include="Socket\clsSupplierList.cs" />
+    <Compile Include="Socket\clsSupplierInfo.cs" />
+    <Compile Include="Socket\clsInsZaikoInfo.cs" />
+    <Compile Include="Socket\clsInsZaikoInsert.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

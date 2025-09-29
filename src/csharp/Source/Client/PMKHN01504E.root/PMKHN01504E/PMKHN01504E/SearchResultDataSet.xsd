@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SearchResultDataSet" targetNamespace="http://tempuri.org/SearchResultDataSet.xsd" xmlns:mstns="http://tempuri.org/SearchResultDataSet.xsd" xmlns="http://tempuri.org/SearchResultDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SearchResultDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SearchResultDataSet" msprop:Generator_DataSetName="SearchResultDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ResultTable" msprop:Generator_UserTableName="ResultTable" msprop:Generator_RowDeletedName="ResultTableRowDeleted" msprop:Generator_RowChangedName="ResultTableRowChanged" msprop:Generator_RowClassName="ResultTableRow" msprop:Generator_RowChangingName="ResultTableRowChanging" msprop:Generator_RowEvArgName="ResultTableRowChangeEvent" msprop:Generator_RowEvHandlerName="ResultTableRowChangeEventHandler" msprop:Generator_TableClassName="ResultTableDataTable" msprop:Generator_TableVarName="tableResultTable" msprop:Generator_RowDeletingName="ResultTableRowDeleting" msprop:Generator_TablePropName="ResultTable">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChooseCol" msprop:Generator_UserColumnName="ChooseCol" msprop:Generator_ColumnVarNameInTable="columnChooseCol" msprop:Generator_ColumnPropNameInRow="ChooseCol" msprop:Generator_ColumnPropNameInTable="ChooseColColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Code" msprop:Generator_UserColumnName="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

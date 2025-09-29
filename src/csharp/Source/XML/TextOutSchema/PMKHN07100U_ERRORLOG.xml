@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>得意先マスタ（エラーログ出力用）</SchemaName>
+    <SchemaFileName>PMKHN07100U_ERRORLOG.xml</SchemaFileName>
+    <Writer />
+    <Date>2012/06/12</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="CustomerCodeRF">
+      <ColKey>CustomerCodeRF</ColKey>
+      <ColName>得意先コード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustomerSubCodeRF">
+      <ColKey>CustomerSubCodeRF</ColKey>
+      <ColName>サブコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NameRF">
+      <ColKey>NameRF</ColKey>
+      <ColName>得意先名１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Name2RF">
+      <ColKey>Name2RF</ColKey>
+      <ColName>得意先名２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustomerSnmRF">
+      <ColKey>CustomerSnmRF</ColKey>
+      <ColName>得意先略称</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="KanaRF">
+      <ColKey>KanaRF</ColKey>
+      <ColName>得意先名カナ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="HonorificTitleRF">
+      <ColKey>HonorificTitleRF</ColKey>
+      <ColName>敬称</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OutputNameCodeRF">
+      <ColKey>OutputNameCodeRF</ColKey>
+      <ColName>諸口</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MngSectionCodeRF">
+      <ColKey>MngSectionCodeRF</ColKey>
+      <ColName>管理拠点</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustomerAgentCdRF">
+      <ColKey>CustomerAgentCdRF</ColKey>
+      <ColName>得意先担当</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OldCustomerAgentCdRF">
+      <ColKey>OldCustomerAgentCdRF</ColKey>
+      <ColName>旧担当</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustAgentChgDateRF">
+      <ColKey>CustAgentChgDateRF</ColKey>
+      <ColName>担当者変更日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="TransStopDateRF">
+      <ColKey>TransStopDateRF</ColKey>
+      <ColName>取引中止日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CarMngDivCdRF">
+      <ColKey>CarMngDivCdRF</ColKey>
+      <ColName>車輌管理</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CorporateDivCodeRF">
+      <ColKey>CorporateDivCodeRF</ColKey>
+      <ColName>個人・法人</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcceptWholeSaleRF">
+      <ColKey>AcceptWholeSaleRF</ColKey>
+      <ColName>得意先種別</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustomerAttributeDivRF">
+      <ColKey>CustomerAttributeDivRF</ColKey>
+      <ColName>得意先属性</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustWarehouseCdRF">
+      <ColKey>CustWarehouseCdRF</ColKey>
+      <ColName>優先倉庫</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="BusinessTypeCodeRF">
+      <ColKey>BusinessTypeCodeRF</ColKey>
+      <ColName>業種</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="JobTypeCodeRF">
+      <ColKey>JobTypeCodeRF</ColKey>
+      <ColName>職種</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesAreaCodeRF">
+      <ColKey>SalesAreaCodeRF</ColKey>
+      <ColName>地区</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustAnalysCode1RF">
+      <ColKey>CustAnalysCode1RF</ColKey>
+      <ColName>分析コード１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustAnalysCode2RF">
+      <ColKey>CustAnalysCode2RF</ColKey>
+      <ColName>分析コード２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustAnalysCode3RF">
+      <ColKey>CustAnalysCode3RF</ColKey>
+      <ColName>分析コード３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustAnalysCode4RF">
+      <ColKey>CustAnalysCode4RF</ColKey>
+      <ColName>分析コード４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustAnalysCode5RF">
+      <ColKey>CustAnalysCode5RF</ColKey>
+      <ColName>分析コード５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustAnalysCode6RF">
+      <ColKey>CustAnalysCode6RF</ColKey>
+      <ColName>分析コード６</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ClaimSectionCodeRF">
+      <ColKey>ClaimSectionCodeRF</ColKey>
+      <ColName>請求拠点</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ClaimCodeRF">
+      <ColKey>ClaimCodeRF</ColKey>
+      <ColName>請求コード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="TotalDayRF">
+      <ColKey>TotalDayRF</ColKey>
+      <ColName>締日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CollectMoneyCodeRF">
+      <ColKey>CollectMoneyCodeRF</ColKey>
+      <ColName>集金月</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CollectMoneyDayRF">
+      <ColKey>CollectMoneyDayRF</ColKey>
+      <ColName>集金日</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CollectCondRF">
+      <ColKey>CollectCondRF</ColKey>
+      <ColName>回収条件</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CollectSightRF">
+      <ColKey>CollectSightRF</ColKey>
+      <ColName>回収サイト</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="NTimeCalcStDateRF">
+      <ColKey>NTimeCalcStDateRF</ColKey>
+      <ColName>次回勘定</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="BillCollecterCdRF">
+      <ColKey>BillCollecterCdRF</ColKey>
+      <ColName>集金担当</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustCTaXLayRefCdRF">
+      <ColKey>CustCTaXLayRefCdRF</ColKey>
+      <ColName>転嫁方式参照区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ConsTaxLayMethodRF">
+      <ColKey>ConsTaxLayMethodRF</ColKey>
+      <ColName>消費税転嫁方式</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnPrcFrcProcCdRF">
+      <ColKey>SalesUnPrcFrcProcCdRF</ColKey>
+      <ColName>単価端数処理</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesMoneyFrcProcCdRF">
+      <ColKey>SalesMoneyFrcProcCdRF</ColKey>
+      <ColName>金額端数処理</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesCnsTaxFrcProcCdRF">
+      <ColKey>SalesCnsTaxFrcProcCdRF</ColKey>
+      <ColName>消費税端数処理</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CreditMngCodeRF">
+      <ColKey>CreditMngCodeRF</ColKey>
+      <ColName>与信管理</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="DepoDelCodeRF">
+      <ColKey>DepoDelCodeRF</ColKey>
+      <ColName>入金消込</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AccRecDivCdRF">
+      <ColKey>AccRecDivCdRF</ColKey>
+      <ColName>売掛区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="PostNoRF">
+      <ColKey>PostNoRF</ColKey>
+      <ColName>郵便番号</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Address1RF">
+      <ColKey>Address1RF</ColKey>
+      <ColName>住所</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Address3RF">
+      <ColKey>Address3RF</ColKey>
+      <ColName>住所２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Address4RF">
+      <ColKey>Address4RF</ColKey>
+      <ColName>住所３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustomerAgentRF">
+      <ColKey>CustomerAgentRF</ColKey>
+      <ColName>得意先担当者</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="HomeTelNoRF">
+      <ColKey>HomeTelNoRF</ColKey>
+      <ColName>自宅ＴＥＬ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OfficeTelNoRF">
+      <ColKey>OfficeTelNoRF</ColKey>
+      <ColName>勤務先電話１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="PortableTelNoRF">
+      <ColKey>PortableTelNoRF</ColKey>
+      <ColName>勤務先電話２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OthersTelNoRF">
+      <ColKey>OthersTelNoRF</ColKey>
+      <ColName>その他電話</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="HomeFaxNoRF">
+      <ColKey>HomeFaxNoRF</ColKey>
+      <ColName>自宅ＦＡＸ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="OfficeFaxNoRF">
+      <ColKey>OfficeFaxNoRF</ColKey>
+      <ColName>勤務先ＦＡＸ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SearchTelNoRF">
+      <ColKey>SearchTelNoRF</ColKey>
+      <ColName>検索番号</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MainContactCodeRF">
+      <ColKey>MainContactCodeRF</ColKey>
+      <ColName>主連絡先</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note1RF">
+      <ColKey>Note1RF</ColKey>
+      <ColName>得意先備考１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note2RF">
+      <ColKey>Note2RF</ColKey>
+      <ColName>得意先備考２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note3RF">
+      <ColKey>Note3RF</ColKey>
+      <ColName>得意先備考３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note4RF">
+      <ColKey>Note4RF</ColKey>
+      <ColName>得意先備考４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note5RF">
+      <ColKey>Note5RF</ColKey>
+      <ColName>得意先備考５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note6RF">
+      <ColKey>Note6RF</ColKey>
+      <ColName>得意先備考６</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note7RF">
+      <ColKey>Note7RF</ColKey>
+      <ColName>得意先備考７</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note8RF">
+      <ColKey>Note8RF</ColKey>
+      <ColName>得意先備考８</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note9RF">
+      <ColKey>Note9RF</ColKey>
+      <ColName>得意先備考９</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="Note10RF">
+      <ColKey>Note10RF</ColKey>
+      <ColName>得意先備考１０</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MainSendMailAddrCdRF">
+      <ColKey>MainSendMailAddrCdRF</ColKey>
+      <ColName>主送信先メールアドレス区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailAddress1RF">
+      <ColKey>MailAddress1RF</ColKey>
+      <ColName>メールアドレス１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailSendCode1RF">
+      <ColKey>MailSendCode1RF</ColKey>
+      <ColName>メール送信区分コード１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailAddrKindCode1RF">
+      <ColKey>MailAddrKindCode1RF</ColKey>
+      <ColName>メールアドレス種別コード１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailAddress2RF">
+      <ColKey>MailAddress2RF</ColKey>
+      <ColName>メールアドレス２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailSendCode2RF">
+      <ColKey>MailSendCode2RF</ColKey>
+      <ColName>メール送信区分コード２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="MailAddrKindCode2RF">
+      <ColKey>MailAddrKindCode2RF</ColKey>
+      <ColName>メールアドレス種別コード２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AccountNoInfo1RF">
+      <ColKey>AccountNoInfo1RF</ColKey>
+      <ColName>銀行口座１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AccountNoInfo2RF">
+      <ColKey>AccountNoInfo2RF</ColKey>
+      <ColName>銀行口座２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AccountNoInfo3RF">
+      <ColKey>AccountNoInfo3RF</ColKey>
+      <ColName>銀行口座３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ReceiptOutputCodeRF">
+      <ColKey>ReceiptOutputCodeRF</ColKey>
+      <ColName>領収書出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="DmOutCodeRF">
+      <ColKey>DmOutCodeRF</ColKey>
+      <ColName>ＤＭ出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesSlipPrtDivRF">
+      <ColKey>SalesSlipPrtDivRF</ColKey>
+      <ColName>納品書出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcpOdrrSlipPrtDivRF">
+      <ColKey>AcpOdrrSlipPrtDivRF</ColKey>
+      <ColName>受注伝票出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ShipmSlipPrtDivRF">
+      <ColKey>ShipmSlipPrtDivRF</ColKey>
+      <ColName>貸出伝票出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="EstimatePrtDivRF">
+      <ColKey>EstimatePrtDivRF</ColKey>
+      <ColName>見積伝票出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="UOESlipPrtDivRF">
+      <ColKey>UOESlipPrtDivRF</ColKey>
+      <ColName>ＵＯＥ伝票出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="QrcodePrtCdRF">
+      <ColKey>QrcodePrtCdRF</ColKey>
+      <ColName>ＱＲコード印刷</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustSlipNoMngCdRF">
+      <ColKey>CustSlipNoMngCdRF</ColKey>
+      <ColName>相手伝票番号管理</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustomerSlipNoDivRF">
+      <ColKey>CustomerSlipNoDivRF</ColKey>
+      <ColName>相手伝票番号区分</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="TotalBillOutputDivRF">
+      <ColKey>TotalBillOutputDivRF</ColKey>
+      <ColName>合計請求書出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="DetailBillOutputCodeRF">
+      <ColKey>DetailBillOutputCodeRF</ColKey>
+      <ColName>明細請求書出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="SlipTtlBillOutputDivRF">
+      <ColKey>SlipTtlBillOutputDivRF</ColKey>
+      <ColName>伝票合計請求書出力</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+      <ColInfo key="CustRateGrpFineAll">
+      <ColKey>CustRateGrpFineAll</ColKey>
+      <ColName>得意先掛率グループ(優良ALL)</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPureAll">
+      <ColKey>CustRateGrpPureAll</ColKey>
+      <ColName>得意先掛率グループ(純正ALL)</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure1">
+      <ColKey>CustRateGrpPure1</ColKey>
+      <ColName>得意先掛率グループ純正１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure2">
+      <ColKey>CustRateGrpPure2</ColKey>
+      <ColName>得意先掛率グループ純正２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure3">
+      <ColKey>CustRateGrpPure3</ColKey>
+      <ColName>得意先掛率グループ純正３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure4">
+      <ColKey>CustRateGrpPure4</ColKey>
+      <ColName>得意先掛率グループ純正４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure5">
+      <ColKey>CustRateGrpPure5</ColKey>
+      <ColName>得意先掛率グループ純正５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure6">
+      <ColKey>CustRateGrpPure6</ColKey>
+      <ColName>得意先掛率グループ純正６</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure7">
+      <ColKey>CustRateGrpPure7</ColKey>
+      <ColName>得意先掛率グループ純正７</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure8">
+      <ColKey>CustRateGrpPure8</ColKey>
+      <ColName>得意先掛率グループ純正８</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure9">
+      <ColKey>CustRateGrpPure9</ColKey>
+      <ColName>得意先掛率グループ純正９</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure10">
+      <ColKey>CustRateGrpPure10</ColKey>
+      <ColName>得意先掛率グループ純正１０</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure11">
+      <ColKey>CustRateGrpPure11</ColKey>
+      <ColName>得意先掛率グループ純正１１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure12">
+      <ColKey>CustRateGrpPure12</ColKey>
+      <ColName>得意先掛率グループ純正１２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure13">
+      <ColKey>CustRateGrpPure13</ColKey>
+      <ColName>得意先掛率グループ純正１３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure14">
+      <ColKey>CustRateGrpPure14</ColKey>
+      <ColName>得意先掛率グループ純正１４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure15">
+      <ColKey>CustRateGrpPure15</ColKey>
+      <ColName>得意先掛率グループ純正１５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure16">
+      <ColKey>CustRateGrpPure16</ColKey>
+      <ColName>得意先掛率グループ純正１６</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure17">
+      <ColKey>CustRateGrpPure17</ColKey>
+      <ColName>得意先掛率グループ純正１７</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure18">
+      <ColKey>CustRateGrpPure18</ColKey>
+      <ColName>得意先掛率グループ純正１８</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure19">
+      <ColKey>CustRateGrpPure19</ColKey>
+      <ColName>得意先掛率グループ純正１９</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+       <ColInfo key="CustRateGrpPure20">
+      <ColKey>CustRateGrpPure20</ColKey>
+      <ColName>得意先掛率グループ純正２０</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure21">
+      <ColKey>CustRateGrpPure21</ColKey>
+      <ColName>得意先掛率グループ純正２１</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure22">
+      <ColKey>CustRateGrpPure22</ColKey>
+      <ColName>得意先掛率グループ純正２２</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure23">
+      <ColKey>CustRateGrpPure23</ColKey>
+      <ColName>得意先掛率グループ純正２３</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure24">
+      <ColKey>CustRateGrpPure24</ColKey>
+      <ColName>得意先掛率グループ純正２４</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpPure25">
+      <ColKey>CustRateGrpPure25</ColKey>
+      <ColName>得意先掛率グループ純正２５</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="ErrorLog">
+      <ColKey>ErrorLog</ColKey>
+      <ColName>エラー内容</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

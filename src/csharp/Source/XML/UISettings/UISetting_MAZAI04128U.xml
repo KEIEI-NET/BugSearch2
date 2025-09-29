@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>MAZAI04128UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>ShipAgentCd_tEdit</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>StockMvEmpCode_tEdit</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>AfSectionCode_tEdit</ItemName>
+          <ItemDDName>SectionCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>BfSectionCode_tEdit</ItemName>
+          <ItemDDName>SectionCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>AfEnterWarehCode_tEdit</ItemName>
+          <ItemDDName>WarehouseCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>BfEnterWarehCode_tEdit</ItemName>
+          <ItemDDName>WarehouseCode</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

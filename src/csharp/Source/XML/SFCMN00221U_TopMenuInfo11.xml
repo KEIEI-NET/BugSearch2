@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfLuncherTopMenuInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LuncherTopMenuInfo>
+    <Mode>1</Mode>
+    <DispName>得意先を検索する</DispName>
+    <ImageNo>2</ImageNo>
+  </LuncherTopMenuInfo>
+  <LuncherTopMenuInfo>
+    <Mode>2</Mode>
+    <DispName>売上伝票を検索する</DispName>
+    <ImageNo>2</ImageNo>
+    <AssemblyName />
+    <ClassName />
+  </LuncherTopMenuInfo>
+</ArrayOfLuncherTopMenuInfo>

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMTEG09103A", "PMTEG090002A\PMTEG09103A.csproj", "{8D9B6ABA-F2EA-4E17-B551-B072D7AA517F}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMTEG090002A\\PMTEG09103A.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMTEG090002A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D9B6ABA-F2EA-4E17-B551-B072D7AA517F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9B6ABA-F2EA-4E17-B551-B072D7AA517F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9B6ABA-F2EA-4E17-B551-B072D7AA517F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9B6ABA-F2EA-4E17-B551-B072D7AA517F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

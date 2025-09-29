@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND09113G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationInspectTtlStDB">
+            <summary>
+            InspectTtlStDB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスはIInspectTtlStDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>			完全スタンドアロンにする場合にはこのクラスで直接InspectTtlStDBを</br>
+            <br>			インスタンス化して戻します。</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationInspectTtlStDB.#ctor">
+            <summary>
+            InspectTtlStDB仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationInspectTtlStDB.GetInspectTtlStDB">
+            <summary>
+            IPrtmanageDBインターフェース取得
+            </summary>
+            <returns>IPrtmanageDBオブジェクト</returns>
+        </member>
+    </members>
+</doc>

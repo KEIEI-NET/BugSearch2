@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09471U</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Windows.Forms.PMKHN09471UA">
+            <summary>
+            掛率設定マスタメン（掛率優先管理パターン）
+            </summary>
+            <remarks>
+            <br>Note        : 掛率設定マスタメン（掛率優先管理パターン）設定処理です。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            <br>Update Note : 2010/08/26 呉元嘯</br>
+            <br>              Redmine#13690対応</br>
+            <br>Update Note : 2010/09/09 李永平</br>
+            <br>              Redmine#14492対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.PMKHN09471UA_Load(System.Object,System.EventArgs)">
+            <summary>
+            画面の処理化処理
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <remarks>		
+            <br>Note		: 画面の処理化を行う。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.ButtonInitialSetting">
+            <summary>
+            画面ボタン初期設定処理
+            </summary>
+            <remarks>
+            <br>Note        : 画面ボタン初期設定を行います。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            </remarks> 
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.ClearScreen">
+            <summary>
+            画面クリア処理
+            </summary>
+            <remarks>
+            <br>Note        : 画面情報をクリアします。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.InitialDataGrid">
+            <summary>
+            グリッドの初期化処理
+            </summary>
+            <remarks>		
+            <br>Note		: グリッドの初期化処理を行う。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.ReadSectionCodeAllowZeroName(System.String@,System.String@)">
+            <summary>
+            拠点名称取得処理
+            </summary>
+            <param name="code"></param>
+            <param name="name"></param>
+            <returns></returns>
+            <br>Update Note : 2010/09/09 曹文傑</br>
+            <br>            : Redmine#14490対応</br>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.GridDetailToRateProtyMng(Infragistics.Win.UltraWinGrid.UltraGridRow,Broadleaf.Application.UIData.RateProtyMng@)">
+            <summary>
+            選択明細データ取得
+            </summary>
+            <param name="gridRow">選択した明細データ</param>
+            <param name="rateProtyMng">掛率優先管理マスタ</param>
+            <br>Note       : 選択明細データ取得を行う</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.ShowChildForm(Broadleaf.Application.UIData.RateProtyMng)">
+            <summary>
+            選択明細データによって、各パターン画面の起動。
+            </summary>
+            <param name="rateProtyMng">掛率優先管理マスタ</param>
+            <br>Note       : 選択明細データによって、各パターン画面を起動する。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.uGrid_Detail_GridKeyDownTopRow(System.Object,System.EventArgs)">
+            <summary>
+            グリッド最上位行キーダウンイベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <remarks>
+            <br>Note       : 画面ヘッダクリア処理を行う。 </br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.CheckOnline">
+            <summary>
+            ログオン時オンライン状態チェック処理
+            </summary>
+            <returns>チェック処理結果</returns>
+            <remarks>
+            <br>Note       : ログオン時オンライン状態チェック処理を行う。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.CheckRemoteOn">
+            <summary>
+            リモート接続可能判定
+            </summary>
+            <returns>判定結果</returns>
+            <remarks>
+            <br>Note       : リモート接続可能判定を行う。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.tToolsManager_MainMenu_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            ツールバーボタンクリックイベント処理
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <remarks>		
+            <br>Note		: なし。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            <br>Update Note : 2010/09/09 李永平</br>
+            <br>              Redmine#14492対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.uGrid_Detail_InitializeLayout(System.Object,Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs)">
+            <summary>
+            グリッド初期レイアウト設定イベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <remarks>
+            <br>Note		: 画面初期化時、グリッド初期レイアウト設定を行います。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            <br>Update Note : 2010/08/26 呉元嘯</br>
+            <br>              Redmine#13690対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.uButton_SectionGuide_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button_Click イベント(SectionGuide_Click)
+            </summary>
+            <param name="sender">イベントオブジェクト</param>
+            <param name="e">イベント情報</param>
+            <remarks>
+            <br>Note		: 拠点ガイドボタンがクリックされた時に発生します。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.tArrowKeyControl1_ChangeFocus(System.Object,Broadleaf.Library.Windows.Forms.ChangeFocusEventArgs)">
+            <summary>
+            ChangeFocus イベント(tArrowKeyControl1)
+            </summary>
+            <param name="sender">イベントオブジェクト</param>
+            <param name="e">イベント情報</param>
+            <remarks>
+            <br>Note		: 各コントロールからフォーカスが離れたときに発生します。</br>
+            <br>Programmer  : 呉元嘯</br>
+            <br>Date        : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.uGrid_Detail_DoubleClick(System.Object,System.EventArgs)">
+            <summary>
+            uGrid_Detail_DoubleClickイベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <br>Note       : uGrid_Detail_DoubleClickイベントを行う</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.uGrid_Detail_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            uGrid_Detail_KeyDownイベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <br>Note       : uGrid_Detail_KeyDownイベントを行う</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.tComboEditor_UnitPriceKind_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            tComboEditor_UnitPriceKind_ValueChangedイベント
+            </summary>
+            <param name="sender">対象オブジェクト</param>
+            <param name="e">イベントパラメータクラス</param>
+            <br>Note       : tComboEditor_UnitPriceKind_ValueChangedイベントを行う</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            <br>Update Note : 2010/09/09 李永平</br>
+            <br>              Redmine#14492対応</br>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.tEdit_SectionCodeAllowZero_Enter(System.Object,System.EventArgs)">
+            <summary>
+            Enterイベント
+            </summary>
+            <remarks>
+            <br>Programmer  : 李永平</br>
+            <br>Date        : 2010/09/09</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.tEdit_SectionCodeAllowZero_Leave(System.Object,System.EventArgs)">
+            <summary>
+            Leaveイベント
+            </summary>
+            <remarks>
+            <br>Programmer  : 李永平</br>
+            <br>Date        : 2010/09/09</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.tComboEditor_UnitPriceKind_Leave(System.Object,System.EventArgs)">
+            <summary>
+            Leaveイベント
+            </summary>
+            <remarks>
+            <br>Programmer  : 李永平</br>
+            <br>Date        : 2010/09/09</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Windows.Forms.PMKHN09471UA.components">
+            <summary>
+            必要なデザイナ変数です。
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.Dispose(System.Boolean)">
+            <summary>
+            使用中のリソースをすべてクリーンアップします。
+            </summary>
+            <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
+        </member>
+        <member name="M:Broadleaf.Windows.Forms.PMKHN09471UA.InitializeComponent">
+            <summary>
+            デザイナ サポートに必要なメソッドです。このメソッドの内容を
+            コード エディタで変更しないでください。
+            </summary>
+        </member>
+        <member name="E:Broadleaf.Windows.Forms.PMKHN09471UA.GridKeyDownTopRow">
+            <summary>グリッド最上位行キーダウンイベント</summary>
+        </member>
+    </members>
+</doc>

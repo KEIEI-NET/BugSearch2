@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKYO09250U", "PMKYO09250U\PMKYO09250U.csproj", "{195CBF89-8506-4774-9292-7ADE83FA426F}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMKYO09250U\\PMKYO09250U.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMKYO09250U.root/PMKYO09250U/PMKYO09250U\u0022,\u0020MXFCAAAA
+		SccLocalPath1 = PMKYO09250U
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{195CBF89-8506-4774-9292-7ADE83FA426F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195CBF89-8506-4774-9292-7ADE83FA426F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195CBF89-8506-4774-9292-7ADE83FA426F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195CBF89-8506-4774-9292-7ADE83FA426F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

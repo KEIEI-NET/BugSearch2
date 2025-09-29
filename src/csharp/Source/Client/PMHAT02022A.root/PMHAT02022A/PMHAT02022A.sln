@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMHAT02022A", "PMHAT02022A\PMHAT02022A.csproj", "{FEF32775-57C7-4FDE-97BF-486791DA878C}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMHAT02022A\\PMHAT02022A.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMHAT02022A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEF32775-57C7-4FDE-97BF-486791DA878C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF32775-57C7-4FDE-97BF-486791DA878C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF32775-57C7-4FDE-97BF-486791DA878C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF32775-57C7-4FDE-97BF-486791DA878C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

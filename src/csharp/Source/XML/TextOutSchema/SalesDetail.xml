@@ -1,0 +1,1049 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>売上明細データスキーマ</SchemaName>
+    <SchemaFileName>SalesDetail.xml</SchemaFileName>
+    <Writer />
+    <Date>2011/08/04</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName>FNo0058売上明細データ(変更分：黄色の箇所).csv</OutPutFileName>
+    <OutPutDir>E:\software\开发帮助\F10.NSツール(スキーマファイル作成ツール)</OutPutDir>
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="CreateDateTime">
+      <ColKey>CreateDateTime</ColKey>
+      <ColName>作成日時</ColName>
+      <ColNameChange />
+      <ColWidth>19</ColWidth>
+      <ColDataType>DateTime</ColDataType>
+    </ColInfo>
+    <ColInfo key="UpdateDateTime">
+      <ColKey>UpdateDateTime</ColKey>
+      <ColName>更新日時</ColName>
+      <ColNameChange />
+      <ColWidth>19</ColWidth>
+      <ColDataType>DateTime</ColDataType>
+    </ColInfo>
+    <ColInfo key="EnterpriseCode">
+      <ColKey>EnterpriseCode</ColKey>
+      <ColName>企業コード</ColName>
+      <ColNameChange />
+      <ColWidth>16</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="FileHeaderGuid">
+      <ColKey>FileHeaderGuid</ColKey>
+      <ColName>GUID</ColName>
+      <ColNameChange />
+      <ColWidth>36</ColWidth>
+      <ColDataType>Guid</ColDataType>
+    </ColInfo>
+    <ColInfo key="UpdEmployeeCode">
+      <ColKey>UpdEmployeeCode</ColKey>
+      <ColName>更新従業員コード</ColName>
+      <ColNameChange />
+      <ColWidth>9</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="UpdAssemblyId1">
+      <ColKey>UpdAssemblyId1</ColKey>
+      <ColName>更新アセンブリID1</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="UpdAssemblyId2">
+      <ColKey>UpdAssemblyId2</ColKey>
+      <ColName>更新アセンブリID2</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="LogicalDeleteCode">
+      <ColKey>LogicalDeleteCode</ColKey>
+      <ColName>論理削除区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcceptAnOrderNo">
+      <ColKey>AcceptAnOrderNo</ColKey>
+      <ColName>受注番号</ColName>
+      <ColNameChange />
+      <ColWidth>9</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcptAnOdrStatus">
+      <ColKey>AcptAnOdrStatus</ColKey>
+      <ColName>受注ステータス</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesSlipNum">
+      <ColKey>SalesSlipNum</ColKey>
+      <ColName>売上伝票番号</ColName>
+      <ColNameChange />
+      <ColWidth>9</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesRowNo">
+      <ColKey>SalesRowNo</ColKey>
+      <ColName>売上行番号</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesRowDerivNo">
+      <ColKey>SalesRowDerivNo</ColKey>
+      <ColName>売上行番号枝番</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SectionCode">
+      <ColKey>SectionCode</ColKey>
+      <ColName>拠点コード</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="SubSectionCode">
+      <ColKey>SubSectionCode</ColKey>
+      <ColName>部門コード</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesDate">
+      <ColKey>SalesDate</ColKey>
+      <ColName>売上日付</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="CommonSeqNo">
+      <ColKey>CommonSeqNo</ColKey>
+      <ColName>共通通番</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesSlipDtlNum">
+      <ColKey>SalesSlipDtlNum</ColKey>
+      <ColName>売上明細通番</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcptAnOdrStatusSrc">
+      <ColKey>AcptAnOdrStatusSrc</ColKey>
+      <ColName>受注ステータス（元）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesSlipDtlNumSrc">
+      <ColKey>SalesSlipDtlNumSrc</ColKey>
+      <ColName>売上明細通番（元）</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="SupplierFormalSync">
+      <ColKey>SupplierFormalSync</ColKey>
+      <ColName>仕入形式（同時）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="StockSlipDtlNumSync">
+      <ColKey>StockSlipDtlNumSync</ColKey>
+      <ColName>仕入明細通番（同時）</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesSlipCdDtl">
+      <ColKey>SalesSlipCdDtl</ColKey>
+      <ColName>売上伝票区分（明細）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="DeliGdsCmpltDueDate">
+      <ColKey>DeliGdsCmpltDueDate</ColKey>
+      <ColName>納品完了予定日</ColName>
+      <ColNameChange />
+      <ColWidth>10</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsKindCode">
+      <ColKey>GoodsKindCode</ColKey>
+      <ColName>商品属性</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsSearchDivCd">
+      <ColKey>GoodsSearchDivCd</ColKey>
+      <ColName>商品検索区分</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsMakerCd">
+      <ColKey>GoodsMakerCd</ColKey>
+      <ColName>商品メーカーコード</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="MakerName">
+      <ColKey>MakerName</ColKey>
+      <ColName>メーカー名称</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="MakerKanaName">
+      <ColKey>MakerKanaName</ColKey>
+      <ColName>メーカーカナ名称</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsNo">
+      <ColKey>GoodsNo</ColKey>
+      <ColName>商品番号</ColName>
+      <ColNameChange />
+      <ColWidth>40</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsName">
+      <ColKey>GoodsName</ColKey>
+      <ColName>商品名称</ColName>
+      <ColNameChange />
+      <ColWidth>100</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsNameKana">
+      <ColKey>GoodsNameKana</ColKey>
+      <ColName>商品名称カナ</ColName>
+      <ColNameChange />
+      <ColWidth>100</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsLGroup">
+      <ColKey>GoodsLGroup</ColKey>
+      <ColName>商品大分類コード</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsLGroupName">
+      <ColKey>GoodsLGroupName</ColKey>
+      <ColName>商品大分類名称</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsMGroup">
+      <ColKey>GoodsMGroup</ColKey>
+      <ColName>商品中分類コード</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsMGroupName">
+      <ColKey>GoodsMGroupName</ColKey>
+      <ColName>商品中分類名称</ColName>
+      <ColNameChange />
+      <ColWidth>60</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="BLGroupCode">
+      <ColKey>BLGroupCode</ColKey>
+      <ColName>BLグループコード</ColName>
+      <ColNameChange />
+      <ColWidth>5</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="BLGroupName">
+      <ColKey>BLGroupName</ColKey>
+      <ColName>BLグループコード名称</ColName>
+      <ColNameChange />
+      <ColWidth>60</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="BLGoodsCode">
+      <ColKey>BLGoodsCode</ColKey>
+      <ColName>BL商品コード</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="BLGoodsFullName">
+      <ColKey>BLGoodsFullName</ColKey>
+      <ColName>BL商品コード名称（全角）</ColName>
+      <ColNameChange />
+      <ColWidth>60</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="EnterpriseGanreCode">
+      <ColKey>EnterpriseGanreCode</ColKey>
+      <ColName>自社分類コード</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="EnterpriseGanreName">
+      <ColKey>EnterpriseGanreName</ColKey>
+      <ColName>自社分類名称</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="WarehouseCode">
+      <ColKey>WarehouseCode</ColKey>
+      <ColName>倉庫コード</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="WarehouseName">
+      <ColKey>WarehouseName</ColKey>
+      <ColName>倉庫名称</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="WarehouseShelfNo">
+      <ColKey>WarehouseShelfNo</ColKey>
+      <ColName>倉庫棚番</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesOrderDivCd">
+      <ColKey>SalesOrderDivCd</ColKey>
+      <ColName>売上在庫取寄せ区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="OpenPriceDiv">
+      <ColKey>OpenPriceDiv</ColKey>
+      <ColName>オープン価格区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsRateRank">
+      <ColKey>GoodsRateRank</ColKey>
+      <ColName>商品掛率ランク</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="CustRateGrpCode">
+      <ColKey>CustRateGrpCode</ColKey>
+      <ColName>得意先掛率グループコード</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceRate">
+      <ColKey>ListPriceRate</ColKey>
+      <ColName>定価率</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateSectPriceUnPrc">
+      <ColKey>RateSectPriceUnPrc</ColKey>
+      <ColName>掛率設定拠点（定価）</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateDivLPrice">
+      <ColKey>RateDivLPrice</ColKey>
+      <ColName>掛率設定区分（定価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="UnPrcCalcCdLPrice">
+      <ColKey>UnPrcCalcCdLPrice</ColKey>
+      <ColName>単価算出区分（定価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="PriceCdLPrice">
+      <ColKey>PriceCdLPrice</ColKey>
+      <ColName>価格区分（定価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="StdUnPrcLPrice">
+      <ColKey>StdUnPrcLPrice</ColKey>
+      <ColName>基準単価（定価）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="FracProcUnitLPrice">
+      <ColKey>FracProcUnitLPrice</ColKey>
+      <ColName>端数処理単位（定価）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="FracProcLPrice">
+      <ColKey>FracProcLPrice</ColKey>
+      <ColName>端数処理（定価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceTaxIncFl">
+      <ColKey>ListPriceTaxIncFl</ColKey>
+      <ColName>定価（税込，浮動）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceTaxExcFl">
+      <ColKey>ListPriceTaxExcFl</ColKey>
+      <ColName>定価（税抜，浮動）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="ListPriceChngCd">
+      <ColKey>ListPriceChngCd</ColKey>
+      <ColName>定価変更区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesRate">
+      <ColKey>SalesRate</ColKey>
+      <ColName>売価率</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateSectSalUnPrc">
+      <ColKey>RateSectSalUnPrc</ColKey>
+      <ColName>掛率設定拠点（売上単価）</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateDivSalUnPrc">
+      <ColKey>RateDivSalUnPrc</ColKey>
+      <ColName>掛率設定区分（売上単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="UnPrcCalcCdSalUnPrc">
+      <ColKey>UnPrcCalcCdSalUnPrc</ColKey>
+      <ColName>単価算出区分（売上単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="PriceCdSalUnPrc">
+      <ColKey>PriceCdSalUnPrc</ColKey>
+      <ColName>価格区分（売上単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="StdUnPrcSalUnPrc">
+      <ColKey>StdUnPrcSalUnPrc</ColKey>
+      <ColName>基準単価（売上単価）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="FracProcUnitSalUnPrc">
+      <ColKey>FracProcUnitSalUnPrc</ColKey>
+      <ColName>端数処理単位（売上単価）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="FracProcSalUnPrc">
+      <ColKey>FracProcSalUnPrc</ColKey>
+      <ColName>端数処理（売上単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnPrcTaxIncFl">
+      <ColKey>SalesUnPrcTaxIncFl</ColKey>
+      <ColName>売上単価（税込，浮動）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnPrcTaxExcFl">
+      <ColKey>SalesUnPrcTaxExcFl</ColKey>
+      <ColName>売上単価（税抜，浮動）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnPrcChngCd">
+      <ColKey>SalesUnPrcChngCd</ColKey>
+      <ColName>売上単価変更区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="CostRate">
+      <ColKey>CostRate</ColKey>
+      <ColName>原価率</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateSectCstUnPrc">
+      <ColKey>RateSectCstUnPrc</ColKey>
+      <ColName>掛率設定拠点（原価単価）</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateDivUnCst">
+      <ColKey>RateDivUnCst</ColKey>
+      <ColName>掛率設定区分（原価単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="UnPrcCalcCdUnCst">
+      <ColKey>UnPrcCalcCdUnCst</ColKey>
+      <ColName>単価算出区分（原価単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="PriceCdUnCst">
+      <ColKey>PriceCdUnCst</ColKey>
+      <ColName>価格区分（原価単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="StdUnPrcUnCst">
+      <ColKey>StdUnPrcUnCst</ColKey>
+      <ColName>基準単価（原価単価）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="FracProcUnitUnCst">
+      <ColKey>FracProcUnitUnCst</ColKey>
+      <ColName>端数処理単位（原価単価）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="FracProcUnCst">
+      <ColKey>FracProcUnCst</ColKey>
+      <ColName>端数処理（原価単価）</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnitCost">
+      <ColKey>SalesUnitCost</ColKey>
+      <ColName>原価単価</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesUnitCostChngDiv">
+      <ColKey>SalesUnitCostChngDiv</ColKey>
+      <ColName>原価単価変更区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateBLGoodsCode">
+      <ColKey>RateBLGoodsCode</ColKey>
+      <ColName>BL商品コード（掛率）</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateBLGoodsName">
+      <ColKey>RateBLGoodsName</ColKey>
+      <ColName>BL商品コード名称（掛率）</ColName>
+      <ColNameChange />
+      <ColWidth>60</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateGoodsRateGrpCd">
+      <ColKey>RateGoodsRateGrpCd</ColKey>
+      <ColName>商品掛率グループコード（掛率）</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateGoodsRateGrpNm">
+      <ColKey>RateGoodsRateGrpNm</ColKey>
+      <ColName>商品掛率グループ名称（掛率）</ColName>
+      <ColNameChange />
+      <ColWidth>40</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateBLGroupCode">
+      <ColKey>RateBLGroupCode</ColKey>
+      <ColName>BLグループコード（掛率）</ColName>
+      <ColNameChange />
+      <ColWidth>5</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="RateBLGroupName">
+      <ColKey>RateBLGroupName</ColKey>
+      <ColName>BLグループ名称（掛率）</ColName>
+      <ColNameChange />
+      <ColWidth>60</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="PrtBLGoodsCode">
+      <ColKey>PrtBLGoodsCode</ColKey>
+      <ColName>BL商品コード（印刷）</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="PrtBLGoodsName">
+      <ColKey>PrtBLGoodsName</ColKey>
+      <ColName>BL商品コード名称（印刷）</ColName>
+      <ColNameChange />
+      <ColWidth>60</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesCode">
+      <ColKey>SalesCode</ColKey>
+      <ColName>販売区分コード</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesCdNm">
+      <ColKey>SalesCdNm</ColKey>
+      <ColName>販売区分名称</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="WorkManHour">
+      <ColKey>WorkManHour</ColKey>
+      <ColName>作業工数</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="ShipmentCnt">
+      <ColKey>ShipmentCnt</ColKey>
+      <ColName>出荷数</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcceptAnOrderCnt">
+      <ColKey>AcceptAnOrderCnt</ColKey>
+      <ColName>受注数量</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcptAnOdrAdjustCnt">
+      <ColKey>AcptAnOdrAdjustCnt</ColKey>
+      <ColName>受注調整数</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcptAnOdrRemainCnt">
+      <ColKey>AcptAnOdrRemainCnt</ColKey>
+      <ColName>受注残数</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="RemainCntUpdDate">
+      <ColKey>RemainCntUpdDate</ColKey>
+      <ColName>残数更新日</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesMoneyTaxInc">
+      <ColKey>SalesMoneyTaxInc</ColKey>
+      <ColName>売上金額（税込み）</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesMoneyTaxExc">
+      <ColKey>SalesMoneyTaxExc</ColKey>
+      <ColName>売上金額（税抜き）</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="Cost">
+      <ColKey>Cost</ColKey>
+      <ColName>原価</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="GrsProfitChkDiv">
+      <ColKey>GrsProfitChkDiv</ColKey>
+      <ColName>粗利チェック区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesGoodsCd">
+      <ColKey>SalesGoodsCd</ColKey>
+      <ColName>売上商品区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SalesPriceConsTax">
+      <ColKey>SalesPriceConsTax</ColKey>
+      <ColName>売上金額消費税額</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="TaxationDivCd">
+      <ColKey>TaxationDivCd</ColKey>
+      <ColName>課税区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="PartySlipNumDtl">
+      <ColKey>PartySlipNumDtl</ColKey>
+      <ColName>相手先伝票番号（明細）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="DtlNote">
+      <ColKey>DtlNote</ColKey>
+      <ColName>明細備考</ColName>
+      <ColNameChange />
+      <ColWidth>40</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="SupplierCd">
+      <ColKey>SupplierCd</ColKey>
+      <ColName>仕入先コード</ColName>
+      <ColNameChange />
+      <ColWidth>9</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SupplierSnm">
+      <ColKey>SupplierSnm</ColKey>
+      <ColName>仕入先略称</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="OrderNumber">
+      <ColKey>OrderNumber</ColKey>
+      <ColName>発注番号</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="WayToOrder">
+      <ColKey>WayToOrder</ColKey>
+      <ColName>注文方法</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="SlipMemo1">
+      <ColKey>SlipMemo1</ColKey>
+      <ColName>伝票メモ１</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="SlipMemo2">
+      <ColKey>SlipMemo2</ColKey>
+      <ColName>伝票メモ２</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="SlipMemo3">
+      <ColKey>SlipMemo3</ColKey>
+      <ColName>伝票メモ３</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="InsideMemo1">
+      <ColKey>InsideMemo1</ColKey>
+      <ColName>社内メモ１</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="InsideMemo2">
+      <ColKey>InsideMemo2</ColKey>
+      <ColName>社内メモ２</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="InsideMemo3">
+      <ColKey>InsideMemo3</ColKey>
+      <ColName>社内メモ３</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="BfListPrice">
+      <ColKey>BfListPrice</ColKey>
+      <ColName>変更前定価</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="BfSalesUnitPrice">
+      <ColKey>BfSalesUnitPrice</ColKey>
+      <ColName>変更前売価</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="BfUnitCost">
+      <ColKey>BfUnitCost</ColKey>
+      <ColName>変更前原価</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltSalesRowNo">
+      <ColKey>CmpltSalesRowNo</ColKey>
+      <ColName>一式明細番号</ColName>
+      <ColNameChange />
+      <ColWidth>4</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltGoodsMakerCd">
+      <ColKey>CmpltGoodsMakerCd</ColKey>
+      <ColName>メーカーコード（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltMakerName">
+      <ColKey>CmpltMakerName</ColKey>
+      <ColName>メーカー名称（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltMakerKanaName">
+      <ColKey>CmpltMakerKanaName</ColKey>
+      <ColName>メーカーカナ名称（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltGoodsName">
+      <ColKey>CmpltGoodsName</ColKey>
+      <ColName>商品名称（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>100</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltShipmentCnt">
+      <ColKey>CmpltShipmentCnt</ColKey>
+      <ColName>数量（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltSalesUnPrcFl">
+      <ColKey>CmpltSalesUnPrcFl</ColKey>
+      <ColName>売上単価（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltSalesMoney">
+      <ColKey>CmpltSalesMoney</ColKey>
+      <ColName>売上金額（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltSalesUnitCost">
+      <ColKey>CmpltSalesUnitCost</ColKey>
+      <ColName>原価単価（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>Double</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltCost">
+      <ColKey>CmpltCost</ColKey>
+      <ColName>原価金額（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>12</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltPartySalSlNum">
+      <ColKey>CmpltPartySalSlNum</ColKey>
+      <ColName>相手先伝票番号（一式）</ColName>
+      <ColNameChange />
+      <ColWidth>19</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="CmpltNote">
+      <ColKey>CmpltNote</ColKey>
+      <ColName>一式備考</ColName>
+      <ColNameChange />
+      <ColWidth>40</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="PrtGoodsNo">
+      <ColKey>PrtGoodsNo</ColKey>
+      <ColName>印刷用品番</ColName>
+      <ColNameChange />
+      <ColWidth>40</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="PrtMakerCode">
+      <ColKey>PrtMakerCode</ColKey>
+      <ColName>印刷用メーカーコード</ColName>
+      <ColNameChange />
+      <ColWidth>6</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="PrtMakerName">
+      <ColKey>PrtMakerName</ColKey>
+      <ColName>印刷用メーカー名称</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="CampaignCode">
+      <ColKey>CampaignCode</ColKey>
+      <ColName>キャンペーンコード</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="CampaignName">
+      <ColKey>CampaignName</ColKey>
+      <ColName>キャンペーン名称</ColName>
+      <ColNameChange />
+      <ColWidth>30</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsDivCd">
+      <ColKey>GoodsDivCd</ColKey>
+      <ColName>商品種別</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="AnswerDelivDate">
+      <ColKey>AnswerDelivDate</ColKey>
+      <ColName>回答納期</ColName>
+      <ColNameChange />
+      <ColWidth>10</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="RecycleDiv">
+      <ColKey>RecycleDiv</ColKey>
+      <ColName>リサイクル区分</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="RecycleDivNm">
+      <ColKey>RecycleDivNm</ColKey>
+      <ColName>リサイクル区分名称</ColName>
+      <ColNameChange />
+      <ColWidth>20</ColWidth>
+      <ColDataType>String</ColDataType>
+    </ColInfo>
+    <ColInfo key="WayToAcptOdr">
+      <ColKey>WayToAcptOdr</ColKey>
+      <ColName>受注方法</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="AutoAnswerDivSCM">
+      <ColKey>AutoAnswerDivSCM</ColKey>
+      <ColName>自動回答区分(SCM)</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="StokDate">
+      <ColKey>StokDate</ColKey>
+      <ColName>仕入日</ColName>
+      <ColNameChange />
+      <ColWidth>8</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="AcceptOrOrderKind">
+      <ColKey>AcceptOrOrderKind</ColKey>
+      <ColName>受発注種別</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+    <ColInfo key="InquiryNumber">
+      <ColKey>InquiryNumber</ColKey>
+      <ColName>問合せ番号</ColName>
+      <ColNameChange />
+      <ColWidth>10</ColWidth>
+      <ColDataType>Int64</ColDataType>
+    </ColInfo>
+    <ColInfo key="InqRowNumber">
+      <ColKey>InqRowNumber</ColKey>
+      <ColName>問合せ行番号</ColName>
+      <ColNameChange />
+      <ColWidth>2</ColWidth>
+      <ColDataType>Int32</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

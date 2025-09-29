@@ -1,0 +1,365 @@
+//**********************************************************************//
+// System           :   PM.NS                                           //
+// Sub System       :                                                   //
+// Program name     :   マスタ送受信処理　                           　 //
+// Name Space       :   Broadleaf.Application.Remoting           	    //
+//                  :   PMKYO06410R.DLL							        //
+// Programmer       :   呉元嘯	                                        //
+// Date             :   2009.04.30                                      //
+//----------------------------------------------------------------------//
+// Update Note      :   張莉莉　2009.06.12　							//
+//                  :   public MethodでSQL文字が駄目対応について        //
+//----------------------------------------------------------------------//
+// Update Note      :   張莉莉　2011.08.26　							//
+//                  :   DC履歴ログとDC各データのクリア処理を追加        //
+//----------------------------------------------------------------------//
+//                (c)Copyright  2009 Broadleaf Co.,Ltd.                 //
+//**********************************************************************//
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Collections;
+using Broadleaf.Application.Remoting.ParamData;
+using System.Data.SqlClient;
+using Broadleaf.Library.Resources;
+using Broadleaf.Library.Data.SqlTypes;
+using System.Data;
+
+namespace Broadleaf.Application.Remoting
+{
+    /// <summary>
+    /// 拠点情報設定マスタリモートオブジェクト
+    /// </summary>
+    /// <remarks>
+    /// <br>Note       : 拠点情報設定マスタデータの実データ操作を行うクラスです。</br>
+    /// <br>Programmer : 呉元嘯</br>
+    /// <br>Date       : 2009.4.30</br>
+    /// <br></br>
+    /// <br>Update Note: </br>
+    /// </remarks>
+    [Serializable]
+    public class DCSecInfoSetDB : RemoteDB
+    {
+        /// <summary>
+        /// 拠点情報設定マスタDBリモートオブジェクトクラスコンストラクタ
+        /// </summary>
+        /// <remarks>
+        /// <br>Note       : 特になし</br>
+        /// <br>Programmer : 呉元嘯</br>
+        /// <br>Date       : 2009.4.30</br>
+        /// </remarks>
+        public DCSecInfoSetDB()
+            : base("PMKYO06411D", "Broadleaf.Application.Remoting.ParamData.DCSecInfoSetWork", "SECINFOSETRF")
+        {
+
+        }
+
+        # region [Read]
+        /// <summary>
+        /// 拠点情報設定マスタの検索処理
+        /// </summary>
+        /// <param name="enterpriseCodes">企業コード</param>
+        /// <param name="beginningDate">開始日付</param>
+        /// <param name="endingDate">終了日付</param>
+        /// <param name="sqlConnection">ＤＢ接続オブジェクト</param>
+        /// <param name="sqlTransaction">sqlTransactionオブジェクト</param>
+        /// <param name="secInfoSetArrList">拠点情報設定マスタデータオブジェクト</param>
+        /// <param name="retMessage">戻るメッセージ</param>
+        /// <returns>STATUS</returns>
+        /// <br>Note       : 拠点情報設定マスタデータREADLISTを全て戻します</br>
+        /// <br>Programmer : 呉元嘯</br>
+        /// <br>Date       : 2009.05.04</br>
+        public int SearchSecInfoSet(string enterpriseCodes, Int64 beginningDate, Int64 endingDate, SqlConnection sqlConnection,
+           SqlTransaction sqlTransaction, out ArrayList secInfoSetArrList, out string retMessage)
+        {
+            return SearchSecInfoSetProc(enterpriseCodes, beginningDate,  endingDate,  sqlConnection,
+                              sqlTransaction, out secInfoSetArrList, out retMessage);
+        }
+
+        /// <summary>
+        /// 拠点情報設定マスタの検索処理
+        /// </summary>
+        /// <param name="enterpriseCodes">企業コード</param>
+        /// <param name="beginningDate">開始日付</param>
+        /// <param name="endingDate">終了日付</param>
+        /// <param name="sqlConnection">ＤＢ接続オブジェクト</param>
+        /// <param name="sqlTransaction">sqlTransactionオブジェクト</param>
+        /// <param name="secInfoSetArrList">拠点情報設定マスタデータオブジェクト</param>
+        /// <param name="retMessage">戻るメッセージ</param>
+        /// <returns>STATUS</returns>
+        /// <br>Note       : 拠点情報設定マスタデータREADLISTを全て戻します</br>
+        /// <br>Programmer : 呉元嘯</br>
+        /// <br>Date       : 2009.05.04</br>
+        private int SearchSecInfoSetProc(string enterpriseCodes, Int64 beginningDate, Int64 endingDate, SqlConnection sqlConnection,
+            SqlTransaction sqlTransaction, out ArrayList secInfoSetArrList, out string retMessage)
+        {
+            int status = (int)ConstantManagement.DB_Status.ctDB_EOF;
+            secInfoSetArrList = new ArrayList();
+            DCSecInfoSetWork secInfoSetWork = null;
+            retMessage = string.Empty;
+            string sqlStr = string.Empty;
+            SqlDataReader myReader = null;
+            SqlCommand sqlCommand = null;
+
+            try
+            {
+                sqlCommand = new SqlCommand("", sqlConnection, sqlTransaction);
+
+                sqlStr = "SELECT CREATEDATETIMERF, UPDATEDATETIMERF, ENTERPRISECODERF, FILEHEADERGUIDRF, UPDEMPLOYEECODERF, UPDASSEMBLYID1RF, UPDASSEMBLYID2RF, LOGICALDELETECODERF, SECTIONCODERF, SECTIONGUIDENMRF, SECTIONGUIDESNMRF, COMPANYNAMECD1RF, MAINOFFICEFUNCFLAGRF, INTRODUCTIONDATERF, SECTWAREHOUSECD1RF, SECTWAREHOUSECD2RF, SECTWAREHOUSECD3RF FROM SECINFOSETRF WHERE ENTERPRISECODERF=@FINDENTERPRISECODE AND UPDATEDATETIMERF > @UPDATEDATETIMEBEGRF AND UPDATEDATETIMERF <= @UPDATEDATETIMEENDRF";
+
+                //Prameterオブジェクトの作成
+                SqlParameter findParaEnterpriseCode = sqlCommand.Parameters.Add("@FINDENTERPRISECODE", SqlDbType.NChar);
+                SqlParameter findParaUpdateDateTimeBeg = sqlCommand.Parameters.Add("@UPDATEDATETIMEBEGRF", SqlDbType.BigInt);
+                SqlParameter findParaUpdateDateTimeEnd = sqlCommand.Parameters.Add("@UPDATEDATETIMEENDRF", SqlDbType.BigInt);
+
+                //Parameterオブジェクトへ値設定
+                findParaEnterpriseCode.Value = SqlDataMediator.SqlSetString(enterpriseCodes);
+                findParaUpdateDateTimeBeg.Value = SqlDataMediator.SqlSetInt64(beginningDate);
+                findParaUpdateDateTimeEnd.Value = SqlDataMediator.SqlSetInt64(endingDate);
+
+                // 拠点情報設定マスタデータ用SQL
+                sqlCommand.CommandText = sqlStr;
+                // 読み込み
+                myReader = sqlCommand.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    secInfoSetWork = new DCSecInfoSetWork();
+
+                    secInfoSetWork.CreateDateTime = SqlDataMediator.SqlGetDateTimeFromTicks(myReader, myReader.GetOrdinal("CREATEDATETIMERF"));
+                    secInfoSetWork.UpdateDateTime = SqlDataMediator.SqlGetDateTimeFromTicks(myReader, myReader.GetOrdinal("UPDATEDATETIMERF"));
+                    secInfoSetWork.EnterpriseCode = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("ENTERPRISECODERF"));
+                    secInfoSetWork.FileHeaderGuid = SqlDataMediator.SqlGetGuid(myReader, myReader.GetOrdinal("FILEHEADERGUIDRF"));
+                    secInfoSetWork.UpdEmployeeCode = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("UPDEMPLOYEECODERF"));
+                    secInfoSetWork.UpdAssemblyId1 = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("UPDASSEMBLYID1RF"));
+                    secInfoSetWork.UpdAssemblyId2 = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("UPDASSEMBLYID2RF"));
+                    secInfoSetWork.LogicalDeleteCode = SqlDataMediator.SqlGetInt32(myReader, myReader.GetOrdinal("LOGICALDELETECODERF"));
+                    secInfoSetWork.SectionCode = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("SECTIONCODERF"));
+                    secInfoSetWork.SectionGuideNm = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("SECTIONGUIDENMRF"));
+                    secInfoSetWork.SectionGuideSnm = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("SECTIONGUIDESNMRF"));
+                    secInfoSetWork.CompanyNameCd1 = SqlDataMediator.SqlGetInt32(myReader, myReader.GetOrdinal("COMPANYNAMECD1RF"));
+                    secInfoSetWork.MainOfficeFuncFlag = SqlDataMediator.SqlGetInt32(myReader, myReader.GetOrdinal("MAINOFFICEFUNCFLAGRF"));
+                    secInfoSetWork.IntroductionDate = SqlDataMediator.SqlGetInt32(myReader, myReader.GetOrdinal("INTRODUCTIONDATERF"));
+                    secInfoSetWork.SectWarehouseCd1 = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("SECTWAREHOUSECD1RF"));
+                    secInfoSetWork.SectWarehouseCd2 = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("SECTWAREHOUSECD2RF"));
+                    secInfoSetWork.SectWarehouseCd3 = SqlDataMediator.SqlGetString(myReader, myReader.GetOrdinal("SECTWAREHOUSECD3RF"));
+
+                    secInfoSetArrList.Add(secInfoSetWork);
+                }
+
+                status = (int)ConstantManagement.DB_Status.ctDB_NORMAL;
+            }
+            catch (SqlException ex)
+            {
+                //基底クラスに例外を渡して処理してもらう
+                base.WriteErrorLog(ex, "DCSecInfoSetDB.SearchSecInfoSet Exception=" + ex.Message);
+                retMessage = ex.Message;
+                status = (int)ConstantManagement.DB_Status.ctDB_ERROR;
+            }
+            finally
+            {
+                if (myReader != null)
+                    if (!myReader.IsClosed) myReader.Close();
+
+                if (sqlCommand != null)
+                {
+                    sqlCommand.Cancel();
+                    sqlCommand.Dispose();
+                }
+            }
+            return status;
+        }
+
+        #endregion
+
+        # region [Delete]
+        /// <summary>
+        ///  拠点情報設定マスタデータ削除
+        /// </summary>
+        /// <param name="dcSecInfoSetWork">拠点情報設定マスタデータ</param>
+        /// <param name="sqlConnection">データベース接続情報</param>
+        /// <param name="sqlTransaction">トランザクション情報</param>
+        /// <param name="sqlCommand">SQLコメント</param>
+        /// <returns></returns>
+        /// <br>Note       : 拠点情報設定マスタデータを削除する</br>
+        /// <br>Programmer : 呉元嘯</br>
+        /// <br>Date       : 2009.05.04</br> 
+        public void Delete(DCSecInfoSetWork dcSecInfoSetWork, ref SqlConnection sqlConnection, ref SqlTransaction sqlTransaction, ref SqlCommand sqlCommand)
+        {
+            DeleteProc(dcSecInfoSetWork, ref sqlConnection, ref sqlTransaction, ref sqlCommand);
+        }
+        /// <summary>
+        ///  拠点情報設定マスタデータ削除
+        /// </summary>
+        /// <param name="dcSecInfoSetWork">拠点情報設定マスタデータ</param>
+        /// <param name="sqlConnection">データベース接続情報</param>
+        /// <param name="sqlTransaction">トランザクション情報</param>
+        /// <param name="sqlCommand">SQLコメント</param>
+        /// <returns></returns>
+        /// <br>Note       : 拠点情報設定マスタデータを削除する</br>
+        /// <br>Programmer : 呉元嘯</br>
+        /// <br>Date       : 2009.05.04</br> 
+        private void DeleteProc(DCSecInfoSetWork dcSecInfoSetWork, ref SqlConnection sqlConnection, ref SqlTransaction sqlTransaction, ref SqlCommand sqlCommand)
+        {
+
+            sqlCommand = new SqlCommand("", sqlConnection, sqlTransaction);
+
+            // Deleteコマンドの生成
+            sqlCommand.CommandText = "DELETE FROM SECINFOSETRF WHERE ENTERPRISECODERF=@FINDENTERPRISECODE AND SECTIONCODERF=@FINDSECTIONCODE";
+            //Prameterオブジェクトの作成
+            SqlParameter findParaEnterpriseCode = sqlCommand.Parameters.Add("@FINDENTERPRISECODE", SqlDbType.NChar);
+            SqlParameter findParaSectionCode = sqlCommand.Parameters.Add("@FINDSECTIONCODE", SqlDbType.NChar);
+            //Parameterオブジェクトへ値設定
+            findParaEnterpriseCode.Value = dcSecInfoSetWork.EnterpriseCode;
+            findParaSectionCode.Value = dcSecInfoSetWork.SectionCode;
+
+
+            // 拠点情報設定マスタデータを削除する
+            sqlCommand.ExecuteNonQuery();
+        }
+        #endregion
+
+        # region [Insert]
+        /// <summary>
+        /// 拠点情報設定マスタ登録
+        /// </summary>
+        /// <param name="dcSecInfoSetWork">拠点情報設定マスタデータ</param>
+        /// <param name="sqlConnection">データベース接続情報</param>
+        /// <param name="sqlTransaction">トランザクション情報</param>
+        /// <param name="sqlCommand">SQLコメント</param>
+        /// <returns></returns>
+        /// <br>Note       : 拠点情報設定マスタを登録する</br>
+        /// <br>Programmer : 呉元嘯</br>
+        /// <br>Date       : 2009.05.04</br> 
+        public void Insert(DCSecInfoSetWork dcSecInfoSetWork, ref SqlConnection sqlConnection, ref SqlTransaction sqlTransaction, ref SqlCommand sqlCommand)
+        {
+            InsertProc(dcSecInfoSetWork, ref sqlConnection, ref sqlTransaction, ref sqlCommand);
+        }
+        /// <summary>
+        /// 拠点情報設定マスタ登録
+        /// </summary>
+        /// <param name="dcSecInfoSetWork">拠点情報設定マスタデータ</param>
+        /// <param name="sqlConnection">データベース接続情報</param>
+        /// <param name="sqlTransaction">トランザクション情報</param>
+        /// <param name="sqlCommand">SQLコメント</param>
+        /// <returns></returns>
+        /// <br>Note       : 拠点情報設定マスタを登録する</br>
+        /// <br>Programmer : 呉元嘯</br>
+        /// <br>Date       : 2009.05.04</br> 
+        private void InsertProc(DCSecInfoSetWork dcSecInfoSetWork, ref SqlConnection sqlConnection, ref SqlTransaction sqlTransaction, ref SqlCommand sqlCommand)
+        {
+
+            sqlCommand = new SqlCommand("", sqlConnection, sqlTransaction);
+
+            // Deleteコマンドの生成
+            sqlCommand.CommandText = "INSERT INTO SECINFOSETRF (CREATEDATETIMERF, UPDATEDATETIMERF, ENTERPRISECODERF, FILEHEADERGUIDRF, UPDEMPLOYEECODERF, UPDASSEMBLYID1RF, UPDASSEMBLYID2RF, LOGICALDELETECODERF, SECTIONCODERF, SECTIONGUIDENMRF, SECTIONGUIDESNMRF, COMPANYNAMECD1RF, MAINOFFICEFUNCFLAGRF, INTRODUCTIONDATERF, SECTWAREHOUSECD1RF, SECTWAREHOUSECD2RF, SECTWAREHOUSECD3RF) VALUES (@CREATEDATETIME, @UPDATEDATETIME, @ENTERPRISECODE, @FILEHEADERGUID, @UPDEMPLOYEECODE, @UPDASSEMBLYID1, @UPDASSEMBLYID2, @LOGICALDELETECODE, @SECTIONCODE, @SECTIONGUIDENM, @SECTIONGUIDESNM, @COMPANYNAMECD1, @MAINOFFICEFUNCFLAG, @INTRODUCTIONDATE, @SECTWAREHOUSECD1, @SECTWAREHOUSECD2, @SECTWAREHOUSECD3)";
+
+            //Prameterオブジェクトの作成
+            SqlParameter paraCreateDateTime = sqlCommand.Parameters.Add("@CREATEDATETIME", SqlDbType.BigInt);
+            SqlParameter paraUpdateDateTime = sqlCommand.Parameters.Add("@UPDATEDATETIME", SqlDbType.BigInt);
+            SqlParameter paraEnterpriseCode = sqlCommand.Parameters.Add("@ENTERPRISECODE", SqlDbType.NChar);
+            SqlParameter paraFileHeaderGuid = sqlCommand.Parameters.Add("@FILEHEADERGUID", SqlDbType.UniqueIdentifier);
+            SqlParameter paraUpdEmployeeCode = sqlCommand.Parameters.Add("@UPDEMPLOYEECODE", SqlDbType.NChar);
+            SqlParameter paraUpdAssemblyId1 = sqlCommand.Parameters.Add("@UPDASSEMBLYID1", SqlDbType.NVarChar);
+            SqlParameter paraUpdAssemblyId2 = sqlCommand.Parameters.Add("@UPDASSEMBLYID2", SqlDbType.NVarChar);
+            SqlParameter paraLogicalDeleteCode = sqlCommand.Parameters.Add("@LOGICALDELETECODE", SqlDbType.Int);
+            SqlParameter paraSectionCode = sqlCommand.Parameters.Add("@SECTIONCODE", SqlDbType.NChar);
+            SqlParameter paraSectionGuideNm = sqlCommand.Parameters.Add("@SECTIONGUIDENM", SqlDbType.NVarChar);
+            SqlParameter paraSectionGuideSnm = sqlCommand.Parameters.Add("@SECTIONGUIDESNM", SqlDbType.NVarChar);
+            SqlParameter paraCompanyNameCd1 = sqlCommand.Parameters.Add("@COMPANYNAMECD1", SqlDbType.Int);
+            SqlParameter paraMainOfficeFuncFlag = sqlCommand.Parameters.Add("@MAINOFFICEFUNCFLAG", SqlDbType.Int);
+            SqlParameter paraIntroductionDate = sqlCommand.Parameters.Add("@INTRODUCTIONDATE", SqlDbType.Int);
+            SqlParameter paraSectWarehouseCd1 = sqlCommand.Parameters.Add("@SECTWAREHOUSECD1", SqlDbType.NChar);
+            SqlParameter paraSectWarehouseCd2 = sqlCommand.Parameters.Add("@SECTWAREHOUSECD2", SqlDbType.NChar);
+            SqlParameter paraSectWarehouseCd3 = sqlCommand.Parameters.Add("@SECTWAREHOUSECD3", SqlDbType.NChar);
+
+            //Parameterオブジェクトへ値設定
+            paraCreateDateTime.Value = SqlDataMediator.SqlSetDateTimeFromTicks(dcSecInfoSetWork.CreateDateTime);
+            paraUpdateDateTime.Value = SqlDataMediator.SqlSetDateTimeFromTicks(dcSecInfoSetWork.UpdateDateTime);
+            paraEnterpriseCode.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.EnterpriseCode);
+            paraFileHeaderGuid.Value = SqlDataMediator.SqlSetGuid(dcSecInfoSetWork.FileHeaderGuid);
+            paraUpdEmployeeCode.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.UpdEmployeeCode);
+            paraUpdAssemblyId1.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.UpdAssemblyId1);
+            paraUpdAssemblyId2.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.UpdAssemblyId2);
+            paraLogicalDeleteCode.Value = SqlDataMediator.SqlSetInt32(dcSecInfoSetWork.LogicalDeleteCode);
+            if (string.IsNullOrEmpty(dcSecInfoSetWork.SectionCode.Trim()))
+            {
+                paraSectionCode.Value = dcSecInfoSetWork.SectionCode;
+            }
+            else
+            {
+                paraSectionCode.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.SectionCode);
+            }
+            if (string.IsNullOrEmpty(dcSecInfoSetWork.SectionGuideNm.Trim()))
+            {
+                paraSectionGuideNm.Value = dcSecInfoSetWork.SectionGuideNm;
+            }
+            else
+            {
+                paraSectionGuideNm.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.SectionGuideNm);
+            }
+            if (string.IsNullOrEmpty(dcSecInfoSetWork.SectionGuideSnm.Trim()))
+            {
+                paraSectionGuideSnm.Value = dcSecInfoSetWork.SectionGuideSnm;
+            }
+            else
+            {
+                paraSectionGuideSnm.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.SectionGuideSnm);
+            }
+            paraCompanyNameCd1.Value = SqlDataMediator.SqlSetInt32(dcSecInfoSetWork.CompanyNameCd1);
+            paraMainOfficeFuncFlag.Value = SqlDataMediator.SqlSetInt32(dcSecInfoSetWork.MainOfficeFuncFlag);
+            paraIntroductionDate.Value = SqlDataMediator.SqlSetInt32(dcSecInfoSetWork.IntroductionDate);
+            paraSectWarehouseCd1.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.SectWarehouseCd1);
+            paraSectWarehouseCd2.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.SectWarehouseCd2);
+            paraSectWarehouseCd3.Value = SqlDataMediator.SqlSetString(dcSecInfoSetWork.SectWarehouseCd3);
+
+
+            // 拠点情報設定マスタデータを登録する
+            sqlCommand.ExecuteNonQuery();
+        }
+        #endregion
+
+        // ADD 2011.08.26 ---------->>>>>
+        # region [Clear]DEL by Liangsd     2011/09/06
+        //DEL by Liangsd   2011/09/06----------------->>>>>>>>>>
+        //// Rクラスの MethodでSQL文字が駄目
+        ///// <summary>
+        ///// データクリア
+        ///// </summary>
+        ///// <param name="enterpriseCode">企業コード</param>
+        ///// <param name="sqlConnection">データベース接続情報</param>
+        ///// <param name="sqlTransaction">トランザクション情報</param>
+        ///// <param name="sqlCommand">SQLコメント</param>
+        ///// <returns></returns>
+        //public void Clear(string enterpriseCode, ref SqlConnection sqlConnection, ref SqlTransaction sqlTransaction, ref SqlCommand sqlCommand)
+        //{
+        //    ClearProc(enterpriseCode, ref sqlConnection, ref sqlTransaction, ref sqlCommand);
+        //}
+        ///// <summary>
+        ///// データクリア
+        ///// </summary>
+        ///// <param name="enterpriseCode">企業コード</param>
+        ///// <param name="sqlConnection">データベース接続情報</param>
+        ///// <param name="sqlTransaction">トランザクション情報</param>
+        ///// <param name="sqlCommand">SQLコメント</param>
+        ///// <returns></returns>
+        //private void ClearProc(string enterpriseCode, ref SqlConnection sqlConnection, ref SqlTransaction sqlTransaction, ref SqlCommand sqlCommand)
+        //{
+        //    sqlCommand = new SqlCommand("", sqlConnection, sqlTransaction);
+
+        //    // Deleteコマンドの生成
+        //    sqlCommand.CommandText = "DELETE FROM SECINFOSETRF WHERE ENTERPRISECODERF=@FINDENTERPRISECODE";
+        //    //Prameterオブジェクトの作成
+        //    SqlParameter findParaEnterpriseCode = sqlCommand.Parameters.Add("@FINDENTERPRISECODE", SqlDbType.NChar);
+        //    //Parameterオブジェクトへ値設定
+        //    findParaEnterpriseCode.Value = enterpriseCode;
+
+        //    // 拠点情報設定マスタデータを削除する
+        //    sqlCommand.ExecuteNonQuery();
+        //}
+        //DEL by Liangsd   2011/09/06-----------------<<<<<<<<<<
+        #endregion
+		// ADD 2011.08.26 ----------<<<<<
+    }
+}

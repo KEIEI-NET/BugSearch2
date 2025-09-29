@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="SFCMN00771W.aspx" title="トップページ"  description="お客様へのお知らせのトップページです。">
+      <siteMapNode url="SFCMN00772W.aspx" title="詳細情報"  description="詳細を表示します。" />
+      <siteMapNode url="SFCMN00773W.aspx" title="お知らせ検索"  description="お知らせの検索を行います。" />
+    </siteMapNode>
+</siteMap>

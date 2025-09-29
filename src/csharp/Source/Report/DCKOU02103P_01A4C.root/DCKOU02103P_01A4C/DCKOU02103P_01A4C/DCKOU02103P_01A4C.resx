@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DetailLineName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckPriceDayTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DetailLine.OutputFormat" xml:space="preserve">
+    <value>000000</value>
+  </data>
+  <data name="RetGdsDayTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DisDayTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="NetStcPrcDayTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckPriceDayTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="RetGdsDayTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DisDayTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="NetStcPrcDayTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckPriceDayTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="RetGdsDayTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DisDayTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="NetStcPrcDayTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckPriceMonthTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="RetGdsMonthTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DisDayMonthTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="NetStcPrcMonthTotalGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckPriceMonthTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="RetGdsMonthTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DisDayMonthTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="NetStcPrcMonthTotalTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckPriceMonthTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="RetGdsMonthTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DisDayMonthTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="NetStcPrcMonthTotalZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="StckToriRatioMonthTotalGou.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="StckZaiRatioMonthTotalGou.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="StckZaiRatioDayTotalGou.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="StckToriRatioDayTotalGou.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionGuideNm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SectionCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="CustomerName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CustomerCode.OutputFormat" xml:space="preserve">
+    <value>000000</value>
+  </data>
+  <data name="tb_PrintDate.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tb_PrintPage.OutputFormat" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TextBox19.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox20.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="g_StckPriceDayTotal.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox34.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox35.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDayTotalStockZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox37.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox38.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox39.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthTotalStockZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox41.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox42.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox43.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDayTotalStockTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox45.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox46.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox47.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthTotalStockTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox49.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox50.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox51.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDayTotalStockGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox53.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox54.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox55.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthTotalStockGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDayGoukeiToriRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textDayGoukeiZaiRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textMonthGoukeiZaiRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textMonthGoukeiToriRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SECTOTALTITLE.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox17.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox18.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="s_StckPriceDayTotal.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox59.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySectionStockZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox61.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox62.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox63.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySectionStockTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox65.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox66.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox67.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySectionStockGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox69.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox71.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox72.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthSectionStockZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox74.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox75.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox76.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthSectionStockTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox78.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox79.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox80.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthSectionStockGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox82.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySectionToriRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textDaySectionZaiRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textMonthSectionZaiRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textMonthSectionToriRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="TextBox3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox15.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox16.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="w_StckPriceDayTotal.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox84.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox85.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySupplierStockZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox87.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox88.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox89.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthSupplierStockZai.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox91.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox92.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox93.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySupplierStockTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox95.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox96.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox97.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthSupplierStockTori.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox99.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox100.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox101.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySupplierStockGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox103.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox104.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox105.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textMonthSupplierStockGou.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textDaySupplierToriRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textDaySupplierZaiRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textMonthSupplierZaiRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textMonthSupplierToriRate.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.StyleSheet" xml:space="preserve">
+    <value>font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 128; font-family: ＭＳ 明朝; </value>
+  </data>
+</root>

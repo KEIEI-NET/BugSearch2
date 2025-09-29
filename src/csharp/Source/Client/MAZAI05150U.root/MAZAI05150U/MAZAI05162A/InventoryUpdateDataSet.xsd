@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="InventoryUpdateDataSet" targetNamespace="http://tempuri.org/SalesBulkUpdateDataSet.xsd" xmlns:mstns="http://tempuri.org/SalesBulkUpdateDataSet.xsd" xmlns="http://tempuri.org/SalesBulkUpdateDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="InventoryUpdateDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="InventoryUpdateDataSet" msprop:Generator_DataSetName="InventoryUpdateDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Inventory" msprop:Generator_UserTableName="Inventory" msprop:Generator_RowDeletedName="InventoryRowDeleted" msprop:Generator_RowChangedName="InventoryRowChanged" msprop:Generator_RowClassName="InventoryRow" msprop:Generator_RowChangingName="InventoryRowChanging" msprop:Generator_RowEvArgName="InventoryRowChangeEvent" msprop:Generator_RowEvHandlerName="InventoryRowChangeEventHandler" msprop:Generator_TableClassName="InventoryDataTable" msprop:Generator_TableVarName="tableInventory" msprop:Generator_RowDeletingName="InventoryRowDeleting" msprop:Generator_TablePropName="Inventory">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNo" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_UserColumnName="RowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" type="xs:int" />
+              <xs:element name="RowNoDisplay" msdata:Caption="№" msprop:Generator_UserColumnName="RowNoDisplay" msprop:Generator_ColumnPropNameInRow="RowNoDisplay" msprop:Generator_ColumnVarNameInTable="columnRowNoDisplay" msprop:Generator_ColumnPropNameInTable="RowNoDisplayColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="EnterpriseCode" msprop:Generator_UserColumnName="EnterpriseCode" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnEnterpriseCode" msprop:Generator_ColumnPropNameInTable="EnterpriseCodeColumn" msprop:Generator_ColumnPropNameInRow="EnterpriseCode" type="xs:string" default="" />
+              <xs:element name="GoodsMakerCd" msprop:Generator_UserColumnName="GoodsMakerCd" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerCd" msprop:Generator_ColumnPropNameInRow="GoodsMakerCd" msprop:Generator_ColumnPropNameInTable="GoodsMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="GoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="GoodsNo" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="GoodsNo" msprop:Generator_ColumnPropNameInTable="GoodsNoColumn" msprop:Generator_ColumnVarNameInTable="columnGoodsNo" type="xs:string" default="" />
+              <xs:element name="GoodsName" msdata:Caption="品名" msprop:Generator_UserColumnName="GoodsName" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="GoodsName" msprop:Generator_ColumnPropNameInTable="GoodsNameColumn" msprop:Generator_ColumnVarNameInTable="columnGoodsName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InventorySeqNo" msdata:Caption="棚卸通番" msprop:Generator_UserColumnName="InventorySeqNo" msprop:Generator_ColumnVarNameInTable="columnInventorySeqNo" msprop:Generator_ColumnPropNameInRow="InventorySeqNo" msprop:Generator_ColumnPropNameInTable="InventorySeqNoColumn" type="xs:int" default="0" />
+              <xs:element name="StockUnitPrice" msdata:Caption="原単価" msprop:Generator_UserColumnName="StockUnitPrice" msprop:Generator_ColumnVarNameInTable="columnStockUnitPrice" msprop:Generator_ColumnPropNameInRow="StockUnitPrice" msprop:Generator_ColumnPropNameInTable="StockUnitPriceColumn" type="xs:double" default="0" />
+              <xs:element name="StockTotal" msdata:Caption="帳簿数" msprop:Generator_UserColumnName="StockTotal" msprop:Generator_ColumnVarNameInTable="columnStockTotal" msprop:Generator_ColumnPropNameInRow="StockTotal" msprop:Generator_ColumnPropNameInTable="StockTotalColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="InventoryStockTotal" msdata:Caption="実施日帳簿数" msprop:Generator_UserColumnName="InventoryStockTotal" msprop:Generator_ColumnPropNameInRow="InventoryStockTotal" msprop:Generator_ColumnVarNameInTable="columnInventoryStockTotal" msprop:Generator_ColumnPropNameInTable="InventoryStockTotalColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="InventoryStockCnt" msdata:Caption="棚卸数" msprop:Generator_UserColumnName="InventoryStockCnt" msprop:Generator_ColumnVarNameInTable="columnInventoryStockCnt" msprop:Generator_ColumnPropNameInRow="InventoryStockCnt" msprop:Generator_ColumnPropNameInTable="InventoryStockCntColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="InventoryTolerancCnt" msdata:Caption="過不足数" msprop:Generator_UserColumnName="InventoryTolerancCnt" msprop:Generator_ColumnVarNameInTable="columnInventoryTolerancCnt" msprop:Generator_ColumnPropNameInRow="InventoryTolerancCnt" msprop:Generator_ColumnPropNameInTable="InventoryTolerancCntColumn" type="xs:double" default="0" minOccurs="0" />
+              <xs:element name="SectionCode" msprop:Generator_UserColumnName="SectionCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="SectionCode" msprop:Generator_ColumnPropNameInTable="SectionCodeColumn" msprop:Generator_ColumnVarNameInTable="columnSectionCode" type="xs:string" default="" />
+              <xs:element name="WarehouseCode" msprop:Generator_UserColumnName="WarehouseCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="WarehouseCode" msprop:Generator_ColumnPropNameInTable="WarehouseCodeColumn" msprop:Generator_ColumnVarNameInTable="columnWarehouseCode" type="xs:string" default="" />
+              <xs:element name="WarehouseShelfNo" msdata:Caption="棚番" msprop:Generator_UserColumnName="WarehouseShelfNo" msprop:Generator_ColumnVarNameInTable="columnWarehouseShelfNo" msprop:Generator_ColumnPropNameInRow="WarehouseShelfNo" msprop:Generator_ColumnPropNameInTable="WarehouseShelfNoColumn" type="xs:string" default="" />
+              <xs:element name="CustomerCode" msprop:Generator_UserColumnName="CustomerCode" msprop:Generator_ColumnPropNameInRow="CustomerCode" msprop:Generator_ColumnVarNameInTable="columnCustomerCode" msprop:Generator_ColumnPropNameInTable="CustomerCodeColumn" type="xs:int" default="0" />
+              <xs:element name="ShipCustomerCode" msprop:Generator_UserColumnName="ShipCustomerCode" msprop:Generator_ColumnPropNameInRow="ShipCustomerCode" msprop:Generator_ColumnVarNameInTable="columnShipCustomerCode" msprop:Generator_ColumnPropNameInTable="ShipCustomerCodeColumn" type="xs:int" default="0" />
+              <xs:element name="StockDiv" msprop:Generator_UserColumnName="StockDiv" msprop:Generator_ColumnPropNameInRow="StockDiv" msprop:Generator_ColumnVarNameInTable="columnStockDiv" msprop:Generator_ColumnPropNameInTable="StockDivColumn" type="xs:int" default="0" />
+              <xs:element name="StockDivName" msdata:Caption="在庫区分" msprop:Generator_UserColumnName="StockDivName" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnStockDivName" msprop:Generator_ColumnPropNameInTable="StockDivNameColumn" msprop:Generator_ColumnPropNameInRow="StockDivName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="StockState" msprop:Generator_UserColumnName="StockState" msprop:Generator_ColumnPropNameInRow="StockState" msprop:Generator_ColumnVarNameInTable="columnStockState" msprop:Generator_ColumnPropNameInTable="StockStateColumn" type="xs:int" default="0" />
+              <xs:element name="InventoryNewDiv" msprop:Generator_UserColumnName="InventoryNewDiv" msprop:Generator_ColumnPropNameInRow="InventoryNewDiv" msprop:Generator_ColumnVarNameInTable="columnInventoryNewDiv" msprop:Generator_ColumnPropNameInTable="InventoryNewDivColumn" type="xs:int" default="0" />
+              <xs:element name="WarehouseName" msdata:Caption="倉庫" msprop:Generator_UserColumnName="WarehouseName" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnWarehouseName" msprop:Generator_ColumnPropNameInTable="WarehouseNameColumn" msprop:Generator_ColumnPropNameInRow="WarehouseName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InventoryDataUpdateWork" msprop:Generator_UserColumnName="InventoryDataUpdateWork" msprop:Generator_ColumnVarNameInTable="columnInventoryDataUpdateWork" msprop:Generator_ColumnPropNameInRow="InventoryDataUpdateWork" msprop:Generator_ColumnPropNameInTable="InventoryDataUpdateWorkColumn" type="xs:anyType" minOccurs="0" />
+              <xs:element name="ProcResultState" msprop:Generator_UserColumnName="ProcResultState" msprop:Generator_ColumnPropNameInRow="ProcResultState" msprop:Generator_ColumnVarNameInTable="columnProcResultState" msprop:Generator_ColumnPropNameInTable="ProcResultStateColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ErrorData" msprop:Generator_UserTableName="ErrorData" msprop:Generator_RowDeletedName="ErrorDataRowDeleted" msprop:Generator_RowChangedName="ErrorDataRowChanged" msprop:Generator_RowClassName="ErrorDataRow" msprop:Generator_RowChangingName="ErrorDataRowChanging" msprop:Generator_RowEvArgName="ErrorDataRowChangeEvent" msprop:Generator_RowEvHandlerName="ErrorDataRowChangeEventHandler" msprop:Generator_TableClassName="ErrorDataDataTable" msprop:Generator_TableVarName="tableErrorData" msprop:Generator_RowDeletingName="ErrorDataRowDeleting" msprop:Generator_TablePropName="ErrorData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GoodsMakerCd" msprop:Generator_UserColumnName="GoodsMakerCd" msprop:Generator_ColumnPropNameInRow="GoodsMakerCd" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerCd" msprop:Generator_ColumnPropNameInTable="GoodsMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="GoodsNo" msdata:Caption="品番" msprop:Generator_UserColumnName="GoodsNo" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnGoodsNo" msprop:Generator_ColumnPropNameInTable="GoodsNoColumn" msprop:Generator_ColumnPropNameInRow="GoodsNo" type="xs:string" default="0" />
+              <xs:element name="GoodsName" msdata:Caption="品名" msprop:Generator_UserColumnName="GoodsName" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnGoodsName" msprop:Generator_ColumnPropNameInTable="GoodsNameColumn" msprop:Generator_ColumnPropNameInRow="GoodsName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InventorySeqNo" msdata:Caption="棚卸通番" msprop:Generator_UserColumnName="InventorySeqNo" msprop:Generator_ColumnVarNameInTable="columnInventorySeqNo" msprop:Generator_ColumnPropNameInRow="InventorySeqNo" msprop:Generator_ColumnPropNameInTable="InventorySeqNoColumn" type="xs:int" default="0" />
+              <xs:element name="WarehouseCode" msprop:Generator_UserColumnName="WarehouseCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="WarehouseCode" msprop:Generator_ColumnPropNameInTable="WarehouseCodeColumn" msprop:Generator_ColumnVarNameInTable="columnWarehouseCode" type="xs:string" default="" />
+              <xs:element name="WarehouseName" msdata:Caption="倉庫" msprop:Generator_UserColumnName="WarehouseName" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnWarehouseName" msprop:Generator_ColumnPropNameInTable="WarehouseNameColumn" msprop:Generator_ColumnPropNameInRow="WarehouseName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="WarehouseShelfNo" msdata:Caption="棚番" msprop:Generator_UserColumnName="WarehouseShelfNo" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="WarehouseShelfNo" msprop:Generator_ColumnPropNameInTable="WarehouseShelfNoColumn" msprop:Generator_ColumnVarNameInTable="columnWarehouseShelfNo" type="xs:string" default="" />
+              <xs:element name="Error" msdata:Caption="エラー内容" msprop:Generator_UserColumnName="Error" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnError" msprop:Generator_ColumnPropNameInTable="ErrorColumn" msprop:Generator_ColumnPropNameInRow="Error" type="xs:string" default="0" minOccurs="0" />
+              <xs:element name="ProcResultState" msprop:Generator_UserColumnName="ProcResultState" msprop:Generator_ColumnPropNameInRow="ProcResultState" msprop:Generator_ColumnVarNameInTable="columnProcResultState" msprop:Generator_ColumnPropNameInTable="ProcResultStateColumn" type="xs:int" default="0" />
+              <xs:element name="SectionCode" msprop:Generator_UserColumnName="SectionCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="SectionCode" msprop:Generator_ColumnPropNameInTable="SectionCodeColumn" msprop:Generator_ColumnVarNameInTable="columnSectionCode" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="SectionName" msprop:Generator_UserColumnName="SectionName" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="SectionName" msprop:Generator_ColumnPropNameInTable="SectionNameColumn" msprop:Generator_ColumnVarNameInTable="columnSectionName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InventoryDayString" msprop:Generator_UserColumnName="InventoryDayString" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="InventoryDayString" msprop:Generator_ColumnPropNameInTable="InventoryDayStringColumn" msprop:Generator_ColumnVarNameInTable="columnInventoryDayString" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InventoryNumberInfo" msprop:Generator_UserTableName="InventoryNumberInfo" msprop:Generator_RowDeletedName="InventoryNumberInfoRowDeleted" msprop:Generator_RowChangedName="InventoryNumberInfoRowChanged" msprop:Generator_RowClassName="InventoryNumberInfoRow" msprop:Generator_RowChangingName="InventoryNumberInfoRowChanging" msprop:Generator_RowEvArgName="InventoryNumberInfoRowChangeEvent" msprop:Generator_RowEvHandlerName="InventoryNumberInfoRowChangeEventHandler" msprop:Generator_TableClassName="InventoryNumberInfoDataTable" msprop:Generator_TableVarName="tableInventoryNumberInfo" msprop:Generator_RowDeletingName="InventoryNumberInfoRowDeleting" msprop:Generator_TablePropName="InventoryNumberInfo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GoodsMakerCd" msprop:Generator_UserColumnName="GoodsMakerCd" msprop:Generator_ColumnPropNameInRow="GoodsMakerCd" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerCd" msprop:Generator_ColumnPropNameInTable="GoodsMakerCdColumn" type="xs:int" default="0" />
+              <xs:element name="GoodsNo" msprop:Generator_UserColumnName="GoodsNo" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnGoodsNo" msprop:Generator_ColumnPropNameInTable="GoodsNoColumn" msprop:Generator_ColumnPropNameInRow="GoodsNo" type="xs:string" default="" />
+              <xs:element name="GoodsName" msprop:Generator_UserColumnName="GoodsName" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnGoodsName" msprop:Generator_ColumnPropNameInTable="GoodsNameColumn" msprop:Generator_ColumnPropNameInRow="GoodsName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InventorySeqNo" msprop:Generator_UserColumnName="InventorySeqNo" msprop:Generator_ColumnVarNameInTable="columnInventorySeqNo" msprop:Generator_ColumnPropNameInRow="InventorySeqNo" msprop:Generator_ColumnPropNameInTable="InventorySeqNoColumn" type="xs:int" default="0" />
+              <xs:element name="WarehouseCode" msprop:Generator_UserColumnName="WarehouseCode" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnWarehouseCode" msprop:Generator_ColumnPropNameInTable="WarehouseCodeColumn" msprop:Generator_ColumnPropNameInRow="WarehouseCode" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="WarehouseName" msprop:Generator_UserColumnName="WarehouseName" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnWarehouseName" msprop:Generator_ColumnPropNameInTable="WarehouseNameColumn" msprop:Generator_ColumnPropNameInRow="WarehouseName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="WarehouseShelfNo" msprop:Generator_UserColumnName="WarehouseShelfNo" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnWarehouseShelfNo" msprop:Generator_ColumnPropNameInTable="WarehouseShelfNoColumn" msprop:Generator_ColumnPropNameInRow="WarehouseShelfNo" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="ProcResultState" msprop:Generator_UserColumnName="ProcResultState" msprop:Generator_ColumnPropNameInRow="ProcResultState" msprop:Generator_ColumnVarNameInTable="columnProcResultState" msprop:Generator_ColumnPropNameInTable="ProcResultStateColumn" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="SectionCode" msprop:Generator_UserColumnName="SectionCode" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnSectionCode" msprop:Generator_ColumnPropNameInTable="SectionCodeColumn" msprop:Generator_ColumnPropNameInRow="SectionCode" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="SectionName" msprop:Generator_UserColumnName="SectionName" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnSectionName" msprop:Generator_ColumnPropNameInTable="SectionNameColumn" msprop:Generator_ColumnPropNameInRow="SectionName" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="InventoryDayString" msprop:Generator_UserColumnName="InventoryDayString" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnInventoryDayString" msprop:Generator_ColumnPropNameInTable="InventoryDayStringColumn" msprop:Generator_ColumnPropNameInRow="InventoryDayString" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="IsOverlap" msprop:Generator_UserColumnName="IsOverlap" msprop:Generator_ColumnPropNameInRow="IsOverlap" msprop:Generator_ColumnVarNameInTable="columnIsOverlap" msprop:Generator_ColumnPropNameInTable="IsOverlapColumn" type="xs:boolean" default="false" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Inventory" />
+      <xs:field xpath="mstns:EnterpriseCode" />
+      <xs:field xpath="mstns:GoodsMakerCd" />
+      <xs:field xpath="mstns:GoodsNo" />
+      <xs:field xpath="mstns:InventorySeqNo" />
+      <xs:field xpath="mstns:StockUnitPrice" />
+      <xs:field xpath="mstns:SectionCode" />
+      <xs:field xpath="mstns:WarehouseCode" />
+      <xs:field xpath="mstns:CustomerCode" />
+      <xs:field xpath="mstns:ShipCustomerCode" />
+      <xs:field xpath="mstns:StockDiv" />
+      <xs:field xpath="mstns:StockState" />
+      <xs:field xpath="mstns:InventoryNewDiv" />
+    </xs:unique>
+    <xs:unique name="ErrorData_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ErrorData" />
+      <xs:field xpath="mstns:GoodsMakerCd" />
+      <xs:field xpath="mstns:GoodsNo" />
+      <xs:field xpath="mstns:InventorySeqNo" />
+      <xs:field xpath="mstns:WarehouseCode" />
+      <xs:field xpath="mstns:ProcResultState" />
+    </xs:unique>
+    <xs:unique name="InventoryNumberInfo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:InventoryNumberInfo" />
+      <xs:field xpath="mstns:GoodsMakerCd" />
+      <xs:field xpath="mstns:GoodsNo" />
+      <xs:field xpath="mstns:InventorySeqNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

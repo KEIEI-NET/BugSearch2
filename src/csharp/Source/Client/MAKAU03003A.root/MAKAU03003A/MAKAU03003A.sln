@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKAU03003A", "MAKAU03003A\MAKAU03003A.csproj", "{C68F3AEF-6C88-450B-BC76-5F1328FD5D0B}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MAKAU03003A\\MAKAU03003A.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = MAKAU03003A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C68F3AEF-6C88-450B-BC76-5F1328FD5D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68F3AEF-6C88-450B-BC76-5F1328FD5D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68F3AEF-6C88-450B-BC76-5F1328FD5D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68F3AEF-6C88-450B-BC76-5F1328FD5D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND04102R</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.HandyStockDB">
+            <summary>
+            ハンディターミナル在庫情報取得(通常)リモートオブジェクト
+            </summary>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫情報取得(通常)リモートオブジェクトです。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            <br>Update Note: 陳艶丹</br>
+            <br>Date       : 2017/08/02</br>
+            <br>管理番号   : 11370074-00</br>
+            <br>           : ハンディターミナル二次開発 在庫仕入（出荷・入荷）の対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockDB.#ctor">
+            <summary>
+            ハンディターミナル在庫情報取得(通常)リモートオブジェクトクラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特になし</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockDB.Search(System.Byte[],System.Byte[]@)">
+            <summary>
+            ハンディターミナル在庫情報取得(通常)処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retByte">検索結果</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫情報取得(通常)を検索します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockDB.SearchHandy(System.Byte[],System.Object@)">
+            <summary>
+            ハンディターミナル在庫情報取得(通常)処理
+            </summary>
+            <param name="condByte">検索条件</param>
+            <param name="retByte">検索結果</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫情報取得(通常)を検索します。</br>
+            <br>Programmer : 岸</br>
+            <br>Date       : 2019/11/13</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockDB.SearchProc(Broadleaf.Application.Remoting.ParamData.HandyStockCondWork,Broadleaf.Application.Remoting.ParamData.HandyStockWork@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            指定された条件の在庫情報を戻します
+            </summary>
+            <param name="condWork">検索条件</param>
+            <param name="handyStockWork">検索結果</param>
+            <param name="sqlConnection">SQLコネクション</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 指定された条件の在庫情報を戻します</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockDB.SearchHandyProc(Broadleaf.Application.Remoting.ParamData.HandyStockCondWork,System.Collections.ArrayList@,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            指定された条件の在庫情報を戻します
+            </summary>
+            <param name="condWork">検索条件</param>
+            <param name="handyStockArray">検索結果</param>
+            <param name="sqlConnection">SQLコネクション</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 指定された条件の在庫情報を戻します</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockDB.CopyToHandyStockWorkFromReader(System.Int32[],System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → HandyStockWork
+            </summary>
+            <param name="indexs">列の序数配列</param>
+            <param name="myReader">SqlDataReader</param>
+            <returns>HandyLoginInfoWork</returns>
+            <remarks>
+            <br>Note       : クラス格納処理を行います。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.HandyStockDB.CreateSqlConnection">
+            <summary>
+            SqlConnection生成処理
+            </summary>
+            <returns>SqlConnection</returns>
+            <remarks>
+            <br>Note       : SqlConnectionを生成します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

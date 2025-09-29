@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCJUT04111E", "DCJUT04111E\DCJUT04111E.csproj", "{28C06617-4038-4F48-A224-A8E944533407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCJUT04100U", "DCJUT04100U\DCJUT04100U.csproj", "{E51B66D2-80E3-46DF-AEF3-900E39537850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCJUT04112A", "DCJUT04112A\DCJUT04112A.csproj", "{61E596BA-1722-4DBB-856F-DF822D530904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCJUT04110U", "DCJUT04110U\DCJUT04110U.csproj", "{7BBD8459-F924-45A4-8C61-482A7F50CE57}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DCJUT04100U\\DCJUT04100U.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = DCJUT04100U\\
+		SccProjectUniqueName2 = DCJUT04110U\\DCJUT04110U.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = DCJUT04110U\\
+		SccProjectUniqueName3 = DCJUT04111E\\DCJUT04111E.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = DCJUT04111E\\
+		SccProjectUniqueName4 = DCJUT04112A\\DCJUT04112A.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = DCJUT04112A\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28C06617-4038-4F48-A224-A8E944533407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C06617-4038-4F48-A224-A8E944533407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C06617-4038-4F48-A224-A8E944533407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C06617-4038-4F48-A224-A8E944533407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51B66D2-80E3-46DF-AEF3-900E39537850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E596BA-1722-4DBB-856F-DF822D530904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BBD8459-F924-45A4-8C61-482A7F50CE57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BBD8459-F924-45A4-8C61-482A7F50CE57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BBD8459-F924-45A4-8C61-482A7F50CE57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BBD8459-F924-45A4-8C61-482A7F50CE57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

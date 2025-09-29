@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMPCC09003G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationPccTtlStDB">
+            <summary>
+            PccTtlStDB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスはIPccTtlStDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>             完全スタンドアロンにする場合にはこのクラスで直接PccTtlStDBを</br>
+            <br>             インスタンス化して戻します。</br>
+            <br>Programmer : 葉巧燕</br>
+            <br>Date       : 2011.08.01</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationPccTtlStDB.#ctor">
+            <summary>
+            PccTtlStDB仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 葉巧燕</br>
+            <br>Date       : 2011.08.01</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationPccTtlStDB.GetPccTtlStDB">
+            <summary>
+            IPccTtlStDBインターフェース取得
+            </summary>
+            <returns>IPccTtlStDBオブジェクト</returns>
+        </member>
+    </members>
+</doc>

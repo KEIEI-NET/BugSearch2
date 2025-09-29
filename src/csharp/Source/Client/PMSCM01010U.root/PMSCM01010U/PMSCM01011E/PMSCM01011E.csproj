@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6376B369-9414-4E1B-8E2C-876C1382180C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Application.UIData</RootNamespace>
+    <AssemblyName>PMSCM01011E</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMSCM01011E.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\sfnetasm\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMSCM01011E.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PMKHN09702E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09703A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMSCM01023D, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00002C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00011I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00013C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00021C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN02504E, Version=5.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>R:\sfnetasm\SFCMN02504E.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ISCMAcOdSetDtRecord.cs" />
+    <Compile Include="UserDB\UserSCMAcOdSetDtRecord.cs" />
+    <Compile Include="UserDB\UserSCMAcOdSetDtWrapper.cs" />
+    <Compile Include="UserDB\UserSCMAcOdSetDtWrapperImpl.cs" />
+    <Compile Include="Util\IOWriterUtil.cs" />
+    <Compile Include="ISCMOrderAnswerRecord.cs" />
+    <Compile Include="ISCMOrderCarRecord.cs" />
+    <Compile Include="ISCMOrderDetailRecord.cs" />
+    <Compile Include="ISCMOrderHeaderRecord.cs" />
+    <Compile Include="Properties\PMSCM01011EInfo.cs" />
+    <Compile Include="StubDB\SCMAcOdrData.cs" />
+    <Compile Include="StubDB\SCMAcOdrDtCar.cs" />
+    <Compile Include="StubDB\SCMAcOdrDtlAs.cs" />
+    <Compile Include="StubDB\SCMAcOdrDtlIq.cs" />
+    <Compile Include="StubDB\ScmOdDtAns.cs" />
+    <Compile Include="StubDB\ScmOdDtCar.cs" />
+    <Compile Include="StubDB\ScmOdDtInq.cs" />
+    <Compile Include="StubDB\ScmOdrData.cs" />
+    <Compile Include="UserDB\UserSCMOrderAnswerRecord.cs" />
+    <Compile Include="UserDB\UserSCMOrderAnswerWrapper.cs" />
+    <Compile Include="UserDB\UserSCMOrderAnswerWrapperImpl.cs" />
+    <Compile Include="UserDB\UserSCMOrderCarRecord.cs" />
+    <Compile Include="UserDB\UserSCMOrderCarWrapper.cs" />
+    <Compile Include="UserDB\UserSCMOrderCarWrapperImpl.cs" />
+    <Compile Include="UserDB\UserSCMOrderDetailRecord.cs" />
+    <Compile Include="UserDB\UserSCMOrderDetailWrapper.cs" />
+    <Compile Include="UserDB\UserSCMOrderDetailWrapperImpl.cs" />
+    <Compile Include="UserDB\UserSCMOrderHeaderRecord.cs" />
+    <Compile Include="UserDB\UserSCMOrderHeaderWrapper.cs" />
+    <Compile Include="UserDB\UserSCMOrderHeaderWrapperImpl.cs" />
+    <Compile Include="Util\SCMEntityUtil.cs" />
+    <Compile Include="WebDB\WebSCMAcOdSetDtRecord.cs" />
+    <Compile Include="WebDB\WebSCMAcOdSetDtWrapper.cs" />
+    <Compile Include="WebDB\WebSCMAcOdSetDtWrapperImpl.cs" />
+    <Compile Include="WebDB\WebSCMOrderAnswerRecord.cs" />
+    <Compile Include="WebDB\WebSCMOrderAnswerWrapper.cs" />
+    <Compile Include="WebDB\WebSCMOrderAnswerWrapperImpl.cs" />
+    <Compile Include="WebDB\WebSCMOrderCarRecord.cs" />
+    <Compile Include="WebDB\WebSCMOrderCarWrapper.cs" />
+    <Compile Include="WebDB\WebSCMOrderCarWrapperImpl.cs" />
+    <Compile Include="WebDB\WebSCMOrderDetailRecord.cs" />
+    <Compile Include="WebDB\WebSCMOrderDetailWrapper.cs" />
+    <Compile Include="WebDB\WebSCMOrderDetailWrapperImpl.cs" />
+    <Compile Include="WebDB\WebSCMOrderHeaderRecord.cs" />
+    <Compile Include="WebDB\WebSCMOrderHeaderWrapper.cs" />
+    <Compile Include="WebDB\WebSCMOrderHeaderWrapperImpl.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

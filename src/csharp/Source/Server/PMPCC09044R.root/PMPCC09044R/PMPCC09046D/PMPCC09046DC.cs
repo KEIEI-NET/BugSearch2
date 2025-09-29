@@ -1,0 +1,508 @@
+//****************************************************************************//
+// システム         : PM.NS
+// プログラム名称   : ＰＭＢＬコードマスタメンテ結果ワーク
+// プログラム概要   : ＰＭＢＬコードマスタメンテ結果ワークデータパラメータ
+//----------------------------------------------------------------------------//
+//                (c)Copyright  2011 Broadleaf Co.,Ltd.
+//============================================================================//
+// 履歴
+//----------------------------------------------------------------------------//
+// 管理番号              作成担当 : 自動生成
+// 作 成 日  2011.07.20  修正内容 : 新規作成
+//----------------------------------------------------------------------------//
+// 管理番号              作成担当 : 
+// 修 正 日              修正内容 : 
+//----------------------------------------------------------------------------//
+
+using System;
+using System.Collections;
+using Broadleaf.Library.Data;
+using Broadleaf.Library.Runtime.Serialization;
+
+namespace Broadleaf.Application.Remoting.ParamData
+{
+    /// public class name:   PMBLGdsCdWork
+    /// <summary>
+    ///                      ＰＭＢＬコードマスタメンテ結果ワークワーク
+    /// </summary>
+    /// <remarks>
+    /// <br>note             :   ＰＭＢＬコードマスタメンテ結果ワークワークヘッダファイル</br>
+    /// <br>Programmer       :   自動生成</br>
+    /// <br>Date             :   </br>
+    /// <br>Genarated Date   :   2011.07.20  (CSharp File Generated Date)</br>
+    /// <br>Update Note      :   </br>
+    /// </remarks>
+    [Serializable]
+    [Broadleaf.Library.Runtime.Serialization.CustomSerializationData]
+    public class PMBLGdsCdWork 
+    {
+        /// <summary>作成日時</summary>
+        /// <remarks>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</remarks>
+        private DateTime _createDateTime;
+
+        /// <summary>更新日時</summary>
+        /// <remarks>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</remarks>
+        private DateTime _updateDateTime;
+
+        /// <summary>論理削除区分</summary>
+        /// <remarks>共通ファイルヘッダ(0:有効,1:論理削除,2:保留,3:完全削除)</remarks>
+        private Int32 _logicalDeleteCode;
+
+        /// <summary>問合せ元企業コード</summary>
+        private string _inqOriginalEpCd = "";
+
+        /// <summary>問合せ元拠点コード</summary>
+        private string _inqOriginalSecCd = "";
+
+        /// <summary>問合せ先企業コード</summary>
+        private string _inqOtherEpCd = "";
+
+        /// <summary>問合せ先拠点コード</summary>
+        private string _inqOtherSecCd = "";
+
+        /// <summary>PCC自社コード</summary>
+        /// <remarks>PMの得意先コード</remarks>
+        private Int32 _pccCompanyCode;
+
+        /// <summary>BL商品コード</summary>
+        private Int32 _bLGoodsCode;
+
+        /// <summary>BL商品コード名称（全角）</summary>
+        /// <remarks>(半角全角混在)</remarks>
+        private string _bLGoodsFullName = "";
+
+        /// <summary>BL商品コード名称（半角）</summary>
+        /// <remarks>(半角のみ)</remarks>
+        private string _bLGoodsHalfName = "";
+
+        /// public propaty name  :  CreateDateTime
+        /// <summary>作成日時</summary>
+        /// <value>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</value>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   作成日時</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public DateTime CreateDateTime
+        {
+            get { return _createDateTime; }
+            set { _createDateTime = value; }
+        }
+
+        /// public propaty name  :  UpdateDateTime
+        /// <summary>更新日時</summary>
+        /// <value>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</value>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   更新日時</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public DateTime UpdateDateTime
+        {
+            get { return _updateDateTime; }
+            set { _updateDateTime = value; }
+        }
+
+        /// public propaty name  :  LogicalDeleteCode
+        /// <summary>論理削除区分</summary>
+        /// <value>共通ファイルヘッダ(0:有効,1:論理削除,2:保留,3:完全削除)</value>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   論理削除区分</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public Int32 LogicalDeleteCode
+        {
+            get { return _logicalDeleteCode; }
+            set { _logicalDeleteCode = value; }
+        }
+
+        /// public propaty name  :  InqOriginalEpCd
+        /// <summary>問合せ元企業コード</summary>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   問合せ元企業コード</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public string InqOriginalEpCd
+        {
+            get { return _inqOriginalEpCd; }
+            set { _inqOriginalEpCd = value; }
+        }
+
+        /// public propaty name  :  InqOriginalSecCd
+        /// <summary>問合せ元拠点コード</summary>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   問合せ元拠点コード</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public string InqOriginalSecCd
+        {
+            get { return _inqOriginalSecCd; }
+            set { _inqOriginalSecCd = value; }
+        }
+
+        /// public propaty name  :  InqOtherEpCd
+        /// <summary>問合せ先企業コード</summary>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   問合せ先企業コード</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public string InqOtherEpCd
+        {
+            get { return _inqOtherEpCd; }
+            set { _inqOtherEpCd = value; }
+        }
+
+        /// public propaty name  :  InqOtherSecCd
+        /// <summary>問合せ先拠点コード</summary>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   問合せ先拠点コード</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public string InqOtherSecCd
+        {
+            get { return _inqOtherSecCd; }
+            set { _inqOtherSecCd = value; }
+        }
+
+        /// public propaty name  :  PccCompanyCode
+        /// <summary>PCC自社コード</summary>
+        /// <value>PMの得意先コード</value>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   PCC自社コード</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public Int32 PccCompanyCode
+        {
+            get { return _pccCompanyCode; }
+            set { _pccCompanyCode = value; }
+        }
+
+        /// public propaty name  :  BLGoodsCode
+        /// <summary>BL商品コード</summary>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   BL商品コード</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public Int32 BLGoodsCode
+        {
+            get { return _bLGoodsCode; }
+            set { _bLGoodsCode = value; }
+        }
+
+        /// public propaty name  :  BLGoodsFullName
+        /// <summary>BL商品コード名称（全角）</summary>
+        /// <value>(半角全角混在)</value>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   BL商品コード名称（全角）</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public string BLGoodsFullName
+        {
+            get { return _bLGoodsFullName; }
+            set { _bLGoodsFullName = value; }
+        }
+
+        /// public propaty name  :  BLGoodsHalfName
+        /// <summary>BL商品コード名称（半角）</summary>
+        /// <value>(半角のみ)</value>
+        /// ----------------------------------------------------------------------
+        /// <remarks>
+        /// <br>note             :   BL商品コード名称（半角）</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public string BLGoodsHalfName
+        {
+            get { return _bLGoodsHalfName; }
+            set { _bLGoodsHalfName = value; }
+        }
+
+
+
+        /// <summary>
+        /// ＰＭＢＬコードマスタメンテ結果ワークワークコンストラクタ
+        /// </summary>
+        /// <returns>PMBLGdsCdWorkクラスのインスタンス</returns>
+        /// <remarks>
+        /// <br>Note　　　　　　 :   PMBLGdsCdWorkクラスの新しいインスタンスを生成します</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public PMBLGdsCdWork()
+        {
+        }
+
+    }
+
+    /// <summary>
+    ///  Ver5.10.1.0用のカスタムシライアライザです。
+    /// </summary>
+    /// <returns>PMBLGdsCdWorkクラスのインスタンス(object)</returns>
+    /// <remarks>
+    /// <br>Note　　　　　　 :   PMBLGdsCdWorkクラスのカスタムシリアライザを定義します</br>
+    /// <br>Programer        :   自動生成</br>
+    /// </remarks>
+    public class PMBLGdsCdWork_SerializationSurrogate_For_V51010 : Broadleaf.Library.Runtime.Serialization.ICustomSerializationSurrogate
+    {
+        #region ICustomSerializationSurrogate メンバ
+
+        /// <summary>
+        ///  Ver5.10.1.0用のカスタムシリアライザです
+        /// </summary>
+        /// <remarks>
+        /// <br>Note　　　　　　 :   PMBLGdsCdWorkクラスのカスタムシリアライザを定義します</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public void Serialize(System.IO.BinaryWriter writer, object graph)
+        {
+            // TODO:  PMBLGdsCdWork_SerializationSurrogate_For_V51010.Serialize 実装を追加します。
+            if (writer == null)
+                throw new ArgumentNullException();
+
+            if (graph != null && !(graph is PMBLGdsCdWork || graph is ArrayList || graph is PMBLGdsCdWork[]))
+                throw new ArgumentException(string.Format("graphが{0}のインスタンスでありません", typeof(PMBLGdsCdWork).FullName));
+
+            if (graph != null && graph is PMBLGdsCdWork)
+            {
+                Type t = graph.GetType();
+                if (!CustomFormatterServices.NeedCustomSerialization(t))
+                    throw new ArgumentException(string.Format("graphの型:{0}がカスタムシリアライズの対象でありません", t.FullName));
+            }
+
+            //SerializationTypeInfo
+            Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo serInfo = new Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo(", Version=5.10.1.0, Culture=neutral, publicKeyToken=null", "Broadleaf.Application.Remoting.ParamData.PMBLGdsCdWork");
+
+            //繰り返し数の判定を行います。この部分は適宜業務要件に応じて行ってください。
+            int occurrence = 0;     //一般にゼロの場合もありえます
+            if (graph is ArrayList)
+            {
+                serInfo.RetTypeInfo = 0;
+                occurrence = ((ArrayList)graph).Count;
+            }
+            else if (graph is PMBLGdsCdWork[])
+            {
+                serInfo.RetTypeInfo = 2;
+                occurrence = ((PMBLGdsCdWork[])graph).Length;
+            }
+            else if (graph is PMBLGdsCdWork)
+            {
+                serInfo.RetTypeInfo = 1;
+                occurrence = 1;
+            }
+
+            serInfo.Occurrence = occurrence;		 //繰り返し数	
+
+            //作成日時
+            serInfo.MemberInfo.Add(typeof(Int64)); //CreateDateTime
+            //更新日時
+            serInfo.MemberInfo.Add(typeof(Int64)); //UpdateDateTime
+            //論理削除区分
+            serInfo.MemberInfo.Add(typeof(Int32)); //LogicalDeleteCode
+            //問合せ元企業コード
+            serInfo.MemberInfo.Add(typeof(string)); //InqOriginalEpCd
+            //問合せ元拠点コード
+            serInfo.MemberInfo.Add(typeof(string)); //InqOriginalSecCd
+            //問合せ先企業コード
+            serInfo.MemberInfo.Add(typeof(string)); //InqOtherEpCd
+            //問合せ先拠点コード
+            serInfo.MemberInfo.Add(typeof(string)); //InqOtherSecCd
+            //PCC自社コード
+            serInfo.MemberInfo.Add(typeof(Int32)); //PccCompanyCode
+            //BL商品コード
+            serInfo.MemberInfo.Add(typeof(Int32)); //BLGoodsCode
+            //BL商品コード名称（全角）
+            serInfo.MemberInfo.Add(typeof(string)); //BLGoodsFullName
+            //BL商品コード名称（半角）
+            serInfo.MemberInfo.Add(typeof(string)); //BLGoodsHalfName
+
+
+
+            serInfo.Serialize(writer, serInfo);
+            if (graph is PMBLGdsCdWork)
+            {
+                PMBLGdsCdWork temp = (PMBLGdsCdWork)graph;
+
+                SetPMBLGdsCdWork(writer, temp);
+            }
+            else
+            {
+                ArrayList lst = null;
+                if (graph is PMBLGdsCdWork[])
+                {
+                    lst = new ArrayList();
+                    lst.AddRange((PMBLGdsCdWork[])graph);
+                }
+                else
+                {
+                    lst = (ArrayList)graph;
+                }
+
+                foreach (PMBLGdsCdWork temp in lst)
+                {
+                    SetPMBLGdsCdWork(writer, temp);
+                }
+
+            }
+
+
+        }
+
+
+        /// <summary>
+        /// PMBLGdsCdWorkメンバ数(publicプロパティ数)
+        /// </summary>
+        private const int currentMemberCount = 11;
+
+        /// <summary>
+        ///  PMBLGdsCdWorkインスタンス書き込み
+        /// </summary>
+        /// <remarks>
+        /// <br>Note　　　　　　 :   PMBLGdsCdWorkのインスタンスを書き込み</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        private void SetPMBLGdsCdWork(System.IO.BinaryWriter writer, PMBLGdsCdWork temp)
+        {
+            //作成日時
+            writer.Write((Int64)temp.CreateDateTime.Ticks);
+            //更新日時
+            writer.Write((Int64)temp.UpdateDateTime.Ticks);
+            //論理削除区分
+            writer.Write((Int32)temp.LogicalDeleteCode);
+            //問合せ元企業コード
+            writer.Write(temp.InqOriginalEpCd.Trim());	//@@@@20230303
+            //問合せ元拠点コード
+            writer.Write(temp.InqOriginalSecCd);
+            //問合せ先企業コード
+            writer.Write(temp.InqOtherEpCd);
+            //問合せ先拠点コード
+            writer.Write(temp.InqOtherSecCd);
+            //PCC自社コード
+            writer.Write((Int32)temp.PccCompanyCode);
+            //BL商品コード
+            writer.Write((Int32)temp.BLGoodsCode);
+            //BL商品コード名称（全角）
+            writer.Write(temp.BLGoodsFullName);
+            //BL商品コード名称（半角）
+            writer.Write(temp.BLGoodsHalfName);
+
+
+        }
+
+        /// <summary>
+        ///  PMBLGdsCdWorkインスタンス取得
+        /// </summary>
+        /// <returns>PMBLGdsCdWorkクラスのインスタンス</returns>
+        /// <remarks>
+        /// <br>Note　　　　　　 :   PMBLGdsCdWorkのインスタンスを取得します</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        private PMBLGdsCdWork GetPMBLGdsCdWork(System.IO.BinaryReader reader, Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo serInfo)
+        {
+            // V5.1.0.0なので不要ですが、V5.1.0.1以降では
+            // serInfo.MemberInfo.Count < currentMemberCount
+            // のケースについての配慮が必要になります。
+
+            PMBLGdsCdWork temp = new PMBLGdsCdWork();
+
+            //作成日時
+            temp.CreateDateTime = new DateTime(reader.ReadInt64());
+            //更新日時
+            temp.UpdateDateTime = new DateTime(reader.ReadInt64());
+            //論理削除区分
+            temp.LogicalDeleteCode = reader.ReadInt32();
+            //問合せ元企業コード
+            temp.InqOriginalEpCd = reader.ReadString().Trim();//@@@@20230303
+            //問合せ元拠点コード
+            temp.InqOriginalSecCd = reader.ReadString();
+            //問合せ先企業コード
+            temp.InqOtherEpCd = reader.ReadString();
+            //問合せ先拠点コード
+            temp.InqOtherSecCd = reader.ReadString();
+            //PCC自社コード
+            temp.PccCompanyCode = reader.ReadInt32();
+            //BL商品コード
+            temp.BLGoodsCode = reader.ReadInt32();
+            //BL商品コード名称（全角）
+            temp.BLGoodsFullName = reader.ReadString();
+            //BL商品コード名称（半角）
+            temp.BLGoodsHalfName = reader.ReadString();
+
+
+
+            //以下は読み飛ばしです。このバージョンが想定する EmployeeWork型以降のバージョンの
+            //データをデシリアライズする場合、シリアライズしたフォーマッタが記述した
+            //型情報にしたがって、ストリームから情報を読み出します...といっても
+            //読み出して捨てることになります。
+            for (int k = currentMemberCount; k < serInfo.MemberInfo.Count; ++k)
+            {
+                //byte[],char[]をデシリアライズする直前に、そのlengthが
+                //デシリアライズされているケースがある、byte[],char[]の
+                //デシリアライズにはlengthが必要なのでint型のデータをデ
+                //シリアライズした場合は、この値をこの変数に退避します。
+                int optCount = 0;
+                object oMemberType = serInfo.MemberInfo[k];
+                if (oMemberType is Type)
+                {
+                    Type t = (Type)oMemberType;
+                    object oData = TypeDeserializer.DeserializePrimitiveType(reader, t, optCount);
+                    if (t.Equals(typeof(int)))
+                    {
+                        optCount = Convert.ToInt32(oData);
+                    }
+                    else
+                    {
+                        optCount = 0;
+                    }
+                }
+                else if (oMemberType is string)
+                {
+                    Broadleaf.Library.Runtime.Serialization.ICustomSerializationSurrogate formatter = CustomFormatterServices.GetSurrogate((string)oMemberType);
+                    object userData = formatter.Deserialize(reader);  //読み飛ばし
+                }
+            }
+            return temp;
+        }
+
+        /// <summary>
+        ///  Ver5.10.1.0用のカスタムデシリアライザです
+        /// </summary>
+        /// <returns>PMBLGdsCdWorkクラスのインスタンス(object)</returns>
+        /// <remarks>
+        /// <br>Note　　　　　　 :   PMBLGdsCdWorkクラスのカスタムデシリアライザを定義します</br>
+        /// <br>Programer        :   自動生成</br>
+        /// </remarks>
+        public object Deserialize(System.IO.BinaryReader reader)
+        {
+            object retValue = null;
+            Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo serInfo = TypeSerializationInfo.DeserializedObject(reader);
+            ArrayList lst = new ArrayList();
+            for (int cnt = 0; cnt < serInfo.Occurrence; ++cnt)
+            {
+                PMBLGdsCdWork temp = GetPMBLGdsCdWork(reader, serInfo);
+                lst.Add(temp);
+            }
+            switch (serInfo.RetTypeInfo)
+            {
+                case 0:
+                    retValue = lst;
+                    break;
+                case 1:
+                    retValue = lst[0];
+                    break;
+                case 2:
+                    retValue = (PMBLGdsCdWork[])lst.ToArray(typeof(PMBLGdsCdWork));
+                    break;
+            }
+            return retValue;
+        }
+
+        #endregion
+    }
+
+}

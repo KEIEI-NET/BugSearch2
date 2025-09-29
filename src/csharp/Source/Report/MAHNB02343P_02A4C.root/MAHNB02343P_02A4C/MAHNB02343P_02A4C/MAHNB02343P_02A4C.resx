@@ -1,0 +1,1557 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SalesCode.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="BLGoodsCode.OutputFormat" xml:space="preserve">
+    <value>00000</value>
+  </data>
+  <data name="GoodsNo.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ListPriceTaxExcFl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ShipmentCnt.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="SalesUnitCost.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="SalesUnPrcTaxExcFl.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SupplierCd.OutputFormat" xml:space="preserve">
+    <value>000000</value>
+  </data>
+  <data name="SupplierSlipNo.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrossMarginMarkDtl.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GrossMarginRateDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Tax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ConsTaxLayMethod.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TaxationDivCd.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SalesSlipCdDtl.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AutoAnswer.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ConsTaxRate.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="CustSlipNo.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RetGoodsReasonDiv.OutputFormat" xml:space="preserve">
+    <value>0000</value>
+  </data>
+  <data name="ModelFullName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FullModel.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CarMngCode.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FirstEntryDate.OutputFormat" xml:space="preserve">
+    <value>yyyy/MM</value>
+  </data>
+  <data name="CustomerCode.OutputFormat" xml:space="preserve">
+    <value>00000000</value>
+  </data>
+  <data name="SalesSlipName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SalesInputName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SalesDate.OutputFormat" xml:space="preserve">
+    <value>yyyy/MM/dd</value>
+  </data>
+  <data name="AddUpADate.OutputFormat" xml:space="preserve">
+    <value>yyyy/MM/dd</value>
+  </data>
+  <data name="FrontEmployeeNm.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SearchSlipDate.OutputFormat" xml:space="preserve">
+    <value>yyyy/MM/dd</value>
+  </data>
+  <data name="SalesAreaName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BusinessTypeName.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PartySaleSlipNum.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DATE.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PAGE.OutputFormat" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Cheaking.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TextBox37.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox39.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox40.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox41.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox42.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox2.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Section_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Section_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Section_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Section_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Section_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Section_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Section_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer1Field.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer1_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="textBox15.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox26.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox45.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox46.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox58.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox59.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer1_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer1_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer1_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer1_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer1_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer1_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer2Field.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer2_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="f2_SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f2_DistTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f2_ReturnTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f2_SalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f2_PureSalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f2_ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer2_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer2_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer2_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer2_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer2_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer2_SalesDtlTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer2_ConsTaxLayMethod.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer3_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer3_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer3_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="f3_SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f3_DistTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f3_ReturnTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f3_SalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f3_PureSalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f3_ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3Field.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer3_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer3_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer3_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer3_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer3_SalesDtlTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer3_ConsTaxLayMethod.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox31.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox33.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox34.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox35.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox47.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox7.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Grand_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Grand_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Grand_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Grand_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Grand_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Grand_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Grand_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LogicalDeleteCode.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer5_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer5_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="f5_SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_DistTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_ReturnTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_SalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_PureSalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5Field.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer5_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer5_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer5_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer5_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer5_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer5_SalesDtlTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_ConsTaxLayMethod.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="f5_TaxRate1SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate1SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate1SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_TaxRate2SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_OtherSalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_TaxRate1SalesCountnumberDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_TaxRate2SalesCountnumberDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_OtherSalesCountnumberDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate2SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate2SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_OtherSalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_OtherSalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_TaxRate1ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate1ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate1ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_TaxRate2ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_OtherReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_TaxRate1ReturnSalesCountDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_TaxRate2ReturnSalesCountDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f5_OtherReturnSalesCountDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate2ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_TaxRate2ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_OtherReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer5_OtherReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox3.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox6.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox11.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox13.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer6_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="f6_SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_DistTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_ReturnTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_SalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_PureSalesTtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6Field.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer6_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer6_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer6_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer6_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer6_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer6_SalesDtlTax.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_ConsTaxLayMethod.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="f6_TaxRate1SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate1SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate1SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_TaxRate2SalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_OtherSalesCountnumberDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_TaxRate1SalesCountnumberDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_TaxRate2SalesCountnumberDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_OtherSalesCountnumberDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate2SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate2SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_OtherSalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_OtherSalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_TaxRate1ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate1ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate1ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_TaxRate2ReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_OtherReturnSalesCountDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_TaxRate1ReturnSalesCountDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_TaxRate2ReturnSalesCountDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="f6_OtherReturnSalesCountDtllbl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate2ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_TaxRate2ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_OtherReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer6_OtherReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox14.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox16.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox17.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox18.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox19.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox20.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox21.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox22.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer7_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="textBox131.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox134.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox135.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox136.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox139.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox140.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7Field.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer7_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer7_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer7_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Footer7_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Footer7_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox158.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate1SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate1SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox161.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox162.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox163.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox164.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox165.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate2SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate2SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_OtherSalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_OtherSalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox170.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate1ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate1ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox173.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox174.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox175.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox176.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox177.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate2ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_TaxRate2ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_OtherReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Footer7_OtherReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox23.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox24.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox25.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox27.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox28.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox29.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox30.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox32.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Grand2_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="textBox184.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox187.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox188.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox189.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox192.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox193.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox198.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Grand2_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Grand2_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Grand2_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Grand2_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Grand2_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox211.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate1SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate1SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox214.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox215.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox216.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox217.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox218.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate2SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate2SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_OtherSalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_OtherSalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox223.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate1ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate1ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox226.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox227.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox228.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox229.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox230.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate2ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_TaxRate2ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_OtherReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Grand2_OtherReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox53.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox54.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox55.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox56.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox57.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox60.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox61.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox62.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TotalGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Section2_TotalGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="textBox237.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox240.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox241.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox242.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_Cost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_SalesMoneyTaxExc.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox245.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox246.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_DistDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_SalesReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_DistDtlCost.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox251.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_SalesGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_ReturnGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_DistGrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_GrossProfitDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_SalesGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Section2_SalesGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Section2_ReturnGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Section2_ReturnGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Section2_DistGrossMarginRate.OutputFormat" xml:space="preserve">
+    <value>#,##0.00</value>
+  </data>
+  <data name="Section2_DistGrossMarginMark.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox264.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate1SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate1SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox267.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox268.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox269.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox270.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox271.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate2SalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate2SalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_OtherSalesCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_OtherSalesDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox276.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate1ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate1ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox279.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox280.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox281.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox282.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox283.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate2ReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_TaxRate2ReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_OtherReturnCostDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="Section2_OtherReturnDtl.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox36.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox38.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox43.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox44.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox49.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox50.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox51.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="textBox52.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.StyleSheet" xml:space="preserve">
+    <value>font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 128; font-family: ＭＳ 明朝; </value>
+  </data>
+</root>

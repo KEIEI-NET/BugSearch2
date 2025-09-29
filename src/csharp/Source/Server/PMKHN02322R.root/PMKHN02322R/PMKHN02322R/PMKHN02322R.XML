@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN02322R</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.TextOutPutOprtnHisLogDB">
+            <summary>
+            テキスト出力操作ログ登録処理DBリモートオブジェクト
+            </summary>
+            <remarks>
+            <br>Note       : テキスト出力操作ログ登録処理を行う</br>
+            <br>Programmer : 田建委</br>
+            <br>Date       : K2019/08/12</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.TextOutPutOprtnHisLogDB.#ctor">
+            <summary>
+            テキスト出力操作ログ登録処理DBリモートオブジェクトクラス
+            </summary>
+            <remarks>
+            <br>Note       : テキスト出力操作ログ登録処理DBリモートオブジェクトクラス</br>
+            <br>Programmer : 田建委</br>
+            <br>Date       : K2019/08/12</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.TextOutPutOprtnHisLogDB.Write(System.Object@,System.String@)">
+            <summary>
+            テキスト出力操作ログを登録する
+            </summary>
+            <param name="textOutPutOprtnHisLogWorkObj">登録用対象ワーク</param>
+            <param name="errMsg">エラーメッセージ</param>
+            <returns>実行結果状態</returns>
+            <remarks>
+            <br>Note       : テキスト出力操作ログ登録処理を行う</br>
+            <br>Programmer : 田建委</br>
+            <br>Date       : K2019/08/12</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.TextOutPutOprtnHisLogDB.WriteTextOutPutOprtnHisLogProc(Broadleaf.Application.Remoting.ParamData.TextOutPutOprtnHisLogWork@,System.Data.SqlClient.SqlConnection@,System.Data.SqlClient.SqlTransaction@,System.String@)">
+            <summary>
+            テキスト出力操作ログを登録する
+            </summary>
+            <param name="textOutPutOprtnHisLogWork">登録用対象ワーク</param>
+            <param name="sqlConnection">コネクション</param>
+            <param name="sqlTransaction">トランザクション</param>
+            <param name="errMsg">エラーメッセージ</param>
+            <returns>実行結果状態</returns>
+            <remarks>
+            <br>Note       : テキスト出力操作ログ登録処理を行う</br>
+            <br>Programmer : 田建委</br>
+            <br>Date       : K2019/08/12</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.TextOutPutOprtnHisLogDB.CreateSqlConnection(System.Boolean)">
+            <summary>
+            コネクション生成処理
+            </summary>
+            <param name="open">true:DBへ接続する　false:DBへ接続しない</param>
+            <returns>生成されたコネクション、生成に失敗した場合はNullを返す。</returns>
+            <remarks>
+            <br>Note       : コネクション生成処理を行う</br>
+            <br>Programmer : 田建委</br>
+            <br>Date       : K2019/08/12</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.TextOutPutOprtnHisLogDB.CreateTransaction(System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            トランザクション生成処理
+            </summary>
+            <param name="sqlconnection"></param>
+            <returns>生成されたトランザクション、生成に失敗した場合はNullを返す。</returns>
+            <remarks>
+            <br>Note       : トランザクション生成処理を行う</br>
+            <br>Programmer : 田建委</br>
+            <br>Date       : K2019/08/12</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

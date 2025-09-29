@@ -1,0 +1,171 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{61DE4933-9617-45B3-AE18-524B652D3DD6}</ProjectGuid>
+			<MainSource>HSS100.dpk</MainSource>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">リリース</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='リリース' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='デバッグ' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_Description>High Speed Super Package 10.0</DCC_Description>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_UNIT_DEPRECATED>false</DCC_UNIT_DEPRECATED>
+			<DCC_UNIT_LIBRARY>false</DCC_UNIT_LIBRARY>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_BplOutput>C:\DevSrc\RC.NS\HSS100\標準パッケージ\実行時パッケージ(インストーラー用)\</DCC_BplOutput>
+			<DCC_DependencyCheckOutputName>C:\DevSrc\RC.NS\HSS100\標準パッケージ\実行時パッケージ(インストーラー用)\HSS100.bpl</DCC_DependencyCheckOutputName>
+			<BRCC_EnableMultiByte>true</BRCC_EnableMultiByte>
+			<DCC_DcuOutput>C:\DevSrc\RC.NS\HSS100\標準パッケージ\DCU\</DCC_DcuOutput>
+			<GenDll>true</GenDll>
+			<DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
+			<DCC_DcpOutput>C:\DevSrc\RC.NS\HSS100\標準パッケージ\LIB\</DCC_DcpOutput>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_SYMBOL_DEPRECATED>false</DCC_SYMBOL_DEPRECATED>
+			<DCC_UNIT_PLATFORM>false</DCC_UNIT_PLATFORM>
+			<GenPackage>true</GenPackage>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_DependencyCheckOutputName>実行時パッケージ(インストーラー用)\HSS100.bpl</DCC_DependencyCheckOutputName>
+			<DCC_DcpOutput>WORK(実行時用PKG用)\</DCC_DcpOutput>
+			<DCC_BplOutput>実行時パッケージ(インストーラー用)\</DCC_BplOutput>
+			<DCC_DcuOutput>WORK(実行時用PKG用)\</DCC_DcuOutput>
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_DependencyCheckOutputName>設計時パッケージ(開発用)\HSS100.bpl</DCC_DependencyCheckOutputName>
+			<DCC_BplOutput>設計時パッケージ(開発用)\</DCC_BplOutput>
+			<DCC_DcpOutput>LIB\</DCC_DcpOutput>
+			<DCC_DcuOutput>DCU\</DCC_DcuOutput>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="HSS100.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="HSS100.DCR"/>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="vclx.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="dbrtl.dcp"/>
+			<DCCReference Include="adortl.dcp"/>
+			<DCCReference Include="dsnap.dcp"/>
+			<DCCReference Include="vclimg.dcp"/>
+			<DCCReference Include="asgd2010.dcp"/>
+			<DCCReference Include="PAS\HVersion.pas"/>
+			<DCCReference Include="PAS\HCheckListBox.pas"/>
+			<DCCReference Include="PAS\HComBox.pas"/>
+			<DCCReference Include="PAS\HDate.pas"/>
+			<DCCReference Include="PAS\Hdblbtn.pas"/>
+			<DCCReference Include="PAS\HDedit.pas"/>
+			<DCCReference Include="PAS\HDlgForm.pas">
+				<Form>HDlgFormF</Form>
+			</DCCReference>
+			<DCCReference Include="PAS\HDllCall.pas"/>
+			<DCCReference Include="PAS\HDspHelpPara.pas"/>
+			<DCCReference Include="PAS\HDSPVERPARA.PAS"/>
+			<DCCReference Include="PAS\HEdit.pas"/>
+			<DCCReference Include="PAS\HFocus.pas"/>
+			<DCCReference Include="PAS\HFrame.pas"/>
+			<DCCReference Include="PAS\HFslLib.pas"/>
+			<DCCReference Include="PAS\HFuncKey.pas"/>
+			<DCCReference Include="PAS\HHlpSct.pas"/>
+			<DCCReference Include="PAS\HImage.pas"/>
+			<DCCReference Include="PAS\HInitProc.pas"/>
+			<DCCReference Include="PAS\HLabel.pas"/>
+			<DCCReference Include="PAS\HLib.pas"/>
+			<DCCReference Include="PAS\Hline.pas"/>
+			<DCCReference Include="PAS\HMemPos.pas"/>
+			<DCCReference Include="PAS\Hreg.pas"/>
+			<DCCReference Include="PAS\HRSC2Ctl.pas"/>
+			<DCCReference Include="PAS\HRscCtl.pas"/>
+			<DCCReference Include="PAS\HShrPara.pas"/>
+			<DCCReference Include="PAS\HSpdExtBtn.pas"/>
+			<DCCReference Include="PAS\HADOACS.pas"/>
+			<DCCReference Include="PAS\HTable.pas"/>
+			<DCCReference Include="PAS\HTreeView.pas"/>
+			<DCCReference Include="PAS\HGRIDS.PAS"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="デバッグ">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="リリース">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="DebugCWD">C:\Program Files\Recycle</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">10</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1041</VersionInfo>
+						<VersionInfo Name="CodePage">932</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Broadleaf Co.,Ltd.</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">High Speed Super Package</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">10.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">HSS100</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">(c) 2009 Broadleaf Co.,Ltd.</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks">High Speed Super Package</VersionInfoKeys>
+						<VersionInfoKeys Name="OriginalFilename">HSS100</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductName">High Speed Super Package</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclwebsnap140.bpl">Embarcadero WebSnap コンポーネント</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclwbm140.bpl">Embarcadero InternetExpress コンポーネント</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclnet140.bpl">Embarcadero インターネット コンポーネント</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclsoap140.bpl">Embarcadero SOAP コンポーネント</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k140.bpl">Microsoft Office 2000 オートメーション サーバー ラッパー コンポーネントのサンプル</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclofficexp140.bpl">Microsoft Office XP オートメーション サーバー ラッパー コンポーネントのサンプル</Excluded_Packages>
+					</Excluded_Packages>
+					<Source>
+						<Source Name="MainSource">HSS100.dpk</Source>
+					</Source>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

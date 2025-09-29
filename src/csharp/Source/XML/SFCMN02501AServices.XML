@@ -1,0 +1,1879 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SFCMN02501AServices</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Web.Services.SFCMN02501AServices">
+            <summary>
+            WEBサービスプロキシクラス
+            </summary>
+        </member>
+        <member name="T:SFCMN02501AAUTO">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteInqWithCar(System.String,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtInqWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginWriteInqWithCar(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtInqWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndWriteInqWithCar(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtInqWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteInqWithCarAsync(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtInqWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteInqWithCarAsync(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtInqWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateRcvDateTime(System.String,ScmOdrDataWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginUpdateRcvDateTime(System.String,ScmOdrDataWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndUpdateRcvDateTime(System.IAsyncResult,ScmOdrDataWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateRcvDateTimeAsync(System.String,ScmOdrDataWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateRcvDateTimeAsync(System.String,ScmOdrDataWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCar(System.String,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtAnsWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginWriteAnsWithCar(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndWriteAnsWithCar(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtAnsWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCarAsync(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCarAsync(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadWithCar(System.String,ScmOdReadParamWork,ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,ScmOdDtCarWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginReadWithCar(System.String,ScmOdReadParamWork,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndReadWithCar(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,ScmOdDtCarWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadWithCarAsync(System.String,ScmOdReadParamWork)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadWithCarAsync(System.String,ScmOdReadParamWork,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchWithCar(System.String,ScmOdSrchParamWork,SCMAnsListSrchRstWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginSearchWithCar(System.String,ScmOdSrchParamWork,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndSearchWithCar(System.IAsyncResult,SCMAnsListSrchRstWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchWithCarAsync(System.String,ScmOdSrchParamWork)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchWithCarAsync(System.String,ScmOdSrchParamWork,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchCntWithCar(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.Int32@,System.Int32@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginSearchCntWithCar(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndSearchCntWithCar(System.IAsyncResult,System.Int32@,System.Int32@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchCntWithCarAsync(System.String,ScmPopParamWork,ScmPopParamDtlWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchCntWithCarAsync(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchCntWithCar2(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.Int32@,System.Int32@,System.DateTime@,System.Int32@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginSearchCntWithCar2(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndSearchCntWithCar2(System.IAsyncResult,System.Int32@,System.Int32@,System.DateTime@,System.Int32@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchCntWithCar2Async(System.String,ScmPopParamWork,ScmPopParamDtlWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchCntWithCar2Async(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchScmOdrDataForPop(System.String,ScmPopParamWork,ScmPopParamDtlWork[],ScmOdrDataWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginSearchScmOdrDataForPop(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndSearchScmOdrDataForPop(System.IAsyncResult,ScmOdrDataWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchScmOdrDataForPopAsync(System.String,ScmPopParamWork,ScmPopParamDtlWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.SearchScmOdrDataForPopAsync(System.String,ScmPopParamWork,ScmPopParamDtlWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteInqWithCar2(System.String,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtInqWork[]@,System.Boolean,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginWriteInqWithCar2(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtInqWork[],System.Boolean,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndWriteInqWithCar2(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtInqWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteInqWithCar2Async(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtInqWork[],System.Boolean)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteInqWithCar2Async(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtInqWork[],System.Boolean,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCar2(System.String,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtAnsWork[]@,System.Boolean,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginWriteAnsWithCar2(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],System.Boolean,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndWriteAnsWithCar2(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtAnsWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCar2Async(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],System.Boolean)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCar2Async(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],System.Boolean,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDtlTakeinDivCd(System.String,ScmOdDtCarWork,ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginUpdateDtlTakeinDivCd(System.String,ScmOdDtCarWork,ScmOdrDataWork[],ScmOdDtInqWork[],ScmOdDtAnsWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndUpdateDtlTakeinDivCd(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDtlTakeinDivCdAsync(System.String,ScmOdDtCarWork,ScmOdrDataWork[],ScmOdDtInqWork[],ScmOdDtAnsWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDtlTakeinDivCdAsync(System.String,ScmOdDtCarWork,ScmOdrDataWork[],ScmOdDtInqWork[],ScmOdDtAnsWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateJudgementDate(System.String,System.Int32,ScmJudgeDtUpdParamWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginUpdateJudgementDate(System.String,System.Int32,ScmJudgeDtUpdParamWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndUpdateJudgementDate(System.IAsyncResult,ScmJudgeDtUpdParamWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateJudgementDateAsync(System.String,System.Int32,ScmJudgeDtUpdParamWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateJudgementDateAsync(System.String,System.Int32,ScmJudgeDtUpdParamWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadWithCar2(System.String,ScmOdReadParamWork[],ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,ScmOdDtCarWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginReadWithCar2(System.String,ScmOdReadParamWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndReadWithCar2(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,ScmOdDtCarWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadWithCar2Async(System.String,ScmOdReadParamWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadWithCar2Async(System.String,ScmOdReadParamWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadScmOdSetDt(ScmOdSetDtWork,ScmOdSetDtWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginReadScmOdSetDt(ScmOdSetDtWork,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndReadScmOdSetDt(System.IAsyncResult,ScmOdSetDtWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadScmOdSetDtAsync(ScmOdSetDtWork)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.ReadScmOdSetDtAsync(ScmOdSetDtWork,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.CheckScmOdrDataFixed(System.String,ScmOdrDataWork,System.Boolean@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginCheckScmOdrDataFixed(System.String,ScmOdrDataWork,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndCheckScmOdrDataFixed(System.IAsyncResult,System.Boolean@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.CheckScmOdrDataFixedAsync(System.String,ScmOdrDataWork)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.CheckScmOdrDataFixedAsync(System.String,ScmOdrDataWork,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDtlTakeinDivCd2(System.String,ScmOdDtCarWork[],ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginUpdateDtlTakeinDivCd2(System.String,ScmOdDtCarWork[],ScmOdrDataWork[],ScmOdDtInqWork[],ScmOdDtAnsWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndUpdateDtlTakeinDivCd2(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtInqWork[]@,ScmOdDtAnsWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDtlTakeinDivCd2Async(System.String,ScmOdDtCarWork[],ScmOdrDataWork[],ScmOdDtInqWork[],ScmOdDtAnsWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDtlTakeinDivCd2Async(System.String,ScmOdDtCarWork[],ScmOdrDataWork[],ScmOdDtInqWork[],ScmOdDtAnsWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCar3(System.String,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtAnsWork[]@,ScmOdSetDtWork[]@,System.Boolean,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginWriteAnsWithCar3(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],ScmOdSetDtWork[],System.Boolean,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndWriteAnsWithCar3(System.IAsyncResult,ScmOdrDataWork[]@,ScmOdDtCarWork@,ScmOdDtAnsWork[]@,ScmOdSetDtWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCar3Async(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],ScmOdSetDtWork[],System.Boolean)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.WriteAnsWithCar3Async(System.String,ScmOdrDataWork[],ScmOdDtCarWork,ScmOdDtAnsWork[],ScmOdSetDtWork[],System.Boolean,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDisplayOrder(ScmOdDtInqWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.BeginUpdateDisplayOrder(ScmOdDtInqWork[],System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.EndUpdateDisplayOrder(System.IAsyncResult,ScmOdDtInqWork[]@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDisplayOrderAsync(ScmOdDtInqWork[])">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.UpdateDisplayOrderAsync(ScmOdDtInqWork[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:SFCMN02501AAUTO.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.WriteInqWithCarCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.UpdateRcvDateTimeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.WriteAnsWithCarCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.ReadWithCarCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.SearchWithCarCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.SearchCntWithCarCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.SearchCntWithCar2Completed">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.SearchScmOdrDataForPopCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.WriteInqWithCar2Completed">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.WriteAnsWithCar2Completed">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.UpdateDtlTakeinDivCdCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.UpdateJudgementDateCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.ReadWithCar2Completed">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.ReadScmOdSetDtCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.CheckScmOdrDataFixedCompleted">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.UpdateDtlTakeinDivCd2Completed">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.WriteAnsWithCar3Completed">
+            <remarks/>
+        </member>
+        <member name="E:SFCMN02501AAUTO.UpdateDisplayOrderCompleted">
+            <remarks/>
+        </member>
+        <member name="M:Broadleaf.Web.Services.SFCMN02501AServices.#ctor(System.String)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="serverURL">接続先URL</param>
+        </member>
+        <member name="T:ScmOdrDataWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.CreateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.UpdateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.LogicalDeleteCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.AnswerDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.JudgementDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqOrdNote">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqEmployeeCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqEmployeeNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.AnsEmployeeCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.AnsEmployeeNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InquiryDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqOrdDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.InqOrdAnsDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.ReceiveDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.LatestDiscCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.CancelDiv">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.CMTCooprtDiv">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.SfPmCprtInstSlipNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdrDataWork.AcceptOrOrderKind">
+            <remarks/>
+        </member>
+        <member name="T:ScmOdSetDtWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.CreateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.UpdateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.LogicalDeleteCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.SetPartsMkrCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.SetPartsNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.SetPartsMainSubNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.GoodsDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.RecyclePrtKindCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.RecyclePrtKindName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.DeliveredGoodsDiv">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.HandleDivCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.GoodsShape">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.DelivrdGdsConfCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.DeliGdsCmpltDueDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.AnswerDeliveryDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.BLGoodsCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.BLGoodsDrCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.InqGoodsName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.AnsGoodsName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.SalesOrderCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.DeliveredGoodsCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.GoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.GoodsMakerCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.GoodsMakerNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PureGoodsMakerCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.InqPureGoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.AnsPureGoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.ListPrice">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.UnitPrice">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.GoodsAddInfo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.RoughRrofit">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.RoughRate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.AnswerLimitDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.CommentDtl">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.ShelfNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PMAcptAnOdrStatus">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PMSalesSlipNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PMSalesRowNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PmWarehouseCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PmWarehouseName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PmShelfNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSetDtWork.PmPrsntCount">
+            <remarks/>
+        </member>
+        <member name="T:ScmJudgeDtUpdParamWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.CreateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.UpdateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.LogicalDeleteCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmJudgeDtUpdParamWork.JudgementDate">
+            <remarks/>
+        </member>
+        <member name="T:ScmPopParamDtlWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamDtlWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamDtlWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamDtlWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamDtlWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamDtlWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamDtlWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamDtlWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="T:ScmPopParamWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmPopParamWork.InqOrdAnsDivCd">
+            <remarks/>
+        </member>
+        <member name="T:SCMAnsListSrchRstWork">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.CreateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.UpdateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.LogicalDeleteCode">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.AnswerDivCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqOrdNote">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqEmployeeCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqEmployeeNm">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.AnsEmployeeCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.AnsEmployeeNm">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InquiryDate">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqOrdDivCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.NumberPlate1Code">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.NumberPlate1Name">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.NumberPlate2">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.NumberPlate3">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.NumberPlate4">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.ModelDesignationNo">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.CategoryNo">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.MakerCode">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.ModelName">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.CarInspectCertModel">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.FrameNo">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.FrameModel">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.InqOrdAnsDivCd">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.ReceiveDateTime">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.CancelDiv">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.JudgementDate">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.SfPmCprtInstSlipNo">
+            <remarks/>
+        </member>
+        <member name="P:SCMAnsListSrchRstWork.AcceptOrOrderKind">
+            <remarks/>
+        </member>
+        <member name="T:ScmOdSrchParamWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InquiryNumberSt">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InquiryNumberEd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.UpdateDateSt">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.UpdateTimeSt">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InqEmployeeCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.AnsEmployeeCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.InqOrdDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.LatestDiscCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.SfPmCprtInstSlipNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.TransCmpltDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.UpdateDateEd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdSrchParamWork.UpdateTimeEd">
+            <remarks/>
+        </member>
+        <member name="T:ScmOdReadParamWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.LatestDiscCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.InqOrdAnsDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdReadParamWork.SfPmCprtInstSlipNo">
+            <remarks/>
+        </member>
+        <member name="T:ScmOdDtAnsWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.CreateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.UpdateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.LogicalDeleteCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqRowNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqRowNumDerivedNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqOrgDtlDiscGuid">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqOthDtlDiscGuid">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.GoodsDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RecyclePrtKindCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RecyclePrtKindName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DeliveredGoodsDiv">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.HandleDivCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.GoodsShape">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DelivrdGdsConfCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DeliGdsCmpltDueDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.AnswerDeliveryDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.BLGoodsCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.BLGoodsDrCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqGoodsName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.AnsGoodsName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SalesOrderCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DeliveredGoodsCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.GoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.GoodsMakerCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.GoodsMakerNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PureGoodsMakerCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqPureGoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.AnsPureGoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.ListPrice">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.UnitPrice">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.GoodsAddInfo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RoughRrofit">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RoughRate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.AnswerLimitDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.CommentDtl">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.ShelfNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.AdditionalDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.CorrectDivCD">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.InqOrdDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DisplayOrder">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.LatestDiscCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.CancelCndtinDiv">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PMAcptAnOdrStatus">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PMSalesSlipNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PMSalesRowNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DtlTakeinDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PmWarehouseCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PmWarehouseName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PmShelfNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PmPrsntCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SetPartsMkrCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SetPartsNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SetPartsMainSubNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.CampaignCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SalesMoneyTaxInc">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SalesMoneyTaxExc">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.TiCarriage">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.TeCarriage">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.TransCompanyCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.TransCompanyNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.FareDivCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DeliGdsNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SendingDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.DeliveryDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.SubPtsCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.PSMngNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RCAcceptAnOrderNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RCAcceptAnOrderDerivNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RCSalesSlipNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RCSalesRowNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.RCAcptAnOdrStatus">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.AutoEstimatePartsCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtAnsWork.GoodsSpecialNote">
+            <remarks/>
+        </member>
+        <member name="T:ScmOdDtInqWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.CreateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.UpdateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.LogicalDeleteCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqOtherEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqOtherSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.UpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.UpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqRowNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqRowNumDerivedNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqOrgDtlDiscGuid">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqOthDtlDiscGuid">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.GoodsDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RecyclePrtKindCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RecyclePrtKindName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DeliveredGoodsDiv">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.HandleDivCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.GoodsShape">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DelivrdGdsConfCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DeliGdsCmpltDueDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.AnswerDeliveryDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.BLGoodsCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.BLGoodsDrCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqGoodsName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.AnsGoodsName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SalesOrderCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DeliveredGoodsCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.GoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.GoodsMakerCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.GoodsMakerNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PureGoodsMakerCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqPureGoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.AnsPureGoodsNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.ListPrice">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.UnitPrice">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.GoodsAddInfo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RoughRrofit">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RoughRate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.AnswerLimitDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.CommentDtl">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.ShelfNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.AdditionalDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.CorrectDivCD">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.InqOrdDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DisplayOrder">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.LatestDiscCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.CancelCndtinDiv">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PMAcptAnOdrStatus">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PMSalesSlipNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PMSalesRowNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DtlTakeinDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PmWarehouseCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PmWarehouseName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PmShelfNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PmPrsntCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SetPartsMkrCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SetPartsNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SetPartsMainSubNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.CampaignCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SalesMoneyTaxInc">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SalesMoneyTaxExc">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.TiCarriage">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.TeCarriage">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.TransCompanyCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.TransCompanyNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.FareDivCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DeliGdsNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SendingDate">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.DeliveryDivCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.SubPtsCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.PSMngNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RCAcceptAnOrderNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RCAcceptAnOrderDerivNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RCSalesSlipNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RCSalesRowNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.RCAcptAnOdrStatus">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.AutoEstimatePartsCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtInqWork.GoodsSpecialNote">
+            <remarks/>
+        </member>
+        <member name="T:ScmOdDtCarWork">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.CreateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.UpdateDateTime">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.LogicalDeleteCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.InqOriginalEpCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.InqOriginalSecCd">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.InquiryNumber">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.NumberPlate1Code">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.NumberPlate1Name">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.NumberPlate2">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.NumberPlate3">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.NumberPlate4">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ModelDesignationNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.CategoryNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.MakerCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ModelCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ModelSubCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ModelName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.CarInspectCertModel">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.FullModel">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.FrameNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.FrameModel">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ChassisNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.CarProperNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ProduceTypeOfYearNum">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.Comment">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.RpColorCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ColorName1">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.TrimCode">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.TrimName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.Mileage">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.EquipObj">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.CarNo">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.MakerName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.GradeName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.BodyName">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.DoorCount">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.EngineModelNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.CmnNmEngineDisPlace">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.EngineModel">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.NumberOfGear">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.GearNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.EDivNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.TransmissionNm">
+            <remarks/>
+        </member>
+        <member name="P:ScmOdDtCarWork.ShiftNm">
+            <remarks/>
+        </member>
+        <member name="T:WriteInqWithCarCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:WriteInqWithCarCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCarCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCarCompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCarCompletedEventArgs.scmOdDtCarWork">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCarCompletedEventArgs.scmOdDtInqWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCarCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCarCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:UpdateRcvDateTimeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:UpdateRcvDateTimeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:UpdateRcvDateTimeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:UpdateRcvDateTimeCompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateRcvDateTimeCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:UpdateRcvDateTimeCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:WriteAnsWithCarCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:WriteAnsWithCarCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCarCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCarCompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCarCompletedEventArgs.scmOdDtCarWork">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCarCompletedEventArgs.scmOdDtAnsWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCarCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCarCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:ReadWithCarCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:ReadWithCarCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCarCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCarCompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCarCompletedEventArgs.scmOdDtInqWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCarCompletedEventArgs.scmOdDtAnsWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCarCompletedEventArgs.scmOdDtCarWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCarCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCarCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:SearchWithCarCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SearchWithCarCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SearchWithCarCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:SearchWithCarCompletedEventArgs.sCMAnsListSrchRstWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:SearchWithCarCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:SearchWithCarCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:SearchCntWithCarCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SearchCntWithCarCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCarCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCarCompletedEventArgs.count">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCarCompletedEventArgs.rowCount">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCarCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCarCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:SearchCntWithCar2CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SearchCntWithCar2CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCar2CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCar2CompletedEventArgs.count">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCar2CompletedEventArgs.rowCount">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCar2CompletedEventArgs.lateUpdateDate">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCar2CompletedEventArgs.lateUpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCar2CompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:SearchCntWithCar2CompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:SearchScmOdrDataForPopCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:SearchScmOdrDataForPopCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:SearchScmOdrDataForPopCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:SearchScmOdrDataForPopCompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:SearchScmOdrDataForPopCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:SearchScmOdrDataForPopCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:WriteInqWithCar2CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:WriteInqWithCar2CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCar2CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCar2CompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCar2CompletedEventArgs.scmOdDtCarWork">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCar2CompletedEventArgs.scmOdDtInqWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCar2CompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:WriteInqWithCar2CompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:WriteAnsWithCar2CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:WriteAnsWithCar2CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar2CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar2CompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar2CompletedEventArgs.scmOdDtCarWork">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar2CompletedEventArgs.scmOdDtAnsWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar2CompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar2CompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:UpdateDtlTakeinDivCdCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:UpdateDtlTakeinDivCdCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCdCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCdCompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCdCompletedEventArgs.scmOdDtInqWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCdCompletedEventArgs.scmOdDtAnsWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCdCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCdCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:UpdateJudgementDateCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:UpdateJudgementDateCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:UpdateJudgementDateCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:UpdateJudgementDateCompletedEventArgs.scmJudgeDtUpdParamWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateJudgementDateCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:UpdateJudgementDateCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:ReadWithCar2CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:ReadWithCar2CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCar2CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCar2CompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCar2CompletedEventArgs.scmOdDtInqWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCar2CompletedEventArgs.scmOdDtAnsWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCar2CompletedEventArgs.scmOdDtCarWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCar2CompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:ReadWithCar2CompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:ReadScmOdSetDtCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:ReadScmOdSetDtCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:ReadScmOdSetDtCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:ReadScmOdSetDtCompletedEventArgs.scmOdSetDtWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:ReadScmOdSetDtCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:ReadScmOdSetDtCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:CheckScmOdrDataFixedCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CheckScmOdrDataFixedCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CheckScmOdrDataFixedCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:CheckScmOdrDataFixedCompletedEventArgs.isFixed">
+            <remarks/>
+        </member>
+        <member name="P:CheckScmOdrDataFixedCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:CheckScmOdrDataFixedCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:UpdateDtlTakeinDivCd2CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:UpdateDtlTakeinDivCd2CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCd2CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCd2CompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCd2CompletedEventArgs.scmOdDtInqWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCd2CompletedEventArgs.scmOdDtAnsWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCd2CompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDtlTakeinDivCd2CompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:WriteAnsWithCar3CompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:WriteAnsWithCar3CompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar3CompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar3CompletedEventArgs.scmOdrDataWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar3CompletedEventArgs.scmOdDtCarWork">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar3CompletedEventArgs.scmOdDtAnsWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar3CompletedEventArgs.scmOdSetDtWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar3CompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:WriteAnsWithCar3CompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:UpdateDisplayOrderCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:UpdateDisplayOrderCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDisplayOrderCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDisplayOrderCompletedEventArgs.scmOdDtInqWorkArray">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDisplayOrderCompletedEventArgs.msgDiv">
+            <remarks/>
+        </member>
+        <member name="P:UpdateDisplayOrderCompletedEventArgs.errMsg">
+            <remarks/>
+        </member>
+    </members>
+</doc>

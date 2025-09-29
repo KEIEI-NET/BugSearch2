@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GoodsNotReturn" targetNamespace="http://tempuri.org/GoodsNotReturn.xsd" xmlns:mstns="http://tempuri.org/GoodsNotReturn.xsd" xmlns="http://tempuri.org/GoodsNotReturn.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="GoodsNotReturn" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="GoodsNotReturn" msprop:Generator_DataSetName="GoodsNotReturn">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GoodsNotReturnDetail" msprop:Generator_UserTableName="GoodsNotReturnDetail" msprop:Generator_RowDeletedName="GoodsNotReturnDetailRowDeleted" msprop:Generator_RowChangedName="GoodsNotReturnDetailRowChanged" msprop:Generator_RowClassName="GoodsNotReturnDetailRow" msprop:Generator_RowChangingName="GoodsNotReturnDetailRowChanging" msprop:Generator_RowEvArgName="GoodsNotReturnDetailRowChangeEvent" msprop:Generator_RowEvHandlerName="GoodsNotReturnDetailRowChangeEventHandler" msprop:Generator_TableClassName="GoodsNotReturnDetailDataTable" msprop:Generator_TableVarName="tableGoodsNotReturnDetail" msprop:Generator_RowDeletingName="GoodsNotReturnDetailRowDeleting" msprop:Generator_TablePropName="GoodsNotReturnDetail">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNo" msdata:Caption="No." msprop:Generator_UserColumnName="RowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" type="xs:int" />
+              <xs:element name="ProductNo" msdata:Caption="品番" msprop:Generator_UserColumnName="ProductNo" msprop:Generator_ColumnPropNameInRow="ProductNo" msprop:Generator_ColumnVarNameInTable="columnProductNo" msprop:Generator_ColumnPropNameInTable="ProductNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GoodsName" msdata:Caption="商品名" msprop:Generator_UserColumnName="GoodsName" msprop:Generator_ColumnPropNameInRow="GoodsName" msprop:Generator_ColumnVarNameInTable="columnGoodsName" msprop:Generator_ColumnPropNameInTable="GoodsNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Manufacturer" msdata:Caption="メーカー" msprop:Generator_UserColumnName="Manufacturer" msprop:Generator_ColumnPropNameInRow="Manufacturer" msprop:Generator_ColumnVarNameInTable="columnManufacturer" msprop:Generator_ColumnPropNameInTable="ManufacturerColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ShipmentNo" msdata:Caption="出荷数" msprop:Generator_UserColumnName="ShipmentNo" msprop:Generator_ColumnPropNameInRow="ShipmentNo" msprop:Generator_ColumnVarNameInTable="columnShipmentNo" msprop:Generator_ColumnPropNameInTable="ShipmentNoColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="ReturnNo" msdata:Caption="返品済数" msprop:Generator_UserColumnName="ReturnNo" msprop:Generator_ColumnPropNameInRow="ReturnNo" msprop:Generator_ColumnVarNameInTable="columnReturnNo" msprop:Generator_ColumnPropNameInTable="ReturnNoColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="LimitReturnNo" msdata:Caption="返品上限数" msprop:Generator_UserColumnName="LimitReturnNo" msprop:Generator_ColumnPropNameInRow="LimitReturnNo" msprop:Generator_ColumnVarNameInTable="columnLimitReturnNo" msprop:Generator_ColumnPropNameInTable="LimitReturnNoColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="UpdateTime" msprop:Generator_UserColumnName="UpdateTime" msprop:Generator_ColumnVarNameInTable="columnUpdateTime" msprop:Generator_ColumnPropNameInRow="UpdateTime" msprop:Generator_ColumnPropNameInTable="UpdateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AcptAnOdrStatus" msprop:Generator_UserColumnName="AcptAnOdrStatus" msprop:Generator_ColumnVarNameInTable="columnAcptAnOdrStatus" msprop:Generator_ColumnPropNameInRow="AcptAnOdrStatus" msprop:Generator_ColumnPropNameInTable="AcptAnOdrStatusColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="SalesSlipDtlNum" msprop:Generator_UserColumnName="SalesSlipDtlNum" msprop:Generator_ColumnVarNameInTable="columnSalesSlipDtlNum" msprop:Generator_ColumnPropNameInRow="SalesSlipDtlNum" msprop:Generator_ColumnPropNameInTable="SalesSlipDtlNumColumn" type="xs:long" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:GoodsNotReturnDetail" />
+      <xs:field xpath="mstns:RowNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

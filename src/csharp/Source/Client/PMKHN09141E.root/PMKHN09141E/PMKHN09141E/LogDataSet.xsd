@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LogDataSet" targetNamespace="http://tempuri.org/LogDataSet.xsd" xmlns:mstns="http://tempuri.org/LogDataSet.xsd" xmlns="http://tempuri.org/LogDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="LogDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="LogDataSet" msprop:Generator_DataSetName="LogDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Log" msprop:Generator_UserTableName="Log" msprop:Generator_RowDeletedName="LogRowDeleted" msprop:Generator_RowChangedName="LogRowChanged" msprop:Generator_RowClassName="LogRow" msprop:Generator_RowChangingName="LogRowChanging" msprop:Generator_RowEvArgName="LogRowChangeEvent" msprop:Generator_RowEvHandlerName="LogRowChangeEventHandler" msprop:Generator_TableClassName="LogDataTable" msprop:Generator_TableVarName="tableLog" msprop:Generator_RowDeletingName="LogRowDeleting" msprop:Generator_TablePropName="Log">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date" msdata:Caption="日付" msprop:Generator_UserColumnName="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Time" msdata:Caption="時刻" msprop:Generator_UserColumnName="Time" msprop:Generator_ColumnVarNameInTable="columnTime" msprop:Generator_ColumnPropNameInRow="Time" msprop:Generator_ColumnPropNameInTable="TimeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LogKindCode" msdata:Caption="ログ種別コード" msprop:Generator_UserColumnName="LogKindCode" msprop:Generator_ColumnPropNameInRow="LogKindCode" msprop:Generator_ColumnVarNameInTable="columnLogKindCode" msprop:Generator_ColumnPropNameInTable="LogKindCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="LogKind" msdata:Caption="ログ種別" msprop:Generator_UserColumnName="LogKind" msprop:Generator_ColumnVarNameInTable="columnLogKind" msprop:Generator_ColumnPropNameInRow="LogKind" msprop:Generator_ColumnPropNameInTable="LogKindColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SectionCode" msdata:Caption="拠点コード" msprop:Generator_UserColumnName="SectionCode" msprop:Generator_ColumnPropNameInRow="SectionCode" msprop:Generator_ColumnVarNameInTable="columnSectionCode" msprop:Generator_ColumnPropNameInTable="SectionCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SectionName" msdata:Caption="拠点" msprop:Generator_UserColumnName="SectionName" msprop:Generator_ColumnVarNameInTable="columnSectionName" msprop:Generator_ColumnPropNameInRow="SectionName" msprop:Generator_ColumnPropNameInTable="SectionNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="MachineName" msdata:Caption="端末" msprop:Generator_UserColumnName="MachineName" msprop:Generator_ColumnVarNameInTable="columnMachineName" msprop:Generator_ColumnPropNameInRow="MachineName" msprop:Generator_ColumnPropNameInTable="MachineNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="JobTypeLevel" msdata:Caption="職種(権限レベル1)" msprop:Generator_UserColumnName="JobTypeLevel" msprop:Generator_ColumnPropNameInRow="JobTypeLevel" msprop:Generator_ColumnVarNameInTable="columnJobTypeLevel" msprop:Generator_ColumnPropNameInTable="JobTypeLevelColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="JobTypeName" msdata:Caption="職種" msprop:Generator_UserColumnName="JobTypeName" msprop:Generator_ColumnVarNameInTable="columnJobTypeName" msprop:Generator_ColumnPropNameInRow="JobTypeName" msprop:Generator_ColumnPropNameInTable="JobTypeNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EmploymentFormLevel" msdata:Caption="雇用形態(権限レベル2)" msprop:Generator_UserColumnName="EmploymentFormLevel" msprop:Generator_ColumnPropNameInRow="EmploymentFormLevel" msprop:Generator_ColumnVarNameInTable="columnEmploymentFormLevel" msprop:Generator_ColumnPropNameInTable="EmploymentFormLevelColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="EmploymentFormName" msdata:Caption="雇用形態" msprop:Generator_UserColumnName="EmploymentFormName" msprop:Generator_ColumnVarNameInTable="columnEmploymentFormName" msprop:Generator_ColumnPropNameInRow="EmploymentFormName" msprop:Generator_ColumnPropNameInTable="EmploymentFormNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployeeCode" msdata:Caption="従業" msprop:Generator_UserColumnName="EmployeeCode" msprop:Generator_ColumnVarNameInTable="columnEmployeeCode" msprop:Generator_ColumnPropNameInRow="EmployeeCode" msprop:Generator_ColumnPropNameInTable="EmployeeCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployeeName" msdata:Caption="従業員" msprop:Generator_UserColumnName="EmployeeName" msprop:Generator_ColumnVarNameInTable="columnEmployeeName" msprop:Generator_ColumnPropNameInRow="EmployeeName" msprop:Generator_ColumnPropNameInTable="EmployeeNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CategoryCode" msdata:Caption="カテゴリコード" msprop:Generator_UserColumnName="CategoryCode" msprop:Generator_ColumnPropNameInRow="CategoryCode" msprop:Generator_ColumnVarNameInTable="columnCategoryCode" msprop:Generator_ColumnPropNameInTable="CategoryCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CategoryName" msdata:Caption="カテゴリ" msprop:Generator_UserColumnName="CategoryName" msprop:Generator_ColumnVarNameInTable="columnCategoryName" msprop:Generator_ColumnPropNameInRow="CategoryName" msprop:Generator_ColumnPropNameInTable="CategoryNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PgId" msdata:Caption="プログラムID" msprop:Generator_UserColumnName="PgId" msprop:Generator_ColumnPropNameInRow="PgId" msprop:Generator_ColumnVarNameInTable="columnPgId" msprop:Generator_ColumnPropNameInTable="PgIdColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PgName" msdata:Caption="機能" msprop:Generator_UserColumnName="PgName" msprop:Generator_ColumnVarNameInTable="columnPgName" msprop:Generator_ColumnPropNameInRow="PgName" msprop:Generator_ColumnPropNameInTable="PgNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OperationCode" msdata:Caption="操作コード" msprop:Generator_UserColumnName="OperationCode" msprop:Generator_ColumnPropNameInRow="OperationCode" msprop:Generator_ColumnVarNameInTable="columnOperationCode" msprop:Generator_ColumnPropNameInTable="OperationCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="OperationName" msdata:Caption="操作" msprop:Generator_UserColumnName="OperationName" msprop:Generator_ColumnVarNameInTable="columnOperationName" msprop:Generator_ColumnPropNameInRow="OperationName" msprop:Generator_ColumnPropNameInTable="OperationNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Message" msdata:Caption="メッセージ" msprop:Generator_UserColumnName="Message" msprop:Generator_ColumnVarNameInTable="columnMessage" msprop:Generator_ColumnPropNameInRow="Message" msprop:Generator_ColumnPropNameInTable="MessageColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LogDateTime" msdata:Caption="日時" msprop:Generator_UserColumnName="LogDateTime" msprop:Generator_ColumnPropNameInRow="LogDateTime" msprop:Generator_ColumnVarNameInTable="columnLogDateTime" msprop:Generator_ColumnPropNameInTable="LogDateTimeColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

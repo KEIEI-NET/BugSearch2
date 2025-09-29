@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>仕入先ガイド</FormTitle>
+		<FormMassge>仕入先を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>635</FormHeight>
+		<FormWidth>770</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<SearchType>6</SearchType>
+		<SearchCondition>
+			<ColName>開始ｺｰﾄﾞ</ColName>
+			<ColKey>SupplierCdZero</ColKey>
+			<ColLength>6</ColLength>
+			<ColImeMode>0</ColImeMode>
+		</SearchCondition>
+		<SearchCondition>
+			<ColName>絞込名称(ｶﾅ)</ColName>
+			<ColKey>SupplierKana</ColKey>
+			<ColLength>30</ColLength>
+			<ColImeMode>2</ColImeMode>
+		</SearchCondition>
+		<SearchCondition>
+			<ColName>絞込名称</ColName>
+			<ColKey>SupplierSnm</ColKey>
+			<ColLength>20</ColLength>
+			<ColImeMode>1</ColImeMode>
+		</SearchCondition>
+        <SearchCondition>
+			<ColName>管理拠点</ColName>
+			<ColKey>MngSectionCode</ColKey>
+			<ColLength>2</ColLength>
+			<ColImeMode>0</ColImeMode>
+		</SearchCondition>
+        <SearchCondition>
+			<ColName>締日</ColName>
+			<ColKey>PaymentTotalDay</ColKey>
+			<ColLength>2</ColLength>
+			<ColImeMode>0</ColImeMode>
+		</SearchCondition>
+        <SearchCondition>
+			<ColName>TEL</ColName>
+			<ColKey>SupplierTelNo</ColKey>
+			<ColLength>16</ColLength>
+			<ColImeMode>4</ColImeMode>
+		</SearchCondition>
+	</GuideDef>
+	
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>仕入先コード</ColName>
+			<ColKey>SupplierCdZero</ColKey>
+			<ColWith>80</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>仕入先名</ColName>
+			<ColKey>SupplierSnm</ColKey>
+			<ColWith>180</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+        <ViewerInfo>
+			<ColName>電話番号</ColName>
+			<ColKey>SupplierTelNo</ColKey>
+			<ColWith>90</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+        <ViewerInfo>
+			<ColName>FAX番号</ColName>
+			<ColKey>SupplierTelNo2</ColKey>
+			<ColWith>90</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+        <ViewerInfo>
+			<ColName>締日</ColName>
+			<ColKey>PaymentTotalDay</ColKey>
+			<ColWith>50</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.SupplierAcs</SerchName>
+		<SerchAssm>PMKHN09022A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="int">EnterpriseCode</SerchInfo>
+			<SerchInfo type="string">SectionCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">SupplierCd</SelectedInfo>
+		<SelectedInfo type="string">SupplierCdZero</SelectedInfo>
+		<SelectedInfo type="string">MngSectionCode</SelectedInfo>
+		<SelectedInfo type="string">InpSectionCode</SelectedInfo>
+		<SelectedInfo type="string">PaymentSectionCode</SelectedInfo>
+		<SelectedInfo type="string">SupplierNm1</SelectedInfo>
+		<SelectedInfo type="string">SupplierNm2</SelectedInfo>
+		<SelectedInfo type="string">SuppHonorificTitle</SelectedInfo>
+		<SelectedInfo type="string">SupplierKana</SelectedInfo>
+		<SelectedInfo type="string">SupplierSnm</SelectedInfo>
+		<SelectedInfo type="string">OrderHonorificTtl</SelectedInfo>
+		<SelectedInfo type="string">BusinessTypeCode</SelectedInfo>
+		<SelectedInfo type="string">SalesAreaCode</SelectedInfo>
+		<SelectedInfo type="string">SupplierPostNo</SelectedInfo>
+		<SelectedInfo type="string">SupplierAddr1</SelectedInfo>
+		<SelectedInfo type="string">SupplierAddr3</SelectedInfo>
+		<SelectedInfo type="string">SupplierAddr4</SelectedInfo>
+		<SelectedInfo type="string">SupplierTelNo</SelectedInfo>
+		<SelectedInfo type="string">SupplierTelNo1</SelectedInfo>
+		<SelectedInfo type="string">SupplierTelNo2</SelectedInfo>
+		<SelectedInfo type="string">PureCode</SelectedInfo>
+		<SelectedInfo type="string">PaymentMonthCode</SelectedInfo>
+		<SelectedInfo type="string">PaymentMonthName</SelectedInfo>
+		<SelectedInfo type="string">PaymentDay</SelectedInfo>
+		<SelectedInfo type="string">SuppCTaxLayRefCd</SelectedInfo>
+		<SelectedInfo type="string">SuppCTaxLayCd</SelectedInfo>
+		<SelectedInfo type="string">SuppCTaxationCd</SelectedInfo>
+		<SelectedInfo type="string">SuppEnterpriseCd</SelectedInfo>
+		<SelectedInfo type="string">PayeeCode</SelectedInfo>
+		<SelectedInfo type="string">SupplierAttributeDiv</SelectedInfo>
+		<SelectedInfo type="string">SuppTtlAmntDspWayCd</SelectedInfo>
+		<SelectedInfo type="string">StckTtlAmntDspWayRef</SelectedInfo>
+		<SelectedInfo type="string">PaymentCond</SelectedInfo>
+		<SelectedInfo type="string">PaymentTotalDay</SelectedInfo>
+		<SelectedInfo type="string">PaymentSight</SelectedInfo>
+		<SelectedInfo type="string">StockAgentCode</SelectedInfo>
+		<SelectedInfo type="string">StockUnPrcFrcProcCd</SelectedInfo>
+		<SelectedInfo type="string">StockMoneyFrcProcCd</SelectedInfo>
+		<SelectedInfo type="string">StockCnsTaxFrcProcCd</SelectedInfo>
+		<SelectedInfo type="string">NTimeCalcStDate</SelectedInfo>
+		<SelectedInfo type="string">SupplierNote1</SelectedInfo>
+		<SelectedInfo type="string">SupplierNote2</SelectedInfo>
+		<SelectedInfo type="string">SupplierNote3</SelectedInfo>
+		<SelectedInfo type="string">SupplierNote4</SelectedInfo>
+		<SelectedInfo type="string">StockAgentName</SelectedInfo>
+		<SelectedInfo type="string">MngSectionName</SelectedInfo>
+		<SelectedInfo type="string">InpSectionName</SelectedInfo>
+		<SelectedInfo type="string">PaymentSectionName</SelectedInfo>
+		<SelectedInfo type="string">BusinessTypeName</SelectedInfo>
+		<SelectedInfo type="string">SalesAreaName</SelectedInfo>
+		<SelectedInfo type="string">PayeeName</SelectedInfo>
+		<SelectedInfo type="string">PayeeName2</SelectedInfo>
+		<SelectedInfo type="string">PayeeSnm</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

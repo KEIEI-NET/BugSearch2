@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MitsubishiOrderProcDataSet" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MitsubishiOrderProcDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="MitsubishiOrderProcDataSet" msprop:Generator_DataSetName="MitsubishiOrderProcDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OrderExpansion" msprop:Generator_UserTableName="OrderExpansion" msprop:Generator_RowDeletedName="OrderExpansionRowDeleted" msprop:Generator_RowChangedName="OrderExpansionRowChanged" msprop:Generator_RowClassName="OrderExpansionRow" msprop:Generator_RowChangingName="OrderExpansionRowChanging" msprop:Generator_RowEvArgName="OrderExpansionRowChangeEvent" msprop:Generator_RowEvHandlerName="OrderExpansionRowChangeEventHandler" msprop:Generator_TableClassName="OrderExpansionDataTable" msprop:Generator_TableVarName="tableOrderExpansion" msprop:Generator_RowDeletingName="OrderExpansionRowDeleting" msprop:Generator_TablePropName="OrderExpansion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OrderNo" msprop:Generator_UserColumnName="OrderNo" msprop:Generator_ColumnPropNameInRow="OrderNo" msprop:Generator_ColumnVarNameInTable="columnOrderNo" msprop:Generator_ColumnPropNameInTable="OrderNoColumn" type="xs:int" default="0" />
+              <xs:element name="InpSelect" msdata:Caption="選択" msprop:Generator_UserColumnName="InpSelect" msprop:Generator_ColumnPropNameInRow="InpSelect" msprop:Generator_ColumnVarNameInTable="columnInpSelect" msprop:Generator_ColumnPropNameInTable="InpSelectColumn" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="OnlineNo" msdata:Caption="オンライン番号" msprop:Generator_UserColumnName="OnlineNo" msprop:Generator_ColumnPropNameInRow="OnlineNo" msprop:Generator_ColumnVarNameInTable="columnOnlineNo" msprop:Generator_ColumnPropNameInTable="OnlineNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CustomerSnm" msdata:Caption="得意先略称" msprop:Generator_UserColumnName="CustomerSnm" msprop:Generator_ColumnPropNameInRow="CustomerSnm" msprop:Generator_ColumnVarNameInTable="columnCustomerSnm" msprop:Generator_ColumnPropNameInTable="CustomerSnmColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CashRegisterNo" msdata:Caption="レジ番号" msprop:Generator_UserColumnName="CashRegisterNo" msprop:Generator_ColumnPropNameInRow="CashRegisterNo" msprop:Generator_ColumnVarNameInTable="columnCashRegisterNo" msprop:Generator_ColumnPropNameInTable="CashRegisterNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="GoodsMakerCd" msdata:Caption="商品メーカーコード" msprop:Generator_UserColumnName="GoodsMakerCd" msprop:Generator_ColumnPropNameInRow="GoodsMakerCd" msprop:Generator_ColumnVarNameInTable="columnGoodsMakerCd" msprop:Generator_ColumnPropNameInTable="GoodsMakerCdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="GoodsNo" msdata:Caption="商品番号" msprop:Generator_UserColumnName="GoodsNo" msprop:Generator_ColumnPropNameInRow="GoodsNo" msprop:Generator_ColumnVarNameInTable="columnGoodsNo" msprop:Generator_ColumnPropNameInTable="GoodsNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GoodsName" msdata:Caption="商品名称" msprop:Generator_UserColumnName="GoodsName" msprop:Generator_ColumnPropNameInRow="GoodsName" msprop:Generator_ColumnVarNameInTable="columnGoodsName" msprop:Generator_ColumnPropNameInTable="GoodsNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AcceptAnOrderCnt" msdata:Caption="受注数量" msprop:Generator_UserColumnName="AcceptAnOrderCnt" msprop:Generator_ColumnPropNameInRow="AcceptAnOrderCnt" msprop:Generator_ColumnVarNameInTable="columnAcceptAnOrderCnt" msprop:Generator_ColumnPropNameInTable="AcceptAnOrderCntColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="InputDay" msdata:Caption="入力日" msprop:Generator_UserColumnName="InputDay" msprop:Generator_ColumnPropNameInRow="InputDay" msprop:Generator_ColumnVarNameInTable="columnInputDay" msprop:Generator_ColumnPropNameInTable="InputDayColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UoeRemark1" msdata:Caption="ＵＯＥリマーク１" msprop:Generator_UserColumnName="UoeRemark1" msprop:Generator_ColumnPropNameInRow="UoeRemark1" msprop:Generator_ColumnVarNameInTable="columnUoeRemark1" msprop:Generator_ColumnPropNameInTable="UoeRemark1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployeeCode" msdata:Caption="依頼者コード" msprop:Generator_UserColumnName="EmployeeCode" msprop:Generator_ColumnPropNameInRow="EmployeeCode" msprop:Generator_ColumnVarNameInTable="columnEmployeeCode" msprop:Generator_ColumnPropNameInTable="EmployeeCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EmployeeName" msdata:Caption="依頼者名称" msprop:Generator_UserColumnName="EmployeeName" msprop:Generator_ColumnPropNameInRow="EmployeeName" msprop:Generator_ColumnVarNameInTable="columnEmployeeName" msprop:Generator_ColumnPropNameInTable="EmployeeNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OnlineRowNo" msdata:Caption="オンライン行番号" msprop:Generator_UserColumnName="OnlineRowNo" msprop:Generator_ColumnPropNameInRow="OnlineRowNo" msprop:Generator_ColumnVarNameInTable="columnOnlineRowNo" msprop:Generator_ColumnPropNameInTable="OnlineRowNoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="UOEKind" msdata:Caption="UOE種別" msprop:Generator_UserColumnName="UOEKind" msprop:Generator_ColumnPropNameInRow="UOEKind" msprop:Generator_ColumnVarNameInTable="columnUOEKind" msprop:Generator_ColumnPropNameInTable="UOEKindColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CommonSeqNo" msdata:Caption="共通通番" msprop:Generator_UserColumnName="CommonSeqNo" msprop:Generator_ColumnPropNameInRow="CommonSeqNo" msprop:Generator_ColumnVarNameInTable="columnCommonSeqNo" msprop:Generator_ColumnPropNameInTable="CommonSeqNoColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="SupplierFormal" msdata:Caption="仕入形式" msprop:Generator_UserColumnName="SupplierFormal" msprop:Generator_ColumnPropNameInRow="SupplierFormal" msprop:Generator_ColumnVarNameInTable="columnSupplierFormal" msprop:Generator_ColumnPropNameInTable="SupplierFormalColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="StockSlipDtlNum" msdata:Caption="仕入明細通番" msprop:Generator_UserColumnName="StockSlipDtlNum" msprop:Generator_ColumnPropNameInRow="StockSlipDtlNum" msprop:Generator_ColumnVarNameInTable="columnStockSlipDtlNum" msprop:Generator_ColumnPropNameInTable="StockSlipDtlNumColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="UOEDeliGoodsDiv" msprop:Generator_UserColumnName="UOEDeliGoodsDiv" msprop:Generator_ColumnPropNameInRow="UOEDeliGoodsDiv" msprop:Generator_ColumnVarNameInTable="columnUOEDeliGoodsDiv" msprop:Generator_ColumnPropNameInTable="UOEDeliGoodsDivColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="FollowDeliGoodsDiv" msprop:Generator_UserColumnName="FollowDeliGoodsDiv" msprop:Generator_ColumnPropNameInRow="FollowDeliGoodsDiv" msprop:Generator_ColumnVarNameInTable="columnFollowDeliGoodsDiv" msprop:Generator_ColumnPropNameInTable="FollowDeliGoodsDivColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="UOEResvdSection" msprop:Generator_UserColumnName="UOEResvdSection" msprop:Generator_ColumnPropNameInRow="UOEResvdSection" msprop:Generator_ColumnVarNameInTable="columnUOEResvdSection" msprop:Generator_ColumnPropNameInTable="UOEResvdSectionColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="BoCode" msdata:Caption="BO区分" msprop:Generator_UserColumnName="BoCode" msprop:Generator_ColumnVarNameInTable="columnBoCode" msprop:Generator_ColumnPropNameInRow="BoCode" msprop:Generator_ColumnPropNameInTable="BoCodeColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="UOEDeliGoodsDivNm" msprop:Generator_UserColumnName="UOEDeliGoodsDivNm" msprop:Generator_ColumnPropNameInRow="UOEDeliGoodsDivNm" msprop:Generator_ColumnVarNameInTable="columnUOEDeliGoodsDivNm" msprop:Generator_ColumnPropNameInTable="UOEDeliGoodsDivNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="FollowDeliGoodsDivNm" msprop:Generator_UserColumnName="FollowDeliGoodsDivNm" msprop:Generator_ColumnPropNameInRow="FollowDeliGoodsDivNm" msprop:Generator_ColumnVarNameInTable="columnFollowDeliGoodsDivNm" msprop:Generator_ColumnPropNameInTable="FollowDeliGoodsDivNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="UOEResvdSectionNm" msprop:Generator_UserColumnName="UOEResvdSectionNm" msprop:Generator_ColumnPropNameInRow="UOEResvdSectionNm" msprop:Generator_ColumnVarNameInTable="columnUOEResvdSectionNm" msprop:Generator_ColumnPropNameInTable="UOEResvdSectionNmColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="WarehouseName" msdata:Caption="倉庫" msprop:Generator_UserColumnName="WarehouseName" msprop:Generator_ColumnPropNameInRow="WarehouseName" msprop:Generator_ColumnVarNameInTable="columnWarehouseName" msprop:Generator_ColumnPropNameInTable="WarehouseNameColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:OrderExpansion" />
+      <xs:field xpath="mstns:OrderNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CustomerChangeDataSet" targetNamespace="http://tempuri.org/CustomerChangeDataSet.xsd" xmlns:mstns="http://tempuri.org/CustomerChangeDataSet.xsd" xmlns="http://tempuri.org/CustomerChangeDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CustomerChangeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="CustomerChangeDataSet" msprop:Generator_DataSetName="CustomerChangeDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CustomerChange" msprop:Generator_UserTableName="CustomerChange" msprop:Generator_RowDeletedName="CustomerChangeRowDeleted" msprop:Generator_RowChangedName="CustomerChangeRowChanged" msprop:Generator_RowClassName="CustomerChangeRow" msprop:Generator_RowChangingName="CustomerChangeRowChanging" msprop:Generator_RowEvArgName="CustomerChangeRowChangeEvent" msprop:Generator_RowEvHandlerName="CustomerChangeRowChangeEventHandler" msprop:Generator_TableClassName="CustomerChangeDataTable" msprop:Generator_TableVarName="tableCustomerChange" msprop:Generator_RowDeletingName="CustomerChangeRowDeleting" msprop:Generator_TablePropName="CustomerChange">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CreateDateTime" msprop:Generator_UserColumnName="CreateDateTime" msprop:Generator_ColumnVarNameInTable="columnCreateDateTime" msprop:Generator_ColumnPropNameInRow="CreateDateTime" msprop:Generator_ColumnPropNameInTable="CreateDateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UpdateDateTime" msprop:Generator_UserColumnName="UpdateDateTime" msprop:Generator_ColumnVarNameInTable="columnUpdateDateTime" msprop:Generator_ColumnPropNameInRow="UpdateDateTime" msprop:Generator_ColumnPropNameInTable="UpdateDateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EnterpriseCode" msprop:Generator_UserColumnName="EnterpriseCode" msprop:Generator_ColumnVarNameInTable="columnEnterpriseCode" msprop:Generator_ColumnPropNameInRow="EnterpriseCode" msprop:Generator_ColumnPropNameInTable="EnterpriseCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FileHeaderGuid" msprop:Generator_UserColumnName="FileHeaderGuid" msprop:Generator_ColumnVarNameInTable="columnFileHeaderGuid" msprop:Generator_ColumnPropNameInRow="FileHeaderGuid" msprop:Generator_ColumnPropNameInTable="FileHeaderGuidColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdEmployeeCode" msprop:Generator_UserColumnName="UpdEmployeeCode" msprop:Generator_ColumnVarNameInTable="columnUpdEmployeeCode" msprop:Generator_ColumnPropNameInRow="UpdEmployeeCode" msprop:Generator_ColumnPropNameInTable="UpdEmployeeCodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdAssemblyId1" msprop:Generator_UserColumnName="UpdAssemblyId1" msprop:Generator_ColumnVarNameInTable="columnUpdAssemblyId1" msprop:Generator_ColumnPropNameInRow="UpdAssemblyId1" msprop:Generator_ColumnPropNameInTable="UpdAssemblyId1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="UpdAssemblyId2" msprop:Generator_UserColumnName="UpdAssemblyId2" msprop:Generator_ColumnVarNameInTable="columnUpdAssemblyId2" msprop:Generator_ColumnPropNameInRow="UpdAssemblyId2" msprop:Generator_ColumnPropNameInTable="UpdAssemblyId2Column" type="xs:string" minOccurs="0" />
+              <xs:element name="LogicalDeleteCode" msprop:Generator_UserColumnName="LogicalDeleteCode" msprop:Generator_ColumnVarNameInTable="columnLogicalDeleteCode" msprop:Generator_ColumnPropNameInRow="LogicalDeleteCode" msprop:Generator_ColumnPropNameInTable="LogicalDeleteCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CustomerCode" msprop:Generator_UserColumnName="CustomerCode" msprop:Generator_ColumnVarNameInTable="columnCustomerCode" msprop:Generator_ColumnPropNameInRow="CustomerCode" msprop:Generator_ColumnPropNameInTable="CustomerCodeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CreditMoney" msprop:Generator_UserColumnName="CreditMoney" msprop:Generator_ColumnVarNameInTable="columnCreditMoney" msprop:Generator_ColumnPropNameInRow="CreditMoney" msprop:Generator_ColumnPropNameInTable="CreditMoneyColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="WarningCreditMoney" msprop:Generator_UserColumnName="WarningCreditMoney" msprop:Generator_ColumnVarNameInTable="columnWarningCreditMoney" msprop:Generator_ColumnPropNameInRow="WarningCreditMoney" msprop:Generator_ColumnPropNameInTable="WarningCreditMoneyColumn" type="xs:long" minOccurs="0" />
+              <xs:element name="PrsntAccRecBalance" msprop:Generator_UserColumnName="PrsntAccRecBalance" msprop:Generator_ColumnVarNameInTable="columnPrsntAccRecBalance" msprop:Generator_ColumnPropNameInRow="PrsntAccRecBalance" msprop:Generator_ColumnPropNameInTable="PrsntAccRecBalanceColumn" type="xs:long" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definfo>
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>部門ガイド</FormTitle>
+		<FormMassge>部門を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>635</FormHeight>
+		<FormWidth>430</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>
+		<SearchType>4</SearchType>
+		<SearchCondition>
+			<ColName>開始ｺｰﾄﾞ(拠点)</ColName>
+			<ColKey>SectionCode</ColKey>
+			<ColLength>2</ColLength>
+			<ColImeMode>0</ColImeMode>
+		</SearchCondition>
+		<SearchCondition>
+			<ColName>絞込名称(拠点)</ColName>
+			<ColKey>SectionGuideNm</ColKey>
+			<ColLength>6</ColLength>
+			<ColImeMode>1</ColImeMode>
+		</SearchCondition>
+		<SearchCondition>
+			<ColName>開始ｺｰﾄﾞ(部門)</ColName>
+			<ColKey>SubSectionCode</ColKey>
+			<ColLength>2</ColLength>
+			<ColImeMode>0</ColImeMode>
+		</SearchCondition>
+		<SearchCondition>
+			<ColName>絞込名称(部門)</ColName>
+			<ColKey>SubSectionName</ColKey>
+			<ColLength>20</ColLength>
+			<ColImeMode>1</ColImeMode>
+		</SearchCondition>
+	</GuideDef>
+	
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>拠点コード</ColName>
+			<ColKey>SectionCode</ColKey>
+			<ColWith>60</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>拠点名</ColName>
+			<ColKey>SectionGuideNm</ColKey>
+			<ColWith>120</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>部門コード</ColName>
+			<ColKey>SubSectionCode</ColKey>
+			<ColWith>60</ColWith>
+			<ColDataType>int</ColDataType>
+		</ViewerInfo>
+		<ViewerInfo>
+			<ColName>部門名</ColName>
+			<ColKey>SubSectionName</ColKey>
+			<ColWith>180</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>
+	</ViewerDef>
+	
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.SubSectionAcs</SerchName>
+		<SerchAssm>DCKHN09012A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="int">EnterpriseCode</SerchInfo>
+			<SerchInfo type="string">SectionCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="string">SectionCode</SelectedInfo>
+		<SelectedInfo type="string">SectionGuideNm</SelectedInfo>
+		<SelectedInfo type="string">SubSectionCode</SelectedInfo>
+		<SelectedInfo type="string">SubSectionName</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

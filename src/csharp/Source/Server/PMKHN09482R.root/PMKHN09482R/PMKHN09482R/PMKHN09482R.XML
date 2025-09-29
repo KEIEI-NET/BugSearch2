@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMKHN09482R</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.RateProtyMngPatternDB">
+            <summary>
+            掛率設定マスタメン（掛率優先管理パターン）DBリモートオブジェクト
+            </summary>
+            <remarks>
+            <br>Note       : 掛率設定マスタメン（掛率優先管理パターン）の実データ操作を行うクラスです。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            <br></br>
+            <br>Update Note: 2010/09/10 高峰 障害・改良対応8月ﾘﾘｰｽ</br>
+            <br>Update Note: 2010/09/26 呉元嘯 仕様連絡 #14492対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.#ctor">
+            <summary>
+            掛率設定マスタメン（掛率優先管理パターン）DBリモートオブジェクトクラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特になし</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.Search(System.Object@,System.Object,System.Int32,Broadleaf.Library.Resources.ConstantManagement.LogicalMode)">
+            <summary>
+            掛率優先管理マスタ情報のリストを取得します。
+            </summary>
+            <param name="outRateProtyMngList">検索結果</param>
+            <param name="paraRateProtyMngWork">検索条件</param>
+            <param name="readMode">検索区分</param>
+            <param name="logicalMode">論理削除区分(0:正規ﾃﾞｰﾀのみ 1:削除ﾃﾞｰﾀのみ 2:保留ﾃﾞｰﾀのみ 3:完全削除ﾃﾞｰﾀのみ 4:全件 5:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ 6:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ+保留ﾃﾞｰﾀ)</param>
+            <returns>STATUS</returns>
+            <br>Note       : 掛率優先管理マスタ情報を取得します。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.SearchProc(System.Collections.ArrayList@,Broadleaf.Application.Remoting.ParamData.RateProtyMngWork,System.Int32,Broadleaf.Library.Resources.ConstantManagement.LogicalMode,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            掛率優先管理マスタ情報のリストを取得します。
+            </summary>
+            <param name="rateProtyMngList">検索結果</param>
+            <param name="rateProtyMngWork">検索条件</param>
+            <param name="readMode">検索区分</param>
+            <param name="logicalMode">論理削除区分(0:正規ﾃﾞｰﾀのみ 1:削除ﾃﾞｰﾀのみ 2:保留ﾃﾞｰﾀのみ 3:完全削除ﾃﾞｰﾀのみ 4:全件 5:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ 6:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ+保留ﾃﾞｰﾀ)</param>
+            <param name="sqlConnection">データベース接続情報</param>
+            <returns>STATUS</returns>
+            <br>Note       : 掛率優先管理マスタ情報のリストを取得します。</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.SearchRateRelationData(System.Object@,System.Object@,System.Object,System.Int32,System.Int32,Broadleaf.Library.Resources.ConstantManagement.LogicalMode)">
+            <summary>
+            抽出条件によってで掛率掛率マスタとマスタを読み込み処理
+            </summary>
+            <param name="paraRateProtyMngPatternWork"></param>
+            <param name="outNewList">新規リスト</param>
+            <param name="outUpdateList">掛率マスタ(更新リスト)</param>
+            <param name="patternMode">モード(0:BLコード;1:品番指定;2:品番指定;3:品番指定;4:商品掛率G指定;5:商品掛率G指定;6:商品掛率G指定;7:メーカー指定)</param>
+            <param name="readMode">readMode</param>
+            <param name="logicalMode">logicalMode</param>
+            <returns>抽出状態</returns>
+            <remarks>
+            <br>Note       : 抽出条件によってで掛率掛率マスタとマスタを読み込みます。 </br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.SearchRateRelationDataProc(System.Collections.ArrayList@,System.Collections.ArrayList@,Broadleaf.Application.Remoting.ParamData.RateProtyMngPatternWork,System.Int32,System.Int32,Broadleaf.Library.Resources.ConstantManagement.LogicalMode,System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            抽出条件によってで掛率掛率マスタとマスタを読み込み処理
+            </summary>
+            <param name="newList">新規リスト</param>
+            <param name="updateList">掛率マスタ(更新リスト)</param>
+            <param name="rateProtyMngPatternWork">rateProtyMngPatternWork</param>
+            <param name="patternMode">モード(0:BLコード;1:品番指定;2:単独指定;3:層別指定;4:商品掛率G指定;5:グループコード指定;6:メーカー指定)</param>
+            <param name="readMode">readMode</param>
+            <param name="logicalMode">logicalMode</param>
+            <param name="sqlConnection">sqlConnection</param>
+            <returns>抽出状態</returns>
+            <remarks>
+            <br>Note       : 抽出条件によってで掛率掛率マスタとマスタを読み込みます。 </br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            <br>Update Note: 2010/09/26 呉元嘯 Redmine#14490対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.WriteRateRelationData(System.Collections.ArrayList,System.Collections.ArrayList,System.Int32,System.String@)">
+            <summary>
+            掛率マスタ情報を登録、更新します
+            </summary>
+            <param name="updateList">掛率マスタリスト(更新用)</param>
+            <param name="deleteList">掛率マスタリスト(削除用)</param>
+            <param name="patternMode">patternMode(0:通常;1:層別)</param>
+            <param name="retMessage">エラーメッセージ</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 掛率マスタ情報を登録、更新します</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.MakeWhereString(System.Data.SqlClient.SqlCommand@,Broadleaf.Application.Remoting.ParamData.RateProtyMngWork,Broadleaf.Library.Resources.ConstantManagement.LogicalMode)">
+            <summary>
+            検索条件文字列生成＋条件値設定
+            </summary>
+            <param name="sqlCommand">SqlCommandオブジェクト</param>
+            <param name="rateProtyMngWork">検索条件格納クラス</param>
+            <param name="logicalMode">論理削除有無(0:正規ﾃﾞｰﾀのみ 1:削除ﾃﾞｰﾀのみ 2:保留ﾃﾞｰﾀのみ 3:完全削除ﾃﾞｰﾀのみ 4:全件 5:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ 6:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ+保留ﾃﾞｰﾀ)</param>
+            <returns>Where条件文字列</returns>
+            <br>Note       : Where句を作成して戻します</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.MakeWhereString(System.Data.SqlClient.SqlCommand@,Broadleaf.Application.Remoting.ParamData.RateProtyMngPatternWork,Broadleaf.Library.Resources.ConstantManagement.LogicalMode)">
+            <summary>
+            検索条件文字列生成＋条件値設定
+            </summary>
+            <param name="sqlCommand">SqlCommandオブジェクト</param>
+            <param name="rateProtyMngPatternWork">検索条件格納クラス</param>
+            <param name="logicalMode">論理削除有無(0:正規ﾃﾞｰﾀのみ 1:削除ﾃﾞｰﾀのみ 2:保留ﾃﾞｰﾀのみ 3:完全削除ﾃﾞｰﾀのみ 4:全件 5:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ 6:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ+保留ﾃﾞｰﾀ)</param>
+            <returns>Where条件文字列</returns>
+            <br>Note       : Where句を作成して戻します</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.MakeWhereStringTemp(System.Data.SqlClient.SqlCommand@,Broadleaf.Application.Remoting.ParamData.RateProtyMngPatternWork,Broadleaf.Library.Resources.ConstantManagement.LogicalMode,System.Int32)">
+            <summary>
+            検索条件文字列生成＋条件値設定
+            </summary>
+            <param name="sqlCommand">SqlCommandオブジェクト</param>
+            <param name="rateProtyMngPatternWork">検索条件格納クラス</param>
+            <param name="logicalMode">論理削除有無(0:正規ﾃﾞｰﾀのみ 1:削除ﾃﾞｰﾀのみ 2:保留ﾃﾞｰﾀのみ 3:完全削除ﾃﾞｰﾀのみ 4:全件 5:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ 6:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ+保留ﾃﾞｰﾀ)</param>
+            <param name="patternMode">モード(0:BLコード;1:品番指定;2:単独指定;3:層別指定;4:商品掛率G指定;5:グループコード指定;6:メーカー指定)</param>
+            <returns>Where条件文字列</returns>
+            <br>Note       : Where句を作成して戻します</br>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.CopyToGoodsFromReader(System.Data.SqlClient.SqlDataReader@,Broadleaf.Application.Remoting.ParamData.RateProtyMngPatternWork,System.Int32)">
+            <summary>
+            クラス格納処理 Reader → rateProtyMngPatternWork
+            </summary>
+            <param name="myReader">SqlDataReader</param>
+            <param name="rateProtyMngPatternWork">rateProtyMngPatternWork</param>
+            <param name="patternMode">モード(0:BLコード;1:品番指定;2:単独指定;3:層別指定;4:商品掛率G指定;5:グループコード指定;6:メーカー指定)</param>
+            <returns>RateRlationWork オブジェクト</returns>
+            <remarks>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            <br>Update Note : 2010/09/26 呉元嘯 仕様連絡 #14492対応</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.CopyToRateFromReader(System.Data.SqlClient.SqlDataReader@,System.Int32)">
+            <summary>
+            クラス格納処理 Reader → rateProtyMngPatternWork
+            </summary>
+            <param name="myReader">SqlDataReader</param>
+            <returns>RateRlationWork オブジェクト</returns>
+            <param name="patternMode">モード(0:BLコード;1:品番指定;2:単独指定;3:層別指定;4:商品掛率G指定;5:グループコード指定;6:メーカー指定)</param>
+            <remarks>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.CopyToRateProtyMngWorkFromReader(System.Data.SqlClient.SqlDataReader@)">
+            <summary>
+            クラス格納処理 Reader → RateProtyMngWork
+            </summary>
+            <param name="myReader">SqlDataReader</param>
+            <returns>SupplierWork オブジェクト</returns>
+            <remarks>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.CreateSqlConnection(System.Boolean)">
+            <summary>
+            SqlConnection生成処理
+            </summary>
+            <param name="open">true:DBへ接続する　false:DBへ接続しない</param>
+            <returns>生成されたSqlConnection、生成に失敗した場合はNullを返す。</returns>
+            <remarks>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.CreateTransaction(System.Data.SqlClient.SqlConnection@)">
+            <summary>
+            SqlTransaction生成処理
+            </summary>
+            <param name="sqlConnection"></param>
+            <returns>生成されたSqlTransaction、生成に失敗した場合はNullを返す。</returns>
+            <remarks>
+            <br>Programmer : 呉元嘯</br>
+            <br>Date       : 2010/08/10</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.RateProtyMngPatternDB.WriteSubSectionProc(System.Collections.ArrayList@,System.Data.SqlClient.SqlConnection@,System.Data.SqlClient.SqlTransaction@)">
+            <summary>
+            掛率設定マスタ情報を登録、更新します(外部からのSqlConnection and SqlTranactionを使用)
+            </summary>
+            <param name="rateWorkList">RateWorkオブジェクト</param>
+            <param name="sqlConnection">sqlConnection</param>
+            <param name="sqlTransaction">sqlTransaction</param>
+            <returns>STATUS</returns>
+            <br>Note       : 掛率設定マスタ情報を登録、更新します(外部からのSqlConnection and SqlTranactionを使用)</br>
+            <br>Programmer : 高峰</br>
+            <br>Date       : 2010/09/10</br>
+        </member>
+    </members>
+</doc>

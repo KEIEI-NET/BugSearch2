@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://10.30.20.162/ubawebservice/ubawebservice.asmx?wsdl" docRef="http://10.30.20.162/ubawebservice/ubawebservice.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://10.30.20.162/ubawebservice/ubawebservice.asmx" xmlns:q1="http://broadleaf.co.jp/UBAWebService/" binding="q1:UBAWebServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://10.30.20.162/ubawebservice/ubawebservice.asmx" xmlns:q2="http://broadleaf.co.jp/UBAWebService/" binding="q2:UBAWebServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

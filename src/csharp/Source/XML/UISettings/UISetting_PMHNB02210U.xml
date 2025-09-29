@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<UiSetByAssembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UISetByForms>
+    <UiSetByForm>
+      <FormName>PMHNB02210UA</FormName>
+      <UISetItems>
+        <UiSetItem>
+          <ItemName>tEdit_FrontEmployeeCd_Ed</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_FrontEmployeeCd_St</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_SalesEmployeeCd_Ed</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_SalesEmployeeCd_St</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_SalesInputCode_Ed</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tEdit_SalesInputCode_St</ItemName>
+          <ItemDDName>EmployeeCode</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_RetGoodsReasonDiv_Ed</ItemName>
+          <ItemDDName>RetGoodsReasonDiv</ItemDDName>
+        </UiSetItem>
+        <UiSetItem>
+          <ItemName>tNedit_RetGoodsReasonDiv_St</ItemName>
+          <ItemDDName>RetGoodsReasonDiv</ItemDDName>
+        </UiSetItem>
+      </UISetItems>
+    </UiSetByForm>
+  </UISetByForms>
+  <UISetDD />
+</UiSetByAssembly>

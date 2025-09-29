@@ -1,0 +1,478 @@
+﻿namespace Broadleaf.Library.Windows.Forms
+{
+    partial class SelectionFormSb
+    {
+        /// <summary>
+        /// 必要なデザイナ変数です。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 使用中のリソースをすべてクリーンアップします。
+        /// </summary>
+        /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows フォーム デザイナで生成されたコード
+
+        /// <summary>
+        /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
+        /// コード エディタで変更しないでください。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar( "Main" );
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool( "Button_Select" );
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool( "Button_Back" );
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool( "Button_PlrSubst" );
+            Infragistics.Win.UltraWinToolbars.LabelTool labelTool1 = new Infragistics.Win.UltraWinToolbars.LabelTool( "dummy" );
+            Infragistics.Win.UltraWinToolbars.LabelTool labelTool2 = new Infragistics.Win.UltraWinToolbars.LabelTool( "代替部品選択" );
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool( "Button_Select" );
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool( "Button_Back" );
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool( "Button_PlrSubst" );
+            Infragistics.Win.UltraWinToolbars.LabelTool labelTool3 = new Infragistics.Win.UltraWinToolbars.LabelTool( "dummy" );
+            Infragistics.Win.UltraWinToolbars.LabelTool labelTool4 = new Infragistics.Win.UltraWinToolbars.LabelTool( "代替部品選択" );
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDock.DockAreaPane dockAreaPane1 = new Infragistics.Win.UltraWinDock.DockAreaPane( Infragistics.Win.UltraWinDock.DockedLocation.DockedBottom, new System.Guid( "57375b35-aa36-4f37-81c7-ae0b36e59433" ) );
+            Infragistics.Win.UltraWinDock.DockableControlPane dockableControlPane1 = new Infragistics.Win.UltraWinDock.DockableControlPane( new System.Guid( "9d11f7b6-a0cf-400f-b8ff-f9129ea904eb" ), new System.Guid( "00000000-0000-0000-0000-000000000000" ), -1, new System.Guid( "57375b35-aa36-4f37-81c7-ae0b36e59433" ), -1 );
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( SelectionFormSb ) );
+            this.gridStock = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.gridSubst = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.StatusBar = new Infragistics.Win.UltraWinStatusBar.UltraStatusBar();
+            this.SelectionForm_Fill_Panel = new System.Windows.Forms.Panel();
+            this._SelectionForm_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this.ToolbarsManager = new Broadleaf.Library.Windows.Forms.TToolbarsManager( this.components );
+            this._SelectionForm_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this._SelectionForm_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this._SelectionForm_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this.ultraDockManager1 = new Infragistics.Win.UltraWinDock.UltraDockManager( this.components );
+            this._SelectionFormSbUnpinnedTabAreaLeft = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
+            this._SelectionFormSbUnpinnedTabAreaRight = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
+            this._SelectionFormSbUnpinnedTabAreaTop = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
+            this._SelectionFormSbUnpinnedTabAreaBottom = new Infragistics.Win.UltraWinDock.UnpinnedTabArea();
+            this._SelectionFormSbAutoHideControl = new Infragistics.Win.UltraWinDock.AutoHideControl();
+            this.windowDockingArea1 = new Infragistics.Win.UltraWinDock.WindowDockingArea();
+            this.dockableWindow1 = new Infragistics.Win.UltraWinDock.DockableWindow();
+            ((System.ComponentModel.ISupportInitialize)(this.gridStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSubst)).BeginInit();
+            this.SelectionForm_Fill_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ToolbarsManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDockManager1)).BeginInit();
+            this.windowDockingArea1.SuspendLayout();
+            this.dockableWindow1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // gridStock
+            // 
+            appearance1.BackColor = System.Drawing.Color.White;
+            appearance1.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(198)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))) );
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.gridStock.DisplayLayout.Appearance = appearance1;
+            this.gridStock.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
+            this.gridStock.DisplayLayout.GroupByBox.Hidden = true;
+            this.gridStock.DisplayLayout.InterBandSpacing = 0;
+            this.gridStock.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.gridStock.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Synchronized;
+            this.gridStock.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.gridStock.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
+            this.gridStock.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.gridStock.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.gridStock.DisplayLayout.Override.CardAreaAppearance = appearance2;
+            this.gridStock.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            this.gridStock.DisplayLayout.Override.ExpansionIndicator = Infragistics.Win.UltraWinGrid.ShowExpansionIndicator.Never;
+            appearance3.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(89)))), ((int)(((byte)(135)))), ((int)(((byte)(214)))) );
+            appearance3.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(7)))), ((int)(((byte)(59)))), ((int)(((byte)(150)))) );
+            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance3.ForeColor = System.Drawing.Color.White;
+            appearance3.TextHAlignAsString = "Left";
+            appearance3.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.gridStock.DisplayLayout.Override.HeaderAppearance = appearance3;
+            this.gridStock.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
+            appearance4.BackColor = System.Drawing.Color.Lavender;
+            this.gridStock.DisplayLayout.Override.RowAlternateAppearance = appearance4;
+            appearance5.BorderColor = System.Drawing.Color.FromArgb( ((int)(((byte)(1)))), ((int)(((byte)(68)))), ((int)(((byte)(208)))) );
+            this.gridStock.DisplayLayout.Override.RowAppearance = appearance5;
+            this.gridStock.DisplayLayout.Override.RowFilterAction = Infragistics.Win.UltraWinGrid.RowFilterAction.HideFilteredOutRows;
+            this.gridStock.DisplayLayout.Override.RowFilterMode = Infragistics.Win.UltraWinGrid.RowFilterMode.AllRowsInBand;
+            appearance6.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(89)))), ((int)(((byte)(135)))), ((int)(((byte)(214)))) );
+            appearance6.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(7)))), ((int)(((byte)(59)))), ((int)(((byte)(150)))) );
+            appearance6.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance6.ForeColor = System.Drawing.Color.White;
+            this.gridStock.DisplayLayout.Override.RowSelectorAppearance = appearance6;
+            this.gridStock.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.RowIndex;
+            this.gridStock.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            this.gridStock.DisplayLayout.Override.RowSelectorWidth = 20;
+            this.gridStock.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFixed;
+            appearance7.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(251)))), ((int)(((byte)(230)))), ((int)(((byte)(148)))) );
+            appearance7.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(238)))), ((int)(((byte)(149)))), ((int)(((byte)(21)))) );
+            appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance7.ForeColor = System.Drawing.Color.Black;
+            this.gridStock.DisplayLayout.Override.SelectedRowAppearance = appearance7;
+            this.gridStock.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
+            this.gridStock.DisplayLayout.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.SingleAutoDrag;
+            this.gridStock.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.SingleAutoDrag;
+            this.gridStock.DisplayLayout.RowConnectorColor = System.Drawing.Color.FromArgb( ((int)(((byte)(168)))), ((int)(((byte)(167)))), ((int)(((byte)(191)))) );
+            this.gridStock.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.None;
+            this.gridStock.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.gridStock.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.gridStock.Location = new System.Drawing.Point( 0, 29 );
+            this.gridStock.Margin = new System.Windows.Forms.Padding( 1 );
+            this.gridStock.Name = "gridStock";
+            this.gridStock.Size = new System.Drawing.Size( 914, 105 );
+            this.gridStock.TabIndex = 12;
+            this.gridStock.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler( this.gridStock_InitializeLayout );
+            this.gridStock.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler( this.gridStock_AfterSelectChange );
+            this.gridStock.BeforeSelectChange += new Infragistics.Win.UltraWinGrid.BeforeSelectChangeEventHandler( this.gridStock_BeforeSelectChange );
+            this.gridStock.Enter += new System.EventHandler( this.gridStock_Enter );
+            this.gridStock.KeyDown += new System.Windows.Forms.KeyEventHandler( this.gridStock_KeyDown );
+            this.gridStock.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler( this.gridStock_DoubleClickRow );
+            // 
+            // gridSubst
+            // 
+            appearance8.BackColor = System.Drawing.Color.White;
+            appearance8.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(198)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))) );
+            appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.gridSubst.DisplayLayout.Appearance = appearance8;
+            this.gridSubst.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
+            this.gridSubst.DisplayLayout.GroupByBox.Hidden = true;
+            this.gridSubst.DisplayLayout.InterBandSpacing = 0;
+            this.gridSubst.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.gridSubst.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Synchronized;
+            this.gridSubst.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.gridSubst.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
+            this.gridSubst.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.gridSubst.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.gridSubst.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            this.gridSubst.DisplayLayout.Override.ExpansionIndicator = Infragistics.Win.UltraWinGrid.ShowExpansionIndicator.Never;
+            appearance9.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(89)))), ((int)(((byte)(135)))), ((int)(((byte)(214)))) );
+            appearance9.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(7)))), ((int)(((byte)(59)))), ((int)(((byte)(150)))) );
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance9.ForeColor = System.Drawing.Color.White;
+            appearance9.TextHAlignAsString = "Left";
+            appearance9.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.gridSubst.DisplayLayout.Override.HeaderAppearance = appearance9;
+            this.gridSubst.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.Select;
+            appearance10.BackColor = System.Drawing.Color.Lavender;
+            this.gridSubst.DisplayLayout.Override.RowAlternateAppearance = appearance10;
+            appearance11.BorderColor = System.Drawing.Color.FromArgb( ((int)(((byte)(1)))), ((int)(((byte)(68)))), ((int)(((byte)(208)))) );
+            this.gridSubst.DisplayLayout.Override.RowAppearance = appearance11;
+            this.gridSubst.DisplayLayout.Override.RowFilterAction = Infragistics.Win.UltraWinGrid.RowFilterAction.HideFilteredOutRows;
+            this.gridSubst.DisplayLayout.Override.RowFilterMode = Infragistics.Win.UltraWinGrid.RowFilterMode.AllRowsInBand;
+            appearance12.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(89)))), ((int)(((byte)(135)))), ((int)(((byte)(214)))) );
+            appearance12.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(7)))), ((int)(((byte)(59)))), ((int)(((byte)(150)))) );
+            appearance12.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance12.ForeColor = System.Drawing.Color.White;
+            this.gridSubst.DisplayLayout.Override.RowSelectorAppearance = appearance12;
+            this.gridSubst.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.RowIndex;
+            this.gridSubst.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            this.gridSubst.DisplayLayout.Override.RowSelectorWidth = 24;
+            this.gridSubst.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFixed;
+            appearance13.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(251)))), ((int)(((byte)(230)))), ((int)(((byte)(148)))) );
+            appearance13.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(238)))), ((int)(((byte)(149)))), ((int)(((byte)(21)))) );
+            appearance13.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance13.ForeColor = System.Drawing.Color.Black;
+            this.gridSubst.DisplayLayout.Override.SelectedRowAppearance = appearance13;
+            this.gridSubst.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
+            this.gridSubst.DisplayLayout.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.None;
+            this.gridSubst.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.gridSubst.DisplayLayout.RowConnectorColor = System.Drawing.Color.FromArgb( ((int)(((byte)(168)))), ((int)(((byte)(167)))), ((int)(((byte)(191)))) );
+            this.gridSubst.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.None;
+            this.gridSubst.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.gridSubst.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.gridSubst.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridSubst.Location = new System.Drawing.Point( 0, 0 );
+            this.gridSubst.Margin = new System.Windows.Forms.Padding( 4 );
+            this.gridSubst.Name = "gridSubst";
+            this.gridSubst.Size = new System.Drawing.Size( 914, 246 );
+            this.gridSubst.TabIndex = 0;
+            this.gridSubst.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler( this.gridSubst_InitializeLayout );
+            this.gridSubst.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler( this.gridSubst_AfterSelectChange );
+            this.gridSubst.KeyDown += new System.Windows.Forms.KeyEventHandler( this.gridSubst_KeyDown );
+            this.gridSubst.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler( this.gridSubst_DoubleClickRow );
+            // 
+            // StatusBar
+            // 
+            this.StatusBar.Location = new System.Drawing.Point( 0, 410 );
+            this.StatusBar.Margin = new System.Windows.Forms.Padding( 4 );
+            this.StatusBar.Name = "StatusBar";
+            ultraStatusPanel1.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
+            ultraStatusPanel1.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Spring;
+            this.StatusBar.Panels.AddRange( new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel[] {
+            ultraStatusPanel1} );
+            this.StatusBar.Size = new System.Drawing.Size( 914, 29 );
+            this.StatusBar.TabIndex = 3;
+            this.StatusBar.ViewStyle = Infragistics.Win.UltraWinStatusBar.ViewStyle.Office2003;
+            // 
+            // SelectionForm_Fill_Panel
+            // 
+            this.SelectionForm_Fill_Panel.Controls.Add( this.gridSubst );
+            this.SelectionForm_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SelectionForm_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SelectionForm_Fill_Panel.Location = new System.Drawing.Point( 0, 26 );
+            this.SelectionForm_Fill_Panel.Name = "SelectionForm_Fill_Panel";
+            this.SelectionForm_Fill_Panel.Size = new System.Drawing.Size( 914, 246 );
+            this.SelectionForm_Fill_Panel.TabIndex = 4;
+            // 
+            // _SelectionForm_Toolbars_Dock_Area_Left
+            // 
+            this._SelectionForm_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._SelectionForm_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(158)))), ((int)(((byte)(190)))), ((int)(((byte)(245)))) );
+            this._SelectionForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
+            this._SelectionForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._SelectionForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point( 0, 26 );
+            this._SelectionForm_Toolbars_Dock_Area_Left.Name = "_SelectionForm_Toolbars_Dock_Area_Left";
+            this._SelectionForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size( 0, 384 );
+            this._SelectionForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ToolbarsManager;
+            // 
+            // ToolbarsManager
+            // 
+            this.ToolbarsManager.DesignerFlags = 0;
+            this.ToolbarsManager.DockWithinContainer = this;
+            this.ToolbarsManager.DockWithinContainerBaseType = typeof( System.Windows.Forms.Form );
+            this.ToolbarsManager.ShowFullMenusDelay = 500;
+            this.ToolbarsManager.Style = Infragistics.Win.UltraWinToolbars.ToolbarStyle.Office2003;
+            ultraToolbar1.DockedColumn = 0;
+            ultraToolbar1.DockedRow = 0;
+            buttonTool3.InstanceProps.IsFirstInGroup = true;
+            ultraToolbar1.NonInheritedTools.AddRange( new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool1,
+            buttonTool2,
+            buttonTool3,
+            labelTool1,
+            labelTool2} );
+            ultraToolbar1.Settings.FillEntireRow = Infragistics.Win.DefaultableBoolean.True;
+            ultraToolbar1.Settings.ToolDisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            ultraToolbar1.Text = "標準";
+            this.ToolbarsManager.Toolbars.AddRange( new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
+            ultraToolbar1} );
+            buttonTool4.SharedProps.Caption = "確定(F10)";
+            buttonTool4.SharedProps.Shortcut = System.Windows.Forms.Shortcut.F10;
+            buttonTool5.SharedProps.Caption = "戻る(F11)";
+            buttonTool5.SharedProps.Shortcut = System.Windows.Forms.Shortcut.F11;
+            buttonTool5.SharedProps.ToolTipText = "前の画面に戻ります。";
+            buttonTool6.SharedProps.Caption = "複数互換(F5)";
+            buttonTool6.SharedProps.Shortcut = System.Windows.Forms.Shortcut.F5;
+            labelTool3.SharedProps.ShowInCustomizer = false;
+            labelTool3.SharedProps.Spring = true;
+            appearance14.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(89)))), ((int)(((byte)(135)))), ((int)(((byte)(214)))) );
+            appearance14.BackColor2 = System.Drawing.Color.FromArgb( ((int)(((byte)(7)))), ((int)(((byte)(59)))), ((int)(((byte)(150)))) );
+            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance14.FontData.BoldAsString = "True";
+            appearance14.ForeColor = System.Drawing.Color.White;
+            appearance14.TextHAlignAsString = "Center";
+            labelTool4.SharedProps.AppearancesSmall.Appearance = appearance14;
+            labelTool4.SharedProps.Caption = "代替部品選択";
+            labelTool4.SharedProps.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways;
+            this.ToolbarsManager.Tools.AddRange( new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool4,
+            buttonTool5,
+            buttonTool6,
+            labelTool3,
+            labelTool4} );
+            this.ToolbarsManager.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler( this.ToolbarsManager_ToolClick );
+            // 
+            // _SelectionForm_Toolbars_Dock_Area_Right
+            // 
+            this._SelectionForm_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._SelectionForm_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(158)))), ((int)(((byte)(190)))), ((int)(((byte)(245)))) );
+            this._SelectionForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
+            this._SelectionForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._SelectionForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point( 914, 26 );
+            this._SelectionForm_Toolbars_Dock_Area_Right.Name = "_SelectionForm_Toolbars_Dock_Area_Right";
+            this._SelectionForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size( 0, 384 );
+            this._SelectionForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ToolbarsManager;
+            // 
+            // _SelectionForm_Toolbars_Dock_Area_Top
+            // 
+            this._SelectionForm_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._SelectionForm_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(158)))), ((int)(((byte)(190)))), ((int)(((byte)(245)))) );
+            this._SelectionForm_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
+            this._SelectionForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._SelectionForm_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point( 0, 0 );
+            this._SelectionForm_Toolbars_Dock_Area_Top.Name = "_SelectionForm_Toolbars_Dock_Area_Top";
+            this._SelectionForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size( 914, 26 );
+            this._SelectionForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ToolbarsManager;
+            // 
+            // _SelectionForm_Toolbars_Dock_Area_Bottom
+            // 
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.FromArgb( ((int)(((byte)(158)))), ((int)(((byte)(190)))), ((int)(((byte)(245)))) );
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point( 0, 410 );
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.Name = "_SelectionForm_Toolbars_Dock_Area_Bottom";
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size( 914, 0 );
+            this._SelectionForm_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ToolbarsManager;
+            // 
+            // ultraDockManager1
+            // 
+            this.ultraDockManager1.AnimationSpeed = Infragistics.Win.UltraWinDock.AnimationSpeed.StandardSpeedPlus1;
+            this.ultraDockManager1.AutoHideDelay = 100;
+            dockableControlPane1.Control = this.gridStock;
+            dockableControlPane1.OriginalControlBounds = new System.Drawing.Rectangle( 1, 272, 917, 97 );
+            dockableControlPane1.Settings.AllowClose = Infragistics.Win.DefaultableBoolean.False;
+            dockableControlPane1.Size = new System.Drawing.Size( 100, 100 );
+            dockableControlPane1.Text = "在庫情報";
+            dockAreaPane1.Panes.AddRange( new Infragistics.Win.UltraWinDock.DockablePaneBase[] {
+            dockableControlPane1} );
+            dockAreaPane1.Size = new System.Drawing.Size( 914, 134 );
+            this.ultraDockManager1.DockAreas.AddRange( new Infragistics.Win.UltraWinDock.DockAreaPane[] {
+            dockAreaPane1} );
+            this.ultraDockManager1.HostControl = this;
+            this.ultraDockManager1.ShowCloseButton = false;
+            this.ultraDockManager1.SplitterBarWidth = 4;
+            this.ultraDockManager1.WindowStyle = Infragistics.Win.UltraWinDock.WindowStyle.Office2003;
+            // 
+            // _SelectionFormSbUnpinnedTabAreaLeft
+            // 
+            this._SelectionFormSbUnpinnedTabAreaLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this._SelectionFormSbUnpinnedTabAreaLeft.Font = new System.Drawing.Font( "ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)) );
+            this._SelectionFormSbUnpinnedTabAreaLeft.Location = new System.Drawing.Point( 0, 26 );
+            this._SelectionFormSbUnpinnedTabAreaLeft.Name = "_SelectionFormSbUnpinnedTabAreaLeft";
+            this._SelectionFormSbUnpinnedTabAreaLeft.Owner = this.ultraDockManager1;
+            this._SelectionFormSbUnpinnedTabAreaLeft.Size = new System.Drawing.Size( 0, 384 );
+            this._SelectionFormSbUnpinnedTabAreaLeft.TabIndex = 9;
+            // 
+            // _SelectionFormSbUnpinnedTabAreaRight
+            // 
+            this._SelectionFormSbUnpinnedTabAreaRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this._SelectionFormSbUnpinnedTabAreaRight.Font = new System.Drawing.Font( "ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)) );
+            this._SelectionFormSbUnpinnedTabAreaRight.Location = new System.Drawing.Point( 914, 26 );
+            this._SelectionFormSbUnpinnedTabAreaRight.Name = "_SelectionFormSbUnpinnedTabAreaRight";
+            this._SelectionFormSbUnpinnedTabAreaRight.Owner = this.ultraDockManager1;
+            this._SelectionFormSbUnpinnedTabAreaRight.Size = new System.Drawing.Size( 0, 384 );
+            this._SelectionFormSbUnpinnedTabAreaRight.TabIndex = 10;
+            // 
+            // _SelectionFormSbUnpinnedTabAreaTop
+            // 
+            this._SelectionFormSbUnpinnedTabAreaTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this._SelectionFormSbUnpinnedTabAreaTop.Font = new System.Drawing.Font( "ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)) );
+            this._SelectionFormSbUnpinnedTabAreaTop.Location = new System.Drawing.Point( 0, 26 );
+            this._SelectionFormSbUnpinnedTabAreaTop.Name = "_SelectionFormSbUnpinnedTabAreaTop";
+            this._SelectionFormSbUnpinnedTabAreaTop.Owner = this.ultraDockManager1;
+            this._SelectionFormSbUnpinnedTabAreaTop.Size = new System.Drawing.Size( 914, 0 );
+            this._SelectionFormSbUnpinnedTabAreaTop.TabIndex = 11;
+            // 
+            // _SelectionFormSbUnpinnedTabAreaBottom
+            // 
+            this._SelectionFormSbUnpinnedTabAreaBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._SelectionFormSbUnpinnedTabAreaBottom.Font = new System.Drawing.Font( "ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)) );
+            this._SelectionFormSbUnpinnedTabAreaBottom.Location = new System.Drawing.Point( 0, 410 );
+            this._SelectionFormSbUnpinnedTabAreaBottom.Name = "_SelectionFormSbUnpinnedTabAreaBottom";
+            this._SelectionFormSbUnpinnedTabAreaBottom.Owner = this.ultraDockManager1;
+            this._SelectionFormSbUnpinnedTabAreaBottom.Size = new System.Drawing.Size( 914, 0 );
+            this._SelectionFormSbUnpinnedTabAreaBottom.TabIndex = 12;
+            // 
+            // _SelectionFormSbAutoHideControl
+            // 
+            this._SelectionFormSbAutoHideControl.Font = new System.Drawing.Font( "ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)) );
+            this._SelectionFormSbAutoHideControl.Location = new System.Drawing.Point( 0, 0 );
+            this._SelectionFormSbAutoHideControl.Name = "_SelectionFormSbAutoHideControl";
+            this._SelectionFormSbAutoHideControl.Owner = this.ultraDockManager1;
+            this._SelectionFormSbAutoHideControl.Size = new System.Drawing.Size( 0, 0 );
+            this._SelectionFormSbAutoHideControl.TabIndex = 13;
+            // 
+            // windowDockingArea1
+            // 
+            this.windowDockingArea1.Controls.Add( this.dockableWindow1 );
+            this.windowDockingArea1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.windowDockingArea1.Font = new System.Drawing.Font( "ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)) );
+            this.windowDockingArea1.Location = new System.Drawing.Point( 0, 272 );
+            this.windowDockingArea1.Name = "windowDockingArea1";
+            this.windowDockingArea1.Owner = this.ultraDockManager1;
+            this.windowDockingArea1.Size = new System.Drawing.Size( 914, 138 );
+            this.windowDockingArea1.TabIndex = 14;
+            // 
+            // dockableWindow1
+            // 
+            this.dockableWindow1.Controls.Add( this.gridStock );
+            this.dockableWindow1.Location = new System.Drawing.Point( 0, 4 );
+            this.dockableWindow1.Name = "dockableWindow1";
+            this.dockableWindow1.Owner = this.ultraDockManager1;
+            this.dockableWindow1.Size = new System.Drawing.Size( 914, 134 );
+            this.dockableWindow1.TabIndex = 19;
+            // 
+            // SelectionFormSb
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF( 8F, 15F );
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size( 914, 439 );
+            this.Controls.Add( this._SelectionFormSbAutoHideControl );
+            this.Controls.Add( this.SelectionForm_Fill_Panel );
+            this.Controls.Add( this.windowDockingArea1 );
+            this.Controls.Add( this._SelectionFormSbUnpinnedTabAreaTop );
+            this.Controls.Add( this._SelectionFormSbUnpinnedTabAreaBottom );
+            this.Controls.Add( this._SelectionFormSbUnpinnedTabAreaLeft );
+            this.Controls.Add( this._SelectionFormSbUnpinnedTabAreaRight );
+            this.Controls.Add( this._SelectionForm_Toolbars_Dock_Area_Left );
+            this.Controls.Add( this._SelectionForm_Toolbars_Dock_Area_Right );
+            this.Controls.Add( this._SelectionForm_Toolbars_Dock_Area_Top );
+            this.Controls.Add( this._SelectionForm_Toolbars_Dock_Area_Bottom );
+            this.Controls.Add( this.StatusBar );
+            this.Font = new System.Drawing.Font( "ＭＳ ゴシック", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)) );
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject( "$this.Icon" )));
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding( 4 );
+            this.MinimumSize = new System.Drawing.Size( 600, 300 );
+            this.Name = "SelectionFormSb";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "代替部品選択";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler( this.SelectionFormSb_FormClosed );
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler( this.SelectionFormSb_FormClosing );
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler( this.SelectionFormSb_KeyDown );
+            ((System.ComponentModel.ISupportInitialize)(this.gridStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSubst)).EndInit();
+            this.SelectionForm_Fill_Panel.ResumeLayout( false );
+            ((System.ComponentModel.ISupportInitialize)(this.ToolbarsManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDockManager1)).EndInit();
+            this.windowDockingArea1.ResumeLayout( false );
+            this.dockableWindow1.ResumeLayout( false );
+            this.ResumeLayout( false );
+
+        }
+
+        #endregion
+
+        private Infragistics.Win.UltraWinGrid.UltraGrid gridSubst;
+        private Infragistics.Win.UltraWinStatusBar.UltraStatusBar StatusBar;
+        private System.Windows.Forms.Panel SelectionForm_Fill_Panel;
+        private TToolbarsManager ToolbarsManager;
+        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _SelectionForm_Toolbars_Dock_Area_Left;
+        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _SelectionForm_Toolbars_Dock_Area_Right;
+        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _SelectionForm_Toolbars_Dock_Area_Top;
+        private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _SelectionForm_Toolbars_Dock_Area_Bottom;
+        private Infragistics.Win.UltraWinDock.AutoHideControl _SelectionFormSbAutoHideControl;
+        private Infragistics.Win.UltraWinDock.UltraDockManager ultraDockManager1;
+        private Infragistics.Win.UltraWinGrid.UltraGrid gridStock;
+        private Infragistics.Win.UltraWinDock.WindowDockingArea windowDockingArea1;
+        private Infragistics.Win.UltraWinDock.DockableWindow dockableWindow1;
+        private Infragistics.Win.UltraWinDock.UnpinnedTabArea _SelectionFormSbUnpinnedTabAreaTop;
+        private Infragistics.Win.UltraWinDock.UnpinnedTabArea _SelectionFormSbUnpinnedTabAreaBottom;
+        private Infragistics.Win.UltraWinDock.UnpinnedTabArea _SelectionFormSbUnpinnedTabAreaLeft;
+        private Infragistics.Win.UltraWinDock.UnpinnedTabArea _SelectionFormSbUnpinnedTabAreaRight;
+    }
+}

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM07000U", "PMSCM07000U\PMSCM07000U.csproj", "{7CA8BAE9-7408-44D1-9CC0-BC7D6E9D6AB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM07001A", "PMSCM07001A\PMSCM07001A.csproj", "{1AA10D44-7596-4AB7-B401-86A4E85D0430}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCMSenderProxy", "SCMSenderProxy\SCMSenderProxy.csproj", "{00AD0D17-585A-4772-8432-A6644D015D17}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectUniqueName0 = PMSCM07000U\\PMSCM07000U.csproj
+		SccProjectName0 = \u0022$/Partsman[810]/Source/Client/PMSCM07000U.root/PMSCM07000U/PMSCM07000U\u0022,\u0020UXWCAAAA
+		SccLocalPath0 = PMSCM07000U
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = PMSCM07001A\\PMSCM07001A.csproj
+		SccProjectName2 = \u0022$/Partsman[810]/Source/Client/PMSCM07000U.root/PMSCM07000U/PMSCM07001A\u0022,\u0020IYWCAAAA
+		SccLocalPath2 = PMSCM07001A
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CA8BAE9-7408-44D1-9CC0-BC7D6E9D6AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA8BAE9-7408-44D1-9CC0-BC7D6E9D6AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA8BAE9-7408-44D1-9CC0-BC7D6E9D6AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA8BAE9-7408-44D1-9CC0-BC7D6E9D6AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA10D44-7596-4AB7-B401-86A4E85D0430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA10D44-7596-4AB7-B401-86A4E85D0430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA10D44-7596-4AB7-B401-86A4E85D0430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA10D44-7596-4AB7-B401-86A4E85D0430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00AD0D17-585A-4772-8432-A6644D015D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00AD0D17-585A-4772-8432-A6644D015D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00AD0D17-585A-4772-8432-A6644D015D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00AD0D17-585A-4772-8432-A6644D015D17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

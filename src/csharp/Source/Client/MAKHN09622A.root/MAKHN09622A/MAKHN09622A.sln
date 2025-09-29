@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAKHN09622A", "MAKHN09622A\MAKHN09622A.csproj", "{23CFB36F-F75F-47B2-8374-A6D96F4763FA}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MAKHN09622A\\MAKHN09622A.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/MAKHN09622A.root/MAKHN09622A/MAKHN09622A\u0022,\u0020NYYAAAAA
+		SccLocalPath1 = MAKHN09622A
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23CFB36F-F75F-47B2-8374-A6D96F4763FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CFB36F-F75F-47B2-8374-A6D96F4763FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CFB36F-F75F-47B2-8374-A6D96F4763FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CFB36F-F75F-47B2-8374-A6D96F4763FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

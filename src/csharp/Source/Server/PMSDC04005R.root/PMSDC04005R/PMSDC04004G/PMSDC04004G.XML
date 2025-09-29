@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMSDC04004G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationSalCprtSndLogDB">
+            <summary>
+            SalCprtSndLogDB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスはISalCprtSndLogDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>             完全スタンドアロンにする場合にはこのクラスで直接SalCprtSndLogDBを</br>
+            <br>             インスタンス化して戻します。</br>
+            <br>Programmer : 自動生成</br>
+            <br>Date       : 2019/12/02</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationSalCprtSndLogDB.#ctor">
+            <summary>
+            SalCprtSndLogDB仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 自動生成</br>
+            <br>Date       : 2019/12/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationSalCprtSndLogDB.GetSalCprtSndLogDB">
+            <summary>
+            ISalCprtSndLogDBインターフェース取得
+            </summary>
+            <returns>ISalCprtSndLogDBオブジェクト</returns>
+        </member>
+    </members>
+</doc>

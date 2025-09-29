@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMCMN00008R", "PMCMN00008R\PMCMN00008R.csproj", "{BB8AE19B-5486-4A24-9D11-A77A52B9415F}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMCMN00008R\\PMCMN00008R.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = PMCMN00008R\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB8AE19B-5486-4A24-9D11-A77A52B9415F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8AE19B-5486-4A24-9D11-A77A52B9415F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8AE19B-5486-4A24-9D11-A77A52B9415F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8AE19B-5486-4A24-9D11-A77A52B9415F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

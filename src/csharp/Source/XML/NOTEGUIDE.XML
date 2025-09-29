@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definfo> 
+	<!-- ガイドフォームの設定  -->
+	<GuideDef>
+		<FormTitle>備考ガイド</FormTitle>
+		<FormMassge>名称を選択してください</FormMassge>
+		<FormMassgeFontColor>MediumSpringGreen</FormMassgeFontColor>
+		<FormHeight>645</FormHeight>
+		<FormWidth>405</FormWidth>
+		<StyleMode>new</StyleMode>
+		<StartPosition>CenterParent</StartPosition>
+		<StartPositionTop>0</StartPositionTop>
+		<StartPositionLeft>0</StartPositionLeft>	
+		<SearchType>2</SearchType>
+		<SearchCondition>
+			<ColName>開始ｺｰﾄﾞ</ColName>
+			<ColKey>NoteGuideCode</ColKey>
+			<ColLength>4</ColLength>
+			<ColImeMode>0</ColImeMode>
+		</SearchCondition>
+		<SearchCondition>
+			<ColName>絞込名称</ColName>
+			<ColKey>NoteGuideName</ColKey>
+			<ColLength>20</ColLength>
+			<ColImeMode>1</ColImeMode>
+		</SearchCondition>
+	</GuideDef>
+	<!-- 選択対象データViewerの設定  -->
+	<ViewerDef>
+		<ViewerInfo>
+			<ColName>コード</ColName>
+			<ColKey>NoteGuideCode</ColKey>
+			<ColWith>50</ColWith>
+			<ColDataType>int</ColDataType>
+		</ViewerInfo>		
+		<ViewerInfo>
+			<ColName>名称</ColName>
+			<ColKey>NoteGuideName</ColKey>
+			<ColWith>350</ColWith>
+			<ColDataType>string</ColDataType>
+		</ViewerInfo>		
+	</ViewerDef>
+	<!-- 選択対象データの検索条件設定  -->
+	<SearchDef>
+		<SerchName>Broadleaf.Application.Controller.NoteGuidAcs</SerchName>
+		<SerchAssm>SFTOK09402A.DLL</SerchAssm>
+		<SerchInfoRoot>
+			<SerchInfo type="string">EnterpriseCode</SerchInfo>
+			<SerchInfo type="int">NoteGuideDivCode</SerchInfo>
+		</SerchInfoRoot>
+	</SearchDef>
+	<!-- 選択結果の設定  -->
+	<SelectedInfoDef>
+		<SelectedInfo type="int">NoteGuideDivCode</SelectedInfo>
+		<SelectedInfo type="int">NoteGuideCode</SelectedInfo>
+		<SelectedInfo type="string">NoteGuideName</SelectedInfo>
+	</SelectedInfoDef>
+</definfo>

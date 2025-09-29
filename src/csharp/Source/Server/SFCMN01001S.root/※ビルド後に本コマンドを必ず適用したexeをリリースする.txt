@@ -1,0 +1,2 @@
+editbin /LARGEADDRESSAWARE "C:\Program Files (x86)\PartsmanServer\USER_AP\SFCMN01001S.exe"
+dumpbin /headers "C:\Program Files (x86)\PartsmanServer\USER_AP\SFCMN01001S.exe"

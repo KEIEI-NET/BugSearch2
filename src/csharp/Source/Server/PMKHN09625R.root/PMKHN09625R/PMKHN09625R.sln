@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09625R", "PMKHN09625R\PMKHN09625R.csproj", "{3DE45756-E923-4576-9316-0C887148F59A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServerWorker", "ConsoleServerWorker\ConsoleServerWorker.csproj", "{41E7C69D-F8DE-4862-BCDB-4730C270873D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09624G", "PMKHN09624G\PMKHN09624G.csproj", "{EF4BCF3C-1284-412C-8957-A6F685EE1F8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09627D", "PMKHN09627D\PMKHN09627D.csproj", "{C42E7596-0FD3-444A-BE42-977BD9AC3FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKHN09626O", "PMKHN09626O\PMKHN09626O.csproj", "{D9C102EA-E16D-46BF-B112-E8ECE28A194E}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMKHN09625R\\PMKHN09625R.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Server/PMKHN09625R.root/PMKHN09625R/PMKHN09625R\u0022,\u0020UGBDAAAA
+		SccLocalPath1 = PMKHN09625R
+		SccProjectUniqueName2 = ConsoleServerWorker\\ConsoleServerWorker.csproj
+		SccProjectName2 = \u0022$/Partsman[810]/Source/Server/PMKHN09625R.root/PMKHN09625R/ConsoleServerWorker\u0022,\u0020HGBDAAAA
+		SccLocalPath2 = ConsoleServerWorker
+		SccProjectUniqueName3 = PMKHN09624G\\PMKHN09624G.csproj
+		SccProjectName3 = \u0022$/Partsman[810]/Source/Server/PMKHN09625R.root/PMKHN09625R/PMKHN09624G\u0022,\u0020PGBDAAAA
+		SccLocalPath3 = PMKHN09624G
+		SccProjectUniqueName4 = PMKHN09627D\\PMKHN09627D.csproj
+		SccProjectName4 = \u0022$/Partsman[810]/Source/Server/PMKHN09625R.root/PMKHN09625R/PMKHN09627D\u0022,\u0020FHBDAAAA
+		SccLocalPath4 = PMKHN09627D
+		SccProjectUniqueName5 = PMKHN09626O\\PMKHN09626O.csproj
+		SccProjectName5 = \u0022$/Partsman[810]/Source/Server/PMKHN09625R.root/PMKHN09625R/PMKHN09626O\u0022,\u0020AHBDAAAA
+		SccLocalPath5 = PMKHN09626O
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DE45756-E923-4576-9316-0C887148F59A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DE45756-E923-4576-9316-0C887148F59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DE45756-E923-4576-9316-0C887148F59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DE45756-E923-4576-9316-0C887148F59A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E7C69D-F8DE-4862-BCDB-4730C270873D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E7C69D-F8DE-4862-BCDB-4730C270873D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E7C69D-F8DE-4862-BCDB-4730C270873D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E7C69D-F8DE-4862-BCDB-4730C270873D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF4BCF3C-1284-412C-8957-A6F685EE1F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4BCF3C-1284-412C-8957-A6F685EE1F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4BCF3C-1284-412C-8957-A6F685EE1F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4BCF3C-1284-412C-8957-A6F685EE1F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42E7596-0FD3-444A-BE42-977BD9AC3FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42E7596-0FD3-444A-BE42-977BD9AC3FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42E7596-0FD3-444A-BE42-977BD9AC3FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42E7596-0FD3-444A-BE42-977BD9AC3FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C102EA-E16D-46BF-B112-E8ECE28A194E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C102EA-E16D-46BF-B112-E8ECE28A194E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C102EA-E16D-46BF-B112-E8ECE28A194E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C102EA-E16D-46BF-B112-E8ECE28A194E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

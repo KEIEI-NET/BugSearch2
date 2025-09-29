@@ -1,0 +1,121 @@
+//****************************************************************************//
+// システム         : PM.NS
+// プログラム名称   : 自由検索部品処理
+// プログラム概要   : 自由検索部品処理フォームクラス
+//----------------------------------------------------------------------------//
+//                (c)Copyright  2010 Broadleaf Co.,Ltd.
+//============================================================================//
+// 履歴
+//----------------------------------------------------------------------------//
+// 管理番号  10503402-00 作成担当 : 肖緒徳
+// 作 成 日  2010/04/26  修正内容 : 新規作成
+//----------------------------------------------------------------------------//
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+using Broadleaf.Application.Common;
+using Broadleaf.Library.Windows.Forms;
+using Broadleaf.Application.Resources;
+
+namespace Broadleaf.Windows.Forms
+{
+    /// <summary>
+    /// 起動処理
+    /// </summary>
+    /// <remarks>
+    /// Note       : 起動処理です。<br />
+    /// Programmer : 肖緒徳<br />
+    /// Date       : 2010/04/26<br />
+    /// </remarks>
+    static class Program
+    {
+        private static string[] _parameter;						// 起動パラメータ
+        private static Form _form = null;
+
+        /// <summary>
+        /// アプリケーションのメイン エントリ ポイントです。
+        /// </summary>
+        /// <param name="args">起動パラメータ</param>
+        /// <remarks>
+        /// Note       : アプリケーションのメイン エントリ ポイントです。<br />
+        /// Programmer : 肖緒徳<br />
+        /// Date       : 2010/04/26<br />
+        /// </remarks>
+        [STAThread]
+        static void Main(String[] args)
+        {
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+
+            try
+            {
+                string msg = "";
+                _parameter = args;
+
+                // アプリケーション開始準備処理
+                // 第二パラメータはアプリケーションのソフトウェアコードが指定できる場合は未定。出来ない場合はプロダクトコード
+                int status = ApplicationStartControl.StartApplication(
+                    out msg, ref _parameter, ConstantManagement_SF_PRO.ProductCode, new EventHandler(ApplicationReleased));
+
+                if (status == 0)
+                {
+                    // オンライン状態判断
+                    if (!LoginInfoAcquisition.OnlineFlag)
+                    {
+                        TMsgDisp.Show(emErrorLevel.ERR_LEVEL_EXCLAMATION, "PMJKN09011U",
+                            "オフライン状態で本機能はご使用できません。", 0, MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        _form = new PMJKN09011UA();
+
+                        System.Windows.Forms.Application.Run(_form);
+                    }
+                }
+                else
+                {
+                    TMsgDisp.Show(emErrorLevel.ERR_LEVEL_INFO, "PMJKN09011U", msg, 0, MessageBoxButtons.OK);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TMsgDisp.Show(emErrorLevel.ERR_LEVEL_STOPDISP, "PMJKN09011U", ex.Message, 0, MessageBoxButtons.OK);
+            }
+            finally
+            {
+                ApplicationStartControl.EndApplication();
+            }
+        }
+
+        /// <summary>
+        /// アプリケーション終了イベント
+        /// </summary>
+        /// <param name="sender">対象オブジェクト</param>
+        /// <param name="e">イベントパラメータ</param>
+        /// <remarks>
+        /// Note       : アプリケーション終了処理です。<br />
+        /// Programmer : 肖緒徳<br />
+        /// Date       : 2010/04/26<br />
+        /// </remarks>
+        private static void ApplicationReleased(object sender, EventArgs e)
+        {
+            // メッセージを出す前に全て開放
+            ApplicationStartControl.EndApplication();
+
+            // 従業員ログオフのメッセージを表示
+            if (_form != null)
+            {
+                TMsgDisp.Show(_form.Owner, emErrorLevel.ERR_LEVEL_INFO, "PMJKN09011U", e.ToString(), 0, MessageBoxButtons.OK);
+            }
+            else
+            {
+                TMsgDisp.Show(emErrorLevel.ERR_LEVEL_INFO, "PMJKN09011U", e.ToString(), 0, MessageBoxButtons.OK);
+            }
+
+            // アプリケーション終了
+            System.Windows.Forms.Application.Exit();
+        }
+    }
+}

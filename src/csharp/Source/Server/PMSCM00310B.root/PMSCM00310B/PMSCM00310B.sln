@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMSCM00310B", "PMSCM00310B\PMSCM00310B.csproj", "{725E5D45-CCE7-49F4-9C29-3FD03561B9BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{74ED087D-B0E2-40A0-A6D0-1252D3A0BAE1}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectUniqueName0 = ConsoleApplication1\\ConsoleApplication1.csproj
+		SccProjectName0 = \u0022$/Partsman.NS[035]_SCM高速化/Source/Server/PMSCM00310B.root/PMSCM00310B/ConsoleApplication1\u0022,\u0020QEGNAAAA
+		SccLocalPath0 = ConsoleApplication1
+		SccProjectUniqueName1 = PMSCM00310B\\PMSCM00310B.csproj
+		SccProjectName1 = \u0022$/Partsman.NS[035]_SCM高速化/Source/Server/PMSCM00310B.root/PMSCM00310B/PMSCM00310B\u0022,\u0020WEGNAAAA
+		SccLocalPath1 = PMSCM00310B
+		SccLocalPath2 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{725E5D45-CCE7-49F4-9C29-3FD03561B9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725E5D45-CCE7-49F4-9C29-3FD03561B9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725E5D45-CCE7-49F4-9C29-3FD03561B9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725E5D45-CCE7-49F4-9C29-3FD03561B9BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74ED087D-B0E2-40A0-A6D0-1252D3A0BAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74ED087D-B0E2-40A0-A6D0-1252D3A0BAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74ED087D-B0E2-40A0-A6D0-1252D3A0BAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74ED087D-B0E2-40A0-A6D0-1252D3A0BAE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND09115O</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.IInspectTtlStDB">
+            <summary>
+            検品全体設定マスタDB RemoteObjectインターフェース
+            </summary>
+            <remarks>
+            <br>Note       : 検品全体設定マスタDB RemoteObject Interfaceです。</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IInspectTtlStDB.Read(System.Byte[]@,System.Int32)">
+            <summary>
+            指定された検品全体設定マスタGuidの検品全体設定マスタを戻します
+            </summary>
+            <param name="parabyte">InspectTtlStWorkオブジェクト</param>
+            <param name="readMode">検索区分</param>
+            <returns>STATUS</returns>
+            <br>Note       : 指定された検品全体設定マスタGuidの検品全体設定マスタを戻します</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IInspectTtlStDB.Delete(System.Byte[])">
+            <summary>
+            検品全体設定マスタ情報を物理削除します
+            </summary>
+            <param name="parabyte">InspectTtlStWorkオブジェクト</param>
+            <returns>STATUS</returns>
+            <br>Note       : 検品全体設定マスタ情報を物理削除します</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IInspectTtlStDB.Search(System.Object@,System.Object,System.Int32,Broadleaf.Library.Resources.ConstantManagement.LogicalMode)">
+            <summary>
+            検品全体設定マスタLISTを全て戻します（論理削除除く）:カスタムシリアライズ
+            </summary>
+            <param name="inspectTtlStWork">検索結果</param>
+            <param name="parainspectTtlStWork">検索パラメータ</param>
+            <param name="readMode">検索区分</param>
+            <param name="logicalMode">論理削除有無(0:正規ﾃﾞｰﾀのみ 1:削除ﾃﾞｰﾀのみ 2:保留ﾃﾞｰﾀのみ 3:完全削除ﾃﾞｰﾀのみ 4:全件 5:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ 6:正規ﾃﾞｰﾀ+削除ﾃﾞｰﾀ+保留ﾃﾞｰﾀ)</param>
+            <returns>STATUS</returns>
+            <br>Note       : </br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IInspectTtlStDB.Write(System.Object@)">
+            <summary>
+            検品全体設定マスタ情報を登録、更新します
+            </summary>
+            <param name="inspectTtlStWork">InspectTtlStWorkオブジェクト</param>
+            <returns>STATUS</returns>
+            <br>Note       : 検品全体設定マスタ情報を登録、更新します</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IInspectTtlStDB.LogicalDelete(System.Object@)">
+            <summary>
+            検品全体設定マスタ情報を論理削除します
+            </summary>
+            <param name="inspectTtlStWork">InspectTtlStWorkオブジェクト</param>
+            <returns>STATUS</returns>
+            <br>Note       : 検品全体設定マスタ情報を論理削除します</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.IInspectTtlStDB.RevivalLogicalDelete(System.Object@)">
+            <summary>
+            論理削除検品全体設定マスタ情報を復活します
+            </summary>
+            <param name="inspectTtlStWork">InspectTtlStWorkオブジェクト</param>
+            <returns>STATUS</returns>
+            <br>Note       : 論理削除検品全体設定マスタ情報を復活します</br>
+            <br>Programmer : 3H 楊善娟</br>
+            <br>Date       : K2017/06/02</br>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="RetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="DiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="PureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="RetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="AnSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="AnRetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="AnDiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="AnPureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="AnRetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="TargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="AnTargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="CmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="AnCmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="TargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="AnTargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="CmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="AnCmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="TargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="AnTargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="AnGrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="AnTargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="AnGrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="PrintDate.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PRINTPAGE.OutputFormat" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PageFooters0.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PageFooters1.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GrandSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandRetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandDiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandPureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandRetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandAnSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnRetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnDiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnPureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnRetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandTargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandCmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandAnTargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandAnCmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandPureSalesTtlWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnPureSalesTtlWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandTargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandCmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandAnTargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandAnCmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandTargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnTargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnGrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandGrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnTargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandTargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandGrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandAnGrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="GrandGrossProfitWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="GrandAnGrossProfitWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="SectionTotal_Title.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SectionAnSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnRetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnDiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnPureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnRetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionRetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionDiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionPureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionRetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionTargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionCmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionAnTargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionAnCmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionPureSalesTtlWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnPureSalesTtlWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionTargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionCmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionAnTargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionAnCmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionAnTargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionTargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnGrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionGrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnTargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionTargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionGrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionAnGrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="SectionGrossProfitWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="SectionAnGrossProfitWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="ReportCode.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ReportSectionCode.OutputFormat" xml:space="preserve">
+    <value>00</value>
+  </data>
+  <data name="MinAnSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnRetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnDiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnPureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnRetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinRetGoodsTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinDiscountTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinPureSalesTtlPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinRetGoodsTtlRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinTotal_Title.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MinTargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinAnTargetMoneyRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinCmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinAnCmpPureSalesRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinPureSalesTtlWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnPureSalesTtlWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinTargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinAnTargetProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinCmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinAnCmpProfitRatio_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinAnTargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinTargetMoney_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinGrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnGrossProfitPrice_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinTargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnTargetProfit_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinGrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinAnGrossProfitRate_TextBox.OutputFormat" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="MinGrossProfitWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="MinAnGrossProfitWork_TextBox.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.StyleSheet" xml:space="preserve">
+    <value>font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 128; font-family: ＭＳ 明朝; </value>
+  </data>
+</root>

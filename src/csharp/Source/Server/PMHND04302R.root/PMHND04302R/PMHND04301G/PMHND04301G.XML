@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND04301G</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.Adapter.MediationHandySupplierGuideDB">
+            <summary>
+            ハンディターミナル発注先ガイドDB仲介クラス
+            </summary>
+            <remarks>
+            <br>Note       : このクラスはIHandySupplierGuideDBクラスオブジェクトをGetObjectで戻します。</br>
+            <br>			 完全スタンドアロンにする場合にはこのクラスで直接HandySupplierGuideDBを</br>
+            <br>			 インスタンス化して戻します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            <br></br>
+            <br>Update Note: </br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationHandySupplierGuideDB.#ctor">
+            <summary>
+            HandySupplierGuideDB仲介クラスコンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : 特にコンストラクタ内の処理は無し。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/11</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.Adapter.MediationHandySupplierGuideDB.GetHandySupplierGuideDB">
+            <summary>
+            IHandySupplierGuideDBインターフェース取得
+            </summary>
+            <returns>IHandySupplierGuideDBオブジェクト</returns>
+            <remarks>
+            <br>Note       : IHandyStockDBインターフェースを取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/15</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

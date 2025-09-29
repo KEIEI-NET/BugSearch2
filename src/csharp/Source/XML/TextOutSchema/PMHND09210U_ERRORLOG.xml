@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextServiceSchema>
+  <!--スキーマファイルの情報-->
+  <SchemaInfoDef>
+    <SchemaName>商品バーコード関連付けデータ（インポート）</SchemaName>
+    <SchemaFileName>PMHND09210U_ERRORLOG.xml</SchemaFileName>
+    <Writer />
+    <Date>2017/06/12</Date>
+    <Version />
+  </SchemaInfoDef>
+  <!--出力ファイルの設定-->
+  <FileInfoDef>
+    <OutPutFileName />
+    <OutPutDir />
+    <TextKind>CSV</TextKind>
+    <EncodeType>SJIS</EncodeType>
+    <Formatter>Text</Formatter>
+    <Encryption>false</Encryption>
+    <CipherType>Default</CipherType>
+    <OutputHeader>false</OutputHeader>
+    <AppendMode>false</AppendMode>
+    <NoCustomEdit>false</NoCustomEdit>
+  </FileInfoDef>
+  <!--出力情報設定-->
+  <ColInfoDef>
+    <ColInfo key="GoodsMakerCd_Err">
+      <ColKey>GoodsMakerCd_Err</ColKey>
+      <ColName>商品メーカーコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsNo_Err">
+      <ColKey>GoodsNo_Err</ColKey>
+      <ColName>品番</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsBarCode_Err">
+      <ColKey>GoodsBarCode_Err</ColKey>
+      <ColName>商品バーコード</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    <ColInfo key="GoodsBarCodeKind_Err">
+      <ColKey>GoodsBarCodeKind_Err</ColKey>
+      <ColName>商品バーコード種別</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+    
+    <ColInfo key="Message_Err">
+      <ColKey>Message_Err</ColKey>
+      <ColName>エラーメッセージ</ColName>
+      <ColNameChange />
+      <ColWidth />
+      <ColDataType>string</ColDataType>
+    </ColInfo>
+  </ColInfoDef>
+</TextServiceSchema>

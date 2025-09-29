@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GridData>
+	<!--登録内容について-->
+	<!--
+	 <ToolList>
+		<toolName>【必須】ツール名称　メニューに表示表示されます。</toolName>
+		<assemblyID>【必須】起動するアセンブリのID</assemblyID>
+		<className>【必須】ネームスペースを含めた完全なクラス名を記載</className>
+		<methodName >アセンブリがDLLの場合は呼び出すメソッドを記載。DLLで且つ未記載の場合はフォームのShowを行います</methodName>
+		<bootBtn>起動ボタン用です。特に記載はありません。ここに記載した文字は起動ボタンに表示されます。</bootBtn>
+	 </ToolList> 
+	  
+	   -->
+
+	 <!--グリッドに表示するツール-->
+	 <ToolList>
+		<toolName>掛率優先設定自動登録</toolName>
+		<assemblyID>PMKHN09930U.exe</assemblyID>
+		<className></className>
+		<methodName ></methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+	<ToolList>
+		<toolName>請求残高・売掛残高テキスト出力</toolName>
+		<assemblyID>PMKAU09910U.dll</assemblyID>
+		<className>Broadleaf.Windows.Forms.PMKAU09910UA</className>
+		<methodName ></methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+	<ToolList>
+		<toolName>CSV比較ツール</toolName>
+		<assemblyID>PMKHN09950U.dll</assemblyID>
+		<className>Broadleaf.Windows.Forms.PMKHN09950UA</className>
+		<methodName >PMKHN09950UShow</methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+	<ToolList>
+		<toolName></toolName>
+		<assemblyID></assemblyID>
+		<className></className>
+		<methodName ></methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+	<ToolList>
+		<toolName></toolName>
+		<assemblyID></assemblyID>
+		<className></className>
+		<methodName ></methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+	<ToolList>
+		<toolName></toolName>
+		<assemblyID></assemblyID>
+		<className></className>
+		<methodName ></methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+	<ToolList>
+		<toolName></toolName>
+		<assemblyID></assemblyID>
+		<className></className>
+		<methodName ></methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+	<ToolList>
+		<toolName></toolName>
+		<assemblyID></assemblyID>
+		<className></className>
+		<methodName ></methodName>
+		<bootBtn></bootBtn>
+	</ToolList>
+</GridData>

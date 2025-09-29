@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMTAB09193G", "PMTAB09193G\PMTAB09193G.csproj", "{06E75B32-60A9-48D0-BFDA-E5831DBBD9E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMTAB09194R", "PMTAB09194R\PMTAB09194R.csproj", "{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMTAB09195O", "PMTAB09195O\PMTAB09195O.csproj", "{E0368338-B87F-4A0E-9C76-D60808E53227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMTAB09196D", "PMTAB09196D\PMTAB09196D.csproj", "{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServerWorker", "ConsoleServerWorker\ConsoleServerWorker.csproj", "{D71EABFF-669A-4558-B0B5-A656EC327B16}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccProjectUniqueName0 = PMTAB09193G\\PMTAB09193G.csproj
+		SccProjectName0 = \u0022$/Partsman.NS[029]/Source/Scm_Ask_Server/PMTAB09194R.root/PMTAB09194R/PMTAB09193G\u0022,\u0020AURMAAAA
+		SccLocalPath0 = PMTAB09193G
+		SccProjectUniqueName1 = PMTAB09195O\\PMTAB09195O.csproj
+		SccProjectName1 = \u0022$/Partsman.NS[029]/Source/Scm_Ask_Server/PMTAB09194R.root/PMTAB09194R/PMTAB09195O\u0022,\u0020KURMAAAA
+		SccLocalPath1 = PMTAB09195O
+		SccProjectUniqueName2 = ConsoleServerWorker\\ConsoleServerWorker.csproj
+		SccProjectName2 = \u0022$/Partsman.NS[029]/Source/Scm_Ask_Server/PMTAB09194R.root/PMTAB09194R/ConsoleServerWorker\u0022,\u0020ELTMAAAA
+		SccLocalPath2 = ConsoleServerWorker
+		SccProjectUniqueName3 = PMTAB09194R\\PMTAB09194R.csproj
+		SccProjectName3 = \u0022$/Partsman.NS[029]/Source/Scm_Ask_Server/PMTAB09194R.root/PMTAB09194R/PMTAB09194R\u0022,\u0020FURMAAAA
+		SccLocalPath3 = PMTAB09194R
+		SccLocalPath4 = .
+		SccProjectUniqueName5 = PMTAB09196D\\PMTAB09196D.csproj
+		SccProjectName5 = \u0022$/Partsman.NS[029]/Source/Scm_Ask_Server/PMTAB09194R.root/PMTAB09194R/PMTAB09196D\u0022,\u0020PURMAAAA
+		SccLocalPath5 = PMTAB09196D
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06E75B32-60A9-48D0-BFDA-E5831DBBD9E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E75B32-60A9-48D0-BFDA-E5831DBBD9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E75B32-60A9-48D0-BFDA-E5831DBBD9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E75B32-60A9-48D0-BFDA-E5831DBBD9E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB46B03-92EA-4D2B-AA77-123F99C2AA3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0368338-B87F-4A0E-9C76-D60808E53227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0368338-B87F-4A0E-9C76-D60808E53227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0368338-B87F-4A0E-9C76-D60808E53227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0368338-B87F-4A0E-9C76-D60808E53227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C959EC7C-DA7F-40BC-8B70-9F7A8014AB50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D71EABFF-669A-4558-B0B5-A656EC327B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71EABFF-669A-4558-B0B5-A656EC327B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71EABFF-669A-4558-B0B5-A656EC327B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71EABFF-669A-4558-B0B5-A656EC327B16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,97 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{809513F6-01B0-48C6-AD37-34680F76DD83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Application.UIData</RootNamespace>
+    <AssemblyName>PMKEN01010E</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMKEN01010E.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>PMKEN01010E.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Infragistics2.Shared.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.v7.1, Version=7.1.20071.1061, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00008C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00036C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PMKEN01010EInfo.cs" />
+    <Compile Include="PMKEN01010ED.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EB.cs" />
+    <Compile Include="PMKEN01010EE.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EG.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EH.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EJ.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EK.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PMKEN01010EM.cs" />
+    <Compile Include="PMKEN01010EO.cs" />
+    <Compile Include="PMKEN01010EN.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

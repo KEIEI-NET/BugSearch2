@@ -1,0 +1,203 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{85E67DD3-6CB2-46E1-A627-803CC997AF4E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Broadleaf.Windows.Forms</RootNamespace>
+    <AssemblyName>SFNETMENU2</AssemblyName>
+    <ApplicationIcon>NS_Orange.ico</ApplicationIcon>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>R:\SFNETASM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>r:\sfnetasm\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PMCMN00007A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMCMN00010A, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09731E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09732A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09742E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PMKHN09743A, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00006C, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00027C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00036C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFCMN00045C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00212I, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>R:\SFCMN00212I.dll</HintPath>
+    </Reference>
+    <Reference Include="SFCMN00504U, Version=5.20.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFCMN00505C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SFCMN00607C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFCMN00651C, Version=5.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFCMN00659C, Version=5.20.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="SFTOK09381E, Version=8.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SFNETMENU2A.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2A.Designer.cs">
+      <DependentUpon>SFNETMENU2A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\SFNETMENU2Info.cs" />
+    <EmbeddedResource Include="SFNETMENU2A.resx">
+      <DependentUpon>SFNETMENU2A.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFNETMENU2B.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFNETMENU2B.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFNETMENU2C.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFNETMENU2C.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFNETMENU2D.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFNETMENU2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFNETMENU2E.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFNETMENU2E.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFNETMENU2F.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SFNETMENU2F.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFNETMENU2G.resx">
+      <DependentUpon>SFNETMENU2G.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SFNETMENU2H.resx">
+      <DependentUpon>SFNETMENU2H.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SFNETMENU2B.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2B.Designer.cs">
+      <DependentUpon>SFNETMENU2B.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFNETMENU2Cmn.cs" />
+    <Compile Include="SFNETMENU2C.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2C.Designer.cs">
+      <DependentUpon>SFNETMENU2C.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFNETMENU2D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2D.Designer.cs">
+      <DependentUpon>SFNETMENU2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFNETMENU2E.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2E.Designer.cs">
+      <DependentUpon>SFNETMENU2E.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFNETMENU2EXT.cs" />
+    <Compile Include="SFNETMENU2F.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2F.Designer.cs">
+      <DependentUpon>SFNETMENU2F.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFNETMENU2Secu.cs" />
+    <Compile Include="SFNETMENU2SET.cs" />
+    <Compile Include="SFNETMENU2G.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2G.Designer.cs">
+      <DependentUpon>SFNETMENU2G.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SFNETMENU2H.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SFNETMENU2H.Designer.cs">
+      <DependentUpon>SFNETMENU2H.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NS_Orange.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="image\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

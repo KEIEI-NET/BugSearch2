@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND09116D</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork">
+            public class name:   InspectTtlStWork
+            <summary>
+                                 検品全体設定ワーク
+            </summary>
+            <remarks>
+            <br>note             :   検品全体設定ワークヘッダファイル</br>
+            <br>Programmer       :   自動生成</br>
+            <br>Programmer       :   3H 楊善娟</br>
+            <br>Date             :   K2017/06/02</br>
+            <br>Update Note      :   </br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._createDateTime">
+            <summary>作成日時</summary>
+            <remarks>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._updateDateTime">
+            <summary>更新日時</summary>
+            <remarks>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._enterpriseCode">
+            <summary>企業コード</summary>
+            <remarks>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._fileHeaderGuid">
+            <summary>GUID</summary>
+            <remarks>共通ファイルヘッダ</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._updEmployeeCode">
+            <summary>更新従業員コード</summary>
+            <remarks>共通ファイルヘッダ</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._updAssemblyId1">
+            <summary>更新アセンブリID1</summary>
+            <remarks>共通ファイルヘッダ（UI側の更新アセンブリID+「:」+バージョン）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._updAssemblyId2">
+            <summary>更新アセンブリID2</summary>
+            <remarks>共通ファイルヘッダ（Server側の更新アセンブリID+「:」+バージョン）</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._logicalDeleteCode">
+            <summary>論理削除区分</summary>
+            <remarks>共通ファイルヘッダ(0:有効,1:論理削除,2:保留,3:完全削除)</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._sectionCode">
+            <summary>拠点コード</summary>
+            <remarks>オール０は全社</remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._sectionGuideNm">
+            <summary>拠点ガイド名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork._orderInspectCode">
+            <summary>取寄検品区分</summary>
+            <remarks>0:する 1:しない</remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.#ctor">
+            <summary>
+            検品全体設定ワークコンストラクタ
+            </summary>
+            <returns>InspectTtlStWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   InspectTtlStWorkクラスの新しいインスタンスを生成します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.CreateDateTime">
+            public propaty name  :  CreateDateTime
+            <summary>作成日時プロパティ</summary>
+            <value>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   作成日時プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.UpdateDateTime">
+            public propaty name  :  UpdateDateTime
+            <summary>更新日時プロパティ</summary>
+            <value>共通ファイルヘッダ（DateTime:精度は100ナノ秒）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新日時プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.EnterpriseCode">
+            public propaty name  :  EnterpriseCode
+            <summary>企業コードプロパティ</summary>
+            <value>共通ファイルヘッダ（国2桁+県2桁+業種2桁+ユーザーコード10桁）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   企業コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.FileHeaderGuid">
+            public propaty name  :  FileHeaderGuid
+            <summary>GUIDプロパティ</summary>
+            <value>共通ファイルヘッダ</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   GUIDプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.UpdEmployeeCode">
+            public propaty name  :  UpdEmployeeCode
+            <summary>更新従業員コードプロパティ</summary>
+            <value>共通ファイルヘッダ</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新従業員コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.UpdAssemblyId1">
+            public propaty name  :  UpdAssemblyId1
+            <summary>更新アセンブリID1プロパティ</summary>
+            <value>共通ファイルヘッダ（UI側の更新アセンブリID+「:」+バージョン）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新アセンブリID1プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.UpdAssemblyId2">
+            public propaty name  :  UpdAssemblyId2
+            <summary>更新アセンブリID2プロパティ</summary>
+            <value>共通ファイルヘッダ（Server側の更新アセンブリID+「:」+バージョン）</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   更新アセンブリID2プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.LogicalDeleteCode">
+            public propaty name  :  LogicalDeleteCode
+            <summary>論理削除区分プロパティ</summary>
+            <value>共通ファイルヘッダ(0:有効,1:論理削除,2:保留,3:完全削除)</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   論理削除区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.SectionCode">
+            public propaty name  :  SectionCode
+            <summary>拠点コードプロパティ</summary>
+            <value>オール０は全社</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   拠点コードプロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.SectionGuideNm">
+            public propaty name  :  SectionGuideNm
+            <summary>拠点ガイド名称プロパティ</summary>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   拠点ガイド名称プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="P:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork.OrderInspectCode">
+            public propaty name  :  OrderInspectCode
+            <summary>取寄検品区分プロパティ</summary>
+            <value>0:する 1:しない</value>
+            ----------------------------------------------------------------------
+            <remarks>
+            <br>note             :   取寄検品区分プロパティ</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="T:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork_SerializationSurrogate_For_V51010">
+            <summary>
+             Ver5.10.1.0用のカスタムシライアライザです。
+            </summary>
+            <returns>InspectTtlStWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   InspectTtlStWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork_SerializationSurrogate_For_V51010.currentMemberCount">
+            <summary>
+            InspectTtlStWorkメンバ数(publicプロパティ数)
+            </summary>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork_SerializationSurrogate_For_V51010.Serialize(System.IO.BinaryWriter,System.Object)">
+            <summary>
+             Ver5.10.1.0用のカスタムシリアライザです
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   InspectTtlStWorkクラスのカスタムシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork_SerializationSurrogate_For_V51010.SetInspectTtlStWork(System.IO.BinaryWriter,Broadleaf.Application.Remoting.ParamData.InspectTtlStWork)">
+            <summary>
+             InspectTtlStWorkインスタンス書き込み
+            </summary>
+            <remarks>
+            <br>Note　　　　　　 :   InspectTtlStWorkのインスタンスを書き込み</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork_SerializationSurrogate_For_V51010.GetInspectTtlStWork(System.IO.BinaryReader,Broadleaf.Library.Runtime.Serialization.TypeSerializationInfo)">
+            <summary>
+             InspectTtlStWorkインスタンス取得
+            </summary>
+            <returns>InspectTtlStWorkクラスのインスタンス</returns>
+            <remarks>
+            <br>Note　　　　　　 :   InspectTtlStWorkのインスタンスを取得します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Remoting.ParamData.InspectTtlStWork_SerializationSurrogate_For_V51010.Deserialize(System.IO.BinaryReader)">
+            <summary>
+             Ver5.10.1.0用のカスタムデシリアライザです
+            </summary>
+            <returns>InspectTtlStWorkクラスのインスタンス(object)</returns>
+            <remarks>
+            <br>Note　　　　　　 :   InspectTtlStWorkクラスのカスタムデシリアライザを定義します</br>
+            <br>Programer        :   自動生成</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

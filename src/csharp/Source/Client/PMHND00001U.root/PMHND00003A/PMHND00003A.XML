@@ -1,0 +1,1130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PMHND00003A</name>
+    </assembly>
+    <members>
+        <member name="T:Broadleaf.Application.Controller.PmHandy">
+            <summary>
+            ﾊﾝﾃﾞｨﾀｰﾐﾅﾙ常駐
+            </summary>
+            <remarks>
+            <br>Note       : ﾊﾝﾃﾞｨﾀｰﾐﾅﾙ常駐アクセスクラス</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            <br>Update Note : 陳艶丹</br>
+            <br>Date       : 2017/08/02</br>
+            <br>管理番号   : 11370074-00</br>
+            <br>           : ハンディターミナル二次開発の対応</br>
+            </remarks>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.StatusArset">
+            <summary>他でデータが変更済みの場合、（ST_ARSET）のステータス</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00010a">
+            <summary>ログイン情報取得プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00010aClassName">
+            <summary>ログイン情報取得プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00014d">
+            <summary>ログイン情報取得条件プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00014dClassName">
+            <summary>ログイン情報取得条件プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00014dResultClassName">
+            <summary>ログイン情報取得結果プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00010aMethodName">
+            <summary>ログイン情報取得メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04100a">
+            <summary>在庫情報取得(通常)プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04100aClassName">
+            <summary>在庫情報取得(通常)プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04104d">
+            <summary>在庫情報取得(通常)取得条件プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04104dClassName">
+            <summary>在庫情報取得(通常)取得条件プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04100aMethodName">
+            <summary>在庫情報取得(通常)取得メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04110a">
+            <summary>在庫情報取得(先行検品)プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04110aClassName">
+            <summary>在庫情報取得(先行検品)プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04110aMethodName">
+            <summary>在庫情報取得(先行検品)取得メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04000a">
+            <summary>検品対象取得(伝票番号)プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04000aClassName">
+            <summary>検品対象取得(伝票番号)プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04004d">
+            <summary>検品対象取得(伝票番号)取得条件プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04004dClassName">
+            <summary>検品対象取得(伝票番号)取得条件プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04000aMethodName">
+            <summary>検品対象取得(伝票番号)取得メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04010a">
+            <summary>検品対象取得(一括検品)プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04010aClassName">
+            <summary>検品対象取得(一括検品)プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04010aMethodName">
+            <summary>検品対象取得(一括検品)取得メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01000a">
+            <summary>検品データ登録処理プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01000aClassName">
+            <summary>検品データ登録処理プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00213d">
+            <summary>検品データ登録処理ワークプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd00213dClassName">
+            <summary>検品データ登録処理ワークプログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01000aMethodName">
+            <summary>検品データ登録処理登録メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01010a">
+            <summary>検品データ登録(先行検品)プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01010aClassName">
+            <summary>検品データ登録(先行検品)プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01010aMethodName">
+            <summary>検品データ登録(先行検品)メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd09301a">
+            <summary>商品バーコード関連付けマスタ登録プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd09301aClassName">
+            <summary>商品バーコード関連付けマスタ登録プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd09308d">
+            <summary>商品バーコード関連付けマスタ登録ワークプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd09308dClassName">
+            <summary>商品バーコード関連付けマスタ登録ワークプログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd09301aMethodName">
+            <summary>商品バーコード関連付けマスタ登録メソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04300a">
+            <summary>ハンディターミナル発注先ガイドプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04300aClassName">
+            <summary>ハンディターミナル発注先ガイドプログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04304d">
+            <summary>ハンディターミナル発注先ガイドワークプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04304dClassName">
+            <summary>ハンディターミナル発注先ガイドワークプログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd04300aMethodName">
+            <summary>ハンディターミナル発注先ガイドメソッド名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100a">
+            <summary>ハンディターミナル在庫仕入（入庫更新）プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100a1">
+            <summary>ハンディターミナル在庫仕入（入庫更新）一覧抽出の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100a2">
+            <summary>ハンディターミナル在庫仕入（入庫更新）明細抽出の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100a3">
+            <summary>ハンディターミナル在庫仕入（入庫更新）登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100aClassName">
+            <summary>ハンディターミナル在庫仕入（入庫更新）プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01114d">
+            <summary>ハンディターミナル在庫仕入（入庫更新）ワークプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01114dClassNameFw">
+            <summary>ハンディターミナル在庫仕入（入庫更新）ワークプログラムIDのクラス名(Fw:ForWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01114dClassNameFsl">
+            <summary>ハンディターミナル在庫仕入（入庫更新）ワークプログラムIDのクラス名(Fsl:ForSearchListの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01114dClassNameFsd">
+            <summary>ハンディターミナル在庫仕入（入庫更新）ワークプログラムIDのクラス名(Fsd:ForSearchDetailの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100aMethodNameFsl">
+            <summary>ハンディターミナル在庫仕入（入庫更新）メソッド名(Fsl:ForSearchListの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100aMethodNameFsd">
+            <summary>ハンディターミナル在庫仕入（入庫更新）メソッド名(Fsd:ForSearchDetailの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01100aMethodNameFw">
+            <summary>ハンディターミナル在庫仕入（入庫更新）メソッド名(Fw:ForWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01114dClassNameFnsd">
+            <summary>ハンディターミナル在庫仕入（UOE以外）ワークプログラムIDのクラス名(Fnsd:ForNoUoeSearchDetailの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01114dClassNameFnw">
+            <summary>ハンディターミナル在庫仕入（UOE以外）ワークプログラムIDのクラス名(Fnw:ForNoUoeWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01110a">
+            <summary>ハンディターミナル在庫仕入（UOE以外）プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01110a1">
+            <summary>ハンディターミナル在庫仕入（UOE以外）明細抽出の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01110a2">
+            <summary>ハンディターミナル在庫仕入（UOE以外）登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01110aClassName">
+            <summary>ハンディターミナル在庫仕入（UOE以外）プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01110aMethodNameFw">
+            <summary>ハンディターミナル在庫仕入（UOE以外）メソッド名(Fw:ForWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01110aMethodNameFnsd">
+            <summary>ハンディターミナル在庫仕入（UOE以外）メソッド名(Fnsd:ForNoUoeSearchDetailの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04300a">
+            <summary>ハンディターミナル発注先ガイドプログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01100aFw">
+            <summary>在庫仕入（入庫更新）　登録プログラム名称(Fw:ForWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01100aFsl">
+            <summary>在庫仕入（入庫更新）　選択プログラム名称(Fsl:ForSearchListの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01100aFsd">
+            <summary>在庫仕入（入庫更新）　検品プログラム名称(Fsd:ForSearchDetailの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01110aFw">
+            <summary>在庫仕入（入庫更新）　登録プログラム名称(Fw:ForWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01110aFnsd">
+            <summary>在庫仕入（入庫更新）　選択プログラム名称(Fnsd:ForNoUoeSearchDetailの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300a">
+            <summary>ハンディターミナル委託在庫補充プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300a1">
+            <summary>ハンディターミナル委託在庫補充_倉庫情報抽出の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300a2">
+            <summary>ハンディターミナル委託在庫補充_検品情報抽出の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300a3">
+            <summary>ハンディターミナル委託在庫補充_検品情報登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300aClassName">
+            <summary>ハンディターミナル委託在庫補充プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01304d">
+            <summary>ハンディターミナル委託在庫補充ワークプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01304dClassNameFsw">
+            <summary>ハンディターミナル委託在庫補充_倉庫情報抽出条件ワークプログラムIDのクラス名(Fsw:ForSearchWarehouseの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01304dClassNameFsi">
+            <summary>ハンディターミナル委託在庫補充_検品情報抽出ワークプログラムIDのクラス名(Fsi:ForSearchInspectの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01304dClassNameFiw">
+            <summary>ハンディターミナル委託在庫補充_検品情報登録条件ワークプログラムIDのクラス名(Fiw:ForInspectWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300aMethodNameFsw">
+            <summary>ハンディターミナル委託在庫補充_倉庫情報抽出メソッド名(Fsw:ForSearchWarehouseの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300aMethodNameFsi">
+            <summary>ハンディターミナル委託在庫補充_検品情報抽出メソッド名(Fsi:ForSearchInspectの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01300aMethodNameFiw">
+            <summary>ハンディターミナル委託在庫補充_検品情報登録メソッド名(Fiw:ForInspectWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01300aFsw">
+            <summary>ハンディターミナル委託在庫補充_倉庫情報抽出プログラム名称(Fsw:ForSearchWarehouseの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01300aFsi">
+            <summary>ハンディターミナル委託在庫補充_検品情報抽出プログラム名称(Fsi:ForSearchInspectの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01300aFiw">
+            <summary>ハンディターミナル委託在庫補充_検品情報登録プログラム名称(Fiw:ForInspectWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.InsertConditionsError">
+            <summary>登録パラメータnullメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.EmployeeError">
+            <summary>従業員情報エラーメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyWorkError">
+            <summary>指定のアセンブリのワークタイプエラーメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200a">
+            <summary>ハンディターミナル在庫仕入プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200a1">
+            <summary>ハンディターミナル在庫仕入（入荷）　検品の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200a2">
+            <summary>ハンディターミナル在庫仕入（入荷）　登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200a3">
+            <summary>ハンディターミナル在庫仕入（出荷）　検品の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200a4">
+            <summary>ハンディターミナル在庫仕入（出荷）　登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200aClassName">
+            <summary>ハンディターミナル在庫仕入プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200aSelMethodName">
+            <summary>ハンディターミナル在庫仕入在庫情報取得メソッド名(Sel:Selectの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01200aWtMethodName">
+            <summary>ハンディターミナル在庫仕入検品データ登録(先行検品)メソッド名(Wt:Writeの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210a">
+            <summary>ハンディターミナル在庫移動プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210a1">
+            <summary>ハンディターミナル在庫移動（出荷）　検品の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210a2">
+            <summary>ハンディターミナル在庫移動（出荷）　登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210a3">
+            <summary>ハンディターミナル在庫移動（入荷）　検品の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210a4">
+            <summary>ハンディターミナル在庫移動（入荷）　登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210aClassName">
+            <summary>ハンディターミナル在庫移動プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01214d">
+            <summary>ハンディターミナル在庫移動取得条件プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01214dClassName">
+            <summary>ハンディターミナル在庫移動取得条件プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210aSelMethodName">
+            <summary>ハンディターミナル在庫移動取得メソッド名(Sel:Selectの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd01210aWtMethodName">
+            <summary>ハンディターミナル在庫移動検品データ登録メソッド名(Wt:Writeの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01200ES">
+            <summary>在庫仕入（入荷）　検品プログラム名称(ES:EnterSearchの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01200EW">
+            <summary>在庫仕入（入荷）　登録プログラム名称(EW:EnterWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01200S">
+            <summary>在庫仕入（出荷）　検品プログラム名称(S:Searchの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01200W">
+            <summary>在庫仕入（出荷）　登録プログラム名称(W:Writeの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01210S">
+            <summary>在庫移動（出荷）　検品プログラム名称(S:Searchの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01210W">
+            <summary>在庫移動（出荷）　登録プログラム名称(W:Writeの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01210ES">
+            <summary>在庫移動（入荷）　検品プログラム名称(ES:EnterSearchの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01210EW">
+            <summary>在庫移動（入荷）　登録プログラム名称(EW:EnterWriteの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400a">
+            <summary>ハンディターミナル棚卸処理(一斉)プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400a1">
+            <summary>ハンディターミナル棚卸処理（一斉）　選択の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400a2">
+            <summary>ハンディターミナル棚卸処理（一斉）　検品の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400a3">
+            <summary>ハンディターミナル棚卸処理（一斉）　登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400aClassName">
+            <summary>ハンディターミナル棚卸処理(一斉)プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05504d">
+            <summary>ハンディターミナル棚卸処理(一斉)取得条件プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05504dClassName">
+            <summary>ハンディターミナル棚卸処理(一斉)取得条件プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400aSelCMethodName">
+            <summary>ハンディターミナル棚卸処理(一斉)_棚卸存在確認処理メソッド名(SelC:SelectCountの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400aSelIMethodName">
+            <summary>ハンディターミナル棚卸処理(一斉)_棚卸対象取得メソッド名(Sel:Selectの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05400aWrtMethodName">
+            <summary>ハンディターミナル棚卸処理(一斉)_棚卸データ更新メソッド名(Wt:Writeの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500a">
+            <summary>ハンディターミナル循環棚卸プログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500a1">
+            <summary>ハンディターミナル棚卸処理（循環）　選択の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500a2">
+            <summary>ハンディターミナル棚卸処理（循環）　検品の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500a3">
+            <summary>ハンディターミナル棚卸処理（循環）　登録の操作履歴ログ登録用のプログラムID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500aClassName">
+            <summary>ハンディターミナル循環棚卸プログラムIDのクラス名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500aSelCMethodName">
+            <summary>ハンディターミナル棚卸処理(循環)_倉庫存在確認処理メソッド名(SelC:SelectCountの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500aSelMethodName">
+            <summary>ハンディターミナル棚卸処理(循環)_在庫情報取得処理メソッド名(Sel:Selectの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyIdPmhnd05500aWrtIMethodName">
+            <summary>ハンディターミナル棚卸処理(循環)_棚卸情報登録メソッド名(Wt:Writeの略称)</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd05400a">
+            <summary>棚卸処理(一斉)_棚卸対象確認プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd05400b">
+            <summary>棚卸処理(一斉)_棚卸対象取得プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd05400c">
+            <summary>棚卸処理(一斉)_棚卸データ更新プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd05500a">
+            <summary>棚卸処理(循環)_倉庫存在確認処理プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd05500b">
+            <summary>棚卸処理(循環)_在庫情報取得処理プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd05500c">
+            <summary>棚卸処理(循環)_棚卸情報登録プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd00010a">
+            <summary>プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04000a">
+            <summary>検品対象取得(伝票番号)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04000a1">
+            <summary>検品対象取得(伝票番号)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04000a2">
+            <summary>検品対象取得(伝票番号)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04000a3">
+            <summary>検品対象取得(伝票番号)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04000a4">
+            <summary>検品対象取得(伝票番号)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04010a">
+            <summary>在庫情報取得(一括検品)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04100a">
+            <summary>在庫情報取得(通常)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd04110a">
+            <summary>在庫情報取得(先行検品)プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd09301a">
+            <summary>商品バーコード関連付けマスタ登録プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01000a">
+            <summary>検品データ登録プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AssemblyNamePmhnd01010a">
+            <summary>検品データ登録(先行検品)登録プログラム名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageOk">
+            <summary>エラーメッセージ（正常終了）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageNotFound">
+            <summary>エラーメッセージ（正常終了）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageTimeout">
+            <summary>エラーメッセージ（正常終了）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageNonTarget">
+            <summary>エラーメッセージ（正常終了）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageError">
+            <summary>エラーメッセージ（正常終了）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageArsetError">
+            <summary>排他エラーメッセージ（正常終了）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageRegistsError">
+            <summary>仕入先伝票番号重複エラーメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageThreadTimeout">
+            <summary>エラーメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageRead">
+            <summary>エラーメッセージ（読込）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MessageWrite">
+            <summary>エラーメッセージ（読込）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.OperationCodeLogin">
+            <summary>オペレーションコード（1:ログイン）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MaxLevel">
+            <summary>最大処理レベル</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.LoginId">
+            <summary>ログインID</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.EmployeeCode">
+            <summary>従業員コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.MachineName">
+            <summary>端末名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.EnterpriseCode">
+            <summary>企業コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.BelongSectionCode">
+            <summary>ログイン拠点コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.Name">
+            <summary>ログイン担当者名</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AuthorityLevel1">
+            <summary>ログイン権限レベル1</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AuthorityLevel2">
+            <summary>ログイン権限レベル2</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.ProcDiv">
+            <summary>処理区分（検品検索用）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.AcPaySlipCd">
+            <summary>処理区分（検品登録用）</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.DefaultEncode">
+            <summary>デフォルトエンコード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.PathLog">
+            <summary>ログパス</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.DefaultNamePgid">
+            <summary>デフォルトログファイル名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.DefaultNameFile">
+            <summary>デフォルトログファイル名称</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.DefaultNameTime">
+            <summary>デフォルトログファイル名称日期フォーマット</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.DefaultLogFormat">
+            <summary>デフォルトログ内容フォーマット</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.ErrorMsgAssembly">
+            <summary>パラメータnullメッセージ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.ReadMaxCount">
+            <summary>読込最大件数</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.WriteMaxCount">
+            <summary>書込最大件数</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.ReadingCount">
+            <summary>読込中件数</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.WritingCount">
+            <summary>書込中件数</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.ThreadWaitTime">
+            <summary>スレッド待ち時間</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.CloseFlg">
+            <summary>終了フラグ</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.StaticEnterpriseCode">
+            <summary>企業コード</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.LoginInfoDic">
+            <summary>従業員情報DIC</summary>
+        </member>
+        <member name="F:Broadleaf.Application.Controller.PmHandy.LogLockObj">
+            <summary>ログ用ロック</summary>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+            <remarks>
+            <br>Note       : コンストラクタ</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyLoginInfo(System.Object@,System.Object@)">
+            <summary>
+            ログイン情報取得
+            </summary>
+            <param name="paraHandyLoginInfoCondObj">ログイン情報抽出条件リスト</param>
+            <param name="resultHandyLoginInfoObj">ログイン情報結果リスト</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : ログイン情報を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyStock(System.Object@,System.Object@)">
+            <summary>
+            在庫情報(通常)取得
+            </summary>
+            <param name="paraHandyStockCondObj">在庫情報(通常)抽出条件リスト</param>
+            <param name="resultHandyStockObj">在庫情報(通常)結果リスト</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 在庫情報(通常)を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyStockInspect(System.Object@,System.Object@)">
+            <summary>
+            在庫情報取得(先行検品)取得
+            </summary>
+            <param name="paraHandyStockCondObj">在庫情報取得(先行検品)抽出条件リスト</param>
+            <param name="resultHandyStockObj">在庫情報取得(先行検品)結果リスト</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 在庫情報取得(先行検品)を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyInspectDataSlipNum(System.Object@,System.Object@)">
+            <summary>
+            検品対象取得(伝票番号)処理
+            </summary>
+            <param name="paraHandyInspectCondObj">検索条件オブジェクト</param>
+            <param name="resultHandyInspectObj">検索結果オブジェクト</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 検品対象取得(伝票番号)を取得します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/13</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyInspectDataTotal(System.Object@,System.Object@)">
+            <summary>
+            検品対象取得(一括検品)処理
+            </summary>
+            <param name="paraHandyInspectCondObj">検索条件オブジェクト</param>
+            <param name="resultHandyInspectObj">検索結果オブジェクト</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 検品対象取得(一括検品)を取得します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/13</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.InsertHandyGoodsBarCode(System.Object@)">
+            <summary>
+            商品バーコード関連付けマスタ登録
+            </summary>
+            <param name="paraHandyGoodsBarCodeObj">登録オブジェクト</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 商品バーコード関連付けマスタ登録を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/13</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteInspectData(System.Object@)">
+            <summary>
+            検品データ登録処理
+            </summary>
+            <param name="inspectDataObj">登録データ</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 検品データを登録します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/06/30</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteSenKouInspect(System.Object@)">
+            <summary>
+            検品データ登録処理
+            </summary>
+            <param name="inspectDataObj">登録データ</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 検品データ(先行検品)を登録します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/06/30</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandySupplierGuide(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル発注先ガイド情報抽出
+            </summary>
+            <param name="paraHandySupplierGuideCondObj">ハンディターミナル発注先ガイド情報抽出条件リスト</param>
+            <param name="resultHandySupplierGuideObj">ハンディターミナル発注先ガイド情報抽出結果リスト</param>
+            <returns>抽出結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル発注先ガイド情報を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyStockSupplierList(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_一覧抽出
+            </summary>
+            <param name="paraHandyStockSupplierCondObj">ハンディターミナル在庫仕入（入庫更新）_一覧抽出条件リスト</param>
+            <param name="resultHandyStockSupplierObj">ハンディターミナル在庫仕入（入庫更新）_一覧抽出結果リスト</param>
+            <returns>抽出結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）_一覧情報を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyStockSupplierSlipNum(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_明細抽出
+            </summary>
+            <param name="paraHandyStockSupplierCondObj">ハンディターミナル在庫仕入（入庫更新）_明細抽出条件リスト</param>
+            <param name="resultHandyStockSupplierObj">ハンディターミナル在庫仕入（入庫更新）_明細抽出結果リスト</param>
+            <returns>抽出結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）_明細情報を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteHandyStockSupplier(System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（入庫更新）_登録
+            </summary>
+            <param name="paraHandyStockSupplierListObj">登録パラメータオブジェクト</param>
+            <returns>登録結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）を登録します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyNonUOEStockSupplier(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（UOE以外）_明細抽出
+            </summary>
+            <param name="paraHandyNonUOEStockSupplierCondObj">ハンディターミナル在庫仕入（UOE以外）_明細抽出条件リスト</param>
+            <param name="resultHandyNonUOEStockSupplierObj">ハンディターミナル在庫仕入（UOE以外）_明細抽出結果リスト</param>
+            <returns>抽出結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（UOE以外）_明細情報を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteHandyNonUOEInspect(System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入（UOE以外）_登録
+            </summary>
+            <param name="paraHandyNonUOEInspectListObj">登録パラメータオブジェクト</param>
+            <returns>登録結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（UOE以外）を登録します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyWarehouseInfo(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル委託在庫補充_倉庫情報抽出
+            </summary>
+            <param name="paraHandyWarehouseInfoCondObj">ハンディターミナル委託在庫補充_倉庫情報抽出条件リスト</param>
+            <param name="resultHandyWarehouseInfoObj">ハンディターミナル委託在庫補充_倉庫情報抽出結果リスト</param>
+            <returns>抽出結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル委託在庫補充_倉庫情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchHandyInspectInfo(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル委託在庫補充_検品情報抽出
+            </summary>
+            <param name="paraHandyInspectInfoCondObj">ハンディターミナル委託在庫補充_検品情報抽出条件リスト</param>
+            <param name="resultHandyInspectInfoObj">ハンディターミナル委託在庫補充_検品情報抽出結果リスト</param>
+            <returns>抽出結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル委託在庫補充_検品情報を抽出します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteHandyConsStockRepInspect(System.Object@)">
+            <summary>
+            ハンディターミナル委託在庫補充_検品情報_登録
+            </summary>
+            <param name="inspectDataListObj">登録パラメータオブジェクト</param>
+            <returns>登録結果ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入（入庫更新）を登録します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchStock(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入_在庫情報取得処理
+            </summary>
+            <param name="paraHandyStockCondObj">検索条件オブジェクト</param>
+            <param name="resultHandyStockObj">検索結果オブジェクト</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入の在庫情報取得処理を行います。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteHandyInspect(System.Object@)">
+            <summary>
+            ハンディターミナル在庫仕入検品データ登録処理
+            </summary>
+            <param name="inspectDataObj">登録データ</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫仕入検品データ(先行検品)を登録します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchStockMoveData(System.Object@,System.Object@)">
+            <summary>
+            ハンディターミナル在庫移動伝票情報取得処理
+            </summary>
+            <param name="paraHandyStockCondObj">検索条件オブジェクト</param>
+            <param name="resultHandyStockObj">検索結果オブジェクト</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : ハンディターミナル在庫移動情報を取得します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteStockMoveInspect(System.Object@)">
+            <summary>
+            在庫移動（出荷・入荷）検品データ登録処理
+            </summary>
+            <param name="inspectDataObj">登録データ</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       :在庫移動（出荷・入荷）検品データを登録します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchCount(System.Object@)">
+            <summary>
+            棚卸処理(一斉)_棚卸対象確認
+            </summary>
+            <param name="condObj">検索条件オブジェクト</param>
+            <returns>ステータス</returns>
+            <remarks>
+            <br>Note       : 棚卸処理(一斉)の棚卸対象情報が存在するかを確認します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/16</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchInventory(System.Object@,System.Object@)">
+            <summary>
+            棚卸処理(一斉)_棚卸対象取得
+            </summary>
+            <param name="condObj">検索条件オブジェクト</param>
+            <param name="retObj">検索結果オブジェクト</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 棚卸処理(一斉)の棚卸対象情報を取得します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/16</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteInventoryData(System.Object@)">
+            <summary>
+            棚卸処理(一斉)_棚卸データ更新
+            </summary>
+            <param name="inventoryDataObj">登録パラメータ</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 棚卸処理(一斉)の棚卸情報を棚卸データに登録します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/16</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchStockCount(System.Object@)">
+            <summary>
+            棚卸処理(循環)_倉庫存在確認処理
+            </summary>
+            <param name="condObj">検索条件オブジェクト</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 棚卸処理（循環)指定倉庫に在庫情報が存在しているかを確認します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/16</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SearchStockCircul(System.Object@,System.Object@)">
+            <summary>
+            棚卸処理（循環)_在庫情報取得処理
+            </summary>
+            <param name="condObj">検索条件オブジェクト</param>
+            <param name="retObj">検索結果オブジェクト</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 棚卸処理（循環)の指定在庫品の在庫情報を取得します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/16</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteCirculInventoryData(System.Object@,System.Object@)">
+            <summary>
+            棚卸処理（循環)_棚卸情報登録
+            </summary>
+            <param name="inventoryDataObj">棚卸情報データオブジェクト</param>
+            <param name="retObj">循環棚卸通番オブジェクト</param>
+            <returns>STATUS</returns>
+            <remarks>
+            <br>Note       : 棚卸情報を登録します。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/16</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteLoginHistoryLog(System.Object,System.Object,System.String)">
+            <summary>
+            初回ログイン成功後操作履歴ログデータの登録
+            </summary>
+            <param name="acsObj">ログイン情報取得アクセスオブジェクト</param>
+            <param name="resultHandyLoginInfoObj">ログイン情報取得結果オブジェクト</param>
+            <param name="machineName">端末名</param>
+            <remarks>
+            <br>Note       : 初回ログイン成功後操作履歴ログデータを登録します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteOtherHistoryLog(System.Object,Broadleaf.Application.Controller.LogDataKind,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            ログイン以外操作履歴ログデータの登録
+            </summary>
+            <param name="acsObj">呼び出し元オブジェクト</param>
+            <param name="logDataKind">ログ種別</param>
+            <param name="machineName">端末名</param>
+            <param name="programId">プログラムID</param>
+            <param name="programName">プログラム名</param>
+            <param name="methodName">メソッド名</param>
+            <param name="operationCode">オペレーションコード</param>
+            <param name="status">ステータス</param>
+            <param name="message">メッセージ</param>
+            <param name="employeeCode">従業員コード</param>
+            <remarks>
+            <br>Note       : ログイン以外操作履歴ログデータを登録します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.GetReadAccessFlg">
+            <summary>
+            処理実行可能判断
+            </summary>
+            <returns>True:検索実行可 False:実行タイムアウト</returns>
+            <remarks>
+            <br>Note       : 処理実行可能を判断します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.GetWriteAccessFlg">
+            <summary>
+            処理実行可能判断
+            </summary>
+            <returns>True:検索実行可 False:実行タイムアウト</returns>
+            <remarks>
+            <br>Note       : 処理実行可能を判断します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.DateDiff(System.DateTime,System.DateTime)">
+            <summary>
+            時間差計算
+            </summary>
+            <param name="dtStart">開始時間</param>
+            <param name="dtEnd">終了時間</param>
+            <returns>時間差</returns>
+            <remarks>
+            <br>Note       : 時間差を計算します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.LoadAssembly(System.String,System.String,System.String@)">
+            <summary>
+            アセンブリインスタンス化
+            </summary>
+            <param name="asmname">アセンブリ名称</param>
+            <param name="classname">クラス名称</param>
+            <param name="errMessage">エラーメッセージ</param>
+            <returns>インスタンス化されたクラス</returns>
+            <remarks>
+            <br>Note       : 指定されたアセンブリ及びクラス名より、クラスをインスタンス化します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.GetReadingCount">
+            <summary>
+            読込中件数取得
+            </summary>
+            <returns>読込中件数</returns>
+            <remarks>
+            <br>Note       : 読込中件数を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.GetWritingCount">
+            <summary>
+            書込中件数取得
+            </summary>
+            <returns>書込中件数</returns>
+            <remarks>
+            <br>Note       : 書込中件数を取得します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SetReadMaxCount(System.Int32)">
+            <summary>
+            読込最大件数設定
+            </summary>
+            <param name="readMaxCount">読込最大件数</param>
+            <returns>なし</returns>
+            <remarks>
+            <br>Note       : 読込最大件数を設定します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SetWriteMaxCount(System.Int32)">
+            <summary>
+            書込最大件数設定
+            </summary>
+            <param name="writeMaxCount">書込最大件数</param>
+            <returns>なし</returns>
+            <remarks>
+            <br>Note       : 書込最大件数を設定します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SetThreadWaitTime(System.Int32)">
+            <summary>
+            スレッド待ち時間設定
+            </summary>
+            <param name="threadWaitTime">スレッド待ち時間</param>
+            <returns>なし</returns>
+            <remarks>
+            <br>Note       : スレッド待ち時間を設定します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.SetCloseFlg(System.Boolean)">
+            <summary>
+            終了フラグ設定
+            </summary>
+            <param name="closeFlg">終了フラグ</param>
+            <returns>なし</returns>
+            <remarks>
+            <br>Note       : 終了フラグを設定します。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.GetAssemblyName(System.String,System.Int32)">
+            <summary>
+            アセンブリ名取得処理
+            </summary>
+            <param name="assemblyId">アセンブリID</param>
+            <param name="opDiv">処理区分</param>
+            <returns>アセンブリ名</returns>
+            <remarks>
+            <br>Note       : アセンブリ名を取得処理する。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.GetAssemblyId(System.String,System.Int32)">
+            <summary>
+            履歴ログ登録用のプログラムID取得処理
+            </summary>
+            <param name="assemblyId">アセンブリID</param>
+            <param name="opDiv">処理区分</param>
+            <returns>アセンブリ名</returns>
+            <remarks>
+            <br>Note       : アセンブリ名を取得処理する。</br>
+            <br>Programmer : 陳艶丹</br>
+            <br>Date       : 2017/08/02</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.GetStatusMessage(System.Int32)">
+            <summary>
+            操作履歴ログ用メッセージ内容取得処理
+            </summary>
+            <param name="status">ステータス</param>
+            <returns>操作履歴ログ用メッセージ内容</returns>
+            <remarks>
+            <br>Note       : 操作履歴ログ用メッセージ内容を取得処理する。</br>
+            <br>Programmer : 譚洪</br>
+            <br>Date       : 2017/06/06</br>
+            </remarks>
+        </member>
+        <member name="M:Broadleaf.Application.Controller.PmHandy.WriteLog(System.String,System.String)">
+            <summary>
+            エラーログ出力処理
+            </summary>
+            <param name="assemblyId">アセンブリID</param>
+            <param name="errMsg">エラーメッセージ</param>
+            <returns>なし</returns>
+            <remarks>
+            <br>Note       : エラーログ情報を出力します。</br>
+            <br>Programmer : 朱宝軍</br>
+            <br>Date       : 2017/06/05</br>
+            </remarks>
+        </member>
+    </members>
+</doc>

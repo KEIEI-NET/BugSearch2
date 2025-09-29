@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMKYO01000U", "PMKYO01000U\PMKYO01000U.csproj", "{C40ACEAF-98BA-4224-836F-62FEC215E613}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMKYO01000U\\PMKYO01000U.csproj
+		SccProjectName1 = \u0022$/Partsman[810]/Source/Client/PMKYO01000U.root/PMKYO01000U/PMKYO01000U\u0022,\u0020UICCAAAA
+		SccLocalPath1 = PMKYO01000U
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C40ACEAF-98BA-4224-836F-62FEC215E613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C40ACEAF-98BA-4224-836F-62FEC215E613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C40ACEAF-98BA-4224-836F-62FEC215E613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C40ACEAF-98BA-4224-836F-62FEC215E613}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
