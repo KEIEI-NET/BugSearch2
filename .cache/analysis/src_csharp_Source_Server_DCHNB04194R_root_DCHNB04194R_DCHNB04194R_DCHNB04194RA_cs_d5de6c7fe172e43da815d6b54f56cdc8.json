@@ -1,8 +1,0 @@
-{
-  "path": "src/csharp/Source/Server/DCHNB04194R.root/DCHNB04194R/DCHNB04194R/DCHNB04194RA.cs",
-  "severity": 18,
-  "problems": [],
-  "original_code": "using System;\nusing System.Collections;\nusing System.Collections.Generic;\nusing System.Data;\nusing System.Data.SqlClient;\nusing System.Text;\nusing Broadleaf.Application.Remoting.ParamData;\nusing Broadleaf.Library.Resources;\nusing Broadleaf.Library.Data;\nusing Broadleaf.Library.Data.SqlTypes;\nusing Broadleaf.Library.Data.SqlClient;\nusing Broadleaf.Xml.Serialization;\nusing Broadleaf.Application.Resources;\nusing Broadleaf.Library.Globarization;\nusing Broadleaf.Application.Common;\n\nnamespace Broadleaf.Application.Remoting\n{\n    /// <summary>\n    /// NԎDB[gIuWFNg\n    /// </summary>\n    /// <remarks>\n    /// <br>Note       : NԎт̎f[^sNXłB</br>\n    /// <br>Programmer : 쏹</br>\n    /// <br>Date       : 2007.11.26</br>\n    /// <br></br>\n    /// <br>Update Note: 2009/04/30 22008 </br>\n    /// <br>             f[^_폜Ή</br>\n    /// <br></br>\n    /// <br>Update Note: 2009/05/26 23012  [N</br>\n    /// <br>             sC (MANTIS ID:13331 )</br>\n    /// <br></br>\n    /// <br>Update Note: 2009/09/07 220",
-  "analysis": "申し訳ありませんが、提示された情報だけではファイル全体を確認できず、実際の問題箇所を特定して改善コードを提示することができません。  \nファイルの完全な内容を提供いただければ、詳細な分析と具体的な改善案をご提示いたします。",
-  "model_used": "gpt-5-codex"
-}

@@ -1,2 +1,0 @@
-editbin /LARGEADDRESSAWARE "C:\Program Files (x86)\Partsman\SFNETASM\PMKHN08500.exe"
-dumpbin /headers "C:\Program Files (x86)\Partsman\SFNETASM\PMKHN08500.exe"

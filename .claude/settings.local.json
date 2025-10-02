@@ -5,7 +5,9 @@
       "Bash(python:*)",
       "Bash(git rm:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npx:*)",
+      "mcp__serena__read_file"
     ],
     "deny": [],
     "ask": []

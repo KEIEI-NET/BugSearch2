@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
-  <contractRef ref="https://meijiweb2.mesaco.jp/CatalogWebApp/Service.asmx?wsdl" docRef="https://meijiweb2.mesaco.jp/CatalogWebApp/Service.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <soap address="https://meijiweb2.mesaco.jp/CatalogWebApp/Service.asmx" xmlns:q1="http://catalog.mesaco.jp/" binding="q1:MeijiWebAppSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-  <soap address="https://meijiweb2.mesaco.jp/CatalogWebApp/Service.asmx" xmlns:q2="http://catalog.mesaco.jp/" binding="q2:MeijiWebAppSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-</discovery>

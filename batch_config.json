@@ -18,6 +18,16 @@
         "temperature": 0.3,
         "reasoning_effort": "high"
     },
+    "claude_settings": {
+        "model_priority": [
+            "claude-sonnet-4-5",
+            "claude-opus-4-1",
+            "claude-sonnet-4-1"
+        ],
+        "max_tokens": 4096,
+        "temperature": 0.3,
+        "description": "Anthropic Claude API設定（Sonnet 4.5優先、Opus/Sonnetフォールバック）"
+    },
     "file_processing": {
         "max_file_size": 10000,
         "read_limit": 5000,

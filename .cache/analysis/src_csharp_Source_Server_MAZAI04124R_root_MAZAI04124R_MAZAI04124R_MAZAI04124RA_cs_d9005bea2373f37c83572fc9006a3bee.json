@@ -1,8 +1,0 @@
-{
-  "path": "src/csharp/Source/Server/MAZAI04124R.root/MAZAI04124R/MAZAI04124R/MAZAI04124RA.cs",
-  "severity": 22,
-  "problems": [],
-  "original_code": "using System;\nusing System.Collections;\nusing System.Collections.Generic;\nusing System.Data;\nusing System.Data.SqlClient;\nusing System.Text;\nusing Broadleaf.Application.Remoting.ParamData;\nusing Broadleaf.Library.Resources;\nusing Broadleaf.Library.Data;\nusing Broadleaf.Library.Data.SqlTypes;\nusing Broadleaf.Library.Data.SqlClient;\nusing Broadleaf.Xml.Serialization;\nusing Broadleaf.Application.Resources;\nusing Broadleaf.Library.Collections;\nusing Broadleaf.Application.Common;\nusing Broadleaf.Library.Diagnostics;\nusing Microsoft.VisualBasic.Devices;// ADD BY 杍^ K2019/02/27 FOR Redmine#49811̑Ή\nusing System.Xml;// ADD BY  K2021/02/02 FOR PMKOBETSU-4114̑Ή\n\nnamespace Broadleaf.Application.Remoting\n{\n    /// <summary>\n    /// ݌ɈړDB[gIuWFNg\n    /// </summary>\n    /// <remarks>\n    /// <br>Note       : ݌Ɉړ̎f[^sNXłB</br>\n    /// <br>Programmer : 21015@@F</br>\n    /// <br>Date       : 2007.01.19</br>\n    /// <br></br>\n    /// <br>Update Note: 2007.09.04  DC.NSpɏC</br>\n    /// <br>Update Note: 200",
-  "analysis": "## 1. 問題の詳細分析\n提示された抜粋だけでは、危険度スコア 22 の根拠となる脆弱性（例：SQL インジェクションや機密情報の露出など）を特定できるだけの情報が不足しています。ファイル全体、もしくは問題が指摘された箇所のコードが必要です。\n\n## 2. 改善コード\n### Before（問題のあるコード）\n```\n（該当箇所のコードが提供されていないため記載不可）\n```\n\n### After（改善後のコード）\n```\n（該当箇所のコードが提供されていないため記載不可）\n```\n\n## 3. 追加の改善提案\n- 問題箇所が特定できるよう、該当メソッドや SQL 実行部分などのコードを提供していただければ、具体的な分析と改善案を提示できます。",
-  "model_used": "gpt-5-codex"
-}

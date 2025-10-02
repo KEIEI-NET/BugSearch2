@@ -18,12 +18,27 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 from typing import List, Dict, Tuple, Optional
 from dotenv import load_dotenv
-import openai
 import re
 
 # 環境変数読み込み
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# SDK チェック
+OPENAI_OK = False
+ANTHROPIC_OK = False
+
+try:
+    import openai
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    OPENAI_OK = True
+except Exception:
+    pass
+
+try:
+    from anthropic import Anthropic
+    ANTHROPIC_OK = True
+except Exception:
+    pass
 
 # 設定
 BATCH_SIZE = 50  # 並列処理用に縮小
@@ -116,15 +131,76 @@ def get_enhanced_ai_prompt(file_path: str, code_snippet: str, problems: str) -> 
 必ず実装可能な完全なコードを提供し、部分的な例示は避けてください。
 """
 
-def select_model_for_severity(severity: int) -> Tuple[str, Optional[str]]:
-    """危険度に基づくモデル選択（改良版）"""
-    if severity >= 15:
-        # 高危険度は詳細分析が必要
-        return "gpt-4o", None  # GPT-4oで完全分析
-    elif severity >= 10:
-        return "gpt-4o", None
+def get_ai_provider() -> Optional[str]:
+    """AIプロバイダーを決定"""
+    provider = os.getenv("AI_PROVIDER", "auto").lower().strip()
+
+    if provider == "auto":
+        # Anthropic優先
+        if ANTHROPIC_OK and os.getenv("ANTHROPIC_API_KEY"):
+            return "anthropic"
+        elif OPENAI_OK and os.getenv("OPENAI_API_KEY"):
+            return "openai"
+    elif provider == "anthropic":
+        if ANTHROPIC_OK and os.getenv("ANTHROPIC_API_KEY"):
+            return "anthropic"
+    elif provider == "openai":
+        if OPENAI_OK and os.getenv("OPENAI_API_KEY"):
+            return "openai"
+
+    return None
+
+def select_model_for_severity(severity: int, provider: str = "openai") -> Tuple[str, str, Optional[str]]:
+    """
+    危険度に基づくモデル選択（マルチプロバイダー対応）
+
+    Returns:
+        (provider, model, reasoning_effort)
+    """
+    if provider == "anthropic":
+        # Claude モデル選択
+        if severity >= 15:
+            return "anthropic", "claude-opus-4-1", None  # 最高性能
+        elif severity >= 10:
+            return "anthropic", "claude-sonnet-4-5", None  # バランス型
+        else:
+            return "anthropic", "claude-sonnet-4-1", None  # 高速・低コスト
     else:
-        return "gpt-4o-mini", None
+        # OpenAI モデル選択（既存ロジック）
+        if severity >= 15:
+            return "openai", "gpt-4o", None
+        elif severity >= 10:
+            return "openai", "gpt-4o", None
+        else:
+            return "openai", "gpt-4o-mini", None
+
+def call_claude_api(prompt: str, model: str) -> Optional[str]:
+    """Claude API呼び出し"""
+    if not ANTHROPIC_OK:
+        return None
+
+    try:
+        from anthropic import Anthropic
+
+        client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+        response = client.messages.create(
+            model=model,
+            max_tokens=8000,  # 詳細な回答のため増加
+            temperature=0.3,
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
+        )
+
+        if response.content and len(response.content) > 0:
+            return response.content[0].text.strip()
+
+        return None
+
+    except Exception as e:
+        print(f"[ERROR] Claude API failed: {str(e)[:150]}")
+        return None
 
 def get_cache_key(file_path: str, content: str) -> str:
     """キャッシュキー生成"""
@@ -150,7 +226,7 @@ def save_to_cache(cache_key: str, result: str):
         json.dump({'result': result, 'timestamp': time.time()}, f, ensure_ascii=False)
 
 def analyze_with_ai_enhanced(file_path: str, code_snippet: str, problems: str, severity: int) -> str:
-    """改良版AI分析 - 完全なコードと詳細説明を生成"""
+    """改良版AI分析 - 完全なコードと詳細説明を生成（マルチプロバイダー対応）"""
     try:
         # キャッシュチェック
         cache_key = get_cache_key(file_path, code_snippet)
@@ -161,34 +237,55 @@ def analyze_with_ai_enhanced(file_path: str, code_snippet: str, problems: str, s
         # レート制限
         rate_limiter.wait_if_needed()
 
-        # モデル選択
-        model, reasoning_effort = select_model_for_severity(severity)
+        # プロバイダー決定
+        provider = get_ai_provider()
+        if not provider:
+            return "[エラー: APIキー未設定またはSDK未導入]"
+
+        # モデル選択（マルチプロバイダー対応）
+        provider, model, reasoning_effort = select_model_for_severity(severity, provider)
 
         # プロンプト生成（改良版）
         prompt = get_enhanced_ai_prompt(file_path, code_snippet, problems)
 
-        # API呼び出し
-        if model == "gpt-5-codex" and reasoning_effort:
-            # GPT-5-Codex用（Responses API）
-            response = openai.ChatCompletion.create(
-                model="o1-preview",
-                messages=[{"role": "user", "content": prompt}],
-                max_completion_tokens=16000,  # 詳細な回答のため増加
-                temperature=0.3
-            )
-        else:
-            # GPT-4o/GPT-4o-mini用
-            response = openai.ChatCompletion.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": "あなたは熟練したセキュリティエンジニアです。コードの問題を詳細に分析し、完全な改善コードを提供してください。"},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=8000,  # 詳細な回答のため増加
-                temperature=0.3
-            )
+        result = None
 
-        result = response.choices[0].message.content
+        # ===== Anthropic Claude 実行 =====
+        if provider == "anthropic":
+            result = call_claude_api(prompt, model)
+
+            if not result and OPENAI_OK and os.getenv("OPENAI_API_KEY"):
+                # Claudeが失敗した場合、OpenAIへフォールバック
+                print(f"[INFO] Claude failed for {file_path}, falling back to OpenAI")
+                provider = "openai"
+                _, model, _ = select_model_for_severity(severity, "openai")
+
+        # ===== OpenAI 実行 =====
+        if provider == "openai":
+            if model == "gpt-5-codex" and reasoning_effort:
+                # GPT-5-Codex用（Responses API）
+                response = openai.ChatCompletion.create(
+                    model="o1-preview",
+                    messages=[{"role": "user", "content": prompt}],
+                    max_completion_tokens=16000,  # 詳細な回答のため増加
+                    temperature=0.3
+                )
+            else:
+                # GPT-4o/GPT-4o-mini用
+                response = openai.ChatCompletion.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": "あなたは熟練したセキュリティエンジニアです。コードの問題を詳細に分析し、完全な改善コードを提供してください。"},
+                        {"role": "user", "content": prompt}
+                    ],
+                    max_tokens=8000,  # 詳細な回答のため増加
+                    temperature=0.3
+                )
+
+            result = response.choices[0].message.content
+
+        if not result:
+            return "[エラー: AI分析失敗]"
 
         # キャッシュ保存
         save_to_cache(cache_key, result)

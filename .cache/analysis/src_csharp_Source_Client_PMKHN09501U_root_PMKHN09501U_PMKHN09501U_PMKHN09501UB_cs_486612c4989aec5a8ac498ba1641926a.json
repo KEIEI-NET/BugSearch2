@@ -1,8 +1,0 @@
-{
-  "path": "src/csharp/Source/Client/PMKHN09501U.root/PMKHN09501U/PMKHN09501U/PMKHN09501UB.cs",
-  "severity": 15,
-  "problems": [],
-  "original_code": "//****************************************************************************//\n// VXe         : PM.NS\n// vO   : ԕisݒ\n// vOTv   : f[^Z^[ɑ΂ĒǉEXVs\n//----------------------------------------------------------------------------//\n//                (c)Copyright  2009 Broadleaf Co.,Ltd.\n//============================================================================//\n// \n//----------------------------------------------------------------------------//\n// Ǘԍ              쐬S : 杍^\n//     2009/04/01  Ce : VK쐬\n//----------------------------------------------------------------------------//\n// Ǘԍ              쐬S : \n// C                 Ce : \n//----------------------------------------------------------------------------//\nusing System;\nusing System.Collections.Generic;\nusing System.ComponentModel;\nusing System.Drawing;\nusing System.Data;\nusing System.Text;\nusing System.Windows.Forms;\n\nusing Broadleaf.Application.UIData;\nusing Broadleaf.Application.Common;\nusing Broadleaf.Application.Controller;\nusi",
-  "analysis": "お手元のコードは冒頭部分のみが共有されており、イベントハンドラや主要なロジックを確認できない状態です。全体を把握しないと正確な問題指摘と改善案の提示ができません。  \nお手数ですが、ファイル全体（特にイベント処理やデータ処理を含む部分）をご提示いただけますか？",
-  "model_used": "gpt-5-codex"
-}

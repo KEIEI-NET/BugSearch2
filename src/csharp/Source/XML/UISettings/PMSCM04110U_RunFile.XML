@@ -1,9 +1,0 @@
-﻿<?xml version="1.0"?>
-<ArrayOfExtractConditionItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ExtractConditionItem>
-    <RequireTime>3600</RequireTime>
-    <ShowTime>0</ShowTime>
-    <MonitorTime>60</MonitorTime>
-    <RetryCount>5</RetryCount>
-  </ExtractConditionItem>
-</ArrayOfExtractConditionItem>

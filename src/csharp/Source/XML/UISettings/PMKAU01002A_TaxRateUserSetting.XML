@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<TaxRatePrintInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <TaxRate1>0.1</TaxRate1>
-    <TaxRate2>0.08</TaxRate2>
-</TaxRatePrintInfo>
