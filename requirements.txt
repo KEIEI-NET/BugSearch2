@@ -1,0 +1,16 @@
+# Codex Review - Required Python Packages
+# Python 3.11+ required
+
+# AI Provider SDKs (Required for AI mode)
+openai>=2.0.0
+anthropic>=0.69.0
+
+# Machine Learning & Vector Search
+scikit-learn>=1.0.0
+joblib>=1.0.0
+
+# Text Processing & Encoding
+chardet>=5.0.0
+
+# Optional but recommended
+# python-dotenv>=0.19.0  # For .env file support (now handled natively)
