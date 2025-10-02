@@ -3,7 +3,7 @@
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
 
 *バージョン: v3.5.0*
-*最終更新: 2025年01月03日 09:00 JST*
+*最終更新: 2025年01月03日 15:30 JST*
 
 **⚠️ セキュリティ強化版 - ReDoS脆弱性修正済み、環境変数保護強化**
 
@@ -520,12 +520,34 @@ IGNORE_DIRS = {
 }
 ```
 
-## 🚦 GitHub Actions連携
+## 🚦 GitHub Actions連携 (v3.5.0)
 
-`.github/workflows/codex-readonly-review.yml`でPR自動レビュー：
+`.github/workflows/codex-readonly-review-optimized.yml`でPR自動レビュー：
 
+### 🔒 セキュリティ強化機能 (v3.5.0)
+- **入力サニタイズ**: 悪意のあるパスインジェクション防止
+- **環境変数保護**: `.env`ファイル不使用、GitHub Secretsのみ使用
+- **SHAピン留め**: 全GitHub ActionsはSHA-256で固定
+- **最小権限原則**: 必要最小限の権限のみ付与
+
+### 🤖 マルチAIプロバイダー自動フォールバック
+1. **Anthropic Claude優先** → APIキーなし/エラー時にOpenAIへ
+2. **OpenAI GPT** → APIキーなし/エラー時にルールモードへ
+3. **ルールベース** → AI不使用の静的解析のみ
+
+### 📋 必要なGitHub Secrets設定
 ```yaml
-name: Code Review
+# AIプロバイダー設定（オプション）
+AI_PROVIDER: auto          # auto/anthropic/openai/rules
+ANTHROPIC_API_KEY: sk-ant-xxx   # Claude API（オプション）
+ANTHROPIC_MODEL: claude-3-5-sonnet-20241022  # Claudeモデル
+OPENAI_API_KEY: sk-xxx          # OpenAI API（オプション）
+OPENAI_MODEL: gpt-4o             # GPTモデル
+```
+
+### 🚀 ワークフロー設定例
+```yaml
+name: Code Review v3.5.0
 on:
   pull_request:
     types: [opened, synchronize]
@@ -533,14 +555,45 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+        with:
+          python-version: '3.11'
       - run: pip install -r requirements.txt
-      - run: python codex_review_ultimate.py index .
-      - run: python codex_review_ultimate.py advise --topk 50
-      - uses: actions/upload-artifact@v3
+
+      # AIプロバイダー自動選択（Anthropic→OpenAI→ルールベース）
+      - name: Run Code Review
+        env:
+          AI_PROVIDER: ${{ secrets.AI_PROVIDER || 'auto' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY || '' }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || '' }}
+        run: |
+          python codex_review_severity.py index . --exclude-langs delphi
+          python codex_review_severity.py vectorize  # セマンティック検索用
+          python codex_review_severity.py advise --all --out reports/review
+
+      # セキュリティクリーンアップ
+      - name: Cleanup Sensitive Files
+        if: always()
+        run: |
+          rm -f .env .env.* *.key *.pem
+          find . -name "*.log" -exec rm -f {} \;
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: review-reports
+          path: reports/
 ```
+
+### ⚡ v3.5.0の新機能
+- **ベクトル化対応**: `vectorize`コマンドでセマンティック検索強化
+- **HEREDOC修正**: Bash変数展開の適切な処理
+- **エラーハンドリング強化**: 各ステップでの適切なフォールバック
+- **自動クリーンアップ**: 機密ファイルの自動削除
 
 ## ⚠️ 制限事項
 
@@ -718,11 +771,11 @@ MIT License - 詳細は[LICENSE](LICENSE)参照
 
 ---
 
-*最終更新: 2025年01月03日 09:00 JST*
+*最終更新: 2025年01月03日 15:30 JST*
 *バージョン: v3.5.0*
 
 **更新履歴:**
-- v3.5.0 (2025年01月03日): python-dotenv依存削除、完全レポート生成機能、インストールガイド追加
+- v3.5.0 (2025年01月03日): GitHub Actions v3.5.0セキュリティ強化、AI自動フォールバック、python-dotenv依存削除、完全レポート生成機能、インストールガイド追加
 - v3.4.1 (2025年01月02日): ドキュメント更新、100点達成詳細の追記
 - v3.4.0 (2025年01月02日): セキュリティ強化、パフォーマンス最適化、コード品質100点達成
 - v3.3.0 (2025年10月02日): SOLID原則検出、Angularフレームワーク対応

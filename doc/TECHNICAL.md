@@ -1,7 +1,7 @@
 # 技術仕様書
 
 *バージョン: v3.5.0*
-*最終更新: 2025年01月03日 09:00 JST*
+*最終更新: 2025年01月03日 15:30 JST*
 
 ## システムアーキテクチャ
 
@@ -200,10 +200,78 @@ for encoding in ['utf-8', 'cp932', 'shift-jis', 'latin-1']:
 # v2.1: EUC-JPを削除しLatin-1を追加（フォールバック）
 ```
 
+## CI/CD統合 (v3.5.0)
+
+### GitHub Actions セキュリティ強化
+#### 入力サニタイゼーション
+- **パスインジェクション防止**: 全ファイルパスを正規化・検証
+- **コマンドインジェクション防止**: シェルコマンドの適切なエスケープ
+- **環境変数制御**: ホワイトリスト方式での環境変数読み込み
+
+#### GitHub Actions SHA ピン留め
+```yaml
+# セキュリティ強化: SHA-256でアクションを固定
+- uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+- uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+```
+
+#### 機密情報の保護
+- **`.env`ファイル不使用**: GitHub Secretsのみから環境変数を取得
+- **APIキー検証**: 起動時にAPIキーの有効性を確認
+- **自動クリーンアップ**: ワークフロー終了時に機密ファイルを削除
+
+### マルチAIプロバイダー自動フォールバック
+#### 優先順位とフォールバック
+1. **Anthropic Claude** (AI_PROVIDER=anthropic or auto)
+   - Primary: claude-3-5-sonnet-20241022
+   - Fallback: OpenAI GPTへ移行
+
+2. **OpenAI GPT** (AI_PROVIDER=openai or auto fallback)
+   - Primary: gpt-4o / gpt-5-codex
+   - Fallback: ルールベース解析へ移行
+
+3. **ルールベース** (AI_PROVIDER=rules or final fallback)
+   - 静的解析のみ実行
+   - AI APIを一切使用しない
+
+#### APIキー検証ロジック
+```python
+def validate_api_keys():
+    if AI_PROVIDER in ['anthropic', 'auto']:
+        if ANTHROPIC_API_KEY and validate_anthropic_key():
+            return 'anthropic'
+
+    if AI_PROVIDER in ['openai', 'auto']:
+        if OPENAI_API_KEY and validate_openai_key():
+            return 'openai'
+
+    return 'rules'  # フォールバック
+```
+
+### ベクトル化とセマンティック検索
+- **TF-IDFベクトル化**: `vectorize`コマンドでコード類似性分析
+- **セマンティック検索**: 関連コードの自動抽出
+- **キャッシュ最適化**: ベクトル化結果の永続化
+
+### HEREDOC変数展開修正
+```bash
+# v3.5.0: 正しい変数展開
+cat <<EOF
+API_KEY=${OPENAI_API_KEY}
+MODEL=${OPENAI_MODEL:-gpt-4o}
+EOF
+
+# 変数展開を防ぐ場合
+cat <<'EOF'
+${LITERAL_TEXT}
+EOF
+```
+
 ## セキュリティ考慮事項
 
 ### APIキー管理
-- `.env`ファイルでの管理
+- `.env`ファイルでの管理（ローカル開発のみ）
+- GitHub Secretsでの管理（CI/CD環境）
 - 環境変数からの読み込み
 - Gitignoreによる除外
 
@@ -211,6 +279,7 @@ for encoding in ['utf-8', 'cp932', 'shift-jis', 'latin-1']:
 - 読み取り専用モード
 - パス検証とサニタイゼーション
 - シンボリックリンクの追跡制限
+- パストラバーサル攻撃の防止
 
 ## 拡張性
 
@@ -271,8 +340,8 @@ LANGUAGE_EXTENSIONS = {
 
 ---
 
-*最終更新: 2025年01月03日 09:00 JST*
+*最終更新: 2025年01月03日 15:30 JST*
 *バージョン: v3.5.0*
 
 **更新履歴:**
-- v3.5.0 (2025年01月03日): 環境変数ローダー実装、完全レポート生成機能追加
+- v3.5.0 (2025年01月03日): CI/CD統合強化、GitHub Actionsセキュリティ改善、AI自動フォールバック、環境変数ローダー実装、完全レポート生成機能追加

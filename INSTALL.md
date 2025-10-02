@@ -1,7 +1,7 @@
 # インストールガイド
 
 *バージョン: v3.5.0*
-*最終更新: 2025年01月03日 09:00 JST*
+*最終更新: 2025年01月03日 15:30 JST*
 
 このガイドでは、Codex Review システムのインストール手順を詳しく説明します。
 
@@ -191,9 +191,45 @@ py -m pip install -r requirements.txt
 - `argparse`, `hashlib`, `json`, `os`, `pathlib`, `re`, `sys`, `time`
 - `collections`, `concurrent.futures`, `dataclasses`, `fnmatch`, `typing`
 
+## GitHub Actions セットアップ (v3.5.0)
+
+### 必要な GitHub Secrets
+
+GitHub リポジトリの Settings → Secrets and variables → Actions で以下を設定：
+
+| Secret名 | 説明 | 必須 | デフォルト値 |
+|----------|------|------|------------|
+| `AI_PROVIDER` | AIプロバイダー選択 | ✗ | `auto` |
+| `ANTHROPIC_API_KEY` | Claude APIキー | ✗ | なし |
+| `ANTHROPIC_MODEL` | Claudeモデル | ✗ | `claude-3-5-sonnet-20241022` |
+| `OPENAI_API_KEY` | OpenAI APIキー | ✗ | なし |
+| `OPENAI_MODEL` | GPTモデル | ✗ | `gpt-4o` |
+
+**注意事項**:
+- APIキーを設定しない場合、ルールベース解析のみ実行されます
+- v3.5.0では `.env` ファイルは使用されません（セキュリティ強化）
+- 全アクションはSHA-256でピン留めされています
+
+### ワークフローの有効化
+
+1. `.github/workflows/codex-readonly-review-optimized.yml` が存在することを確認
+2. リポジトリの Settings → Actions → General で Actions permissions を設定：
+   - "Allow all actions and reusable workflows" または
+   - "Allow select actions and reusable workflows" を選択
+3. Pull Request作成時に自動的にコードレビューが実行されます
+
+### セキュリティベストプラクティス
+
+- **APIキーの保護**: GitHub Secretsのみ使用、ログには出力しない
+- **最小権限原則**: `contents: read`, `pull-requests: write` のみ付与
+- **自動クリーンアップ**: 実行後に機密ファイルを削除
+- **SHAピン留め**: GitHub ActionsをSHAハッシュで固定
+
+詳細は [doc/CI_GUIDE.md](doc/CI_GUIDE.md) を参照してください。
+
 ## 次のステップ
 
-インストールが完了したら、[README.md](README.md) または [SETUP_GUIDE.md](SETUP_GUIDE.md) を参照して使用方法を確認してください。
+インストールが完了したら、[README.md](README.md) または [doc/CI_GUIDE.md](doc/CI_GUIDE.md) を参照して使用方法を確認してください。
 
 ### クイックスタート
 
@@ -230,8 +266,8 @@ py codex_review_severity.py advise --complete-all --out reports/complete_report.
 
 ---
 
-*最終更新: 2025年01月03日 09:00 JST*
+*最終更新: 2025年01月03日 15:30 JST*
 *バージョン: v3.5.0*
 
 **更新履歴:**
-- v3.5.0 (2025年01月03日): python-dotenv依存削除、Python 3.13対応、--complete-all機能追加
+- v3.5.0 (2025年01月03日): GitHub Actionsセットアップガイド追加、python-dotenv依存削除、Python 3.13対応、--complete-all機能追加
