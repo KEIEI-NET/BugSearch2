@@ -12,12 +12,16 @@
 
 **実行手順**:
 1. **コード実装**: 要件に基づいて実装
-2. **静的解析**: サブエージェント実行（debugger, security, review）
+2. **サブエージェント実行**:
+   - super-debugger-perfectionist (sonnet) でデバッグ分析
+   - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
+   - deep-code-reviewer (opus) でコード品質レビュー
 3. **品質達成**: 90点以上になるまで改善（目標: 100/100点）
 4. **テスト作成**: 包括的なテストスイート作成（test/test_*.py）
 5. **テスト実行**: pytest または python で実行
 6. **完全検証**: 全テスト合格（100%成功率）まで修正
-7. **コミット**: Git commit実行（pushは明示指示まで待機）
+7. **ドキュメント更新**: project-documentation-updater (opus) で自動生成
+8. **コミット**: Git commit実行（pushは明示指示まで待機）
 
 **成功条件**:
 - ✅ 静的解析: 100/100点（debugger + security + review）
@@ -42,9 +46,14 @@
 3. **Red**: テスト実行（失敗することを確認）
 4. **Green**: テストが通る最小限の実装
 5. **Refactor**: コード品質向上
-6. **静的解析**: 100/100点達成
-7. **最終検証**: 全テスト合格確認
-8. **コミット**: Git commit実行（pushは明示指示まで待機）
+6. **サブエージェント実行**:
+   - super-debugger-perfectionist (sonnet) でデバッグ分析
+   - deep-code-reviewer (opus) でコード品質レビュー
+   - security-error-xss-analyzer (sonnet) でセキュリティ検証
+7. **静的解析**: 100/100点達成
+8. **最終検証**: 全テスト合格確認
+9. **ドキュメント更新**: project-documentation-updater (opus) で自動生成
+10. **コミット**: Git commit実行（pushは明示指示まで待機）
 
 **成功条件**:
 - ✅ Red → Green → Refactor サイクル完了
@@ -64,13 +73,16 @@
 **使用例**: `@validate apply_improvements_from_report.py`
 
 **実行手順**:
-1. **静的解析**: debugger, security, review 実行
+1. **サブエージェント実行**:
+   - super-debugger-perfectionist (sonnet) でデバッグ分析
+   - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
+   - deep-code-reviewer (opus) でコード品質レビュー
 2. **スコア評価**: 90点未満なら改善提案
 3. **テスト確認**: テストファイルが存在するか確認
 4. **テスト作成**: 存在しない場合は作成
 5. **テスト実行**: 全テスト実行
 6. **問題修正**: 失敗があれば修正案提示
-7. **レポート**: 品質レポート生成
+7. **レポート生成**: project-documentation-updater (opus) で詳細ドキュメント作成
 
 **成功条件**:
 - ✅ 静的解析: 90点以上

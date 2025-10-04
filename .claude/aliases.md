@@ -7,12 +7,16 @@
 
 **実行手順**:
 1. コード実装
-2. サブエージェント実行（debugger, security, review）
+2. サブエージェント実行:
+   - super-debugger-perfectionist (sonnet) でデバッグ分析
+   - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
+   - deep-code-reviewer (opus) でコード品質レビュー
 3. 90点以上になるまで改善（目標: 100点）
 4. テストスイート作成（test/test_*.py）
 5. テスト実行（pytest or python test_*.py）
 6. 全テスト合格（100%成功率）まで修正
-7. コミット（プッシュは指示があるまで待機）
+7. ドキュメント更新: project-documentation-updater (opus) で自動生成
+8. コミット（プッシュは指示があるまで待機）
 
 **成功条件**:
 - 静的解析: 100/100点
@@ -30,9 +34,14 @@
 3. テスト実行（失敗することを確認）
 4. コード実装（テストが通るまで）
 5. リファクタリング
-6. 静的解析100点達成
-7. 全テスト合格確認
-8. コミット（プッシュは指示があるまで待機）
+6. サブエージェント実行:
+   - super-debugger-perfectionist (sonnet) でデバッグ分析
+   - deep-code-reviewer (opus) でコード品質レビュー
+   - security-error-xss-analyzer (sonnet) でセキュリティ検証
+7. 静的解析100点達成
+8. 全テスト合格確認
+9. ドキュメント更新: project-documentation-updater (opus) で自動生成
+10. コミット（プッシュは指示があるまで待機）
 
 **成功条件**:
 - Red → Green → Refactor サイクル完了
@@ -45,12 +54,15 @@
 **使用例**: `@validate apply_improvements_from_report.py`
 
 **実行手順**:
-1. 静的解析（debugger, security, review）
+1. サブエージェント実行:
+   - super-debugger-perfectionist (sonnet) でデバッグ分析
+   - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
+   - deep-code-reviewer (opus) でコード品質レビュー
 2. スコアが90点未満なら改善提案
 3. テストファイルが存在しない場合は作成
 4. テスト実行
 5. 失敗があれば修正案提示
-6. レポート生成
+6. レポート生成: project-documentation-updater (opus) で詳細ドキュメント作成
 
 **成功条件**:
 - 静的解析: 90点以上
