@@ -1,52 +1,67 @@
 # CI 運用ガイド
 
-*バージョン: v3.5.0*
-*最終更新: 2025年01月03日 15:30 JST*
+*バージョン: v4.0.0*
+*最終更新: 2025年01月04日*
 
-本ドキュメントは、Codex Review CLI 群を GitHub Actions などの CI 環境で安全かつ効率的に運用するための推奨設定をまとめたものです。v3.5.0では大幅なセキュリティ強化とAI自動フォールバック機能が追加されています。
+本ドキュメントは、Codex Review CLI 群を GitHub Actions などの CI 環境で安全かつ効率的に運用するための推奨設定をまとめたものです。
+
+**v4.0.0の新機能**:
+- AI改善コードの自動適用ツール（100点満点セキュリティ）
+- 文字エンコーディング自動検出（BOM + chardet）
+- 完全レポート生成機能（--complete-all）
+- マルチAIプロバイダー対応（Anthropic + OpenAI）
 
 ## ジョブ構成
 1. **依存準備ジョブ**
    - Python 3.11 をセットアップし、仮想環境で依存ライブラリをインストール。
    - 必要に応じてキャッシュ（pip cache や `.venv`）を利用。
 2. **インデックスジョブ**
-   - `python codex_review.py index . --batch-size 300 --max-seconds 600 --profile-index --profile-output reports/profile_ci.jsonl`
-   - 大規模リポジトリでは `--include` / `--exclude` を使用して対象を絞り込み、タイムアウトを防ぐ。
-   - 生成物（`.advice_index.jsonl`, `reports/large_files_over_limit.log`, プロファイル CSV/JSONL）をアーティファクトとして保存。
+   - `python codex_review_severity.py index ./src --exclude-langs delphi --max-file-mb 4 --worker-count 4`
+   - 大規模リポジトリでは `--src-dir` で対象を絞り込み、タイムアウトを防ぐ。
+   - 生成物（`.advice_index.jsonl`, `reports/large_files_over_limit.log`）をアーティファクトとして保存。
 3. **助言ジョブ**
    - インデックス結果を再利用（アーティファクトから取得）。
-   - `python codex_review.py advise --mode hybrid --topk 80 --out reports/advise.md`
-   - OpenAI API を利用する場合はジョブに `OPENAI_API_KEY` を渡す。
-4. **レポート／コメントジョブ**
+   - `python codex_review_severity.py advise --all --out reports/analysis.md`（⚠️ --allを忘れずに！）
+   - または完全レポート生成: `python codex_review_severity.py advise --complete-all --out reports/complete.md`
+   - AI API を利用する場合はジョブに `ANTHROPIC_API_KEY` または `OPENAI_API_KEY` を渡す。
+4. **自動適用ジョブ（v4.0新機能、オプション）**
+   - `python apply_improvements_from_report.py reports/complete.md --dry-run`（プレビューのみ）
+   - セキュリティ上の理由から、CI環境での自動適用は推奨しません（ローカル環境で実行）。
+5. **レポート／コメントジョブ**
    - `reports/*.md` を集約し、必要に応じて PR コメント投稿。
    - 長大なレポートはアーティファクトとして配布し、PR コメントにはサマリのみを記載。
 
-## 推奨パラメータ
+## 推奨パラメータ（v4.0更新）
 | フラグ | 推奨値 | 理由 |
 | --- | --- | --- |
-| `--batch-size` | 200〜500 | CI での書き出し頻度と I/O 負荷を調整。リポジトリ規模に応じて変更。 |
-| `--max-files` | 10,000 など | 大規模リポジトリで処理量を制限。並列ジョブで分割実行する場合に有効。 |
-| `--max-seconds` | 600〜900 | GitHub Actions のジョブタイムアウトを避ける。再実行時に続きから処理できるようログ参照を徹底。 |
-| `--include` / `--exclude` | `src/**`, `tests/**` 等 | レビュー対象のサブディレクトリに限定しノイズを削減。 |
-| `--profile-index` | 有効 | CI 上で計測統計をアーティファクト化し、処理時間のトレンドを把握。 |
+| `--src-dir` | `./src` | インデックス対象ディレクトリ指定（デフォルト: ./src） |
+| `--exclude-langs` | `delphi` | 除外する言語（Delphiは処理が重いため推奨） |
+| `--max-file-mb` | 4 | ファイルサイズ制限（4MB推奨） |
+| `--worker-count` | 4 | インデックス並列ワーカー数 |
+| `--all` | 必須 | 全ファイル分析（デフォルトは80件のみ！） |
+| `--complete-all` | オプション | 完全レポート生成（AI改善コード含む） |
+| `--out` | `reports/*.md` | 出力ファイル指定（自動的に.md拡張子追加） |
 
-## シークレットと環境変数 (v3.5.0強化)
+## シークレットと環境変数 (v4.0更新)
 
 ### 必須GitHub Secrets
-- `AI_PROVIDER` - AIプロバイダー選択 (auto/anthropic/openai/rules)
-- `ANTHROPIC_API_KEY` - Anthropic Claude APIキー（オプション）
-- `ANTHROPIC_MODEL` - Claudeモデル指定（デフォルト: claude-3-5-sonnet-20241022）
-- `OPENAI_API_KEY` - OpenAI GPT APIキー（オプション）
+- `AI_PROVIDER` - AIプロバイダー選択 (auto/anthropic/openai) ※デフォルト: auto
+- `ANTHROPIC_API_KEY` - Anthropic Claude APIキー（auto/anthropic選択時）
+- `ANTHROPIC_MODEL` - Claudeモデル指定（デフォルト: claude-sonnet-4-5）
+- `OPENAI_API_KEY` - OpenAI GPT APIキー（auto/openai選択時）
 - `OPENAI_MODEL` - GPTモデル指定（デフォルト: gpt-4o）
 
-### セキュリティ強化機能
-- **`.env`ファイル不使用** - GitHub Secretsのみから環境変数を取得
+### セキュリティ強化機能（v4.0）
+- **`.env`ファイル不使用** - GitHub Secretsのみから環境変数を取得（手動.env読み込み機能）
 - **APIキー検証** - 起動時に有効性を確認、無効な場合は自動フォールバック
 - **SHA-256ピン留め** - 全GitHub ActionsをSHAハッシュで固定
 - **最小権限原則** - 必要最小限の権限のみ付与
+- **自動適用の制限** - CI環境ではdry-runのみ推奨（セキュリティリスク回避）
 
 ### AI自動フォールバック順序
-1. Anthropic Claude → 2. OpenAI GPT → 3. ルールベース解析
+1. Anthropic Claude (Sonnet 4.5 → Opus 4.1 → Sonnet 4.1)
+2. OpenAI GPT (GPT-4o → GPT-5)
+3. ルールベース解析（AI不要の場合）
 
 ## アーティファクト運用
 - インデックス結果（`.advice_index.jsonl`）、大容量ファイルログ、`reports/*.md` を `readonly-advice` などの名前で保存。
