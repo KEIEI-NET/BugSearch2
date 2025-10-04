@@ -15,6 +15,7 @@
 2. **Python 3.8以上** がインストール済み
 3. **Git** がインストール済み
 4. **Claude Code CLI** がインストール済み
+5. **Serena MCP** がインストール済み（全PC共通）
 
 ---
 
@@ -71,6 +72,8 @@ chmod +x install_unix.sh
 # インストール方法は上記リポジトリのREADMEを参照
 ```
 
+**注意**: Serena MCP は全PCで導入済みのため、追加インストール不要です。
+
 ---
 
 ## 📁 Dropboxで同期されるファイル
@@ -96,6 +99,9 @@ chmod +x install_unix.sh
 #### キャッシュファイル（オプション）
 - `.cache/analysis/` - AI応答キャッシュ（MD5ハッシュベース）
 
+#### Serena MCP設定
+- `.serena/` - 各PC固有の設定（全PCで導入済み、同期不要）
+
 ### ❌ 同期されないファイル（`.gitignore`で除外）
 
 - `__pycache__/` - Pythonキャッシュ
@@ -104,6 +110,7 @@ chmod +x install_unix.sh
 - `.batch_progress*.json` - バッチ進捗状態
 - `*.log` - ログファイル
 - `src/` - ソースコード（分析対象）
+- `.serena/` - Serena MCP設定（各PC固有）
 
 ---
 
@@ -289,6 +296,7 @@ py codex_review_severity.py advise --all --out reports/full_analysis_b
 - [ ] `pip install openai anthropic scikit-learn joblib chardet`
 - [ ] `.env` ファイルの存在確認
 - [ ] Claude Code CLI インストール
+- [ ] Serena MCP インストール確認（全PCで導入済み）
 - [ ] `Install_PC/install_*.bat` または `install_*.sh` 実行
 - [ ] smart-review-system-v2 サブエージェントインストール
 - [ ] テスト実行: `py codex_review_severity.py --help`

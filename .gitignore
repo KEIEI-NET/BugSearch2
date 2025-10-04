@@ -30,7 +30,7 @@ performance_metrics.json
 # コメントアウト = Dropboxで同期される
 # .cache/
 
-# Serena MCP サーバー設定 - 各PC固有
+# Serena MCP サーバー設定 - 各PC固有（全PCで導入済み）
 .serena/
 
 # テストディレクトリ - テストコードのみGitHubにアップ

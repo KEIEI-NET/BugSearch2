@@ -6,6 +6,8 @@
 
 ## 🚀 新しいPCで5分でセットアップ
 
+**前提条件**: Claude Code CLI と Serena MCP が導入済み
+
 ### 1️⃣ Dropbox同期完了を確認（1分）
 
 ```bash
