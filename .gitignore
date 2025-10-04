@@ -16,7 +16,10 @@ performance_metrics.json
 .cache/
 .serena/
 test/
+!test/*.py
+!test/*.md
 src/csharp/OfferSource/
+/sec
 src/csharp/Source/
 *_backup_*
 

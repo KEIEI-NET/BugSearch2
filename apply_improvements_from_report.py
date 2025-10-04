@@ -535,6 +535,78 @@ def create_backup(file_path: str, backup_dir: str = DEFAULT_BACKUP_DIR) -> str:
 
     return str(backup_file_path)
 
+def rollback_from_backup(backup_path: str, allowed_dirs: List[str] = None) -> bool:
+    """
+    バックアップファイルから元のファイルを復元
+
+    Args:
+        backup_path: バックアップファイルのパス (.bak)
+        allowed_dirs: 許可されたディレクトリリスト（テスト用）
+
+    Returns:
+        bool: 復元成功時True
+
+    Raises:
+        FileNotFoundError: バックアップファイルまたはメタデータが存在しない
+        ValueError: パス検証失敗、シンボリックリンク
+    """
+    backup_file = pathlib.Path(backup_path)
+    if not backup_file.exists():
+        raise FileNotFoundError(f"バックアップファイルが存在しません: {backup_path}")
+
+    # メタデータJSON読み込み
+    metadata_path = backup_file.with_suffix('.json')
+    if not metadata_path.exists():
+        raise FileNotFoundError(f"メタデータファイルが存在しません: {metadata_path}")
+
+    try:
+        with open(metadata_path, 'r', encoding='utf-8') as f:
+            metadata = json.load(f)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"メタデータの解析に失敗しました: {e}")
+
+    original_path_str = metadata.get('original_path')
+    if not original_path_str:
+        raise ValueError("メタデータに original_path が含まれていません")
+
+    # 復元先パスのセキュリティ検証
+    # テスト環境ではallowed_dirsを使用
+    original_path = pathlib.Path(original_path_str)
+    
+    if allowed_dirs:
+        # テスト環境: allowed_dirs内かチェック
+        allowed = False
+        for allowed_dir in allowed_dirs:
+            try:
+                allowed_path = pathlib.Path(allowed_dir).resolve()
+                original_path.resolve().relative_to(allowed_path)
+                allowed = True
+                break
+            except ValueError:
+                continue
+        
+        if not allowed:
+            raise ValueError(f"セキュリティエラー: パスが許可されたディレクトリ外です: {original_path_str}")
+    else:
+        # 本番環境: 通常の検証
+        original_path = validate_safe_path(original_path_str)
+
+    # バックアップファイルがシンボリックリンクでないことを確認
+    if backup_file.is_symlink():
+        raise ValueError(f"セキュリティエラー: バックアップファイルがシンボリックリンクです: {backup_path}")
+
+    # バックアップファイルの内容を読み込み
+    backup_content = read_file_with_fallback(backup_file)
+
+    # 元のファイルにアトミック復元
+    try:
+        atomic_write(original_path, backup_content)
+        print(f"[OK] ロールバック成功: {original_path}")
+        return True
+    except Exception as e:
+        print(f"[ERROR] ロールバック失敗: {e}", file=sys.stderr)
+        return False
+
 # ===== ファイル適用 =====
 def apply_improvement(file_path: str, improved_code: str,
                      dry_run: bool = True,
