@@ -6,6 +6,12 @@ apply_improvements_from_report.py - 完全レポートから改善コードを�
 完全レポート（Markdown形式）を解析し、「改善されたソースコード」セクションを抽出して、
 実際のソースファイルに自動適用するツール。
 
+セキュリティ機能:
+    - パストラバーサル攻撃防止（パス検証）
+    - ReDoS対策（ファイルサイズ制限）
+    - アトミックファイル書き込み（データ損失防止）
+    - バックアップとロールバック機能
+
 使用例:
     # Dry-run（プレビューのみ）
     python apply_improvements_from_report.py reports/complete_analysis.md --dry-run
@@ -15,14 +21,18 @@ apply_improvements_from_report.py - 完全レポートから改善コードを�
 
     # ロールバック
     python apply_improvements_from_report.py --rollback backups/file.py.20251004_153045.bak
+
+バージョン: 2.0.0 (セキュリティ強化版)
 """
 from __future__ import annotations
 import argparse
 import json
+import os
 import pathlib
 import re
 import shutil
 import sys
+import tempfile
 import time
 from datetime import datetime
 from typing import List, Dict, Any, Optional
@@ -31,6 +41,79 @@ from typing import List, Dict, Any, Optional
 DEFAULT_BACKUP_DIR = "backups"
 DEFAULT_OUTPUT_REPORT = "reports/apply_summary.md"
 APPLY_LOG_FILE = ".apply_log.jsonl"
+MIN_MEANINGFUL_CODE_LENGTH = 50  # 最小有効コード長
+MAX_REPORT_SIZE_MB = 100  # 最大レポートサイズ (MB)
+
+# 許可されたベースディレクトリ (セキュリティ)
+ALLOWED_BASE_DIRS = ['.', './src', './test', './reports']
+
+# コンパイル済み正規表現パターン（パフォーマンス最適化）
+FILE_PATTERN = re.compile(r'^### (\d+)\. (.+)$', re.MULTILINE)
+LANG_PATTERN = re.compile(r'- \*\*言語\*\*: (.+)')
+SEVERITY_PATTERN = re.compile(r'\(スコア: (\d+)\)')
+PROBLEMS_SECTION_PATTERN = re.compile(r'#### 検出された問題:(.*?)(?:####|$)', re.DOTALL)
+PROBLEM_LINE_PATTERN = re.compile(r'^- \[.+?\] ')
+ORIGINAL_CODE_PATTERN = re.compile(r'#### 元のソースコード:\s*```[\w+]*\s*(.*?)\s*```', re.DOTALL)
+IMPROVED_CODE_PATTERN = re.compile(r'#### 改善されたソースコード:\s*```[\w+]*\s*(.*?)\s*```', re.DOTALL)
+BACKUP_FILENAME_PATTERN = re.compile(r'^(.+?)\.(\d{8}_\d{6})\.bak$')
+
+# ===== セキュリティ関数 =====
+def validate_safe_path(file_path: str, base_dirs: List[str] = None) -> pathlib.Path:
+    """
+    ファイルパスを検証し、パストラバーサル攻撃を防止
+
+    Args:
+        file_path: 検証するファイルパス
+        base_dirs: 許可されたベースディレクトリのリスト
+
+    Returns:
+        検証済みの絶対パス
+
+    Raises:
+        ValueError: パスが許可されたディレクトリ外、またはシンボリックリンクの場合
+    """
+    if base_dirs is None:
+        base_dirs = ALLOWED_BASE_DIRS
+
+    try:
+        # ファイルパスを正規化
+        target = pathlib.Path(file_path)
+
+        # 絶対パスの場合は拒否
+        if target.is_absolute():
+            raise ValueError(f"絶対パスは許可されていません: {file_path}")
+
+        # シンボリックリンク検出（解決前）
+        if target.exists() and target.is_symlink():
+            raise ValueError(f"セキュリティエラー: シンボリックリンクは許可されていません: {file_path}")
+
+        # 現在のディレクトリからの相対パスとして解決
+        current_dir = pathlib.Path('.').resolve()
+        resolved_target = (current_dir / target).resolve()
+
+        # 解決後もシンボリックリンクチェック
+        if resolved_target.exists() and resolved_target.is_symlink():
+            raise ValueError(f"セキュリティエラー: シンボリックリンクは許可されていません: {file_path}")
+
+        # 許可されたディレクトリ内かチェック
+        for base_dir in base_dirs:
+            base = (current_dir / base_dir).resolve()
+            try:
+                resolved_target.relative_to(base)
+                return resolved_target
+            except ValueError:
+                continue
+
+        # すべてのベースディレクトリで失敗
+        raise ValueError(
+            f"セキュリティエラー: パスが許可されたディレクトリ外です: {file_path}\n"
+            f"許可ディレクトリ: {', '.join(base_dirs)}"
+        )
+
+    except Exception as e:
+        if isinstance(e, ValueError):
+            raise
+        raise ValueError(f"パス検証エラー: {file_path} - {e}")
 
 # ===== レポート解析 =====
 def parse_complete_report(report_path: str) -> List[Dict[str, Any]]:
@@ -55,12 +138,25 @@ def parse_complete_report(report_path: str) -> List[Dict[str, Any]]:
     if not report_file.exists():
         raise FileNotFoundError(f"レポートファイルが見つかりません: {report_path}")
 
+    # セキュリティ: ファイルサイズチェック (ReDoS対策)
+    file_size_mb = report_file.stat().st_size / (1024 * 1024)
+    if file_size_mb > MAX_REPORT_SIZE_MB:
+        raise ValueError(
+            f"レポートファイルが大きすぎます: {file_size_mb:.1f}MB (最大: {MAX_REPORT_SIZE_MB}MB)"
+        )
+
+    # セキュリティ: レポートパスを検証
+    try:
+        validate_safe_path(report_path, ['.', './reports'])
+    except ValueError as e:
+        print(f"[WARNING] {e}")
+        print(f"[WARNING] 信頼できないレポートの可能性があります")
+
     content = report_file.read_text(encoding='utf-8')
     entries = []
 
-    # ファイルエントリを検出（### N. ファイルパス）
-    file_pattern = re.compile(r'^### (\d+)\. (.+)$', re.MULTILINE)
-    matches = list(file_pattern.finditer(content))
+    # ファイルエントリを検出（### N. ファイルパス）- コンパイル済みパターン使用
+    matches = list(FILE_PATTERN.finditer(content))
 
     for i, match in enumerate(matches):
         entry_num = match.group(1)
@@ -71,40 +167,41 @@ def parse_complete_report(report_path: str) -> List[Dict[str, Any]]:
         end_pos = matches[i + 1].start() if i + 1 < len(matches) else len(content)
         entry_content = content[start_pos:end_pos]
 
-        # 言語を抽出
-        lang_match = re.search(r'- \*\*言語\*\*: (.+)', entry_content)
+        # 言語を抽出 - コンパイル済みパターン使用
+        lang_match = LANG_PATTERN.search(entry_content)
         lang = lang_match.group(1).strip() if lang_match else 'unknown'
 
-        # 重要度を抽出
-        severity_match = re.search(r'\(スコア: (\d+)\)', entry_content)
+        # 重要度を抽出 - コンパイル済みパターン使用
+        severity_match = SEVERITY_PATTERN.search(entry_content)
         severity = int(severity_match.group(1)) if severity_match else 0
 
-        # 検出された問題を抽出
+        # 検出された問題を抽出 - コンパイル済みパターン使用
         problems = []
-        problems_section = re.search(r'#### 検出された問題:(.*?)(?:####|$)', entry_content, re.DOTALL)
+        problems_section = PROBLEMS_SECTION_PATTERN.search(entry_content)
         if problems_section:
             problem_lines = problems_section.group(1).strip().split('\n')
             for line in problem_lines:
                 line = line.strip()
                 if line.startswith('-'):
                     # "- [優先度] 問題文" から問題文を抽出
-                    problem_text = re.sub(r'^- \[.+?\] ', '', line)
+                    problem_text = PROBLEM_LINE_PATTERN.sub('', line)
                     problems.append(problem_text)
 
-        # 元のソースコードを抽出
+        # 元のソースコードを抽出 - コンパイル済みパターン使用
         original_code = None
-        original_section = re.search(r'#### 元のソースコード:\s*```[\w+]*\s*(.*?)\s*```', entry_content, re.DOTALL)
+        original_section = ORIGINAL_CODE_PATTERN.search(entry_content)
         if original_section:
             original_code = original_section.group(1).strip()
 
-        # 改善されたソースコードを抽出
+        # 改善されたソースコードを抽出 - コンパイル済みパターン使用
         improved_code = None
         has_improvement = False
-        improved_section = re.search(r'#### 改善されたソースコード:\s*```[\w+]*\s*(.*?)\s*```', entry_content, re.DOTALL)
+        improved_section = IMPROVED_CODE_PATTERN.search(entry_content)
         if improved_section:
             improved_text = improved_section.group(1).strip()
             # 「コードレビュー助言（修正コード出力なし）」チェック
-            if '# コードレビュー助言（修正コード出力なし）' not in improved_text and len(improved_text) >= 50:
+            if ('# コードレビュー助言（修正コード出力なし）' not in improved_text
+                and len(improved_text) >= MIN_MEANINGFUL_CODE_LENGTH):
                 improved_code = improved_text
                 has_improvement = True
 
@@ -140,6 +237,61 @@ def extract_improvement_code(entry: Dict[str, Any]) -> Optional[str]:
         return None
 
     return entry['improved_code']
+
+# ===== アトミック書き込み =====
+def atomic_write(file_path: pathlib.Path, content: str, encoding: str = 'utf-8') -> None:
+    """
+    アトミックなファイル書き込み（プロセスセーフ版）
+
+    Args:
+        file_path: 書き込み先ファイルパス
+        content: 書き込む内容
+        encoding: エンコーディング
+
+    Raises:
+        Exception: 書き込み失敗時
+    """
+    # tempfile.mkstemp()で一意な一時ファイル作成（プロセス間競合回避）
+    fd = None
+    temp_path = None
+
+    try:
+        fd, temp_name = tempfile.mkstemp(
+            dir=file_path.parent,
+            prefix=f'.{file_path.name}.',
+            suffix='.tmp',
+            text=False  # バイナリモード
+        )
+        temp_path = pathlib.Path(temp_name)
+
+        # ファイルディスクリプタ経由で書き込み
+        with os.fdopen(fd, 'w', encoding=encoding, newline='\n') as f:
+            fd = None  # fdopenが所有権を取得
+            f.write(content)
+            f.flush()
+            os.fsync(f.fileno())  # ディスクに確実に書き込み
+
+        # 権限設定（UNIX: 0o600、Windows: 現状維持）
+        if os.name != 'nt':
+            os.chmod(temp_path, 0o600)
+
+        # アトミックリネーム（POSIXではアトミック、Windowsでも最善の努力）
+        temp_path.replace(file_path)
+        temp_path = None  # 成功したのでクリーンアップ不要
+
+    except Exception:
+        # 失敗時は一時ファイルをクリーンアップ
+        if fd is not None:
+            try:
+                os.close(fd)
+            except:
+                pass
+        if temp_path and temp_path.exists():
+            try:
+                temp_path.unlink()
+            except:
+                pass
+        raise
 
 # ===== バックアップ作成 =====
 def create_backup(file_path: str, backup_dir: str = DEFAULT_BACKUP_DIR) -> str:
@@ -226,10 +378,20 @@ def apply_improvement(file_path: str, improved_code: str,
                 'message': f'バックアップ作成失敗: {e}'
             }
 
-    # ファイルに書き込み
+    # パス検証（セキュリティ）
     try:
-        with open(target_path, 'w', encoding='utf-8', newline='\n') as f:
-            f.write(improved_code)
+        validated_path = validate_safe_path(file_path)
+    except ValueError as e:
+        return {
+            'status': 'error',
+            'file_path': file_path,
+            'backup_path': backup_path,
+            'message': f'セキュリティエラー: {e}'
+        }
+
+    # ファイルにアトミック書き込み
+    try:
+        atomic_write(validated_path, improved_code)
 
         return {
             'status': 'success',
@@ -264,13 +426,31 @@ def rollback_changes(backup_path: str, original_path: str = None) -> bool:
 
     # 復元先を特定
     if original_path is None:
-        # バックアップファイル名から元のファイル名を推測
+        # バックアップファイル名から元のファイル名を正規表現で抽出 - コンパイル済みパターン使用
         # 例: codex_review_severity.py.20251004_153045.bak -> codex_review_severity.py
-        name_parts = backup_file.name.split('.')
-        if len(name_parts) >= 4 and name_parts[-1] == 'bak':
-            # .{timestamp}.bak を除去
-            original_name = '.'.join(name_parts[:-2])
-            original_path = str(backup_file.parent.parent / original_name)
+        # パターン: <ファイル名>.<タイムスタンプ>.bak
+        match = BACKUP_FILENAME_PATTERN.match(backup_file.name)
+
+        if match:
+            original_name = match.group(1)
+            # バックアップディレクトリと同じレベルのsrc/またはルートから検索
+            # backups/foo.py.20251004_153045.bak -> foo.py または src/foo.py
+            possible_paths = [
+                backup_file.parent.parent / original_name,  # ルート
+                backup_file.parent.parent / 'src' / original_name,  # src/
+                backup_file.parent.parent / 'test' / original_name,  # test/
+            ]
+
+            # 存在するパスを選択
+            for candidate in possible_paths:
+                if candidate.exists():
+                    original_path = str(candidate)
+                    break
+
+            if original_path is None:
+                # 存在しない場合はルートに復元
+                original_path = str(backup_file.parent.parent / original_name)
+                print(f"[WARNING] 元のファイルが見つかりません。ルートに復元します: {original_path}")
         else:
             print(f"[ERROR] バックアップファイル名から元のファイル名を推測できません: {backup_path}")
             return False
@@ -415,8 +595,20 @@ def main(report_path: str, dry_run: bool = True, file_filter: Optional[str] = No
     # レポート解析
     try:
         entries = parse_complete_report(report_path)
+    except FileNotFoundError as e:
+        print(f"[ERROR] ファイルが見つかりません: {e}")
+        sys.exit(1)
+    except ValueError as e:
+        print(f"[ERROR] セキュリティまたは検証エラー: {e}")
+        sys.exit(1)
     except Exception as e:
-        print(f"[ERROR] レポート解析失敗: {e}")
+        print(f"[ERROR] レポート解析失敗: {type(e).__name__}: {e}")
+        # 詳細スタックトレースはverboseモードのみ
+        if verbose:
+            import traceback
+            traceback.print_exc()
+        else:
+            print(f"[INFO] 詳細情報は --verbose オプションで確認できます")
         sys.exit(1)
 
     # 改善コードありのエントリのみ処理
@@ -471,7 +663,11 @@ def main(report_path: str, dry_run: bool = True, file_filter: Optional[str] = No
             })
 
     # サマリーレポート生成
-    generate_apply_report(entries, results, report_path, output_report)
+    try:
+        generate_apply_report(entries, results, report_path, output_report)
+    except Exception as e:
+        print(f"[WARNING] レポート生成失敗: {e}")
+        # レポート生成失敗は致命的でないため続行
 
     # サマリー表示
     print(f"\n{'='*80}")
