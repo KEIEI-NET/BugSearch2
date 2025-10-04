@@ -1,4 +1,6 @@
 # Codex Review - Required Python Packages
+# Version: 4.0.0
+# Last Updated: 2025-01-04
 # Python 3.11+ required
 
 # AI Provider SDKs (Required for AI mode)
@@ -10,7 +12,7 @@ scikit-learn>=1.0.0
 joblib>=1.0.0
 
 # Text Processing & Encoding
-chardet>=5.0.0
+chardet>=5.0.0  # Required for apply_improvements_from_report.py (v4.0.0)
 
 # Optional but recommended
-# python-dotenv>=0.19.0  # For .env file support (now handled natively)
+# python-dotenv>=0.19.0  # For .env file support (now handled natively in v3.5+)
