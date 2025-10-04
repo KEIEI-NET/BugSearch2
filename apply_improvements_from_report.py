@@ -31,6 +31,7 @@ import os
 import pathlib
 import re
 import shutil
+import stat
 import sys
 import tempfile
 import time
@@ -55,9 +56,60 @@ PROBLEMS_SECTION_PATTERN = re.compile(r'#### 検出された問題:(.*?)(?:####|
 PROBLEM_LINE_PATTERN = re.compile(r'^- \[.+?\] ')
 ORIGINAL_CODE_PATTERN = re.compile(r'#### 元のソースコード:\s*```[\w+]*\s*(.*?)\s*```', re.DOTALL)
 IMPROVED_CODE_PATTERN = re.compile(r'#### 改善されたソースコード:\s*```[\w+]*\s*(.*?)\s*```', re.DOTALL)
-BACKUP_FILENAME_PATTERN = re.compile(r'^(.+?)\.(\d{8}_\d{6})\.bak$')
+BACKUP_FILENAME_PATTERN = re.compile(r'^(.+)\.(\d{8}_\d{6})(?:_\d{3})?\.bak$')
+
+# 改善コード検証設定
+MAX_IMPROVED_CODE_SIZE_KB = 1024  # 最大1MBまで許可
+MAX_IMPROVED_CODE_LINES = 10000  # 最大行数
 
 # ===== セキュリティ関数 =====
+def validate_improved_code(code: str, max_size_kb: int = MAX_IMPROVED_CODE_SIZE_KB) -> None:
+    """
+    改善コード内容を検証
+
+    Args:
+        code: コード内容
+        max_size_kb: 最大サイズ（KB）
+
+    Raises:
+        ValueError: 検証失敗時
+    """
+    # NULL文字チェック
+    if '\x00' in code:
+        raise ValueError("不正な文字が含まれています: null byte (\\x00)")
+
+    # サイズ制限チェック
+    code_size_kb = len(code.encode('utf-8')) / 1024
+    if code_size_kb > max_size_kb:
+        raise ValueError(
+            f"改善コードが大きすぎます: {code_size_kb:.1f}KB (最大: {max_size_kb}KB)"
+        )
+
+    # UTF-8エンコーディング検証
+    try:
+        code.encode('utf-8')
+    except UnicodeEncodeError as e:
+        raise ValueError(f"不正なエンコーディング: {e}")
+
+    # 行数チェック（バイナリデータ検出）
+    lines = code.split('\n')
+    if len(lines) > MAX_IMPROVED_CODE_LINES:
+        raise ValueError(f"行数が多すぎます: {len(lines)}行 (最大: {MAX_IMPROVED_CODE_LINES}行)")
+
+    # 制御文字検出（ASCII + Unicode）
+    for i, char in enumerate(code):
+        # 許可された空白文字
+        if char in ('\t', '\n', '\r', ' '):
+            continue
+
+        # ASCII制御文字検出
+        if ord(char) < 0x20 or ord(char) == 0x7F:
+            raise ValueError(f"不正な制御文字が含まれています: 位置{i}, U+{ord(char):04X}")
+
+        # Unicode制御文字検出（C0/C1セット）
+        if 0x80 <= ord(char) <= 0x9F:
+            raise ValueError(f"不正なUnicode制御文字: 位置{i}, U+{ord(char):04X}")
+
 def validate_safe_path(file_path: str, base_dirs: List[str] = None) -> pathlib.Path:
     """
     ファイルパスを検証し、パストラバーサル攻撃を防止
@@ -83,17 +135,18 @@ def validate_safe_path(file_path: str, base_dirs: List[str] = None) -> pathlib.P
         if target.is_absolute():
             raise ValueError(f"絶対パスは許可されていません: {file_path}")
 
-        # シンボリックリンク検出（解決前）
-        if target.exists() and target.is_symlink():
-            raise ValueError(f"セキュリティエラー: シンボリックリンクは許可されていません: {file_path}")
-
         # 現在のディレクトリからの相対パスとして解決
         current_dir = pathlib.Path('.').resolve()
-        resolved_target = (current_dir / target).resolve()
+        resolved_target = (current_dir / target).resolve(strict=False)
 
-        # 解決後もシンボリックリンクチェック
-        if resolved_target.exists() and resolved_target.is_symlink():
-            raise ValueError(f"セキュリティエラー: シンボリックリンクは許可されていません: {file_path}")
+        # lstat()を使用してシンボリックリンク検出（TOCTOUを回避）
+        try:
+            stat_result = resolved_target.lstat()
+            if stat.S_ISLNK(stat_result.st_mode):
+                raise ValueError(f"セキュリティエラー: シンボリックリンクは許可されていません: {file_path}")
+        except FileNotFoundError:
+            # ファイルが存在しない場合は許可（新規ファイル作成時）
+            pass
 
         # 許可されたディレクトリ内かチェック
         for base_dir in base_dirs:
@@ -265,11 +318,16 @@ def atomic_write(file_path: pathlib.Path, content: str, encoding: str = 'utf-8')
         temp_path = pathlib.Path(temp_name)
 
         # ファイルディスクリプタ経由で書き込み
-        with os.fdopen(fd, 'w', encoding=encoding, newline='\n') as f:
-            fd = None  # fdopenが所有権を取得
-            f.write(content)
-            f.flush()
-            os.fsync(f.fileno())  # ディスクに確実に書き込み
+        try:
+            with os.fdopen(fd, 'w', encoding=encoding, newline='\n') as f:
+                f.write(content)
+                f.flush()
+                os.fsync(f.fileno())  # ディスクに確実に書き込み
+            fd = None  # fdopenのコンテキストマネージャーが閉じた
+        except Exception:
+            # fdopenは成功したがwrite失敗 - コンテキストマネージャーが既に閉じた
+            fd = None
+            raise
 
         # 権限設定（UNIX: 0o600、Windows: 現状維持）
         if os.name != 'nt':
@@ -317,7 +375,18 @@ def create_backup(file_path: str, backup_dir: str = DEFAULT_BACKUP_DIR) -> str:
     if source_path.is_symlink():
         raise ValueError(f"シンボリックリンクはバックアップできません: {file_path}")
 
+    # バックアップディレクトリのパス検証
     backup_path_obj = pathlib.Path(backup_dir)
+
+    # セキュリティ: バックアップディレクトリが許可されたパスか検証
+    try:
+        validated_backup_dir = validate_safe_path(backup_dir, ['.', './backups', './backup'])
+        backup_path_obj = validated_backup_dir
+    except ValueError:
+        # デフォルトのbackupsディレクトリにフォールバック
+        backup_path_obj = pathlib.Path(DEFAULT_BACKUP_DIR)
+        print(f"[WARNING] バックアップディレクトリが無効です。デフォルトを使用: {DEFAULT_BACKUP_DIR}", file=sys.stderr)
+
     backup_path_obj.mkdir(parents=True, exist_ok=True)
 
     # タイムスタンプ付きバックアップファイル名
@@ -367,18 +436,19 @@ def create_backup(file_path: str, backup_dir: str = DEFAULT_BACKUP_DIR) -> str:
                 pass
         raise
 
-    # メタデータJSON生成（復元用）
+    # メタデータJSON生成（復元用、アトミック書き込み）
     metadata_path = backup_file_path.with_suffix('.json')
+    metadata_content = json.dumps({
+        'original_path': str(source_path.resolve()),
+        'backup_timestamp': timestamp,
+        'file_size': source_path.stat().st_size
+    }, indent=2, ensure_ascii=False)
+
     try:
-        with open(metadata_path, 'w', encoding='utf-8') as f:
-            json.dump({
-                'original_path': str(source_path.resolve()),
-                'backup_timestamp': timestamp,
-                'file_size': source_path.stat().st_size
-            }, f, indent=2, ensure_ascii=False)
+        atomic_write(metadata_path, metadata_content)
     except Exception:
-        # メタデータ失敗は致命的でない
-        pass
+        # メタデータ失敗は致命的でない（警告のみ）
+        print(f"[WARNING] メタデータ生成失敗: {backup_file_path}", file=sys.stderr)
 
     return str(backup_file_path)
 
@@ -455,6 +525,17 @@ def apply_improvement(file_path: str, improved_code: str,
                 'backup_path': None,
                 'message': f'バックアップ作成失敗: {e}'
             }
+
+    # 改善コード検証（セキュリティ）
+    try:
+        validate_improved_code(improved_code)
+    except ValueError as e:
+        return {
+            'status': 'error',
+            'file_path': file_path,
+            'backup_path': None,
+            'message': f'改善コード検証失敗: {e}'
+        }
 
     # ファイルにアトミック書き込み（validated_pathを直接使用）
     try:
@@ -570,7 +651,17 @@ def rollback_changes(backup_path: str, original_path: str = None) -> bool:
         temp_fd = None
         temp_path = pathlib.Path(temp_name)
 
-        shutil.copy2(backup_file, temp_path)
+        # コピー実行
+        with open(backup_file, 'rb') as src:
+            with open(temp_path, 'wb') as dst:
+                dst.write(src.read())
+                dst.flush()
+                os.fsync(dst.fileno())  # ディスクに確実に書き込み
+
+        # メタデータコピー（タイムスタンプなど）
+        shutil.copystat(backup_file, temp_path)
+
+        # アトミックリネーム
         temp_path.replace(validated_path)
 
         print(f"[OK] ロールバック成功: {validated_path}")
@@ -696,31 +787,45 @@ def log_apply_result(result: Dict[str, Any], log_file: str = APPLY_LOG_FILE):
 
     log_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
 
-    # Windowsでのファイルロック（msvcrt使用）
-    # UNIXではfcntl.flockが必要だが、Windowsでのみ実装
+    # クロスプラットフォームファイルロック（Windows: msvcrt、UNIX: fcntl）
     max_retries = 5
     for attempt in range(max_retries):
         try:
             # 追記モードで開く
             with open(log_file, 'a', encoding='utf-8') as f:
-                # Windowsでのロック試行
+                # プラットフォーム別ファイルロック
                 if os.name == 'nt':
+                    # Windows: msvcrt.locking
                     try:
                         import msvcrt
                         msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, len(log_line))
                         try:
                             f.write(log_line)
                             f.flush()
+                            os.fsync(f.fileno())
                         finally:
                             msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, len(log_line))
                     except ImportError:
                         # msvcrt利用不可の場合は通常書き込み
                         f.write(log_line)
                         f.flush()
+                        os.fsync(f.fileno())
                 else:
-                    # UNIX系では通常書き込み（fcntl未実装）
-                    f.write(log_line)
-                    f.flush()
+                    # UNIX: fcntl.flock
+                    try:
+                        import fcntl
+                        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+                        try:
+                            f.write(log_line)
+                            f.flush()
+                            os.fsync(f.fileno())
+                        finally:
+                            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                    except ImportError:
+                        # fcntl利用不可の場合は通常書き込み
+                        f.write(log_line)
+                        f.flush()
+                        os.fsync(f.fileno())
 
             break  # 成功
 
