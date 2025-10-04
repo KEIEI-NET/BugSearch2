@@ -3,13 +3,23 @@
 *バージョン: v4.0.2*
 *最終更新: 2025年01月04日*
 
+**⚠️ 重要**: このインストーラーは **Claude Code CLI 専用** です。
+
 このディレクトリには、Claude Code の品質ワークフローエイリアスを**グローバルに**インストールするためのファイルが含まれています。
 
-**使用するサブエージェント**: [smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)
+## 📋 前提条件
+
+このエイリアスを使用する前に、以下のサブエージェントを **事前に Claude Code CLI にインストール** してください：
+
+**必須リポジトリ**: [smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)
+
+インストール後、以下のサブエージェントが利用可能になります：
 - super-debugger-perfectionist (sonnet): デバッグ分析
 - security-error-xss-analyzer (sonnet): セキュリティ・エラー検証
 - deep-code-reviewer (opus): コード品質レビュー
 - project-documentation-updater (opus): ドキュメント自動生成
+
+**注意**: エイリアスは既にインストール済みのサブエージェントを呼び出すだけで、外部リポジトリにアクセスしません。
 
 ---
 

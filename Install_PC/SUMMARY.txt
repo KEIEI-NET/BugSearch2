@@ -1,5 +1,6 @@
 ============================================
 Claude Code Aliases インストーラー v4.0.2
+(Claude Code CLI 専用)
 ============================================
 
 📦 作成されたファイル:
@@ -80,8 +81,11 @@ Install_PC/README.md を参照
 
 ---
 
-使用するサブエージェント:
-https://github.com/KEIEI-NET/smart-review-system-v2
+前提条件:
+1. Claude Code CLI がインストール済み
+2. 以下のサブエージェントが事前インストール済み:
+   https://github.com/KEIEI-NET/smart-review-system-v2
+   (エイリアスは既存のサブエージェントを呼び出すのみ)
 
 ---
 

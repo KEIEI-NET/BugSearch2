@@ -3,7 +3,17 @@
 *バージョン: v4.0.2*
 *このファイルはClaudeのグローバル設定に配置されます*
 
-**使用するサブエージェント**: [smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)
+**⚠️ Claude Code CLI 専用**
+
+## 前提条件
+
+以下のサブエージェントが **事前に Claude Code CLI にインストール済み** であることを確認してください：
+
+**必須**: [smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)
+
+**注意**: このエイリアスは既にインストール済みのサブエージェントを呼び出します。外部リポジトリへのアクセスは行いません。
+
+利用するサブエージェント:
 - super-debugger-perfectionist (sonnet)
 - security-error-xss-analyzer (sonnet)
 - deep-code-reviewer (opus)
@@ -18,7 +28,7 @@
 
 **実行手順**:
 1. **コード実装**: 要件に基づいて実装
-2. **サブエージェント実行** ([smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)):
+2. **サブエージェント実行** (事前インストール済みを使用):
    - super-debugger-perfectionist (sonnet) でデバッグ分析
    - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
    - deep-code-reviewer (opus) でコード品質レビュー
@@ -53,7 +63,7 @@
 3. **Red**: テスト実行（失敗することを確認）
 4. **Green**: テストが通る最小限の実装
 5. **Refactor**: コード品質向上
-6. **サブエージェント実行** ([smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)):
+6. **サブエージェント実行** (事前インストール済みを使用):
    - super-debugger-perfectionist (sonnet) でデバッグ分析
    - deep-code-reviewer (opus) でコード品質レビュー
    - security-error-xss-analyzer (sonnet) でセキュリティ検証
@@ -81,7 +91,7 @@
 **使用例**: `@validate apply_improvements_from_report.py`
 
 **実行手順**:
-1. **サブエージェント実行** ([smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)):
+1. **サブエージェント実行** (事前インストール済みを使用):
    - super-debugger-perfectionist (sonnet) でデバッグ分析
    - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
    - deep-code-reviewer (opus) でコード品質レビュー
