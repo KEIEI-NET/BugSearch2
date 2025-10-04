@@ -384,7 +384,9 @@ run_enhanced_analysis.bat
 - **N+1問題**（ループ内SELECT） - 重要度: 10
 - **SELECT \*** の使用 - 重要度: 8
 - **多重JOIN** - 重要度: 7
-- **大OFFSET** - 重要度: 6
+- **大OFFSET使用によるページング遅延** - 重要度: 6
+  - OFFSETベースのページネーション（例: `LIMIT 100 OFFSET 5000`）は後半ページで極端に遅延
+  - 推奨: IDカーソルベース（例: `WHERE id > last_id ORDER BY id LIMIT 100`）
 
 ### セキュリティ
 - **金額計算でのfloat使用** - 重要度: 9
@@ -653,6 +655,45 @@ py codex_review_severity.py index . --max-file-mb 1
 
 # バッチサイズを小さくする
 py extract_and_batch_parallel_enhanced.py  # batch_config.jsonで調整
+```
+
+## ⚡ パフォーマンスベストプラクティス
+
+### 大規模ファイル処理時の推奨設定
+
+#### 1. カーソルベースページネーション
+6,089件以上の大規模処理時はIDカーソル方式を使用：
+```sql
+-- ❌ OFFSETベース（遅延あり）
+SELECT * FROM files ORDER BY id LIMIT 100 OFFSET 5000;
+
+-- ✅ カーソルベース（高速）
+SELECT * FROM files WHERE id > last_id ORDER BY id LIMIT 100;
+```
+
+#### 2. DB接続プール設定
+並列処理（MAX_WORKERS=10）時の推奨設定：
+- 接続プールサイズ: ワーカー数+2以上（推奨: 12以上）
+- タイムアウト設定の整合性: API_TIMEOUT（60秒）とDB接続タイムアウトを同期
+
+#### 3. バッチサイズの動的調整
+ファイルサイズに応じた最適化：
+```python
+# デフォルト: BATCH_SIZE=100
+# 小ファイル（<100KB）: 200件/バッチ
+# 中ファイル（100KB-1MB）: 100件/バッチ
+# 大ファイル（>1MB）: 50件/バッチ
+```
+
+#### 4. 進捗表示とモニタリング
+大規模処理時（1,000件以上）は自動的に以下を表示：
+- 処理済み件数/総件数
+- 推定残り時間
+- 現在処理中のファイル名
+
+```bash
+# 進捗モニタリングツールの使用
+python test/monitor_parallel.py
 ```
 
 ### ⚠️ --topk パラメータの注意事項
