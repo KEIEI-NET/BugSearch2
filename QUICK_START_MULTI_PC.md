@@ -12,10 +12,10 @@
 
 ```bash
 # Windows
-cd "C:\Users\<ユーザー名>\Dropbox\AI開発\dev\Tools\サーチ"
+cd "C:\Users\<ユーザー名>\Dropbox\<プロジェクトパス>\BugSearch"
 
 # Mac/Linux
-cd ~/Dropbox/AI開発/dev/Tools/サーチ
+cd ~/Dropbox/<プロジェクトパス>/BugSearch
 ```
 
 ### 2️⃣ Pythonパッケージをインストール（2分）

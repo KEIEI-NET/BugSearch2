@@ -25,9 +25,9 @@
 
 ```bash
 # Dropbox同期が完了していることを確認
-cd "C:\Users\<ユーザー名>\Dropbox\AI開発\dev\Tools\サーチ"
+cd "C:\Users\<ユーザー名>\Dropbox\<プロジェクトパス>\BugSearch"
 # または Mac/Linux
-cd ~/Dropbox/AI開発/dev/Tools/サーチ
+cd ~/Dropbox/<プロジェクトパス>/BugSearch
 ```
 
 ### 2. Python パッケージのインストール
@@ -132,7 +132,7 @@ py codex_review_severity.py advise --all --out reports/analysis_pc_a
 
 ```bash
 # 1. Dropbox 同期完了を確認
-cd ~/Dropbox/AI開発/dev/Tools/サーチ
+cd ~/Dropbox/<プロジェクトパス>/BugSearch
 ls -lh .advice_index.jsonl  # ファイルサイズ約400MBを確認
 
 # 2. 既存のインデックスを使って追加分析
