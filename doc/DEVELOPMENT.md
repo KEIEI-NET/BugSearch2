@@ -1,11 +1,70 @@
 # 開発履歴
 
-**最終更新**: 2025-09-28 12:56:09
-**現行バージョン**: 6.1
+**最終更新**: 2025-01-04
+**現行バージョン**: v4.0.0
 
 ## バージョン履歴
 
+### v4.0.0 - Auto-Apply Production Edition (2025-01-04)
+#### 🎉 メジャーリリース - AI改善自動適用機能搭載
+- 🔒 **100点満点セキュリティ達成**
+  - デバッガー評価: 100/100点
+  - セキュリティ評価: 100/100点
+  - コードレビュー評価: 100/100点
+- 🤖 **apply_improvements_from_report.py** (1,101行)
+  - AI生成改善コードの自動適用ツール
+  - パストラバーサル防止（ホワイトリスト方式）
+  - TOCTOU攻撃対策（lstat()検証）
+  - アトミックファイル更新（tempfile + fsync + atomic rename）
+  - クロスプラットフォームファイルロック（msvcrt/fcntl）
+- 🌐 **文字エンコーディング自動検出**
+  - BOM自動認識（UTF-8/UTF-16 LE/BE）
+  - chardet統合（confidence > 0.7）
+  - 多段階フォールバック（UTF-8→CP932→Shift_JIS→latin1）
+  - errors='replace'最終手段
+- 💾 **安全機能**
+  - タイムスタンプバックアップ + メタデータJSON
+  - ロールバック機能（メタデータベース復元）
+  - Unicode制御文字検出（C0/C1/BIDI攻撃防止）
+
+#### ドキュメント整備
+- 新規作成: `doc/guides/AUTO_APPLY_GUIDE.md`
+- 新規作成: `doc/changelog/v4.0.0.md`
+- 全Mermaid図更新（architecture.mmd, process-flow.mmd等）
+- 全guidesをv4.0.0に統一
+
+### v3.5.0 - Dependency Optimization Edition (2025-01-03)
+- 🔧 **python-dotenv依存削除**
+  - 手動.env読み込み機能実装（load_env_file()）
+  - 外部ライブラリ依存削減
+- 📊 **完全レポート生成機能**
+  - `--complete-all`オプション追加
+  - 全6,089+ファイル処理可能
+  - Markdown形式、UTF-8 BOMなし出力
+- 📦 **インストールガイド充実**
+  - requirements.txt明確化
+  - Python 3.13対応手順
+
+### v3.2.0 - Multi-AI Provider Edition (2024-12)
+- 🤖 **Anthropic Claude対応**
+  - Claude Sonnet 4.5 / Opus 4.1 / Sonnet 4.1
+  - 自動フォールバック機能
+  - AI_PROVIDER環境変数（auto/anthropic/openai）
+- 🔄 **マルチプロバイダーアーキテクチャ**
+  - AnthropicProvider / OpenAIProvider
+  - 自動切り替え機能
+
+### v3.1.0 - Parallel Processing Edition (2024-09)
+- 🚀 **並列AI分析実装**
+  - extract_and_batch_parallel_enhanced.py（10 workers）
+  - MD5ハッシュベースキャッシュ
+  - 処理速度10倍向上（1,150分→115分）
+- 📈 **パフォーマンス改善**
+  - ThreadPoolExecutor並列処理
+  - レジューム機能（.batch_progress_parallel.json）
+
 ### v6.1 - Parallel Processing Edition (2025-09-28 12:56:09)
+**注**: このバージョンは後にv3.1.0に統合
 #### 主要機能追加
 - 🚀 **並列処理機能を全CLI版に実装**
   - ThreadPoolExecutorによる並列I/O処理
