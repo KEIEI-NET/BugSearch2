@@ -62,6 +62,88 @@ BACKUP_FILENAME_PATTERN = re.compile(r'^(.+)\.(\d{8}_\d{6})(?:_\d{3})?\.bak$')
 MAX_IMPROVED_CODE_SIZE_KB = 1024  # 最大1MBまで許可
 MAX_IMPROVED_CODE_LINES = 10000  # 最大行数
 
+# ===== ファイル読み込み補助関数 =====
+def detect_encoding(file_path: pathlib.Path) -> str:
+    """
+    ファイルのエンコーディングを自動検出
+
+    Args:
+        file_path: ファイルパス
+
+    Returns:
+        検出されたエンコーディング名
+    """
+    # BOMチェック
+    with open(file_path, 'rb') as f:
+        raw_data = f.read(4)
+        if raw_data.startswith(b'\xef\xbb\xbf'):
+            return 'utf-8-sig'  # UTF-8 BOM
+        elif raw_data.startswith(b'\xff\xfe'):
+            return 'utf-16-le'
+        elif raw_data.startswith(b'\xfe\xff'):
+            return 'utf-16-be'
+
+    # chardet による自動検出
+    try:
+        import chardet
+        with open(file_path, 'rb') as f:
+            raw_data = f.read()
+            result = chardet.detect(raw_data)
+            detected_encoding = result['encoding']
+            confidence = result['confidence']
+
+            # 信頼度チェック
+            if confidence > 0.7 and detected_encoding:
+                return detected_encoding
+    except ImportError:
+        pass  # chardet未インストール
+
+    # デフォルトはUTF-8
+    return 'utf-8'
+
+def read_file_with_fallback(file_path: pathlib.Path) -> str:
+    """
+    複数エンコーディングを試行してファイルを読み込み
+
+    Args:
+        file_path: ファイルパス
+
+    Returns:
+        ファイル内容
+
+    Raises:
+        UnicodeDecodeError: 全てのエンコーディングで失敗
+    """
+    # エンコーディング検出
+    detected = detect_encoding(file_path)
+
+    # 試行順序: 検出結果 → UTF-8 → CP932(Windows) → Shift_JIS
+    encodings = [detected, 'utf-8', 'cp932', 'shift_jis', 'latin1']
+    encodings = list(dict.fromkeys(encodings))  # 重複削除
+
+    last_error = None
+    for encoding in encodings:
+        try:
+            with open(file_path, 'r', encoding=encoding, errors='strict') as f:
+                content = f.read()
+                print(f"[INFO] ファイルを {encoding} で読み込みました: {file_path.name}")
+                return content
+        except (UnicodeDecodeError, LookupError) as e:
+            last_error = e
+            continue
+
+    # 最後の手段: 置換エラーハンドリング
+    try:
+        with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
+            content = f.read()
+            print(f"[WARNING] 文字化けを含む可能性があります（UTF-8 errors=replace）: {file_path.name}", file=sys.stderr)
+            return content
+    except Exception as e:
+        raise UnicodeDecodeError(
+            'utf-8', b'', 0, 1,
+            f"全てのエンコーディングで読み込み失敗: {last_error}"
+        )
+
 # ===== セキュリティ関数 =====
 def validate_improved_code(code: str, max_size_kb: int = MAX_IMPROVED_CODE_SIZE_KB) -> None:
     """
@@ -205,7 +287,8 @@ def parse_complete_report(report_path: str) -> List[Dict[str, Any]]:
         print(f"[WARNING] {e}")
         print(f"[WARNING] 信頼できないレポートの可能性があります")
 
-    content = report_file.read_text(encoding='utf-8')
+    # 文字化け対策: 複数エンコーディングを試行
+    content = read_file_with_fallback(report_file)
     entries = []
 
     # ファイルエントリを検出（### N. ファイルパス）- コンパイル済みパターン使用
