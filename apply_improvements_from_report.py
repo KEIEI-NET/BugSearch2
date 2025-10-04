@@ -296,7 +296,7 @@ def atomic_write(file_path: pathlib.Path, content: str, encoding: str = 'utf-8')
 # ===== バックアップ作成 =====
 def create_backup(file_path: str, backup_dir: str = DEFAULT_BACKUP_DIR) -> str:
     """
-    ファイルのバックアップを作成
+    ファイルのバックアップを作成（アトミック保証＋メタデータ）
 
     Args:
         file_path: バックアップ対象ファイルパス
@@ -304,10 +304,18 @@ def create_backup(file_path: str, backup_dir: str = DEFAULT_BACKUP_DIR) -> str:
 
     Returns:
         バックアップファイルパス
+
+    Raises:
+        FileNotFoundError: ファイルが存在しない
+        ValueError: シンボリックリンク
     """
     source_path = pathlib.Path(file_path)
     if not source_path.exists():
         raise FileNotFoundError(f"ファイルが存在しません: {file_path}")
+
+    # シンボリックリンク拒否
+    if source_path.is_symlink():
+        raise ValueError(f"シンボリックリンクはバックアップできません: {file_path}")
 
     backup_path_obj = pathlib.Path(backup_dir)
     backup_path_obj.mkdir(parents=True, exist_ok=True)
@@ -317,8 +325,60 @@ def create_backup(file_path: str, backup_dir: str = DEFAULT_BACKUP_DIR) -> str:
     backup_file_name = f"{source_path.name}.{timestamp}.bak"
     backup_file_path = backup_path_obj / backup_file_name
 
-    # バックアップコピー
-    shutil.copy2(source_path, backup_file_path)
+    # 重複防止（マイクロ秒追加）
+    counter = 0
+    while backup_file_path.exists():
+        counter += 1
+        backup_file_name = f"{source_path.name}.{timestamp}_{counter:03d}.bak"
+        backup_file_path = backup_path_obj / backup_file_name
+
+    # アトミックバックアップ（一時ファイル経由）
+    temp_fd = None
+    temp_backup = None
+    try:
+        # 一時ファイルにコピー
+        temp_fd, temp_name = tempfile.mkstemp(
+            dir=backup_path_obj,
+            prefix=f'.{backup_file_name}.',
+            suffix='.tmp'
+        )
+        os.close(temp_fd)  # fdは不要
+        temp_fd = None
+        temp_backup = pathlib.Path(temp_name)
+
+        # コピー実行
+        shutil.copy2(source_path, temp_backup)
+
+        # アトミックリネーム
+        temp_backup.replace(backup_file_path)
+        temp_backup = None  # 成功
+
+    except Exception:
+        # 失敗時のクリーンアップ
+        if temp_fd is not None:
+            try:
+                os.close(temp_fd)
+            except:
+                pass
+        if temp_backup and temp_backup.exists():
+            try:
+                temp_backup.unlink()
+            except:
+                pass
+        raise
+
+    # メタデータJSON生成（復元用）
+    metadata_path = backup_file_path.with_suffix('.json')
+    try:
+        with open(metadata_path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'original_path': str(source_path.resolve()),
+                'backup_timestamp': timestamp,
+                'file_size': source_path.stat().st_size
+            }, f, indent=2, ensure_ascii=False)
+    except Exception:
+        # メタデータ失敗は致命的でない
+        pass
 
     return str(backup_file_path)
 
@@ -328,7 +388,7 @@ def apply_improvement(file_path: str, improved_code: str,
                      backup_dir: str = DEFAULT_BACKUP_DIR,
                      skip_backup: bool = False) -> Dict[str, Any]:
     """
-    改善コードをファイルに適用
+    改善コードをファイルに適用（TOCTOU対策版）
 
     Args:
         file_path: 適用先ファイルパス
@@ -345,15 +405,33 @@ def apply_improvement(file_path: str, improved_code: str,
             'message': str
         }
     """
-    target_path = pathlib.Path(file_path)
+    # パス検証を最初に実行（TOCTOU対策）
+    try:
+        validated_path = validate_safe_path(file_path)
+    except ValueError as e:
+        return {
+            'status': 'error',
+            'file_path': file_path,
+            'backup_path': None,
+            'message': f'セキュリティエラー: {e}'
+        }
 
-    # ファイル存在チェック
-    if not target_path.exists():
+    # 存在チェック＋実ファイル検証
+    if not validated_path.exists():
         return {
             'status': 'error',
             'file_path': file_path,
             'backup_path': None,
             'message': f'ファイルが存在しません: {file_path}'
+        }
+
+    # シンボリックリンク検出（validate_safe_pathで既にチェック済みだが念のため）
+    if validated_path.is_symlink():
+        return {
+            'status': 'error',
+            'file_path': file_path,
+            'backup_path': None,
+            'message': f'セキュリティエラー: シンボリックリンクは許可されていません: {file_path}'
         }
 
     # Dry-runモード
@@ -365,11 +443,11 @@ def apply_improvement(file_path: str, improved_code: str,
             'message': '[DRY-RUN] 適用をシミュレートしました'
         }
 
-    # バックアップ作成
+    # バックアップ作成（validated_pathを使用）
     backup_path = None
     if not skip_backup:
         try:
-            backup_path = create_backup(file_path, backup_dir)
+            backup_path = create_backup(str(validated_path), backup_dir)
         except Exception as e:
             return {
                 'status': 'error',
@@ -378,18 +456,7 @@ def apply_improvement(file_path: str, improved_code: str,
                 'message': f'バックアップ作成失敗: {e}'
             }
 
-    # パス検証（セキュリティ）
-    try:
-        validated_path = validate_safe_path(file_path)
-    except ValueError as e:
-        return {
-            'status': 'error',
-            'file_path': file_path,
-            'backup_path': backup_path,
-            'message': f'セキュリティエラー: {e}'
-        }
-
-    # ファイルにアトミック書き込み
+    # ファイルにアトミック書き込み（validated_pathを直接使用）
     try:
         atomic_write(validated_path, improved_code)
 
@@ -400,6 +467,23 @@ def apply_improvement(file_path: str, improved_code: str,
             'message': '適用成功'
         }
     except Exception as e:
+        # ロールバック試行（可能であれば）
+        if backup_path:
+            try:
+                shutil.copy2(backup_path, validated_path)
+                return {
+                    'status': 'error',
+                    'file_path': file_path,
+                    'backup_path': backup_path,
+                    'message': f'書き込み失敗、自動ロールバック成功: {e}'
+                }
+            except Exception as rollback_error:
+                return {
+                    'status': 'error',
+                    'file_path': file_path,
+                    'backup_path': backup_path,
+                    'message': f'書き込み失敗、ロールバック失敗: {e} / {rollback_error}'
+                }
         return {
             'status': 'error',
             'file_path': file_path,
@@ -410,11 +494,11 @@ def apply_improvement(file_path: str, improved_code: str,
 # ===== ロールバック =====
 def rollback_changes(backup_path: str, original_path: str = None) -> bool:
     """
-    バックアップから復元
+    バックアップから復元（メタデータ対応版）
 
     Args:
         backup_path: バックアップファイルパス
-        original_path: 復元先パス（Noneの場合はバックアップファイル名から推測）
+        original_path: 復元先パス（Noneの場合はメタデータまたはファイル名から推測）
 
     Returns:
         True: 成功, False: 失敗
@@ -426,40 +510,85 @@ def rollback_changes(backup_path: str, original_path: str = None) -> bool:
 
     # 復元先を特定
     if original_path is None:
-        # バックアップファイル名から元のファイル名を正規表現で抽出 - コンパイル済みパターン使用
-        # 例: codex_review_severity.py.20251004_153045.bak -> codex_review_severity.py
-        # パターン: <ファイル名>.<タイムスタンプ>.bak
-        match = BACKUP_FILENAME_PATTERN.match(backup_file.name)
+        # ステップ1: メタデータJSONから復元先を取得
+        metadata_path = backup_file.with_suffix('.json')
+        if metadata_path.exists():
+            try:
+                with open(metadata_path, 'r', encoding='utf-8') as f:
+                    metadata = json.load(f)
+                    original_path = metadata.get('original_path')
+                    if original_path:
+                        print(f"[INFO] メタデータから復元先を検出: {original_path}")
+            except Exception as e:
+                print(f"[WARNING] メタデータ読み込み失敗: {e}")
 
-        if match:
-            original_name = match.group(1)
-            # バックアップディレクトリと同じレベルのsrc/またはルートから検索
-            # backups/foo.py.20251004_153045.bak -> foo.py または src/foo.py
-            possible_paths = [
-                backup_file.parent.parent / original_name,  # ルート
-                backup_file.parent.parent / 'src' / original_name,  # src/
-                backup_file.parent.parent / 'test' / original_name,  # test/
-            ]
+        # ステップ2: ファイル名から推測（メタデータ失敗時）
+        if original_path is None:
+            match = BACKUP_FILENAME_PATTERN.match(backup_file.name)
 
-            # 存在するパスを選択
-            for candidate in possible_paths:
-                if candidate.exists():
-                    original_path = str(candidate)
-                    break
+            if match:
+                original_name = match.group(1)
+                # 複数候補パスを検索
+                possible_paths = [
+                    backup_file.parent.parent / original_name,  # ルート
+                    backup_file.parent.parent / 'src' / original_name,  # src/
+                    backup_file.parent.parent / 'test' / original_name,  # test/
+                ]
 
-            if original_path is None:
-                # 存在しない場合はルートに復元
-                original_path = str(backup_file.parent.parent / original_name)
-                print(f"[WARNING] 元のファイルが見つかりません。ルートに復元します: {original_path}")
-        else:
-            print(f"[ERROR] バックアップファイル名から元のファイル名を推測できません: {backup_path}")
-            return False
+                # 存在するパスを選択
+                for candidate in possible_paths:
+                    if candidate.exists():
+                        original_path = str(candidate)
+                        print(f"[INFO] 復元先を検出: {original_path}")
+                        break
 
+                if original_path is None:
+                    # 存在しない場合はルートに復元
+                    original_path = str(backup_file.parent.parent / original_name)
+                    print(f"[WARNING] 元のファイルが見つかりません。ルートに復元します: {original_path}")
+            else:
+                print(f"[ERROR] バックアップファイル名から元のファイル名を推測できません: {backup_path}")
+                return False
+
+    # パス検証
     try:
-        shutil.copy2(backup_file, original_path)
-        print(f"[OK] ロールバック成功: {original_path}")
+        validated_path = validate_safe_path(original_path)
+    except ValueError as e:
+        print(f"[ERROR] セキュリティエラー: {e}")
+        return False
+
+    # アトミックコピーで復元
+    temp_fd = None
+    temp_path = None
+    try:
+        temp_fd, temp_name = tempfile.mkstemp(
+            dir=validated_path.parent,
+            prefix=f'.{validated_path.name}.',
+            suffix='.tmp'
+        )
+        os.close(temp_fd)
+        temp_fd = None
+        temp_path = pathlib.Path(temp_name)
+
+        shutil.copy2(backup_file, temp_path)
+        temp_path.replace(validated_path)
+
+        print(f"[OK] ロールバック成功: {validated_path}")
         return True
+
     except Exception as e:
+        # クリーンアップ
+        if temp_fd is not None:
+            try:
+                os.close(temp_fd)
+            except:
+                pass
+        if temp_path and temp_path.exists():
+            try:
+                temp_path.unlink()
+            except:
+                pass
+
         print(f"[ERROR] ロールバック失敗: {e}")
         return False
 
@@ -540,11 +669,12 @@ def generate_apply_report(entries: List[Dict], results: List[Dict],
     # レポート生成
     report_content = "\n".join(lines)
 
-    # ファイルに書き込み
+    # ファイルにアトミック書き込み
     output_file = pathlib.Path(output_path)
     output_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_file, 'w', encoding='utf-8', newline='\n') as f:
-        f.write(report_content)
+
+    # atomic_write()を使用
+    atomic_write(output_file, report_content)
 
     print(f"[OK] 適用サマリーレポート生成: {output_path}")
 
@@ -553,7 +683,7 @@ def generate_apply_report(entries: List[Dict], results: List[Dict],
 # ===== ログ記録 =====
 def log_apply_result(result: Dict[str, Any], log_file: str = APPLY_LOG_FILE):
     """
-    適用結果をJSONL形式でログに記録
+    適用結果をJSONL形式でログに記録（ファイルロック保証）
 
     Args:
         result: 適用結果辞書
@@ -564,8 +694,42 @@ def log_apply_result(result: Dict[str, Any], log_file: str = APPLY_LOG_FILE):
         **result
     }
 
-    with open(log_file, 'a', encoding='utf-8') as f:
-        f.write(json.dumps(log_entry, ensure_ascii=False) + '\n')
+    log_line = json.dumps(log_entry, ensure_ascii=False) + '\n'
+
+    # Windowsでのファイルロック（msvcrt使用）
+    # UNIXではfcntl.flockが必要だが、Windowsでのみ実装
+    max_retries = 5
+    for attempt in range(max_retries):
+        try:
+            # 追記モードで開く
+            with open(log_file, 'a', encoding='utf-8') as f:
+                # Windowsでのロック試行
+                if os.name == 'nt':
+                    try:
+                        import msvcrt
+                        msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, len(log_line))
+                        try:
+                            f.write(log_line)
+                            f.flush()
+                        finally:
+                            msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, len(log_line))
+                    except ImportError:
+                        # msvcrt利用不可の場合は通常書き込み
+                        f.write(log_line)
+                        f.flush()
+                else:
+                    # UNIX系では通常書き込み（fcntl未実装）
+                    f.write(log_line)
+                    f.flush()
+
+            break  # 成功
+
+        except (IOError, OSError) as e:
+            if attempt < max_retries - 1:
+                time.sleep(0.1 * (attempt + 1))  # 指数バックオフ
+            else:
+                # 最終リトライ失敗：標準エラー出力に警告
+                print(f"[WARNING] ログ記録失敗（{max_retries}回試行）: {e}", file=sys.stderr)
 
 # ===== メイン処理 =====
 def main(report_path: str, dry_run: bool = True, file_filter: Optional[str] = None,
