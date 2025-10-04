@@ -1,73 +1,70 @@
 graph TB
     %% コードレビューシステム アーキテクチャ図 v4.0.0
 
-    subgraph "入力層"
+    subgraph input["入力層"]
         USER[ユーザー]
         CLI[コマンドライン]
-        ENV[環境設定<br/>.env]
-        BATCH_SCRIPT[バッチファイル<br/>run_complete_full_analysis.bat]
+        ENV["環境設定 .env"]
+        BATCH_SCRIPT["バッチファイル run_complete_full_analysis.bat"]
     end
 
-    subgraph "メインシステム"
-        MAIN[codex_review_severity.py<br/>メインコントローラー v4.0]
-
-        subgraph "インデックス処理"
-            INDEX[インデックス作成<br/>--src-dir対応]
-            ENCODE[エンコーディング検出<br/>chardet統合]
-            FILTER[ファイルフィルター<br/>言語/サイズ]
-        end
-
-        subgraph "解析エンジン"
-            RULES[ルールベース解析<br/>全6,089+ファイル対象]
-            SEVERITY[重要度判定<br/>危険度スコアリング]
-            PARALLEL[並列AI分析<br/>extract_and_batch_parallel_enhanced.py<br/>10 workers]
-        end
-
-        subgraph "データ処理"
-            VECTOR[ベクトル化<br/>TF-IDF]
-            SEARCH[類似検索<br/>scikit-learn]
-            CACHE[MD5キャッシュ<br/>.cache/analysis/]
-        end
-
-        subgraph "レポート生成"
-            COMPLETE[完全レポート生成<br/>--complete-all対応]
-            MARKDOWN[Markdown出力<br/>UTF-8 BOMなし]
-        end
+    subgraph main["メインシステム - インデックス処理"]
+        MAIN["codex_review_severity.py メインコントローラー v4.0"]
+        INDEX["インデックス作成 --src-dir対応"]
+        ENCODE["エンコーディング検出 chardet統合"]
+        FILTER["ファイルフィルター 言語/サイズ"]
     end
 
-    subgraph "v4.0新機能: 自動適用層"
-        APPLY_TOOL[apply_improvements_from_report.py<br/>自動改善適用ツール]
-
-        subgraph "セキュリティ層"
-            PATH_VAL[パストラバーサル防止<br/>ホワイトリスト方式]
-            TOCTOU[TOCTOU対策<br/>lstat()検証]
-            ATOMIC[アトミック更新<br/>tempfile+fsync]
-        end
-
-        subgraph "エンコーディング層"
-            BOM_DETECT[BOM自動検出<br/>UTF-8/UTF-16]
-            CHARDET[chardet統合<br/>confidence>0.7]
-            FALLBACK[多段階フォールバック<br/>UTF-8→CP932→Shift_JIS]
-        end
-
-        subgraph "安全機能"
-            BACKUP[タイムスタンプバックアップ<br/>メタデータJSON]
-            ROLLBACK[ロールバック機能<br/>メタデータベース復元]
-            FILELOCK[クロスプラットフォームロック<br/>msvcrt/fcntl]
-        end
+    subgraph analysis["メインシステム - 解析エンジン"]
+        RULES["ルールベース解析 全6,089+ファイル対象"]
+        SEVERITY["重要度判定 危険度スコアリング"]
+        PARALLEL["並列AI分析 extract_and_batch_parallel_enhanced.py 10 workers"]
     end
 
-    subgraph "出力層"
-        REPORT_COMPLETE[完全レポート<br/>complete_analysis.md]
-        REPORT_APPLIED[適用ログ<br/>.apply_log.jsonl]
-        BACKUPS[バックアップ<br/>backups/*.bak]
-        CONSOLE[コンソール出力<br/>進捗表示]
+    subgraph dataproc["メインシステム - データ処理"]
+        VECTOR["ベクトル化 TF-IDF"]
+        SEARCH["類似検索 scikit-learn"]
+        CACHE["MD5キャッシュ .cache/analysis/"]
     end
 
-    subgraph "データストレージ"
-        PICKLE[.advice_index.pickle<br/>ベクトルインデックス]
-        META[.advice_index.meta.json<br/>メタデータ]
-        JSONL[.advice_index.jsonl<br/>ファイルインデックス]
+    subgraph reportgen["メインシステム - レポート生成"]
+        COMPLETE["完全レポート生成 --complete-all対応"]
+        MARKDOWN["Markdown出力 UTF-8 BOMなし"]
+    end
+
+    subgraph v4apply["v4.0新機能 - 自動適用層"]
+        APPLY_TOOL["apply_improvements_from_report.py 自動改善適用ツール"]
+    end
+
+    subgraph v4security["v4.0新機能 - セキュリティ層"]
+        PATH_VAL["パストラバーサル防止 ホワイトリスト方式"]
+        TOCTOU["TOCTOU対策 lstat検証"]
+        ATOMIC["アトミック更新 tempfile+fsync"]
+    end
+
+    subgraph v4encoding["v4.0新機能 - エンコーディング層"]
+        BOM_DETECT["BOM自動検出 UTF-8/UTF-16"]
+        CHARDET["chardet統合 confidence>0.7"]
+        FALLBACK["多段階フォールバック UTF-8→CP932→Shift_JIS"]
+    end
+
+    subgraph v4safe["v4.0新機能 - 安全機能"]
+        BACKUP["タイムスタンプバックアップ メタデータJSON"]
+        ROLLBACK["ロールバック機能 メタデータベース復元"]
+        FILELOCK["クロスプラットフォームロック msvcrt/fcntl"]
+    end
+
+    subgraph output["出力層"]
+        REPORT_COMPLETE["完全レポート complete_analysis.md"]
+        REPORT_APPLIED["適用ログ .apply_log.jsonl"]
+        BACKUPS["バックアップ backups/*.bak"]
+        CONSOLE["コンソール出力 進捗表示"]
+    end
+
+    subgraph storage["データストレージ"]
+        PICKLE[".advice_index.pickle ベクトルインデックス"]
+        META[".advice_index.meta.json メタデータ"]
+        JSONL[".advice_index.jsonl ファイルインデックス"]
     end
 
     %% 接続関係 - メイン処理
@@ -114,14 +111,14 @@ graph TB
     APPLY_TOOL --> CONSOLE
 
     %% スタイル
-    classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef process fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef output fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-    classDef storage fill:#fce4ec,stroke:#880e4f,stroke-width:2px
-    classDef v4new fill:#f3e5f5,stroke:#4a148c,stroke-width:3px
+    classDef inputStyle fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef processStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef outputStyle fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef storageStyle fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef v4newStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:3px
 
-    class USER,CLI,ENV,BATCH_SCRIPT input
-    class MAIN,INDEX,ENCODE,FILTER,RULES,SEVERITY,PARALLEL,VECTOR,SEARCH,CACHE,COMPLETE,MARKDOWN process
-    class REPORT_COMPLETE,REPORT_APPLIED,BACKUPS,CONSOLE output
-    class PICKLE,META,JSONL storage
-    class APPLY_TOOL,PATH_VAL,TOCTOU,ATOMIC,BOM_DETECT,CHARDET,FALLBACK,BACKUP,ROLLBACK,FILELOCK v4new
+    class USER,CLI,ENV,BATCH_SCRIPT inputStyle
+    class MAIN,INDEX,ENCODE,FILTER,RULES,SEVERITY,PARALLEL,VECTOR,SEARCH,CACHE,COMPLETE,MARKDOWN processStyle
+    class REPORT_COMPLETE,REPORT_APPLIED,BACKUPS,CONSOLE outputStyle
+    class PICKLE,META,JSONL storageStyle
+    class APPLY_TOOL,PATH_VAL,TOCTOU,ATOMIC,BOM_DETECT,CHARDET,FALLBACK,BACKUP,ROLLBACK,FILELOCK v4newStyle
