@@ -1,9 +1,22 @@
 # CLAUDE.md
 
-*バージョン: v4.0.0*
-*最終更新: 2025年01月04日 12:30 JST*
+*バージョン: v4.0.1*
+*最終更新: 2025年01月04日 22:15 JST*
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## 🎯 Quick Start - Quality Aliases
+
+For high-quality development, use these command aliases (defined in `.claude/aliases.md`):
+
+- **`@perfect`** - Complete quality assurance (100-point static analysis + all tests pass)
+- **`@tdd`** - Test-driven development workflow
+- **`@validate`** - Validate existing code with tests
+- **`@quick`** - Rapid prototyping (skip quality checks)
+
+**Example**: `@perfect ユーザー認証機能を実装して`
+
+See `.claude/aliases.md` for detailed workflow definitions.
 
 ## Project Overview
 AI-powered code review system combining static analysis with AI-based deep analysis for C#, PHP, Go, C++, Python, and JavaScript/TypeScript codebases.
