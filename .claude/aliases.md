@@ -1,5 +1,7 @@
 # Claude Code エイリアス定義
 
+*このエイリアスは [smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2) のサブエージェントを使用します*
+
 ## 品質保証関連
 
 ### `@perfect` - 完全品質保証モード
@@ -7,7 +9,7 @@
 
 **実行手順**:
 1. コード実装
-2. サブエージェント実行:
+2. サブエージェント実行 ([smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)):
    - super-debugger-perfectionist (sonnet) でデバッグ分析
    - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
    - deep-code-reviewer (opus) でコード品質レビュー
@@ -35,7 +37,7 @@
 3. テスト実行（失敗することを確認）
 4. コード実装（テストが通るまで）
 5. リファクタリング
-6. サブエージェント実行:
+6. サブエージェント実行 ([smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)):
    - super-debugger-perfectionist (sonnet) でデバッグ分析
    - deep-code-reviewer (opus) でコード品質レビュー
    - security-error-xss-analyzer (sonnet) でセキュリティ検証
@@ -56,7 +58,7 @@
 **使用例**: `@validate apply_improvements_from_report.py`
 
 **実行手順**:
-1. サブエージェント実行:
+1. サブエージェント実行 ([smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)):
    - super-debugger-perfectionist (sonnet) でデバッグ分析
    - security-error-xss-analyzer (sonnet) でセキュリティ・エラー検証
    - deep-code-reviewer (opus) でコード品質レビュー

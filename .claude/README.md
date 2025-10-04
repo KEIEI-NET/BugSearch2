@@ -2,6 +2,12 @@
 
 このディレクトリには Claude Code の動作をカスタマイズするための設定ファイルが格納されています。
 
+**使用するサブエージェント**: [smart-review-system-v2](https://github.com/KEIEI-NET/smart-review-system-v2)
+- super-debugger-perfectionist (sonnet): デバッグ分析
+- security-error-xss-analyzer (sonnet): セキュリティ・エラー検証
+- deep-code-reviewer (opus): コード品質レビュー
+- project-documentation-updater (opus): ドキュメント自動生成
+
 ## ファイル一覧
 
 ### `aliases.md` - コマンドエイリアス定義
@@ -86,4 +92,15 @@
 ---
 
 *最終更新: 2025年01月04日*
-*バージョン: v4.0.1*
+*バージョン: v4.0.2*
+
+## 更新履歴
+
+### v4.0.2 (2025-01-04)
+- サブエージェント統合 (smart-review-system-v2)
+- 成功条件を100/100点必須に変更
+- サブエージェント評価を明示化
+
+### v4.0.1 (2025-01-04)
+- 初回リリース
+- 4つのエイリアス追加
