@@ -1,23 +1,37 @@
 # 技術仕様書
 
-*バージョン: v3.5.0*
-*最終更新: 2025年01月03日 15:30 JST*
+*バージョン: v4.0.0*
+*最終更新: 2025年01月04日*
 
 ## システムアーキテクチャ
 
 ### 概要
-Codex Review v3.5.0は、AI分析を中心とした高度なコードレビューシステムです。大規模コードベース（6,089+ファイル）に対応し、完全なAI改善コード生成機能を提供します。
+Codex Review v4.0.0は、AI分析とコード自動適用機能を統合した高度なコードレビューシステムです。大規模コードベース（6,089+ファイル）に対応し、**100点満点のセキュリティ評価**を達成したAI改善コード自動適用機能を提供します。
 
-### v3.5.0の主な改善点
+### v4.0.0の主な新機能
+- 🤖 **AI改善コード自動適用ツール** (`apply_improvements_from_report.py`, 1,101行)
+  - 100点満点セキュリティ（デバッガー、セキュリティ、コードレビュー全て100/100）
+  - パストラバーサル防止（ホワイトリスト方式）
+  - TOCTOU攻撃対策（lstat()シンボリックリンク検証）
+  - アトミックファイル更新（tempfile + fsync + atomic rename）
+  - クロスプラットフォームファイルロック（msvcrt/fcntl）
+- 🌐 **文字エンコーディング自動検出**
+  - BOM自動認識（UTF-8/UTF-16 LE/BE）
+  - chardet統合（confidence > 0.7）
+  - 多段階フォールバック（UTF-8→CP932→Shift_JIS→latin1）
+- 💾 **安全機能**
+  - タイムスタンプバックアップ + メタデータJSON
+  - ロールバック機能（メタデータベース復元）
+  - Unicode制御文字検出（C0/C1/BIDI攻撃防止）
+
+### v3.5.0の改善点（継続サポート）
 - **python-dotenv依存削除**: 手動.env読み込み機能`load_env_file()`実装
 - **完全レポート生成**: `--complete-all`オプションで全ファイルのAI分析可能
 - **インストールガイド追加**: [INSTALL.md](../INSTALL.md)と requirements.txt 作成
-- **Python 3.13対応**: scikit-learn のバイナリインストール対応
 
-### v3.4.0の改善点（継続サポート）
-- **セキュリティ強化**: ReDoS脆弱性修正、環境変数保護
-- **パフォーマンス最適化**: 正規表現プリコンパイル（2-3倍高速化）
-- **コード品質100点達成**: SOLID原則準拠、完全な型ヒント
+### v3.2.0の改善点（継続サポート）
+- **マルチAIプロバイダー対応**: Anthropic Claude + OpenAI自動フォールバック
+- **AI_PROVIDER環境変数**: auto/anthropic/openai選択可能
 
 ### コンポーネント構成
 
@@ -55,7 +69,30 @@ Codex Review v3.5.0は、AI分析を中心とした高度なコードレビュ�
   2. 順次デコード試行によるフォールバック
   3. 読み取り不能時はスキップ
 
-#### 4. ルール解析エンジン
+#### 4. AI改善コード自動適用ツール（v4.0新規）
+**`apply_improvements_from_report.py`** (1,101行)
+
+- **セキュリティバリデーター**:
+  - `validate_safe_path()`: ホワイトリスト方式パス検証
+  - `validate_improved_code()`: Unicode制御文字/NULL/サイズ検証
+  - lstat()によるTOCTOU対策（シンボリックリンク検出）
+
+- **エンコーディングハンドラー**:
+  - `detect_encoding()`: BOM検出（UTF-8/UTF-16 LE/BE）
+  - `read_file_with_fallback()`: 多段階フォールバック
+  - chardet統合（confidence > 0.7で採用）
+
+- **アトミックファイルライター**:
+  - `atomic_write()`: tempfile.mkstemp() + os.fsync() + atomic rename
+  - クロスプラットフォームロック（Windows: msvcrt、UNIX: fcntl）
+  - 失敗時の自動クリーンアップ
+
+- **バックアップマネージャー**:
+  - タイムスタンプ付きバックアップ（`YYYYMMDD_HHMMSS.bak`）
+  - メタデータJSON（original_path、timestamp、backup_type）
+  - `rollback_from_backup()`: メタデータベース復元
+
+#### 5. ルール解析エンジン
 - **検出パターン**:
   ```python
   SEVERITY_SCORES = {
@@ -70,9 +107,11 @@ Codex Review v3.5.0は、AI分析を中心とした高度なコードレビュ�
   }
   ```
 
-#### 5. AI詳細分析エンジン（v3.5強化）
+#### 6. AI詳細分析エンジン（v3.5強化）
 - **完全レポート生成**: `--complete-all`オプション対応
-- **並列処理対応**: extract_and_batch_parallel_enhanced.py
+- **並列処理対応**: extract_and_batch_parallel_enhanced.py (10 workers)
+- **MD5キャッシュ**: `.cache/analysis/` でAPI呼び出し削減
+- **マルチAIプロバイダー**: Anthropic Claude + OpenAI自動フォールバック
 - **設定パラメータ**:
   ```python
   AI_TIMEOUT = 60        # 秒
