@@ -1,26 +1,49 @@
+# ===== GitHub除外・Dropbox同期ファイル =====
+# これらは他のPCでDropbox経由で共有されますが、GitHubにはアップしません
+
+# 環境変数（APIキー含む）- Dropboxで同期、GitHubには非公開
 .env
 .env.test
+
+# Pythonキャッシュ - 各PC固有、同期不要
 __pycache__/
+.venv/
+
+# インデックスファイル - Dropboxで同期OK、GitHubには大きすぎる
 .advice_index.jsonl
 .advice_index.meta.json
 .advice_index.pickle
 .advice_tfidf.pkl
 .advice_matrix.pkl
+
+# レポート - Dropboxで同期OK、機密情報含むためGitHub除外
 reports/
-.venv/
+
+# ログ・一時ファイル - 各PC固有
 *.log
 *.csv
 nul
 performance_metrics.json
 .batch_progress*.json
-.cache/
+
+# キャッシュディレクトリ - Dropboxで同期推奨（API呼び出し節約）
+# コメントアウト = Dropboxで同期される
+# .cache/
+
+# Serena MCP サーバー設定 - 各PC固有
 .serena/
+
+# テストディレクトリ - テストコードのみGitHubにアップ
 test/
 !test/*.py
 !test/*.md
+
+# 分析対象ソースコード - 機密のためGitHub除外、Dropboxで管理
 src/csharp/OfferSource/
-/sec
+/src
 src/csharp/Source/
+
+# バックアップファイル - Dropboxで同期OK
 *_backup_*
 
 # Source code files (exclude from repository)
