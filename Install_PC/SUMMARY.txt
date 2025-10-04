@@ -1,0 +1,83 @@
+============================================
+Claude Code Aliases インストーラー v4.0.1
+============================================
+
+📦 作成されたファイル:
+
+Install_PC/
+├── aliases.md              (6.5KB) - グローバルエイリアス定義
+├── install_windows.bat     (2.2KB) - Windows自動インストーラー
+├── install_unix.sh         (2.5KB) - Mac/Linux自動インストーラー
+├── verify_install.bat      (1.5KB) - Windows確認スクリプト
+├── verify_install.sh       (1.3KB) - Mac/Linux確認スクリプト
+└── README.md               (5.9KB) - 詳細インストールガイド
+
+---
+
+🎯 インストール先:
+
+Windows: %APPDATA%\claude-code\aliases.md
+Mac:     ~/Library/Application Support/claude-code/aliases.md
+Linux:   ~/.config/claude-code/aliases.md
+
+---
+
+✨ 提供されるエイリアス:
+
+@perfect  - 完全品質保証（静的100点 + テスト100%）
+@tdd      - テスト駆動開発ワークフロー
+@validate - 既存コード検証
+@quick    - 高速プロトタイピング
+
+---
+
+🚀 クイックスタート:
+
+# Windows
+cd Install_PC
+install_windows.bat
+
+# Mac/Linux
+cd Install_PC
+chmod +x install_unix.sh
+./install_unix.sh
+
+# 確認
+verify_install.bat  (Windows)
+./verify_install.sh (Mac/Linux)
+
+---
+
+📚 使用例:
+
+@perfect ユーザー認証機能を実装して
+→ コード実装 → 静的解析100点 → テスト100% → コミット
+
+@tdd 決済処理ロジックを実装して
+→ テスト作成 → 実装 → リファクタリング → 100点達成
+
+@validate apply_improvements_from_report.py
+→ 品質スコア → テスト実行 → レポート生成
+
+@quick CSVから売上グラフ作成
+→ 素早く実装 → 品質チェックスキップ
+
+---
+
+🔧 特徴:
+
+- 既存ファイルの自動バックアップ（タイムスタンプ付き）
+- OS自動検出（Mac vs Linux）
+- エラーハンドリング
+- 詳細なログ出力
+- 検証スクリプト付属
+
+---
+
+📖 詳細情報:
+
+Install_PC/README.md を参照
+
+---
+
+*BugSearch v4.0.1 - 2025年01月04日*
