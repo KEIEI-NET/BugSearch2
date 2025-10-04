@@ -717,7 +717,7 @@ py codex_review_severity.py advise --topk 500 --out reports/ci_check.md
 1. [SETUP_GUIDE.md](SETUP_GUIDE.md)のトラブルシューティング参照
 2. [TEST_RESULTS.md](doc/TEST_RESULTS.md)で動作確認済み環境を確認
 3. `reports/IMPORTANT_RESULTS.md`で既知の問題確認
-4. [GitHubでIssue作成](https://github.com/KEIEI-NET/BugSerch/issues)
+4. [GitHubでIssue作成](https://github.com/KEIEI-NET/BugSearch/issues)
 
 ## 📜 ライセンス
 
