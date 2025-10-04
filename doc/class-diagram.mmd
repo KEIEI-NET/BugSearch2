@@ -1,4 +1,6 @@
 classDiagram
+    %% コードレビューシステム クラス図 v4.0.0
+
     class CodexReviewSeverity {
         -VERSION: string
         -MAX_FILE_SIZE_MB: int
@@ -13,8 +15,9 @@ classDiagram
     class IndexManager {
         -index_file: Path
         -meta_file: Path
+        -jsonl_file: Path
         -max_file_size_mb: float
-        -profile_output: Path
+        -src_dir: Path
         +create_index(path, profile) Dict
         +load_index() List
         +save_index(documents) void
@@ -26,6 +29,8 @@ classDiagram
     class EncodingDetector {
         -SUPPORTED_ENCODINGS: List
         +detect_encoding(file_path) string
+        +check_bom(data) string
+        +try_chardet(data) string
         -try_decode_utf8(data) string
         -try_decode_cp932(data) string
         -try_decode_sjis(data) string
@@ -49,7 +54,8 @@ classDiagram
         -detect_select_star(text) bool
         -detect_float_money(text) bool
         -detect_xss(text) bool
-        -detect_dialog_overuse(text) bool
+        -detect_solid_violations(text) bool
+        -detect_angular_issues(text) bool
     }
 
     class DangerResult {
@@ -60,44 +66,106 @@ classDiagram
         +category: string
     }
 
-    class OverviewReportGenerator {
-        +input_file: Path
+    class ParallelProcessor {
+        -worker_count: int
+        -batch_config: Dict
+        -cache_dir: Path
+        +process_files_parallel(files) List
+        +create_worker_pool() Pool
+        +process_single_file(file_info) Dict
+        +check_cache(md5_hash) Dict
+        +save_cache(md5_hash, result) void
+    }
+
+    class AIProvider {
+        <<interface>>
+        +analyze_code(content, problems) string
+        +get_model_name() string
+    }
+
+    class AnthropicProvider {
+        -api_key: string
+        -model: string
+        +analyze_code(content, problems) string
+        +get_model_name() string
+        -try_sonnet_45() string
+        -try_opus_41() string
+        -fallback_to_openai() string
+    }
+
+    class OpenAIProvider {
+        -api_key: string
+        -model: string
+        +analyze_code(content, problems) string
+        +get_model_name() string
+    }
+
+    class ReportGenerator {
         +output_file: Path
-        +generate() void
-        +parse_danger_analysis() List
-        +categorize_by_priority() Dict
-        +write_overview_report(data) void
+        +encoding: string
+        +generate_complete_report(analyses) void
+        +write_markdown(content) void
+        -ensure_utf8_no_bom() void
     }
 
-    class DetailedAnalyzer {
-        -batch_size: int
-        -batch_num: int
-        +analyze_batch(batch_num) void
-        +read_source_file(path) string
-        +analyze_problems(file_info) string
-        +generate_improvements(problems) string
-        +analyze_full_source(source) string
-        +write_batch_report(analyses) void
+    class ApplyImprovements {
+        <<v4.0 NEW>>
+        -report_path: Path
+        -dry_run: bool
+        -backup_dir: Path
+        +main(args) void
+        +parse_complete_report(path) List
+        +apply_improvements(entries) void
+        +rollback_from_backup(backup_path) void
     }
 
-    class ReportMerger {
-        +batch_files: List
-        +output_file: Path
-        +merge_reports() void
-        +extract_content(batch_file) string
-        +create_header() string
-        +create_footer(stats) string
-        -remove_emojis(text) string
+    class SecurityValidator {
+        <<v4.0 NEW>>
+        -ALLOWED_BASE_DIRS: List
+        -MAX_IMPROVED_CODE_SIZE_KB: int
+        +validate_safe_path(path) Path
+        +validate_improved_code(code) void
+        -check_path_traversal(path) bool
+        -check_symlink_toctou(path) bool
+        -check_unicode_control(code) bool
+        -check_null_bytes(code) bool
     }
 
-    class BatchController {
-        +auto_detect_files: bool
-        +run_all_phases() void
-        +execute_index_phase() int
-        +execute_danger_analysis(file_count) void
-        +execute_overview_generation() void
-        +execute_batch_analysis() void
-        +execute_report_merge() void
+    class EncodingHandler {
+        <<v4.0 NEW>>
+        +detect_encoding(file_path) string
+        +read_file_with_fallback(file_path) string
+        -check_bom(data) string
+        -try_chardet(data) string
+        -fallback_chain() List
+    }
+
+    class AtomicFileWriter {
+        <<v4.0 NEW>>
+        +atomic_write(path, content) void
+        -create_temp_file() FileDescriptor
+        -acquire_lock(fd) void
+        -release_lock(fd) void
+        -fsync_and_rename(temp, target) void
+    }
+
+    class BackupManager {
+        <<v4.0 NEW>>
+        -backup_dir: Path
+        +create_backup(file_path) Path
+        +save_metadata(backup_path, original_path) void
+        +rollback(backup_path) void
+        -generate_timestamp() string
+        -load_metadata(backup_path) Dict
+    }
+
+    class ApplyLogger {
+        <<v4.0 NEW>>
+        -log_file: Path
+        +log_apply_result(result) void
+        +get_apply_history() List
+        -acquire_file_lock() void
+        -release_file_lock() void
     }
 
     class LargeFileLogger {
@@ -106,15 +174,10 @@ classDiagram
         +get_large_files() List
     }
 
+    %% 関係性
     CodexReviewSeverity --> IndexManager : uses
     CodexReviewSeverity --> DangerAnalyzer : uses
-    CodexReviewSeverity --> BatchController : delegates
-
-    BatchController --> IndexManager : controls
-    BatchController --> DangerAnalyzer : controls
-    BatchController --> OverviewReportGenerator : controls
-    BatchController --> DetailedAnalyzer : controls
-    BatchController --> ReportMerger : controls
+    CodexReviewSeverity --> ParallelProcessor : uses
 
     IndexManager --> EncodingDetector : uses
     IndexManager --> Document : creates
@@ -122,8 +185,28 @@ classDiagram
 
     DangerAnalyzer --> DangerResult : creates
 
-    OverviewReportGenerator --> DangerResult : processes
+    ParallelProcessor --> AIProvider : uses
+    ParallelProcessor --> ReportGenerator : uses
 
-    DetailedAnalyzer --> DangerResult : reads
+    AIProvider <|-- AnthropicProvider : implements
+    AIProvider <|-- OpenAIProvider : implements
 
-    ReportMerger --> DetailedAnalyzer : merges output
+    %% v4.0 新機能の関係性
+    ApplyImprovements --> SecurityValidator : uses
+    ApplyImprovements --> EncodingHandler : uses
+    ApplyImprovements --> AtomicFileWriter : uses
+    ApplyImprovements --> BackupManager : uses
+    ApplyImprovements --> ApplyLogger : uses
+
+    SecurityValidator --> EncodingHandler : validates with
+    AtomicFileWriter --> BackupManager : coordinates with
+
+    ReportGenerator --> ApplyImprovements : consumed by
+
+    %% スタイル定義
+    style ApplyImprovements fill:#f3e5f5,stroke:#4a148c,stroke-width:3px
+    style SecurityValidator fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style EncodingHandler fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style AtomicFileWriter fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style BackupManager fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style ApplyLogger fill:#f3e5f5,stroke:#4a148c,stroke-width:2px

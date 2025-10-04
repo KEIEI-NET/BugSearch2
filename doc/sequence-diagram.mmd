@@ -1,5 +1,5 @@
 sequenceDiagram
-    %% コードレビューシステム シーケンス図 v2.1.0
+    %% コードレビューシステム シーケンス図 v4.0.0
 
     participant User as ユーザー
     participant Batch as バッチファイル
@@ -7,139 +7,190 @@ sequenceDiagram
     participant Main as codex_review_severity.py
     participant Index as インデックス処理
     participant Encoder as エンコーダー
-    participant Danger as 危険度分析
-    participant Overview as create_overview_report.py
-    participant Detail as analyze_dangerous_files_detailed.py
-    participant Merge as merge_detailed_reports.py
+    participant Parallel as 並列AI分析
+    participant AI as AI Provider
+    participant Apply as apply_improvements
     participant Report as レポート
+    participant Backup as バックアップ
 
     %% バッチ実行フロー
     rect rgb(240, 248, 255)
-        note over User,Report: 自動実行フロー（推奨）
-        User->>Batch: run_detailed_analysis_auto.bat実行
+        note over User,Backup: 自動実行フロー（推奨）
+        User->>Batch: run_complete_full_analysis.bat実行
         Batch->>Batch: ファイル数自動検出
-        Batch->>CLI: codex_review_severity.py index ./src --profile-index
+        Batch->>CLI: codex_review_severity.py index ./src
         CLI->>Main: インデックス作成開始
     end
 
     %% インデックス作成シーケンス
     rect rgb(255, 248, 240)
-        note over Main,Report: Phase 1: インデックス作成（27.88秒）
+        note over Main,Backup: Phase 1: インデックス作成
         Main->>Index: create_index(./src)
 
-        loop 27,884ファイル（seen）
+        loop 6,089+ファイル
             Index->>Index: check_file_size()
             alt ファイルサイズ ≤ 4MB
                 Index->>Encoder: detect_encoding(file_path)
-                Encoder->>Encoder: try UTF-8
-                alt UTF-8失敗
-                    Encoder->>Encoder: try CP932
-                    alt CP932失敗
-                        Encoder->>Encoder: try Shift-JIS
-                        alt Shift-JIS失敗
-                            Encoder->>Encoder: try Latin-1
+
+                %% BOM検出
+                Encoder->>Encoder: check_bom()
+                alt UTF-8 BOM / UTF-16 detected
+                    Encoder-->>Index: BOM encoding
+                else chardet available
+                    Encoder->>Encoder: chardet.detect()
+                    alt confidence > 0.7
+                        Encoder-->>Index: chardet encoding
+                    else fallback
+                        Encoder->>Encoder: try UTF-8
+                        alt UTF-8失敗
+                            Encoder->>Encoder: try CP932
+                            alt CP932失敗
+                                Encoder->>Encoder: try Shift-JIS
+                                alt Shift-JIS失敗
+                                    Encoder->>Encoder: try Latin-1
+                                end
+                            end
                         end
+                        Encoder-->>Index: fallback encoding
                     end
                 end
-                Encoder-->>Index: encoding detected
+
                 Index->>Index: read_file(encoding)
-                Index->>Index: save to .advice_index.pickle
+                Index->>Index: save to .advice_index.jsonl
             else ファイルサイズ > 4MB
                 Index->>Report: log to large_files_over_limit.log
             end
         end
 
-        Index-->>Main: indexed=15,710
-        Main-->>CLI: [SUMMARY] indexed=15710 seen=27884
+        Index-->>Main: indexed count
+        Main-->>CLI: [SUMMARY] indexed files
     end
 
-    %% 危険度分析シーケンス
+    %% 並列AI分析シーケンス (v3.1+)
     rect rgb(240, 255, 240)
-        note over Main,Report: Phase 2: 危険度分析（--all オプション）
-        Batch->>CLI: codex_review_severity.py advise --all
-        CLI->>Main: parse_args(["advise", "--all"])
+        note over Main,Backup: Phase 2: 並列AI分析（--complete-all）
+        Batch->>CLI: codex_review_severity.py advise --complete-all
+        CLI->>Main: parse_args()
         Main->>Index: load_index()
-        Index-->>Main: 15,710 documents
+        Index-->>Main: all documents
 
-        Main->>Danger: analyze_all_files()
-        loop 15,710ファイル
-            Danger->>Danger: apply_rules(text)
-            Danger->>Danger: detect_problems()
-            Danger->>Danger: calculate_severity_score()
-        end
+        Main->>Parallel: extract_and_batch_parallel_enhanced.py
+        Parallel->>Parallel: create_worker_pool(10 workers)
 
-        Danger->>Danger: categorize_by_score()
-        note over Danger: 緊急: 392件（スコア15+）<br/>高: 423件（スコア10-14）<br/>中: 1,785件（スコア5-9）<br/>低: 0件（スコア1-4）
+        loop 各ファイル（並列処理）
+            Parallel->>Parallel: calculate_md5(content)
+            Parallel->>Parallel: check_cache(.cache/analysis/)
 
-        Danger->>Report: write src_complete_danger_analysis.md
-        Danger-->>Main: 2,600 problematic files
-    end
-
-    %% 概要レポート生成
-    rect rgb(245, 245, 255)
-        note over Main,Report: Phase 3: 概要レポート生成
-        Batch->>CLI: python create_overview_report.py
-        CLI->>Overview: 実行開始
-        Overview->>Report: read src_complete_danger_analysis.md
-        Overview->>Overview: parse_dangerous_files()
-        Overview->>Overview: categorize_by_priority()
-        Overview->>Report: write AI分析.md
-        Overview-->>CLI: 概要レポート作成完了
-    end
-
-    %% バッチ詳細分析
-    rect rgb(255, 240, 245)
-        note over Main,Report: Phase 4: バッチ詳細分析（6バッチ）
-
-        loop バッチ1〜6
-            Batch->>CLI: python analyze_dangerous_files_detailed.py [1-6]
-            CLI->>Detail: バッチ処理開始
-            Detail->>Report: read AI分析.md
-            Detail->>Detail: get_batch_files(batch_num)
-
-            note over Detail: バッチ1-5: 500ファイル<br/>バッチ6: 100ファイル
-
-            loop 各ファイル
-                Detail->>Detail: read_source_file()
-                Detail->>Detail: analyze_problems()
-                Detail->>Detail: generate_improvements()
-                Detail->>Detail: analyze_full_source()
+            alt キャッシュ存在
+                Parallel->>Parallel: load_from_cache()
+            else キャッシュなし
+                Parallel->>AI: API呼び出し
+                alt Anthropic優先
+                    AI->>AI: try Claude Sonnet 4.5
+                    alt 失敗
+                        AI->>AI: fallback to OpenAI
+                    end
+                end
+                AI-->>Parallel: AI分析結果
+                Parallel->>Parallel: save_to_cache()
             end
-
-            Detail->>Report: write AI分析_詳細_改善版_batch[1-6].md
-            Detail-->>CLI: バッチ完了
         end
+
+        Parallel->>Report: write complete_analysis.md (UTF-8 BOMなし)
+        Parallel-->>Main: 分析完了
     end
 
-    %% レポート統合
-    rect rgb(240, 255, 255)
-        note over Main,Report: Phase 5: レポート統合
-        Batch->>CLI: python merge_detailed_reports.py
-        CLI->>Merge: 統合開始
+    %% v4.0 自動適用シーケンス
+    rect rgb(245, 240, 255)
+        note over User,Backup: Phase 3: AI改善自動適用（v4.0新機能）
+        User->>CLI: python apply_improvements_from_report.py complete_analysis.md --dry-run
+        CLI->>Apply: 実行開始
 
-        loop バッチ1〜6
-            Merge->>Report: read AI分析_詳細_改善版_batch[1-6].md
-            Merge->>Merge: extract_content()
-            Merge->>Merge: append_to_final()
+        %% レポート読み込み（エンコーディング対応）
+        Apply->>Encoder: detect_encoding(report_file)
+        Encoder->>Encoder: check_bom()
+        alt BOM検出
+            Encoder-->>Apply: BOM encoding
+        else chardet利用可能
+            Encoder->>Encoder: chardet.detect()
+            Encoder-->>Apply: detected encoding
+        else フォールバック
+            Encoder->>Encoder: UTF-8 → CP932 → Shift_JIS → latin1
+            Encoder-->>Apply: fallback encoding
         end
 
-        Merge->>Report: write AI分析_詳細_改善版_完全版.md (24.3MB)
-        Merge-->>CLI: 統合完了: 2,600ファイル分析
-        CLI-->>User: 全処理完了
+        Apply->>Report: read_file_with_fallback()
+        Report-->>Apply: レポート内容
+
+        Apply->>Apply: parse_complete_report()
+        Apply->>Apply: extract_improvements()
+
+        loop 各改善エントリ
+            %% セキュリティ検証
+            Apply->>Apply: validate_safe_path()
+            alt パス検証失敗
+                Apply->>Apply: skip_entry()
+            else パス安全
+                Apply->>Apply: lstat() - TOCTOU対策
+                alt シンボリックリンク検出
+                    Apply->>Apply: reject_symlink()
+                else 通常ファイル
+                    Apply->>Apply: validate_improved_code()
+                    alt Unicode制御文字/NULL検出
+                        Apply->>Apply: reject_code()
+                    else コード安全
+                        %% バックアップ作成
+                        Apply->>Backup: create_timestamped_backup()
+                        Backup->>Backup: copy original file
+                        Backup->>Backup: save metadata.json
+                        Backup-->>Apply: backup created
+
+                        %% アトミック書き込み
+                        Apply->>Apply: acquire_file_lock() (msvcrt/fcntl)
+                        Apply->>Apply: tempfile.mkstemp()
+                        Apply->>Apply: write content
+                        Apply->>Apply: os.fsync()
+                        Apply->>Apply: atomic rename()
+                        Apply->>Apply: release_lock()
+
+                        Apply->>Report: log to .apply_log.jsonl
+                    end
+                end
+            end
+        end
+
+        Apply-->>CLI: 適用完了
+
+        %% ロールバック機能
+        alt ユーザーがロールバック要求
+            User->>CLI: python apply_improvements_from_report.py --rollback backup.bak
+            CLI->>Apply: rollback_from_backup()
+            Apply->>Backup: read metadata.json
+            Backup-->>Apply: original_path
+            Apply->>Apply: restore_file()
+            Apply-->>CLI: ロールバック完了
+        end
     end
 
     %% エラーハンドリング
     rect rgb(255, 230, 230)
-        note over User,Report: エラーハンドリング（v2.1.0改善）
-        alt UnicodeEncodeError (CP932)
-            Detail->>Detail: 絵文字削除（v2.1.0で修正済み）
-            Merge->>Merge: 絵文字削除（v2.1.0で修正済み）
-        else エンコーディングエラー
-            Encoder->>Index: 複数エンコーディング試行
-            Index->>Index: 最終的にLatin-1で読み込み
-        else 大容量ファイル
-            Index->>Report: log_and_skip()
-        else タイムアウト（120秒）
-            Detail->>Detail: バッチ分割で回避
+        note over User,Backup: エラーハンドリング（v4.0）
+        alt エンコーディングエラー
+            Encoder->>Encoder: 多段階フォールバック
+            Encoder->>Report: 警告: errors='replace'使用
+        else パストラバーサル攻撃
+            Apply->>Apply: reject - ホワイトリスト外
+        else TOCTOU攻撃
+            Apply->>Apply: reject - lstat()でシンボリックリンク検出
+        else Unicode制御文字攻撃
+            Apply->>Apply: reject - C0/C1/BIDI検出
+        else ファイルロック競合
+            Apply->>Apply: retry with exponential backoff
+            alt 最大リトライ超過
+                Apply->>Report: 警告ログ記録
+            end
         end
     end
+
+    %% 完了通知
+    CLI-->>User: 全処理完了

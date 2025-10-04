@@ -1,16 +1,18 @@
 flowchart TD
-    %% コードレビュー処理フロー図 v3.0.0 - GPT-5対応版
+    %% コードレビュー処理フロー図 v4.0.0 - 自動適用対応版
 
-    Start([開始]) --> ENV_CHECK[環境設定確認<br/>.env: OPENAI_MODEL]
-    ENV_CHECK --> MODEL_ROUTE{モデル判定}
+    Start([開始]) --> ENV_CHECK[環境設定確認<br/>.env: OPENAI_MODEL/ANTHROPIC_API_KEY]
+    ENV_CHECK --> PROVIDER_ROUTE{AI Provider選択}
 
-    MODEL_ROUTE -->|gpt-5-codex| RESPONSES_API[Responses API<br/>/v1/responses]
-    MODEL_ROUTE -->|gpt-4o/gpt-5系| CHAT_API[Chat Completions API<br/>/v1/chat/completions]
+    PROVIDER_ROUTE -->|Anthropic| CLAUDE_API[Claude API<br/>Sonnet 4.5/Opus 4.1]
+    PROVIDER_ROUTE -->|OpenAI| GPT_API[OpenAI API<br/>GPT-4o/GPT-5]
+    PROVIDER_ROUTE -->|Auto| AUTO_FALLBACK[Anthropic優先<br/>→ OpenAI Fallback]
 
-    RESPONSES_API --> INPUT{実行方法}
-    CHAT_API --> INPUT
+    CLAUDE_API --> INPUT{実行方法}
+    GPT_API --> INPUT
+    AUTO_FALLBACK --> INPUT
 
-    INPUT -->|バッチファイル| BATCH[run_detailed_analysis_auto.bat]
+    INPUT -->|バッチファイル| BATCH[run_complete_full_analysis.bat]
     INPUT -->|コマンドライン| CMD{コマンド判定}
 
     BATCH --> AUTO_DETECT[ファイル数自動検出]
@@ -18,20 +20,31 @@ flowchart TD
 
     CMD -->|index| INDEX_START[インデックス作成開始]
     CMD -->|advise --all| REVIEW_ALL[全ファイル分析]
+    CMD -->|advise --complete-all| REVIEW_COMPLETE[完全レポート生成]
     CMD -->|advise --topk N| REVIEW_TOPK[上位N件分析]
 
     %% インデックス処理フロー
-    INDEX_START --> SCAN[ファイルスキャン<br/>15,710ファイル]
+    INDEX_START --> SCAN[ファイルスキャン<br/>6,089+ファイル]
     SCAN --> SIZE_CHECK{ファイルサイズ<br/>チェック}
     SIZE_CHECK -->|4MB以下| LANG_CHECK{言語チェック}
     SIZE_CHECK -->|4MB超| LOG_LARGE[large_files_over_limit.log<br/>に記録]
     LOG_LARGE --> NEXT_FILE
 
-    LANG_CHECK -->|対象言語| DETECT_ENCODING[エンコーディング検出]
+    LANG_CHECK -->|対象言語| DETECT_ENCODING[エンコーディング検出<br/>chardet統合]
     LANG_CHECK -->|除外言語| NEXT_FILE[次のファイル]
 
-    DETECT_ENCODING --> TRY_UTF8{UTF-8?}
-    TRY_UTF8 -->|成功| READ_FILE[ファイル読み込み]
+    DETECT_ENCODING --> CHECK_BOM{BOM検出}
+    CHECK_BOM -->|UTF-8 BOM| READ_FILE[ファイル読み込み]
+    CHECK_BOM -->|UTF-16| READ_FILE
+    CHECK_BOM -->|なし| TRY_CHARDET{chardet<br/>インストール済み?}
+
+    TRY_CHARDET -->|はい| AUTO_DETECT_ENC[自動検出<br/>confidence>0.7]
+    TRY_CHARDET -->|いいえ| TRY_UTF8{UTF-8?}
+
+    AUTO_DETECT_ENC -->|成功| READ_FILE
+    AUTO_DETECT_ENC -->|失敗| TRY_UTF8
+
+    TRY_UTF8 -->|成功| READ_FILE
     TRY_UTF8 -->|失敗| TRY_CP932{CP932?}
     TRY_CP932 -->|成功| READ_FILE
     TRY_CP932 -->|失敗| TRY_SJIS{Shift-JIS?}
@@ -40,78 +53,83 @@ flowchart TD
     TRY_LATIN1 -->|成功| READ_FILE
     TRY_LATIN1 -->|失敗| SKIP_FILE[ファイルスキップ]
 
-    READ_FILE --> SAVE_INDEX[.advice_index.pickle<br/>保存]
+    READ_FILE --> SAVE_INDEX[.advice_index.jsonl<br/>保存]
     SKIP_FILE --> NEXT_FILE
     SAVE_INDEX --> NEXT_FILE
 
     NEXT_FILE --> MORE_FILES{残ファイル<br/>あり?}
     MORE_FILES -->|はい| SCAN
-    MORE_FILES -->|いいえ| INDEX_COMPLETE[インデックス完了<br/>27.88秒]
+    MORE_FILES -->|いいえ| INDEX_COMPLETE[インデックス完了]
 
     %% 危険度分析フロー
     INDEX_COMPLETE --> DANGER_ANALYSIS[危険度分析開始]
     REVIEW_ALL --> DANGER_ANALYSIS
+    REVIEW_COMPLETE --> DANGER_ANALYSIS
     REVIEW_TOPK --> DANGER_ANALYSIS
 
     DANGER_ANALYSIS --> LOAD_DATA[インデックス読み込み]
-    LOAD_DATA --> APPLY_RULES[ルール適用<br/>全15,710ファイル]
+    LOAD_DATA --> APPLY_RULES[ルール適用<br/>全6,089+ファイル]
 
     APPLY_RULES --> CHECK_PROBLEMS{問題検出}
     CHECK_PROBLEMS --> CALC_SCORE[危険度スコア計算]
 
     CALC_SCORE --> CATEGORIZE[カテゴリ分類]
-    CATEGORIZE --> CRITICAL[緊急: 392件<br/>スコア15以上]
-    CATEGORIZE --> HIGH[高: 423件<br/>スコア10-14]
-    CATEGORIZE --> MEDIUM[中: 1,785件<br/>スコア5-9]
-    CATEGORIZE --> LOW[低: 0件<br/>スコア1-4]
+    CATEGORIZE --> CRITICAL[緊急: スコア15以上]
+    CATEGORIZE --> HIGH[高: スコア10-14]
+    CATEGORIZE --> MEDIUM[中: スコア5-9]
+    CATEGORIZE --> LOW[低: スコア1-4]
 
-    CRITICAL --> SAVE_DANGER[src_complete_danger_analysis.md<br/>生成]
-    HIGH --> SAVE_DANGER
-    MEDIUM --> SAVE_DANGER
-    LOW --> SAVE_DANGER
+    CRITICAL --> PARALLEL_PROCESS[並列AI分析<br/>extract_and_batch_parallel_enhanced.py]
+    HIGH --> PARALLEL_PROCESS
+    MEDIUM --> PARALLEL_PROCESS
+    LOW --> PARALLEL_PROCESS
 
-    %% 概要レポート生成
-    SAVE_DANGER --> OVERVIEW[create_overview_report.py<br/>実行]
-    OVERVIEW --> CREATE_OVERVIEW[AI分析.md<br/>生成]
+    %% 並列処理フロー（v3.1+）
+    PARALLEL_PROCESS --> WORKER_POOL[ワーカープール<br/>10 workers]
+    WORKER_POOL --> CACHE_CHECK{MD5キャッシュ<br/>存在?}
+    CACHE_CHECK -->|はい| USE_CACHE[キャッシュ使用]
+    CACHE_CHECK -->|いいえ| AI_CALL[AI API呼び出し]
 
-    %% 詳細分析フロー
-    CREATE_OVERVIEW --> BATCH_PROCESS[バッチ処理開始<br/>2,600ファイル]
+    AI_CALL --> CACHE_SAVE[.cache/analysis/<br/>MD5.json保存]
+    USE_CACHE --> GENERATE_REPORT
+    CACHE_SAVE --> GENERATE_REPORT[レポート生成]
 
-    BATCH_PROCESS --> BATCH1[バッチ1<br/>1-500]
-    BATCH_PROCESS --> BATCH2[バッチ2<br/>501-1000]
-    BATCH_PROCESS --> BATCH3[バッチ3<br/>1001-1500]
-    BATCH_PROCESS --> BATCH4[バッチ4<br/>1501-2000]
-    BATCH_PROCESS --> BATCH5[バッチ5<br/>2001-2500]
-    BATCH_PROCESS --> BATCH6[バッチ6<br/>2501-2600]
+    GENERATE_REPORT --> COMPLETE_REPORT[完全レポート<br/>complete_analysis.md<br/>UTF-8 BOMなし]
 
-    BATCH1 --> DETAIL1[analyze_dangerous_files_detailed.py 1]
-    BATCH2 --> DETAIL2[analyze_dangerous_files_detailed.py 2]
-    BATCH3 --> DETAIL3[analyze_dangerous_files_detailed.py 3]
-    BATCH4 --> DETAIL4[analyze_dangerous_files_detailed.py 4]
-    BATCH5 --> DETAIL5[analyze_dangerous_files_detailed.py 5]
-    BATCH6 --> DETAIL6[analyze_dangerous_files_detailed.py 6]
+    %% v4.0 新機能: 自動適用フロー
+    COMPLETE_REPORT --> APPLY_DECISION{自動適用?}
+    APPLY_DECISION -->|はい| APPLY_START[apply_improvements_from_report.py]
+    APPLY_DECISION -->|いいえ| End
 
-    DETAIL1 --> AI_API{AI API呼び出し}
-    AI_API -->|成功| RPT1[AI分析_詳細_改善版_batch1.md]
-    AI_API -->|失敗| FALLBACK[フォールバック<br/>gpt-4o]
-    FALLBACK --> RPT1
-    DETAIL2 --> RPT2[AI分析_詳細_改善版_batch2.md]
-    DETAIL3 --> RPT3[AI分析_詳細_改善版_batch3.md]
-    DETAIL4 --> RPT4[AI分析_詳細_改善版_batch4.md]
-    DETAIL5 --> RPT5[AI分析_詳細_改善版_batch5.md]
-    DETAIL6 --> RPT6[AI分析_詳細_改善版_batch6.md]
+    APPLY_START --> PARSE_REPORT[レポート解析<br/>BOM/chardet/fallback]
+    PARSE_REPORT --> EXTRACT_ENTRIES[改善エントリ抽出<br/>正規表現パターン]
 
-    %% レポート統合
-    RPT1 --> MERGE[merge_detailed_reports.py<br/>実行]
-    RPT2 --> MERGE
-    RPT3 --> MERGE
-    RPT4 --> MERGE
-    RPT5 --> MERGE
-    RPT6 --> MERGE
+    EXTRACT_ENTRIES --> FOREACH_ENTRY{エントリ処理}
+    FOREACH_ENTRY --> VALIDATE_PATH[パス検証<br/>ホワイトリスト+lstat]
 
-    MERGE --> FINAL[AI分析_詳細_改善版_完全版.md<br/>24.3MB]
+    VALIDATE_PATH -->|安全| CHECK_CODE[コード検証<br/>Unicode制御文字/NULL/サイズ]
+    VALIDATE_PATH -->|危険| SKIP_ENTRY[エントリスキップ]
 
-    FINAL --> End([完了])
+    CHECK_CODE -->|安全| CREATE_BACKUP[バックアップ作成<br/>タイムスタンプ+メタデータJSON]
+    CHECK_CODE -->|不正| SKIP_ENTRY
+
+    CREATE_BACKUP --> ACQUIRE_LOCK[ファイルロック取得<br/>msvcrt/fcntl]
+    ACQUIRE_LOCK --> ATOMIC_WRITE[アトミック書き込み<br/>tempfile+fsync+rename]
+
+    ATOMIC_WRITE --> RELEASE_LOCK[ロック解放]
+    RELEASE_LOCK --> LOG_SUCCESS[.apply_log.jsonl<br/>記録]
+
+    LOG_SUCCESS --> MORE_ENTRIES{残エントリ<br/>あり?}
+    SKIP_ENTRY --> MORE_ENTRIES
+
+    MORE_ENTRIES -->|はい| FOREACH_ENTRY
+    MORE_ENTRIES -->|いいえ| APPLY_COMPLETE[適用完了]
+
+    APPLY_COMPLETE --> ROLLBACK_OPTION{ロールバック<br/>必要?}
+    ROLLBACK_OPTION -->|はい| ROLLBACK[メタデータベース復元]
+    ROLLBACK_OPTION -->|いいえ| End
+
+    ROLLBACK --> End([完了])
 
     %% スタイル定義
     classDef startEnd fill:#4caf50,stroke:#2e7d32,stroke-width:3px,color:#fff
@@ -120,10 +138,12 @@ flowchart TD
     classDef batch fill:#9c27b0,stroke:#6a1b9a,stroke-width:2px,color:#fff
     classDef output fill:#00bcd4,stroke:#00838f,stroke-width:2px,color:#fff
     classDef danger fill:#f44336,stroke:#c62828,stroke-width:2px,color:#fff
+    classDef v4new fill:#9c27b0,stroke:#4a148c,stroke-width:3px,color:#fff
 
     class Start,End startEnd
-    class INDEX_START,SCAN,DETECT_ENCODING,READ_FILE,SAVE_INDEX,LOAD_DATA,APPLY_RULES,CALC_SCORE,OVERVIEW,BATCH_PROCESS,DETAIL1,DETAIL2,DETAIL3,DETAIL4,DETAIL5,DETAIL6,MERGE process
-    class INPUT,CMD,SIZE_CHECK,LANG_CHECK,TRY_UTF8,TRY_CP932,TRY_SJIS,TRY_LATIN1,MORE_FILES,CHECK_PROBLEMS decision
-    class BATCH,AUTO_DETECT,BATCH1,BATCH2,BATCH3,BATCH4,BATCH5,BATCH6 batch
-    class CREATE_OVERVIEW,RPT1,RPT2,RPT3,RPT4,RPT5,RPT6,FINAL,SAVE_DANGER,LOG_LARGE output
+    class INDEX_START,SCAN,DETECT_ENCODING,READ_FILE,SAVE_INDEX,LOAD_DATA,APPLY_RULES,CALC_SCORE,PARALLEL_PROCESS,WORKER_POOL,AI_CALL,CACHE_SAVE,GENERATE_REPORT,PARSE_REPORT,EXTRACT_ENTRIES,VALIDATE_PATH,CHECK_CODE,CREATE_BACKUP,ACQUIRE_LOCK,ATOMIC_WRITE,RELEASE_LOCK,LOG_SUCCESS process
+    class INPUT,CMD,SIZE_CHECK,LANG_CHECK,CHECK_BOM,TRY_CHARDET,TRY_UTF8,TRY_CP932,TRY_SJIS,TRY_LATIN1,MORE_FILES,CHECK_PROBLEMS,CACHE_CHECK,APPLY_DECISION,FOREACH_ENTRY,MORE_ENTRIES,ROLLBACK_OPTION decision
+    class BATCH,AUTO_DETECT,PROVIDER_ROUTE batch
+    class COMPLETE_REPORT,LOG_LARGE,USE_CACHE,SKIP_ENTRY,APPLY_COMPLETE,ROLLBACK output
     class CRITICAL,HIGH,MEDIUM,LOW danger
+    class APPLY_START,REVIEW_COMPLETE,AUTO_DETECT_ENC v4new

@@ -1,55 +1,76 @@
 graph TB
-    %% コードレビューシステム アーキテクチャ図 v2.1.0
+    %% コードレビューシステム アーキテクチャ図 v4.0.0
 
     subgraph "入力層"
         USER[ユーザー]
         CLI[コマンドライン]
         ENV[環境設定<br/>.env]
-        BATCH_SCRIPT[バッチファイル<br/>run_detailed_analysis_auto.bat]
+        BATCH_SCRIPT[バッチファイル<br/>run_complete_full_analysis.bat]
     end
 
     subgraph "メインシステム"
-        MAIN[codex_review_severity.py<br/>メインコントローラー v2.1]
+        MAIN[codex_review_severity.py<br/>メインコントローラー v4.0]
 
         subgraph "インデックス処理"
-            INDEX[インデックス作成<br/>--all オプション対応]
-            ENCODE[エンコーディング検出<br/>UTF-8/CP932/Shift-JIS対応]
+            INDEX[インデックス作成<br/>--src-dir対応]
+            ENCODE[エンコーディング検出<br/>chardet統合]
             FILTER[ファイルフィルター<br/>言語/サイズ]
         end
 
         subgraph "解析エンジン"
-            RULES[ルールベース解析<br/>全15,710ファイル対象]
+            RULES[ルールベース解析<br/>全6,089+ファイル対象]
             SEVERITY[重要度判定<br/>危険度スコアリング]
-            DETAIL[詳細分析<br/>analyze_dangerous_files_detailed.py]
+            PARALLEL[並列AI分析<br/>extract_and_batch_parallel_enhanced.py<br/>10 workers]
         end
 
         subgraph "データ処理"
             VECTOR[ベクトル化<br/>TF-IDF]
             SEARCH[類似検索<br/>scikit-learn]
-            BATCH[バッチ処理<br/>500ファイル/バッチ]
+            CACHE[MD5キャッシュ<br/>.cache/analysis/]
         end
 
         subgraph "レポート生成"
-            OVERVIEW[概要レポート生成<br/>create_overview_report.py]
-            MERGE[レポート統合<br/>merge_detailed_reports.py]
+            COMPLETE[完全レポート生成<br/>--complete-all対応]
+            MARKDOWN[Markdown出力<br/>UTF-8 BOMなし]
+        end
+    end
+
+    subgraph "v4.0新機能: 自動適用層"
+        APPLY_TOOL[apply_improvements_from_report.py<br/>自動改善適用ツール]
+
+        subgraph "セキュリティ層"
+            PATH_VAL[パストラバーサル防止<br/>ホワイトリスト方式]
+            TOCTOU[TOCTOU対策<br/>lstat()検証]
+            ATOMIC[アトミック更新<br/>tempfile+fsync]
+        end
+
+        subgraph "エンコーディング層"
+            BOM_DETECT[BOM自動検出<br/>UTF-8/UTF-16]
+            CHARDET[chardet統合<br/>confidence>0.7]
+            FALLBACK[多段階フォールバック<br/>UTF-8→CP932→Shift_JIS]
+        end
+
+        subgraph "安全機能"
+            BACKUP[タイムスタンプバックアップ<br/>メタデータJSON]
+            ROLLBACK[ロールバック機能<br/>メタデータベース復元]
+            FILELOCK[クロスプラットフォームロック<br/>msvcrt/fcntl]
         end
     end
 
     subgraph "出力層"
-        REPORT_DANGER[危険度分析レポート<br/>src_complete_danger_analysis.md]
-        REPORT_OVERVIEW[概要レポート<br/>AI分析.md]
-        REPORT_BATCH[バッチレポート<br/>AI分析_詳細_改善版_batch1-6.md]
-        REPORT_COMPLETE[統合レポート<br/>AI分析_詳細_改善版_完全版.md]
-        LOG[ログファイル<br/>large_files_over_limit.log]
+        REPORT_COMPLETE[完全レポート<br/>complete_analysis.md]
+        REPORT_APPLIED[適用ログ<br/>.apply_log.jsonl]
+        BACKUPS[バックアップ<br/>backups/*.bak]
         CONSOLE[コンソール出力<br/>進捗表示]
     end
 
     subgraph "データストレージ"
         PICKLE[.advice_index.pickle<br/>ベクトルインデックス]
         META[.advice_index.meta.json<br/>メタデータ]
+        JSONL[.advice_index.jsonl<br/>ファイルインデックス]
     end
 
-    %% 接続関係
+    %% 接続関係 - メイン処理
     USER --> CLI
     USER --> BATCH_SCRIPT
     CLI --> MAIN
@@ -59,36 +80,48 @@ graph TB
     MAIN --> INDEX
     INDEX --> ENCODE
     INDEX --> FILTER
-    ENCODE --> PICKLE
-    FILTER --> PICKLE
+    ENCODE --> JSONL
+    FILTER --> JSONL
     INDEX --> META
 
-    PICKLE --> VECTOR
+    JSONL --> VECTOR
     VECTOR --> SEARCH
     SEARCH --> RULES
     RULES --> SEVERITY
 
-    SEVERITY --> DETAIL
-    DETAIL --> BATCH
-    BATCH --> REPORT_BATCH
+    SEVERITY --> PARALLEL
+    PARALLEL --> CACHE
+    CACHE --> COMPLETE
+    COMPLETE --> MARKDOWN
+    MARKDOWN --> REPORT_COMPLETE
 
-    SEVERITY --> OVERVIEW
-    OVERVIEW --> REPORT_OVERVIEW
+    %% 接続関係 - v4.0自動適用
+    REPORT_COMPLETE --> APPLY_TOOL
+    APPLY_TOOL --> PATH_VAL
+    APPLY_TOOL --> BOM_DETECT
+    PATH_VAL --> TOCTOU
+    TOCTOU --> ATOMIC
+    BOM_DETECT --> CHARDET
+    CHARDET --> FALLBACK
+    FALLBACK --> ATOMIC
+    ATOMIC --> BACKUP
+    BACKUP --> FILELOCK
+    FILELOCK --> REPORT_APPLIED
+    BACKUP --> BACKUPS
+    APPLY_TOOL --> ROLLBACK
 
-    REPORT_BATCH --> MERGE
-    MERGE --> REPORT_COMPLETE
-
-    SEVERITY --> REPORT_DANGER
-    FILTER --> LOG
     MAIN --> CONSOLE
+    APPLY_TOOL --> CONSOLE
 
     %% スタイル
     classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     classDef process fill:#fff3e0,stroke:#e65100,stroke-width:2px
     classDef output fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
     classDef storage fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef v4new fill:#f3e5f5,stroke:#4a148c,stroke-width:3px
 
     class USER,CLI,ENV,BATCH_SCRIPT input
-    class MAIN,INDEX,ENCODE,FILTER,RULES,SEVERITY,DETAIL,VECTOR,SEARCH,BATCH,OVERVIEW,MERGE process
-    class REPORT_DANGER,REPORT_OVERVIEW,REPORT_BATCH,REPORT_COMPLETE,LOG,CONSOLE output
-    class PICKLE,META storage
+    class MAIN,INDEX,ENCODE,FILTER,RULES,SEVERITY,PARALLEL,VECTOR,SEARCH,CACHE,COMPLETE,MARKDOWN process
+    class REPORT_COMPLETE,REPORT_APPLIED,BACKUPS,CONSOLE output
+    class PICKLE,META,JSONL storage
+    class APPLY_TOOL,PATH_VAL,TOCTOU,ATOMIC,BOM_DETECT,CHARDET,FALLBACK,BACKUP,ROLLBACK,FILELOCK v4new
