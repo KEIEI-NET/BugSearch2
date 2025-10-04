@@ -2053,9 +2053,10 @@ def render_complete_report(title: str, items: List[Dict[str, Any]], ai_summary: 
             lines += format_complete_report_item(i, it, include_source, generate_fix)
             processed += 1
 
-            # インクリメンタル書き込み（10件ごと）
+            # インクリメンタル書き込み（10件ごと）- UTF-8 BOMなし
             if output_file and processed % 10 == 0:
-                output_file.write_text("\n".join(lines), encoding="utf-8")
+                with open(output_file, 'w', encoding='utf-8', newline='\n') as f:
+                    f.write("\n".join(lines))
             if processed >= max_items:
                 lines.append(f"**注意: 処理制限({max_items}件)に達しました。残りの問題は基本レポートを参照してください。**")
                 lines.append("")
@@ -2077,9 +2078,10 @@ def render_complete_report(title: str, items: List[Dict[str, Any]], ai_summary: 
             lines += format_complete_report_item(i, it, include_source, generate_fix)
             processed += 1
 
-            # インクリメンタル書き込み（10件ごと）
+            # インクリメンタル書き込み（10件ごと）- UTF-8 BOMなし
             if output_file and processed % 10 == 0:
-                output_file.write_text("\n".join(lines), encoding="utf-8")
+                with open(output_file, 'w', encoding='utf-8', newline='\n') as f:
+                    f.write("\n".join(lines))
             if processed >= max_items:
                 lines.append(f"**注意: 処理制限({max_items}件)に達しました。残りの問題は基本レポートを参照してください。**")
                 lines.append("")
@@ -2101,9 +2103,10 @@ def render_complete_report(title: str, items: List[Dict[str, Any]], ai_summary: 
             lines += format_complete_report_item(i, it, include_source, generate_fix)
             processed += 1
 
-            # インクリメンタル書き込み（10件ごと）
+            # インクリメンタル書き込み（10件ごと）- UTF-8 BOMなし
             if output_file and processed % 10 == 0:
-                output_file.write_text("\n".join(lines), encoding="utf-8")
+                with open(output_file, 'w', encoding='utf-8', newline='\n') as f:
+                    f.write("\n".join(lines))
             if processed >= max_items:
                 lines.append(f"**注意: 処理制限({max_items}件)に達しました。残りの問題は基本レポートを参照してください。**")
                 lines.append("")
@@ -2150,7 +2153,9 @@ def cmd_query(query: str, topk: int, mode: str, index_path: pathlib.Path, out: p
     rep = render_report_sorted(f"検索レポート: {query}", items, ai_summary)
     if out:
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(rep, encoding="utf-8")
+        # UTF-8 BOMなしで書き込み（改行コードはLF）
+        with open(out, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(rep)
         print(f"[OK] wrote {out}")
     else:
         print(rep)
@@ -2215,10 +2220,12 @@ def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path
         )
     else:
         rep = render_report_sorted("全体助言（横断チェック）", items, ai_summary)
-    
+
     if out:
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(rep, encoding="utf-8")
+        # UTF-8 BOMなしで書き込み（改行コードはLF）
+        with open(out, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(rep)
         print(f"[OK] wrote {out}")
     else:
         print(rep)
@@ -2395,9 +2402,15 @@ if __name__ == "__main__":
         cmd_vectorize(pathlib.Path(args.index))
     elif args.cmd == "query":
         out = pathlib.Path(args.out) if args.out else None
+        # .md拡張子を確実にする
+        if out and not out.suffix.lower() == '.md':
+            out = out.with_suffix('.md')
         cmd_query(args.query, args.topk, args.mode, pathlib.Path(args.index), out)
     elif args.cmd == "advise":
         out = pathlib.Path(args.out) if args.out else None
+        # .md拡張子を確実にする
+        if out and not out.suffix.lower() == '.md':
+            out = out.with_suffix('.md')
         cmd_advise(
             args.topk, 
             args.mode, 
