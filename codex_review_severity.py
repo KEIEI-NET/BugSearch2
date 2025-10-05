@@ -452,8 +452,8 @@ def write_meta(meta_path: pathlib.Path, meta: Dict[str, Dict[str, Any]]) -> None
     try:
         meta_path.parent.mkdir(parents=True, exist_ok=True)
         meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"[WARNING] Failed to write metadata to {meta_path}: {str(e)[:100]}", file=sys.stderr)
 
 
 def load_previous_index(index_path: pathlib.Path) -> Dict[str, Dict[str, Any]]:
@@ -471,6 +471,9 @@ def load_previous_index(index_path: pathlib.Path) -> Dict[str, Dict[str, Any]]:
                     rel_path = doc.get("path")
                     if isinstance(rel_path, str):
                         out[rel_path] = doc
+                except (json.JSONDecodeError, ValueError) as e:
+                    print(f"[WARNING] Skipping invalid JSON line: {str(e)[:100]}", file=sys.stderr)
+                    continue
                 except Exception:
                     continue
     except Exception:
@@ -963,11 +966,7 @@ def setup_signal_handlers() -> None:
                 elapsed = time.time() - _first_interrupt_time
                 if elapsed < 3.0:  # 3秒以内なら強制終了
                     print("\n[WARNING] 強制終了します！", file=sys.stderr)
-                    # ロックを解放してから終了（ロック所有権を確認）
-                    try:
-                        _interrupt_lock.release()
-                    except RuntimeError:
-                        pass  # ロック未所有の場合は無視
+                    # sys.exit()でプロセス終了時にロックも自動解放される
                     sys.exit(130)  # SIGINT標準終了コード
 
     # SIGINT (Ctrl+C) は全プラットフォームで対応
@@ -1243,7 +1242,11 @@ def load_index_stream(index_path: pathlib.Path):
         for line in f:
             line = line.strip()
             if line:
-                yield json.loads(line)
+                try:
+                    yield json.loads(line)
+                except (json.JSONDecodeError, ValueError) as e:
+                    print(f"[WARNING] Skipping invalid JSON line: {str(e)[:100]}", file=sys.stderr)
+                    continue
 
 def load_index(index_path: pathlib.Path) -> List[Dict[str,Any]]:
     """
@@ -2014,6 +2017,14 @@ def save_progress_info(progress_file: str, current: int, total: int, current_fil
         old_sigterm = signal.signal(signal.SIGTERM, signal.SIG_IGN)
 
     try:
+        # Validate progress values
+        if current < 0 or total < 0:
+            print(f"[WARNING] Invalid progress values: current={current}, total={total}", file=sys.stderr)
+            return
+        if current > total:
+            print(f"[WARNING] Current ({current}) exceeds total ({total}), capping to total", file=sys.stderr)
+            current = total
+
         progress_data = {
             "timestamp": time.strftime('%Y-%m-%d %H:%M:%S'),
             "current": current,

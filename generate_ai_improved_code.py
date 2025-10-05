@@ -76,6 +76,7 @@ MAX_SOURCE_FILE_SIZE_MB = 10
 MAX_LLM_TOKENS = 8192
 MAX_RETRY_ATTEMPTS = 3
 RATE_LIMIT_DELAY_SEC = 2
+LLM_API_TIMEOUT_SEC = 180.0  # LLM API timeout for large files (extended from 60s)
 
 # LLM設定
 AI_PROVIDER = os.getenv("AI_PROVIDER", "auto")  # auto, openai, anthropic
@@ -94,11 +95,11 @@ PROBLEMS_PATTERN = re.compile(
     re.DOTALL
 )
 ORIGINAL_CODE_PATTERN = re.compile(
-    r'#### 元のソースコード:\s*```[\w+]*\n(.*?)```',
+    r'#### 元のソースコード:\s*```[\w+]{0,20}\n((?:(?!```)[\s\S]){0,50000})```',
     re.DOTALL
 )
 ADVICE_PATTERN = re.compile(
-    r'#### 改善されたソースコード:\s*```[\w+]*\n(.*?)```',
+    r'#### 改善されたソースコード:\s*```[\w+]{0,20}\n((?:(?!```)[\s\S]){0,50000})```',
     re.DOTALL
 )
 
@@ -155,8 +156,7 @@ def setup_signal_handlers(progress: Dict[str, Any]) -> Dict[int, Any]:
                 elapsed = time.time() - _first_interrupt_time
                 if elapsed < 3.0:  # 3秒以内なら強制終了
                     print("\n[WARNING] 強制終了します！", file=sys.stderr)
-                    # ロックを解放してから終了
-                    _interrupt_lock.release()
+                    # sys.exit()でプロセス終了時にロックも自動解放される
                     sys.exit(130)  # SIGINT標準終了コード
 
     # SIGINT (Ctrl+C) は全プラットフォームで対応
@@ -507,7 +507,7 @@ def call_llm_for_improvement(
 
     except Exception as e:
         error_msg = str(e)
-        logger.error(f"LLM API error: {error_msg}")
+        logger.error(f"LLM API error: {error_msg}", exc_info=True)  # Preserve full traceback
 
         # リトライ可能なエラーの場合
         if retry < MAX_RETRY_ATTEMPTS and ("timeout" in error_msg.lower() or "rate" in error_msg.lower()):
@@ -537,7 +537,7 @@ def call_anthropic(prompt: str) -> Optional[str]:
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            timeout=180.0  # タイムアウト設定（大きなファイル対応で延長）
+            timeout=LLM_API_TIMEOUT_SEC  # タイムアウト設定（大きなファイル対応で延長）
         )
 
         if response.content and len(response.content) > 0:
@@ -549,7 +549,7 @@ def call_anthropic(prompt: str) -> Optional[str]:
         return None
 
     except anthropic_module.APIError as e:
-        logger.error(f"Claude API error: {e}")
+        logger.error(f"Claude API error: {e}", exc_info=True)
         raise
 
 
@@ -573,7 +573,7 @@ def call_openai(prompt: str) -> Optional[str]:
                 {"role": "user", "content": prompt}
             ],
             max_tokens=MAX_LLM_TOKENS,
-            timeout=180.0  # タイムアウト設定（大きなファイル対応で延長）
+            timeout=LLM_API_TIMEOUT_SEC  # タイムアウト設定（大きなファイル対応で延長）
         )
 
         if response.choices and len(response.choices) > 0:
@@ -585,7 +585,7 @@ def call_openai(prompt: str) -> Optional[str]:
         return None
 
     except openai_module.APIError as e:
-        logger.error(f"OpenAI API error: {e}")
+        logger.error(f"OpenAI API error: {e}", exc_info=True)
         raise
 
 
