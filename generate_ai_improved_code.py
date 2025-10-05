@@ -25,7 +25,7 @@ generate_ai_improved_code.py - AI改善コード生成ツール
     # 進捗から再開
     python generate_ai_improved_code.py reports/完全レポート.md --resume
 
-バージョン: 1.2.0 (Anthropic統合修正版)
+バージョン: 1.3.0 (プログレスバー対応版)
 """
 from __future__ import annotations
 import argparse
@@ -38,6 +38,13 @@ import sys
 import time
 from datetime import datetime
 from typing import List, Dict, Any, Optional
+
+# プログレスバー
+try:
+    from tqdm import tqdm
+    TQDM_AVAILABLE = True
+except ImportError:
+    TQDM_AVAILABLE = False
 
 # AI Provider imports
 try:
@@ -643,7 +650,7 @@ def main():
         sys.exit(1)
 
     print("="*80)
-    print("AI改善コード生成ツール v1.2.0")
+    print("AI改善コード生成ツール v1.3.0")
     print("="*80)
     print(f"入力: {report_path}")
     print(f"出力: {args.out}")
@@ -691,10 +698,27 @@ def main():
     skip_count = 0
     start_time = time.time()
 
-    for i, entry in enumerate(target_entries):
+    # プログレスバーの準備
+    if TQDM_AVAILABLE and not args.verbose:
+        # 詳細ログ無効時はプログレスバー表示
+        iterator = tqdm(
+            enumerate(target_entries),
+            total=len(target_entries),
+            desc="処理中",
+            unit="件",
+            bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]",
+            ncols=100,
+            file=sys.stderr
+        )
+    else:
+        # 詳細ログ有効時は通常のループ
+        iterator = enumerate(target_entries)
+
+    for i, entry in iterator:
         # 進捗チェック
         if args.resume and i <= progress['last_index']:
-            print(f"\n[{entry['number']}] スキップ（処理済み）")
+            if not TQDM_AVAILABLE or args.verbose:
+                print(f"\n[{entry['number']}] スキップ（処理済み）")
             skip_count += 1
             continue
 
@@ -705,6 +729,14 @@ def main():
             success_count += 1
         else:
             skip_count += 1
+
+        # プログレスバーの説明を更新
+        if TQDM_AVAILABLE and not args.verbose and hasattr(iterator, 'set_postfix'):
+            iterator.set_postfix({
+                '成功': success_count,
+                'スキップ': skip_count,
+                '現在': entry['file_path'][:40] + '...' if len(entry['file_path']) > 40 else entry['file_path']
+            })
 
         # 進捗保存
         progress['last_index'] = i
