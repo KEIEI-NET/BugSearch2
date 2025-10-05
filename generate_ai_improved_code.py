@@ -385,8 +385,8 @@ def call_llm_for_improvement(
     # プロンプト構築
     prompt = build_improvement_prompt(file_path, lang, problems, advice, source_code)
 
-    # AI Provider選択
-    provider = AI_PROVIDER.lower()
+    # AI Provider選択（.env読み込み後の値を取得）
+    provider = os.getenv("AI_PROVIDER", "auto").lower()
 
     if provider == "auto":
         # Anthropic優先、フォールバック
@@ -639,7 +639,7 @@ def main():
     print("="*80)
     print(f"入力: {report_path}")
     print(f"出力: {args.out}")
-    print(f"AI Provider: {AI_PROVIDER}")
+    print(f"AI Provider: {os.getenv('AI_PROVIDER', 'auto')}")
     print(f"詳細ログ: {'有効' if args.verbose else '無効'}")
     print("="*80)
 
