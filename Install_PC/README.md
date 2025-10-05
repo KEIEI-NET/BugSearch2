@@ -36,15 +36,21 @@
 
 ## 🚀 インストール方法
 
-### Windows
+### ⚡ クイックスタート（Windows）
 
-1. **管理者権限不要**で実行できます
-2. `install_windows.bat` をダブルクリック
-3. 完了メッセージを確認
+**推奨**: PowerShell経由で実行（日本語パス対応）
 
-```batch
-cd Install_PC
-install_windows.bat
+```powershell
+# 1. PowerShellを開く（Win + X → "Windows PowerShell"）
+
+# 2. プロジェクトディレクトリに移動
+cd "あなたのプロジェクトパス\Install_PC"
+
+# 3. インストール実行
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& '.\install_windows.bat'"
+
+# 4. 確認（オプション）
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& '.\verify_install.bat'"
 ```
 
 **インストール先**:
@@ -53,6 +59,32 @@ install_windows.bat
 ```
 
 例: `C:\Users\YourName\AppData\Roaming\claude-code\aliases.md`
+
+---
+
+### Windows（詳細手順）
+
+#### 方法1: ダブルクリック（シンプルな環境向け）
+
+1. **管理者権限不要**で実行できます
+2. `install_windows.bat` をダブルクリック
+3. 完了メッセージを確認
+
+⚠️ **注意**: パスに日本語や特殊文字が含まれる場合、この方法では動作しない可能性があります。その場合は「方法2」を使用してください。
+
+#### 方法2: PowerShell経由（日本語パス対応・推奨）✅
+
+```powershell
+cd Install_PC
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& '.\install_windows.bat'"
+```
+
+#### 方法3: コマンドプロンプト経由
+
+```batch
+cd Install_PC
+call install_windows.bat
+```
 
 ---
 
@@ -175,6 +207,79 @@ rm ~/.config/claude-code/aliases.md
 
 ---
 
+### Q: バッチファイルがダブルクリックで起動しない（Windows）
+
+**症状**:
+- `install_windows.bat` をダブルクリックしても何も起動しない
+- コマンドプロンプトが一瞬表示されて消える
+
+**解決策（推奨順）**:
+
+#### 方法1: PowerShell経由で実行（最も確実）✅
+```powershell
+# PowerShellを開いて以下を実行
+cd "C:\path\to\your\project\Install_PC"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& '.\install_windows.bat'"
+```
+
+#### 方法2: コマンドプロンプト経由で実行
+```cmd
+# コマンドプロンプトを開いて以下を実行
+cd "C:\path\to\your\project\Install_PC"
+call install_windows.bat
+```
+
+#### 方法3: 実行ポリシーの確認（PowerShell）
+```powershell
+# 実行ポリシーを確認
+Get-ExecutionPolicy
+
+# Restrictedの場合は以下で一時的に変更
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+```
+
+#### 方法4: パスに日本語/特殊文字が含まれる場合
+Dropboxパスに日本語が含まれる場合、以下の手順で対処：
+
+1. **ファイルをコピー**:
+   ```cmd
+   # 一時ディレクトリにコピー
+   xcopy "C:\path\to\your\project\Install_PC" "C:\Temp\Install_PC\" /E /I
+   cd C:\Temp\Install_PC
+   install_windows.bat
+   ```
+
+2. **エクスプローラーから実行**:
+   - `install_windows.bat` を右クリック
+   - 「管理者として実行」を選択（通常権限で動作しない場合のみ）
+
+**検証方法**:
+```powershell
+# インストール確認スクリプトを実行
+powershell -NoProfile -ExecutionPolicy Bypass -Command "cd Install_PC; & '.\verify_install.bat'"
+```
+
+**成功時の出力例**:
+```
+========================================
+Claude Code Aliases インストーラー
+========================================
+
+[INFO] インストール先: C:\Users\YourName\AppData\Roaming\claude-code
+
+[INFO] 設定ディレクトリを作成: C:\Users\YourName\AppData\Roaming\claude-code
+[INFO] aliases.md をインストール中...
+
+========================================
+[OK] インストール完了！
+========================================
+
+インストール場所:
+  C:\Users\YourName\AppData\Roaming\claude-code\aliases.md
+```
+
+---
+
 ### Q: エイリアスが動作しない
 
 **確認事項**:
@@ -279,6 +384,13 @@ cat ~/.config/claude-code/aliases.md
 ---
 
 ## 📝 更新履歴
+
+### v4.0.3 (2025-01-05)
+- **トラブルシューティング強化**: バッチファイル起動問題の解決策を追加
+- **クイックスタートセクション追加**: PowerShell経由の推奨インストール方法を明記
+- **日本語パス対応**: Dropboxなど日本語を含むパスでの実行方法を詳細化
+- **検証スクリプト追加**: `verify_install.bat` の使用方法を追記
+- **成功時の出力例**: インストール成功時のコンソール出力を例示
 
 ### v4.0.2 (2025-01-04)
 - サブエージェント統合 (smart-review-system-v2)
