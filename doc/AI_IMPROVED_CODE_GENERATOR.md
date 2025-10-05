@@ -105,20 +105,39 @@ python generate_ai_improved_code.py reports/完全レポート.md --resume
 
 ### 環境変数設定
 
-`.env` ファイル：
+**重要**: APIキーは`.env`ファイルに記載してください（gitignore推奨）
+
+`.env` ファイル例：
 
 ```env
-# AI Provider選択
-AI_PROVIDER=auto  # auto, anthropic, openai
+# AI Provider選択（auto: Anthropic優先 → OpenAIフォールバック）
+AI_PROVIDER=auto
 
-# Anthropic（推奨）
-ANTHROPIC_API_KEY=sk-ant-...
+# Anthropic API設定（推奨）
+ANTHROPIC_API_KEY=sk-ant-api03-...
 ANTHROPIC_MODEL=claude-sonnet-4-5
 
-# OpenAI
-OPENAI_API_KEY=sk-...
+# OpenAI API設定（フォールバック）
+OPENAI_API_KEY=sk-proj-...
 OPENAI_MODEL=gpt-4o
 ```
+
+**プロバイダー優先順位**（`AI_PROVIDER=auto`の場合）:
+1. Anthropic Claude（`ANTHROPIC_API_KEY`が設定されている場合）
+2. OpenAI GPT（`OPENAI_API_KEY`が設定されている場合）
+3. エラー（どちらも設定されていない場合）
+
+**手動指定**:
+```env
+AI_PROVIDER=anthropic  # Claudeのみ使用
+# または
+AI_PROVIDER=openai     # OpenAIのみ使用
+```
+
+**セキュリティ**:
+- `.env`ファイルは必ず`.gitignore`に追加してください
+- APIキーを直接コマンドラインや環境変数で指定しないでください
+- スクリプトは自動的に`.env`を読み込みます（python-dotenv不要）
 
 ### コマンドライン引数
 
