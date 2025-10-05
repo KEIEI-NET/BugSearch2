@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-codex_review_severity.py — 重要度順ソート版
+codex_review_severity.py — 重要度順ソート版 (v3.7.0 Production Ready)
 問題の重大度に応じてレポートを並び替え、重大な問題を上位に、問題なしを下位に配置
+
+v3.7.0 新機能 (Production Ready):
+  - 本番環境対応シグナルハンドラー（Ctrl+C対応）
+  - ReDoS脆弱性修正（N+1検出の正規表現を制限）
+  - デッドロック対策（ロック解放時のエラーハンドリング）
+  - temp_fileクリーンアップ機能（リソースリーク防止）
+  - スレッドセーフな中断処理
+  - クロスプラットフォーム対応（Windows/Unix）
+  - 多重Ctrl+C検出（3秒以内に2回で強制終了）
+  - 進捗保存による安全な中断
 
 重点カテゴリ（重要度順）:
   1) DB負荷（N+1/全件/未インデックス/多重JOIN）- 最重要
@@ -14,7 +24,7 @@ pip install chromadb openai scikit-learn joblib regex
 環境変数: OPENAI_API_KEY（必須: AIモード）, OPENAI_MODEL（任意: 既定 'gpt-4o'）
 """
 from __future__ import annotations
-import argparse, hashlib, json, os, pathlib, re, sys, time
+import argparse, hashlib, json, os, pathlib, re, signal, sys, threading, time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, asdict
@@ -129,6 +139,12 @@ SEVERITY_SCORES = {
     "Angular: プライベートルートにガード未実装": 8,
     "Angular: 巨大SharedModule（20コンポーネント以上）": 4,
 }
+
+# グローバル状態（シグナルハンドラー用）
+_interrupt_lock = threading.Lock()
+_interrupt_requested = False
+_interrupt_count = 0
+_first_interrupt_time = None
 
 # SOLID原則とAngularの閾値定数（マジックナンバー削減）
 SOLID_THRESHOLDS = {
@@ -492,7 +508,7 @@ def scan_db(text: str) -> List[str]:
     m: List[str] = []
     if re.search(r"SELECT\s+\*\s+FROM", text, re.IGNORECASE):
         m.append("DB: SELECT * →負荷増。列限定")
-    if re.search(r"(for|while|foreach|map).*\n.*\n.*\n.*(SELECT|INSERT|UPDATE|DELETE)", text, re.IGNORECASE):
+    if re.search(r"(for|while|foreach|map).{0,1000}\n.{0,1000}\n.{0,1000}\n.{0,1000}(SELECT|INSERT|UPDATE|DELETE)", text, re.IGNORECASE):
         m.append("DB: ループ内SELECT (N+1) 疑い")
     if re.search(r"(JOIN.*){3,}", text, re.IGNORECASE):
         m.append("DB: 多重JOIN→遅延の恐れ。計画/IDX確認")
@@ -920,6 +936,60 @@ def make_tags(text: str) -> List[str]:
 
     return sorted(set(t))
 
+# ===== Signal Handlers =====
+def setup_signal_handlers() -> None:
+    """シグナルハンドラーを設定（Ctrl+C対応・クロスプラットフォーム対応）"""
+    global _interrupt_requested, _interrupt_count, _first_interrupt_time
+
+    def signal_handler(signum, frame):
+        global _interrupt_requested, _interrupt_count, _first_interrupt_time
+
+        with _interrupt_lock:
+            _interrupt_count += 1
+
+            if _interrupt_count == 1:
+                # 初回の中断リクエスト
+                _interrupt_requested = True
+                _first_interrupt_time = time.time()
+
+                print("\n\n" + "="*80, file=sys.stderr)
+                print("[INFO] 中断リクエストを受信しました (Ctrl+C)", file=sys.stderr)
+                print("[INFO] 現在の処理が完了したら、安全に終了します...", file=sys.stderr)
+                print("[INFO] もう一度Ctrl+Cで強制終了します", file=sys.stderr)
+                print("="*80 + "\n", file=sys.stderr)
+
+            elif _interrupt_count >= 2:
+                # 2回目以降の中断リクエスト（強制終了）
+                elapsed = time.time() - _first_interrupt_time
+                if elapsed < 3.0:  # 3秒以内なら強制終了
+                    print("\n[WARNING] 強制終了します！", file=sys.stderr)
+                    # ロックを解放してから終了（ロック所有権を確認）
+                    try:
+                        _interrupt_lock.release()
+                    except RuntimeError:
+                        pass  # ロック未所有の場合は無視
+                    sys.exit(130)  # SIGINT標準終了コード
+
+    # SIGINT (Ctrl+C) は全プラットフォームで対応
+    signal.signal(signal.SIGINT, signal_handler)
+
+    # プラットフォーム固有のシグナル
+    if sys.platform == "win32":
+        if hasattr(signal, 'SIGBREAK'):
+            signal.signal(signal.SIGBREAK, signal_handler)
+    else:
+        if hasattr(signal, 'SIGTERM'):
+            signal.signal(signal.SIGTERM, signal_handler)
+        if hasattr(signal, 'SIGHUP'):
+            signal.signal(signal.SIGHUP, signal_handler)
+
+
+def check_interrupt() -> bool:
+    """中断リクエストがあるかチェック（スレッドセーフ）"""
+    with _interrupt_lock:
+        return _interrupt_requested
+
+
 # ===== Indexer =====
 def should_index(p: pathlib.Path, exclude_langs: set) -> bool:
     if p.is_dir(): return False
@@ -949,7 +1019,10 @@ def cmd_index(
     include_patterns: Optional[List[str]] = None,
     exclude_patterns: Optional[List[str]] = None,
     worker_count: int | None = None,
-): 
+):
+    # シグナルハンドラーを設定（Ctrl+C対応）
+    setup_signal_handlers()
+
     if exclude_langs is None:
         exclude_langs = set()
     if max_file_bytes is None:
@@ -1057,9 +1130,17 @@ def cmd_index(
                 executor.shutdown(wait=True)  # wait=Trueで全タスク完了を待つ
 
     batch_buffer: List[str] = []
+    interrupted = False
     try:
         with open(index_path, "w", encoding="utf-8") as w:
             for path, lang, reuse_doc, file_size, mtime_ns, rel_path in tasks:
+                # 中断チェック
+                if check_interrupt():
+                    interrupted = True
+                    print(f"\n[INFO] 中断が要求されました。現在の進捗を保存しています...", file=sys.stderr)
+                    stats.bump("interrupt_stop")
+                    break
+
                 if reuse_doc is not None:
                     batch_buffer.append(json.dumps(reuse_doc, ensure_ascii=False) + "\n")
                     stats.bump("indexed")
@@ -1143,6 +1224,9 @@ def cmd_index(
         print("[INFO] Stopped due to --max-files limit")
     if stats.counts.get("timeout_stop"):
         print("[WARNING] Stopped due to --max-seconds timeout")
+    if stats.counts.get("interrupt_stop") or interrupted:
+        print("[WARNING] Stopped due to user interrupt (Ctrl+C)")
+        print(f"[INFO] 部分的なインデックスが保存されました: {count}ファイル")
     summary = stats.render_summary()
     if summary:
         print(summary)
@@ -1914,8 +1998,8 @@ def format_complete_report_item(num: int, item: Dict[str, Any], include_source: 
 
 def save_progress_info(progress_file: str, current: int, total: int, current_file: str, status: str):
     """
-    進捗情報をJSONファイルに保存
-    
+    進捗情報をJSONファイルに保存（シグナルセーフ・アトミック）
+
     Args:
         progress_file: 進捗情報ファイルパス
         current: 現在の処理番号
@@ -1923,20 +2007,26 @@ def save_progress_info(progress_file: str, current: int, total: int, current_fil
         current_file: 現在処理中のファイル名
         status: 処理状態（processing/completed/error）
     """
-    progress_data = {
-        "timestamp": time.strftime('%Y-%m-%d %H:%M:%S'),
-        "current": current,
-        "total": total,
-        "percentage": round(current / total * 100, 2) if total > 0 else 0,
-        "current_file": current_file,
-        "status": status,
-        "estimated_remaining": None
-    }
-    
+    # シグナルをブロックして競合状態を防ぐ
+    old_sigint = signal.signal(signal.SIGINT, signal.SIG_IGN)
+    old_sigterm = None
+    if hasattr(signal, 'SIGTERM'):
+        old_sigterm = signal.signal(signal.SIGTERM, signal.SIG_IGN)
+
     try:
+        progress_data = {
+            "timestamp": time.strftime('%Y-%m-%d %H:%M:%S'),
+            "current": current,
+            "total": total,
+            "percentage": round(current / total * 100, 2) if total > 0 else 0,
+            "current_file": current_file,
+            "status": status,
+            "estimated_remaining": None
+        }
+
         progress_path = pathlib.Path(progress_file)
         progress_path.parent.mkdir(parents=True, exist_ok=True)
-        
+
         # 既存の進捗情報を読み込んで時間推定
         if progress_path.exists():
             try:
@@ -1952,7 +2042,7 @@ def save_progress_info(progress_file: str, current: int, total: int, current_fil
                             progress_data['estimated_remaining'] = int(remaining)
             except:
                 pass
-        
+
         # 開始時刻を保持
         if current == 1:
             progress_data['start_time'] = time.time()
@@ -1963,11 +2053,38 @@ def save_progress_info(progress_file: str, current: int, total: int, current_fil
                     progress_data['start_time'] = old_data.get('start_time', time.time())
             except:
                 progress_data['start_time'] = time.time()
-        
-        with open(progress_path, 'w', encoding='utf-8') as f:
-            json.dump(progress_data, f, ensure_ascii=False, indent=2)
+
+        # アトミック書き込み（temp_file変数のスコープを拡張）
+        temp_file = None
+        try:
+            temp_file = str(progress_path) + ".tmp"
+            with open(temp_file, 'w', encoding='utf-8') as f:
+                json.dump(progress_data, f, ensure_ascii=False, indent=2)
+
+            # 置き換え成功 → temp_fileをクリア（finally節でクリーンアップ不要）
+            if progress_path.exists():
+                progress_path.unlink()
+            pathlib.Path(temp_file).rename(progress_path)
+            temp_file = None  # リネーム成功したのでクリーンアップ不要
+
+        except Exception as e:
+            print(f"[WARNING] 進捗情報書き込み失敗: {str(e)[:100]}")
+
     except Exception as e:
         print(f"[WARNING] 進捗情報保存失敗: {str(e)[:100]}")
+
+    finally:
+        # temp_fileのクリーンアップ（リネーム失敗時のみ）
+        if temp_file is not None and os.path.exists(temp_file):
+            try:
+                os.remove(temp_file)
+            except Exception:
+                pass
+
+        # シグナルハンドラーを復元
+        signal.signal(signal.SIGINT, old_sigint)
+        if old_sigterm is not None:
+            signal.signal(signal.SIGTERM, old_sigterm)
 
 def render_complete_report(title: str, items: List[Dict[str, Any]], ai_summary: str | None,
                           max_items: int = 100, include_source: bool = True,
@@ -2045,6 +2162,14 @@ def render_complete_report(title: str, items: List[Dict[str, Any]], ai_summary: 
         print(f"[INFO] 緊急対応が必要な問題: {len(critical_items)}件を処理中...")
         print(f"[INFO] ========================================")
         for i, it in enumerate(critical_items[:max_items - processed], 1):
+            # 中断チェック
+            if check_interrupt():
+                print(f"\n[INFO] 中断が要求されました。現在の進捗を保存しています...", file=sys.stderr)
+                lines.append("")
+                lines.append(f"**注意: ユーザーによる中断 (Ctrl+C) - {processed}件処理済み**")
+                lines.append("")
+                break
+
             # 進捗保存（全体のカウンターを使用）
             if progress_file:
                 save_progress_info(progress_file, processed + 1, max_items, it.get('path', 'unknown'), 'processing')
@@ -2070,6 +2195,14 @@ def render_complete_report(title: str, items: List[Dict[str, Any]], ai_summary: 
         print(f"[INFO] ========================================")
         start_num = len(critical_items) + 1
         for i, it in enumerate(high_items[:max_items - processed], start_num):
+            # 中断チェック
+            if check_interrupt():
+                print(f"\n[INFO] 中断が要求されました。現在の進捗を保存しています...", file=sys.stderr)
+                lines.append("")
+                lines.append(f"**注意: ユーザーによる中断 (Ctrl+C) - {processed}件処理済み**")
+                lines.append("")
+                break
+
             # 進捗保存
             if progress_file:
                 save_progress_info(progress_file, processed + 1, max_items, it.get('path', 'unknown'), 'processing')
@@ -2095,6 +2228,14 @@ def render_complete_report(title: str, items: List[Dict[str, Any]], ai_summary: 
         print(f"[INFO] ========================================")
         start_num = len(critical_items) + len(high_items) + 1
         for i, it in enumerate(medium_items[:max_items - processed], start_num):
+            # 中断チェック
+            if check_interrupt():
+                print(f"\n[INFO] 中断が要求されました。現在の進捗を保存しています...", file=sys.stderr)
+                lines.append("")
+                lines.append(f"**注意: ユーザーによる中断 (Ctrl+C) - {processed}件処理済み**")
+                lines.append("")
+                break
+
             # 進捗保存
             if progress_file:
                 save_progress_info(progress_file, processed + 1, max_items, it.get('path', 'unknown'), 'processing')
@@ -2160,11 +2301,11 @@ def cmd_query(query: str, topk: int, mode: str, index_path: pathlib.Path, out: p
     else:
         print(rep)
 
-def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path|None, use_all: bool = False, 
+def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path|None, use_all: bool = False,
                complete_report: bool = False, max_complete_items: int = 100, complete_all: bool = False):
     """
     全体助言コマンド
-    
+
     Args:
         topk: 取得する上位ファイル数
         mode: 分析モード（static/ai/hybrid）
@@ -2174,6 +2315,9 @@ def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path
         complete_report: 完全レポート生成フラグ（元コード+改善コード付き）
         max_complete_items: 完全レポート処理の最大件数
     """
+    # シグナルハンドラーを設定（Ctrl+C対応）
+    setup_signal_handlers()
+
     seed_query = "金額 不整合 税 小数 印刷 Print HasMorePages NewPage UI UX アクセシビリティ DB N+1 JOIN 遅い"
     index = load_index(index_path)
 

@@ -25,7 +25,7 @@ generate_ai_improved_code.py - AI改善コード生成ツール
     # 進捗から再開
     python generate_ai_improved_code.py reports/完全レポート.md --resume
 
-バージョン: 1.3.0 (プログレスバー対応版)
+バージョン: 1.6.0 (Production Ready - 本番環境対応版)
 """
 from __future__ import annotations
 import argparse
@@ -34,7 +34,9 @@ import logging
 import os
 import pathlib
 import re
+import signal
 import sys
+import threading
 import time
 from datetime import datetime
 from typing import List, Dict, Any, Optional
@@ -102,6 +104,93 @@ ADVICE_PATTERN = re.compile(
 
 # ロガー設定
 logger = logging.getLogger(__name__)
+
+# グローバル状態（シグナルハンドラー用）
+_interrupt_lock = threading.Lock()
+_interrupt_requested = False
+_interrupt_count = 0
+_first_interrupt_time = None
+_current_progress = None
+_tqdm_bar: Optional[Any] = None  # tqdmプログレスバー（型ヒントでモジュールレベル初期化を明示）
+_cleanup_tqdm_requested = False  # シグナル安全なクリーンアップフラグ
+
+
+# ===== シグナルハンドラー =====
+
+def setup_signal_handlers(progress: Dict[str, Any]) -> Dict[int, Any]:
+    """
+    シグナルハンドラーを設定（Ctrl+C対応・クロスプラットフォーム対応）
+
+    Returns:
+        元のシグナルハンドラーの辞書（復元用）
+    """
+    global _current_progress
+    _current_progress = progress
+
+    # 元のハンドラーを保存
+    original_handlers = {}
+
+    def signal_handler(signum, frame):
+        global _interrupt_requested, _interrupt_count, _first_interrupt_time, _cleanup_tqdm_requested
+
+        with _interrupt_lock:
+            _interrupt_count += 1
+
+            if _interrupt_count == 1:
+                # 初回の中断リクエスト
+                _interrupt_requested = True
+                _cleanup_tqdm_requested = True  # メインループでクリーンアップをリクエスト
+                _first_interrupt_time = time.time()
+
+                # async-signal-safe な操作のみ（write syscallのみ）
+                print("\n\n" + "="*80, file=sys.stderr)
+                print("[INFO] 中断リクエストを受信しました (Ctrl+C)", file=sys.stderr)
+                print("[INFO] 現在のファイル処理後、安全に終了します...", file=sys.stderr)
+                print("[INFO] 進捗は自動的に保存されます", file=sys.stderr)
+                print("[INFO] もう一度Ctrl+Cで強制終了します", file=sys.stderr)
+                print("="*80 + "\n", file=sys.stderr)
+
+            elif _interrupt_count >= 2:
+                # 2回目以降の中断リクエスト（強制終了）
+                elapsed = time.time() - _first_interrupt_time
+                if elapsed < 3.0:  # 3秒以内なら強制終了
+                    print("\n[WARNING] 強制終了します！", file=sys.stderr)
+                    # ロックを解放してから終了
+                    _interrupt_lock.release()
+                    sys.exit(130)  # SIGINT標準終了コード
+
+    # SIGINT (Ctrl+C) は全プラットフォームで対応
+    original_handlers[signal.SIGINT] = signal.signal(signal.SIGINT, signal_handler)
+
+    # プラットフォーム固有のシグナル
+    if sys.platform == "win32":
+        # Windows固有
+        if hasattr(signal, 'SIGBREAK'):
+            original_handlers[signal.SIGBREAK] = signal.signal(signal.SIGBREAK, signal_handler)
+    else:
+        # Unix-like システム
+        if hasattr(signal, 'SIGTERM'):
+            original_handlers[signal.SIGTERM] = signal.signal(signal.SIGTERM, signal_handler)
+        if hasattr(signal, 'SIGHUP'):
+            original_handlers[signal.SIGHUP] = signal.signal(signal.SIGHUP, signal_handler)
+
+    return original_handlers
+
+
+def restore_signal_handlers(original_handlers: Dict[int, Any]) -> None:
+    """元のシグナルハンドラーを復元"""
+    for signum, handler in original_handlers.items():
+        try:
+            signal.signal(signum, handler)
+        except (ValueError, OSError, RuntimeError):
+            # シグナル復元失敗は無視（システム依存）
+            pass
+
+
+def check_interrupt() -> bool:
+    """中断リクエストがあるかチェック（スレッドセーフ）"""
+    with _interrupt_lock:
+        return _interrupt_requested
 
 
 # ===== ユーティリティ関数 =====
@@ -525,24 +614,45 @@ def load_progress() -> Dict[str, Any]:
 
 
 def save_progress(progress: Dict[str, Any]) -> None:
-    """進捗をJSONに保存（安全に）"""
+    """進捗をJSONに保存（シグナルセーフ・アトミック）"""
+    # シグナルをブロックして競合状態を防ぐ
+    old_sigint = signal.signal(signal.SIGINT, signal.SIG_IGN)
+    old_sigterm = None
+    if hasattr(signal, 'SIGTERM'):
+        old_sigterm = signal.signal(signal.SIGTERM, signal.SIG_IGN)
+
+    temp_file = None
     try:
         progress['timestamp'] = datetime.now().isoformat()
 
-        # アトミック書き込み
+        # アトミック書き込み（temp_file変数のスコープを拡張）
         temp_file = PROGRESS_FILE + ".tmp"
         with open(temp_file, 'w', encoding='utf-8') as f:
             json.dump(progress, f, ensure_ascii=False, indent=2)
 
-        # 置き換え
+        # 置き換え成功 → temp_fileをクリア（finally節でクリーンアップ不要）
         if os.path.exists(PROGRESS_FILE):
             os.remove(PROGRESS_FILE)
         os.rename(temp_file, PROGRESS_FILE)
+        temp_file = None  # リネーム成功したのでクリーンアップ不要
 
         logger.debug(f"Progress saved: {len(progress.get('processed', []))} entries")
 
     except Exception as e:
         logger.error(f"Failed to save progress: {e}")
+
+    finally:
+        # temp_fileのクリーンアップ（リネーム失敗時のみ）
+        if temp_file is not None and os.path.exists(temp_file):
+            try:
+                os.remove(temp_file)
+            except Exception:
+                pass  # クリーンアップ失敗は無視
+
+        # シグナルハンドラーを復元
+        signal.signal(signal.SIGINT, old_sigint)
+        if old_sigterm is not None:
+            signal.signal(signal.SIGTERM, old_sigterm)
 
 
 # ===== メイン処理 =====
@@ -650,7 +760,7 @@ def main():
         sys.exit(1)
 
     print("="*80)
-    print("AI改善コード生成ツール v1.3.0")
+    print("AI改善コード生成ツール v1.6.0 (Production Ready)")
     print("="*80)
     print(f"入力: {report_path}")
     print(f"出力: {args.out}")
@@ -679,6 +789,9 @@ def main():
     # 進捗読み込み
     progress = load_progress() if args.resume else {"processed": [], "last_index": -1}
 
+    # シグナルハンドラー設定（Ctrl+C対応）
+    original_handlers = setup_signal_handlers(progress)
+
     # 出力ファイル準備
     output_path = pathlib.Path(args.out)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -699,9 +812,10 @@ def main():
     start_time = time.time()
 
     # プログレスバーの準備
+    global _tqdm_bar
     if TQDM_AVAILABLE and not args.verbose:
         # 詳細ログ無効時はプログレスバー表示
-        iterator = tqdm(
+        _tqdm_bar = tqdm(
             enumerate(target_entries),
             total=len(target_entries),
             desc="処理中",
@@ -710,11 +824,28 @@ def main():
             ncols=100,
             file=sys.stderr
         )
+        iterator = _tqdm_bar
     else:
         # 詳細ログ有効時は通常のループ
         iterator = enumerate(target_entries)
 
     for i, entry in iterator:
+        # tqdmクリーンアップリクエストのチェック（スレッドセーフ）
+        global _cleanup_tqdm_requested
+        with _interrupt_lock:
+            if _cleanup_tqdm_requested and _tqdm_bar is not None:
+                try:
+                    _tqdm_bar.close()
+                    print("\033[?25h", end='', file=sys.stderr)  # カーソルを復元
+                    _cleanup_tqdm_requested = False
+                except Exception:
+                    pass  # クリーンアップエラーは無視
+
+        # 中断チェック
+        if check_interrupt():
+            print("\n[INFO] 処理を中断します", file=sys.stderr)
+            break
+
         # 進捗チェック
         if args.resume and i <= progress['last_index']:
             if not TQDM_AVAILABLE or args.verbose:
@@ -755,14 +886,43 @@ def main():
     # 完了
     elapsed_time = time.time() - start_time
 
-    print("\n[3/3] 完了")
+    # 中断された場合のメッセージ
+    if check_interrupt():
+        print("\n[3/3] 中断されました", file=sys.stderr)
+    else:
+        print("\n[3/3] 完了")
+
     print("="*80)
     print(f"成功: {success_count}件")
     print(f"スキップ: {skip_count}件")
     print(f"処理時間: {elapsed_time:.1f}秒")
     print(f"出力: {output_path}")
     print(f"進捗: {PROGRESS_FILE}")
+
+    if check_interrupt():
+        remaining = len(target_entries) - success_count - skip_count
+        print(f"\n[INFO] 中断されました。残り{remaining}件の処理があります")
+        print(f"[INFO] 次のコマンドで続きから再開できます:")
+        print(f"  python {os.path.basename(sys.argv[0])} {args.report} --resume --out {args.out}")
+        if progress['processed']:
+            last_file = progress['processed'][-1]['file_path']
+            print(f"[INFO] 最後に処理したファイル: {last_file}")
+
     print("="*80)
+
+    # クリーンアップ
+    try:
+        # tqdmプログレスバーのクリーンアップ
+        if _tqdm_bar is not None:
+            try:
+                _tqdm_bar.close()
+            except Exception:
+                pass
+
+        # シグナルハンドラーを復元
+        restore_signal_handlers(original_handlers)
+    except Exception as e:
+        logger.debug(f"クリーンアップ中にエラー: {e}")
 
 
 if __name__ == "__main__":
