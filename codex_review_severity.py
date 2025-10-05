@@ -2360,6 +2360,28 @@ if __name__ == "__main__":
             print(f"エラー: 安全でないパス（親ディレクトリへのアクセス不可）: {repo_path}", file=sys.stderr)
             sys.exit(1)
 
+        # 警告: ルートディレクトリ全体をスキャンしようとしている場合
+        if repo_path in (".", "./", ".\\"):
+            print("\n⚠️  [WARNING] ルートディレクトリ全体をスキャンします", file=sys.stderr)
+            print(f"    指定パス: {repo_path}", file=sys.stderr)
+            cwd_preview = pathlib.Path.cwd().resolve()
+            print(f"    対象: {cwd_preview}", file=sys.stderr)
+            print(f"\n    ./src のみをスキャンする場合は、引数を省略してください:", file=sys.stderr)
+            print(f"    py codex_review_severity.py index\n", file=sys.stderr)
+
+            # 対話的確認（CI環境では自動でスキップ）
+            if sys.stdin.isatty():
+                try:
+                    confirm = input("続行しますか？ (yes/NO): ")
+                    if confirm.lower() not in ("yes", "y"):
+                        print("キャンセルしました", file=sys.stderr)
+                        sys.exit(0)
+                except (EOFError, KeyboardInterrupt):
+                    print("\nキャンセルしました", file=sys.stderr)
+                    sys.exit(0)
+            else:
+                print("    [INFO] 非対話モード（CI環境）のため自動で続行します\n", file=sys.stderr)
+
         repo = pathlib.Path(repo_path).resolve()
 
         # セキュリティ: 絶対パス解決後にカレントディレクトリ外へのアクセスチェック

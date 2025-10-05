@@ -100,11 +100,14 @@ py codex_review_severity.py advise --topk 50 --out reports/php_analysis
 
 ### 言語別の除外
 ```bash
-# Delphi除外
-py codex_review_severity.py index . --exclude-langs delphi
+# Delphi除外（デフォルト: ./src をスキャン）
+py codex_review_severity.py index --exclude-langs delphi
 
 # 複数言語除外
-py codex_review_severity.py index . --exclude-langs delphi java
+py codex_review_severity.py index --exclude-langs delphi java
+
+# 特定ディレクトリを指定して除外
+py codex_review_severity.py index ./custom/path --exclude-langs delphi
 ```
 
 ## テストサンプル

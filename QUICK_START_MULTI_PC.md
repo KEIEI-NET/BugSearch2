@@ -65,8 +65,8 @@ py codex_review_severity.py advise --topk 50 --out reports/my_analysis
 ### パターン2: このPCで新規インデックス作成
 
 ```bash
-# 初めてこのPCで作業する場合
-py codex_review_severity.py index --exclude-langs delphi --max-file-mb 4
+# 初めてこのPCで作業する場合（デフォルト: ./src ディレクトリ）
+py codex_review_severity.py index
 py codex_review_severity.py advise --all --out reports/full_analysis
 ```
 
@@ -86,8 +86,8 @@ py codex_review_severity.py advise --all --out reports/full_analysis
 ### ✓ インデックスファイルがない
 
 ```bash
-# 再作成（数分かかります）
-py codex_review_severity.py index --exclude-langs delphi
+# 再作成（数分かかります、デフォルト: ./src）
+py codex_review_severity.py index
 ```
 
 ### ✓ APIキーエラー

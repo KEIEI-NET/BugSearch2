@@ -234,8 +234,8 @@ GitHub リポジトリの Settings → Secrets and variables → Actions で以�
 ### クイックスタート
 
 ```bash
-# 1. インデックス作成（デフォルトで./srcを検索）
-py codex_review_severity.py index --exclude-langs delphi --max-file-mb 4 --worker-count 4
+# 1. インデックス作成（デフォルト: ./src ディレクトリ）
+py codex_review_severity.py index
 
 # 2. 分析実行（デフォルト80ファイル）
 py codex_review_severity.py advise --out reports/quick_analysis.md

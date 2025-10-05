@@ -313,8 +313,14 @@ ANTHROPIC_MODEL=claude-sonnet-4-5
 
 #### 方法1: 標準分析
 ```bash
-# インデックス作成（Delphi除外、4MB制限、並列4スレッド）
-py codex_review_severity.py index . --exclude-langs delphi --max-file-mb 4 --worker-count 4
+# インデックス作成（デフォルト: ./src ディレクトリ、4MB制限、並列処理なし）
+py codex_review_severity.py index
+
+# オプション指定の例（ファイルサイズ制限、並列4スレッド）
+py codex_review_severity.py index --max-file-mb 4 --worker-count 4
+
+# 特定言語を除外する場合（例: Delphi）
+py codex_review_severity.py index --exclude-langs delphi
 
 # PHPファイルのみインデックス作成
 py codex_review_severity.py index ./src/php
@@ -608,7 +614,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY || '' }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || '' }}
         run: |
-          python codex_review_severity.py index . --exclude-langs delphi
+          python codex_review_severity.py index  # デフォルト: ./src
           python codex_review_severity.py vectorize  # セマンティック検索用
           python codex_review_severity.py advise --all --out reports/review
 

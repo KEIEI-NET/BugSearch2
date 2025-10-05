@@ -119,8 +119,8 @@ chmod +x install_unix.sh
 ### PC-A で作業を開始
 
 ```bash
-# 1. インデックス作成
-py codex_review_severity.py index --exclude-langs delphi --max-file-mb 4
+# 1. インデックス作成（デフォルト: ./src）
+py codex_review_severity.py index
 
 # 2. 分析実行
 py codex_review_severity.py advise --all --out reports/analysis_pc_a
@@ -180,8 +180,8 @@ du -sh .cache/analysis/
 # Windows: タスクバーのDropboxアイコン
 # Mac: メニューバーのDropboxアイコン
 
-# または、PC-Bで再インデックス作成
-py codex_review_severity.py index --exclude-langs delphi
+# または、PC-Bで再インデックス作成（デフォルト: ./src）
+py codex_review_severity.py index
 ```
 
 ### Q2: 環境変数（APIキー）が読み込めない
@@ -229,8 +229,8 @@ mkdir -p .cache/analysis
 ### パターン1: インデックス共有型
 
 ```bash
-# PC-A (高性能PC): インデックス作成
-py codex_review_severity.py index --exclude-langs delphi
+# PC-A (高性能PC): インデックス作成（デフォルト: ./src）
+py codex_review_severity.py index
 # → .advice_index.jsonl がDropboxに同期
 
 # PC-B (ノートPC): インデックスを使って分析

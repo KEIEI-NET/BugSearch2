@@ -29,8 +29,14 @@ pip install --only-binary :all: scikit-learn
 
 ### 標準ワークフロー
 ```bash
-# 1. インデックス作成（デフォルト: ./src ディレクトリ）
-py codex_review_severity.py index --exclude-langs delphi --max-file-mb 4 --worker-count 4
+# 1. インデックス作成（デフォルト: ./src ディレクトリ、4MB制限、4ワーカー）
+py codex_review_severity.py index
+
+# オプション指定の例
+py codex_review_severity.py index --max-file-mb 4 --worker-count 4
+
+# 特定言語を除外する場合
+py codex_review_severity.py index --exclude-langs delphi java
 
 # カスタムソースディレクトリ指定
 py codex_review_severity.py index --src-dir ./custom/path
