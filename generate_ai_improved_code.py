@@ -25,7 +25,7 @@ generate_ai_improved_code.py - AI改善コード生成ツール
     # 進捗から再開
     python generate_ai_improved_code.py reports/完全レポート.md --resume
 
-バージョン: 1.1.0 (100点満点改善版)
+バージョン: 1.2.0 (Anthropic統合修正版)
 """
 from __future__ import annotations
 import argparse
@@ -424,11 +424,15 @@ def call_llm_for_improvement(
 
 def call_anthropic(prompt: str) -> Optional[str]:
     """Claude APIで改善コード生成（エラーハンドリング強化）"""
+    if not ANTHROPIC_AVAILABLE:
+        raise ImportError("anthropic module not available")
+
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
         raise ValueError("ANTHROPIC_API_KEY not set")
 
-    client = anthropic.Anthropic(api_key=api_key)
+    import anthropic as anthropic_module
+    client = anthropic_module.Anthropic(api_key=api_key)
 
     try:
         response = client.messages.create(
@@ -437,7 +441,7 @@ def call_anthropic(prompt: str) -> Optional[str]:
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            timeout=60.0  # タイムアウト設定
+            timeout=180.0  # タイムアウト設定（大きなファイル対応で延長）
         )
 
         if response.content and len(response.content) > 0:
@@ -448,18 +452,22 @@ def call_anthropic(prompt: str) -> Optional[str]:
         logger.warning("Claude returned empty response")
         return None
 
-    except anthropic.APIError as e:
+    except anthropic_module.APIError as e:
         logger.error(f"Claude API error: {e}")
         raise
 
 
 def call_openai(prompt: str) -> Optional[str]:
     """OpenAI APIで改善コード生成（エラーハンドリング強化）"""
+    if not OPENAI_AVAILABLE:
+        raise ImportError("openai module not available")
+
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise ValueError("OPENAI_API_KEY not set")
 
-    client = openai.OpenAI(api_key=api_key)
+    import openai as openai_module
+    client = openai_module.OpenAI(api_key=api_key)
 
     try:
         response = client.chat.completions.create(
@@ -469,7 +477,7 @@ def call_openai(prompt: str) -> Optional[str]:
                 {"role": "user", "content": prompt}
             ],
             max_tokens=MAX_LLM_TOKENS,
-            timeout=60.0  # タイムアウト設定
+            timeout=180.0  # タイムアウト設定（大きなファイル対応で延長）
         )
 
         if response.choices and len(response.choices) > 0:
@@ -480,7 +488,7 @@ def call_openai(prompt: str) -> Optional[str]:
         logger.warning("OpenAI returned empty response")
         return None
 
-    except openai.APIError as e:
+    except openai_module.APIError as e:
         logger.error(f"OpenAI API error: {e}")
         raise
 
@@ -635,7 +643,7 @@ def main():
         sys.exit(1)
 
     print("="*80)
-    print("AI改善コード生成ツール v1.1.0")
+    print("AI改善コード生成ツール v1.2.0")
     print("="*80)
     print(f"入力: {report_path}")
     print(f"出力: {args.out}")

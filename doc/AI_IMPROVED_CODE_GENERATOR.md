@@ -1,7 +1,7 @@
 # AI改善コード生成ツール
 
-*バージョン: v4.1.0*
-*作成日: 2025年01月05日*
+*バージョン: v1.2.0*
+*最終更新: 2025年10月05日*
 
 ## 概要
 
@@ -275,7 +275,30 @@ ANTHROPIC_API_KEY=sk-ant-...
 UnicodeEncodeError: 'cp932' codec can't encode character
 ```
 
-**解決策**: v4.1.0で修正済み（絵文字を `[OK]` などに置換）
+**解決策**: v1.2.0で修正済み（絵文字を `[OK]` などに置換）
+
+### Q: anthropic module not available
+
+**症状**:
+```
+[ERROR] LLM API error: anthropic module not available
+```
+
+**解決策**:
+```bash
+# anthropicパッケージをインストール
+py -m pip install anthropic
+```
+
+### Q: Claude APIタイムアウト（大きなファイル）
+
+**症状**:
+```
+[ERROR] Claude API error: Request timed out
+[INFO] Retrying (1/3)...
+```
+
+**解決策**: v1.2.0でタイムアウトを180秒に延長済み。1000行以上のファイルでは処理に2-3分かかる場合があります
 
 ### Q: ファイルが見つからない
 
@@ -309,7 +332,26 @@ UnicodeEncodeError: 'cp932' codec can't encode character
 - [CLAUDE.md](../CLAUDE.md) - プロジェクト全体ガイド
 - [TECHNICAL.md](TECHNICAL.md) - 技術仕様
 
+## 変更履歴
+
+### v1.2.0 (2025-10-05)
+- **修正**: Anthropic APIインポート問題を解決（関数内インポートに変更）
+- **修正**: 環境変数読み込みタイミング問題を解決（`os.getenv()`直接呼び出し）
+- **改善**: LLMタイムアウトを60秒→180秒に延長（大きなファイル対応）
+- **テスト**: 1782行TypeScriptファイルで正常動作確認（処理時間: 110秒）
+
+### v1.1.0 (2025-01-05)
+- **改善**: ロギング機能追加（`--verbose`フラグ）
+- **改善**: リトライロジック追加（最大3回）
+- **改善**: エラーハンドリング強化
+- **修正**: Windows環境での絵文字エラー対策
+
+### v1.0.0 (2025-01-05)
+- 初回リリース
+- 完全レポートからAI改善コード生成
+- Anthropic/OpenAI両対応
+
 ---
 
-*最終更新: 2025年01月05日*
-*バージョン: v4.1.0*
+*最終更新: 2025年10月05日*
+*バージョン: v1.2.0*
