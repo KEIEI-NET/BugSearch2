@@ -1,9 +1,9 @@
-# BugSearch2 - AI Code Review System v4.3.0
+# BugSearch2 - AI Code Review System v4.4.0
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
-**NEW**: カスタムルールシステム実装！プロジェクト固有のルール定義・管理が可能に (@perfect品質達成)
+**NEW**: ルールテンプレート & 対話型ウィザード実装！簡単にカスタムルールを作成可能に (@perfect品質達成)
 
-*バージョン: v4.3.0 (Phase 4.0完了)*
+*バージョン: v4.4.0 (Phase 4.1完了)*
 *最終更新: 2025年10月12日 JST*
 
 **⚠️ セキュリティ強化版 - ReDoS脆弱性修正済み、環境変数保護強化**
@@ -49,6 +49,89 @@
 - [処理フロー図](doc/flow/code-review-system.drawio)
 - [シーケンス図](doc/sequence-diagram.drawio)
 - [クラス図](doc/class/code-review-system.drawio)
+
+## 🎉 バージョン4.4.0の新機能 - Phase 4.1完了 (@perfect品質達成)
+
+### 🧙 ルールテンプレート & 対話型ウィザード実装（2025年10月12日）
+
+1. **5種類のルールテンプレートカタログ**
+   - `forbidden-api.yml.template` - 禁止API検出（5変数）
+   - `naming-convention.yml.template` - 命名規則チェック（7変数）
+   - `security-check.yml.template` - セキュリティ脆弱性検出（5変数）
+   - `performance.yml.template` - パフォーマンス問題検出（5変数）
+   - `custom-pattern.yml.template` - 汎用カスタムパターン（8変数）
+   ```bash
+   # テンプレートディレクトリ
+   rules/templates/
+   ├── forbidden-api.yml.template
+   ├── naming-convention.yml.template
+   ├── security-check.yml.template
+   ├── performance.yml.template
+   └── custom-pattern.yml.template
+   ```
+
+2. **対話型ルール生成ウィザード（rule_wizard.py）**
+   - ステップバイステップでカスタムルール作成
+   - テンプレート選択のガイダンス
+   - 変数入力の検証とヒント表示
+   - 自動バリデーションとエラーチェック
+   ```bash
+   # 対話型でカスタムルールを作成
+   python rule_wizard.py
+
+   # ウィザードの流れ:
+   # 1. テンプレート選択
+   # 2. 変数値の入力（RULE_ID, API_NAME, SEVERITY等）
+   # 3. 入力内容の確認
+   # 4. 自動バリデーション
+   # 5. .bugsearch/rules/custom/ にルール生成
+   ```
+
+3. **RuleTemplateManager/RuleTemplateクラス**
+   - テンプレート読み込み・管理
+   - 変数抽出（{VARIABLE_NAME}形式）
+   - テンプレートレンダリング
+   - ルール生成とバリデーション統合
+   ```python
+   # プログラマティックな使用例
+   from core.rule_template import RuleTemplateManager
+
+   manager = RuleTemplateManager()
+   values = {
+       'RULE_ID': 'FORBIDDEN_LEGACY_API',
+       'API_NAME': 'LegacyDatabase',
+       'SEVERITY': '9',
+       'PATTERN': 'LegacyDatabase\\.Connect',
+       'ALTERNATIVE_API': 'ModernDatabase.ConnectAsync'
+   }
+
+   manager.create_rule_from_template(
+       'forbidden-api',
+       values,
+       Path('.bugsearch/rules/custom/forbidden-legacy-api.yml'),
+       validate=True
+   )
+   ```
+
+4. **@perfect品質達成**
+   ```bash
+   # 全テスト100%合格 (7/7成功)
+   python test/test_phase4_1_templates.py
+
+   # テスト項目:
+   # - テンプレート読み込み
+   # - 変数抽出
+   # - テンプレートレンダリング
+   # - ルール生成
+   # - バリデーション統合
+   # - 本番テンプレート確認
+   ```
+
+5. **拡張実装**
+   - RuleTemplateクラス（100行）: core/rule_template.py 22-125行
+   - RuleTemplateManagerクラス（115行）: core/rule_template.py 128-240行
+   - RuleWizardクラス（250行）: rule_wizard.py 26-325行
+   - 総追加コード: +343行（ウィザード）+240行（テンプレート管理）
 
 ## 🎉 バージョン4.3.0の新機能 - Phase 4.0完了 (@perfect品質達成)
 
@@ -960,10 +1043,11 @@ MIT License - 詳細は[LICENSE](LICENSE)参照
 ---
 
 *最終更新: 2025年10月12日 JST*
-*バージョン: v4.3.0 (Phase 4.0完了)*
+*バージョン: v4.4.0 (Phase 4.1完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.4.0 (2025年10月12日): **Phase 4.1完了 (@perfect品質達成)** - ルールテンプレート機能実装、5種類のテンプレートカタログ、対話型ルール生成ウィザード(rule_wizard.py +343行)、RuleTemplateManager/RuleTemplateクラス(core/rule_template.py +240行)、全テスト100%合格(7/7成功)
 - v4.3.0 (2025年10月12日): **Phase 4.0完了 (@perfect品質達成)** - カスタムルールシステム実装、RuleLoader/RuleValidator追加(+290行)、ルール優先順位(カスタム>コア)、ルール有効/無効管理、カスタムルールバリデーション、全テスト100%合格(11/11成功)
 - v4.2.2 (2025年10月12日): **Phase 3.3完了** - 全10YAMLルール正常動作、4カテゴリ完全サポート、技術スタック対応型解析、全テスト100%合格、@perfect品質達成
 - v4.2.1 (2025年10月12日): Phase 3.2完了 - RuleCategoryクラス実装、グローバルルール関数追加、技術スタック考慮の深刻度調整機能

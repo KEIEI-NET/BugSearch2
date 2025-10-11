@@ -1,0 +1,57 @@
+# カスタムパターンルールテンプレート
+# 使用方法: 全ての変数を実際の値に置換してください
+# {RULE_ID}, {RULE_NAME}, {DESCRIPTION}, {SEVERITY}, {CSHARP_PATTERN}, {JAVA_PATTERN}, {PYTHON_PATTERN}, {FIX_SUGGESTION}
+
+rule:
+  id: "{RULE_ID}"
+  category: "custom"
+  name: "{RULE_NAME}"
+  description: "{DESCRIPTION}"
+  base_severity: {SEVERITY}
+
+  patterns:
+    csharp:
+      - pattern: '{CSHARP_PATTERN}'
+        context: "{RULE_NAME} detected in C# code"
+
+    java:
+      - pattern: '{JAVA_PATTERN}'
+        context: "{RULE_NAME} detected in Java code"
+
+    python:
+      - pattern: '{PYTHON_PATTERN}'
+        context: "{RULE_NAME} detected in Python code"
+
+    javascript:
+      - pattern: '{CSHARP_PATTERN}'
+        context: "{RULE_NAME} detected in JavaScript code"
+
+    typescript:
+      - pattern: '{CSHARP_PATTERN}'
+        context: "{RULE_NAME} detected in TypeScript code"
+
+  fixes:
+    csharp:
+      - "{FIX_SUGGESTION}"
+      - "Review code for best practices"
+      - "Consult team coding standards"
+
+    java:
+      - "{FIX_SUGGESTION}"
+      - "Review code for best practices"
+      - "Consult team coding standards"
+
+    python:
+      - "{FIX_SUGGESTION}"
+      - "Review code for best practices"
+      - "Consult team coding standards"
+
+    javascript:
+      - "{FIX_SUGGESTION}"
+      - "Review code for best practices"
+      - "Consult team coding standards"
+
+    typescript:
+      - "{FIX_SUGGESTION}"
+      - "Review code for best practices"
+      - "Consult team coding standards"

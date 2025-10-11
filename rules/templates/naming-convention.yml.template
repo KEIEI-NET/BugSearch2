@@ -1,0 +1,47 @@
+# 命名規則チェックルールテンプレート
+# 使用方法: {RULE_ID}, {TARGET_TYPE}, {CONVENTION}, {SEVERITY}, {PATTERN}, {EXAMPLE_BEFORE}, {EXAMPLE_AFTER} を置換
+
+rule:
+  id: "{RULE_ID}"
+  category: "custom"
+  name: "{TARGET_TYPE} Naming Convention"
+  description: "Checks {TARGET_TYPE} naming follows {CONVENTION} convention"
+  base_severity: {SEVERITY}
+
+  patterns:
+    csharp:
+      - pattern: '{PATTERN}'
+        context: "{TARGET_TYPE} does not follow {CONVENTION} convention"
+
+    java:
+      - pattern: '{PATTERN}'
+        context: "{TARGET_TYPE} does not follow {CONVENTION} convention"
+
+    python:
+      - pattern: '{PATTERN}'
+        context: "{TARGET_TYPE} does not follow {CONVENTION} convention"
+
+    javascript:
+      - pattern: '{PATTERN}'
+        context: "{TARGET_TYPE} does not follow {CONVENTION} convention"
+
+  fixes:
+    csharp:
+      - "Rename to follow {CONVENTION} convention"
+      - "Example: {EXAMPLE_BEFORE} → {EXAMPLE_AFTER}"
+      - "Update all references after renaming"
+
+    java:
+      - "Rename to follow {CONVENTION} convention"
+      - "Example: {EXAMPLE_BEFORE} → {EXAMPLE_AFTER}"
+      - "Update all references after renaming"
+
+    python:
+      - "Rename to follow {CONVENTION} convention"
+      - "Example: {EXAMPLE_BEFORE} → {EXAMPLE_AFTER}"
+      - "Update all references after renaming"
+
+    javascript:
+      - "Rename to follow {CONVENTION} convention"
+      - "Example: {EXAMPLE_BEFORE} → {EXAMPLE_AFTER}"
+      - "Update all references after renaming"

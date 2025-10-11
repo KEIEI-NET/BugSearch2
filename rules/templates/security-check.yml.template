@@ -1,0 +1,56 @@
+# セキュリティチェックルールテンプレート
+# 使用方法: {RULE_ID}, {VULNERABILITY_TYPE}, {SEVERITY}, {PATTERN}, {SAFE_ALTERNATIVE} を置換
+
+rule:
+  id: "{RULE_ID}"
+  category: "security"
+  name: "{VULNERABILITY_TYPE} Vulnerability Detection"
+  description: "Detects {VULNERABILITY_TYPE} security vulnerabilities"
+  base_severity: {SEVERITY}
+
+  patterns:
+    csharp:
+      - pattern: '{PATTERN}'
+        context: "{VULNERABILITY_TYPE} vulnerability detected"
+
+    java:
+      - pattern: '{PATTERN}'
+        context: "{VULNERABILITY_TYPE} vulnerability detected"
+
+    php:
+      - pattern: '{PATTERN}'
+        context: "{VULNERABILITY_TYPE} vulnerability detected"
+
+    python:
+      - pattern: '{PATTERN}'
+        context: "{VULNERABILITY_TYPE} vulnerability detected"
+
+    javascript:
+      - pattern: '{PATTERN}'
+        context: "{VULNERABILITY_TYPE} vulnerability detected"
+
+  fixes:
+    csharp:
+      - "Use {SAFE_ALTERNATIVE} to prevent {VULNERABILITY_TYPE}"
+      - "Sanitize and validate all user inputs"
+      - "Apply proper escaping for output"
+
+    java:
+      - "Use {SAFE_ALTERNATIVE} to prevent {VULNERABILITY_TYPE}"
+      - "Sanitize and validate all user inputs"
+      - "Apply proper escaping for output"
+
+    php:
+      - "Use {SAFE_ALTERNATIVE} to prevent {VULNERABILITY_TYPE}"
+      - "Sanitize and validate all user inputs"
+      - "Apply proper escaping for output"
+
+    python:
+      - "Use {SAFE_ALTERNATIVE} to prevent {VULNERABILITY_TYPE}"
+      - "Sanitize and validate all user inputs"
+      - "Apply proper escaping for output"
+
+    javascript:
+      - "Use {SAFE_ALTERNATIVE} to prevent {VULNERABILITY_TYPE}"
+      - "Sanitize and validate all user inputs"
+      - "Apply proper escaping for output"

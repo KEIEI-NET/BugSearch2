@@ -1,0 +1,47 @@
+# 禁止API検出ルールテンプレート
+# 使用方法: {RULE_ID}, {API_NAME}, {SEVERITY}, {PATTERN}, {ALTERNATIVE_API} を実際の値に置換
+
+rule:
+  id: "{RULE_ID}"
+  category: "custom"
+  name: "{API_NAME} Usage Detection"
+  description: "Detects usage of {API_NAME} which is forbidden in this project"
+  base_severity: {SEVERITY}
+
+  patterns:
+    csharp:
+      - pattern: '{PATTERN}'
+        context: "{API_NAME} usage detected"
+
+    java:
+      - pattern: '{PATTERN}'
+        context: "{API_NAME} usage detected"
+
+    python:
+      - pattern: '{PATTERN}'
+        context: "{API_NAME} usage detected"
+
+    javascript:
+      - pattern: '{PATTERN}'
+        context: "{API_NAME} usage detected"
+
+  fixes:
+    csharp:
+      - "Replace {API_NAME} with the recommended alternative"
+      - "Use {ALTERNATIVE_API} instead"
+      - "Refactor code to avoid dependency on {API_NAME}"
+
+    java:
+      - "Replace {API_NAME} with the recommended alternative"
+      - "Use {ALTERNATIVE_API} instead"
+      - "Refactor code to avoid dependency on {API_NAME}"
+
+    python:
+      - "Replace {API_NAME} with the recommended alternative"
+      - "Use {ALTERNATIVE_API} instead"
+      - "Refactor code to avoid dependency on {API_NAME}"
+
+    javascript:
+      - "Replace {API_NAME} with the recommended alternative"
+      - "Use {ALTERNATIVE_API} instead"
+      - "Refactor code to avoid dependency on {API_NAME}"

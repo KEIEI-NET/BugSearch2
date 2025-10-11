@@ -2,7 +2,7 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.3.0 (Phase 4.0完了)*
+*バージョン: v4.4.0 (Phase 4.1完了)*
 *最終更新: 2025年10月12日 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
@@ -10,7 +10,57 @@
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
-### 🎯 Phase 4.0完了: カスタムルールシステム (@perfect品質達成)
+### 🎯 Phase 4.1完了: ルールテンプレート & 対話型ウィザード (@perfect品質達成)
+
+**Phase 4.1新機能 (v4.4.0):**
+- ✅ **ルールテンプレート機能** (5種類のテンプレートカタログ完備)
+- ✅ **対話型ルール生成ウィザード** (`rule_wizard.py` - ステップバイステップでルール作成)
+- ✅ **RuleTemplateManagerクラス** (テンプレート読み込み・変数置換・ルール生成)
+- ✅ **全テスト100%合格** (`test/test_phase4_1_templates.py` - 7テスト全成功)
+
+**テンプレートカタログ:**
+```
+rules/templates/
+├── forbidden-api.yml.template      # 禁止API検出 (5変数)
+├── naming-convention.yml.template  # 命名規則チェック (7変数)
+├── security-check.yml.template     # セキュリティチェック (5変数)
+├── performance.yml.template        # パフォーマンスルール (5変数)
+└── custom-pattern.yml.template     # カスタムパターン (8変数)
+```
+
+**使用例 - 対話型ウィザード:**
+```bash
+# 対話型でカスタムルールを作成
+python rule_wizard.py
+
+# ステップバイステップで以下を入力:
+# 1. テンプレート選択
+# 2. 変数入力（RULE_ID, API_NAME, SEVERITY等）
+# 3. 自動バリデーション
+# 4. .bugsearch/rules/custom/ にルール生成
+```
+
+**使用例 - プログラマティック:**
+```python
+from core.rule_template import RuleTemplateManager
+
+manager = RuleTemplateManager()
+values = {
+    'RULE_ID': 'FORBIDDEN_LEGACY_API',
+    'API_NAME': 'LegacyDatabase',
+    'SEVERITY': '9',
+    'PATTERN': 'LegacyDatabase\\\\.Connect',
+    'ALTERNATIVE_API': 'ModernDatabase.ConnectAsync'
+}
+
+manager.create_rule_from_template(
+    'forbidden-api',
+    values,
+    Path('.bugsearch/rules/custom/forbidden-legacy-api.yml')
+)
+```
+
+### 📊 Phase 4.0完了: カスタムルールシステム (@perfect品質達成)
 
 **Phase 4.0新機能 (v4.3.0):**
 - ✅ **プロジェクト固有のカスタムルール** (`.bugsearch/rules/` ディレクトリサポート)
@@ -197,6 +247,9 @@ python test/test_multiple_rules.py
 # Phase 4.0 カスタムルールシステムテスト (@perfect品質: 11/11成功)
 python test/test_phase4_custom_rules.py
 
+# Phase 4.1 ルールテンプレート機能テスト (@perfect品質: 7/7成功)
+python test/test_phase4_1_templates.py
+
 # コアテストの実行
 python test/test_gpt5_codex.py
 python test/test_solid_violations.py
@@ -361,6 +414,7 @@ pip install --only-binary :all: scikit-learn
 ├── apply_improvements_from_report.py # AI改善自動適用（v4.0新機能）
 ├── extract_and_batch_parallel*.py    # 並列処理版スクリプト
 ├── stack_generator.py                # 技術スタック設定生成（Phase 2新機能）
+├── rule_wizard.py                    # 対話型ルール生成ウィザード（Phase 4.1新機能）
 ├── batch_config.json                 # 設定ファイル
 ├── .env                              # 環境変数（要作成）
 ├── .bugsearch.yml                    # プロジェクト技術スタック設定（自動生成）
@@ -374,30 +428,37 @@ pip install --only-binary :all: scikit-learn
 │       ├── security/                 # セキュリティルール拡張
 │       └── disabled.yml              # 無効化ルール一覧
 │
-├── core/                             # ⭐ コアモジュール（Phase 1-2）
+├── core/                             # ⭐ コアモジュール（Phase 1-4）
 │   ├── __init__.py                   # モジュール初期化
 │   ├── models.py                     # データモデル（TechStack, ProjectConfig, Rule）
 │   ├── project_config.py             # YAML設定読み込み
 │   ├── rule_engine.py                # ルールベース解析エンジン
+│   ├── rule_template.py              # ルールテンプレート管理（Phase 4.1）
 │   ├── tech_stack_detector.py        # 技術スタック自動検出（Phase 2）
 │   └── encoding_handler.py           # マルチエンコーディング対応
 │
-├── rules/                            # ⭐ YAMLルール定義（Phase 3完了）
-│   └── core/
-│       ├── database/
-│       │   ├── n-plus-one.yml        # N+1問題検出（Phase 1）
-│       │   ├── select-star.yml       # SELECT * 検出（Phase 3）
-│       │   └── multiple-join.yml     # 多重JOIN検出（Phase 3）
-│       ├── security/
-│       │   ├── sql-injection.yml     # SQLインジェクション（Phase 3）
-│       │   ├── xss-vulnerability.yml # XSS脆弱性（Phase 3）
-│       │   └── float-money.yml       # 金額計算float検出（Phase 3）
-│       ├── solid/
-│       │   ├── large-class.yml       # 巨大クラス検出（Phase 3）
-│       │   └── large-interface.yml   # 巨大IF検出（Phase 3）
-│       └── performance/
-│           ├── memory-leak.yml       # メモリリーク検出（Phase 3）
-│           └── goroutine-leak.yml    # Goroutineリーク検出（Phase 3）
+├── rules/                            # ⭐ YAMLルール定義（Phase 3-4完了）
+│   ├── core/                         # コアルール
+│   │   ├── database/
+│   │   │   ├── n-plus-one.yml        # N+1問題検出（Phase 1）
+│   │   │   ├── select-star.yml       # SELECT * 検出（Phase 3）
+│   │   │   └── multiple-join.yml     # 多重JOIN検出（Phase 3）
+│   │   ├── security/
+│   │   │   ├── sql-injection.yml     # SQLインジェクション（Phase 3）
+│   │   │   ├── xss-vulnerability.yml # XSS脆弱性（Phase 3）
+│   │   │   └── float-money.yml       # 金額計算float検出（Phase 3）
+│   │   ├── solid/
+│   │   │   ├── large-class.yml       # 巨大クラス検出（Phase 3）
+│   │   │   └── large-interface.yml   # 巨大IF検出（Phase 3）
+│   │   └── performance/
+│   │       ├── memory-leak.yml       # メモリリーク検出（Phase 3）
+│   │       └── goroutine-leak.yml    # Goroutineリーク検出（Phase 3）
+│   └── templates/                    # ⭐ ルールテンプレート（Phase 4.1）
+│       ├── forbidden-api.yml.template      # 禁止API検出
+│       ├── naming-convention.yml.template  # 命名規則チェック
+│       ├── security-check.yml.template     # セキュリティチェック
+│       ├── performance.yml.template        # パフォーマンス
+│       └── custom-pattern.yml.template     # カスタムパターン
 │
 ├── config/                           # 設定ファイルサンプル
 │   └── default.bugsearch.yml         # デフォルト設定テンプレート
@@ -474,10 +535,11 @@ pip install --only-binary :all: scikit-learn
 ---
 
 *最終更新: 2025年10月12日 JST*
-*バージョン: v4.3.0 (Phase 4.0完了)*
+*バージョン: v4.4.0 (Phase 4.1完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.4.0 (2025年10月12日): **Phase 4.1完了 (@perfect品質達成)** - ルールテンプレート機能実装、5種類のテンプレートカタログ(forbidden-api, naming-convention, security-check, performance, custom-pattern)、対話型ルール生成ウィザード(rule_wizard.py +343行)、RuleTemplateManager/RuleTemplateクラス(core/rule_template.py +240行)、全テスト100%合格(7/7成功、test/test_phase4_1_templates.py)
 - v4.3.0 (2025年10月12日): **Phase 4.0完了 (@perfect品質達成)** - カスタムルールシステム実装、RuleLoader/RuleValidator追加(core/rule_engine.py +290行)、ルール優先順位(カスタム>コア)、ルール有効/無効管理、カスタムルールバリデーション、全テスト100%合格(11/11成功)
 - v4.2.2 (2025年10月12日): **Phase 3.3完了 (@perfect品質達成)** - 全10YAMLルール正常動作、4カテゴリ完全サポート、全テスト100%合格(8/8成功、スキップ0)、YAML正規表現エスケープ修正(select-star, sql-injection, xss-vulnerability, float-money)、セキュリティルール動作確認
 - v4.2.1 (2025年10月12日): **Phase 3.2完了** - RuleCategoryクラス、グローバルルール関数(load_all_rules, group_rules_by_category, adjust_severity_by_tech_stack)実装、複数ルール管理テスト(8テスト、6成功+2スキップ)、技術スタック考慮の深刻度調整(Elasticsearch使用時N+1深刻度10→7)

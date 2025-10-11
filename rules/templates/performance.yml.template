@@ -1,0 +1,56 @@
+# パフォーマンスルールテンプレート
+# 使用方法: {RULE_ID}, {ISSUE_TYPE}, {SEVERITY}, {PATTERN}, {OPTIMIZED_APPROACH} を置換
+
+rule:
+  id: "{RULE_ID}"
+  category: "performance"
+  name: "{ISSUE_TYPE} Performance Issue"
+  description: "Detects {ISSUE_TYPE} that can cause performance degradation"
+  base_severity: {SEVERITY}
+
+  patterns:
+    csharp:
+      - pattern: '{PATTERN}'
+        context: "{ISSUE_TYPE} performance issue detected"
+
+    java:
+      - pattern: '{PATTERN}'
+        context: "{ISSUE_TYPE} performance issue detected"
+
+    python:
+      - pattern: '{PATTERN}'
+        context: "{ISSUE_TYPE} performance issue detected"
+
+    javascript:
+      - pattern: '{PATTERN}'
+        context: "{ISSUE_TYPE} performance issue detected"
+
+    go:
+      - pattern: '{PATTERN}'
+        context: "{ISSUE_TYPE} performance issue detected"
+
+  fixes:
+    csharp:
+      - "Optimize using {OPTIMIZED_APPROACH}"
+      - "Consider caching if data is accessed frequently"
+      - "Use asynchronous operations where applicable"
+
+    java:
+      - "Optimize using {OPTIMIZED_APPROACH}"
+      - "Consider caching if data is accessed frequently"
+      - "Use asynchronous operations where applicable"
+
+    python:
+      - "Optimize using {OPTIMIZED_APPROACH}"
+      - "Consider caching if data is accessed frequently"
+      - "Use asynchronous operations where applicable"
+
+    javascript:
+      - "Optimize using {OPTIMIZED_APPROACH}"
+      - "Consider caching if data is accessed frequently"
+      - "Use asynchronous operations where applicable"
+
+    go:
+      - "Optimize using {OPTIMIZED_APPROACH}"
+      - "Consider caching if data is accessed frequently"
+      - "Use goroutines for concurrent operations"
