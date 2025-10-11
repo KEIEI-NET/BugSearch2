@@ -324,6 +324,307 @@ class RuleEngine:
 
 
 # ========================================
+# Phase 4.0: カスタムルールシステム
+# ========================================
+
+class RuleLoader:
+    """
+    カスタムルールをサポートする拡張ルールローダー
+
+    Phase 4.0の新機能:
+    - プロジェクト固有のカスタムルール (.bugsearch/rules/)
+    - ルール優先順位 (カスタム > コア)
+    - ルール無効化 (disabled.yml)
+    """
+
+    def __init__(self, project_root: Path = Path(".")):
+        """
+        初期化
+
+        Args:
+            project_root: プロジェクトのルートディレクトリ
+        """
+        self.project_root = project_root
+        self.core_rules_dir = Path("rules")
+        self.custom_rules_dir = project_root / ".bugsearch" / "rules"
+        self.disabled_rules_file = self.custom_rules_dir / "disabled.yml"
+
+    def load_all_rules(self, include_custom: bool = True) -> List[Rule]:
+        """
+        全ルールを読み込み（コア + カスタム）
+
+        Args:
+            include_custom: カスタムルールを含めるか
+
+        Returns:
+            読み込まれたルールのリスト
+
+        優先順位:
+            1. カスタムルール (.bugsearch/rules/)
+            2. コアルール (rules/)
+
+        無効化:
+            - disabled.yml に記載されたルールはスキップ
+        """
+        # 無効化設定を読み込み
+        disabled = self._load_disabled_config()
+
+        # コアルール読み込み
+        core_engine = RuleEngine(rules_dir=str(self.core_rules_dir))
+        core_rules = core_engine.rules
+        print(f"[INFO] コアルール: {len(core_rules)}個読み込み")
+
+        # カスタムルール読み込み
+        custom_rules = []
+        if include_custom and self.custom_rules_dir.exists():
+            custom_engine = RuleEngine(rules_dir=str(self.custom_rules_dir))
+            custom_rules = [r for r in custom_engine.rules
+                           if not str(r.id).endswith('disabled')]  # disabled.yml自体を除外
+            if custom_rules:
+                print(f"[INFO] カスタムルール: {len(custom_rules)}個読み込み")
+
+        # ルールをマージ（カスタムルールで上書き）
+        all_rules = self._merge_rules(core_rules, custom_rules)
+
+        # 無効化されたルールを除外
+        active_rules = [r for r in all_rules if not self._is_disabled(r, disabled)]
+
+        disabled_count = len(all_rules) - len(active_rules)
+        if disabled_count > 0:
+            print(f"[INFO] {disabled_count}個のルールが無効化されています")
+
+        return active_rules
+
+    def _load_disabled_config(self) -> Dict:
+        """無効化設定を読み込み"""
+        if not self.disabled_rules_file.exists():
+            return {'disabled_rules': []}
+
+        try:
+            with open(self.disabled_rules_file, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+                return config if config else {'disabled_rules': []}
+        except Exception as e:
+            print(f"[WARNING] disabled.yml読み込みエラー: {e}")
+            return {'disabled_rules': []}
+
+    def _merge_rules(self, core: List[Rule], custom: List[Rule]) -> List[Rule]:
+        """
+        ルールをマージ
+
+        同じIDのルールがある場合、カスタムルールで上書き
+        """
+        rules_dict = {r.id: r for r in core}
+
+        for custom_rule in custom:
+            if custom_rule.id in rules_dict:
+                print(f"[INFO] カスタムルール '{custom_rule.id}' がコアルールを上書きします")
+            rules_dict[custom_rule.id] = custom_rule
+
+        return list(rules_dict.values())
+
+    def _is_disabled(self, rule: Rule, disabled_config: Dict) -> bool:
+        """ルールが無効化されているか確認"""
+        disabled_list = disabled_config.get('disabled_rules', [])
+
+        for item in disabled_list:
+            if isinstance(item, str):
+                # ルールID指定
+                if rule.id == item:
+                    return True
+            elif isinstance(item, dict):
+                # カテゴリ指定
+                if item.get('category') == rule.category:
+                    return True
+                # 特定ルールの無効化
+                if item.get('rule') == rule.id:
+                    # TODO: パス指定の無効化は将来実装
+                    return True
+
+        return False
+
+    def save_disabled_config(self, disabled_rules: List[str]):
+        """無効化設定を保存"""
+        self.custom_rules_dir.mkdir(parents=True, exist_ok=True)
+
+        config = {'disabled_rules': disabled_rules}
+
+        with open(self.disabled_rules_file, 'w', encoding='utf-8') as f:
+            yaml.dump(config, f, allow_unicode=True, default_flow_style=False)
+
+        print(f"[OK] 無効化設定を保存しました: {self.disabled_rules_file}")
+
+    def disable_rule(self, rule_id: str):
+        """ルールを無効化"""
+        config = self._load_disabled_config()
+        disabled_list = config.get('disabled_rules', [])
+
+        if rule_id not in disabled_list:
+            disabled_list.append(rule_id)
+            self.save_disabled_config(disabled_list)
+            print(f"[OK] ルール '{rule_id}' を無効化しました")
+        else:
+            print(f"[INFO] ルール '{rule_id}' は既に無効化されています")
+
+    def enable_rule(self, rule_id: str):
+        """ルールを有効化"""
+        config = self._load_disabled_config()
+        disabled_list = config.get('disabled_rules', [])
+
+        if rule_id in disabled_list:
+            disabled_list.remove(rule_id)
+            self.save_disabled_config(disabled_list)
+            print(f"[OK] ルール '{rule_id}' を有効化しました")
+        else:
+            print(f"[INFO] ルール '{rule_id}' は既に有効化されています")
+
+
+class RuleValidator:
+    """
+    カスタムルールのバリデーション
+
+    Phase 4.0の新機能:
+    - ルールYAMLファイルの構文チェック
+    - 必須フィールドの検証
+    - 正規表現パターンの妥当性チェック
+    """
+
+    VALID_CATEGORIES = ['database', 'security', 'solid', 'performance', 'custom']
+    VALID_LANGUAGES = ['csharp', 'java', 'php', 'javascript', 'typescript', 'python', 'go', 'cpp', 'c']
+
+    def validate_rule(self, rule_file: Path) -> List[str]:
+        """
+        ルールファイルをバリデーション
+
+        Args:
+            rule_file: ルールファイルのパス
+
+        Returns:
+            エラーメッセージのリスト（空なら正常）
+        """
+        errors = []
+
+        try:
+            with open(rule_file, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+
+            # 基本構造チェック
+            if not data:
+                errors.append("YAMLファイルが空です")
+                return errors
+
+            if 'rule' not in data:
+                errors.append("'rule'キーが見つかりません")
+                return errors
+
+            rule = data['rule']
+
+            # 必須フィールドチェック
+            errors.extend(self._validate_required_fields(rule))
+
+            # IDフォーマットチェック
+            if 'id' in rule:
+                errors.extend(self._validate_id_format(rule['id']))
+
+            # カテゴリチェック
+            if 'category' in rule:
+                errors.extend(self._validate_category(rule['category']))
+
+            # 深刻度チェック
+            if 'base_severity' in rule:
+                errors.extend(self._validate_severity(rule['base_severity']))
+
+            # パターンチェック
+            if 'patterns' in rule:
+                errors.extend(self._validate_patterns(rule['patterns']))
+
+        except yaml.YAMLError as e:
+            errors.append(f"YAML構文エラー: {e}")
+        except Exception as e:
+            errors.append(f"予期しないエラー: {e}")
+
+        return errors
+
+    def _validate_required_fields(self, rule: Dict) -> List[str]:
+        """必須フィールドの検証"""
+        errors = []
+        required_fields = ['id', 'category', 'name', 'description', 'base_severity', 'patterns']
+
+        for field in required_fields:
+            if field not in rule:
+                errors.append(f"必須フィールド '{field}' がありません")
+
+        return errors
+
+    def _validate_id_format(self, rule_id: str) -> List[str]:
+        """IDフォーマットの検証"""
+        errors = []
+
+        if not rule_id.isupper():
+            errors.append(f"ルールID '{rule_id}' は大文字で定義してください（例: CUSTOM_MY_RULE）")
+
+        if not re.match(r'^[A-Z_]+$', rule_id):
+            errors.append(f"ルールID '{rule_id}' は大文字とアンダースコアのみ使用可能です")
+
+        return errors
+
+    def _validate_category(self, category: str) -> List[str]:
+        """カテゴリの検証"""
+        errors = []
+
+        if category not in self.VALID_CATEGORIES:
+            errors.append(f"無効なカテゴリ: {category} (有効: {', '.join(self.VALID_CATEGORIES)})")
+
+        return errors
+
+    def _validate_severity(self, severity: Any) -> List[str]:
+        """深刻度の検証"""
+        errors = []
+
+        if not isinstance(severity, int):
+            errors.append(f"深刻度は整数で指定してください: {severity}")
+        elif severity < 1 or severity > 10:
+            errors.append(f"深刻度は1-10の範囲で指定してください: {severity}")
+
+        return errors
+
+    def _validate_patterns(self, patterns: Dict) -> List[str]:
+        """パターンの検証"""
+        errors = []
+
+        if not isinstance(patterns, dict):
+            errors.append("パターンは辞書形式で定義してください")
+            return errors
+
+        for language, pattern_list in patterns.items():
+            # 言語チェック
+            if language not in self.VALID_LANGUAGES:
+                errors.append(f"未サポート言語: {language} (有効: {', '.join(self.VALID_LANGUAGES)})")
+
+            # パターンリストチェック
+            if not isinstance(pattern_list, list):
+                errors.append(f"{language}: パターンはリスト形式で定義してください")
+                continue
+
+            for i, pattern in enumerate(pattern_list):
+                if not isinstance(pattern, dict):
+                    errors.append(f"{language}[{i}]: パターンは辞書形式で定義してください")
+                    continue
+
+                if 'pattern' not in pattern:
+                    errors.append(f"{language}[{i}]: 'pattern'フィールドが必須です")
+
+                # 正規表現の妥当性チェック
+                if 'pattern' in pattern:
+                    try:
+                        re.compile(pattern['pattern'])
+                    except re.error as e:
+                        errors.append(f"{language}[{i}]: 無効な正規表現: {e}")
+
+        return errors
+
+
+# ========================================
 # Phase 3.2: グローバル関数API
 # ========================================
 

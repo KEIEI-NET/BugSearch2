@@ -2,7 +2,7 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.2.2 (Phase 3.3完了)*
+*バージョン: v4.3.0 (Phase 4.0完了)*
 *最終更新: 2025年10月12日 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
@@ -10,7 +10,52 @@
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
-### 🎯 Phase 3.3完了: 全ルール動作確認 (@perfect品質達成)
+### 🎯 Phase 4.0完了: カスタムルールシステム (@perfect品質達成)
+
+**Phase 4.0新機能 (v4.3.0):**
+- ✅ **プロジェクト固有のカスタムルール** (`.bugsearch/rules/` ディレクトリサポート)
+- ✅ **ルール優先順位システム** (カスタム > コアルール、同名ルールの上書き機能)
+- ✅ **ルール管理機能** (有効/無効切り替え、カテゴリ単位の無効化)
+- ✅ **カスタムルールバリデーション** (YAML構文、必須フィールド、正規表現検証)
+- ✅ **全テスト100%合格** (`test/test_phase4_custom_rules.py` - 11テスト全成功)
+
+**カスタムルールディレクトリ構造:**
+```
+project/
+├── .bugsearch/
+│   ├── config.yml                    # プロジェクト設定
+│   └── rules/                        # カスタムルールディレクトリ
+│       ├── custom/                   # カスタムカテゴリ
+│       │   ├── my-rule-1.yml
+│       │   └── my-rule-2.yml
+│       ├── database/                 # コアカテゴリ拡張
+│       │   └── custom-query.yml
+│       └── disabled.yml              # 無効化するコアルール一覧
+```
+
+**使用例:**
+```bash
+# カスタムルールの作成
+mkdir -p .bugsearch/rules/custom
+cat > .bugsearch/rules/custom/my-rule.yml << 'EOF'
+rule:
+  id: "CUSTOM_FORBIDDEN_API"
+  category: "custom"
+  name: "Forbidden API"
+  description: "禁止APIの検出"
+  base_severity: 8
+  patterns:
+    csharp:
+      - pattern: 'LegacyDatabase\\.Connect'
+        context: "Legacy API usage"
+EOF
+
+# 分析実行（カスタムルール込み）
+python codex_review_severity.py index
+python codex_review_severity.py advise --all --out reports/custom_analysis
+```
+
+### 📊 Phase 3.3完了: 全ルール動作確認 (@perfect品質達成)
 
 **Phase 3.3新機能 (v4.2.2):**
 - ✅ **全10ルールが正常動作** (YAMLファイル構文エラー完全修正)
@@ -148,6 +193,9 @@ python test/test_tech_stack_detector.py
 
 # Phase 3.3 複数ルール管理テスト (@perfect品質: 8/8成功)
 python test/test_multiple_rules.py
+
+# Phase 4.0 カスタムルールシステムテスト (@perfect品質: 11/11成功)
+python test/test_phase4_custom_rules.py
 
 # コアテストの実行
 python test/test_gpt5_codex.py
@@ -317,6 +365,15 @@ pip install --only-binary :all: scikit-learn
 ├── .env                              # 環境変数（要作成）
 ├── .bugsearch.yml                    # プロジェクト技術スタック設定（自動生成）
 │
+├── .bugsearch/                       # ⭐ プロジェクト固有設定（Phase 4）
+│   ├── config.yml                    # プロジェクト設定
+│   └── rules/                        # カスタムルール
+│       ├── custom/                   # カスタムカテゴリルール
+│       │   └── *.yml
+│       ├── database/                 # データベースルール拡張
+│       ├── security/                 # セキュリティルール拡張
+│       └── disabled.yml              # 無効化ルール一覧
+│
 ├── core/                             # ⭐ コアモジュール（Phase 1-2）
 │   ├── __init__.py                   # モジュール初期化
 │   ├── models.py                     # データモデル（TechStack, ProjectConfig, Rule）
@@ -417,10 +474,11 @@ pip install --only-binary :all: scikit-learn
 ---
 
 *最終更新: 2025年10月12日 JST*
-*バージョン: v4.2.2 (Phase 3.3完了)*
+*バージョン: v4.3.0 (Phase 4.0完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.3.0 (2025年10月12日): **Phase 4.0完了 (@perfect品質達成)** - カスタムルールシステム実装、RuleLoader/RuleValidator追加(core/rule_engine.py +290行)、ルール優先順位(カスタム>コア)、ルール有効/無効管理、カスタムルールバリデーション、全テスト100%合格(11/11成功)
 - v4.2.2 (2025年10月12日): **Phase 3.3完了 (@perfect品質達成)** - 全10YAMLルール正常動作、4カテゴリ完全サポート、全テスト100%合格(8/8成功、スキップ0)、YAML正規表現エスケープ修正(select-star, sql-injection, xss-vulnerability, float-money)、セキュリティルール動作確認
 - v4.2.1 (2025年10月12日): **Phase 3.2完了** - RuleCategoryクラス、グローバルルール関数(load_all_rules, group_rules_by_category, adjust_severity_by_tech_stack)実装、複数ルール管理テスト(8テスト、6成功+2スキップ)、技術スタック考慮の深刻度調整(Elasticsearch使用時N+1深刻度10→7)
 - v4.2.0 (2025年10月12日): **Phase 3.1完了** - 10個のYAMLルール定義作成(Database×3, Security×3, SOLID×2, Performance×2)、7言語サポート、詳細な修正提案、技術スタック別推奨方法

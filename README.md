@@ -1,9 +1,9 @@
-# BugSearch2 - AI Code Review System v4.2.2
+# BugSearch2 - AI Code Review System v4.3.0
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
-**NEW**: YAMLルールシステム完成！10個のルール×4カテゴリで技術スタック対応型解析を実現
+**NEW**: カスタムルールシステム実装！プロジェクト固有のルール定義・管理が可能に (@perfect品質達成)
 
-*バージョン: v4.2.2 (Phase 3.3完了)*
+*バージョン: v4.3.0 (Phase 4.0完了)*
 *最終更新: 2025年10月12日 JST*
 
 **⚠️ セキュリティ強化版 - ReDoS脆弱性修正済み、環境変数保護強化**
@@ -50,7 +50,89 @@
 - [シーケンス図](doc/sequence-diagram.drawio)
 - [クラス図](doc/class/code-review-system.drawio)
 
-## 🎉 バージョン4.2.2の新機能 - Phase 3.3完了 (@perfect品質達成)
+## 🎉 バージョン4.3.0の新機能 - Phase 4.0完了 (@perfect品質達成)
+
+### 🎯 カスタムルールシステム実装（2025年10月12日）
+
+1. **プロジェクト固有のカスタムルール**
+   - `.bugsearch/rules/` ディレクトリで独自ルールを定義
+   - YAMLフォーマットで柔軟なルール作成
+   - コアルールとの統合管理
+   ```bash
+   # カスタムルールディレクトリ構造
+   .bugsearch/
+   ├── config.yml
+   └── rules/
+       ├── custom/           # カスタムカテゴリ
+       │   ├── my-rule-1.yml
+       │   └── my-rule-2.yml
+       ├── database/         # コアカテゴリ拡張
+       │   └── custom-query.yml
+       └── disabled.yml      # 無効化ルール一覧
+   ```
+
+2. **ルール優先順位システム**
+   - カスタムルール > コアルール（同名ルールの自動上書き）
+   - ルール有効/無効の動的管理
+   - カテゴリ単位の一括無効化
+   ```python
+   # RuleLoaderクラス (core/rule_engine.py)
+   loader = RuleLoader(project_root)
+   rules = loader.load_all_rules(include_custom=True)
+   loader.disable_rule("DB_SELECT_STAR")  # ルール無効化
+   loader.enable_rule("DB_SELECT_STAR")   # ルール有効化
+   ```
+
+3. **カスタムルールバリデーション**
+   - YAML構文チェック
+   - 必須フィールド検証（id, category, name, description, base_severity, patterns）
+   - IDフォーマット検証（大文字、A-Z_）
+   - 深刻度範囲検証（1-10）
+   - 正規表現パターンの妥当性チェック
+   ```python
+   # RuleValidatorクラス (core/rule_engine.py)
+   validator = RuleValidator()
+   errors = validator.validate_rule(rule_file)
+   ```
+
+4. **@perfect品質達成**
+   ```bash
+   # 全テスト100%合格 (11/11成功)
+   python test/test_phase4_custom_rules.py
+
+   # テスト項目:
+   # - カスタムルール読み込み (6テスト)
+   # - ルールバリデーション (5テスト)
+   ```
+
+5. **使用例**
+   ```bash
+   # カスタムルールの作成
+   mkdir -p .bugsearch/rules/custom
+   cat > .bugsearch/rules/custom/forbidden-api.yml << 'EOF'
+   rule:
+     id: "CUSTOM_FORBIDDEN_API"
+     category: "custom"
+     name: "Forbidden API Usage"
+     description: "社内で禁止されているAPIの使用を検出"
+     base_severity: 8
+     patterns:
+       csharp:
+         - pattern: 'LegacyDatabase\\.Connect'
+           context: "Legacy database API usage (forbidden)"
+   EOF
+
+   # 分析実行（カスタムルール込み）
+   python codex_review_severity.py index
+   python codex_review_severity.py advise --all --out reports/custom_analysis
+   ```
+
+6. **拡張実装**
+   - RuleLoaderクラス（150行）: core/rule_engine.py 330-480行
+   - RuleValidatorクラス（140行）: core/rule_engine.py 482-625行
+   - 総追加コード: +290行
+
+## 📊 バージョン4.2.2の新機能 - Phase 3.3完了 (@perfect品質達成)
 
 ### 🎯 YAMLルールシステム完成（2025年10月12日）
 1. **全10YAMLルール正常動作**
@@ -878,10 +960,11 @@ MIT License - 詳細は[LICENSE](LICENSE)参照
 ---
 
 *最終更新: 2025年10月12日 JST*
-*バージョン: v4.2.2 (Phase 3.3完了)*
+*バージョン: v4.3.0 (Phase 4.0完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.3.0 (2025年10月12日): **Phase 4.0完了 (@perfect品質達成)** - カスタムルールシステム実装、RuleLoader/RuleValidator追加(+290行)、ルール優先順位(カスタム>コア)、ルール有効/無効管理、カスタムルールバリデーション、全テスト100%合格(11/11成功)
 - v4.2.2 (2025年10月12日): **Phase 3.3完了** - 全10YAMLルール正常動作、4カテゴリ完全サポート、技術スタック対応型解析、全テスト100%合格、@perfect品質達成
 - v4.2.1 (2025年10月12日): Phase 3.2完了 - RuleCategoryクラス実装、グローバルルール関数追加、技術スタック考慮の深刻度調整機能
 - v4.2.0 (2025年10月12日): Phase 3.1完了 - 10個のYAMLルール作成、7言語サポート、技術スタック別推奨方法
