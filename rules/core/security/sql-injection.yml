@@ -10,16 +10,16 @@ rule:
   # 言語ごとの検出パターン
   patterns:
     php:
-      - pattern: '\$_(GET|POST|REQUEST|COOKIE)\s*\[[^\]]+\][^;]*\$\w+\s*[.+]=\s*["\']SELECT'
+      - pattern: '\$_(GET|POST|REQUEST|COOKIE)\s*\[[^\]]+\][^;]*\$\w+\s*[.+]=\s*["'']SELECT'
         context: "User input directly concatenated into SQL"
 
-      - pattern: '\$\w+\s*=\s*\$_(GET|POST|REQUEST)\[[^\]]+\][^;]*mysql_query\s*\(\s*["\'].*\$\w+'
+      - pattern: '\$\w+\s*=\s*\$_(GET|POST|REQUEST)\[[^\]]+\][^;]*mysql_query\s*\(\s*["''].*\$\w+'
         context: "GET/POST param in mysql_query (deprecated)"
 
-      - pattern: '\$\w+->(query|exec)\s*\(\s*["\'].*\$_(GET|POST|REQUEST|COOKIE)'
+      - pattern: '\$\w+->(query|exec)\s*\(\s*["''].*\$_(GET|POST|REQUEST|COOKIE)'
         context: "PDO query with user input concatenation"
 
-      - pattern: 'mysqli_query\s*\([^,]+,\s*["\'].*\$_(GET|POST|REQUEST)'
+      - pattern: 'mysqli_query\s*\([^,]+,\s*["''].*\$_(GET|POST|REQUEST)'
         context: "mysqli_query with user input concatenation"
 
     csharp:
@@ -49,33 +49,33 @@ rule:
         context: "JPA native query with PathVariable concatenation"
 
     python:
-      - pattern: 'execute\s*\(\s*["\']SELECT.*["\'].*%.*request\.(GET|POST|COOKIES)'
+      - pattern: 'execute\s*\(\s*["'']SELECT.*["''].*%.*request\.(GET|POST|COOKIES)'
         context: "Python DB execute with request data formatting"
 
-      - pattern: 'execute\s*\(\s*["\'].*["\']\.format\(.*request\.'
+      - pattern: 'execute\s*\(\s*["''].*["'']\.format\(.*request\.'
         context: "execute with .format() and request data"
 
-      - pattern: 'raw\s*\([f\"\'].*\{.*request\.(GET|POST)'
+      - pattern: 'raw\s*\([f"''].*\{.*request\.(GET|POST)'
         context: "Django raw query with f-string and request data"
 
-      - pattern: 'cursor\.execute\s*\([f\"\'].*\{.*request\.args'
+      - pattern: 'cursor\.execute\s*\([f"''].*\{.*request\.args'
         context: "Flask request.args in SQL string"
 
     javascript:
       - pattern: '\.query\s*\(\s*`SELECT.*\$\{.*req\.(query|params|body)'
         context: "Node.js query with template literal and req data"
 
-      - pattern: 'connection\.(query|execute)\s*\([\'"`].*[\'"`]\s*\+.*req\.(query|params|body)'
+      - pattern: 'connection\.(query|execute)\s*\(["`].*["`]\s*\+.*req\.(query|params|body)'
         context: "MySQL/PostgreSQL query with req concatenation"
 
-      - pattern: 'sequelize\.query\s*\([\'"`].*\$\{.*req\.'
+      - pattern: 'sequelize\.query\s*\(["`].*\$\{.*req\.'
         context: "Sequelize raw query with req interpolation"
 
     typescript:
-      - pattern: 'manager\.query\s*\(<[^>]+>\s*[\'"`].*\$\{.*req\.(query|params|body)'
+      - pattern: 'manager\.query\s*\(<[^>]+>\s*["`].*\$\{.*req\.(query|params|body)'
         context: "TypeORM raw query with req data"
 
-      - pattern: 'createQueryBuilder\([^)]*\)\.where\s*\([\'"`].*\$\{.*req\.'
+      - pattern: 'createQueryBuilder\([^)]*\)\.where\s*\(["`].*\$\{.*req\.'
         context: "QueryBuilder where with req interpolation"
 
     go:

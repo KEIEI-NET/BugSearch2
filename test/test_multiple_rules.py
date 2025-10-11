@@ -30,9 +30,9 @@ class TestMultipleRules(unittest.TestCase):
         """全ルールが正しく読み込まれることを確認"""
         rules = load_all_rules(self.rules_dir)
 
-        # Phase 3.2時点: 6つのルールが正常に読み込まれる
-        # (4つのYAMLファイルは構文エラーあり - Phase 3.3で修正予定)
-        self.assertGreaterEqual(len(rules), 6, "6つ以上のルールが読み込まれるべき")
+        # Phase 3.3完了: 全10ルールが正常に読み込まれる
+        # (4つのYAMLファイルの構文エラーを修正済み)
+        self.assertGreaterEqual(len(rules), 10, "10つ以上のルールが読み込まれるべき")
 
         # 各ルールが必要な属性を持つか確認
         for rule in rules:
@@ -49,9 +49,8 @@ class TestMultipleRules(unittest.TestCase):
         rules = load_all_rules(self.rules_dir)
         categories = group_rules_by_category(rules)
 
-        # Phase 3.2時点: database, solid, performanceカテゴリは正常
-        # securityカテゴリのYAMLファイルはPhase 3.3で修正予定
-        expected_categories = ["database", "solid", "performance"]
+        # Phase 3.3完了: 全4カテゴリが正常
+        expected_categories = ["database", "solid", "performance", "security"]
 
         for category in expected_categories:
             self.assertIn(category, categories, f"カテゴリ '{category}' が見つかりません")
@@ -72,8 +71,8 @@ class TestMultipleRules(unittest.TestCase):
         db_category = categories.get("database")
         self.assertIsNotNone(db_category, "databaseカテゴリが見つかりません")
 
-        # Phase 3.2時点: N+1とMULTIPLE_JOINは正常（SELECT_STARはYAML構文エラー）
-        expected_rules = ["DB_N_PLUS_ONE", "DB_MULTIPLE_JOIN"]
+        # Phase 3.3完了: 全3つのデータベースルールが正常
+        expected_rules = ["DB_N_PLUS_ONE", "DB_MULTIPLE_JOIN", "DB_SELECT_STAR"]
         db_rule_ids = [rule.id for rule in db_category.rules]
 
         for expected_id in expected_rules:
@@ -87,12 +86,19 @@ class TestMultipleRules(unittest.TestCase):
         rules = load_all_rules(self.rules_dir)
         categories = group_rules_by_category(rules)
 
-        # Phase 3.2時点: セキュリティYAMLファイルは構文エラーあり
-        # Phase 3.3で修正予定のため、このテストはスキップ
+        # Phase 3.3完了: セキュリティYAMLファイルの構文エラーを修正済み
         sec_category = categories.get("security")
-        if sec_category is None:
-            print("⚠️  セキュリティルールはYAML構文エラーのため読み込めていません（Phase 3.3で修正予定）")
-            self.skipTest("セキュリティルールのYAML修正はPhase 3.3で対応")
+        self.assertIsNotNone(sec_category, "securityカテゴリが見つかりません")
+
+        # セキュリティルール (SQL Injection, XSS, Float Money)
+        expected_rules = ["SEC_SQL_INJECTION", "SEC_XSS", "SEC_FLOAT_MONEY"]
+        sec_rule_ids = [rule.id for rule in sec_category.rules]
+
+        for expected_id in expected_rules:
+            self.assertIn(expected_id, sec_rule_ids,
+                          f"セキュリティルール '{expected_id}' が見つかりません")
+
+        print(f"✅ セキュリティルール: {len(sec_category.rules)}個確認")
 
     def test_solid_rules(self):
         """SOLID原則関連ルールの確認"""
@@ -188,12 +194,8 @@ class TestSeverityAdjustment(unittest.TestCase):
                 select_star_rule = rule
                 break
 
-        # Phase 3.2時点: SELECT_STARルールはYAML構文エラーのため読み込めない
-        if select_star_rule is None:
-            print("⚠️  SELECT_STARルールはYAML構文エラーのため読み込めていません（Phase 3.3で修正予定）")
-            self.skipTest("SELECT_STARルールのYAML修正はPhase 3.3で対応")
-
-        # 以降は実行されない
+        # Phase 3.3完了: SELECT_STARルールのYAML構文エラーを修正済み
+        self.assertIsNotNone(select_star_rule, "SELECT_STARルールが見つかりません")
         tech_stack = TechStack(
             backend=BackendStack(language="C#", framework="ASP.NET Core"),
             databases=[DatabaseInfo(type="SQL Server", library="Entity Framework Core")]
@@ -230,7 +232,7 @@ def run_tests():
 
     # 結果サマリー
     print("\n" + "=" * 80)
-    print("📊 Phase 3.2テスト結果サマリー")
+    print("📊 Phase 3.3テスト結果サマリー")
     print("=" * 80)
     print(f"実行したテスト: {result.testsRun}")
     print(f"成功: {result.testsRun - len(result.failures) - len(result.errors)}")

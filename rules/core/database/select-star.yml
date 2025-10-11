@@ -30,40 +30,40 @@ rule:
         context: "EntityManager query with SELECT *"
 
     php:
-      - pattern: 'DB::select\s*\(\s*[\'"]\s*SELECT\s+\*'
+      - pattern: 'DB::select\s*\(\s*["'']\s*SELECT\s+\*'
         context: "Laravel raw select with SELECT *"
 
-      - pattern: '\$db->query\s*\(\s*[\'"]\s*SELECT\s+\*'
+      - pattern: '\$db->query\s*\(\s*["'']\s*SELECT\s+\*'
         context: "PDO/mysqli query with SELECT *"
 
-      - pattern: '->selectRaw\s*\(\s*[\'"]\s*\*'
+      - pattern: '->selectRaw\s*\(\s*["'']\s*\*'
         context: "Laravel selectRaw with *"
 
     javascript:
-      - pattern: '\.query\s*\(\s*[`\'"]\s*SELECT\s+\*'
+      - pattern: '\.query\s*\(\s*[`"'']\s*SELECT\s+\*'
         context: "Raw SQL query with SELECT * (Node.js)"
 
-      - pattern: 'sequelize\.query\s*\(\s*[`\'"]\s*SELECT\s+\*'
+      - pattern: 'sequelize\.query\s*\(\s*[`"'']\s*SELECT\s+\*'
         context: "Sequelize raw query with SELECT *"
 
-      - pattern: 'knex\.raw\s*\(\s*[`\'"]\s*SELECT\s+\*'
+      - pattern: 'knex\.raw\s*\(\s*[`"'']\s*SELECT\s+\*'
         context: "Knex raw query with SELECT *"
 
     typescript:
-      - pattern: '\.query\s*<[^>]+>\s*\(\s*[`\'"]\s*SELECT\s+\*'
+      - pattern: '\.query\s*<[^>]+>\s*\(\s*[`"'']\s*SELECT\s+\*'
         context: "TypeORM raw query with SELECT *"
 
       - pattern: 'prisma\.\$queryRaw\s*`\s*SELECT\s+\*'
         context: "Prisma raw query with SELECT *"
 
     python:
-      - pattern: '\.execute\s*\(\s*["\']SELECT\s+\*'
+      - pattern: '\.execute\s*\(\s*["'']SELECT\s+\*'
         context: "DB cursor execute with SELECT *"
 
-      - pattern: '\.raw\s*\(\s*["\']SELECT\s+\*'
+      - pattern: '\.raw\s*\(\s*["'']SELECT\s+\*'
         context: "Django raw query with SELECT *"
 
-      - pattern: 'session\.execute\s*\(\s*["\']SELECT\s+\*'
+      - pattern: 'session\.execute\s*\(\s*["'']SELECT\s+\*'
         context: "SQLAlchemy execute with SELECT *"
 
     go:

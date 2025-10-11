@@ -30,10 +30,10 @@ rule:
         context: "Float/Double wrapper for monetary value"
 
     php:
-      - pattern: '\$table->float\([\'"]?(price|amount|total|cost|balance|fee)'
+      - pattern: '\$table->float\(["'']?(price|amount|total|cost|balance|fee)'
         context: "Laravel migration with float money column"
 
-      - pattern: '\$table->double\([\'"]?(price|amount|total|cost)'
+      - pattern: '\$table->double\(["'']?(price|amount|total|cost)'
         context: "Laravel migration with double money column"
 
       - pattern: '(floatval|doubleval)\s*\(\s*\$\w*(price|amount|cost|total)'
@@ -53,7 +53,7 @@ rule:
       - pattern: '\w*(price|amount|total|cost|balance|fee|tax)\w*:\s*number'
         context: "TypeScript number type for money (use Decimal or bigint)"
 
-      - pattern: '@Column\(["\']float|double["\'].*\b(price|amount|cost)'
+      - pattern: '@Column\(["'']float|double["''].*\b(price|amount|cost)'
         context: "TypeORM float/double column for money"
 
       - pattern: 'price:\s*\{\s*type:\s*Number\s*\}'
