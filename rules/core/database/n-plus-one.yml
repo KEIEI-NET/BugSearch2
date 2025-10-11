@@ -1,0 +1,158 @@
+# N+1 Query Problem ルール定義
+
+rule:
+  id: "DB_N_PLUS_ONE"
+  category: "database"
+  name: "N+1 Query Problem"
+  description: "ループ内でのデータベースクエリ実行によるパフォーマンス問題"
+  base_severity: 10
+
+  # 言語ごとの検出パターン
+  patterns:
+    csharp:
+      - pattern: 'foreach\s*\([^)]+\)\s*\{[^}]*\.Where\('
+        context: "foreach loop with LINQ Where"
+
+      - pattern: 'foreach\s*\([^)]+\)\s*\{[^}]*\.FirstOrDefault\('
+        context: "foreach loop with FirstOrDefault"
+
+      - pattern: 'foreach\s*\([^)]+\)\s*\{[^}]*\.SingleOrDefault\('
+        context: "foreach loop with SingleOrDefault"
+
+      - pattern: 'foreach\s*\([^)]+\)\s*\{[^}]*\.Find\('
+        context: "foreach loop with Find"
+
+    java:
+      - pattern: 'for\s*\([^)]+\)\s*\{[^}]*\.find(One|All|By)\w*\('
+        context: "for loop with JPA find methods"
+
+      - pattern: 'forEach\([^)]+\s*->\s*\{[^}]*repository\.'
+        context: "forEach with repository call"
+
+      - pattern: 'for\s*\([^)]+\)\s*\{[^}]*entityManager\.(find|createQuery)'
+        context: "for loop with EntityManager query"
+
+    php:
+      - pattern: 'foreach\s*\([^)]+\)\s*\{[^}]*\$\w+->where\('
+        context: "foreach with Eloquent where"
+
+      - pattern: 'foreach\s*\([^)]+\)\s*\{[^}]*DB::table\('
+        context: "foreach with Query Builder"
+
+      - pattern: 'foreach\s*\([^)]+\)\s*\{[^}]*\$db->query\('
+        context: "foreach with raw query"
+
+    javascript:
+      - pattern: 'for\s*\([^)]+\)\s*\{[^}]*await\s+\w+\.findOne\('
+        context: "for loop with findOne (Mongoose/Sequelize)"
+
+      - pattern: '\.forEach\([^)]*async\s*\([^)]*\)\s*=>\s*\{[^}]*await\s+\w+\.find'
+        context: "forEach with async find"
+
+      - pattern: 'for\s*\([^)]+\)\s*\{[^}]*await\s+.*\.where\('
+        context: "for loop with where clause"
+
+    python:
+      - pattern: 'for\s+\w+\s+in\s+[^:]+:[^}]*\.filter\('
+        context: "for loop with Django/SQLAlchemy filter"
+
+      - pattern: 'for\s+\w+\s+in\s+[^:]+:[^}]*\.get\('
+        context: "for loop with get"
+
+    go:
+      - pattern: 'for\s+[^{]+\{[^}]*\.Where\('
+        context: "for loop with GORM Where"
+
+      - pattern: 'for\s+[^{]+\{[^}]*\.First\('
+        context: "for loop with GORM First"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # Elasticsearchを使用している場合
+    - condition:
+        tech_stack_has: "Elasticsearch"
+        code_context: "search|index|elastic"
+      action:
+        severity_adjustment: -3
+        note: "検索クエリはElasticsearchで処理されるため、N+1の影響は限定的です。ただしMulti-search APIの使用を検討してください。"
+
+    # Entity Framework Coreでeager loadingを使用
+    - condition:
+        tech_stack_has: "Entity Framework Core"
+        code_context: '\\.Include\\(|\\.ThenInclude\\('
+      action:
+        severity_adjustment: -5
+        note: "Include()によるeager loading検出。N+1問題は解決済みです。"
+
+    # Spring Data JPAでfetch joinを使用
+    - condition:
+        tech_stack_has: "Spring"
+        code_context: 'fetch\\s+join|@EntityGraph'
+      action:
+        severity_adjustment: -5
+        note: "fetch joinまたは@EntityGraph検出。N+1問題は解決済みです。"
+
+    # Laravelでeager loadingを使用
+    - condition:
+        tech_stack_has: "Laravel"
+        code_context: '->with\\('
+      action:
+        severity_adjustment: -5
+        note: "Eloquent with()によるeager loading検出。N+1問題は解決済みです。"
+
+    # Cassandraの場合（バッチ処理推奨）
+    - condition:
+        tech_stack_has: "Cassandra"
+      action:
+        severity_adjustment: +2
+        note: "Cassandraでは同一パーティションキーへのバッチクエリが重要です。"
+
+  # 技術スタック別の推奨修正方法
+  fixes:
+    default:
+      - "ループ外で一括取得してからメモリ内で処理"
+      - "JOIN句を使用して一度のクエリで取得"
+      - "データベースのバッチ処理機能を利用"
+
+    entity_framework_core:
+      - "Include()でeager loadingを使用: .Include(x => x.RelatedEntity)"
+      - "Select()で必要なデータのみ射影"
+      - "AsSplitQuery()で複数クエリに分割（多対多の場合）"
+      - "AsNoTracking()でトラッキングを無効化してパフォーマンス向上"
+
+    spring_boot:
+      - "@EntityGraphでfetch戦略を指定"
+      - "JPQL/HQLでfetch joinを使用"
+      - "Spring Data JPAのfindAllByIdIn()でバッチ取得"
+      - "@BatchSize(size=10)でバッチフェッチサイズ指定"
+
+    laravel:
+      - "Eloquent with()メソッドでeager loading"
+      - "load()メソッドで遅延eager loading"
+      - "whereIn()とマニュアルマッピングで一括取得"
+
+    sequelize:
+      - "include オプションでeager loading"
+      - "findAll({ where: { id: ids } })でバッチ取得"
+      - "separate: trueで別クエリに分割"
+
+    django:
+      - "select_related()でForeignKeyのeager loading"
+      - "prefetch_related()でManyToManyのeager loading"
+      - "only()で必要なフィールドのみ取得"
+
+    elasticsearch:
+      - "Multi-search API (_msearch)で一括検索"
+      - "Bulk APIでバッチ処理"
+      - "クエリ結果をキャッシュして再利用"
+
+    cassandra:
+      - "WHERE IN句で同一パーティション内の複数行を一度に取得"
+      - "BatchStatementで複数クエリをまとめる（同一パーティションのみ）"
+      - "非同期クエリで並列実行"
+
+  # 追加情報
+  references:
+    - "https://docs.microsoft.com/en-us/ef/core/querying/related-data"
+    - "https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query"
+    - "https://laravel.com/docs/eloquent-relationships#eager-loading"

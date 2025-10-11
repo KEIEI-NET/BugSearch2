@@ -1,0 +1,77 @@
+# BugSearch2 デフォルト設定ファイル
+# このファイルはサンプルです。プロジェクトルートに .bugsearch.yml をコピーして編集してください。
+
+project:
+  name: "Sample Project"
+  version: "1.0"
+
+# 技術スタック定義
+tech_stack:
+  # フロントエンド（オプション）
+  frontend:
+    framework: "Angular"  # Angular, React, Vue.js, Svelte, etc.
+    version: "15.0.0"
+    state_management: "NgRx"  # NgRx, Redux, Vuex, etc.
+    routing: "Angular Router"
+
+  # バックエンド
+  backend:
+    language: "C#"  # C#, Java, Python, PHP, Go, Node.js
+    version: "11.0"
+    framework: "ASP.NET Core"  # ASP.NET Core, Spring Boot, Laravel, etc.
+    framework_version: "8.0"
+
+  # データベース（複数指定可）
+  databases:
+    - type: "SQL Server"
+      version: "2022"
+      purpose: "primary"  # primary, cache, search
+      library: "Entity Framework Core"
+
+    - type: "Redis"
+      version: "7.x"
+      purpose: "cache"
+      library: "StackExchange.Redis"
+
+  # キャッシュ（オプション）
+  cache:
+    type: "Redis"
+    version: "7.x"
+    library: "StackExchange.Redis"
+
+  # メッセージング（オプション）
+  messaging:
+    type: "RabbitMQ"
+    version: "3.x"
+    library: "MassTransit"
+
+  # 認証・認可（オプション）
+  authentication:
+    type: "OAuth2"
+    library: "IdentityServer"
+
+# 開発プラクティス
+practices:
+  - "Repository Pattern"
+  - "CQRS"
+  - "Domain-Driven Design"
+  - "Microservices"
+
+# 解析設定
+analysis:
+  # 技術スタックに基づく深刻度の自動調整
+  severity_adjustments:
+    enabled: true
+
+  # カスタムルールファイル（オプション）
+  custom_rules: []
+    # - "rules/custom/company-standards.yml"
+
+  # 除外するルール（オプション）
+  exclude_rules: []
+    # - "DB_N_PLUS_ONE"
+
+  # AI分析設定
+  ai_analysis:
+    include_tech_stack: true
+    context_depth: "standard"  # minimal, standard, detailed

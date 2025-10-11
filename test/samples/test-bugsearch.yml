@@ -1,0 +1,30 @@
+# テスト用プロジェクト設定
+
+project:
+  name: "Test Project - N+1 Detection"
+  version: "1.0"
+
+tech_stack:
+  backend:
+    language: "C#"
+    version: "11.0"
+    framework: "ASP.NET Core"
+    framework_version: "8.0"
+
+  databases:
+    - type: "SQL Server"
+      version: "2022"
+      purpose: "primary"
+      library: "Entity Framework Core"
+
+practices:
+  - "Repository Pattern"
+  - "CQRS"
+
+analysis:
+  severity_adjustments:
+    enabled: true
+
+  ai_analysis:
+    include_tech_stack: true
+    context_depth: "detailed"
