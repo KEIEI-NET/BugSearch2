@@ -2,20 +2,26 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.1.0 (Phase 2完了)*
-*最終更新: 2025年10月12日 00:30 JST*
+*バージョン: v4.2.0 (Phase 3完了 - MVP)*
+*最終更新: 2025年10月12日 01:15 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
-### 🎯 Phase 2完了: 技術スタック対応型解析システム
+### 🎯 Phase 3完了 (MVP): ルールベース解析システム
 
-**Phase 2新機能 (v4.1.0):**
+**Phase 3新機能 (v4.2.0):**
+- ✅ **8つのYAMLルール実装** (Database×2, Security×3, SOLID×2, Performance×2)
+- ✅ **4カテゴリ対応** (database, security, solid, performance)
+- ✅ **7言語サポート** (C#, Java, PHP, JavaScript, TypeScript, Python, Go)
+- ✅ **技術スタック依存の深刻度調整** (各ルールでコンテキスト考慮)
+- ✅ **詳細な修正提案** (技術スタック別の推奨修正方法)
+
+**Phase 2の基盤機能 (v4.1.0):**
 - ✅ **技術スタック自動検出エンジン** (`core/tech_stack_detector.py`)
-- ✅ **YAMLベースルールシステム** (`rules/core/database/n-plus-one.yml` - 7言語対応)
-- ✅ **技術スタック対応深刻度調整** (Elasticsearch利用時はN+1問題の深刻度を軽減)
+- ✅ **YAMLベースルールシステム** (Phase 3で8ルール追加)
 - ✅ **対話型設定ジェネレータ** (`stack_generator.py auto` - 自動検出+手動修正)
 - ✅ **全テスト合格** (`test/test_tech_stack_detector.py` - 5/5)
 
@@ -305,10 +311,22 @@ pip install --only-binary :all: scikit-learn
 │   ├── tech_stack_detector.py        # 技術スタック自動検出（Phase 2）
 │   └── encoding_handler.py           # マルチエンコーディング対応
 │
-├── rules/                            # ⭐ YAMLルール定義（Phase 1）
+├── rules/                            # ⭐ YAMLルール定義（Phase 3完了）
 │   └── core/
-│       └── database/
-│           └── n-plus-one.yml        # N+1問題検出ルール（7言語対応）
+│       ├── database/
+│       │   ├── n-plus-one.yml        # N+1問題検出（Phase 1）
+│       │   ├── select-star.yml       # SELECT * 検出（Phase 3）
+│       │   └── multiple-join.yml     # 多重JOIN検出（Phase 3）
+│       ├── security/
+│       │   ├── sql-injection.yml     # SQLインジェクション（Phase 3）
+│       │   ├── xss-vulnerability.yml # XSS脆弱性（Phase 3）
+│       │   └── float-money.yml       # 金額計算float検出（Phase 3）
+│       ├── solid/
+│       │   ├── large-class.yml       # 巨大クラス検出（Phase 3）
+│       │   └── large-interface.yml   # 巨大IF検出（Phase 3）
+│       └── performance/
+│           ├── memory-leak.yml       # メモリリーク検出（Phase 3）
+│           └── goroutine-leak.yml    # Goroutineリーク検出（Phase 3）
 │
 ├── config/                           # 設定ファイルサンプル
 │   └── default.bugsearch.yml         # デフォルト設定テンプレート
@@ -384,10 +402,11 @@ pip install --only-binary :all: scikit-learn
 
 ---
 
-*最終更新: 2025年10月12日 00:30 JST*
-*バージョン: v4.1.0 (Phase 2完了)*
+*最終更新: 2025年10月12日 01:15 JST*
+*バージョン: v4.2.0 (Phase 3完了 - MVP)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.2.0 (2025年10月12日): **Phase 3完了 (MVP)** - 8つのYAMLルール実装、4カテゴリ対応、7言語サポート、技術スタック依存深刻度調整、詳細な修正提案
 - v4.1.0 (2025年10月12日): **Phase 2完了** - 技術スタック自動検出エンジン、YAMLルールシステム、対話型設定ジェネレータ実装、全テスト合格(5/5)
 - v4.0.5 (2025年10月11日): **Phase 1完了** - BugSearch2リポジトリ新規作成、coreモジュール実装、MVPテスト合格(3/3)
