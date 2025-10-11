@@ -1,9 +1,72 @@
 # 開発履歴
 
-**最終更新**: 2025-01-04
-**現行バージョン**: v4.0.0
+**最終更新**: 2025-10-12
+**現行バージョン**: v4.2.2 (Phase 3.3完了)
 
 ## バージョン履歴
+
+### v4.2.2 - Phase 3.3完了 (2025-10-12)
+#### 🎯 YAMLルールシステム完成 - @perfect品質達成
+- ✅ **全10YAMLルール正常動作**
+  - 4カテゴリ完全サポート (database×3, security×3, solid×2, performance×2)
+  - YAML正規表現エスケープ修正完了 (4ファイル)
+  - 7言語対応 (C#, Java, PHP, JavaScript, TypeScript, Python, Go)
+- ✅ **全テスト100%合格**
+  - test_multiple_rules.py: 8/8成功、スキップ0
+  - @perfect品質達成
+- 🔧 **技術スタック対応型解析**
+  - Elasticsearch使用時のN+1深刻度軽減
+  - ORM使用時のSELECT *深刻度調整
+  - テンプレートエンジン使用時のXSS深刻度調整
+
+#### 修正されたYAMLルール
+- `rules/core/database/select-star.yml`
+- `rules/core/security/sql-injection.yml`
+- `rules/core/security/xss-vulnerability.yml`
+- `rules/core/security/float-money.yml`
+
+### v4.2.1 - Phase 3.2完了 (2025-10-12)
+#### 🏗️ ルールエンジン拡張 - カテゴリ管理機能
+- 🗂️ **RuleCategoryクラス実装**
+  ```python
+  @dataclass
+  class RuleCategory:
+      name: str
+      rules: List[Rule]
+      total_detections: int = 0
+  ```
+- 🔧 **グローバルルール関数**
+  - `load_all_rules()`: 全YAMLルールの再帰的読み込み
+  - `group_rules_by_category()`: カテゴリ別のルール管理
+  - `adjust_severity_by_tech_stack()`: 技術スタック考慮の深刻度調整
+- 📊 **テスト完全合格**
+  - test_multiple_rules.py: 複数ルール読み込みテスト
+  - test_severity_adjustment.py: 深刻度調整テスト
+
+### v4.2.0 - Phase 3.1完了 (2025-10-12)
+#### 📋 10個のYAMLルール作成
+- 📊 **データベース関連ルール** (3個)
+  - `n-plus-one.yml`: N+1クエリ問題検出 (深刻度: 10)
+  - `select-star.yml`: SELECT * 検出 (深刻度: 8)
+  - `multiple-join.yml`: 多重JOIN検出 (深刻度: 7)
+- 🔒 **セキュリティ関連ルール** (3個)
+  - `sql-injection.yml`: SQLインジェクション (深刻度: 10)
+  - `xss-vulnerability.yml`: XSS脆弱性 (深刻度: 9)
+  - `float-money.yml`: float型金額計算 (深刻度: 9)
+- 🎯 **SOLID原則関連ルール** (2個)
+  - `large-class.yml`: 巨大クラス (深刻度: 5)
+  - `large-interface.yml`: 巨大インターフェース (深刻度: 6)
+- ⚡ **パフォーマンス関連ルール** (2個)
+  - `memory-leak.yml`: メモリリーク (深刻度: 10)
+  - `goroutine-leak.yml`: Goroutineリーク (深刻度: 9)
+
+#### 技術スタック別推奨方法
+- C#: decimal型、Entity Framework
+- Java: BigDecimal、JPA
+- PHP: BCMath、Laravel migration
+- JavaScript/TypeScript: decimal.js、dinero.js
+- Python: Decimal、Django/SQLAlchemy
+- Go: shopspring/decimal、int64センチ単位
 
 ### v4.0.0 - Auto-Apply Production Edition (2025-01-04)
 #### 🎉 メジャーリリース - AI改善自動適用機能搭載
