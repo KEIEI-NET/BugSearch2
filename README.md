@@ -1,10 +1,10 @@
-# Codex Review - AI Code Review System v4.0
+# BugSearch2 - AI Code Review System v4.0
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
 **NEW**: AI生成改善コードの自動適用ツール搭載！
 
 *バージョン: v4.0.0*
-*最終更新: 2025年01月04日 12:30 JST*
+*最終更新: 2025年01月11日 22:15 JST*
 
 **⚠️ セキュリティ強化版 - ReDoS脆弱性修正済み、環境変数保護強化**
 
@@ -798,7 +798,7 @@ py codex_review_severity.py advise --topk 500 --out reports/ci_check.md
 1. [SETUP_GUIDE.md](SETUP_GUIDE.md)のトラブルシューティング参照
 2. [TEST_RESULTS.md](doc/TEST_RESULTS.md)で動作確認済み環境を確認
 3. `reports/IMPORTANT_RESULTS.md`で既知の問題確認
-4. [GitHubでIssue作成](https://github.com/KEIEI-NET/BugSearch/issues)
+4. [GitHubでIssue作成](https://github.com/KEIEI-NET/BugSearch2/issues)
 
 ## 📜 ライセンス
 
@@ -852,14 +852,15 @@ MIT License - 詳細は[LICENSE](LICENSE)参照
 
 ---
 
-*最終更新: 2025年01月04日 12:30 JST*
+*最終更新: 2025年01月11日 22:15 JST*
 *バージョン: v4.0.0*
+*リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
-- v4.0.0 (2025年01月04日): apply_improvements_from_report.py完成、AI改善コード自動適用機能、100点満点セキュリティ達成、エンコーディング自動検出
+- v4.0.0 (2025年01月11日): BugSearch2リポジトリ新規作成、apply_improvements_from_report.py完成、AI改善コード自動適用機能、100点満点セキュリティ達成、エンコーディング自動検出
 - v3.5.0 (2025年01月03日): GitHub Actions v3.5.0セキュリティ強化、AI自動フォールバック、python-dotenv依存削除、完全レポート生成機能、インストールガイド追加
 - v3.4.1 (2025年01月02日): ドキュメント更新、100点達成詳細の追記
 - v3.4.0 (2025年01月02日): セキュリティ強化、パフォーマンス最適化、コード品質100点達成
-- v3.3.0 (2025年10月02日): SOLID原則検出、Angularフレームワーク対応
-- v3.2.0 (2025年09月30日): マルチAIプロバイダー対応（Anthropic Claude追加）
-- v3.1.0 (2025年09月28日): 並列処理対応、PHP言語サポート追加
+- v3.3.0 (2024年10月02日): SOLID原則検出、Angularフレームワーク対応
+- v3.2.0 (2024年09月30日): マルチAIプロバイダー対応（Anthropic Claude追加）
+- v3.1.0 (2024年09月28日): 並列処理対応、PHP言語サポート追加

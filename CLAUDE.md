@@ -2,8 +2,9 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.0.4*
-*最終更新: 2025年10月05日 JST*
+*バージョン: v4.0.5*
+*最終更新: 2025年01月11日 22:15 JST*
+*リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
@@ -321,10 +322,12 @@ pip install --only-binary :all: scikit-learn
 
 ---
 
-*最終更新: 2025年01月05日 21:37 JST*
-*バージョン: v4.0.3*
+*最終更新: 2025年01月11日 22:15 JST*
+*バージョン: v4.0.5*
+*リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.0.5 (2025年01月11日): BugSearch2リポジトリ新規作成、ドキュメント全面更新
 - v4.0.3 (2025年01月05日): PRODUCTION READYステータス追加、v1.6.0/v3.7.0リリース情報更新
 - v4.0.2 (2025年01月05日): ドキュメント構成ルール整備
 - v4.0.0 (2025年01月04日): apply_improvements_from_report.py追加、100/100セキュリティスコア達成
