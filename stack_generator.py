@@ -12,6 +12,7 @@ from pathlib import Path
 from core import ProjectConfig, TechStack
 from core.project_config import save_project_config
 from core.models import FrontendStack, BackendStack, DatabaseInfo, InfrastructureInfo
+from core.tech_stack_detector import auto_detect_tech_stack
 
 
 def print_header():
@@ -58,8 +59,168 @@ def input_with_default(prompt: str, default: str = "") -> str:
         return input(f"{prompt}: ").strip()
 
 
+def generate_with_auto_detection(project_dir: str = "."):
+    """自動検出+手動修正でプロジェクト設定を生成"""
+    print_header()
+    print("技術スタックを自動検出します...")
+    print()
+
+    # 自動検出実行
+    detection_result = auto_detect_tech_stack(project_dir)
+    tech_stack = detection_result.tech_stack
+
+    # 検出結果表示
+    print("=" * 80)
+    print("[OK] 自動検出結果:")
+    print("=" * 80)
+    print(f"信頼度: {detection_result.confidence * 100:.0f}%")
+    print(f"検出ファイル数: {len(detection_result.detected_files)}件")
+    print()
+
+    if detection_result.detected_files:
+        print("検出されたファイル:")
+        for file in detection_result.detected_files[:5]:  # 最初の5件のみ表示
+            print(f"  - {Path(file).name}")
+        if len(detection_result.detected_files) > 5:
+            print(f"  ... 他{len(detection_result.detected_files) - 5}件")
+        print()
+
+    if detection_result.warnings:
+        print("[WARNING] 検出時の警告:")
+        for warning in detection_result.warnings:
+            print(f"  - {warning}")
+        print()
+
+    # 検出内容の詳細表示
+    print("検出された技術スタック:")
+    print()
+
+    if tech_stack.frontend:
+        print(f"  [フロントエンド]")
+        print(f"    フレームワーク: {tech_stack.frontend.framework}")
+        if tech_stack.frontend.version:
+            print(f"    バージョン: {tech_stack.frontend.version}")
+        if tech_stack.frontend.state_management:
+            print(f"    状態管理: {tech_stack.frontend.state_management}")
+    else:
+        print("  [フロントエンド] 検出なし")
+
+    print()
+
+    if tech_stack.backend:
+        print(f"  [バックエンド]")
+        print(f"    言語: {tech_stack.backend.language}")
+        if tech_stack.backend.version:
+            print(f"    バージョン: {tech_stack.backend.version}")
+        if tech_stack.backend.framework:
+            print(f"    フレームワーク: {tech_stack.backend.framework}")
+            if tech_stack.backend.framework_version:
+                print(f"    フレームワークバージョン: {tech_stack.backend.framework_version}")
+    else:
+        print("  [バックエンド] 検出なし")
+
+    print()
+
+    if tech_stack.databases:
+        print(f"  [データベース]")
+        for db in tech_stack.databases:
+            print(f"    - {db.type} ({db.purpose})")
+    else:
+        print("  [データベース] 検出なし")
+
+    print()
+
+    if tech_stack.cache:
+        print(f"  [キャッシュ]")
+        print(f"    - {tech_stack.cache.type}")
+
+    if tech_stack.messaging:
+        print(f"  [メッセージング]")
+        print(f"    - {tech_stack.messaging.type}")
+
+    if tech_stack.practices:
+        print()
+        print(f"  [プラクティス]")
+        for practice in tech_stack.practices:
+            print(f"    - {practice}")
+
+    print()
+    print("=" * 80)
+    print()
+
+    # 修正確認
+    print("この検出結果を使用しますか？")
+    print("  1) そのまま使用")
+    print("  2) 手動で修正")
+    print("  3) ゼロから手動入力")
+    print("  4) キャンセル")
+
+    choice = input("選択 [1]: ").strip()
+    if not choice:
+        choice = "1"
+
+    if choice == "1":
+        # そのまま使用
+        pass
+    elif choice == "2":
+        # 手動修正（今後実装）
+        print()
+        print("[INFO] 手動修正機能は将来のバージョンで実装予定です。")
+        print("       現在は .bugsearch.yml を直接編集してください。")
+        print()
+    elif choice == "3":
+        # ゼロから手動入力
+        print()
+        return generate_interactive()
+    else:
+        print("キャンセルしました")
+        return False
+
+    # プロジェクト名とバージョンを入力
+    print()
+    project_name = input_with_default("プロジェクト名", Path(project_dir).name)
+    project_version = input_with_default("バージョン", "1.0")
+
+    # ProjectConfigの構築
+    project_config = ProjectConfig(
+        name=project_name,
+        version=project_version,
+        tech_stack=tech_stack,
+        practices=tech_stack.practices,
+        severity_adjustments_enabled=True,
+        ai_include_tech_stack=True,
+        ai_context_depth="standard"
+    )
+
+    # 保存確認
+    print()
+    print("=" * 80)
+    print("[OK] 最終設定:")
+    print("=" * 80)
+    print(f"プロジェクト名: {project_config.name} v{project_config.version}")
+    print(f"技術スタック: {project_config.tech_stack}")
+    if tech_stack.practices:
+        print(f"プラクティス: {', '.join(tech_stack.practices)}")
+    print()
+
+    confirm = input("この設定で .bugsearch.yml を生成しますか？ [Y/n]: ").strip().lower()
+    if confirm in ('', 'y', 'yes'):
+        save_project_config(project_config, ".bugsearch.yml")
+        print()
+        print("[SUCCESS] .bugsearch.yml を生成しました！")
+        print()
+        print("次のステップ:")
+        print("  1. .bugsearch.yml を確認・編集")
+        print("  2. py codex_review_severity.py index でインデックス作成")
+        print("  3. py codex_review_severity.py advise --all でコード解析")
+        return True
+    else:
+        print("キャンセルしました")
+        return False
+
+
 def generate_interactive():
-    """対話型でプロジェクト設定を生成"""
+    """対話型でプロジェクト設定を生成（フルマニュアル）"""
     print_header()
     print("プロジェクトの技術スタックを設定します。")
     print("（Enterのみで次の質問へ、スキップも可能）")
@@ -298,15 +459,21 @@ def main():
     """メイン関数"""
     parser = argparse.ArgumentParser(
         description="BugSearch2 Tech Stack Generator",
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+使用例:
+  py stack_generator.py auto              # 自動検出+手動修正
+  py stack_generator.py init              # フルマニュアル入力
+  py stack_generator.py auto --dir ./src  # 指定ディレクトリから自動検出
+        """
     )
 
     parser.add_argument(
         'command',
         nargs='?',
-        default='init',
-        choices=['init'],
-        help='コマンド (現在は init のみ)'
+        default='auto',
+        choices=['init', 'auto'],
+        help='コマンド: init (手動入力) または auto (自動検出)'
     )
 
     parser.add_argument(
@@ -316,9 +483,18 @@ def main():
         help='出力ファイル名 (デフォルト: .bugsearch.yml)'
     )
 
+    parser.add_argument(
+        '--dir',
+        '-d',
+        default='.',
+        help='プロジェクトディレクトリ (デフォルト: カレントディレクトリ)'
+    )
+
     args = parser.parse_args()
 
-    if args.command == 'init':
+    if args.command == 'auto':
+        generate_with_auto_detection(args.dir)
+    elif args.command == 'init':
         generate_interactive()
     else:
         parser.print_help()
