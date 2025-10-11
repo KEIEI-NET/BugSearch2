@@ -1,0 +1,215 @@
+# Goroutine Leak ルール定義
+
+rule:
+  id: "PERF_GOROUTINE_LEAK"
+  category: "performance"
+  name: "Goroutine Leak"
+  description: "Goroutineリークの可能性: 終了しないgoroutineによるメモリリークとリソース枯渇"
+  base_severity: 9
+
+  # Goのみ対象
+  patterns:
+    go:
+      - pattern: 'go\s+func\s*\([^)]*\)\s*\{[^}]*for\s*\{[^}]*\}[^}]*\}(?!.*context\.Done|.*select.*case.*<-)'
+        context: "goroutine with infinite loop without context/channel"
+
+      - pattern: 'go\s+\w+\([^)]*\)(?!.*context\.Context)'
+        context: "goroutine function without context parameter"
+
+      - pattern: 'go\s+func\s*\([^)]*\)\s*\{[^}]*<-\s*\w+[^}]*\}(?!.*timeout|.*select.*case.*default)'
+        context: "goroutine blocking on channel read without timeout"
+
+      - pattern: 'go\s+func\s*\([^)]*\)\s*\{[^}]*time\.Sleep\s*\([^)]*\)[^}]*\}(?!.*for.*{)'
+        context: "goroutine with sleep that may not terminate"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # context.Context 使用（良いパターン）
+    - condition:
+        code_context: 'ctx\s+context\.Context|context\.WithTimeout|context\.WithCancel'
+      action:
+        severity_adjustment: -6
+        note: "context.Contextが使用されています。適切にキャンセル処理を実装してください。"
+
+    # select with context.Done()
+    - condition:
+        code_context: 'select\s*\{[^}]*case\s*<-.*ctx\.Done\(\)'
+      action:
+        severity_adjustment: -7
+        note: "context.Done()でgoroutineの終了が管理されています。良いパターンです。"
+
+    # errgroup使用
+    - condition:
+        code_context: 'errgroup\.Group|g\.Go\('
+      action:
+        severity_adjustment: -6
+        note: "errgroupが使用されています。適切にエラーハンドリングされています。"
+
+    # sync.WaitGroup使用
+    - condition:
+        code_context: 'sync\.WaitGroup|wg\.Wait\(\)|wg\.Done\(\)'
+      action:
+        severity_adjustment: -4
+        note: "WaitGroupが使用されていますが、goroutineの終了を保証してください。"
+
+    # チャネルのclose
+    - condition:
+        code_context: 'defer\s+close\(|close\(.*chan'
+      action:
+        severity_adjustment: -3
+        note: "チャネルがcloseされていますが、すべてのgoroutineが終了することを確認してください。"
+
+  # 推奨修正方法
+  fixes:
+    default:
+      - "context.Contextでgoroutineのライフサイクルを管理"
+      - "select文でcontext.Done()を監視"
+      - "タイムアウト処理を実装"
+      - "errgroup.Groupで並行処理を管理"
+
+    with_context:
+      description: "context.Contextを使用した安全なgoroutine"
+      code: |
+        func process(ctx context.Context) {
+            go func() {
+                for {
+                    select {
+                    case <-ctx.Done():
+                        return // contextがキャンセルされたら終了
+                    case work := <-workChan:
+                        // 処理
+                    }
+                }
+            }()
+        }
+
+    with_timeout:
+      description: "タイムアウト付きgoroutine"
+      code: |
+        ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+        defer cancel()
+
+        go func() {
+            select {
+            case <-ctx.Done():
+                return
+            case result := <-processChan:
+                // 処理
+            }
+        }()
+
+    with_errgroup:
+      description: "errgroupを使用した並行処理"
+      code: |
+        g, ctx := errgroup.WithContext(context.Background())
+
+        g.Go(func() error {
+            return processTask(ctx)
+        })
+
+        if err := g.Wait(); err != nil {
+            // エラーハンドリング
+        }
+
+    with_worker_pool:
+      description: "ワーカープールパターン"
+      code: |
+        func workerPool(ctx context.Context, jobs <-chan Job) {
+            var wg sync.WaitGroup
+
+            for i := 0; i < numWorkers; i++ {
+                wg.Add(1)
+                go func() {
+                    defer wg.Done()
+                    for {
+                        select {
+                        case <-ctx.Done():
+                            return
+                        case job, ok := <-jobs:
+                            if !ok {
+                                return // チャネルがclose
+                            }
+                            processJob(job)
+                        }
+                    }
+                }()
+            }
+
+            wg.Wait()
+        }
+
+  # よくある問題パターン
+  common_issues:
+    infinite_loop:
+      description: "終了条件のない無限ループ"
+      bad_code: |
+        go func() {
+            for {
+                // 終了条件なし
+                doWork()
+            }
+        }()
+      good_code: |
+        go func() {
+            for {
+                select {
+                case <-ctx.Done():
+                    return
+                default:
+                    doWork()
+                }
+            }
+        }()
+
+    blocking_channel:
+      description: "ブロッキングチャネル操作"
+      bad_code: |
+        go func() {
+            result := <-resultChan // 永久にブロック可能
+        }()
+      good_code: |
+        go func() {
+            select {
+            case result := <-resultChan:
+                // 処理
+            case <-ctx.Done():
+                return
+            case <-time.After(timeout):
+                return
+            }
+        }()
+
+    forgotten_goroutine:
+      description: "起動したまま忘れられるgoroutine"
+      bad_code: |
+        func handleRequest() {
+            go sendNotification() // 終了を待たない
+        }
+      good_code: |
+        func handleRequest(ctx context.Context) {
+            g, ctx := errgroup.WithContext(ctx)
+            g.Go(func() error {
+                return sendNotification(ctx)
+            })
+            // 必要に応じて g.Wait()
+        }
+
+  # デバッグ方法
+  debugging:
+    - "runtime.NumGoroutine()でgoroutine数を監視"
+    - "pprof でgoroutineプロファイリング"
+    - "runtime.SetBlockProfileRate()でブロック検出"
+    - "Goleak ライブラリでテスト時にリーク検出"
+
+  # パフォーマンスへの影響
+  performance_impact:
+    - "メモリ使用量の増加（goroutineスタック: 最小2KB）"
+    - "CPU使用率の上昇（スケジューラーのオーバーヘッド）"
+    - "最終的にはOOM（Out of Memory）でクラッシュ"
+    - "ファイルディスクリプタなどのリソース枯渇"
+
+  # 追加情報
+  references:
+    - "https://go.dev/blog/context"
+    - "https://pkg.go.dev/golang.org/x/sync/errgroup"
+    - "https://github.com/uber-go/goleak"

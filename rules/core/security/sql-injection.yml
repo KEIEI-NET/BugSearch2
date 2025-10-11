@@ -1,0 +1,200 @@
+# SQL Injection Vulnerability ルール定義
+
+rule:
+  id: "SEC_SQL_INJECTION"
+  category: "security"
+  name: "SQL Injection Vulnerability"
+  description: "ユーザー入力を直接SQL文に結合することによる重大なセキュリティ脆弱性"
+  base_severity: 10
+
+  # 言語ごとの検出パターン
+  patterns:
+    php:
+      - pattern: '\$_(GET|POST|REQUEST|COOKIE)\s*\[[^\]]+\][^;]*\$\w+\s*[.+]=\s*["\']SELECT'
+        context: "User input directly concatenated into SQL"
+
+      - pattern: '\$\w+\s*=\s*\$_(GET|POST|REQUEST)\[[^\]]+\][^;]*mysql_query\s*\(\s*["\'].*\$\w+'
+        context: "GET/POST param in mysql_query (deprecated)"
+
+      - pattern: '\$\w+->(query|exec)\s*\(\s*["\'].*\$_(GET|POST|REQUEST|COOKIE)'
+        context: "PDO query with user input concatenation"
+
+      - pattern: 'mysqli_query\s*\([^,]+,\s*["\'].*\$_(GET|POST|REQUEST)'
+        context: "mysqli_query with user input concatenation"
+
+    csharp:
+      - pattern: 'new\s+SqlCommand\s*\(\s*".*"\s*\+\s*(Request\.|HttpContext\.)'
+        context: "SqlCommand with string concatenation from Request"
+
+      - pattern: '\.FromSqlRaw\s*\(\s*\$".*\{.*Request\.'
+        context: "EF Core FromSqlRaw with interpolated Request data"
+
+      - pattern: 'SqlCommand.*CommandText\s*=.*\+.*Request\.(Query|Form|Params)'
+        context: "SqlCommand CommandText with Request concatenation"
+
+      - pattern: 'ExecuteRawSql\s*\(.*\+.*Request\.'
+        context: "ExecuteRawSql with Request concatenation"
+
+    java:
+      - pattern: 'createQuery\s*\(\s*".*"\s*\+\s*request\.getParameter'
+        context: "JPA query with request parameter concatenation"
+
+      - pattern: 'Statement.*executeQuery\s*\([^)]*\+[^)]*request\.getParameter'
+        context: "JDBC Statement with getParameter concatenation"
+
+      - pattern: '"SELECT.*"\s*\+.*request\.getParameter'
+        context: "SQL string concatenation with request parameter"
+
+      - pattern: 'createNativeQuery\s*\([^)]*\+[^)]*@PathVariable'
+        context: "JPA native query with PathVariable concatenation"
+
+    python:
+      - pattern: 'execute\s*\(\s*["\']SELECT.*["\'].*%.*request\.(GET|POST|COOKIES)'
+        context: "Python DB execute with request data formatting"
+
+      - pattern: 'execute\s*\(\s*["\'].*["\']\.format\(.*request\.'
+        context: "execute with .format() and request data"
+
+      - pattern: 'raw\s*\([f\"\'].*\{.*request\.(GET|POST)'
+        context: "Django raw query with f-string and request data"
+
+      - pattern: 'cursor\.execute\s*\([f\"\'].*\{.*request\.args'
+        context: "Flask request.args in SQL string"
+
+    javascript:
+      - pattern: '\.query\s*\(\s*`SELECT.*\$\{.*req\.(query|params|body)'
+        context: "Node.js query with template literal and req data"
+
+      - pattern: 'connection\.(query|execute)\s*\([\'"`].*[\'"`]\s*\+.*req\.(query|params|body)'
+        context: "MySQL/PostgreSQL query with req concatenation"
+
+      - pattern: 'sequelize\.query\s*\([\'"`].*\$\{.*req\.'
+        context: "Sequelize raw query with req interpolation"
+
+    typescript:
+      - pattern: 'manager\.query\s*\(<[^>]+>\s*[\'"`].*\$\{.*req\.(query|params|body)'
+        context: "TypeORM raw query with req data"
+
+      - pattern: 'createQueryBuilder\([^)]*\)\.where\s*\([\'"`].*\$\{.*req\.'
+        context: "QueryBuilder where with req interpolation"
+
+    go:
+      - pattern: 'db\.(Query|Exec)\s*\(\s*".*"\s*\+.*r\.(URL\.Query|Form|PostForm)'
+        context: "database/sql with request concatenation"
+
+      - pattern: '\.Raw\s*\(\s*".*"\s*\+.*c\.(Query|Param)'
+        context: "GORM Raw with Gin/Echo param concatenation"
+
+      - pattern: 'Exec\(.*fmt\.Sprintf\(.*r\.URL\.Query'
+        context: "SQL Exec with Sprintf and query params"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # パラメータ化クエリ使用（安全）
+    - condition:
+        code_context: '\?|@\w+|:\w+|\$\d+'
+      action:
+        severity_adjustment: -8
+        note: "パラメータプレースホルダーが使用されています。安全です。"
+
+    - condition:
+        tech_stack_has: "Entity Framework Core"
+        code_context: '\.FromSqlInterpolated\(|\{.*\}'
+      action:
+        severity_adjustment: -7
+        note: "FromSqlInterpolated()はパラメータ化されています。安全です。"
+
+    - condition:
+        tech_stack_has: "Spring"
+        code_context: '@Param|:param|\?'
+      action:
+        severity_adjustment: -7
+        note: "Spring Data JPAのパラメータバインディングが使用されています。"
+
+    # ORM使用（通常は安全）
+    - condition:
+        code_context: '\.Where\(.*=>|\.FirstOrDefault\(.*=>|\.Select\(.*=>'
+      action:
+        severity_adjustment: -6
+        note: "ORMのLINQクエリは通常パラメータ化されています。"
+
+    - condition:
+        tech_stack_has: "Sequelize"
+        code_context: '\$\w+|\:\w+'
+      action:
+        severity_adjustment: -6
+        note: "Sequelizeのバインドパラメータが使用されています。"
+
+    # 入力検証あり（深刻度軽減）
+    - condition:
+        code_context: 'int\.Parse|Convert\.ToInt|parseInt|filter_var.*FILTER_VALIDATE'
+      action:
+        severity_adjustment: -3
+        note: "入力検証がありますが、パラメータ化クエリの使用を強く推奨します。"
+
+    # ホワイトリスト検証
+    - condition:
+        code_context: 'switch|if.*==.*"(id|name|email)"|allowedFields'
+      action:
+        severity_adjustment: -2
+        note: "ホワイトリスト検証がありますが、パラメータ化クエリの使用を推奨します。"
+
+  # 技術スタック別の推奨修正方法
+  fixes:
+    php:
+      - "PDO Prepared Statements使用: $stmt = $pdo->prepare('SELECT * FROM users WHERE id = ?'); $stmt->execute([$id]);"
+      - "mysqli Prepared Statements: $stmt = $mysqli->prepare('SELECT * FROM users WHERE id = ?'); $stmt->bind_param('i', $id);"
+      - "Laravel Query Builder: DB::table('users')->where('id', $request->input('id'))->get();"
+      - "Eloquent ORM: User::where('id', $request->id)->first();"
+
+    csharp:
+      - "SqlParameter使用: cmd.Parameters.AddWithValue('@id', Request.Query['id']);"
+      - "EF Core LINQ: context.Users.Where(u => u.Id == userId).ToList();"
+      - "Dapper with parameters: connection.Query<User>('SELECT * FROM Users WHERE Id = @Id', new { Id = id });"
+      - "FromSqlInterpolated: context.Users.FromSqlInterpolated($'SELECT * FROM Users WHERE Id = {id}');"
+
+    java:
+      - "PreparedStatement: PreparedStatement ps = conn.prepareStatement('SELECT * FROM users WHERE id = ?'); ps.setInt(1, id);"
+      - "JPA @Param: @Query('SELECT u FROM User u WHERE u.id = :id'); findById(@Param('id') Long id);"
+      - "Criteria API: cb.equal(root.get('id'), id);"
+
+    python:
+      - "Parameterized queries: cursor.execute('SELECT * FROM users WHERE id = %s', (user_id,));"
+      - "Django ORM: User.objects.filter(id=user_id)"
+      - "SQLAlchemy: session.query(User).filter(User.id == user_id)"
+
+    javascript:
+      - "Parameterized queries: connection.query('SELECT * FROM users WHERE id = ?', [userId]);"
+      - "Sequelize where: User.findOne({ where: { id: req.query.id } });"
+      - "PostgreSQL: client.query('SELECT * FROM users WHERE id = $1', [userId]);"
+
+    typescript:
+      - "TypeORM parameters: manager.query('SELECT * FROM users WHERE id = $1', [userId]);"
+      - "QueryBuilder: createQueryBuilder('user').where('user.id = :id', { id: userId });"
+      - "Prisma (type-safe): prisma.user.findUnique({ where: { id: userId } });"
+
+    go:
+      - "database/sql placeholders: db.Query('SELECT * FROM users WHERE id = ?', userID)"
+      - "PostgreSQL $n syntax: db.Query('SELECT * FROM users WHERE id = $1', userID)"
+      - "GORM Where: db.Where('id = ?', userID).First(&user)"
+
+  # 脆弱性の影響
+  security_impact:
+    - "データベース全体の読み取り・改ざん・削除"
+    - "認証バイパス（例: ' OR '1'='1）"
+    - "管理者権限の不正取得"
+    - "個人情報の大量流出"
+    - "システム完全破壊（DROP TABLE など）"
+
+  # 実際の攻撃例
+  attack_examples:
+    - "' OR '1'='1' -- （認証バイパス）"
+    - "1; DROP TABLE users; -- （データ削除）"
+    - "1 UNION SELECT password FROM admin_users -- （情報窃取）"
+    - "'; EXEC xp_cmdshell('calc.exe'); -- （OS コマンド実行）"
+
+  # 追加情報
+  references:
+    - "https://owasp.org/www-community/attacks/SQL_Injection"
+    - "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    - "https://cwe.mitre.org/data/definitions/89.html"

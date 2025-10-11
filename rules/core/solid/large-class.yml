@@ -1,0 +1,156 @@
+# Large Class (God Class) ルール定義
+
+rule:
+  id: "SOLID_LARGE_CLASS"
+  category: "solid"
+  name: "Large Class (God Class)"
+  description: "単一責任原則（SRP）違反: 500行以上の巨大クラスは複数の責務を持つ可能性が高い"
+  base_severity: 5
+
+  # 言語ごとの検出パターン（行数ベース）
+  patterns:
+    csharp:
+      - pattern: 'class\s+\w+[^{]*\{(?:[^{}]|\{[^{}]*\}){500,}\}'
+        context: "Class with 500+ lines"
+
+      - pattern: 'class\s+\w+[^{]*\{[^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+[^;{]*[;{][^}]*public\s+\w+'
+        context: "Class with 20+ public members"
+
+    java:
+      - pattern: 'class\s+\w+[^{]*\{(?:[^{}]|\{[^{}]*\}){500,}\}'
+        context: "Class with 500+ lines"
+
+      - pattern: 'class\s+\w+[^{]*\{[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+[^}]*(public|private|protected)\s+\w+'
+        context: "Class with 20+ methods/fields"
+
+    php:
+      - pattern: 'class\s+\w+[^{]*\{(?:[^{}]|\{[^{}]*\}){500,}\}'
+        context: "Class with 500+ lines"
+
+      - pattern: 'class\s+\w+[^{]*\{[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function[^}]*(public|private|protected)\s+function'
+        context: "Class with 20+ methods"
+
+    javascript:
+      - pattern: 'class\s+\w+[^{]*\{(?:[^{}]|\{[^{}]*\}){500,}\}'
+        context: "Class with 500+ lines"
+
+    typescript:
+      - pattern: 'class\s+\w+[^{]*\{(?:[^{}]|\{[^{}]*\}){500,}\}'
+        context: "Class with 500+ lines"
+
+      - pattern: 'class\s+\w+[^{]*\{[^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\([^}]*(public|private|protected)?\s+\w+\s*\('
+        context: "Class with 20+ methods"
+
+    python:
+      - pattern: 'class\s+\w+[^:]*:(?:[^#\n]|\n(?!\S)|\n\s+#.*){500,}'
+        context: "Class with 500+ lines"
+
+      - pattern: 'class\s+\w+[^:]*:[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+[^#\n]*\n\s+def\s+\w+'
+        context: "Class with 20+ methods"
+
+    go:
+      - pattern: 'type\s+\w+\s+struct\s*\{[^}]{500,}\}'
+        context: "Struct with 500+ lines of methods (receiver functions)"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # 自動生成コード（許容）
+    - condition:
+        code_context: 'Generated|AutoGenerated|<auto-generated>|//\s*Code\s+generated'
+      action:
+        severity_adjustment: -4
+        note: "自動生成コードですが、可能であれば分割を検討してください。"
+
+    # エンティティ/モデルクラス（データのみ）
+    - condition:
+        code_context: 'Entity|Model|DTO|POCO|@Entity|@Table'
+      action:
+        severity_adjustment: -3
+        note: "データクラスは多数のプロパティを持つことがあります。ただし、ビジネスロジックは含めないでください。"
+
+    # テストクラス
+    - condition:
+        code_context: 'Test|Spec|[Test]|@Test|it\('
+      action:
+        severity_adjustment: -2
+        note: "テストクラスは長くなりがちですが、テストケースをグループ化して分割を検討してください。"
+
+    # 設定クラス
+    - condition:
+        code_context: 'Config|Settings|Options|@Configuration'
+      action:
+        severity_adjustment: -2
+        note: "設定クラスですが、カテゴリ別に分割できる可能性があります。"
+
+    # フレームワークの基底クラス
+    - condition:
+        code_context: 'Controller|Service|Repository|Component'
+      action:
+        severity_adjustment: 0
+        note: "フレームワークのコンポーネントですが、SRPに従って分割を検討してください。"
+
+  # 技術スタック別の推奨修正方法
+  fixes:
+    default:
+      - "クラスを責務ごとに分割"
+      - "Extract Class リファクタリング: 関連するメソッドとフィールドを新しいクラスに抽出"
+      - "Strategy パターン: 異なる振る舞いを別クラスに分離"
+      - "Facade パターン: 複雑なサブシステムへのシンプルなインターフェース提供"
+
+    csharp:
+      - "Partial クラスで論理的に分割（ただし、過度な使用は避ける）"
+      - "Extension Methods でメソッドを外部化"
+      - "Dependency Injection でサービスに分割"
+      - "CQRS パターンでコマンドとクエリを分離"
+
+    java:
+      - "Inner Class で内部実装を隠蔽"
+      - "Spring の @Component 分割"
+      - "Interface Segregation でクライアントごとに分割"
+
+    php:
+      - "Trait で共通機能を分離"
+      - "Service クラスに責務を委譲"
+      - "Laravel の Service Provider で機能を分割"
+
+    javascript:
+      - "Mixins で機能を分離"
+      - "Composition over Inheritance"
+      - "Module パターンで名前空間を分離"
+
+    typescript:
+      - "Interface でコントラクトを明確化"
+      - "Decorators で横断的関心事を分離"
+      - "Mixins で機能を合成"
+
+    python:
+      - "複数の小さなクラスに分割"
+      - "Mixins で機能を共有"
+      - "dataclasses でデータとロジックを分離"
+
+    go:
+      - "複数の小さな struct に分割"
+      - "Composition: struct の埋め込みで機能を合成"
+      - "Interface で契約を小さく保つ"
+
+  # 分割の判断基準
+  split_criteria:
+    - "クラス名に 'And' や 'Manager' が含まれる場合"
+    - "複数の異なる理由で変更が必要になる場合"
+    - "メソッドの半分以上が特定のフィールドセットのみ使用する場合"
+    - "テストが複雑になっている場合"
+    - "クラスの説明に 'and' や 'or' が複数含まれる場合"
+
+  # リファクタリング手順
+  refactoring_steps:
+    step_1: "クラスの責務を分析（何をしているか）"
+    step_2: "関連するメソッドとフィールドをグループ化"
+    step_3: "各グループを新しいクラスに抽出"
+    step_4: "元のクラスから新しいクラスを利用（Composition）"
+    step_5: "テストを実行して機能が保たれていることを確認"
+
+  # 追加情報
+  references:
+    - "https://refactoring.guru/refactorings/extract-class"
+    - "https://martinfowler.com/bliki/CodeSmell.html"
+    - "https://en.wikipedia.org/wiki/Single-responsibility_principle"

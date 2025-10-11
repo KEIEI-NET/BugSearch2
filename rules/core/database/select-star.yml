@@ -1,0 +1,178 @@
+# SELECT * Query Anti-Pattern ルール定義
+
+rule:
+  id: "DB_SELECT_STAR"
+  category: "database"
+  name: "SELECT * Anti-Pattern"
+  description: "SELECT * の使用によるパフォーマンス低下とメモリ浪費"
+  base_severity: 8
+
+  # 言語ごとの検出パターン
+  patterns:
+    csharp:
+      - pattern: '\.FromSqlRaw\s*\(\s*"SELECT\s+\*'
+        context: "Entity Framework Core raw SQL with SELECT *"
+
+      - pattern: '\.FromSqlInterpolated\s*\(\s*\$"SELECT\s+\*'
+        context: "EF Core interpolated SQL with SELECT *"
+
+      - pattern: 'SELECT\s+\*\s+FROM\s+[\w\.]+'
+        context: "Raw SQL SELECT * in string"
+
+    java:
+      - pattern: '"SELECT\s+\*\s+FROM\s+[\w\.]+'
+        context: "JPQL/HQL SELECT * query"
+
+      - pattern: '@Query\s*\(\s*"SELECT\s+\*'
+        context: "Spring Data JPA @Query with SELECT *"
+
+      - pattern: 'createQuery\s*\(\s*"SELECT\s+\*'
+        context: "EntityManager query with SELECT *"
+
+    php:
+      - pattern: 'DB::select\s*\(\s*[\'"]\s*SELECT\s+\*'
+        context: "Laravel raw select with SELECT *"
+
+      - pattern: '\$db->query\s*\(\s*[\'"]\s*SELECT\s+\*'
+        context: "PDO/mysqli query with SELECT *"
+
+      - pattern: '->selectRaw\s*\(\s*[\'"]\s*\*'
+        context: "Laravel selectRaw with *"
+
+    javascript:
+      - pattern: '\.query\s*\(\s*[`\'"]\s*SELECT\s+\*'
+        context: "Raw SQL query with SELECT * (Node.js)"
+
+      - pattern: 'sequelize\.query\s*\(\s*[`\'"]\s*SELECT\s+\*'
+        context: "Sequelize raw query with SELECT *"
+
+      - pattern: 'knex\.raw\s*\(\s*[`\'"]\s*SELECT\s+\*'
+        context: "Knex raw query with SELECT *"
+
+    typescript:
+      - pattern: '\.query\s*<[^>]+>\s*\(\s*[`\'"]\s*SELECT\s+\*'
+        context: "TypeORM raw query with SELECT *"
+
+      - pattern: 'prisma\.\$queryRaw\s*`\s*SELECT\s+\*'
+        context: "Prisma raw query with SELECT *"
+
+    python:
+      - pattern: '\.execute\s*\(\s*["\']SELECT\s+\*'
+        context: "DB cursor execute with SELECT *"
+
+      - pattern: '\.raw\s*\(\s*["\']SELECT\s+\*'
+        context: "Django raw query with SELECT *"
+
+      - pattern: 'session\.execute\s*\(\s*["\']SELECT\s+\*'
+        context: "SQLAlchemy execute with SELECT *"
+
+    go:
+      - pattern: '\.Raw\s*\(\s*"SELECT\s+\*'
+        context: "GORM Raw query with SELECT *"
+
+      - pattern: '\.Query\s*\(\s*"SELECT\s+\*'
+        context: "database/sql Query with SELECT *"
+
+      - pattern: '\.QueryRow\s*\(\s*"SELECT\s+\*'
+        context: "database/sql QueryRow with SELECT *"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # ORMを使用している場合（SELECT * が自動生成されることがある）
+    - condition:
+        tech_stack_has: "Entity Framework Core"
+        code_context: '\.Select\(|\.ProjectTo\('
+      action:
+        severity_adjustment: -3
+        note: "ORMによる自動生成の可能性があります。Select()やProjectTo()で射影を明示することを推奨します。"
+
+    - condition:
+        tech_stack_has: "Sequelize"
+        code_context: 'attributes:\s*\['
+      action:
+        severity_adjustment: -3
+        note: "Sequelizeのattributesオプションで列を明示することを推奨します。"
+
+    # 小規模テーブル（カラム数が少ない）の場合
+    - condition:
+        code_context: 'COUNT\s*\(\s*\*\s*\)'
+      action:
+        severity_adjustment: -6
+        note: "COUNT(*)は最適化されているため問題ありません。"
+
+    # ビューやストアドプロシージャ内
+    - condition:
+        code_context: 'CREATE\s+(VIEW|PROCEDURE)'
+      action:
+        severity_adjustment: -2
+        note: "ビューやストアドプロシージャ内では許容される場合があります。"
+
+    # NoSQLデータベース（MongoDBなど）
+    - condition:
+        tech_stack_has: "MongoDB"
+      action:
+        severity_adjustment: -4
+        note: "NoSQLでは全フィールド取得が標準です。projection()で必要なフィールドのみ取得を推奨します。"
+
+    # Elasticsearchの場合
+    - condition:
+        tech_stack_has: "Elasticsearch"
+      action:
+        severity_adjustment: -3
+        note: "_source: falseまたは_source: ['field1', 'field2']で必要なフィールドのみ取得を推奨します。"
+
+  # 技術スタック別の推奨修正方法
+  fixes:
+    default:
+      - "必要なカラムのみを明示的に指定: SELECT col1, col2, col3 FROM table"
+      - "ORM使用時は射影機能を利用"
+      - "将来的にテーブルスキーマが変更されても影響を受けにくくなる"
+
+    entity_framework_core:
+      - "Select()で必要なプロパティのみ射影: .Select(x => new { x.Id, x.Name })"
+      - "ProjectTo<DTO>()でAutoMapperを使用"
+      - "AsNoTracking()と組み合わせてパフォーマンス向上"
+
+    spring_boot:
+      - "JPQLで必要なフィールドのみSELECT: SELECT e.id, e.name FROM Entity e"
+      - "@Queryアノテーションでカラム指定"
+      - "DTOプロジェクションを使用"
+
+    laravel:
+      - "select()メソッドでカラム指定: ->select('id', 'name', 'email')"
+      - "pluck()で単一カラム取得"
+      - "Eloquent Resourcesでレスポンス整形"
+
+    sequelize:
+      - "attributesオプションでカラム指定: { attributes: ['id', 'name'] }"
+      - "exclude: ['password']で不要なカラムを除外"
+
+    typeorm:
+      - "select()でカラム指定: .select(['user.id', 'user.name'])"
+      - "DTOクラスで型安全な射影"
+
+    django:
+      - "values()で必要なフィールドのみ取得: .values('id', 'name')"
+      - "only()でモデルの一部フィールドのみロード: .only('id', 'name')"
+      - "defer()で不要なフィールドを遅延読み込み"
+
+    mongodb:
+      - "projection()で必要なフィールドのみ取得"
+      - "{ _id: 0, name: 1, email: 1 }形式で指定"
+
+    elasticsearch:
+      - "_sourceパラメータで取得フィールド制限"
+      - "stored_fieldsで保存済みフィールドのみ取得"
+
+  # パフォーマンスへの影響
+  performance_impact:
+    - "不要なデータの転送によるネットワーク帯域の浪費"
+    - "アプリケーション側のメモリ使用量増加"
+    - "将来的なテーブル変更（BLOB追加など）の影響を受ける"
+    - "インデックスカバリングクエリの最適化が効かない"
+
+  # 追加情報
+  references:
+    - "https://use-the-index-luke.com/sql/join/nested-loops-join-n1-problem"
+    - "https://docs.microsoft.com/en-us/ef/core/querying/single-split-queries"
+    - "https://www.postgresql.org/docs/current/queries-select-lists.html"

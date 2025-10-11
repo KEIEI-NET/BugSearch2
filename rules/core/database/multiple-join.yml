@@ -1,0 +1,186 @@
+# Multiple JOIN Anti-Pattern ルール定義
+
+rule:
+  id: "DB_MULTIPLE_JOIN"
+  category: "database"
+  name: "Excessive JOIN Operations"
+  description: "3つ以上のJOINによるクエリパフォーマンスの低下"
+  base_severity: 7
+
+  # 言語ごとの検出パターン
+  patterns:
+    csharp:
+      - pattern: 'JOIN\s+[\w\.]+\s+ON\s+[^J]+JOIN\s+[\w\.]+\s+ON\s+[^J]+JOIN'
+        context: "Raw SQL with 3+ JOINs"
+
+      - pattern: '\.Include\([^)]+\)\.ThenInclude\([^)]+\)\.ThenInclude\('
+        context: "EF Core nested ThenInclude (3+ levels)"
+
+      - pattern: '\.Join\([^)]+\)\.Join\([^)]+\)\.Join\('
+        context: "LINQ multiple Join operations"
+
+    java:
+      - pattern: 'JOIN\s+[\w\.]+\s+[^J]+JOIN\s+[\w\.]+\s+[^J]+JOIN'
+        context: "JPQL/SQL with 3+ JOINs"
+
+      - pattern: '@EntityGraph\s*\([^)]*attributePaths\s*=\s*\{[^}]*,\s*[^}]*,\s*[^}]*,'
+        context: "EntityGraph with many attribute paths"
+
+      - pattern: 'fetch\s+join\s+[^f]+fetch\s+join\s+[^f]+fetch\s+join'
+        context: "JPQL with 3+ fetch joins"
+
+    php:
+      - pattern: '->join\([^)]+\)->join\([^)]+\)->join\('
+        context: "Laravel multiple join() calls"
+
+      - pattern: 'JOIN\s+[\w`]+\s+[^J]+JOIN\s+[\w`]+\s+[^J]+JOIN'
+        context: "Raw SQL with 3+ JOINs"
+
+      - pattern: '->with\s*\(\s*\[[^\]]*,\s*[^\]]*,\s*[^\]]*,'
+        context: "Eloquent with() with multiple relations"
+
+    javascript:
+      - pattern: '\.include\s*\(\s*\[[^\]]*include[^\]]*include'
+        context: "Sequelize nested includes (3+ levels)"
+
+      - pattern: '\.populate\([^)]+\)\.populate\([^)]+\)\.populate\('
+        context: "Mongoose multiple populate() calls"
+
+      - pattern: 'JOIN\s+[\w\.]+\s+[^J]+JOIN\s+[\w\.]+\s+[^J]+JOIN'
+        context: "Raw SQL with 3+ JOINs"
+
+    typescript:
+      - pattern: '\.leftJoinAndSelect\([^)]+\)\.leftJoinAndSelect\([^)]+\)\.leftJoinAndSelect\('
+        context: "TypeORM multiple joinAndSelect (3+)"
+
+      - pattern: 'relations:\s*\[[^\]]*,\s*[^\]]*,\s*[^\]]*,'
+        context: "TypeORM findOne with many relations"
+
+    python:
+      - pattern: 'joinedload\([^)]+\)\.joinedload\([^)]+\)\.joinedload\('
+        context: "SQLAlchemy multiple joinedload (3+)"
+
+      - pattern: 'select_related\([^)]*,\s*[^)]*,\s*[^)]*,'
+        context: "Django select_related with many relations"
+
+      - pattern: 'JOIN\s+[\w\.]+\s+[^J]+JOIN\s+[\w\.]+\s+[^J]+JOIN'
+        context: "Raw SQL with 3+ JOINs"
+
+    go:
+      - pattern: '\.Joins\([^)]+\)\.Joins\([^)]+\)\.Joins\('
+        context: "GORM multiple Joins() calls"
+
+      - pattern: '\.Preload\([^)]+\)\.Preload\([^)]+\)\.Preload\([^)]+\)\.Preload\('
+        context: "GORM excessive Preload (4+)"
+
+      - pattern: 'JOIN\s+[\w\.]+\s+[^J]+JOIN\s+[\w\.]+\s+[^J]+JOIN'
+        context: "Raw SQL with 3+ JOINs"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # データウェアハウスや分析クエリの場合
+    - condition:
+        code_context: 'GROUP\s+BY|HAVING|ROLLUP|CUBE'
+      action:
+        severity_adjustment: -3
+        note: "分析クエリでは多数のJOINが必要な場合があります。ただし、マテリアライズドビューの使用を検討してください。"
+
+    # 読み取り専用クエリ（レポート生成など）
+    - condition:
+        code_context: 'AsNoTracking|NOLOCK|READ\s+UNCOMMITTED'
+      action:
+        severity_adjustment: -2
+        note: "読み取り専用クエリですが、クエリの実行計画を確認してください。"
+
+    # インデックスが適切に設定されている場合
+    - condition:
+        code_context: '@Index|CREATE\s+INDEX|INDEXED'
+      action:
+        severity_adjustment: -2
+        note: "インデックスが設定されていますが、実行計画で効率を確認してください。"
+
+    # PostgreSQLのLATERAL JOIN使用
+    - condition:
+        tech_stack_has: "PostgreSQL"
+        code_context: 'LATERAL\s+JOIN'
+      action:
+        severity_adjustment: -2
+        note: "LATERAL JOINは効率的ですが、複雑さに注意してください。"
+
+    # GraphQL Dataloader使用（N+1問題対策済み）
+    - condition:
+        tech_stack_has: "GraphQL"
+        code_context: 'DataLoader|batch'
+      action:
+        severity_adjustment: -3
+        note: "DataLoaderでバッチ処理されています。"
+
+  # 技術スタック別の推奨修正方法
+  fixes:
+    default:
+      - "クエリを分割して、複数の単純なクエリに分ける"
+      - "マテリアライズドビューを作成してJOINを事前計算"
+      - "非正規化テーブルを検討（読み取り重視の場合）"
+      - "キャッシュレイヤーを導入"
+
+    entity_framework_core:
+      - "AsSplitQuery()で複数クエリに分割"
+      - "Select()で必要なデータのみ射影してJOINを減らす"
+      - "Include()の代わりに明示的なJOINとSelect()を使用"
+      - "クエリフィルターでデータを絞り込んでからJOIN"
+
+    spring_boot:
+      - "@EntityGraphで必要な関連のみfetch"
+      - "DTO Projectionで必要なフィールドのみ取得"
+      - "@BatchSize(size=10)でバッチフェッチに切り替え"
+      - "FetchMode.SELECTで別クエリに分離"
+
+    laravel:
+      - "load()メソッドで遅延eager loading"
+      - "with()を複数回に分けて段階的に読み込み"
+      - "whereHas()を使ってフィルタリングしてからJOIN"
+      - "クエリビルダーで明示的にJOINを制御"
+
+    sequelize:
+      - "separate: trueで別クエリに分割"
+      - "includeを階層化して段階的に読み込み"
+      - "required: falseでLEFT JOINに変更"
+
+    typeorm:
+      - "loadRelationCountAndMapを使用して関連数のみ取得"
+      - "QueryBuilderで段階的にJOINを追加"
+      - "別々のfindOne()呼び出しに分割"
+
+    django:
+      - "prefetch_related()で別クエリに分割"
+      - "Prefetch()オブジェクトでクエリを細かく制御"
+      - "select_related()とprefetch_related()を使い分ける"
+
+    postgresql:
+      - "LATERAL JOINで相関サブクエリを効率化"
+      - "CTEで段階的にデータを絞り込み"
+      - "マテリアライズドビューで事前集計"
+
+    mysql:
+      - "サブクエリをJOINに変換（MySQL 5.6+）"
+      - "一時テーブルで段階的に処理"
+
+  # パフォーマンスへの影響
+  performance_impact:
+    - "クエリ実行時間の指数的増加"
+    - "メモリ使用量の増加（中間結果の保持）"
+    - "ロック競合の増加"
+    - "実行計画の複雑化によるオプティマイザーの判断ミス"
+
+  # 代替アプローチ
+  alternatives:
+    - "GraphQL DataLoaderパターン: N+1問題を解決しつつJOINを回避"
+    - "CQRS: 読み取り専用の非正規化テーブルを用意"
+    - "イベントソーシング: 必要なビューを事前構築"
+    - "Redis/Memcachedでクエリ結果をキャッシュ"
+
+  # 追加情報
+  references:
+    - "https://use-the-index-luke.com/sql/join"
+    - "https://docs.microsoft.com/en-us/ef/core/querying/single-split-queries"
+    - "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-LATERAL"

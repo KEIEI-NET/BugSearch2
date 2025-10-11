@@ -1,0 +1,208 @@
+# Float/Double for Money Calculation ルール定義
+
+rule:
+  id: "SEC_FLOAT_MONEY"
+  category: "security"
+  name: "Float/Double for Money"
+  description: "金額計算にfloat/double型を使用することによる丸め誤差と財務データ不整合"
+  base_severity: 9
+
+  # 言語ごとの検出パターン
+  patterns:
+    csharp:
+      - pattern: '(public|private|protected)?\s+(float|double)\s+(price|amount|total|cost|balance|fee|tax|discount|payment|salary|revenue|profit)\b'
+        context: "float/double declaration for monetary field"
+
+      - pattern: '(float|double)\s+\w*[Pp]rice\w*\s*='
+        context: "float/double for price variable"
+
+      - pattern: 'new\s+(float|double)\[\].*\b(amount|price|cost|total|balance)'
+        context: "float/double array for monetary data"
+
+    java:
+      - pattern: '(private|public|protected)?\s+(float|double)\s+(price|amount|total|cost|balance|fee|tax)\b'
+        context: "float/double field for money"
+
+      - pattern: '@Column.*\b(float|double)\s+(price|amount|cost)'
+        context: "JPA entity with float/double money field"
+
+      - pattern: 'Float|Double.*\b(price|amount|cost|total|balance)\b'
+        context: "Float/Double wrapper for monetary value"
+
+    php:
+      - pattern: '\$table->float\([\'"]?(price|amount|total|cost|balance|fee)'
+        context: "Laravel migration with float money column"
+
+      - pattern: '\$table->double\([\'"]?(price|amount|total|cost)'
+        context: "Laravel migration with double money column"
+
+      - pattern: '(floatval|doubleval)\s*\(\s*\$\w*(price|amount|cost|total)'
+        context: "floatval/doubleval for money conversion"
+
+    javascript:
+      - pattern: 'let\s+\w*(price|amount|total|cost|balance|fee)\w*\s*=\s*parseFloat'
+        context: "parseFloat for monetary value"
+
+      - pattern: 'const\s+\w*(price|amount|total|cost)\w*\s*=\s*\w+\.toFixed'
+        context: "toFixed for money (still float internally)"
+
+      - pattern: 'Number\s*\(.*\b(price|amount|cost|total|balance)\b'
+        context: "Number() conversion for money"
+
+    typescript:
+      - pattern: '\w*(price|amount|total|cost|balance|fee|tax)\w*:\s*number'
+        context: "TypeScript number type for money (use Decimal or bigint)"
+
+      - pattern: '@Column\(["\']float|double["\'].*\b(price|amount|cost)'
+        context: "TypeORM float/double column for money"
+
+      - pattern: 'price:\s*\{\s*type:\s*Number\s*\}'
+        context: "Mongoose schema with Number for money"
+
+    python:
+      - pattern: '(price|amount|total|cost|balance|fee)\s*=\s*float\('
+        context: "float() conversion for monetary value"
+
+      - pattern: 'FloatField\s*\(.*\b(price|amount|cost|total|balance)'
+        context: "Django FloatField for money"
+
+      - pattern: 'Column\s*\(\s*Float.*\b(price|amount|cost|total)'
+        context: "SQLAlchemy Float column for money"
+
+    go:
+      - pattern: '(Price|Amount|Total|Cost|Balance|Fee|Tax)\s+(float32|float64)'
+        context: "float32/float64 for monetary field"
+
+      - pattern: 'type\s+\w+\s+struct\s*\{[^}]*(Price|Amount|Cost|Balance)\s+(float32|float64)'
+        context: "struct with float money field"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # Decimal型使用（安全）
+    - condition:
+        code_context: '\bdecimal\b|Decimal|BigDecimal|DECIMAL'
+      action:
+        severity_adjustment: -8
+        note: "Decimal型が使用されています。金額計算に適しています。"
+
+    - condition:
+        tech_stack_has: "C#"
+        code_context: '\bdecimal\b'
+      action:
+        severity_adjustment: -8
+        note: "C# decimal型は金額計算に最適です。"
+
+    - condition:
+        tech_stack_has: "Java"
+        code_context: 'BigDecimal'
+      action:
+        severity_adjustment: -8
+        note: "Java BigDecimalは金額計算に最適です。"
+
+    # 整数+スケール（準安全）
+    - condition:
+        code_context: '\blong\b|int64|bigint'
+      action:
+        severity_adjustment: -5
+        note: "整数型で扱っていますが、スケール管理に注意してください（例: 円単位 → セント単位）。"
+
+    # 金額ライブラリ使用（安全）
+    - condition:
+        code_context: 'Money|Currency|dinero\.js|money\.js|JSJoda'
+      action:
+        severity_adjustment: -7
+        note: "専用の金額ライブラリが使用されています。"
+
+    # 表示のみ（影響小）
+    - condition:
+        code_context: 'ToString|format|Display|View|Render'
+      action:
+        severity_adjustment: -4
+        note: "表示用途のみですが、計算には使用しないでください。"
+
+    # テストコード
+    - condition:
+        code_context: 'Test|Mock|Stub|Fake'
+      action:
+        severity_adjustment: -3
+        note: "テストコードですが、本番コードでは適切な型を使用してください。"
+
+  # 技術スタック別の推奨修正方法
+  fixes:
+    csharp:
+      - "decimal型を使用: decimal price = 19.99m;"
+      - "Entity Framework: [Column(TypeName = 'decimal(18,2)')] public decimal Price { get; set; }"
+      - "計算: decimal total = price * quantity; // 丸め誤差なし"
+
+    java:
+      - "BigDecimalを使用: BigDecimal price = new BigDecimal('19.99');"
+      - "文字列コンストラクタ使用: new BigDecimal('0.1') （new BigDecimal(0.1)は不正確）"
+      - "JPA: @Column(precision=19, scale=4) private BigDecimal amount;"
+
+    php:
+      - "BCMath関数: bcadd($a, $b, 2); // 2桁の小数点精度"
+      - "Laravel: $table->decimal('price', 8, 2); // 8桁、小数点2桁"
+      - "MoneyPHP: use Money\\Money; $price = Money::USD(1999); // セント単位"
+
+    javascript:
+      - "decimal.js: const price = new Decimal('19.99');"
+      - "dinero.js: const price = Dinero({ amount: 1999, currency: 'USD' }); // セント単位"
+      - "bigint: 整数セント単位で計算、表示時に変換"
+
+    typescript:
+      - "decimal.js-light: price: Decimal;"
+      - "TypeORM: @Column('decimal', { precision: 10, scale: 2 }) price: string;"
+      - "Zod validation: z.number().multipleOf(0.01) または z.string().regex(/^\\d+\\.\\d{2}$/)"
+
+    python:
+      - "Decimal型: from decimal import Decimal; price = Decimal('19.99')"
+      - "Django: models.DecimalField(max_digits=10, decimal_places=2)"
+      - "SQLAlchemy: Column(Numeric(10, 2))"
+
+    go:
+      - "shopspring/decimal: price := decimal.NewFromString('19.99')"
+      - "int64でセント単位: priceInCents := int64(1999)"
+      - "math/big: amount := big.NewRat(1999, 100)"
+
+  # 問題の具体例
+  precision_issues:
+    example_1:
+      description: "0.1 + 0.2 = 0.30000000000000004"
+      code: "float total = 0.1f + 0.2f; // NG: 0.30000000000000004"
+      fix: "decimal total = 0.1m + 0.2m; // OK: 0.3"
+
+    example_2:
+      description: "1000回の0.01加算で誤差蓄積"
+      code: |
+        float sum = 0.0f;
+        for (int i = 0; i < 1000; i++) { sum += 0.01f; }
+        // 期待: 10.0、実際: 9.999998...
+      fix: |
+        decimal sum = 0m;
+        for (int i = 0; i < 1000; i++) { sum += 0.01m; }
+        // 正確: 10.0
+
+    example_3:
+      description: "税込計算で1円のズレ"
+      code: |
+        float price = 998.0f;
+        float tax = price * 0.08f; // 79.84000... → 79.84 or 80?
+      fix: |
+        decimal price = 998m;
+        decimal tax = price * 0.08m; // 正確に 79.84
+        decimal taxRounded = decimal.Round(tax, 0, MidpointRounding.AwayFromZero);
+
+  # ビジネスへの影響
+  business_impact:
+    - "会計監査での不整合検出"
+    - "税務申告時の端数処理エラー"
+    - "顧客への過請求/過少請求"
+    - "銀行との決済金額不一致"
+    - "年間累積での誤差拡大（数百万円レベル）"
+
+  # 追加情報
+  references:
+    - "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html"
+    - "https://docs.microsoft.com/en-us/dotnet/api/system.decimal"
+    - "https://martinfowler.com/eaaCatalog/money.html"
+    - "https://husobee.github.io/money/float/2016/09/23/never-use-floats-for-currency.html"

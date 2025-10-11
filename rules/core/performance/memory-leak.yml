@@ -1,0 +1,117 @@
+# Memory Leak ルール定義
+
+rule:
+  id: "PERF_MEMORY_LEAK"
+  category: "performance"
+  name: "Memory Leak"
+  description: "メモリリークの可能性: 動的メモリ確保後のdelete/free忘れ、リソースの未解放"
+  base_severity: 10
+
+  # 言語ごとの検出パターン
+  patterns:
+    cpp:
+      - pattern: 'new\s+\w+(?!\s*\([^)]*\))(?!.*delete)'
+        context: "new without corresponding delete"
+
+      - pattern: 'malloc\s*\([^)]*\)(?!.*free)'
+        context: "malloc without free"
+
+      - pattern: 'fopen\s*\([^)]*\)(?!.*fclose)'
+        context: "fopen without fclose"
+
+    c:
+      - pattern: 'malloc\s*\([^)]*\)(?!.*free)'
+        context: "malloc without free"
+
+      - pattern: 'calloc\s*\([^)]*\)(?!.*free)'
+        context: "calloc without free"
+
+      - pattern: 'realloc\s*\([^)]*\)(?!.*free)'
+        context: "realloc without free"
+
+    csharp:
+      - pattern: 'IDisposable(?!.*using\s*\(|.*Dispose\(\))'
+        context: "IDisposable not in using statement"
+
+      - pattern: 'new\s+(FileStream|StreamReader|StreamWriter|SqlConnection|DbContext)(?!.*using)'
+        context: "Resource not in using statement"
+
+    javascript:
+      - pattern: 'setInterval\s*\([^)]*\)(?!.*clearInterval)'
+        context: "setInterval without clearInterval"
+
+      - pattern: 'addEventListener\s*\([^)]*\)(?!.*removeEventListener)'
+        context: "addEventListener without removeEventListener"
+
+    typescript:
+      - pattern: 'setInterval\s*\([^)]*\)(?!.*clearInterval)'
+        context: "setInterval without clearInterval"
+
+      - pattern: '\.subscribe\s*\([^)]*\)(?!.*unsubscribe|.*pipe\(.*takeUntil)'
+        context: "RxJS subscribe without unsubscribe/takeUntil"
+
+  # 技術スタックによる深刻度調整
+  context_modifiers:
+    # スマートポインタ使用（安全）
+    - condition:
+        tech_stack_has: "C++"
+        code_context: 'unique_ptr|shared_ptr|weak_ptr|make_unique|make_shared'
+      action:
+        severity_adjustment: -8
+        note: "スマートポインタが使用されています。自動的にメモリ管理されます。"
+
+    # RAII パターン
+    - condition:
+        code_context: 'using\s*\(|try.*finally.*Dispose'
+      action:
+        severity_adjustment: -7
+        note: "RAII/usingパターンが使用されています。安全です。"
+
+    # Angular OnDestroy
+    - condition:
+        tech_stack_has: "Angular"
+        code_context: 'ngOnDestroy.*unsubscribe|takeUntil.*destroy'
+      action:
+        severity_adjustment: -7
+        note: "ngOnDestroy()でクリーンアップされています。"
+
+    # React useEffect cleanup
+    - condition:
+        tech_stack_has: "React"
+        code_context: 'useEffect.*return\s*\(\s*\)\s*=>'
+      action:
+        severity_adjustment: -7
+        note: "useEffectのクリーンアップ関数が実装されています。"
+
+  # 技術スタック別の推奨修正方法
+  fixes:
+    cpp:
+      - "スマートポインタを使用: std::unique_ptr<T> ptr = std::make_unique<T>();"
+      - "RAII原則に従う: デストラクタで自動的にリソース解放"
+      - "std::vector等のコンテナを使用（自動メモリ管理）"
+
+    c:
+      - "必ずfree()を呼ぶ: if (ptr) { free(ptr); ptr = NULL; }"
+      - "エラーハンドリングでも確実にfree()"
+      - "goto cleanupパターンでリソース解放を一箇所に集約"
+
+    csharp:
+      - "using ステートメント: using (var resource = new Resource()) { }"
+      - "IDisposableパターン実装"
+      - "try-finally で Dispose() 確実に呼び出し"
+
+    javascript:
+      - "clearInterval(intervalId) を確実に呼ぶ"
+      - "removeEventListener でイベントリスナー削除"
+      - "WeakMap/WeakSet でガベージコレクション対象にする"
+
+    typescript:
+      - "RxJS: .pipe(takeUntil(this.destroy$)) で自動unsubscribe"
+      - "Angular: ngOnDestroy() で subscription.unsubscribe()"
+      - "React: useEffect(() => { return () => cleanup(); })"
+
+  # 追加情報
+  references:
+    - "https://en.cppreference.com/w/cpp/memory"
+    - "https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/"
+    - "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management"
