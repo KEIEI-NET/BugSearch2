@@ -1,7 +1,7 @@
 # インストールガイド
 
 *バージョン: v4.0.0*
-*最終更新: 2025年01月11日 22:15 JST*
+*最終更新: 2025年10月11日 22:15 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 このガイドでは、BugSearch2 システムのインストール手順を詳しく説明します。
@@ -267,10 +267,10 @@ py codex_review_severity.py advise --complete-all --out reports/complete_report.
 
 ---
 
-*最終更新: 2025年01月11日 22:15 JST*
+*最終更新: 2025年10月11日 22:15 JST*
 *バージョン: v4.0.0*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
-- v4.0.0 (2025年01月11日): BugSearch2リポジトリ新規作成、ドキュメント更新
-- v3.5.0 (2025年01月03日): GitHub Actionsセットアップガイド追加、python-dotenv依存削除、Python 3.13対応、--complete-all機能追加
+- v4.0.0 (2025年10月11日): BugSearch2リポジトリ新規作成、ドキュメント更新
+- v3.5.0 (2025年09月03日): GitHub Actionsセットアップガイド追加、python-dotenv依存削除、Python 3.13対応、--complete-all機能追加

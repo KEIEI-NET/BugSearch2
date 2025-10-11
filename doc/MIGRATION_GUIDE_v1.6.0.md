@@ -1,7 +1,7 @@
 # Migration Guide - v1.5.0 to v1.6.0
 
 *バージョン: v1.0.0*
-*最終更新: 2025年01月05日 21:37 JST*
+*最終更新: 2025年09月05日 21:37 JST*
 
 ## Executive Summary
 
@@ -259,8 +259,8 @@ The upgrade risk is minimal due to backward compatibility, while the risk of not
 
 ---
 
-*最終更新: 2025年01月05日 21:37 JST*
+*最終更新: 2025年09月05日 21:37 JST*
 *バージョン: v1.0.0*
 
 **更新履歴:**
-- v1.0.0 (2025年01月05日): 初版作成、v1.5.0からv1.6.0への完全移行ガイド
+- v1.0.0 (2025年09月05日): 初版作成、v1.5.0からv1.6.0への完全移行ガイド

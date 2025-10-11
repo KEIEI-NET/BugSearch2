@@ -1,6 +1,6 @@
 # 変更履歴 (CHANGELOG)
 
-*最終更新: 2025年01月05日 21:37 JST*
+*最終更新: 2025年09月05日 21:37 JST*
 
 ## v3.7.0 - 2025-01-05 - codex_review_severity.py PRODUCTION READY
 
