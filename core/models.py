@@ -250,6 +250,27 @@ class ContextModifier:
 
 
 @dataclass
+class RuleCategory:
+    """ルールカテゴリ（複数ルールの集合）"""
+    name: str  # database, security, solid, performance
+    rules: List['Rule'] = field(default_factory=list)
+    total_detections: int = 0
+
+    def add_detection(self, count: int = 1):
+        """検出数を追加"""
+        self.total_detections += count
+
+    def get_highest_severity(self) -> int:
+        """カテゴリ内の最高深刻度を取得"""
+        if not self.rules:
+            return 0
+        return max(rule.base_severity for rule in self.rules)
+
+    def __str__(self) -> str:
+        return f"{self.name} ({len(self.rules)} rules)"
+
+
+@dataclass
 class Rule:
     """解析ルール"""
     id: str

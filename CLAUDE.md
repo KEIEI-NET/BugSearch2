@@ -2,21 +2,27 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.2.0 (Phase 3完了 - MVP)*
-*最終更新: 2025年10月12日 01:15 JST*
+*バージョン: v4.2.1 (Phase 3.2完了)*
+*最終更新: 2025年10月12日 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
-### 🎯 Phase 3完了 (MVP): ルールベース解析システム
+### 🎯 Phase 3.2完了: 複数ルール管理システム
 
-**Phase 3新機能 (v4.2.0):**
-- ✅ **8つのYAMLルール実装** (Database×2, Security×3, SOLID×2, Performance×2)
-- ✅ **4カテゴリ対応** (database, security, solid, performance)
+**Phase 3.2新機能 (v4.2.1):**
+- ✅ **RuleCategoryクラス実装** (`core/models.py` - カテゴリ別ルール管理)
+- ✅ **グローバルルール関数** (`core/rule_engine.py` - load_all_rules, group_rules_by_category, adjust_severity_by_tech_stack)
+- ✅ **6つのYAMLルール動作** (Database×2: n-plus-one, multiple-join / SOLID×2: large-class, large-interface / Performance×2: memory-leak, goroutine-leak)
+- ✅ **包括的テスト** (`test/test_multiple_rules.py` - 8テスト中6成功、2スキップ)
+- ✅ **技術スタック考慮の深刻度調整** (Elasticsearch使用時にN+1深刻度を10→7に軽減)
+- ⚠️ **4つのYAMLファイルに構文エラー** (select-star, sql-injection, xss-vulnerability, float-money - Phase 3.3で修正予定)
+
+**Phase 3.1機能 (v4.2.0):**
+- ✅ **YAMLルール定義** (Database×3, Security×3, SOLID×2, Performance×2の計10ルール作成)
 - ✅ **7言語サポート** (C#, Java, PHP, JavaScript, TypeScript, Python, Go)
-- ✅ **技術スタック依存の深刻度調整** (各ルールでコンテキスト考慮)
 - ✅ **詳細な修正提案** (技術スタック別の推奨修正方法)
 
 **Phase 2の基盤機能 (v4.1.0):**
@@ -134,6 +140,9 @@ python test/test_mvp.py
 
 # Phase 2 技術スタック自動検出テスト
 python test/test_tech_stack_detector.py
+
+# Phase 3.2 複数ルール管理テスト
+python test/test_multiple_rules.py
 
 # コアテストの実行
 python test/test_gpt5_codex.py
@@ -402,11 +411,12 @@ pip install --only-binary :all: scikit-learn
 
 ---
 
-*最終更新: 2025年10月12日 01:15 JST*
-*バージョン: v4.2.0 (Phase 3完了 - MVP)*
+*最終更新: 2025年10月12日 JST*
+*バージョン: v4.2.1 (Phase 3.2完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
-- v4.2.0 (2025年10月12日): **Phase 3完了 (MVP)** - 8つのYAMLルール実装、4カテゴリ対応、7言語サポート、技術スタック依存深刻度調整、詳細な修正提案
+- v4.2.1 (2025年10月12日): **Phase 3.2完了** - RuleCategoryクラス、グローバルルール関数(load_all_rules, group_rules_by_category, adjust_severity_by_tech_stack)実装、複数ルール管理テスト(8テスト、6成功+2スキップ)、技術スタック考慮の深刻度調整(Elasticsearch使用時N+1深刻度10→7)
+- v4.2.0 (2025年10月12日): **Phase 3.1完了** - 10個のYAMLルール定義作成(Database×3, Security×3, SOLID×2, Performance×2)、7言語サポート、詳細な修正提案、技術スタック別推奨方法
 - v4.1.0 (2025年10月12日): **Phase 2完了** - 技術スタック自動検出エンジン、YAMLルールシステム、対話型設定ジェネレータ実装、全テスト合格(5/5)
 - v4.0.5 (2025年10月11日): **Phase 1完了** - BugSearch2リポジトリ新規作成、coreモジュール実装、MVPテスト合格(3/3)

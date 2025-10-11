@@ -321,3 +321,94 @@ class RuleEngine:
             return "[MEDIUM]"
         else:
             return "[LOW]"
+
+
+# ========================================
+# Phase 3.2: グローバル関数API
+# ========================================
+
+def load_all_rules(rules_dir: Path = Path("rules")) -> List[Rule]:
+    """
+    rules/配下の全YAMLファイルを再帰的に読み込み
+
+    Args:
+        rules_dir: ルールディレクトリのパス
+
+    Returns:
+        読み込まれたルールのリスト
+
+    ディレクトリ構造例:
+        rules/
+        ├── core/
+        │   ├── database/
+        │   │   ├── n-plus-one.yml
+        │   │   ├── select-star.yml
+        │   │   └── multiple-join.yml
+        │   ├── security/
+        │   │   ├── sql-injection.yml
+        │   │   ├── xss-vulnerability.yml
+        │   │   └── float-money.yml
+        │   ├── solid/
+        │   │   ├── large-class.yml
+        │   │   └── large-interface.yml
+        │   └── performance/
+        │       ├── memory-leak.yml
+        │       └── goroutine-leak.yml
+    """
+    engine = RuleEngine(rules_dir=str(rules_dir))
+    return engine.rules
+
+
+def group_rules_by_category(rules: List[Rule]) -> Dict[str, 'RuleCategory']:
+    """
+    ルールをカテゴリ別にグループ化
+
+    Args:
+        rules: ルールのリスト
+
+    Returns:
+        カテゴリ名をキーとした辞書（値はRuleCategoryオブジェクト）
+    """
+    from .models import RuleCategory
+
+    categories = {}
+
+    for rule in rules:
+        if rule.category not in categories:
+            categories[rule.category] = RuleCategory(
+                name=rule.category,
+                rules=[]
+            )
+
+        categories[rule.category].rules.append(rule)
+
+    return categories
+
+
+def adjust_severity_by_tech_stack(
+    rule: Rule,
+    tech_stack: TechStack,
+    base_severity: int,
+    code_context: str = ""
+) -> tuple[int, List[str]]:
+    """
+    技術スタックに応じて深刻度を調整
+
+    Args:
+        rule: 解析ルール
+        tech_stack: プロジェクトの技術スタック
+        base_severity: 基本深刻度
+        code_context: コードのコンテキスト（オプション）
+
+    Returns:
+        (調整後の深刻度, 追加ノートのリスト)
+
+    例:
+        Elasticsearch使用時はN+1問題の深刻度を10→7に軽減
+
+        >>> rule = Rule(id="DB_N_PLUS_ONE", ...)
+        >>> tech_stack = TechStack(databases=[DatabaseInfo(type="Elasticsearch")])
+        >>> severity, notes = adjust_severity_by_tech_stack(rule, tech_stack, 10)
+        >>> print(severity)  # 7
+    """
+    return rule.evaluate_severity(tech_stack, code_context)
