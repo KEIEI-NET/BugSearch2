@@ -346,22 +346,25 @@ class RuleLoader:
         """
         self.project_root = project_root
         self.core_rules_dir = Path("rules")
+        self.config_rules_dir = Path("config")  # 技術スタック別拡張ルール
         self.custom_rules_dir = project_root / ".bugsearch" / "rules"
         self.disabled_rules_file = self.custom_rules_dir / "disabled.yml"
 
-    def load_all_rules(self, include_custom: bool = True) -> List[Rule]:
+    def load_all_rules(self, include_custom: bool = True, include_config: bool = True) -> List[Rule]:
         """
-        全ルールを読み込み（コア + カスタム）
+        全ルールを読み込み（コア + 拡張 + カスタム）
 
         Args:
             include_custom: カスタムルールを含めるか
+            include_config: 技術スタック別拡張ルール (config/) を含めるか
 
         Returns:
             読み込まれたルールのリスト
 
         優先順位:
-            1. カスタムルール (.bugsearch/rules/)
-            2. コアルール (rules/)
+            1. カスタムルール (.bugsearch/rules/) - 最高優先
+            2. 技術スタック別拡張ルール (config/) - 中優先
+            3. コアルール (rules/) - 最低優先
 
         無効化:
             - disabled.yml に記載されたルールはスキップ
@@ -374,6 +377,14 @@ class RuleLoader:
         core_rules = core_engine.rules
         print(f"[INFO] コアルール: {len(core_rules)}個読み込み")
 
+        # 技術スタック別拡張ルール読み込み (config/)
+        config_rules = []
+        if include_config and self.config_rules_dir.exists():
+            config_engine = RuleEngine(rules_dir=str(self.config_rules_dir))
+            config_rules = config_engine.rules
+            if config_rules:
+                print(f"[INFO] 技術スタック別拡張ルール (config/): {len(config_rules)}個読み込み")
+
         # カスタムルール読み込み
         custom_rules = []
         if include_custom and self.custom_rules_dir.exists():
@@ -383,8 +394,11 @@ class RuleLoader:
             if custom_rules:
                 print(f"[INFO] カスタムルール: {len(custom_rules)}個読み込み")
 
-        # ルールをマージ（カスタムルールで上書き）
-        all_rules = self._merge_rules(core_rules, custom_rules)
+        # ルールをマージ（優先度: カスタム > config > コア）
+        # まずコアと拡張をマージ
+        temp_rules = self._merge_rules(core_rules, config_rules)
+        # 次にカスタムルールでさらに上書き
+        all_rules = self._merge_rules(temp_rules, custom_rules)
 
         # 無効化されたルールを除外
         active_rules = [r for r in all_rules if not self._is_disabled(r, disabled)]
@@ -392,6 +406,8 @@ class RuleLoader:
         disabled_count = len(all_rules) - len(active_rules)
         if disabled_count > 0:
             print(f"[INFO] {disabled_count}個のルールが無効化されています")
+
+        print(f"[INFO] 有効なルール総数: {len(active_rules)}個")
 
         return active_rules
 
