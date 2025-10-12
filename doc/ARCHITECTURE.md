@@ -9,7 +9,7 @@ BugSearch2 は、Context7統合によりモダンなコードレビューシス�
 
 ## システム構成図
 
-### Phase 8.2 アーキテクチャ
+### Phase 8.2 アーキテクチャ（ASCII図）
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -58,6 +58,47 @@ BugSearch2 は、Context7統合によりモダンなコードレビューシス�
                            │  - 重要度ソート      │
                            │  - 統計情報生成     │
                            └─────────────────────┘
+```
+
+### Phase 8.2 アーキテクチャ（Mermaid図）
+
+```mermaid
+graph TB
+    subgraph Phase8["Phase 8: Context7統合"]
+        Context7[Context7 API<br/>技術仕様取得] --> ConfigGen[ConfigGenerator<br/>YAML生成]
+        ConfigGen --> AIFix[AI自動修正<br/>fix_yaml_with_ai]
+    end
+
+    subgraph AutoRun["完全自動実行フロー"]
+        YAMLGen[YAML生成] --> Validate[検証<br/>5段階検証]
+        Validate --> AIFixLoop[AI修正<br/>最大5回試行]
+        AIFixLoop --> Analysis[分析実行<br/>index/advise]
+    end
+
+    subgraph ExistingSystem["既存システム統合 (codex_review_severity.py)"]
+        IndexLayer[インデックス層<br/>- ファイル収集<br/>- エンコード検出<br/>- メタデータ生成]
+        ControlLayer[分析制御層<br/>- バッチ処理<br/>- 並列制御<br/>- キャッシュ管理]
+
+        subgraph AnalysisEngine["解析エンジン層"]
+            RuleAnalysis[ルールベース解析<br/>カスタム/YAML/技術スタック]
+            SOLIDCheck[SOLID原則検出<br/>5原則/言語別/Angular]
+            AIAnalysis[AI分析<br/>GPT/Claude/Fallback]
+        end
+
+        ReportGen[レポート生成層<br/>Markdown/重要度ソート/統計]
+    end
+
+    AIFix --> AutoRun
+    Analysis --> IndexLayer
+    Analysis --> ControlLayer
+    IndexLayer --> AnalysisEngine
+    ControlLayer --> AnalysisEngine
+    AnalysisEngine --> ReportGen
+
+    style Context7 fill:#fff2cc
+    style ConfigGen fill:#e1d5e7
+    style AIFix fill:#d5e8d4
+    style ReportGen fill:#e8f5e9
 ```
 
 ## 🏗️ アーキテクチャの設計原則
@@ -545,7 +586,7 @@ def generate_report(results):
 
 ## データフロー
 
-### 1. インデックス作成フロー
+### 1. インデックス作成フロー（ASCII図）
 
 ```
 ユーザー入力
@@ -567,7 +608,26 @@ JSONLファイル書き込み
 メタデータ更新
 ```
 
-### 2. 分析実行フロー
+### 1. インデックス作成フロー（Mermaid図）
+
+```mermaid
+graph TD
+    A[ユーザー入力<br/>codex_review_severity.py index] --> B[ファイル探索<br/>os.walk]
+    B --> C[言語フィルタリング<br/>--exclude-langs]
+    C --> D{サイズチェック<br/>--max-file-mb}
+    D -->|OK| E[エンコーディング検出<br/>chardet]
+    D -->|大きすぎる| F[スキップ]
+    E --> G[コンテンツ読み込み]
+    G --> H[ハッシュ計算<br/>MD5]
+    H --> I[JSONLファイル書き込み<br/>.advice_index.jsonl]
+    I --> J[メタデータ更新<br/>.advice_index.meta.json]
+
+    style A fill:#e1f5ff
+    style I fill:#fff4e6
+    style J fill:#fff4e6
+```
+
+### 2. 分析実行フロー（ASCII図）
 
 ```
 インデックス読み込み
@@ -587,6 +647,27 @@ AI API呼び出し
 レポート生成
     ↓
 Markdownファイル出力
+```
+
+### 2. 分析実行フロー（Mermaid図）
+
+```mermaid
+graph TD
+    A[インデックス読み込み<br/>.advice_index.jsonl] --> B[重要度計算<br/>ルールベース]
+    B --> C[上位N件抽出<br/>--topk/--all]
+    C --> D[並列バッチ分割<br/>10ワーカー]
+    D --> E{キャッシュチェック<br/>.cache/analysis/}
+    E -->|ヒット| F[キャッシュから読み込み]
+    E -->|ミス| G[AI API呼び出し<br/>Anthropic/OpenAI]
+    G --> H[結果キャッシュ保存<br/>MD5ハッシュ]
+    F --> I[レポート生成<br/>重要度ソート]
+    H --> I
+    I --> J[Markdownファイル出力<br/>reports/*.md]
+
+    style A fill:#fff4e6
+    style E fill:#ffe6e6
+    style F fill:#d5e8d4
+    style J fill:#e8f5e9
 ```
 
 ## パフォーマンス最適化

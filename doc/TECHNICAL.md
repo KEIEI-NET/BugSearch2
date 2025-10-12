@@ -248,6 +248,36 @@ BugSearch2 v4.10.0は、Context7統合とAI自動修正機能を実装し、技�
 
 ## データフロー
 
+### 2段階パイプライン全体像
+
+```mermaid
+graph TB
+    subgraph "Phase 1: インデックス作成"
+        A[ソースファイル] --> B[ファイルスキャン]
+        B --> C{サイズ/言語チェック}
+        C -->|OK| D[エンコーディング検出]
+        C -->|NG| E[スキップ]
+        D --> F[ファイル読み込み]
+        F --> G[.advice_index.jsonl]
+    end
+
+    subgraph "Phase 2: 解析実行"
+        G --> H[インデックス読み込み]
+        H --> I[類似検索<br/>TF-IDF]
+        I --> J[Phase 1:<br/>ルールベース解析]
+        J --> K[重要度スコア計算]
+        K --> L{AI解析対象?}
+        L -->|高重要度| M[Phase 2:<br/>AI詳細解析]
+        L -->|低重要度| N[*_rules.mdレポート]
+        M --> O[*_ai.mdレポート]
+    end
+
+    style A fill:#e1f5ff
+    style G fill:#fff4e6
+    style N fill:#e8f5e9
+    style O fill:#e8f5e9
+```
+
 ## ベンチマークとプロファイル
 
 - 全 CLI の `index` コマンドは `--batch-size`（既定 500）、`--max-files`、`--max-seconds`、`--include` / `--exclude`、`--worker-count` をサポートします。大規模リポジトリではこれらを組み合わせて段階的にインデックス処理を進めてください。
