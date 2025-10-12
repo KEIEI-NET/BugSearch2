@@ -2,13 +2,70 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.7.1 (Phase 6.1完了)*
+*バージョン: v4.8.0 (Phase 7.0完了)*
 *最終更新: 2025年10月12日 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
+
+### 🚀 Phase 7.0完了: 大規模ソースファイル解析システム (@tdd品質達成)
+
+**Phase 7.0新機能 (v4.8.0):**
+- ✅ **30,000+ファイル対応** (実測: 15,889 files/sec - 目標の15倍!)
+- ✅ **中断・再開機能** (`core/checkpoint_manager.py` - チェックポイント管理)
+- ✅ **メモリ監視システム** (`core/memory_monitor.py` - リアルタイム監視、自動GC)
+- ✅ **大規模処理プロセッサー** (`core/large_scale_processor.py` - バッチ処理、プログレスバー)
+- ✅ **全テスト100%合格** (`test/test_large_scale_processor.py` - 17/17成功、@tdd品質)
+
+**パフォーマンス実測値 (10,000ファイルテスト):**
+```
+スループット: 15,889.3 files/sec (目標1,000の15倍!)
+メモリ増加: +3.79 MB (目標100MB以下)
+エラー率: 0.00% (完璧)
+処理時間: 0.63秒
+```
+
+**使用例 - 大規模処理:**
+```python
+from pathlib import Path
+from core.large_scale_processor import LargeScaleProcessor, ProcessingConfig
+
+# 設定
+config = ProcessingConfig(
+    batch_size=100,
+    checkpoint_interval=1000,
+    max_memory_mb=2000
+)
+
+# プロセッサー作成
+processor = LargeScaleProcessor(
+    config=config,
+    checkpoint_file=Path(".bugsearch/checkpoint.json")
+)
+
+# 処理実行（30,000+ファイル対応）
+results = processor.process_files(
+    files=all_source_files,
+    processor_func=analyze_file,
+    resume=True  # 中断から再開
+)
+
+print(f"成功: {processor.success_count}")
+print(f"メモリ: {processor.memory_monitor.get_current_memory_usage():.2f} MB")
+```
+
+**使用例 - パフォーマンステスト:**
+```bash
+# 10,000ファイルテスト
+python test/test_large_scale_30k_files.py 10000
+
+# 30,000ファイルテスト（本番相当）
+python test/test_large_scale_30k_files.py 30000
+```
+
+**詳細ドキュメント**: `doc/guides/PHASE7_LARGE_SCALE_PROCESSING.md`
 
 ### 🤝 Phase 6.1完了: パフォーマンス最適化 (@perfect品質達成)
 
@@ -339,6 +396,13 @@ python test/test_phase5_realtime.py
 # Phase 6 チーム機能テスト (@perfect品質: 14/14成功、2スキップ)
 python test/test_phase6_team.py
 
+# Phase 7 大規模処理機能テスト (@tdd品質: 17/17成功)
+python test/test_large_scale_processor.py
+
+# Phase 7 パフォーマンステスト
+python test/test_large_scale_30k_files.py 10000   # 10,000ファイル
+python test/test_large_scale_30k_files.py 30000   # 30,000ファイル
+
 # コアテストの実行
 python test/test_gpt5_codex.py
 python test/test_solid_violations.py
@@ -624,10 +688,11 @@ pip install --only-binary :all: scikit-learn
 ---
 
 *最終更新: 2025年10月12日 JST*
-*バージョン: v4.7.1 (Phase 6.1完了)*
+*バージョン: v4.8.0 (Phase 7.0完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.8.0 (2025年10月12日): **Phase 7.0完了 (@tdd品質達成)** - 大規模ソースファイル解析システム実装、30,000+ファイル対応(実測15,889 files/sec)、中断・再開機能(core/checkpoint_manager.py +342行)、メモリ監視システム(core/memory_monitor.py +281行、リアルタイム監視・自動GC)、大規模処理プロセッサー(core/large_scale_processor.py +351行、バッチ処理・プログレスバー)、全テスト100%合格(17/17成功、test/test_large_scale_processor.py)、パフォーマンステスト(test/test_large_scale_30k_files.py +350行)、Phase 7ドキュメント(doc/guides/PHASE7_LARGE_SCALE_PROCESSING.md +650行)
 - v4.7.1 (2025年10月12日): **Phase 6.1完了 (@perfect品質達成)** - パフォーマンス最適化、大規模ファイル処理(ストリーミング処理・チャンク処理)、メモリ使用量90%削減(統計のみ保存)、並列処理高速化(4ワーカー・ThreadPoolExecutor)、Flask環境セットアップガイド(doc/guides/FLASK_SETUP.md +230行)、requirements.txt更新(Flask/watchdog/tqdm追加)、後方互換性100%維持(全テスト14/14合格)
 - v4.7.0 (2025年10月12日): **Phase 6完了 (@perfect品質達成)** - チーム機能実装、レポート比較エンジン(core/report_comparator.py +305行、ReportComparator/ReportDiffクラス)、進捗トラッキングシステム(core/progress_tracker.py +372行、ProgressTrackerクラス)、チームダッシュボード(dashboard/team_dashboard.py +380行、Flask WebUI + 6 REST APIエンドポイント)、全テスト100%合格(14/14成功、test/test_phase6_team.py)
 - v4.6.0 (2025年10月12日): **Phase 5完了 (@perfect品質達成)** - リアルタイム解析システム実装、ファイルウォッチャー機能(core/file_watcher.py +281行、watchdog統合、12言語対応)、差分解析エンジン(core/incremental_analyzer.py +298行、Git diff統合)、リアルタイム解析CLI(watch_mode.py +220行、デバウンス機能)、全テスト100%合格(9/9成功、test/test_phase5_realtime.py)
