@@ -1,0 +1,108 @@
+# BugSearch2 プロジェクト設定
+# 自動生成日: 2025-10-12
+# 総合テスト用設定
+
+project:
+  name: "BugSearch2 Integration Test"
+  version: "4.8.0"
+  description: "Phase 7総合テスト - 技術スタック完全版"
+
+# 技術スタック定義
+tech_stack:
+  # フロントエンド
+  frontend:
+    - TypeScript      # 18,265件 - メイン言語
+    - JavaScript      # 2,252件
+    - React           # 3プロジェクト検出
+    - Angular         # ユーザー指定
+
+  # バックエンド
+  backend:
+    - C#/.NET         # 799件 (.cs), 66プロジェクト (.csproj)
+    - Go              # 175件 (.go)
+    - Python          # 78件 (.py)
+    - Node.js         # 61プロジェクト (package.json)
+
+  # データベース
+  database:
+    - MySQL           # スキーマファイル多数検出
+    - Redis           # 設定・スクリプト検出
+    - Cassandra       # ユーザー指定
+    - Elasticsearch   # ユーザー指定
+
+# カスタムチェックパターン
+custom_checks:
+  validation:
+    enabled: true
+    description: "バリデーションチェック強化"
+    patterns:
+      - name: "input_validation"
+        severity: 8
+        description: "入力値検証の不足"
+        targets:
+          - "*.cs"
+          - "*.ts"
+          - "*.js"
+          - "*.go"
+          - "*.py"
+
+      - name: "null_check"
+        severity: 7
+        description: "null/undefined チェック不足"
+        targets:
+          - "*.cs"
+          - "*.ts"
+          - "*.js"
+
+      - name: "range_validation"
+        severity: 6
+        description: "範囲チェック不足"
+        targets:
+          - "*.cs"
+          - "*.go"
+          - "*.py"
+
+# 分析設定
+analysis:
+  # 対象ディレクトリ
+  source_dirs:
+    - "./src"
+
+  # 除外パターン
+  exclude_patterns:
+    - "**/node_modules/**"
+    - "**/bin/**"
+    - "**/obj/**"
+    - "**/.git/**"
+    - "**/dist/**"
+    - "**/build/**"
+
+  # ファイルサイズ制限
+  max_file_size_mb: 4
+
+  # 並列処理
+  worker_count: 4
+
+# レポート設定
+reporting:
+  output_dir: "./reports"
+  formats:
+    - markdown
+    - json
+
+  include_improvements: true
+  max_items_per_report: 100
+
+# 深刻度調整
+severity_adjustments:
+  # Elasticsearch使用時はN+1問題の深刻度を下げる
+  elasticsearch_n_plus_one:
+    from: 10
+    to: 7
+    reason: "Elasticsearch使用時は検索クエリのバッチ処理が一般的"
+
+  # Cassandra使用時はSELECT *の深刻度を下げる
+  cassandra_select_star:
+    from: 8
+    to: 6
+    reason: "Cassandraは列指向DBで全カラム取得が効率的なケースがある"

@@ -537,6 +537,16 @@ class TechStackDetector:
         """設定ファイルからデータベースを検出"""
         databases = []
 
+        # Elasticsearch設定ファイル検出
+        es_detected = self._detect_elasticsearch_config()
+        if es_detected:
+            databases.append(es_detected)
+
+        # Cassandra設定ファイル検出
+        cassandra_detected = self._detect_cassandra_config()
+        if cassandra_detected:
+            databases.append(cassandra_detected)
+
         # appsettings.json (.NET)
         appsettings = self.project_dir / "appsettings.json"
         if appsettings.exists():
@@ -559,6 +569,86 @@ class TechStackDetector:
                 self.warnings.append(f"appsettings.json解析エラー: {e}")
 
         return databases
+
+    def _detect_elasticsearch_config(self) -> Optional[DatabaseInfo]:
+        """Elasticsearch設定ファイルを検出
+
+        検索パス:
+        - config/elasticsearch.yml
+        - config/elasticsearch/elasticsearch.yml
+        - elasticsearch.yml
+        - .elasticsearch/elasticsearch.yml
+        """
+        es_config_paths = [
+            self.project_dir / "config" / "elasticsearch.yml",
+            self.project_dir / "config" / "elasticsearch" / "elasticsearch.yml",
+            self.project_dir / "elasticsearch.yml",
+            self.project_dir / ".elasticsearch" / "elasticsearch.yml",
+        ]
+
+        for config_path in es_config_paths:
+            if config_path.exists():
+                try:
+                    self.detected_files.append(str(config_path))
+                    with open(config_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+
+                    # Elasticsearch設定ファイルの特徴的なキーワードで検証
+                    if any(keyword in content for keyword in [
+                        'cluster.name',
+                        'node.name',
+                        'path.data',
+                        'path.logs',
+                        'network.host',
+                        'http.port',
+                        'discovery.seed_hosts'
+                    ]):
+                        return DatabaseInfo(type="Elasticsearch", purpose="search")
+
+                except Exception as e:
+                    self.warnings.append(f"elasticsearch.yml解析エラー: {e}")
+
+        return None
+
+    def _detect_cassandra_config(self) -> Optional[DatabaseInfo]:
+        """Cassandra設定ファイルを検出
+
+        検索パス:
+        - config/cassandra.yaml
+        - config/cassandra/cassandra.yaml
+        - cassandra.yaml
+        - .cassandra/cassandra.yaml
+        """
+        cassandra_config_paths = [
+            self.project_dir / "config" / "cassandra.yaml",
+            self.project_dir / "config" / "cassandra" / "cassandra.yaml",
+            self.project_dir / "cassandra.yaml",
+            self.project_dir / ".cassandra" / "cassandra.yaml",
+        ]
+
+        for config_path in cassandra_config_paths:
+            if config_path.exists():
+                try:
+                    self.detected_files.append(str(config_path))
+                    with open(config_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+
+                    # Cassandra設定ファイルの特徴的なキーワードで検証
+                    if any(keyword in content for keyword in [
+                        'cluster_name',
+                        'seed_provider',
+                        'listen_address',
+                        'rpc_address',
+                        'commitlog_directory',
+                        'data_file_directories',
+                        'saved_caches_directory'
+                    ]):
+                        return DatabaseInfo(type="Cassandra", purpose="primary")
+
+                except Exception as e:
+                    self.warnings.append(f"cassandra.yaml解析エラー: {e}")
+
+        return None
 
     def _detect_cache(self) -> Optional[InfrastructureInfo]:
         """キャッシュシステムを検出"""

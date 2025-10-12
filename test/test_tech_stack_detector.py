@@ -235,11 +235,125 @@ services:
     return len(result.tech_stack.databases) > 0
 
 
+def test_elasticsearch_config_detection():
+    """elasticsearch.yml検出テスト"""
+    print()
+    print("=" * 80)
+    print("テスト5: elasticsearch.yml からElasticsearch検出")
+    print("=" * 80)
+
+    # テスト用elasticsearch.ymlを作成
+    test_dir = Path("test/samples/elasticsearch_project")
+    config_dir = test_dir / "config"
+    config_dir.mkdir(parents=True, exist_ok=True)
+
+    es_config = config_dir / "elasticsearch.yml"
+    es_content = """# Elasticsearch Configuration
+cluster.name: my-application
+node.name: node-1
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 0.0.0.0
+http.port: 9200
+discovery.seed_hosts: ["host1", "host2"]
+cluster.initial_master_nodes: ["node-1"]
+"""
+
+    with open(es_config, 'w', encoding='utf-8') as f:
+        f.write(es_content)
+
+    # 検出実行
+    result = auto_detect_tech_stack(str(test_dir))
+
+    print(f"信頼度: {result.confidence * 100:.0f}%")
+    print(f"検出ファイル数: {len(result.detected_files)}")
+    print()
+
+    # Elasticsearch検証
+    es_found = False
+    if result.tech_stack.databases:
+        for db in result.tech_stack.databases:
+            if db.type == "Elasticsearch":
+                print(f"[OK] Elasticsearch検出: {db.type} ({db.purpose})")
+                print(f"     検出ファイル: {es_config}")
+                es_found = True
+                break
+
+    if not es_found:
+        print("[ERROR] Elasticsearchが検出されませんでした")
+
+    # クリーンアップ
+    es_config.unlink()
+    config_dir.rmdir()
+    test_dir.rmdir()
+
+    return es_found
+
+
+def test_cassandra_config_detection():
+    """cassandra.yaml検出テスト"""
+    print()
+    print("=" * 80)
+    print("テスト6: cassandra.yaml からCassandra検出")
+    print("=" * 80)
+
+    # テスト用cassandra.yamlを作成
+    test_dir = Path("test/samples/cassandra_project")
+    config_dir = test_dir / "config"
+    config_dir.mkdir(parents=True, exist_ok=True)
+
+    cassandra_config = config_dir / "cassandra.yaml"
+    cassandra_content = """# Cassandra Configuration
+cluster_name: 'Test Cluster'
+num_tokens: 256
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+      - seeds: "127.0.0.1"
+listen_address: localhost
+rpc_address: localhost
+commitlog_directory: /var/lib/cassandra/commitlog
+data_file_directories:
+  - /var/lib/cassandra/data
+saved_caches_directory: /var/lib/cassandra/saved_caches
+"""
+
+    with open(cassandra_config, 'w', encoding='utf-8') as f:
+        f.write(cassandra_content)
+
+    # 検出実行
+    result = auto_detect_tech_stack(str(test_dir))
+
+    print(f"信頼度: {result.confidence * 100:.0f}%")
+    print(f"検出ファイル数: {len(result.detected_files)}")
+    print()
+
+    # Cassandra検証
+    cassandra_found = False
+    if result.tech_stack.databases:
+        for db in result.tech_stack.databases:
+            if db.type == "Cassandra":
+                print(f"[OK] Cassandra検出: {db.type} ({db.purpose})")
+                print(f"     検出ファイル: {cassandra_config}")
+                cassandra_found = True
+                break
+
+    if not cassandra_found:
+        print("[ERROR] Cassandraが検出されませんでした")
+
+    # クリーンアップ
+    cassandra_config.unlink()
+    config_dir.rmdir()
+    test_dir.rmdir()
+
+    return cassandra_found
+
+
 def test_confidence_calculation():
     """信頼度計算のテスト"""
     print()
     print("=" * 80)
-    print("テスト5: 信頼度計算")
+    print("テスト7: 信頼度計算")
     print("=" * 80)
 
     # 複数ファイルがある場合
@@ -286,6 +400,8 @@ def main():
         (".NET検出", test_dotnet_detection),
         ("Java/Spring Boot検出", test_java_detection),
         ("docker-compose検出", test_docker_compose_detection),
+        ("elasticsearch.yml検出", test_elasticsearch_config_detection),
+        ("cassandra.yaml検出", test_cassandra_config_detection),
         ("信頼度計算", test_confidence_calculation),
     ]
 

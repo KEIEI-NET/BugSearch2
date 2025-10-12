@@ -273,7 +273,15 @@ python codex_review_severity.py advise --all --out reports/custom_analysis
 - バックエンド: C#/.NET, Java/Spring Boot, Python, PHP, Go, Node.js
 - データベース: PostgreSQL, MySQL, SQL Server, MongoDB, Cassandra, Elasticsearch
 - インフラ: Redis, RabbitMQ, Kafka
-- 設定ファイル: package.json, pom.xml, *.csproj, docker-compose.yml, go.mod, composer.json
+- 設定ファイル: package.json, pom.xml, *.csproj, docker-compose.yml, go.mod, composer.json, appsettings.json, **elasticsearch.yml**, **cassandra.yaml**
+
+**データベース検出方法:**
+1. **docker-compose.yml** - コンテナイメージから自動検出 (推奨)
+2. **設定ファイル**:
+   - **elasticsearch.yml** - Elasticsearch専用設定ファイル (config/elasticsearch.yml等)
+   - **cassandra.yaml** - Cassandra専用設定ファイル (config/cassandra.yaml等)
+   - **appsettings.json** - SQL Server, PostgreSQL, MySQL接続文字列
+3. **.bugsearch.yml** - 手動設定 (tech_stack.database セクション)
 
 ### 🎯 PERFECT PRODUCTION QUALITY ステータス
 
@@ -282,7 +290,7 @@ python codex_review_severity.py advise --all --out reports/custom_analysis
 | **codex_review_severity.py** | v3.7.0 | **100/100** 🏆 | ✅ PERFECT QUALITY |
 | **generate_ai_improved_code.py** | v1.6.0 | **100/100** 🏆 | ✅ PERFECT QUALITY |
 | **apply_improvements_from_report.py** | v4.0.0 | **100/100** 🏆 | ✅ PERFECT QUALITY |
-| **core/tech_stack_detector.py** | v1.0.0 (Phase 2) | **100/100** 🏆 | ✅ 全テスト合格 |
+| **core/tech_stack_detector.py** | v1.1.0 (Phase 2+) | **100/100** 🏆 | ✅ 全テスト合格 (7/7) |
 | **stack_generator.py** | v2.0.0 (Phase 2) | **100/100** 🏆 | ✅ 自動検出対応 |
 
 **全コンポーネントが完璧な100/100スコアを達成！** super-debugger-perfectionist による5パス多層検証を完了し、完璧な品質で本番環境にデプロイ可能です。
@@ -384,7 +392,7 @@ python apply_improvements_from_report.py --rollback backups/file.py.20251004_153
 # Phase 1 MVPテスト
 python test/test_mvp.py
 
-# Phase 2 技術スタック自動検出テスト
+# Phase 2 技術スタック自動検出テスト (@perfect品質: 7/7成功)
 python test/test_tech_stack_detector.py
 
 # Phase 3.3 複数ルール管理テスト (@perfect品質: 8/8成功)
@@ -727,10 +735,11 @@ pip install --only-binary :all: scikit-learn
 ---
 
 *最終更新: 2025年10月12日 JST*
-*バージョン: v4.8.0 (Phase 7.0完了)*
+*バージョン: v4.8.1 (Phase 2+ 技術スタック検出拡張完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.8.1 (2025年10月12日): **Phase 2+ 技術スタック検出拡張 (@perfect品質達成)** - elasticsearch.yml/cassandra.yaml自動検出機能追加(core/tech_stack_detector.py +119行、_detect_elasticsearch_config/_detect_cassandra_configメソッド)、複数検索パス対応(config/, .elasticsearch/, .cassandra/)、キーワードベース検証(cluster.name, seed_provider等)、全テスト100%合格(7/7成功、test/test_tech_stack_detector.py +112行)、ドキュメント更新(CLAUDE.md データベース検出方法セクション追加)
 - v4.8.0 (2025年10月12日): **Phase 7.0完了 (@tdd品質達成)** - 大規模ソースファイル解析システム実装、30,000+ファイル対応(実測15,889 files/sec)、中断・再開機能(core/checkpoint_manager.py +342行)、メモリ監視システム(core/memory_monitor.py +281行、リアルタイム監視・自動GC)、大規模処理プロセッサー(core/large_scale_processor.py +351行、バッチ処理・プログレスバー)、全テスト100%合格(17/17成功、test/test_large_scale_processor.py)、パフォーマンステスト(test/test_large_scale_30k_files.py +350行)、Phase 7ドキュメント(doc/guides/PHASE7_LARGE_SCALE_PROCESSING.md +650行)
 - v4.7.1 (2025年10月12日): **Phase 6.1完了 (@perfect品質達成)** - パフォーマンス最適化、大規模ファイル処理(ストリーミング処理・チャンク処理)、メモリ使用量90%削減(統計のみ保存)、並列処理高速化(4ワーカー・ThreadPoolExecutor)、Flask環境セットアップガイド(doc/guides/FLASK_SETUP.md +230行)、requirements.txt更新(Flask/watchdog/tqdm追加)、後方互換性100%維持(全テスト14/14合格)
 - v4.7.0 (2025年10月12日): **Phase 6完了 (@perfect品質達成)** - チーム機能実装、レポート比較エンジン(core/report_comparator.py +305行、ReportComparator/ReportDiffクラス)、進捗トラッキングシステム(core/progress_tracker.py +372行、ProgressTrackerクラス)、チームダッシュボード(dashboard/team_dashboard.py +380行、Flask WebUI + 6 REST APIエンドポイント)、全テスト100%合格(14/14成功、test/test_phase6_team.py)
