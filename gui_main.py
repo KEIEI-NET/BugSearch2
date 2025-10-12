@@ -25,6 +25,7 @@ from gui.process_manager import ProcessManager
 from gui.log_collector import LogCollector
 from gui.queue_manager import QueueManager, JobPriority
 from gui.state_manager import StateManager
+from gui.widgets import ProgressWidget, LogViewer
 
 
 class BugSearchGUI(ctk.CTk):
@@ -45,6 +46,9 @@ class BugSearchGUI(ctk.CTk):
         self.log_collector = LogCollector()
         self.queue_manager = QueueManager(max_concurrent=3)
         self.state_manager = StateManager()
+
+        # ジョブウィジェット管理
+        self.job_widgets = {}  # {job_id: {'frame': CTkFrame, 'progress': ProgressWidget, 'buttons': {...}}}
 
         # ウィンドウ状態復元
         window_state = self.state_manager.get_window_state()
@@ -187,7 +191,7 @@ class BugSearchGUI(ctk.CTk):
         launch_btn.pack(anchor="w", padx=10, pady=(0, 10))
 
     def setup_monitor_tab(self):
-        """監視タブ"""
+        """監視タブ - Phase 4.2完全実装"""
         tab = self.tabview.tab("📊 監視")
 
         # 上部: 実行中ジョブ
@@ -205,7 +209,7 @@ class BugSearchGUI(ctk.CTk):
         self.jobs_list = ctk.CTkScrollableFrame(jobs_frame, height=200)
         self.jobs_list.pack(fill="both", expand=True, padx=10, pady=(0, 10))
 
-        # 下部: リアルタイムログ
+        # 下部: リアルタイムログ（LogViewerウィジェット使用）
         log_frame = ctk.CTkFrame(tab)
         log_frame.pack(fill="both", expand=True, padx=10, pady=(0, 10))
 
@@ -216,18 +220,9 @@ class BugSearchGUI(ctk.CTk):
         )
         log_label.pack(anchor="w", padx=10, pady=10)
 
-        # ログテキストボックス
-        self.log_textbox = ctk.CTkTextbox(log_frame, height=300)
-        self.log_textbox.pack(fill="both", expand=True, padx=10, pady=(0, 10))
-
-        # ログクリアボタン
-        clear_btn = ctk.CTkButton(
-            log_frame,
-            text="🗑 ログクリア",
-            command=self.clear_logs,
-            width=120
-        )
-        clear_btn.pack(anchor="e", padx=10, pady=(0, 10))
+        # LogViewerウィジェット
+        self.log_viewer = LogViewer(log_frame)
+        self.log_viewer.pack(fill="both", expand=True, padx=10, pady=(0, 10))
 
     def setup_settings_tab(self):
         """設定タブ"""
@@ -322,7 +317,7 @@ class BugSearchGUI(ctk.CTk):
         self.start_job("改善コード適用", command, JobPriority.LOW)
 
     def start_job(self, name: str, command: list, priority: JobPriority):
-        """ジョブを開始"""
+        """ジョブを開始 - Phase 4.2完全実装"""
         try:
             job_id = self.queue_manager.add_job(
                 name=name,
@@ -337,6 +332,16 @@ class BugSearchGUI(ctk.CTk):
                 # プロセスマネージャーで起動
                 self.process_manager.start_process(command, job_id=job_id)
 
+                # プロセスパイプを取得
+                pipes = self.process_manager.get_process_pipes(job_id)
+                if pipes:
+                    stdout, stderr = pipes
+                    # ログ収集開始
+                    self.log_collector.start_collecting(job_id, stdout, stderr)
+
+                # ジョブカードを作成
+                self.create_job_card(job_id, name)
+
                 self.update_status(f"ジョブ起動: {name}")
             else:
                 self.update_status(f"ジョブキュー追加: {name}")
@@ -344,9 +349,109 @@ class BugSearchGUI(ctk.CTk):
         except Exception as e:
             self.show_error(f"ジョブ起動失敗: {str(e)}")
 
+    def create_job_card(self, job_id: str, name: str):
+        """ジョブカードを作成 - Phase 4.2新機能"""
+        # ジョブフレーム
+        job_frame = ctk.CTkFrame(self.jobs_list)
+        job_frame.pack(fill="x", padx=5, pady=5)
+
+        # ヘッダー
+        header_frame = ctk.CTkFrame(job_frame)
+        header_frame.pack(fill="x", padx=10, pady=(10, 5))
+
+        job_label = ctk.CTkLabel(
+            header_frame,
+            text=f"{name} [{job_id[:8]}]",
+            font=ctk.CTkFont(size=12, weight="bold")
+        )
+        job_label.pack(side="left")
+
+        # コントロールボタン
+        button_frame = ctk.CTkFrame(header_frame)
+        button_frame.pack(side="right")
+
+        pause_btn = ctk.CTkButton(
+            button_frame,
+            text="⏸ 一時停止",
+            width=80,
+            height=24,
+            command=lambda: self.pause_job(job_id)
+        )
+        pause_btn.pack(side="left", padx=2)
+
+        resume_btn = ctk.CTkButton(
+            button_frame,
+            text="▶ 再開",
+            width=60,
+            height=24,
+            command=lambda: self.resume_job(job_id),
+            state="disabled"  # 初期状態では無効
+        )
+        resume_btn.pack(side="left", padx=2)
+
+        stop_btn = ctk.CTkButton(
+            button_frame,
+            text="⏹ 停止",
+            width=60,
+            height=24,
+            fg_color="red",
+            hover_color="darkred",
+            command=lambda: self.stop_job(job_id)
+        )
+        stop_btn.pack(side="left", padx=2)
+
+        # プログレスウィジェット
+        progress_widget = ProgressWidget(job_frame)
+        progress_widget.pack(fill="x", padx=10, pady=(0, 10))
+
+        # ウィジェットを保存
+        self.job_widgets[job_id] = {
+            'frame': job_frame,
+            'progress': progress_widget,
+            'buttons': {
+                'pause': pause_btn,
+                'resume': resume_btn,
+                'stop': stop_btn
+            }
+        }
+
+    def pause_job(self, job_id: str):
+        """ジョブを一時停止"""
+        if self.process_manager.pause_process(job_id):
+            self.update_status(f"ジョブ一時停止: {job_id[:8]}")
+            # ボタン状態更新
+            if job_id in self.job_widgets:
+                self.job_widgets[job_id]['buttons']['pause'].configure(state="disabled")
+                self.job_widgets[job_id]['buttons']['resume'].configure(state="normal")
+        else:
+            self.show_error(f"一時停止失敗: {job_id[:8]}")
+
+    def resume_job(self, job_id: str):
+        """ジョブを再開"""
+        if self.process_manager.resume_process(job_id):
+            self.update_status(f"ジョブ再開: {job_id[:8]}")
+            # ボタン状態更新
+            if job_id in self.job_widgets:
+                self.job_widgets[job_id]['buttons']['pause'].configure(state="normal")
+                self.job_widgets[job_id]['buttons']['resume'].configure(state="disabled")
+        else:
+            self.show_error(f"再開失敗: {job_id[:8]}")
+
+    def stop_job(self, job_id: str):
+        """ジョブを停止"""
+        if self.process_manager.stop_process(job_id):
+            self.log_collector.stop_collecting(job_id)
+            self.update_status(f"ジョブ停止: {job_id[:8]}")
+            # ジョブカードを削除
+            if job_id in self.job_widgets:
+                self.job_widgets[job_id]['frame'].destroy()
+                del self.job_widgets[job_id]
+        else:
+            self.show_error(f"停止失敗: {job_id[:8]}")
+
     def clear_logs(self):
-        """ログをクリア"""
-        self.log_textbox.delete("1.0", "end")
+        """ログをクリア - Phase 4.2更新"""
+        self.log_viewer.clear_logs()
         self.update_status("ログクリア完了")
 
     def clear_history(self):
@@ -409,7 +514,7 @@ BugSearch2 GUI Control Center v1.0.0
         pass
 
     def periodic_update(self):
-        """定期更新"""
+        """定期更新 - Phase 4.2完全実装"""
         # キュー状態更新
         status = self.queue_manager.get_status()
         self.update_status(
@@ -417,8 +522,38 @@ BugSearch2 GUI Control Center v1.0.0
             f"キュー: {status['queued']} | 完了: {status['completed']}"
         )
 
-        # ログ更新
-        # TODO: ログ取得と表示
+        # 各ジョブのログと進捗を更新
+        for job_id in list(self.job_widgets.keys()):
+            # ログを取得して表示
+            logs = self.log_collector.get_logs(job_id, limit=50)  # 最新50件
+            if logs:
+                # LogViewerに追加
+                self.log_viewer.add_logs(logs)
+                # ログバッファをクリア（重複防止）
+                self.log_collector.clear_logs(job_id)
+
+            # 進捗を更新
+            progress = self.log_collector.get_progress(job_id)
+            if progress is not None:
+                widget = self.job_widgets[job_id]['progress']
+                # プロセス情報を取得してステータステキストを設定
+                proc_info = self.process_manager.get_process_info(job_id)
+                if proc_info:
+                    status_text = f"{proc_info['status']}"
+                    widget.set_progress(progress, status_text)
+
+            # 完了したジョブをチェック
+            proc_status = self.process_manager.check_process_status(job_id)
+            if proc_status in ['completed', 'failed']:
+                # ログ収集を停止
+                self.log_collector.stop_collecting(job_id)
+                # プログレスを100%に設定
+                widget = self.job_widgets[job_id]['progress']
+                widget.set_progress(1.0, proc_status)
+                # ボタンを無効化
+                self.job_widgets[job_id]['buttons']['pause'].configure(state="disabled")
+                self.job_widgets[job_id]['buttons']['resume'].configure(state="disabled")
+                self.job_widgets[job_id]['buttons']['stop'].configure(state="disabled")
 
         # 次の更新をスケジュール
         self.after(self.update_interval, self.periodic_update)

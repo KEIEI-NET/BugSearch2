@@ -67,6 +67,7 @@ class ProcessManager:
 
     def __init__(self, state_file: str = '.gui_state.json'):
         self.processes: Dict[str, ProcessInfo] = {}
+        self.process_handles: Dict[str, subprocess.Popen] = {}  # プロセスハンドル管理
         self.state_file = state_file
         self.restore_state()
 
@@ -130,6 +131,7 @@ class ProcessManager:
             proc_info.status = 'running'
 
             self.processes[job_id] = proc_info
+            self.process_handles[job_id] = process  # プロセスハンドルを保存
             self.save_state()
 
             print(f"[OK] Process started: {job_id} (PID: {process.pid})")
@@ -282,6 +284,11 @@ class ProcessManager:
             proc_info.status = 'completed'
             proc_info.end_time = time.time()
             proc_info.exit_code = p.returncode if hasattr(p, 'returncode') else None
+
+            # プロセスハンドルをクリーンアップ
+            if job_id in self.process_handles:
+                del self.process_handles[job_id]
+
             self.save_state()
             return True
 
@@ -340,6 +347,22 @@ class ProcessManager:
             job_id: self.get_process_info(job_id)
             for job_id in self.processes
         }
+
+    def get_process_pipes(self, job_id: str) -> Optional[tuple]:
+        """
+        プロセスのstdout/stderrパイプを取得
+
+        Args:
+            job_id: ジョブID
+
+        Returns:
+            (stdout, stderr)のタプル、プロセスが存在しない場合はNone
+        """
+        if job_id not in self.process_handles:
+            return None
+
+        process = self.process_handles[job_id]
+        return (process.stdout, process.stderr)
 
     def check_process_status(self, job_id: str) -> Optional[str]:
         """
@@ -442,6 +465,9 @@ class ProcessManager:
 
         for job_id in jobs_to_remove:
             del self.processes[job_id]
+            # プロセスハンドルもクリーンアップ
+            if job_id in self.process_handles:
+                del self.process_handles[job_id]
 
         if jobs_to_remove:
             self.save_state()
