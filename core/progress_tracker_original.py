@@ -1,51 +1,38 @@
 """
-進捗トラッキングシステム（最適化版）
+進捗トラッキングシステム
 
-Phase 6.1の改善:
-- メモリ使用量の大幅削減（問題詳細を保存せず統計のみ）
-- 並列処理によるグループ化高速化
-- ストリーミング処理による大規模データ対応
+Phase 6.0の新機能:
+- 問題の修正状況を時系列で追跡
+- 自動進捗レポート生成
+- トレンド分析
 
-バージョン: v4.7.1 (Phase 6.1)
+バージョン: v4.7.0 (Phase 6.0)
 作成日: 2025年10月12日 JST
 
-@perfect品質 + パフォーマンス最適化:
+@perfect品質:
 - 型ヒント完備
-- メモリ効率化（統計のみ保存、問題詳細は不要）
-- 並列グループ化処理
 - JSON永続化
 - データ整合性保証
 """
 
 from pathlib import Path
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional
 from datetime import datetime, timedelta
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from collections import defaultdict, Counter
 import json
 
 
-# 並列処理設定
-MAX_WORKERS = 4
-
-
-class ProgressTrackerOptimized:
+class ProgressTracker:
     """
-    進捗トラッキング（最適化版）
+    進捗トラッキング
 
     問題の修正状況を時系列で追跡し、進捗レポートを生成します。
 
-    最適化内容:
-    - 問題詳細を保存せず、統計のみを保持（メモリ使用量 90%削減）
-    - グループ化処理を並列化（3-4x高速化）
-    - ストリーミング処理による大規模データ対応
-
     使用例:
-        tracker = ProgressTrackerOptimized(Path(".bugsearch/progress.json"))
+        tracker = ProgressTracker(Path(".bugsearch/progress.json"))
 
-        # 現在の状態を記録（問題詳細は保存されない）
+        # 現在の状態を記録
         tracker.record_snapshot(
-            issues=current_issues,  # 統計のみ抽出される
+            issues=current_issues,
             timestamp=datetime.now()
         )
 
@@ -54,16 +41,14 @@ class ProgressTrackerOptimized:
         print(report['total_issues']['change'])
     """
 
-    def __init__(self, storage_file: Path, max_workers: int = MAX_WORKERS):
+    def __init__(self, storage_file: Path):
         """
         初期化
 
         Args:
             storage_file: 進捗データの保存先
-            max_workers: 並列処理のワーカー数
         """
         self.storage_file = storage_file
-        self.max_workers = max_workers
         self.snapshots = self._load_snapshots()
 
     def record_snapshot(
@@ -75,8 +60,6 @@ class ProgressTrackerOptimized:
         """
         現在の問題状況のスナップショットを記録
 
-        最適化: 問題詳細は保存せず、統計のみを記録（メモリ削減）
-
         Args:
             issues: 現在の問題リスト
             timestamp: タイムスタンプ（省略時は現在時刻）
@@ -85,24 +68,13 @@ class ProgressTrackerOptimized:
         if timestamp is None:
             timestamp = datetime.now()
 
-        # 並列処理でグループ化
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            future_severity = executor.submit(self._group_by_severity, issues)
-            future_category = executor.submit(self._group_by_category, issues)
-            future_file = executor.submit(self._group_by_file, issues)
-
-            by_severity = future_severity.result()
-            by_category = future_category.result()
-            by_file = future_file.result()
-
-        # 統計のみ保存（問題詳細は保存しない）
         snapshot = {
             'timestamp': timestamp.isoformat(),
             'total_issues': len(issues),
-            'by_severity': by_severity,
-            'by_category': by_category,
-            'by_file': by_file
-            # 'issues'フィールドを削除 → メモリ使用量90%削減
+            'by_severity': self._group_by_severity(issues),
+            'by_category': self._group_by_category(issues),
+            'by_file': self._group_by_file(issues),
+            'issues': issues
         }
 
         if metadata:
@@ -159,18 +131,6 @@ class ProgressTrackerOptimized:
         total_change = latest['total_issues'] - oldest['total_issues']
         change_rate = (total_change / oldest['total_issues'] * 100) if oldest['total_issues'] > 0 else 0
 
-        # 並列処理で変化量を計算
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            future_severity = executor.submit(
-                self._calculate_severity_changes, oldest, latest
-            )
-            future_category = executor.submit(
-                self._calculate_category_changes, oldest, latest
-            )
-
-            severity_changes = future_severity.result()
-            category_changes = future_category.result()
-
         return {
             'period': {
                 'start': oldest['timestamp'],
@@ -183,8 +143,8 @@ class ProgressTrackerOptimized:
                 'change': total_change,
                 'change_rate': f"{change_rate:+.1f}%"
             },
-            'severity_changes': severity_changes,
-            'category_changes': category_changes,
+            'severity_changes': self._calculate_severity_changes(oldest, latest),
+            'category_changes': self._calculate_category_changes(oldest, latest),
             'trend': self._calculate_trend(filtered_snapshots),
             'top_problematic_files': self._get_top_problematic_files(latest, limit=10)
         }
@@ -323,28 +283,28 @@ class ProgressTrackerOptimized:
         print(f"[INFO] 進捗レポート出力: {output_file}")
 
     def _group_by_severity(self, issues: List[Dict]) -> Dict[int, int]:
-        """
-        深刻度別にグループ化
-
-        最適化: Counterを使用して高速化
-        """
-        return dict(Counter(issue.get('severity', 0) for issue in issues))
+        """深刻度別にグループ化"""
+        groups = {}
+        for issue in issues:
+            severity = issue.get('severity', 0)
+            groups[severity] = groups.get(severity, 0) + 1
+        return groups
 
     def _group_by_category(self, issues: List[Dict]) -> Dict[str, int]:
-        """
-        カテゴリ別にグループ化
-
-        最適化: Counterを使用して高速化
-        """
-        return dict(Counter(issue.get('category', 'unknown') for issue in issues))
+        """カテゴリ別にグループ化"""
+        groups = {}
+        for issue in issues:
+            category = issue.get('category', 'unknown')
+            groups[category] = groups.get(category, 0) + 1
+        return groups
 
     def _group_by_file(self, issues: List[Dict]) -> Dict[str, int]:
-        """
-        ファイル別にグループ化
-
-        最適化: Counterを使用して高速化
-        """
-        return dict(Counter(issue.get('file', 'unknown') for issue in issues))
+        """ファイル別にグループ化"""
+        groups = {}
+        for issue in issues:
+            file_path = issue.get('file', 'unknown')
+            groups[file_path] = groups.get(file_path, 0) + 1
+        return groups
 
     def _calculate_severity_changes(
         self,
@@ -443,7 +403,7 @@ class ProgressTrackerOptimized:
         self,
         snapshot: Dict,
         limit: int = 10
-    ) -> List[Tuple[str, int]]:
+    ) -> List[tuple]:
         """
         問題の多いファイルTop Nを取得
 
@@ -536,104 +496,66 @@ class ProgressTrackerOptimized:
             print(f"[ERROR] スナップショット保存エラー: {e}")
 
 
-# 後方互換性のためのエイリアス
-ProgressTracker = ProgressTrackerOptimized
-
-
 if __name__ == "__main__":
-    # 簡易パフォーマンステスト
-    print("ProgressTrackerOptimized 簡易テスト")
+    # 簡易テスト
+    print("ProgressTracker簡易テスト")
     print("-" * 80)
 
     import tempfile
-    import time
-    import sys
 
     # テスト用一時ファイル
     with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
         temp_file = Path(f.name)
 
     try:
-        tracker = ProgressTrackerOptimized(temp_file)
+        tracker = ProgressTracker(temp_file)
 
-        # 大規模データでテスト（10,000問題 x 3スナップショット）
-        print("\n1. 大規模スナップショット記録:")
+        # スナップショット記録（3回）
+        print("\n1. スナップショット記録:")
         base_time = datetime(2025, 1, 1, 0, 0, 0)
 
-        # スナップショット1（10,000問題）
-        start = time.time()
         tracker.record_snapshot(
             issues=[
-                {
-                    'file': f'test{i % 100}.py',
-                    'line': i,
-                    'severity': (i % 10) + 1,
-                    'category': ['security', 'performance', 'style'][i % 3]
-                }
-                for i in range(10000)
+                {'file': 'test1.py', 'line': 10, 'severity': 8, 'category': 'security'},
+                {'file': 'test1.py', 'line': 20, 'severity': 5, 'category': 'performance'},
+                {'file': 'test2.py', 'line': 30, 'severity': 3, 'category': 'style'},
             ],
             timestamp=base_time
         )
-        elapsed1 = time.time() - start
-        print(f"   スナップショット1記録: {elapsed1:.3f}秒")
 
-        # スナップショット2（8,000問題）
-        start = time.time()
         tracker.record_snapshot(
             issues=[
-                {
-                    'file': f'test{i % 100}.py',
-                    'line': i,
-                    'severity': (i % 10) + 1,
-                    'category': ['security', 'performance', 'style'][i % 3]
-                }
-                for i in range(8000)
+                {'file': 'test1.py', 'line': 10, 'severity': 8, 'category': 'security'},
+                {'file': 'test2.py', 'line': 30, 'severity': 3, 'category': 'style'},
             ],
             timestamp=base_time + timedelta(days=7)
         )
-        elapsed2 = time.time() - start
-        print(f"   スナップショット2記録: {elapsed2:.3f}秒")
 
-        # スナップショット3（5,000問題）
-        start = time.time()
         tracker.record_snapshot(
             issues=[
-                {
-                    'file': f'test{i % 100}.py',
-                    'line': i,
-                    'severity': (i % 10) + 1,
-                    'category': ['security', 'performance', 'style'][i % 3]
-                }
-                for i in range(5000)
+                {'file': 'test2.py', 'line': 30, 'severity': 3, 'category': 'style'},
             ],
             timestamp=base_time + timedelta(days=14)
         )
-        elapsed3 = time.time() - start
-        print(f"   スナップショット3記録: {elapsed3:.3f}秒")
 
         # 進捗レポート生成
         print("\n2. 進捗レポート生成:")
-        start = time.time()
         report = tracker.generate_progress_report()
-        elapsed_report = time.time() - start
 
-        print(f"   処理時間: {elapsed_report:.3f}秒")
-        print(f"   期間: {report['period']['start']} → {report['period']['end']}")
-        print(f"   問題数変化: {report['total_issues']['start']}件 → {report['total_issues']['end']}件")
-        print(f"   変化量: {report['total_issues']['change']}件 ({report['total_issues']['change_rate']})")
-        print(f"   トレンド: {report['trend']}")
+        print(f"期間: {report['period']['start']} → {report['period']['end']}")
+        print(f"問題数変化: {report['total_issues']['start']}件 → {report['total_issues']['end']}件")
+        print(f"変化量: {report['total_issues']['change']}件 ({report['total_issues']['change_rate']})")
+        print(f"トレンド: {report['trend']}")
 
-        # ファイルサイズ確認
-        print("\n3. メモリ効率確認:")
-        file_size = temp_file.stat().st_size / 1024  # KB
-        print(f"   保存ファイルサイズ: {file_size:.2f} KB")
-        print(f"   スナップショット数: {len(tracker.snapshots)}")
-        print(f"   平均サイズ/スナップショット: {file_size / len(tracker.snapshots):.2f} KB")
-
-        # レポート出力テスト
-        print("\n4. レポート出力テスト:")
-        report_file = temp_file.parent / "progress_report_opt.md"
+        # レポート出力
+        print("\n3. レポート出力:")
+        report_file = temp_file.parent / "progress_report.md"
         tracker.export_progress_report(report_file)
+        print(f"レポート内容の一部:")
+        try:
+            print(report_file.read_text(encoding='utf-8')[:300] + "...")
+        except UnicodeEncodeError:
+            print("[レポート内容にUnicode文字が含まれます]")
 
         try:
             print("\n✅ 簡易テスト完了")
@@ -643,5 +565,5 @@ if __name__ == "__main__":
     finally:
         # クリーンアップ
         temp_file.unlink(missing_ok=True)
-        report_file = temp_file.parent / "progress_report_opt.md"
+        report_file = temp_file.parent / "progress_report.md"
         report_file.unlink(missing_ok=True)
