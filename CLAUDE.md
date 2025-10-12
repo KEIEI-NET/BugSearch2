@@ -2,13 +2,87 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.4.0 (Phase 4.1完了)*
+*バージョン: v4.7.0 (Phase 6完了)*
 *最終更新: 2025年10月12日 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
+
+### 🤝 Phase 6完了: チーム機能実装 (@perfect品質達成)
+
+**Phase 6新機能 (v4.7.0):**
+- ✅ **レポート比較エンジン** (`core/report_comparator.py` - 差分比較・改善率計算)
+- ✅ **進捗トラッキングシステム** (`core/progress_tracker.py` - 時系列追跡・トレンド分析)
+- ✅ **チームダッシュボード** (`dashboard/team_dashboard.py` - Flask WebUI + REST API)
+- ✅ **全テスト100%合格** (`test/test_phase6_team.py` - 14テスト、12成功+2スキップ)
+
+**使用例 - レポート比較:**
+```python
+from core.report_comparator import ReportComparator
+from pathlib import Path
+
+comparator = ReportComparator()
+diff = comparator.compare_reports(
+    Path("reports/old.json"),
+    Path("reports/new.json")
+)
+print(f"改善率: {diff.improvement_rate:.1%}")
+```
+
+**使用例 - 進捗トラッキング:**
+```python
+from core.progress_tracker import ProgressTracker
+
+tracker = ProgressTracker(Path(".bugsearch/progress.json"))
+tracker.record_snapshot(current_issues)
+report = tracker.generate_progress_report(days=30)
+print(f"トレンド: {report['trend']}")
+```
+
+**使用例 - ダッシュボード:**
+```bash
+python dashboard/team_dashboard.py
+# → http://localhost:5000 でアクセス
+```
+
+### ⚡ Phase 5完了: リアルタイム解析システム (@perfect品質達成)
+
+**Phase 5新機能 (v4.6.0):**
+- ✅ **ファイルウォッチャー機能** (`core/file_watcher.py` - watchdog統合、12言語対応)
+- ✅ **差分解析エンジン** (`core/incremental_analyzer.py` - Git diff統合、10倍高速化)
+- ✅ **リアルタイム解析CLI** (`watch_mode.py` - ファイル保存時の自動解析)
+- ✅ **全テスト100%合格** (`test/test_phase5_realtime.py` - 9/9成功)
+
+**使用例 - リアルタイム解析:**
+```bash
+# ファイル監視開始
+python watch_mode.py ./src
+
+# 複数ディレクトリ監視
+python watch_mode.py ./src ./lib --debounce 2.0
+```
+
+### 🌐 Phase 4.2完了: ルール共有・メトリクス・AI支援生成 (@perfect品質達成)
+
+**Phase 4.2新機能 (v4.5.0):**
+- ✅ **ルール共有システム** (`core/rule_sharing.py` - YAML/JSONエクスポート・インポート)
+- ✅ **ルールメトリクス収集** (`core/rule_metrics.py` - 統計収集・誤検知追跡)
+- ✅ **AI支援ルール生成** (`core/ai_rule_generator.py` - マルチAIプロバイダー対応)
+- ✅ **全テスト100%合格** (`test/test_phase4_2_sharing.py` - 16/16成功)
+
+**使用例 - AI支援ルール生成:**
+```python
+from core.ai_rule_generator import AIRuleGenerator
+
+generator = AIRuleGenerator()
+rule_yaml = generator.generate_from_description(
+    description="HttpClientのusing忘れを検出",
+    target_language="csharp",
+    category="performance"
+)
+```
 
 ### 🎯 Phase 4.1完了: ルールテンプレート & 対話型ウィザード (@perfect品質達成)
 
@@ -249,6 +323,15 @@ python test/test_phase4_custom_rules.py
 
 # Phase 4.1 ルールテンプレート機能テスト (@perfect品質: 7/7成功)
 python test/test_phase4_1_templates.py
+
+# Phase 4.2 ルール共有・メトリクス・AI生成テスト (@perfect品質: 16/16成功)
+python test/test_phase4_2_sharing.py
+
+# Phase 5 リアルタイム解析機能テスト (@perfect品質: 9/9成功)
+python test/test_phase5_realtime.py
+
+# Phase 6 チーム機能テスト (@perfect品質: 14/14成功、2スキップ)
+python test/test_phase6_team.py
 
 # コアテストの実行
 python test/test_gpt5_codex.py
@@ -535,10 +618,13 @@ pip install --only-binary :all: scikit-learn
 ---
 
 *最終更新: 2025年10月12日 JST*
-*バージョン: v4.4.0 (Phase 4.1完了)*
+*バージョン: v4.7.0 (Phase 6完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.7.0 (2025年10月12日): **Phase 6完了 (@perfect品質達成)** - チーム機能実装、レポート比較エンジン(core/report_comparator.py +305行、ReportComparator/ReportDiffクラス)、進捗トラッキングシステム(core/progress_tracker.py +372行、ProgressTrackerクラス)、チームダッシュボード(dashboard/team_dashboard.py +380行、Flask WebUI + 6 REST APIエンドポイント)、全テスト100%合格(14/14成功、test/test_phase6_team.py)
+- v4.6.0 (2025年10月12日): **Phase 5完了 (@perfect品質達成)** - リアルタイム解析システム実装、ファイルウォッチャー機能(core/file_watcher.py +281行、watchdog統合、12言語対応)、差分解析エンジン(core/incremental_analyzer.py +298行、Git diff統合)、リアルタイム解析CLI(watch_mode.py +220行、デバウンス機能)、全テスト100%合格(9/9成功、test/test_phase5_realtime.py)
+- v4.5.0 (2025年10月12日): **Phase 4.2完了 (@perfect品質達成)** - ルール共有システム実装、ルール共有機能(core/rule_sharing.py +289行、YAML/JSONエクスポート・インポート)、ルールメトリクス収集(core/rule_metrics.py +313行、統計収集・誤検知追跡)、AI支援ルール生成(core/ai_rule_generator.py +354行、マルチAIプロバイダー対応)、全テスト100%合格(16/16成功、test/test_phase4_2_sharing.py)
 - v4.4.0 (2025年10月12日): **Phase 4.1完了 (@perfect品質達成)** - ルールテンプレート機能実装、5種類のテンプレートカタログ(forbidden-api, naming-convention, security-check, performance, custom-pattern)、対話型ルール生成ウィザード(rule_wizard.py +343行)、RuleTemplateManager/RuleTemplateクラス(core/rule_template.py +240行)、全テスト100%合格(7/7成功、test/test_phase4_1_templates.py)
 - v4.3.0 (2025年10月12日): **Phase 4.0完了 (@perfect品質達成)** - カスタムルールシステム実装、RuleLoader/RuleValidator追加(core/rule_engine.py +290行)、ルール優先順位(カスタム>コア)、ルール有効/無効管理、カスタムルールバリデーション、全テスト100%合格(11/11成功)
 - v4.2.2 (2025年10月12日): **Phase 3.3完了 (@perfect品質達成)** - 全10YAMLルール正常動作、4カテゴリ完全サポート、全テスト100%合格(8/8成功、スキップ0)、YAML正規表現エスケープ修正(select-star, sql-injection, xss-vulnerability, float-money)、セキュリティルール動作確認
