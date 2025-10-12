@@ -3,7 +3,7 @@
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
 *バージョン: v4.10.0 (Phase 8.2完了)*
-*最終更新: 2025年10月12日 JST*
+*最終更新: 2025年10月12日 15:35 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
@@ -887,7 +887,7 @@ pip install --only-binary :all: scikit-learn
 
 ---
 
-*最終更新: 2025年10月12日 JST*
+*最終更新: 2025年10月12日 15:35 JST*
 *バージョン: v4.10.0 (Phase 8.2完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 

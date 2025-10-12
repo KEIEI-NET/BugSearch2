@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-10-12T06:30:00.000Z" agent="5.0" version="24.0.0" etag="Phase8-Context7-Integration" type="device">
+  <diagram id="Phase8-Flow" name="Context7 Integration Flow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Phase 8.2: Context7統合 &amp; AI自動修正システム" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- User Input -->
+        <mxCell id="user-input" value="ユーザー入力&lt;br&gt;技術スタック選択" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Context7 API -->
+        <mxCell id="context7-api" value="Context7 API&lt;br&gt;技術仕様取得" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: User to Context7 -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="user-input" target="context7-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ConfigGenerator -->
+        <mxCell id="config-generator" value="ConfigGenerator&lt;br&gt;YAML生成" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="480" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Context7 to ConfigGenerator -->
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="context7-api" target="config-generator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Validation Process -->
+        <mxCell id="validation" value="5段階検証システム" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="680" y="80" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: ConfigGenerator to Validation -->
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="config-generator" target="validation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- AI Fix Process -->
+        <mxCell id="ai-fix" value="AI自動修正&lt;br&gt;fix_yaml_with_ai()&lt;br&gt;最大5回試行" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="680" y="240" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Validation to AI Fix (Error) -->
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="validation" target="ai-fix">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="750" y="210" />
+              <mxPoint x="750" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow4-label" value="エラー" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="arrow4">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Arrow: AI Fix back to Validation -->
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="ai-fix" target="validation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="280" />
+              <mxPoint x="640" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow5-label" value="再検証" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="arrow5">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Success Path -->
+        <mxCell id="save-config" value="設定ファイル保存&lt;br&gt;config/*.yml" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="900" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Validation to Save (Success) -->
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="validation" target="save-config">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow6-label" value="成功" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="arrow6">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Auto-run Flow -->
+        <mxCell id="auto-run-group" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="200" y="400" width="800" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="auto-run-title" value="完全自動実行フロー (--auto-run)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="auto-run-group">
+          <mxGeometry x="250" y="0" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Index Process -->
+        <mxCell id="index-process" value="インデックス作成&lt;br&gt;codex_review_severity.py&lt;br&gt;index" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="auto-run-group">
+          <mxGeometry x="0" y="50" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Advise Process -->
+        <mxCell id="advise-process" value="AI分析実行&lt;br&gt;codex_review_severity.py&lt;br&gt;advise --all" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="auto-run-group">
+          <mxGeometry x="220" y="50" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Report Generation -->
+        <mxCell id="report-gen" value="レポート生成&lt;br&gt;reports/*.md" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="auto-run-group">
+          <mxGeometry x="440" y="50" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Dashboard -->
+        <mxCell id="dashboard" value="ダッシュボード&lt;br&gt;結果表示" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="auto-run-group">
+          <mxGeometry x="660" y="50" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows in auto-run flow -->
+        <mxCell id="auto-arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="auto-run-group" source="index-process" target="advise-process">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="auto-arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="auto-run-group" source="advise-process" target="report-gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="auto-arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="auto-run-group" source="report-gen" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Connection from Save to Auto-run -->
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0066CC;" edge="1" parent="1" source="save-config" target="index-process">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="280" />
+              <mxPoint x="280" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow7-label" value="run_full_analysis()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;" vertex="1" connectable="0" parent="arrow7">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-group" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="650" width="300" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-title" value="凡例" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;" vertex="1" parent="legend-group">
+          <mxGeometry x="0" y="0" width="60" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend1" value="入力/出力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="legend-group">
+          <mxGeometry x="0" y="30" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend2" value="外部API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="legend-group">
+          <mxGeometry x="100" y="30" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend3" value="内部処理" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="legend-group">
+          <mxGeometry x="200" y="30" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend4" value="検証" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="legend-group">
+          <mxGeometry x="0" y="70" width="80" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend5" value="成功" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="legend-group">
+          <mxGeometry x="100" y="70" width="80" height="40" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
