@@ -1,13 +1,106 @@
 # システムアーキテクチャ
 
-*バージョン: v4.10.0 (Phase 8.2完了)*
-*最終更新: 2025年10月12日 15:20 JST*
+*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
+*最終更新: 2025年10月13日 10:35 JST*
 
 ## 概要
 
-BugSearch2 は、Context7統合によりモダンなコードレビューシステムに進化しました。v4.10.0ではPhase 8.2完了により、**技術仕様の自動取得**、**AI自動YAML修正**、**完全自動実行フロー**を実現し、技術スタックに応じた最適なルール生成が可能になりました。
+BugSearch2 v4.11.0では、**GUI Control Center v1.0.0**の実装により、CustomTkinterベースのモダンなグラフィカルインターフェースを提供します。プロセス管理、リアルタイムログ表示、キュー管理を統合し、直感的な操作が可能になりました。Context7統合による技術仕様の自動取得、AI自動YAML修正、完全自動実行フローも含め、包括的なコードレビューシステムとなっています。
 
 ## システム構成図
+
+### GUI Control Center v1.0.0 アーキテクチャ（ASCII図）
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     GUI Control Center v1.0.0                    │
+│                       CustomTkinter UI                           │
+│                                                                  │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐      │
+│  │起動タブ   │  │監視タブ   │  │設定タブ   │  │履歴タブ   │      │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘      │
+│       │             │             │             │              │
+│  ┌────▼─────────────▼─────────────▼─────────────▼────┐        │
+│  │              StateManager (状態管理)               │        │
+│  │  - ウィンドウ状態永続化                            │        │
+│  │  - 設定ファイル管理                                │        │
+│  │  - ジョブ履歴保存                                  │        │
+│  └──────────────────────────────────────────────────┘        │
+└─────────────────────────────────────────────────────────────┘
+                            │
+         ┌──────────────────┴──────────────────┐
+         │                                      │
+┌────────▼────────┐                 ┌──────────▼────────┐
+│ ProcessManager  │                 │   LogCollector    │
+│                 │                 │                   │
+│ - プロセス起動   │                 │ - ログストリーム  │
+│ - 停止/一時停止  │◄────────────────│ - レベル検出     │
+│ - 環境変数設定   │                 │ - 進捗パース     │
+└────────┬────────┘                 └───────────────────┘
+         │
+┌────────▼────────────────────────────────────────────┐
+│                   QueueManager                       │
+│                                                      │
+│  - 優先度管理 (URGENT/HIGH/NORMAL/LOW)              │
+│  - 依存関係グラフ                                   │
+│  - 並列実行制御 (max_concurrent=10)                 │
+│  - 自動スケジューリング                             │
+└────────┬────────────────────────────────────────────┘
+         │
+┌────────▼────────────────────────────────────────────┐
+│              既存CLIツール統合                        │
+├──────────────┬──────────────┬───────────────────────┤
+│generate_tech │codex_review  │apply_improvements     │
+│_config.py    │_severity.py  │_from_report.py        │
+└──────────────┴──────────────┴───────────────────────┘
+```
+
+### GUI Control Center アーキテクチャ（Mermaid図）
+
+```mermaid
+graph TB
+    User[ユーザー] --> GUI[GUI Control Center<br/>CustomTkinter]
+
+    subgraph GUITabs["4タブ構成"]
+        LaunchTab[起動タブ<br/>ジョブ起動]
+        MonitorTab[監視タブ<br/>ログ表示]
+        SettingsTab[設定タブ<br/>環境設定]
+        HistoryTab[履歴タブ<br/>実行履歴]
+    end
+
+    GUI --> GUITabs
+    GUITabs --> StateManager[StateManager<br/>状態管理]
+
+    subgraph CoreModules["コアモジュール"]
+        ProcessMgr[ProcessManager<br/>459行]
+        LogCollector[LogCollector<br/>431行]
+        QueueMgr[QueueManager<br/>462行]
+        StateMgr[StateManager<br/>373行]
+    end
+
+    LaunchTab --> ProcessMgr
+    LaunchTab --> QueueMgr
+    MonitorTab --> LogCollector
+    SettingsTab --> StateMgr
+    HistoryTab --> StateMgr
+
+    ProcessMgr --> QueueMgr
+    ProcessMgr --> LogCollector
+
+    subgraph ExistingCLI["既存CLIツール"]
+        GenTech[generate_tech_config.py]
+        CodexReview[codex_review_severity.py]
+        ApplyImprove[apply_improvements_from_report.py]
+    end
+
+    QueueMgr --> ExistingCLI
+
+    style GUI fill:#e1f5ff
+    style LaunchTab fill:#fff2cc
+    style MonitorTab fill:#d5e8d4
+    style SettingsTab fill:#e1d5e7
+    style HistoryTab fill:#ffe6e6
+```
 
 ### Phase 8.2 アーキテクチャ（ASCII図）
 
@@ -128,6 +221,196 @@ graph TB
 - 大規模プロジェクト対応（差分更新）
 
 ## 📦 主要コンポーネント詳細
+
+### Phase 4.1新規追加: GUI Control Center v1.0.0
+
+**v4.11.0で実装されたGUIシステム:**
+
+#### GUIControlCenter（gui_main.py）
+```python
+class GUIControlCenter(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title("BugSearch2 GUI Control Center v1.0.0")
+        self.geometry("1200x800")
+
+        # モジュール初期化
+        self.process_manager = ProcessManager()
+        self.log_collector = LogCollector()
+        self.queue_manager = QueueManager(max_concurrent=3)
+        self.state_manager = StateManager()
+
+        # タブ作成
+        self.create_tabs()
+
+    def create_tabs(self):
+        self.tabview = ctk.CTkTabview(self)
+        self.launch_tab = self.tabview.add("起動")
+        self.monitor_tab = self.tabview.add("監視")
+        self.settings_tab = self.tabview.add("設定")
+        self.history_tab = self.tabview.add("履歴")
+```
+
+#### ProcessManager（gui/process_manager.py）
+```python
+class ProcessManager:
+    """プロセスライフサイクル管理"""
+    def __init__(self):
+        self.processes = {}  # pid -> process mapping
+        self.lock = threading.Lock()
+
+    def start_process(self, command: str, env_vars: Dict = None) -> int:
+        """非同期プロセス起動"""
+        env = os.environ.copy()
+        if env_vars:
+            env.update(env_vars)
+
+        process = subprocess.Popen(
+            shlex.split(command),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            env=env,
+            text=True,
+            encoding='utf-8',
+            errors='replace'  # Windows cp932対策
+        )
+
+        with self.lock:
+            self.processes[process.pid] = process
+
+        return process.pid
+
+    def pause_process(self, pid: int):
+        """プロセス一時停止（psutil使用）"""
+        if pid in self.processes:
+            psutil.Process(pid).suspend()
+
+    def resume_process(self, pid: int):
+        """プロセス再開"""
+        if pid in self.processes:
+            psutil.Process(pid).resume()
+```
+
+#### LogCollector（gui/log_collector.py）
+```python
+class LogCollector:
+    """リアルタイムログ収集・解析"""
+    def __init__(self):
+        self.log_buffer = deque(maxlen=10000)
+        self.log_lock = threading.Lock()
+        self.collectors = {}
+
+    def start_collecting(self, process):
+        """ログ収集スレッド起動"""
+        thread = threading.Thread(
+            target=self._collect_logs,
+            args=(process,),
+            daemon=True
+        )
+        thread.start()
+        self.collectors[process.pid] = thread
+
+    def _collect_logs(self, process):
+        """ログストリーミング処理"""
+        for line in iter(process.stdout.readline, ''):
+            if not line:
+                break
+
+            log_entry = self._parse_log_line(line)
+
+            with self.log_lock:
+                self.log_buffer.append(log_entry)
+
+    def _parse_log_line(self, line: str) -> Dict:
+        """ログレベル検出と進捗パース"""
+        log_entry = {
+            'timestamp': datetime.now(),
+            'message': line.strip(),
+            'level': 'INFO'
+        }
+
+        # ログレベル検出
+        if 'ERROR' in line or 'CRITICAL' in line:
+            log_entry['level'] = 'ERROR'
+        elif 'WARNING' in line or 'WARN' in line:
+            log_entry['level'] = 'WARNING'
+
+        # 進捗バー検出（tqdm形式）
+        if '%|' in line or '█' in line:
+            log_entry['type'] = 'progress'
+            # 進捗率抽出
+            match = re.search(r'(\d+)%', line)
+            if match:
+                log_entry['progress'] = int(match.group(1))
+
+        return log_entry
+```
+
+#### QueueManager（gui/queue_manager.py）
+```python
+class QueueManager:
+    """ジョブキューとスケジューリング管理"""
+
+    PRIORITY_ORDER = {
+        'URGENT': 0,
+        'HIGH': 1,
+        'NORMAL': 2,
+        'LOW': 3
+    }
+
+    def __init__(self, max_concurrent: int = 10):
+        self.queue = []
+        self.running = {}
+        self.completed = []
+        self.max_concurrent = max_concurrent
+        self.lock = threading.Lock()
+
+    def add_job(self, job_config: Dict) -> str:
+        """ジョブ追加と優先度ソート"""
+        job_id = str(uuid.uuid4())
+
+        job = {
+            'id': job_id,
+            'command': job_config['command'],
+            'priority': job_config.get('priority', 'NORMAL'),
+            'dependencies': job_config.get('dependencies', []),
+            'created_at': datetime.now(),
+            'status': 'queued'
+        }
+
+        with self.lock:
+            self.queue.append(job)
+            self._sort_queue()
+
+        self._try_run_next()
+        return job_id
+
+    def _sort_queue(self):
+        """優先度と作成時刻でソート"""
+        self.queue.sort(key=lambda x: (
+            self.PRIORITY_ORDER[x['priority']],
+            x['created_at']
+        ))
+
+    def _dependencies_satisfied(self, job: Dict) -> bool:
+        """依存関係チェック"""
+        for dep_id in job['dependencies']:
+            if not any(j['id'] == dep_id for j in self.completed):
+                return False
+        return True
+
+    def _try_run_next(self):
+        """次のジョブ実行試行"""
+        if len(self.running) >= self.max_concurrent:
+            return
+
+        with self.lock:
+            for job in self.queue[:]:
+                if self._dependencies_satisfied(job):
+                    self.queue.remove(job)
+                    self._run_job(job)
+                    break
+```
 
 ### Phase 8.2新規追加: Context7統合 & AI自動修正
 
@@ -924,10 +1207,11 @@ METRICS = {
 
 ---
 
-*最終更新: 2025年10月12日 15:20 JST*
-*バージョン: v4.10.0 (Phase 8.2完了)*
+*最終更新: 2025年10月13日 10:35 JST*
+*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
 
 **更新履歴:**
+- v4.11.0 (2025年10月13日): **Phase 4.1 GUI Control Center v1.0.0実装** - CustomTkinter GUI、プロセス管理、ログストリーミング、キュー管理、状態管理実装（9ファイル、2,889行）
 - v4.10.0 (2025年10月12日): **Phase 8.2完了** - Context7統合、AI自動YAML修正、完全自動実行フロー、5段階検証システム実装
 - v4.2.2 (2025年10月12日): **Phase 3.3完了** - YAMLルールシステム完成（10ルール×4カテゴリ）、技術スタック対応型解析、全テスト100%合格
 - v4.2.1 (2025年10月12日): Phase 3.2完了 - RuleCategoryクラス、グローバルルール関数、深刻度調整機能

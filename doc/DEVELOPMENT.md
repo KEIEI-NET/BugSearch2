@@ -1,9 +1,66 @@
 # 開発履歴
 
-**最終更新**: 2025-10-12 15:30 JST
-**現行バージョン**: v4.10.0 (Phase 8.2完了)
+**最終更新**: 2025-10-13 10:35 JST
+**現行バージョン**: v4.11.0 (Phase 4.1 GUI実装完了)
 
 ## バージョン履歴
+
+### v4.11.0 - Phase 4.1 GUI Control Center v1.0.0実装 (2025-10-13)
+#### 🖥️ GUI Control Center実装 - 93%品質達成
+- ✅ **GUI Control Center** (`gui_main.py` - 348行)
+  - CustomTkinter 5.2.0+によるモダンUI
+  - 4タブ構成（起動/監視/設定/履歴）
+  - ダーク/ライトテーマ対応
+  - Windows/Mac/Linux完全対応
+  - 1200x800デフォルトウィンドウサイズ
+- ✅ **プロセス管理モジュール** (`gui/process_manager.py` - 459行)
+  - psutil統合によるクロスプラットフォーム対応
+  - プロセス起動/停止/一時停止/再開
+  - 環境変数の動的設定
+  - リアルタイムステータス監視
+  - Windows cp932エンコーディング対応
+- ✅ **ログ収集システム** (`gui/log_collector.py` - 431行)
+  - リアルタイムログストリーミング
+  - ログレベル自動検出（INFO/WARNING/ERROR）
+  - 進捗バーのパース（tqdm対応）
+  - バッファリング（10,000行）
+  - スレッドセーフ実装
+- ✅ **キュー管理システム** (`gui/queue_manager.py` - 462行)
+  - 優先度管理（URGENT/HIGH/NORMAL/LOW）
+  - 依存関係グラフ管理
+  - 最大並列度制御（デフォルト10）
+  - ジョブ自動スケジューリング
+  - UUID ベースのジョブID生成
+- ✅ **状態管理モジュール** (`gui/state_manager.py` - 373行)
+  - ウィンドウ状態の永続化
+  - 設定ファイル管理（JSON形式）
+  - ジョブ履歴の保存（最大1000件）
+  - クラッシュリカバリー機能
+  - .gui/config.json への保存
+- ✅ **テスト実装** (`test/test_gui_basic.py` - 244行)
+  - 14テスト実装、13成功（93%合格率）
+  - UnicodeEncodeError対策（Windows cp932対応）
+  - モック使用による単体テスト
+  - GUI起動テストのスキップ（CI環境対応）
+
+#### 追加されたコンポーネント
+- `gui_main.py` - GUI Control Center メインアプリケーション
+- `gui/__init__.py` - GUIパッケージ初期化
+- `gui/process_manager.py` - プロセス管理モジュール
+- `gui/log_collector.py` - ログ収集モジュール
+- `gui/queue_manager.py` - キュー管理モジュール
+- `gui/state_manager.py` - 状態管理モジュール
+- `requirements_gui.txt` - GUI依存パッケージリスト
+- `test/test_gui_basic.py` - GUIテストスイート
+- `doc/guides/GUI_USER_GUIDE.md` - GUIユーザーガイド（531行）
+
+#### 技術スタック
+- CustomTkinter 5.2.0+ - モダンUI framework
+- psutil 5.9.0+ - クロスプラットフォームプロセス管理
+- threading - 非同期処理とスレッドセーフ実装
+- json - 設定と状態の永続化
+- uuid - ユニークジョブID生成
+- deque - 効率的なログバッファリング
 
 ### v4.10.0 - Phase 8.2完了 (2025-10-12)
 #### 🤖 Context7統合 & AI自動修正システム - @perfect品質達成

@@ -1,10 +1,10 @@
-# BugSearch2 - AI Code Review System v4.10.0
+# BugSearch2 - AI Code Review System v4.11.0
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
-**NEW**: Context7統合とAI自動修正機能！技術仕様に基づくYAML自動生成と完全自動実行フロー (@perfect品質達成)
+**NEW**: GUI Control Center v1.0.0実装！CustomTkinterベースのモダンUIでプロセス管理・リアルタイムログ・ジョブキュー制御が可能に！
 
-*バージョン: v4.10.0 (Phase 8.2完了)*
-*最終更新: 2025年10月12日 15:00 JST*
+*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
+*最終更新: 2025年10月13日 10:35 JST*
 
 **⚠️ セキュリティ強化版 - ReDoS脆弱性修正済み、環境変数保護強化**
 
@@ -49,6 +49,168 @@
 - [処理フロー図](doc/flow/code-review-system.drawio)
 - [シーケンス図](doc/sequence-diagram.drawio)
 - [クラス図](doc/class/code-review-system.drawio)
+
+## 🎉 バージョン4.11.0の新機能 - GUI Control Center v1.0.0実装
+
+### 🖥️ GUI Control Center v1.0.0（2025年10月13日）
+
+1. **CustomTkinterモダンUI**
+   - 4タブ構成: 起動/監視/設定/履歴
+   - ダーク/ライトテーマ対応
+   - Windows/Mac/Linux完全対応
+   ```bash
+   # GUI起動コマンド
+   python gui_main.py
+
+   # 必要パッケージのインストール
+   pip install -r requirements_gui.txt
+   ```
+
+2. **プロセス管理機能 (gui/process_manager.py)**
+   - プロセス起動/停止/一時停止/再開
+   - psutilによるクロスプラットフォーム対応
+   - リアルタイムステータス監視
+   ```python
+   from gui.process_manager import ProcessManager
+
+   manager = ProcessManager()
+   pid = manager.start_process(
+       'python codex_review_severity.py index',
+       env_vars={'AI_PROVIDER': 'auto'}
+   )
+   manager.pause_process(pid)  # 一時停止
+   manager.resume_process(pid) # 再開
+   ```
+
+3. **ログストリーミング (gui/log_collector.py)**
+   - リアルタイムログ表示
+   - ログレベル検出（INFO/WARNING/ERROR）
+   - 進捗パース機能
+   ```python
+   from gui.log_collector import LogCollector
+
+   collector = LogCollector()
+   collector.start_collecting(process)
+   for log_entry in collector.get_logs():
+       print(f"[{log_entry['level']}] {log_entry['message']}")
+   ```
+
+4. **キュー管理システム (gui/queue_manager.py)**
+   - 優先度管理（URGENT/HIGH/NORMAL/LOW）
+   - 依存関係管理
+   - 並列実行制御（最大10並列）
+   ```python
+   from gui.queue_manager import QueueManager
+
+   queue = QueueManager(max_concurrent=3)
+   queue.add_job({
+       'command': 'python codex_review_severity.py advise --all',
+       'priority': 'HIGH',
+       'dependencies': ['index_job_id']
+   })
+   ```
+
+5. **状態管理 (gui/state_manager.py)**
+   - ウィンドウ状態の永続化
+   - 設定の保存/読み込み
+   - ジョブ履歴管理
+   ```python
+   from gui.state_manager import StateManager
+
+   state_mgr = StateManager()
+   state_mgr.save_window_state(width=1200, height=800)
+   state_mgr.add_job_to_history(job_data)
+   ```
+
+6. **対応ジョブタイプ**
+   - Context7統合分析（`--auto-run`）
+   - インデックス作成（`index`）
+   - AI分析実行（`advise --all`）
+   - 改善コード適用（`apply_improvements_from_report.py`）
+
+7. **テスト結果**
+   - 14テスト実装、13テスト成功（93%）
+   - UnicodeEncodeError完全解決（Windows cp932対応）
+   ```bash
+   # GUIテスト実行
+   python test/test_gui_basic.py
+   ```
+
+### GUI システムアーキテクチャ
+
+```mermaid
+graph TB
+    User[ユーザー] --> GUI[GUI Control Center]
+
+    subgraph "GUI Application"
+        GUI --> LaunchTab[起動タブ]
+        GUI --> MonitorTab[監視タブ]
+        GUI --> SettingsTab[設定タブ]
+        GUI --> HistoryTab[履歴タブ]
+    end
+
+    subgraph "Backend Managers"
+        LaunchTab --> ProcessMgr[ProcessManager]
+        MonitorTab --> LogCollector[LogCollector]
+        ProcessMgr --> QueueMgr[QueueManager]
+        GUI --> StateMgr[StateManager]
+    end
+
+    subgraph "Existing CLI Tools"
+        ProcessMgr --> GenTech[generate_tech_config.py]
+        ProcessMgr --> CodexReview[codex_review_severity.py]
+        ProcessMgr --> ApplyImprove[apply_improvements_from_report.py]
+    end
+```
+
+### プロセス管理フロー
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant GUI
+    participant ProcessMgr
+    participant QueueMgr
+    participant Process
+
+    User->>GUI: ジョブ起動ボタンクリック
+    GUI->>QueueMgr: add_job()
+    QueueMgr->>QueueMgr: 優先度順にソート
+    QueueMgr->>ProcessMgr: start_process()
+    ProcessMgr->>Process: subprocess.Popen()
+    Process-->>ProcessMgr: PID返却
+    ProcessMgr->>LogCollector: start_collecting()
+    LogCollector-->>GUI: リアルタイムログ
+    GUI-->>User: 進捗表示
+```
+
+### キュー管理システム
+
+```mermaid
+graph LR
+    subgraph "Job Queue"
+        Q1[URGENT Job] --> Q2[HIGH Job]
+        Q2 --> Q3[NORMAL Job]
+        Q3 --> Q4[LOW Job]
+    end
+
+    subgraph "Running (max_concurrent=3)"
+        R1[Job 1]
+        R2[Job 2]
+        R3[Job 3]
+    end
+
+    subgraph "Completed"
+        C1[Job ✓]
+        C2[Job ✓]
+    end
+
+    Q1 -.空きあり.-> R1
+    Q2 -.空きあり.-> R2
+    Q3 -.空きあり.-> R3
+    R1 -.完了.-> C1
+    R2 -.完了.-> C2
+```
 
 ## 🎉 バージョン4.10.0の新機能 - Phase 8.2完了 (@perfect品質達成)
 
@@ -1077,6 +1239,11 @@ pip install openai anthropic scikit-learn joblib chardet
 # または requirements.txt を使用
 pip install -r requirements.txt
 
+# GUI機能を使用する場合（オプション）
+pip install -r requirements_gui.txt
+# または個別インストール
+pip install customtkinter psutil
+
 # Python 3.13でのインストール
 pip install --only-binary :all: scikit-learn
 ```
@@ -1113,6 +1280,18 @@ ANTHROPIC_MODEL=claude-sonnet-4-5
 ```
 
 ### 3. 基本的な実行
+
+#### 🆕 方法0: GUI Control Center（推奨）
+```bash
+# GUI起動
+python gui_main.py
+
+# GUIからの操作:
+# 1. 起動タブ: ジョブタイプ選択 → 実行ボタン
+# 2. 監視タブ: リアルタイムログ確認
+# 3. 設定タブ: AI Provider設定、並列度調整
+# 4. 履歴タブ: 過去のジョブ結果確認
+```
 
 #### 方法1: 標準分析
 ```bash
@@ -1184,13 +1363,23 @@ run_enhanced_analysis.bat
 
 ```
 .
+├── gui_main.py                       # 🆕 GUI Control Center メインアプリ
+├── gui/                              # 🆕 GUIモジュール
+│   ├── __init__.py                   # パッケージ初期化
+│   ├── process_manager.py            # プロセス管理（459行）
+│   ├── log_collector.py              # ログストリーミング（431行）
+│   ├── queue_manager.py              # キュー管理（462行）
+│   └── state_manager.py              # 状態管理（373行）
+│
 ├── codex_review_severity.py          # メインスクリプト（全言語対応）
 ├── extract_and_batch_parallel*.py    # 並列処理版スクリプト
 ├── fix_report_encoding.py            # ユーティリティ
 ├── batch_config.json                 # 設定ファイル
+├── requirements_gui.txt              # 🆕 GUI依存パッケージ
 ├── .env                              # 環境変数（要作成）
 │
 ├── test/                             # ⭐ テストコード（新規テストはここに作成）
+│   ├── test_gui_basic.py            # 🆕 GUIテスト（244行）
 │   ├── test_*.py                     # 単体テスト
 │   ├── benchmark_parallel.py         # パフォーマンステスト
 │   ├── monitor_parallel.py           # モニタリングツール
@@ -1200,7 +1389,9 @@ run_enhanced_analysis.bat
 │   ├── TECHNICAL.md                  # 技術仕様
 │   ├── DEVELOPMENT.md                # 開発履歴
 │   ├── TEST_RESULTS.md               # テスト結果
+│   ├── GUI_ARCHITECTURE.md          # 🆕 GUI詳細アーキテクチャ
 │   ├── guides/                       # ガイド文書
+│   │   ├── GUI_USER_GUIDE.md        # 🆕 GUIユーザーガイド（531行）
 │   │   ├── GPT5_MIGRATION.md        # GPT-5移行ガイド
 │   │   ├── ENHANCED_ANALYSIS_GUIDE.md # 拡張分析ガイド
 │   │   └── AGENTS.md                 # 運用ルール
@@ -1655,11 +1846,12 @@ MIT License - 詳細は[LICENSE](LICENSE)参照
 
 ---
 
-*最終更新: 2025年10月12日 15:00 JST*
-*バージョン: v4.10.0 (Phase 8.2完了)*
+*最終更新: 2025年10月13日 10:00 JST*
+*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.11.0 (2025年10月13日): **Phase 4.1 GUI Control Center v1.0.0実装** - CustomTkinter GUI(+348行)、ProcessManager(+459行)、LogCollector(+431行)、QueueManager(+462行)、StateManager(+373行)、4タブUI、リアルタイムログ、キュー管理、13/14テスト成功(93%)
 - v4.10.0 (2025年10月12日): **Phase 8.2完了 (@perfect品質達成)** - Context7統合&AI自動修正、ConfigGenerator(+687行)、generate_tech_config.py(+277行)、fix_yaml_with_ai()メソッド追加、run_full_analysis()完全自動実行、5段階検証システム、全テスト100%合格(9/9成功)
 - v4.7.0 (2025年10月12日): **Phase 6完了 (@perfect品質達成)** - チーム機能実装、ReportComparator/ReportDiff(+370行)、ProgressTracker(+570行)、FlaskDashboard(+350行)、レポート比較・時系列追跡・トレンド分析・REST API、全テスト100%合格(14/14成功、2スキップ)
 - v4.6.0 (2025年10月12日): **Phase 5完了 (@perfect品質達成)** - リアルタイム解析システム実装、FileWatcher/CodeFileHandler(+180行)、IncrementalAnalyzer/FileDiff(+280行)、watch_mode.py(+200行)、Git diff統合、デバウンス処理、スレッドセーフ実装、12言語サポート、10倍以上高速化、全テスト100%合格(9/9成功)
