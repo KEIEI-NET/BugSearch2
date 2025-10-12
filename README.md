@@ -87,6 +87,23 @@
    - YAML生成→検証→修正→index→advise の完全自動化
    - `--auto-run`フラグで一括実行
    - CI/CD統合対応
+
+   ```mermaid
+   graph TD
+       A[generate_tech_config --auto-run] --> B[Context7: ライブラリ情報取得]
+       B --> C[YAML生成]
+       C --> D{検証}
+       D -->|エラーあり| E[AI自動修正<br/>最大5回試行]
+       E --> F{修正成功?}
+       F -->|Yes| G[YAML保存]
+       F -->|No| H[エラー終了]
+       D -->|エラーなし| G
+       G --> I[index作成<br/>codex_review_severity.py index]
+       I --> J[AI分析実行<br/>codex_review_severity.py advise --all]
+       J --> K[レポート生成<br/>reports/ディレクトリ]
+       K --> L[完了]
+   ```
+
    ```bash
    # 完全自動実行（推奨）
    python generate_tech_config.py --tech vue --auto-run
