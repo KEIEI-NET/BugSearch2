@@ -326,11 +326,15 @@ notepad .bugsearch.yml
 # 1. インデックス作成（デフォルト: ./src ディレクトリ、4MB制限、4ワーカー）
 py codex_review_severity.py index
 
-# オプション指定の例
+# オプション指定の例（長い形式）
 py codex_review_severity.py index --max-file-mb 4 --worker-count 4
+
+# 短いエイリアスを使用（推奨）
+py codex_review_severity.py index -mfmb 4 -wc 4
 
 # 特定言語を除外する場合
 py codex_review_severity.py index --exclude-langs delphi java
+# または短い形式: py codex_review_severity.py index -excl delphi java
 
 # カスタムソースディレクトリ指定
 py codex_review_severity.py index --src-dir ./custom/path
@@ -341,6 +345,11 @@ py codex_review_severity.py advise --all --out reports/full_analysis
 
 # AI改善コード付き完全分析（推奨）
 py codex_review_severity.py advise --complete-all --out reports/complete_analysis
+# または短い形式: py codex_review_severity.py advise -call --out reports/complete_analysis
+
+# 完全レポート（最大100件）
+py codex_review_severity.py advise --all --complete-report --max-complete-items 100 --out reports/analysis
+# または短い形式: py codex_review_severity.py advise --all -cmpl -mcit 100 --out reports/analysis
 
 # クイックプレビュー（80ファイルのみ）
 py codex_review_severity.py advise --out reports/quick_analysis
@@ -499,6 +508,36 @@ v3.5以降は `load_env_file()` による組み込み`.env`ロード機能があ
 コミット禁止: `.advice_index.jsonl`, `.advice_*.pkl`, `reports/`, `.cache/`, `.batch_progress_parallel.json`
 
 ## 実装ノート
+
+### CLIオプションエイリアス
+
+長いオプション名には3-4文字の短いエイリアスが用意されています：
+
+**indexコマンド:**
+- `-excl` / `--exclude-langs` - 除外する言語指定
+- `-mfmb` / `--max-file-mb` - 最大ファイルサイズ (MB)
+- `-prof` / `--profile-index` - プロファイル情報出力
+- `-pout` / `--profile-output` - プロファイル結果ファイル
+- `-bsz` / `--batch-size` - バッチサイズ
+- `-mf` / `--max-files` - 最大ファイル数
+- `-msec` / `--max-seconds` - 最大処理時間 (秒)
+- `-wc` / `--worker-count` - ワーカー数
+
+**adviseコマンド:**
+- `-cmpl` / `--complete-report` - 完全レポート生成
+- `-mcit` / `--max-complete-items` - 完全レポート最大件数
+- `-call` / `--complete-all` - 全ファイル完全レポート
+
+**使用例:**
+```bash
+# 短い形式
+py codex_review_severity.py index -mfmb 4 -wc 4 -excl delphi java
+py codex_review_severity.py advise -call --out reports/analysis
+
+# 長い形式（同等）
+py codex_review_severity.py index --max-file-mb 4 --worker-count 4 --exclude-langs delphi java
+py codex_review_severity.py advise --complete-all --out reports/analysis
+```
 
 ### 言語サポートの追加
 1. `SEVERITY_SCORES`辞書に深刻度パターンを追加（`codex_review_severity.py` 54-130行目）

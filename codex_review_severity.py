@@ -2467,16 +2467,16 @@ if __name__ == "__main__":
         metavar="DIR",
         help="ソースディレクトリを明示的に指定（repoと排他的）"
     )
-    ap_idx.add_argument("--exclude-langs", type=str, nargs="*", help="除外する言語 (例: delphi java)")
-    ap_idx.add_argument("--max-file-mb", type=float, default=4.0, help="最大ファイルサイズ(MB) デフォルト4MB")
-    ap_idx.add_argument("--profile-index", action="store_true", help="インデックス処理のプロファイル情報を出力")
-    ap_idx.add_argument("--profile-output", type=str, default=None, help="プロファイル結果を書き出すファイル（.csv / .jsonl）")
-    ap_idx.add_argument("--batch-size", type=int, default=BATCH_SIZE_DEFAULT, help="ファイル書き出しのバッチ件数（既定500、0で無効）")
-    ap_idx.add_argument("--max-files", type=int, default=None, help="処理する最大ファイル数")
-    ap_idx.add_argument("--max-seconds", type=float, default=None, help="処理を打ち切る最大秒数")
+    ap_idx.add_argument("-excl", "--exclude-langs", type=str, nargs="*", help="除外する言語 (例: delphi java)")
+    ap_idx.add_argument("-mfmb", "--max-file-mb", type=float, default=4.0, help="最大ファイルサイズ(MB) デフォルト4MB")
+    ap_idx.add_argument("-prof", "--profile-index", action="store_true", help="インデックス処理のプロファイル情報を出力")
+    ap_idx.add_argument("-pout", "--profile-output", type=str, default=None, help="プロファイル結果を書き出すファイル（.csv / .jsonl）")
+    ap_idx.add_argument("-bsz", "--batch-size", type=int, default=BATCH_SIZE_DEFAULT, help="ファイル書き出しのバッチ件数（既定500、0で無効）")
+    ap_idx.add_argument("-mf", "--max-files", type=int, default=None, help="処理する最大ファイル数")
+    ap_idx.add_argument("-msec", "--max-seconds", type=float, default=None, help="処理を打ち切る最大秒数")
     ap_idx.add_argument("--include", nargs="*", help="インデックス対象とするパターン（glob）")
     ap_idx.add_argument("--exclude", nargs="*", help="インデックスから除外するパターン（glob）")
-    ap_idx.add_argument("--worker-count", type=int, default=0, help="ファイル読み込みに使うワーカー数（0で無効）")
+    ap_idx.add_argument("-wc", "--worker-count", type=int, default=0, help="ファイル読み込みに使うワーカー数（0で無効）")
 
     ap_vec = sub.add_parser("vectorize", help="(任意) TF-IDFベクトル生成")
     ap_vec.add_argument("--index", type=str, default=INDEX_PATH)
@@ -2494,9 +2494,9 @@ if __name__ == "__main__":
     ap_adv.add_argument("--mode", choices=["rules","ai","hybrid"], default="hybrid")
     ap_adv.add_argument("--index", type=str, default=INDEX_PATH)
     ap_adv.add_argument("--out", type=str, help="出力ファイル (Markdown)")
-    ap_adv.add_argument("--complete-report", action="store_true", help="完全レポート生成（元コード+改善コード付き）")
-    ap_adv.add_argument("--max-complete-items", type=int, default=100, help="完全レポート処理の最大件数（デフォルト: 100）")
-    ap_adv.add_argument("--complete-all", action="store_true", help="問題のある全ファイルを完全レポート（--all + --complete-report + 全件処理）")
+    ap_adv.add_argument("-cmpl", "--complete-report", action="store_true", help="完全レポート生成（元コード+改善コード付き）")
+    ap_adv.add_argument("-mcit", "--max-complete-items", type=int, default=100, help="完全レポート処理の最大件数（デフォルト: 100）")
+    ap_adv.add_argument("-call", "--complete-all", action="store_true", help="問題のある全ファイルを完全レポート（--all + --complete-report + 全件処理）")
 
     ap_clean = sub.add_parser("clean", help="生成物をクリーンアップ")
 
