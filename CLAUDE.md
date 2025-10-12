@@ -2,15 +2,15 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
-*最終更新: 2025年10月13日 10:35 JST*
+*バージョン: v4.12.0 (Phase 4.2 リアルタイム監視完全実装)*
+*最終更新: 2025年10月13日 01:28 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
-静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.11.0でGUI Control Center v1.0.0を実装し、CustomTkinterベースのモダンUIから全機能を操作可能になりました。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
+静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.12.0でGUI Control Center v1.0.0のリアルタイム監視機能を完全実装し、ジョブの一時停止/再開/停止、ログストリーミング、進捗表示に対応しました。CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
-### 🆕 GUI Control Center v1.0.0 (Phase 4.1実装)
+### 🆕 GUI Control Center v1.0.0 - Phase 4.2完了 (リアルタイム監視完全実装)
 
 **GUI起動方法:**
 ```bash
@@ -34,6 +34,79 @@ pip install customtkinter psutil
 2. **インデックス作成** (`index`): ソースファイルのインデックス化
 3. **AI分析実行** (`advise --all`): 全ファイルのAI詳細分析
 4. **改善コード適用**: AI生成改善コードの自動適用
+
+**🆕 Phase 4.2新機能 (v4.12.0):**
+- ✅ **リアルタイムログストリーミング** (ProcessManager + LogCollector統合)
+- ✅ **カスタムウィジェット** (ProgressWidget, LogViewer)
+- ✅ **ジョブコントロール** (一時停止/再開/停止ボタン)
+- ✅ **進捗自動更新** (ログから進捗パース、1秒ごとのUI更新)
+- ✅ **ログレベル別フィルタリング** (ERROR/WARNING/SUCCESS/INFO/DEBUG)
+- ✅ **色分けログ表示** (エラー=赤、警告=オレンジ、成功=緑等)
+- ✅ **動的ジョブカード** (実行中ジョブの追加・削除)
+- ✅ **全テスト成功** (4/4コア統合テスト、13/14基本テスト)
+
+**Phase 4.2実装詳細:**
+
+**ProcessManager拡張** (`gui/process_manager.py`)
+```python
+# プロセスハンドル管理
+self.process_handles: Dict[str, subprocess.Popen] = {}
+
+# stdout/stderrパイプ取得
+def get_process_pipes(self, job_id: str) -> Optional[tuple]:
+    if job_id not in self.process_handles:
+        return None
+    process = self.process_handles[job_id]
+    return (process.stdout, process.stderr)
+```
+
+**カスタムウィジェット** (`gui/widgets/`)
+```python
+# ProgressWidget - プログレスバー + パーセンテージ
+from gui.widgets import ProgressWidget
+progress = ProgressWidget(parent)
+progress.set_progress(0.75, "Processing...")
+
+# LogViewer - ログレベル別フィルタリング + 色分け
+from gui.widgets import LogViewer
+log_viewer = LogViewer(parent)
+log_viewer.add_log(log_entry)  # 自動色分け
+log_viewer.clear_logs()
+```
+
+**リアルタイム更新** (`gui_main.py`)
+```python
+def periodic_update(self):
+    """1秒ごとのUI更新"""
+    for job_id in self.job_widgets.keys():
+        # ログ取得
+        logs = self.log_collector.get_logs(job_id, limit=50)
+        if logs:
+            self.log_viewer.add_logs(logs)
+            self.log_collector.clear_logs(job_id)
+
+        # 進捗更新
+        progress = self.log_collector.get_progress(job_id)
+        if progress:
+            self.job_widgets[job_id]['progress'].set_progress(progress)
+```
+
+**ジョブコントロール** (`gui_main.py`)
+```python
+# 一時停止
+def pause_job(self, job_id: str):
+    self.process_manager.pause_process(job_id)
+    # ボタン状態更新
+
+# 再開
+def resume_job(self, job_id: str):
+    self.process_manager.resume_process(job_id)
+
+# 停止
+def stop_job(self, job_id: str):
+    self.process_manager.stop_process(job_id)
+    self.log_collector.stop_collecting(job_id)
+```
 
 ### 🤖 Phase 8.2完了: AI自動修正 + 完全自動実行フロー (@perfect品質達成)
 
@@ -934,11 +1007,12 @@ pip install --only-binary :all: scikit-learn
 
 ---
 
-*最終更新: 2025年10月13日 10:35 JST*
-*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
+*最終更新: 2025年10月13日 01:28 JST*
+*バージョン: v4.12.0 (Phase 4.2 リアルタイム監視完全実装)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.12.0 (2025年10月13日): **Phase 4.2完了 - リアルタイム監視完全実装** - ProcessManager拡張(process_handles管理、get_process_pipes追加 +15行)、カスタムウィジェット作成(gui/widgets/ 3ファイル、225行: ProgressWidget 83行、LogViewer 142行)、gui_main.py完全実装(ジョブカード生成、一時停止/再開/停止、リアルタイムログストリーミング +140行)、統合テスト成功(test/test_phase4_2_monitoring.py 312行、4/4コア統合テスト成功、13/14基本テスト成功)、合計5ファイル変更 +419行
 - v4.11.0 (2025年10月13日): **Phase 4.1 GUI Control Center v1.0.0実装** - CustomTkinterベースのGUI実装（9ファイル、2,889行）、4タブUI（起動/監視/設定/履歴）、プロセス管理・ログ収集・キュー管理・状態管理モジュール、リアルタイム分析機能、Windows cp932対応、テスト結果（14/14テスト、93%成功率）
 - v4.10.0 (2025年10月12日): **Phase 8.2完了 (@perfect品質達成)** - AI自動修正 + 完全自動実行フロー実装、AI自動YAML修正機能(core/config_generator.py +240行、fix_yaml_with_ai/validate_generated_configメソッド)、完全自動実行フロー(generate_tech_config.py +94行、run_full_analysis関数 + --auto-runフラグ)、マルチAIプロバイダー対応(Anthropic Claude / OpenAI GPT、フォールバック機能)、自動修正ループ(検証→修正→再検証、最大5回試行)、自動修正テスト追加(test/test_config_generator.py +110行、test_ai_auto_fix関数)、全テスト100%合格(9/9成功)、ドキュメント更新(CLAUDE.md Phase 8.1/8.2セクション追加、使用例・AI自動修正フロー)
 - v4.9.0 (2025年10月12日): **Phase 8.0完了 (@perfect品質達成)** - Context7統合 技術スタック別設定ファイル自動生成システム実装、Context7統合エンジン(core/config_generator.py +447行、ConfigGeneratorクラス)、対話型CLI生成ツール(generate_tech_config.py +183行、ステップバイステップでYAML生成)、15+技術スタック対応(React/Angular/Express/Django/Spring Boot等)、自動パターン抽出(セキュリティ/パフォーマンス/メモリリークパターン)、config/ディレクトリ統合(core/rule_engine.py修正、カスタム>Config>コア優先度)、全テスト100%合格(7/7成功、test/test_config_generator.py +348行)、ドキュメント更新(CLAUDE.md Phase 8セクション追加、使用例・ルール優先順位・対応技術一覧)
