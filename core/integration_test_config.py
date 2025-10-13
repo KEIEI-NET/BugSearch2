@@ -334,6 +334,10 @@ class IntegrationTestConfigManager:
         self.config = self._get_fallback_config()
         return self._save_config()
 
+    def reload_config(self) -> None:
+        """設定ファイルを再読み込み"""
+        self._load_config()
+
 
 # グローバルシングルトンインスタンス
 _config_manager: Optional[IntegrationTestConfigManager] = None

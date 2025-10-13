@@ -766,6 +766,73 @@ class BugSearchGUI(ctk.CTk):
         )
         self.concurrent_value_label.pack(anchor="w", padx=10, pady=(0, 10))
 
+        # デフォルト設定管理 (Phase 8.4)
+        defaults_label = ctk.CTkLabel(
+            scroll_frame,
+            text="デフォルト設定:",
+            font=ctk.CTkFont(size=14, weight="bold")
+        )
+        defaults_label.pack(anchor="w", padx=10, pady=(20, 5))
+
+        defaults_frame = ctk.CTkFrame(scroll_frame)
+        defaults_frame.pack(fill="x", padx=10, pady=(0, 10))
+
+        # 説明テキスト
+        defaults_desc = ctk.CTkLabel(
+            defaults_frame,
+            text="起動タブのチェックボックスのデフォルト値を管理します",
+            font=ctk.CTkFont(size=11),
+            anchor="w"
+        )
+        defaults_desc.pack(anchor="w", padx=10, pady=(10, 5))
+
+        # 現在の設定サマリー
+        summary_text = self.get_defaults_summary()
+        self.defaults_summary = ctk.CTkTextbox(
+            defaults_frame,
+            height=150,
+            wrap="word"
+        )
+        self.defaults_summary.pack(fill="x", padx=10, pady=(5, 10))
+        self.defaults_summary.insert("1.0", summary_text)
+        self.defaults_summary.configure(state="disabled")
+
+        # ボタンフレーム
+        defaults_buttons = ctk.CTkFrame(defaults_frame)
+        defaults_buttons.pack(fill="x", padx=10, pady=(0, 10))
+
+        # 設定ファイルを編集ボタン
+        edit_defaults_btn = ctk.CTkButton(
+            defaults_buttons,
+            text="📝 設定ファイルを編集",
+            command=self.edit_defaults_config,
+            width=150,
+            height=32
+        )
+        edit_defaults_btn.pack(side="left", padx=5)
+
+        # 更新ボタン
+        refresh_defaults_btn = ctk.CTkButton(
+            defaults_buttons,
+            text="🔄 表示を更新",
+            command=self.refresh_defaults_display,
+            width=120,
+            height=32
+        )
+        refresh_defaults_btn.pack(side="left", padx=5)
+
+        # リセットボタン
+        reset_defaults_btn = ctk.CTkButton(
+            defaults_buttons,
+            text="🔄 デフォルトにリセット",
+            command=self.reset_defaults_config,
+            width=150,
+            height=32,
+            fg_color="orange",
+            hover_color="darkorange"
+        )
+        reset_defaults_btn.pack(side="right", padx=5)
+
     def setup_history_tab(self):
         """履歴タブ - Phase 4.3完全実装"""
         tab = self.tabview.tab("📜 履歴")
@@ -1193,6 +1260,132 @@ class BugSearchGUI(ctk.CTk):
             self.update_status(f"ソースフォルダを設定: {rel_path}")
         else:
             self.update_status("ソースフォルダ選択がキャンセルされました")
+
+    def get_defaults_summary(self) -> str:
+        """デフォルト設定のサマリーテキストを取得 (Phase 8.4)"""
+        lines = []
+        lines.append("【Context7統合分析】")
+        lines.append("")
+
+        # 技術スタック
+        tech_stacks = self.config_manager.get_context7_default_tech_stacks()
+        if tech_stacks:
+            lines.append(f"  技術スタック: {', '.join(tech_stacks)}")
+        else:
+            lines.append("  技術スタック: (なし)")
+
+        # トピック
+        topics = self.config_manager.get_context7_default_topics()
+        if topics:
+            lines.append(f"  トピック: {', '.join(topics)}")
+        else:
+            lines.append("  トピック: (なし)")
+
+        lines.append("")
+        lines.append("【統合テスト】")
+        lines.append("")
+
+        # プロジェクトタイプ
+        projects = self.config_manager.get_integration_test_default_project_types()
+        if projects:
+            lines.append(f"  プロジェクトタイプ: {', '.join(projects)}")
+        else:
+            lines.append("  プロジェクトタイプ: (なし)")
+
+        # トピック
+        test_topics = self.config_manager.get_integration_test_default_topics()
+        if test_topics:
+            lines.append(f"  トピック: {', '.join(test_topics)}")
+        else:
+            lines.append("  トピック: (なし)")
+
+        # インデックスオプション
+        lines.append("")
+        max_mb = self.config_manager.get_integration_test_default_max_file_mb()
+        worker = self.config_manager.get_integration_test_default_worker_count()
+        lines.append(f"  最大ファイルサイズ: {max_mb} MB")
+        lines.append(f"  ワーカー数: {worker}")
+
+        return "\n".join(lines)
+
+    def edit_defaults_config(self):
+        """デフォルト設定ファイルを編集 (Phase 8.4)"""
+        import subprocess
+        import platform
+
+        config_file = Path('config/integration_test_defaults.yml')
+        if not config_file.exists():
+            self.show_error("設定ファイルが見つかりません")
+            return
+
+        try:
+            system = platform.system()
+            if system == 'Windows':
+                os.startfile(str(config_file))
+            elif system == 'Darwin':  # macOS
+                subprocess.run(['open', str(config_file)])
+            else:  # Linux
+                subprocess.run(['xdg-open', str(config_file)])
+
+            self.update_status("設定ファイルを開きました")
+
+            # 確認ダイアログ
+            from tkinter import messagebox
+            messagebox.showinfo(
+                "設定ファイル編集",
+                "設定ファイルを編集したら、「表示を更新」ボタンで反映してください。"
+            )
+        except Exception as e:
+            self.show_error(f"設定ファイルを開けませんでした: {str(e)}")
+
+    def refresh_defaults_display(self):
+        """デフォルト設定表示を更新 (Phase 8.4)"""
+        try:
+            # 設定を再読み込み
+            self.config_manager.reload_config()
+
+            # サマリーテキストを更新
+            summary_text = self.get_defaults_summary()
+            self.defaults_summary.configure(state="normal")
+            self.defaults_summary.delete("1.0", "end")
+            self.defaults_summary.insert("1.0", summary_text)
+            self.defaults_summary.configure(state="disabled")
+
+            self.update_status("デフォルト設定を更新しました")
+        except Exception as e:
+            self.show_error(f"設定更新失敗: {str(e)}")
+
+    def reset_defaults_config(self):
+        """デフォルト設定をリセット (Phase 8.4)"""
+        from tkinter import messagebox
+
+        # 確認ダイアログ
+        result = messagebox.askyesno(
+            "確認",
+            "デフォルト設定をリセットします。\n"
+            "現在の設定は失われますが、よろしいですか？",
+            icon='warning'
+        )
+
+        if not result:
+            self.update_status("リセットがキャンセルされました")
+            return
+
+        try:
+            # リセット実行
+            self.config_manager.reset_to_defaults()
+
+            # 表示を更新
+            self.refresh_defaults_display()
+
+            self.update_status("デフォルト設定をリセットしました")
+
+            messagebox.showinfo(
+                "リセット完了",
+                "デフォルト設定をリセットしました。"
+            )
+        except Exception as e:
+            self.show_error(f"リセット失敗: {str(e)}")
 
     def show_file_menu(self):
         """ファイルメニュー表示 - Phase 4.4完全実装"""
