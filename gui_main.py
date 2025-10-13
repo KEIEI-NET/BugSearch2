@@ -2,7 +2,7 @@
 BugSearch2 GUI Control Center
 メインGUIアプリケーション
 
-バージョン: v1.0.0
+バージョン: v4.11.5 (GUI v1.0.0)
 """
 
 import os
@@ -39,7 +39,7 @@ class BugSearchGUI(ctk.CTk):
         super().__init__()
 
         # ウィンドウ設定
-        self.title("BugSearch2 Control Center v1.0.0")
+        self.title("BugSearch2 Control Center v4.11.5")
 
         # プロジェクトルートディレクトリ
         self.project_root = Path.cwd()
@@ -1246,7 +1246,7 @@ class BugSearchGUI(ctk.CTk):
     def show_help(self):
         """ヘルプ表示 - 改善版（モーダルダイアログ）"""
         help_text = """
-BugSearch2 GUI Control Center v1.0.0
+BugSearch2 GUI Control Center v4.11.5
 
 【使用方法】
 1. 設定タブでソースフォルダを設定
@@ -1547,7 +1547,7 @@ BugSearch2 GUI Control Center v1.0.0
                 # エクスポート用メタデータ追加
                 export_data = {
                     'exported_at': datetime.datetime.now().isoformat(),
-                    'version': 'v1.0.0',
+                    'version': 'v4.11.5',
                     'state': state_data
                 }
 
