@@ -5,7 +5,7 @@
         "api_delay": 1.0,
         "batch_delay": 5,
         "max_retries": 3,
-        "timeout_per_file": 10,
+        "timeout_per_file": 360,
         "description": "最適化版バッチ処理設定"
     },
     "api_settings": {
@@ -71,7 +71,7 @@
         "batch_size": 50,
         "parallel_workers": 10,
         "api_delay": 0.1,
-        "timeout_per_file": 60,
+        "timeout_per_file": 360,
         "cache_dir": ".cache/analysis",
         "rate_limit_per_minute": 100,
         "model_selection": {

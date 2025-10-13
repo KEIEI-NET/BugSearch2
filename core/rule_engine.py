@@ -582,11 +582,9 @@ class RuleValidator:
         """IDフォーマットの検証"""
         errors = []
 
-        if not rule_id.isupper():
-            errors.append(f"ルールID '{rule_id}' は大文字で定義してください（例: CUSTOM_MY_RULE）")
-
-        if not re.match(r'^[A-Z_]+$', rule_id):
-            errors.append(f"ルールID '{rule_id}' は大文字とアンダースコアのみ使用可能です")
+        # 数字も許可するように修正（例: CUSTOM_REACT_SECURITY_01）
+        if not re.match(r'^[A-Z0-9_]+$', rule_id):
+            errors.append(f"ルールID '{rule_id}' は大文字・数字・アンダースコアのみ使用可能です")
 
         return errors
 

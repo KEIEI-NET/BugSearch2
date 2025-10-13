@@ -389,13 +389,15 @@ analysis:
         result = subprocess.run(
             cmd,
             capture_output=True,
-            text=True,
+            text=False,  # バイトモード - Windows cp932エラー対策
             timeout=300,
             cwd=Path.cwd()
         )
 
         if result.returncode != 0:
-            raise Exception(f"Context7分析失敗: {result.stderr}")
+            # バイトをUTF-8デコード (エラーは?に置換)
+            stderr_text = result.stderr.decode('utf-8', errors='replace') if result.stderr else ""
+            raise Exception(f"Context7分析失敗: {stderr_text}")
 
         # 生成されたYAMLファイルを確認
         yaml_file = Path(f"config/{self.config.project_type}-rules.yml")
@@ -424,12 +426,14 @@ analysis:
         result = subprocess.run(
             cmd,
             capture_output=True,
-            text=True,
+            text=False,  # バイトモード - Windows cp932エラー対策
             timeout=300
         )
 
         if result.returncode != 0:
-            raise Exception(f"インデックス作成失敗: {result.stderr}")
+            # バイトをUTF-8デコード (エラーは?に置換)
+            stderr_text = result.stderr.decode('utf-8', errors='replace') if result.stderr else ""
+            raise Exception(f"インデックス作成失敗: {stderr_text}")
 
         # インデックスファイルを確認
         index_file = Path(".advice_index.jsonl")
@@ -464,12 +468,14 @@ analysis:
         result = subprocess.run(
             cmd,
             capture_output=True,
-            text=True,
+            text=False,  # バイトモード - Windows cp932エラー対策
             timeout=600  # 10分
         )
 
         if result.returncode != 0:
-            raise Exception(f"AI分析失敗: {result.stderr}")
+            # バイトをUTF-8デコード (エラーは?に置換)
+            stderr_text = result.stderr.decode('utf-8', errors='replace') if result.stderr else ""
+            raise Exception(f"AI分析失敗: {stderr_text}")
 
         # レポートファイルを確認
         report_file = Path(f"{report_path}.md")
@@ -505,7 +511,7 @@ analysis:
         result = subprocess.run(
             cmd,
             capture_output=True,
-            text=True,
+            text=False,  # バイトモード - Windows cp932エラー対策
             timeout=300
         )
 
@@ -515,8 +521,9 @@ analysis:
             metrics = {"improvements_applied": 0}
             return output, metrics
 
-        # 適用予定の改善数をカウント
-        improvements = result.stdout.count("Would apply")
+        # 適用予定の改善数をカウント（バイトをUTF-8デコード）
+        stdout_text = result.stdout.decode('utf-8', errors='replace') if result.stdout else ""
+        improvements = stdout_text.count("Would apply")
 
         output = f"改善コード確認完了: {improvements}個の改善を検出"
         metrics = {

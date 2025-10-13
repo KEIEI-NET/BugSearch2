@@ -57,6 +57,9 @@ INDEX_PATH = ".advice_index.jsonl"
 VEC_PATH = ".advice_tfidf.pkl"
 MATRIX_PATH = ".advice_matrix.pkl"
 BATCH_SIZE = 5  # AIに一度に送るファイル数
+
+# 技術スタック情報（AI分析で使用）
+TECH_STACK_CONTEXT = ""
 MAX_PROMPT_SIZE = 8000  # プロンプトの最大文字数
 AI_TIMEOUT = 240  # 240秒でタイムアウト
 BATCH_SIZE_DEFAULT = 500
@@ -916,26 +919,175 @@ def scan_angular(text: str) -> List[str]:
 
     return m
 
-def make_tags(text: str) -> List[str]:
-    t = []
-    if re.search(r"\b(price|cost|money|amount|tax|total|sum|charge|fee|pay|invoice|billing|currency|decimal|round)", text, re.IGNORECASE): t.append("money")
-    if re.search(r"\b(print|printer|page|paper|report|pdf|export|PrintDocument|PrintPage|HasMorePages)", text, re.IGNORECASE): t.append("print")
-    if re.search(r"\b(button|click|submit|form|input|select|modal|dialog|toast|spinner|loading|disabled)", text, re.IGNORECASE): t.append("uiux")
-    if re.search(r"\b(SELECT|INSERT|UPDATE|DELETE|JOIN|WHERE|FROM|query|sql|database|transaction|connection)", text, re.IGNORECASE): t.append("db")
-    if re.search(r"\b(api|http|fetch|axios|request|response|endpoint|REST|webhook|curl)", text, re.IGNORECASE): t.append("net")
-    if re.search(r"\b(file|fs|stream|read|write|upload|download|path|directory|folder)", text, re.IGNORECASE): t.append("io")
+def make_tags(text: str, lang: str = "other") -> List[str]:
+    """
+    ファイルの内容と言語から適切なタグを生成
 
-    # Go固有タグ
+    タグ分類:
+    - 言語タグ (9種類): lang-{language}
+    - 技術スタックタグ (22種類): tech-{stack}
+    - トピックタグ (18種類): topic-{topic}
+    - レガシータグ (6種類): money, print, uiux, db, net, io
+    - 言語固有タグ (3種類): go-concurrent, cpp-memory, php-web
+    """
+    t = []
+
+    # === 1. 言語タグ (自動付与) ===
+    if lang == "delphi":
+        t.append("lang-delphi")
+    elif lang == "go":
+        t.append("lang-go")
+    elif lang == "cpp":
+        t.append("lang-cpp")
+    elif lang == "c":
+        t.append("lang-c")
+    elif lang == "csharp":
+        t.append("lang-csharp")
+    elif lang == "java":
+        t.append("lang-java")
+    elif lang == "javascript":
+        t.append("lang-javascript")
+    elif lang == "typescript":
+        t.append("lang-typescript")
+    elif lang == "php":
+        t.append("lang-php")
+    elif lang == "python":
+        t.append("lang-python")
+
+    # === 2. 技術スタックタグ (22種類) ===
+    # フロントエンド (4種類)
+    if re.search(r"(@Component|React\.Component|useState|useEffect|createRoot|ReactDOM)", text):
+        t.append("tech-react")
+    if re.search(r"(@Component|@NgModule|@Injectable|@Directive|@Pipe|platformBrowserDynamic)", text):
+        t.append("tech-angular")
+    if re.search(r"(Vue\.component|createApp|defineComponent|<template>|v-if|v-for|v-model)", text):
+        t.append("tech-vue")
+    if re.search(r"(svelte:component|onMount|beforeUpdate|afterUpdate|\$:|\{#if)", text):
+        t.append("tech-svelte")
+
+    # バックエンド (6種類)
+    if re.search(r"(express\(|app\.get\(|app\.post\(|app\.use\(|middleware|req\.params|res\.json)", text, re.IGNORECASE):
+        t.append("tech-express")
+    if re.search(r"(@Module|@Controller|@Injectable|@Get|@Post|NestFactory\.create|@nestjs)", text):
+        t.append("tech-nestjs")
+    if re.search(r"(from fastapi import|FastAPI\(|@app\.get|@app\.post|APIRouter|Depends\(|HTTPException)", text):
+        t.append("tech-fastapi")
+    if re.search(r"(from django|django\.conf|models\.Model|views\.|forms\.|HttpResponse|render\()", text):
+        t.append("tech-django")
+    if re.search(r"(from flask import|Flask\(__name__|@app\.route|request\.|jsonify\(|render_template)", text):
+        t.append("tech-flask")
+    if re.search(r"(@RestController|@Service|@Repository|@Autowired|@SpringBootApplication|@RequestMapping)", text):
+        t.append("tech-springboot")
+
+    # データベース (9種類)
+    if re.search(r"(elasticsearch|es\.search|es\.index|@elastic|RestHighLevelClient|SearchRequest)", text, re.IGNORECASE):
+        t.append("tech-elasticsearch")
+    if re.search(r"(cassandra|cql|SELECT.*FROM.*WHERE|Cluster\.builder|Session\.execute)", text, re.IGNORECASE):
+        t.append("tech-cassandra")
+    if re.search(r"(mongodb|MongoClient|db\.collection|find\(|insertOne|updateMany|mongoose\.)", text, re.IGNORECASE):
+        t.append("tech-mongodb")
+    if re.search(r"(redis|REDIS|RedisClient|redisTemplate|GET |SET |HSET |ZADD |LPUSH )", text, re.IGNORECASE):
+        t.append("tech-redis")
+    if re.search(r"(mysql|MySQL|MYSQL_|mysqli_|com\.mysql\.cj\.jdbc\.Driver)", text, re.IGNORECASE):
+        t.append("tech-mysql")
+    if re.search(r"(postgres|postgresql|pg\.|psycopg2|org\.postgresql\.Driver)", text, re.IGNORECASE):
+        t.append("tech-postgresql")
+    if re.search(r"(sqlserver|mssql|SqlConnection|Microsoft\.Data\.SqlClient|jdbc:sqlserver)", text, re.IGNORECASE):
+        t.append("tech-sqlserver")
+    if re.search(r"(oracle|OracleConnection|oracle\.jdbc\.driver|OracleDataSource)", text, re.IGNORECASE):
+        t.append("tech-oracle")
+    if re.search(r"(memcache|Memcached|MemcachedClient|net\.spy\.memcached)", text, re.IGNORECASE):
+        t.append("tech-memcached")
+
+    # その他 (3種類)
+    if re.search(r"(typescript|\.ts\"|@types/|as\s+(string|number|boolean)|interface\s+\w+|type\s+\w+\s*=)", text, re.IGNORECASE):
+        t.append("tech-typescript")
+    if re.search(r"(require\(|exports\.|module\.exports|process\.env|__dirname|Buffer\.from)", text):
+        t.append("tech-nodejs")
+    if re.search(r"(package\s+main|func\s+main\(|import\s+\"fmt\"|go\s+func\(|defer\s+)", text):
+        t.append("tech-go")
+
+    # === 3. トピックタグ (18種類) ===
+    # セキュリティ
+    if re.search(r"(\$_(GET|POST|REQUEST)|eval\(|dangerouslySetInnerHTML|v-html|innerHTML|exec\(|system\(|shell_exec)", text):
+        t.append("topic-security")
+    # パフォーマンス
+    if re.search(r"(SELECT\s+\*|for.*SELECT|loop.*query|\.map\(.*\.find|O\(n\^2\)|performance|optimization)", text, re.IGNORECASE):
+        t.append("topic-performance")
+    # データベース
+    if re.search(r"(SELECT|INSERT|UPDATE|DELETE|JOIN|WHERE|FROM|query|sql|database|transaction)", text, re.IGNORECASE):
+        t.append("topic-database")
+    # SOLID原則
+    if re.search(r"(class\s+\w+.*\{.*\{.*\{|switch\s*\(|instanceof\s+|typeof\s+.*===|Single Responsibility|Open-Closed)", text, re.IGNORECASE):
+        t.append("topic-solid")
+    # ベストプラクティス
+    if re.search(r"(TODO|FIXME|HACK|XXX|@deprecated|eslint-disable|@ts-ignore|#pragma warning)", text):
+        t.append("topic-best-practices")
+    # エラーハンドリング
+    if re.search(r"(try\s*\{|catch\s*\(|finally\s*\{|throw\s+new|except\s*:|raise\s+|panic\(|recover\()", text):
+        t.append("topic-error-handling")
+    # テスト
+    if re.search(r"(test\(|it\(|describe\(|expect\(|assert|should|@Test|unittest|pytest|jest|mocha)", text, re.IGNORECASE):
+        t.append("topic-testing")
+    # アクセシビリティ
+    if re.search(r"(aria-|role=|alt=|tabindex|accesskey|screen reader|a11y|accessibility)", text, re.IGNORECASE):
+        t.append("topic-accessibility")
+    # 最適化
+    if re.search(r"(memo|useMemo|useCallback|React\.memo|@memoize|cache|lazy|virtual scroll)", text):
+        t.append("topic-optimization")
+    # アーキテクチャ
+    if re.search(r"(repository|service|controller|factory|singleton|observer|strategy|adapter|facade)", text, re.IGNORECASE):
+        t.append("topic-architecture")
+    # パターン
+    if re.search(r"(Builder|Factory|Singleton|Observer|Strategy|Adapter|Decorator|Facade|Proxy)", text):
+        t.append("topic-patterns")
+    # スタイリング
+    if re.search(r"(css|scss|sass|less|styled|@emotion|tailwind|style=|className=|makeStyles)", text, re.IGNORECASE):
+        t.append("topic-styling")
+    # 状態管理
+    if re.search(r"(useState|useReducer|Redux|store|dispatch|action|reducer|context|Vuex|Pinia)", text):
+        t.append("topic-state-management")
+    # ルーティング
+    if re.search(r"(Router|Route|navigate|useNavigate|useRouter|router\.push|@angular/router)", text):
+        t.append("topic-routing")
+    # デプロイメント
+    if re.search(r"(docker|Dockerfile|kubernetes|k8s|helm|deploy|CI/CD|jenkins|gitlab-ci|github actions)", text, re.IGNORECASE):
+        t.append("topic-deployment")
+    # モニタリング
+    if re.search(r"(log|logger|console\.|monitoring|metrics|prometheus|grafana|datadog|newrelic)", text, re.IGNORECASE):
+        t.append("topic-monitoring")
+    # API統合
+    if re.search(r"(api|fetch|axios|http|request|response|endpoint|REST|GraphQL|webhook)", text, re.IGNORECASE):
+        t.append("topic-api-integration")
+    # データ検証
+    if re.search(r"(validate|validation|validator|schema|yup|joi|zod|@IsString|@IsNumber|required|pattern)", text, re.IGNORECASE):
+        t.append("topic-data-validation")
+
+    # === 4. レガシータグ (互換性維持) ===
+    if re.search(r"\b(price|cost|money|amount|tax|total|sum|charge|fee|pay|invoice|billing|currency|decimal|round)", text, re.IGNORECASE):
+        t.append("money")
+    if re.search(r"\b(print|printer|page|paper|report|pdf|export|PrintDocument|PrintPage|HasMorePages)", text, re.IGNORECASE):
+        t.append("print")
+    if re.search(r"\b(button|click|submit|form|input|select|modal|dialog|toast|spinner|loading|disabled)", text, re.IGNORECASE):
+        t.append("uiux")
+    if re.search(r"\b(SELECT|INSERT|UPDATE|DELETE|JOIN|WHERE|FROM|query|sql|database|transaction|connection)", text, re.IGNORECASE):
+        t.append("db")
+    if re.search(r"\b(api|http|fetch|axios|request|response|endpoint|REST|webhook|curl)", text, re.IGNORECASE):
+        t.append("net")
+    if re.search(r"\b(file|fs|stream|read|write|upload|download|path|directory|folder)", text, re.IGNORECASE):
+        t.append("io")
+
+    # === 5. 言語固有タグ (既存維持) ===
     if re.search(r"\b(goroutine|channel|defer|panic|recover|context|sync\.WaitGroup)", text, re.IGNORECASE):
         t.append("go-concurrent")
-
-    # C++固有タグ
     if re.search(r"\b(new|delete|malloc|free|unique_ptr|shared_ptr|make_unique|make_shared)", text, re.IGNORECASE):
         t.append("cpp-memory")
-
-    # PHP固有タグ
     if re.search(r"\b(\$_(GET|POST|REQUEST|SESSION|COOKIE)|session_start|mysql_|mysqli_|PDO|include|require)", text):
         t.append("php-web")
+
+    # Delphiメモリ管理タグ
+    if lang == "delphi" and re.search(r"\b(\.Create\(|GetMem\(|TStringList\.Create|TObject)", text, re.IGNORECASE):
+        t.append("delphi-memory")
 
     return sorted(set(t))
 
@@ -1084,8 +1236,15 @@ def cmd_index(
         path, _ = item
         read_start = time.perf_counter()
         try:
-            txt = path.read_text(encoding="utf-8", errors="ignore")
+            # エンコーディング自動検出を使用
+            from core.encoding_handler import read_file_with_fallback
+            txt, encoding = read_file_with_fallback(str(path))
             duration = time.perf_counter() - read_start
+
+            if txt is None:
+                # 読み込み失敗（バイナリファイル等）
+                return path, None, duration, RuntimeError(f"Failed to detect encoding or read file")
+
             return path, txt, duration, None
         except Exception as exc:
             duration = time.perf_counter() - read_start
@@ -1158,7 +1317,7 @@ def cmd_index(
                         continue
                     if not txt:
                         continue
-                    tags = make_tags(txt)
+                    tags = make_tags(txt, lang)
                     encoded = txt.encode("utf-8", errors="ignore")
                     doc = Doc(path=rel_path, lang=lang, size=len(encoded), sha1=sha1_bytes(encoded), tags=tags, summary=make_summary(txt), text=txt)
                     batch_buffer.append(json.dumps(asdict(doc), ensure_ascii=False) + "\n")
@@ -1349,7 +1508,8 @@ def make_advice_entry_with_severity(d: Dict[str,Any]) -> Dict[str,Any]:
         "tags": d.get("tags",[]),
         "suspicions": suspicions,
         "severity_score": severity_score,  # 重要度スコア追加
-        "severity_level": get_severity_level(severity_score)  # 重要度レベル追加
+        "severity_level": get_severity_level(severity_score),  # 重要度レベル追加
+        "text": d.get("text", "")  # インデックスのtext内容を含める（ファイルが移動/削除されている場合に備えて）
     }
 
 def get_severity_level(score: int) -> str:
@@ -1560,12 +1720,18 @@ def ai_review(query: str, snippets: List[str]) -> str:
     if not provider:
         return "(AI未有効: APIキー未設定またはSDK未導入)"
 
+    # 技術スタック情報を取得
+    tech_stack_info = globals().get('TECH_STACK_CONTEXT', '')
+
     # プロンプト構築（共通）
     prompt = (
         "ユーザー報告: \n" +
         json.dumps(query, ensure_ascii=False) +
+        tech_stack_info +
         "\n次のコード断片を根拠に、(1)金額 (2)印刷 (3)UI/UX (4)DB負荷 を重点に助言だけを出してください。\n" +
-        "確度が低い指摘は『可能性』と明記。修正コードは出力しない。\n=== 候補コード ===\n" +
+        "確度が低い指摘は『可能性』と明記。修正コードは出力しない。\n" +
+        "【重要】上記の技術スタック情報を必ず考慮してください。特にCassandra、Elasticsearch、MySQLの特性を踏まえた分析を行ってください。\n" +
+        "=== 候補コード ===\n" +
         json.dumps(snippets, ensure_ascii=False)[:PROCESSING_CONSTANTS['ai_prompt_max_length']]
     )
 
@@ -1930,71 +2096,93 @@ def generate_improved_code(file_path: str, original_code: str, suspicions: List[
 def format_complete_report_item(num: int, item: Dict[str, Any], include_source: bool = True, generate_fix: bool = True) -> List[str]:
     """
     完全レポート用のアイテムフォーマット（元コード + 改善コード付き）
-    
+    doc/AI_IMPROVED_CODE_GENERATOR.md の仕様に準拠
+
     Args:
         num: アイテム番号
         item: レポートアイテム
         include_source: 元コードを含めるか
         generate_fix: 改善コードを生成するか
-    
+
     Returns:
         フォーマット済み行のリスト
     """
+    from datetime import datetime
+
+    # ヘッダー（## 見出し、生成日時追加）
     lines = [
-        f"### {num}. {item['path']}",
+        f"## {num}. {item['path']}",
+        "",
         f"- **言語**: {item['lang']}",
         f"- **重要度**: {item.get('severity_level', '不明')} (スコア: {item.get('severity_score', 0)})",
-        f"- **タグ**: {', '.join(item.get('tags', [])) or '-'}",
+        f"- **生成日時**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         ""
     ]
-    
-    # 問題リスト
+
+    # 問題リスト（### 見出し、コロンなし）
     susp = item.get("suspicions", [])
     if susp:
-        lines.append("#### 検出された問題:")
+        lines.append("### 検出された問題")
+        lines.append("")
         for s in susp:
             severity = SEVERITY_SCORES.get(s, 1)
             priority = "[緊急]" if severity >= 8 else "[高]" if severity >= 5 else "[中]" if severity >= 3 else "[低]"
             lines.append(f"- {priority} {s}")
         lines.append("")
-    
-    # 元コード読み込み
+
+    # 改善助言セクション（問題の要約）
+    if susp:
+        lines.append("### 改善助言")
+        lines.append("")
+        lines.append("```")
+        lines.append("以下の問題に対応してください：")
+        for s in susp:
+            lines.append(f"- {s}")
+        lines.append("```")
+        lines.append("")
+
+    # 元コード読み込み（インデックスのtextフィールドを優先使用）
     if include_source and item.get('severity_score', 0) > 0:
-        file_path = item['path']
-        source_code, success = read_source_file(file_path)
-        
+        # インデックスにtextフィールドがあればそれを使用（ファイルが移動/削除されていても対応）
+        if 'text' in item and item['text']:
+            source_code = item['text']
+            success = True
+        else:
+            # textがない場合は従来通りディスクから読み込み（後方互換性）
+            file_path = item['path']
+            source_code, success = read_source_file(file_path)
+
         if success:
-            lines.append("#### 元のソースコード:")
+            # ### 元のソースコード（コロンなし）
+            lines.append("### 元のソースコード")
+            lines.append("")
             lines.append(f"```{item['lang']}")
             lines.append(source_code[:20000])  # 最大20KB
             if len(source_code) > 20000:
                 lines.append("... (以下省略)")
             lines.append("```")
             lines.append("")
-            
+
             # 改善コード生成
             if generate_fix and susp:
-                print(f"[INFO] AI改善コード生成中: {file_path}")
-                improved_code = generate_improved_code(file_path, source_code, susp, item['lang'])
-                
-                lines.append("#### 改善されたソースコード:")
+                print(f"[INFO] AI改善コード生成中: {item['path']}")
+                improved_code = generate_improved_code(item['path'], source_code, susp, item['lang'])
+
+                # ### AI生成改善コード（100点満点目標）
+                lines.append("### AI生成改善コード（100点満点目標）")
+                lines.append("")
                 lines.append(f"```{item['lang']}")
                 lines.append(improved_code)
                 lines.append("```")
                 lines.append("")
-                
-                lines.append("#### 変更内容の説明:")
-                lines.append("上記の改善コードでは以下の変更が行われています：")
-                for s in susp[:5]:  # 主要な問題のみ
-                    lines.append(f"- {s} への対応")
-                lines.append("")
         else:
-            lines.append("#### ソースコード読み込みエラー:")
-            lines.append(f"```")
+            lines.append("### ソースコード読み込みエラー")
+            lines.append("")
+            lines.append("```")
             lines.append(source_code)  # エラーメッセージ
             lines.append("```")
             lines.append("")
-    
+
     lines.append("---")
     lines.append("")
     return lines
@@ -2328,6 +2516,136 @@ def cmd_advise(topk: int, mode: str, index_path: pathlib.Path, out: pathlib.Path
     """
     # シグナルハンドラーを設定（Ctrl+C対応）
     setup_signal_handlers()
+
+    # 技術スタック情報をロード
+    from core.project_config import load_project_config
+    global TECH_STACK_CONTEXT
+    TECH_STACK_CONTEXT = ""
+    try:
+        config = load_project_config()
+        if config and config.tech_stack:
+            # 【重要原則】プロジェクト設定ファイルで指定された全ての技術スタックを
+            # 必ずAI分析で考慮する。チェックが入っているものは全て分析対象。
+
+            TECH_STACK_CONTEXT = f"\n\n【重要】プロジェクト技術スタック（全て考慮）:\n"
+
+            # プロジェクトタイプ（YAMLから読み込み）
+            import yaml
+            project_type = None
+            try:
+                with open('.bugsearch.yml', 'r', encoding='utf-8') as f:
+                    yaml_data = yaml.safe_load(f)
+                    if yaml_data and 'project' in yaml_data:
+                        project_type = yaml_data['project'].get('type')
+            except Exception as e:
+                print(f"[WARNING] プロジェクトタイプの読み込みに失敗: {e}")
+
+            TECH_STACK_CONTEXT += f"- プロジェクト名: {config.name}\n"
+            if project_type:
+                TECH_STACK_CONTEXT += f"- プロジェクトタイプ: {project_type}\n"
+
+            # フロントエンド（全属性を含める）
+            if config.tech_stack.frontend:
+                frontend = config.tech_stack.frontend
+                frontend_info = f"{frontend.framework}"
+                if frontend.version:
+                    frontend_info += f" {frontend.version}"
+                if frontend.state_management:
+                    frontend_info += f" (状態管理: {frontend.state_management})"
+                if frontend.routing:
+                    frontend_info += f" (ルーティング: {frontend.routing})"
+                TECH_STACK_CONTEXT += f"- フロントエンド: {frontend_info}\n"
+
+            # バックエンド（全属性を含める）
+            if config.tech_stack.backend:
+                backend = config.tech_stack.backend
+                backend_info = f"{backend.language}"
+                if backend.version:
+                    backend_info += f" {backend.version}"
+                if backend.framework:
+                    backend_info += f" ({backend.framework}"
+                    if backend.framework_version:
+                        backend_info += f" {backend.framework_version}"
+                    backend_info += ")"
+                TECH_STACK_CONTEXT += f"- バックエンド: {backend_info}\n"
+
+            # データベース（全て列挙）
+            if config.tech_stack.databases:
+                db_details = []
+                for db in config.tech_stack.databases:
+                    db_info = f"{db.type}"
+                    if db.version:
+                        db_info += f" {db.version}"
+                    db_info += f" ({db.purpose})"
+                    if db.library:
+                        db_info += f" [ライブラリ: {db.library}]"
+                    db_details.append(db_info)
+                TECH_STACK_CONTEXT += f"- データベース:\n"
+                for db_info in db_details:
+                    TECH_STACK_CONTEXT += f"  * {db_info}\n"
+
+            # キャッシュ
+            if config.tech_stack.cache:
+                cache = config.tech_stack.cache
+                cache_info = f"{cache.type}"
+                if cache.version:
+                    cache_info += f" {cache.version}"
+                if cache.library:
+                    cache_info += f" [ライブラリ: {cache.library}]"
+                TECH_STACK_CONTEXT += f"- キャッシュ: {cache_info}\n"
+
+            # メッセージング
+            if config.tech_stack.messaging:
+                messaging = config.tech_stack.messaging
+                msg_info = f"{messaging.type}"
+                if messaging.version:
+                    msg_info += f" {messaging.version}"
+                if messaging.library:
+                    msg_info += f" [ライブラリ: {messaging.library}]"
+                TECH_STACK_CONTEXT += f"- メッセージング: {msg_info}\n"
+
+            # 認証・認可
+            if config.tech_stack.authentication:
+                auth_info = ", ".join([f"{k}: {v}" for k, v in config.tech_stack.authentication.items()])
+                TECH_STACK_CONTEXT += f"- 認証・認可: {auth_info}\n"
+
+            # 開発プラクティス
+            if config.practices:
+                TECH_STACK_CONTEXT += f"- 開発プラクティス: {', '.join(config.practices)}\n"
+
+            # DB考慮事項・分析コンテキストを追加（YAMLから直接読み込み）
+            try:
+                with open('.bugsearch.yml', 'r', encoding='utf-8') as f:
+                    yaml_data = yaml.safe_load(f)
+                    if yaml_data and 'analysis' in yaml_data:
+                        ai_analysis = yaml_data['analysis'].get('ai_analysis', {})
+                        db_context = ai_analysis.get('db_context', '')
+                        if db_context:
+                            TECH_STACK_CONTEXT += f"\n{db_context}\n"
+            except FileNotFoundError:
+                print(f"[WARNING] .bugsearch.yml ファイルが見つかりません（分析コンテキストの読み込みをスキップ）")
+            except yaml.YAMLError as e:
+                print(f"[WARNING] .bugsearch.yml のYAML解析に失敗: {e}")
+            except Exception as e:
+                print(f"[WARNING] .bugsearch.yml の読み込み中にエラーが発生: {e}")
+
+            # 考慮している技術スタックを明示的にログ出力
+            tech_list = []
+            if config.tech_stack.frontend:
+                tech_list.append(f"フロントエンド:{config.tech_stack.frontend.framework}")
+            if config.tech_stack.backend:
+                tech_list.append(f"バックエンド:{config.tech_stack.backend.language}")
+            if config.tech_stack.databases:
+                db_types = [db.type for db in config.tech_stack.databases]
+                tech_list.append(f"DB:{','.join(db_types)}")
+            if config.tech_stack.cache:
+                tech_list.append(f"キャッシュ:{config.tech_stack.cache.type}")
+            if config.tech_stack.messaging:
+                tech_list.append(f"メッセージング:{config.tech_stack.messaging.type}")
+
+            print(f"[INFO] 技術スタック情報をロードしました（AI分析で考慮）: {' | '.join(tech_list)}")
+    except Exception as e:
+        print(f"[WARNING] 技術スタック情報のロードに失敗: {e}")
 
     seed_query = "金額 不整合 税 小数 印刷 Print HasMorePages NewPage UI UX アクセシビリティ DB N+1 JOIN 遅い"
     index = load_index(index_path)
