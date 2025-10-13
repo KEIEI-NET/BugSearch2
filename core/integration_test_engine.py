@@ -676,23 +676,32 @@ analysis:
 
 
 def main():
-    """メイン関数（CLI実行用）"""
+    """メイン関数（CLI実行用） - Phase 8.4: デフォルト設定統合"""
     import argparse
+
+    # デフォルト設定マネージャーをインポート (Phase 8.4)
+    try:
+        from core.integration_test_config import get_config_manager
+        config_manager = get_config_manager()
+        use_defaults = True
+    except ImportError:
+        # フォールバック: インポートできない場合はハードコード
+        config_manager = None
+        use_defaults = False
 
     parser = argparse.ArgumentParser(
         description="BugSearch2 統合テスト - 全工程一貫性テスト"
     )
     parser.add_argument(
         "--project-type",
-        required=True,
+        required=False,  # Phase 8.4: オプショナルに変更（デフォルト設定使用可）
         choices=["react", "angular", "vue", "express", "django", "spring-boot", "flask", "nestjs", "mysql", "postgresql", "sqlserver", "oracle", "memcached"],
-        help="テストプロジェクトタイプ"
+        help="テストプロジェクトタイプ（省略時はデフォルト設定から取得）"
     )
     parser.add_argument(
         "--topics",
         nargs="+",
-        default=["security", "performance"],
-        help="分析トピック（複数指定可）"
+        help="分析トピック（複数指定可、省略時はデフォルト設定から取得）"
     )
     parser.add_argument(
         "--no-examples",
@@ -708,17 +717,56 @@ def main():
     parser.add_argument(
         "--max-file-mb",
         type=int,
-        default=4,
-        help="最大ファイルサイズ (MB)"
+        help="最大ファイルサイズ (MB、省略時はデフォルト設定から取得)"
     )
     parser.add_argument(
         "--worker-count",
         type=int,
-        default=4,
-        help="並列ワーカー数"
+        help="並列ワーカー数（省略時はデフォルト設定から取得）"
     )
 
     args = parser.parse_args()
+
+    # デフォルト設定の適用 (Phase 8.4)
+    if use_defaults and config_manager:
+        # project-type
+        if not args.project_type:
+            default_projects = config_manager.get_integration_test_default_project_types()
+            if default_projects:
+                args.project_type = default_projects[0]  # 最初のプロジェクトタイプを使用
+                print(f"[INFO] デフォルト設定からproject-type取得: {args.project_type}")
+            else:
+                print("[ERROR] project-typeが指定されておらず、デフォルト設定も空です")
+                sys.exit(1)
+
+        # topics
+        if not args.topics:
+            args.topics = config_manager.get_integration_test_default_topics()
+            if args.topics:
+                print(f"[INFO] デフォルト設定からtopics取得: {', '.join(args.topics)}")
+            else:
+                args.topics = ["security", "performance"]  # 最終フォールバック
+
+        # max-file-mb
+        if args.max_file_mb is None:
+            args.max_file_mb = config_manager.get_integration_test_default_max_file_mb()
+            print(f"[INFO] デフォルト設定からmax-file-mb取得: {args.max_file_mb}")
+
+        # worker-count
+        if args.worker_count is None:
+            args.worker_count = config_manager.get_integration_test_default_worker_count()
+            print(f"[INFO] デフォルト設定からworker-count取得: {args.worker_count}")
+    else:
+        # デフォルト設定マネージャーが使えない場合のフォールバック
+        if not args.project_type:
+            print("[ERROR] --project-type は必須です（デフォルト設定が利用できません）")
+            sys.exit(1)
+        if not args.topics:
+            args.topics = ["security", "performance"]
+        if args.max_file_mb is None:
+            args.max_file_mb = 4
+        if args.worker_count is None:
+            args.worker_count = 4
 
     config = IntegrationTestConfig(
         project_type=args.project_type,
