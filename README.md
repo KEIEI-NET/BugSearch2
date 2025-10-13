@@ -1,10 +1,10 @@
-# BugSearch2 - AI Code Review System v4.11.5
+# BugSearch2 - AI Code Review System v4.11.7
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。
-**NEW**: 64個のデータベース最適化ルールを事前生成！Context7不要で即座に深層分析が可能に！Cassandra/Elasticsearch/Redis等の8データベースを完全サポート。
+**NEW**: Phase 8.5でレポート生成重大バグ修正！`--complete-report`機能が完全動作。64個のデータベース最適化ルールを事前生成により、Context7不要で即座に深層分析が可能。Cassandra/Elasticsearch/Redis等の8データベースを完全サポート。
 
-*バージョン: v4.11.5 (Phase 8.3 事前生成ルール完成)*
-*最終更新: 2025年10月14日 04:00 JST*
+*バージョン: v4.11.7 (Phase 8.5完了: レポート生成重大バグ修正)*
+*最終更新: 2025年10月14日 11:00 JST*
 
 **⚠️ セキュリティ強化版 - ReDoS脆弱性修正済み、環境変数保護強化**
 
@@ -51,6 +51,69 @@
 - [処理フロー図](doc/flow/code-review-system.drawio)
 - [シーケンス図](doc/sequence-diagram.drawio)
 - [クラス図](doc/class/code-review-system.drawio)
+
+## 🎉 バージョン4.11.7の新機能 - Phase 8.5完了 (@perfect品質達成)
+
+### 🔧 レポート生成重大バグ修正（2025年10月14日）
+
+**問題**: `--complete-report`フラグ使用時にクラッシュ発生
+**原因**: tuple型とdict型の混在による`AttributeError: 'tuple' object has no attribute 'get'`
+**解決**: tuple展開ロジックを修正し、dict型を確実に使用
+
+1. **修正内容**
+   ```python
+   # 修正前（バグ）
+   result = (complete_report_result, ...)
+   if result.get('complete_report_generated'):  # ❌ エラー発生
+
+   # 修正後（正常）
+   complete_report_result, ... = result
+   if complete_report_result.get('complete_report_generated'):  # ✅ 正常動作
+   ```
+
+2. **GUI統合テスト機能強化**
+   - `--complete-report`フラグを`core/integration_test_engine.py`に追加
+   - GUIから完全レポート生成が可能に
+   - デフォルト: フラグ指定で有効化（`store_true`）
+
+3. **テスト結果**
+   - Phase 8.4の全15テストが引き続き合格
+   - 後方互換性100%維持
+   - クリティカルバグ完全修正
+
+4. **使用例**
+   ```bash
+   # CLI: 完全レポート生成（修正済み）
+   py codex_review_severity.py advise --all --complete-report --out reports/full
+
+   # GUI: 統合テストタブから完全レポート生成
+   # 「完全レポート生成」チェックボックスをON → 実行
+   ```
+
+---
+
+## 🎉 バージョン4.11.6の新機能 - チェックボックスデフォルト設定 (@perfect品質達成)
+
+### ⚙️ 統一されたデフォルト設定システム（2025年10月14日）
+
+1. **YAMLマスター設定ファイル**
+   - `config/integration_test_defaults.yml` - 全デフォルト値の一元管理
+   - デフォルト値: `project-type=react`, `topics=security,performance`, `max-file-mb=4`, `worker-count=4`
+
+2. **GUI設定タブ拡張**
+   - [設定ファイルを開く] - デフォルト設定YAMLを直接編集
+   - [表示を更新] - YAML変更をGUIに即座反映
+   - [デフォルトに戻す] - 工場出荷時設定に復元
+
+3. **CUIオプション引数デフォルト対応**
+   - 引数省略時にconfig/integration_test_defaults.ymlから自動取得
+   - `--project-type`, `--topics`, `--max-file-mb`, `--worker-count`全てに対応
+
+4. **テスト結果**
+   - 新規テストファイル: `test/test_integration_test_config.py` (294行)
+   - 全15テスト合格（100%成功率）
+
+---
 
 ## 🎉 バージョン4.11.5の新機能 - 事前生成データベースルール (@perfect品質達成)
 
