@@ -1,12 +1,124 @@
 # 技術仕様書
 
-*バージョン: v4.11.6 (Phase 8.4 チェックボックスデフォルト設定)*
-*最終更新: 2025年10月14日 10:00 JST*
+*バージョン: v4.11.7 (タグベース深刻度調整システム)*
+*最終更新: 2025年10月14日 12:00 JST*
 
 ## システムアーキテクチャ
 
 ### 概要
-BugSearch2 v4.11.6は、チェックボックスデフォルト設定システム（Phase 8.4）を実装し、GUIとCUIの両方で統一されたデフォルト値管理を実現しました。v4.11.5の64個の事前生成データベース最適化ルールに加え、Context7統合分析と統合テストのデフォルト設定をYAMLファイルで一元管理できます。GUI Control Center v1.0.4では設定タブからデフォルト値の表示・編集・リセットが可能になり、CUIでは引数省略時に自動的にデフォルト設定が適用されます。**@perfect品質（全テスト100%合格）**を維持しています。
+BugSearch2 v4.11.7は、タグベース深刻度調整システムを実装し、56個のタグ情報とYAMLルールシステムを完全統合しました。従来8技術スタックのみ対応していた深刻度調整が、タグ情報の活用により22技術スタック（+14追加）に拡大し、.bugsearch.yml設定ファイルなしでも自動的に技術スタックを検出して適切な深刻度調整を適用します。v4.11.6のチェックボックスデフォルト設定、v4.11.5の64個の事前生成データベース最適化ルールと組み合わせることで、より高精度な静的解析とAI分析を実現します。**@perfect品質（全テスト100%合格）**を維持しています。
+
+### v4.11.7 タグベース深刻度調整システムの新機能（2025年10月14日実装）
+
+- ✅ **タグ統合ルールエンジン** (`core/models.py` - Rule._matches_condition()拡張)
+  - YAMLルールシステムが56個のタグ情報を活用
+  - .bugsearch.yml設定なしでも技術スタック自動検出
+  - OR論理: 設定ファイル OR タグのいずれかで検出
+  - 22技術スタック完全対応（従来8 → 新方式22）
+
+- ✅ **深刻度調整API拡張** (`core/rule_engine.py`)
+  - `adjust_severity_by_tech_stack(rule, tech_stack, severity, tags=[])`
+  - `Rule.evaluate_severity(tech_stack, code_context, tags=[])`
+  - `Rule._matches_condition(condition, tech_stack, code_context, tags=[])`
+  - 全APIにタグパラメータ追加（オプショナル、後方互換性100%）
+
+- ✅ **技術スタック名正規化**
+  ```python
+  # 例: "Entity Framework Core" → "tech-entity-framework-core"
+  tech_normalized = tech_condition.lower().replace(' ', '-').replace('_', '-')
+  tech_tag = f"tech-{tech_normalized}"
+  has_in_tags = tech_tag in tags  # ["tech-entity-framework-core", "lang-csharp"]
+  ```
+
+- ✅ **実例: Elasticsearch N+1問題の深刻度調整**
+  ```python
+  # YAML定義 (rules/core/database/n-plus-one.yml)
+  context_modifiers:
+    - condition:
+        tech_stack_has: "Elasticsearch"
+        code_context: "search|index|elastic"
+      action:
+        severity_adjustment: -3
+        note: "検索クエリはElasticsearchで処理されるため、N+1の影響は限定的"
+  
+  # タグベース検出（新機能）
+  tags = ["tech-elasticsearch", "lang-typescript"]
+  code = "await elastic.search({ index: 'users' })"
+  
+  severity, notes = adjust_severity_by_tech_stack(
+      rule, TechStack(), base_severity=10, 
+      code_context=code, tags=tags
+  )
+  # → severity = 7 (10 - 3)
+  # → notes = ["検索クエリはElasticsearchで処理されるため..."]
+  ```
+
+- ✅ **カバレッジ拡大**
+  - **従来方式 (v4.11.6以前)**: 
+    - 8技術スタック対応（Cassandra, Django, Elasticsearch, Entity Framework Core, Laravel, Sequelize, Spring, Spring Boot）
+    - .bugsearch.yml手動設定必須
+  - **新方式 (v4.11.7)**:
+    - 22技術スタック対応（+14技術スタック追加）
+    - タグから自動検出（Angular, React, Vue, Express, Flask等）
+    - 設定ファイル不要（ファイル単位の動的検出）
+
+- ✅ **全テスト100%合格** (`test/test_tag_based_severity.py` - 5/5成功)
+  ```python
+  # テスト内訳:
+  # 1. Elasticsearch検出（タグのみ） - 10→7深刻度調整 ✅
+  # 2. React検出（タグのみ） - 9→7深刻度調整 ✅
+  # 3. Django検出（設定+タグ併用） - 8→6深刻度調整 ✅
+  # 4. Cassandra検出（設定のみ、後方互換） - 10深刻度維持 ✅
+  # 5. n-plus-one.yml統合テスト - 実際のYAMLルールと正常連携 ✅
+  ```
+
+**技術的アーキテクチャ**:
+```python
+# core/models.py - Rule._matches_condition()
+def _matches_condition(
+    self,
+    condition: Dict[str, Any],
+    tech_stack: TechStack,
+    code_context: str,
+    tags: Optional[List[str]] = None
+) -> bool:
+    if 'tech_stack_has' in condition:
+        tech_condition = condition['tech_stack_has']
+        
+        # 方法1: .bugsearch.yml設定から判定（既存）
+        has_in_config = tech_stack.has_technology(tech_condition)
+        
+        # 方法2: タグから動的判定（新機能 v4.11.7）
+        has_in_tags = False
+        if tags:
+            tech_normalized = tech_condition.lower().replace(' ', '-').replace('_', '-')
+            tech_tag = f"tech-{tech_normalized}"
+            has_in_tags = tech_tag in tags
+        
+        # OR論理: どちらかの方法で検出されればOK
+        if not (has_in_config or has_in_tags):
+            return False
+    
+    if 'code_context' in condition:
+        pattern = condition['code_context']
+        if not re.search(pattern, code_context, re.IGNORECASE):
+            return False
+    
+    return True
+```
+
+**対応技術スタック（22種類）**:
+```
+フロントエンド (5種):
+  - Angular, React, Vue, Svelte, Next.js
+
+バックエンド (8種):
+  - Django, Flask, Express, NestJS, Spring, Spring Boot, Laravel, ASP.NET Core
+
+データベース (9種):
+  - PostgreSQL, MySQL, SQL Server, MongoDB, Redis, 
+    Elasticsearch, Cassandra, Oracle, Memcached
+```
 
 ### v4.11.6 チェックボックスデフォルト設定システム（Phase 8.4）の新機能（2025年10月14日実装）
 
@@ -911,6 +1023,7 @@ LANGUAGE_EXTENSIONS = {
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.11.7 (2025年10月14日): **タグベース深刻度調整システム完了 (@perfect品質達成)** - YAMLルールシステムとタグシステム統合、Rule._matches_condition()拡張（タグ参照機能）、adjust_severity_by_tech_stack()拡張（tagsパラメータ）、22技術スタック完全対応（従来8→22、+14追加）、OR論理（設定ファイル OR タグ）、後方互換性100%維持、全5テスト合格（5/5成功、test/test_tag_based_severity.py +261行）、ドキュメント更新（CLAUDE.md/TECHNICAL.md Phase 4.11.7セクション追加）
 - v4.11.6 (2025年10月14日): **Phase 8.4完了 (@perfect品質達成)** - チェックボックスデフォルト設定システム実装、IntegrationTestConfigManager(+375行)、config/integration_test_defaults.ymlマスター設定、GUI設定タブ拡張（デフォルト設定UI）、CUIオプション引数デフォルト対応、全15テスト合格（15/15成功）、シングルトンパターン、YAML一元管理
 - v4.11.5 (2025年10月14日): **Phase 8.3 事前生成データベースルール完成 (@perfect品質達成)** - 8データベース×64ルール事前生成（計4,776行）、Context7依存排除、4-6倍高速化、GUI統合拡張（16技術スタック）、統合テストシステム詳細仕様追加
 - v4.11.0 (2025年10月13日): **Phase 4.1 GUI Control Center v1.0.0実装** - CustomTkinter GUI（9ファイル、2,889行）、プロセス管理、ログストリーミング、キュー管理、状態管理、4タブUI、13/14テスト成功(93%)

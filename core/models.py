@@ -289,10 +289,16 @@ class Rule:
     def evaluate_severity(
         self,
         tech_stack: TechStack,
-        code_context: str = ""
+        code_context: str = "",
+        tags: Optional[List[str]] = None
     ) -> tuple[int, List[str]]:
         """
         技術スタックとコードコンテキストに基づいて深刻度を評価
+
+        Args:
+            tech_stack: プロジェクトの技術スタック設定
+            code_context: コードのコンテキスト
+            tags: ファイルに付与されたタグリスト（新タグシステム）
 
         Returns:
             (調整後の深刻度, 追加ノートのリスト)
@@ -301,7 +307,7 @@ class Rule:
         notes = []
 
         for modifier in self.context_modifiers:
-            if self._matches_condition(modifier.condition, tech_stack, code_context):
+            if self._matches_condition(modifier.condition, tech_stack, code_context, tags):
                 severity += modifier.severity_adjustment
                 if modifier.note:
                     notes.append(modifier.note)
@@ -315,18 +321,45 @@ class Rule:
         self,
         condition: Dict[str, Any],
         tech_stack: TechStack,
-        code_context: str
+        code_context: str,
+        tags: Optional[List[str]] = None
     ) -> bool:
-        """条件がマッチするか判定"""
+        """
+        条件がマッチするか判定
+
+        Args:
+            condition: マッチング条件
+            tech_stack: プロジェクトの技術スタック設定
+            code_context: コードのコンテキスト
+            tags: ファイルに付与されたタグリスト
+
+        Returns:
+            条件にマッチする場合True
+        """
         import re
 
         # 技術スタックの条件
         if 'tech_stack_has' in condition:
             tech_condition = condition['tech_stack_has']
 
-            # 簡単な文字列マッチング
-            # 例: "Elasticsearch" が技術スタックに含まれるか
-            if not tech_stack.has_technology(tech_condition):
+            # 方法1: .bugsearch.yml設定から判定（既存）
+            has_in_config = tech_stack.has_technology(tech_condition)
+
+            # 方法2: タグから動的判定（新機能）
+            has_in_tags = False
+            if tags:
+                # 技術スタック名を正規化してtech-{name}タグと照合
+                tech_normalized = tech_condition.lower().replace(' ', '-').replace('_', '-')
+                tech_tag = f"tech-{tech_normalized}"
+                has_in_tags = tech_tag in tags
+
+                # 別名対応（Entity Framework Core → entity-framework-core）
+                if not has_in_tags and 'framework' in tech_condition.lower():
+                    tech_tag_alt = f"tech-{tech_condition.lower().replace(' ', '-')}"
+                    has_in_tags = tech_tag_alt in tags
+
+            # どちらかの方法で検出されればOK
+            if not (has_in_config or has_in_tags):
                 return False
 
         # コードコンテキストの条件

@@ -210,7 +210,7 @@ def stop_job(self, job_id: str):
 **Phase 8.0基盤機能 (v4.9.0):**
 - ✅ **Context7統合エンジン** (`core/config_generator.py` - 最新ドキュメントから自動抽出)
 - ✅ **対話型CLI生成ツール** (`generate_tech_config.py` - ステップバイステップでYAML生成)
-- ✅ **15+技術スタック対応** (React, Angular, Express, Django, Spring Boot等)
+- ✅ **22技術スタック対応** (React, Angular, Express, Django, Spring Boot, MySQL, PostgreSQL等)
 - ✅ **自動パターン抽出** (セキュリティ、パフォーマンス、メモリリークパターン)
 - ✅ **config/ディレクトリ統合** (メインプログラムが自動読み込み、カスタム>Config>コア優先度)
 - ✅ **全テスト100%合格** (`test/test_config_generator.py` - 7/7成功、@perfect品質)
@@ -224,7 +224,7 @@ def stop_job(self, job_id: str):
   - express, nestjs, fastapi, django, flask, spring-boot
 
 データベース:
-  - elasticsearch, cassandra, mongodb, redis
+  - elasticsearch, cassandra, mongodb, redis, mysql, postgresql, sqlserver, oracle, memcached
 
 その他:
   - typescript, nodejs, go
@@ -586,7 +586,7 @@ python codex_review_severity.py advise --all --out reports/custom_analysis
 
 **Phase 3.1機能 (v4.2.0):**
 - ✅ **YAMLルール定義** (Database×3, Security×3, SOLID×2, Performance×2の計10ルール作成)
-- ✅ **7言語サポート** (C#, Java, PHP, JavaScript, TypeScript, Python, Go)
+- ✅ **9言語サポート** (Delphi, Go, C++, C, C#, Java, JavaScript, TypeScript, PHP, Python)
 - ✅ **詳細な修正提案** (技術スタック別の推奨修正方法)
 
 **Phase 2の基盤機能 (v4.1.0):**
@@ -862,6 +862,155 @@ v3.5以降は `load_env_file()` による組み込み`.env`ロード機能があ
 ### エンコーディング自動検出
 `chardet`が日本語ファイルのUTF-8/Shift_JIS/CP932/EUC-JPを自動処理します。`apply_improvements_from_report.py`ツールでこの機能を広く使用（66-112行目）。
 
+## タグシステム (@新機能: v4.11.6+)
+
+BugSearch2は、9言語・22技術スタック・18トピックに対応した高度なタグシステムを実装しています。インデックス作成時（`index`コマンド）に、ファイルの内容と言語を解析して自動的にタグを付与します。
+
+### タグ分類 (合計56種類)
+
+**1. 言語タグ (9種類) - 自動付与**
+```
+lang-delphi, lang-go, lang-cpp, lang-c, lang-csharp,
+lang-java, lang-javascript, lang-typescript, lang-php, lang-python
+```
+ファイルの拡張子から自動的に言語を判定し、対応するタグを付与します。
+
+**2. 技術スタックタグ (22種類) - コード内容から検出**
+
+フロントエンド (4種類):
+```
+tech-react, tech-angular, tech-vue, tech-svelte
+```
+
+バックエンド (6種類):
+```
+tech-express, tech-nestjs, tech-fastapi, tech-django,
+tech-flask, tech-springboot
+```
+
+データベース (9種類):
+```
+tech-elasticsearch, tech-cassandra, tech-mongodb, tech-redis,
+tech-mysql, tech-postgresql, tech-sqlserver, tech-oracle, tech-memcached
+```
+
+その他 (3種類):
+```
+tech-typescript, tech-nodejs, tech-go
+```
+
+**3. トピックタグ (18種類) - コード内容から検出**
+```
+topic-security, topic-performance, topic-database, topic-solid,
+topic-best-practices, topic-error-handling, topic-testing,
+topic-accessibility, topic-optimization, topic-architecture,
+topic-patterns, topic-styling, topic-state-management,
+topic-routing, topic-deployment, topic-monitoring,
+topic-api-integration, topic-data-validation
+```
+
+**4. レガシータグ (6種類) - 互換性維持**
+```
+money, print, uiux, db, net, io
+```
+
+**5. 言語固有タグ (4種類)**
+```
+go-concurrent, cpp-memory, php-web, delphi-memory
+```
+
+### タグ生成の仕組み
+
+タグは `make_tags(text: str, lang: str)` 関数（`codex_review_severity.py` line 922-1092）により生成されます。
+
+**動作例:**
+```python
+# TypeScript + Angular コンポーネント
+text = """
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html'
+})
+export class TestComponent {
+  async loadData() {
+    const response = await fetch('/api/users');
+    const data = await response.json();
+  }
+}
+"""
+
+tags = make_tags(text, "typescript")
+# 結果: ['lang-typescript', 'tech-angular', 'topic-api-integration',
+#        'topic-error-handling', 'net', 'tech-typescript']
+```
+
+### タグの活用
+
+**1. インデックス検索:**
+インデックスファイル（`.advice_index.jsonl`）に保存されたタグを使って、特定の技術スタックやトピックのファイルを高速検索できます。
+
+**2. 分析フィルタリング:**
+タグを使用して、特定の言語・技術・トピックに絞った分析が可能です。
+
+**3. レポート生成:**
+タグ情報はAI分析レポートに含まれ、問題の分類と優先順位付けに活用されます。
+
+**4. タグベース深刻度調整 (@新機能: v4.11.7+):**
+YAMLルールシステムがタグ情報を活用して、技術スタック別の深刻度調整を自動適用します。
+
+**動作の仕組み:**
+```
+従来: .bugsearch.yml の tech_stack 設定のみ参照
+    └→ 手動設定が必要、設定漏れがあると深刻度調整されない
+
+新方式: .bugsearch.yml設定 OR タグ情報
+    └→ どちらかで技術スタックが検出されれば深刻度調整適用
+```
+
+**実例: Elasticsearch環境でのN+1問題**
+```yaml
+# rules/core/database/n-plus-one.yml
+context_modifiers:
+  - condition:
+      tech_stack_has: "Elasticsearch"
+      code_context: "search|index|elastic"
+    action:
+      severity_adjustment: -3
+      note: "検索クエリはElasticsearchで処理されるため影響は限定的"
+```
+
+```python
+# 従来方式（.bugsearch.yml設定が必要）
+tech_stack = TechStack(databases=[DatabaseInfo(type="Elasticsearch")])
+severity, notes = adjust_severity_by_tech_stack(rule, tech_stack, 10)
+# → 深刻度: 7 (.bugsearch.yml設定がないと10のまま)
+
+# 新方式（タグから自動検出）
+tags = ["tech-elasticsearch", "lang-typescript"]
+severity, notes = adjust_severity_by_tech_stack(rule, TechStack(), 10, tags=tags)
+# → 深刻度: 7 (.bugsearch.yml設定なしでもタグから検出！)
+```
+
+**対応する22技術スタック:**
+React, Angular, Vue, Svelte, Express, NestJS, FastAPI, Django, Flask, Spring Boot, Elasticsearch, Cassandra, MongoDB, Redis, MySQL, PostgreSQL, SQL Server, Oracle, Memcached, TypeScript, Node.js, Go
+
+**メリット:**
+- ✅ .bugsearch.yml設定なしでも技術スタック検出可能
+- ✅ ファイル単位で異なる技術スタックに対応（例：Reactコンポーネント + Node.jsサーバー）
+- ✅ 後方互換性100%維持（既存の.bugsearch.yml設定も引き続き機能）
+- ✅ 自動検出により設定漏れによる誤判定を防止
+
+**タグシステムテスト:**
+```bash
+# タグ生成の動作確認
+python test_tag_system.py
+
+# タグベース深刻度調整の動作確認
+python test/test_tag_based_severity.py
+```
+
+テストスクリプトは複数のテストケースでタグ生成と深刻度調整を検証します。
+
 ## ファイル構成ルール
 
 ### テストファイル
@@ -1129,7 +1278,7 @@ pip install --only-binary :all: scikit-learn
 - v4.11.1 (2025年10月13日): **Phase 4.3完了 (@perfect品質達成)** - 履歴タブ完全実装(update_history_view/create_history_card +90行)、統計サマリー表示(合計ジョブ数・成功率・平均実行時間)、レポートファイル選択ダイアログ(tkinter.filedialog統合)、GUI終了時プロセス停止確認(実行中ジョブ検出・確認ダイアログ・全プロセス停止)、ジョブ履歴記録(periodic_update統合)、テスト追加(test/test_phase4_3_history.py 215行、5/5成功、100%成功率)、合計2ファイル変更 +110行
 - v4.11.0 (2025年10月13日): **Phase 4.1-4.2 GUI Control Center v1.0.0実装** - CustomTkinterベースのGUI実装（9ファイル、2,889行）、4タブUI（起動/監視/設定/履歴）、プロセス管理・ログ収集・キュー管理・状態管理モジュール、リアルタイムログストリーミング(ProcessManager + LogCollector統合)、カスタムウィジェット(ProgressWidget, LogViewer)、ジョブコントロール(一時停止/再開/停止)、Windows cp932対応、テスト結果（14/14テスト、93%成功率）
 - v4.10.0 (2025年10月12日): **Phase 8.2完了 (@perfect品質達成)** - AI自動修正 + 完全自動実行フロー実装、AI自動YAML修正機能(core/config_generator.py +240行、fix_yaml_with_ai/validate_generated_configメソッド)、完全自動実行フロー(generate_tech_config.py +94行、run_full_analysis関数 + --auto-runフラグ)、マルチAIプロバイダー対応(Anthropic Claude / OpenAI GPT、フォールバック機能)、自動修正ループ(検証→修正→再検証、最大5回試行)、自動修正テスト追加(test/test_config_generator.py +110行、test_ai_auto_fix関数)、全テスト100%合格(9/9成功)、ドキュメント更新(CLAUDE.md Phase 8.1/8.2セクション追加、使用例・AI自動修正フロー)
-- v4.9.0 (2025年10月12日): **Phase 8.0完了 (@perfect品質達成)** - Context7統合 技術スタック別設定ファイル自動生成システム実装、Context7統合エンジン(core/config_generator.py +447行、ConfigGeneratorクラス)、対話型CLI生成ツール(generate_tech_config.py +183行、ステップバイステップでYAML生成)、15+技術スタック対応(React/Angular/Express/Django/Spring Boot等)、自動パターン抽出(セキュリティ/パフォーマンス/メモリリークパターン)、config/ディレクトリ統合(core/rule_engine.py修正、カスタム>Config>コア優先度)、全テスト100%合格(7/7成功、test/test_config_generator.py +348行)、ドキュメント更新(CLAUDE.md Phase 8セクション追加、使用例・ルール優先順位・対応技術一覧)
+- v4.9.0 (2025年10月12日): **Phase 8.0完了 (@perfect品質達成)** - Context7統合 技術スタック別設定ファイル自動生成システム実装、Context7統合エンジン(core/config_generator.py +447行、ConfigGeneratorクラス)、対話型CLI生成ツール(generate_tech_config.py +183行、ステップバイステップでYAML生成)、22技術スタック対応(React/Angular/Express/Django/Spring Boot等)、自動パターン抽出(セキュリティ/パフォーマンス/メモリリークパターン)、config/ディレクトリ統合(core/rule_engine.py修正、カスタム>Config>コア優先度)、全テスト100%合格(7/7成功、test/test_config_generator.py +348行)、ドキュメント更新(CLAUDE.md Phase 8セクション追加、使用例・ルール優先順位・対応技術一覧)
 - v4.8.1 (2025年10月12日): **Phase 2+ 技術スタック検出拡張 (@perfect品質達成)** - elasticsearch.yml/cassandra.yaml自動検出機能追加(core/tech_stack_detector.py +119行、_detect_elasticsearch_config/_detect_cassandra_configメソッド)、複数検索パス対応(config/, .elasticsearch/, .cassandra/)、キーワードベース検証(cluster.name, seed_provider等)、全テスト100%合格(7/7成功、test/test_tech_stack_detector.py +112行)、ドキュメント更新(CLAUDE.md データベース検出方法セクション追加)
 - v4.8.0 (2025年10月12日): **Phase 7.0完了 (@tdd品質達成)** - 大規模ソースファイル解析システム実装、30,000+ファイル対応(実測15,889 files/sec)、中断・再開機能(core/checkpoint_manager.py +342行)、メモリ監視システム(core/memory_monitor.py +281行、リアルタイム監視・自動GC)、大規模処理プロセッサー(core/large_scale_processor.py +351行、バッチ処理・プログレスバー)、全テスト100%合格(17/17成功、test/test_large_scale_processor.py)、パフォーマンステスト(test/test_large_scale_30k_files.py +350行)、Phase 7ドキュメント(doc/guides/PHASE7_LARGE_SCALE_PROCESSING.md +650行)
 - v4.7.1 (2025年10月12日): **Phase 6.1完了 (@perfect品質達成)** - パフォーマンス最適化、大規模ファイル処理(ストリーミング処理・チャンク処理)、メモリ使用量90%削減(統計のみ保存)、並列処理高速化(4ワーカー・ThreadPoolExecutor)、Flask環境セットアップガイド(doc/guides/FLASK_SETUP.md +230行)、requirements.txt更新(Flask/watchdog/tqdm追加)、後方互換性100%維持(全テスト14/14合格)
@@ -1140,6 +1289,6 @@ pip install --only-binary :all: scikit-learn
 - v4.3.0 (2025年10月12日): **Phase 4.0完了 (@perfect品質達成)** - カスタムルールシステム実装、RuleLoader/RuleValidator追加(core/rule_engine.py +290行)、ルール優先順位(カスタム>コア)、ルール有効/無効管理、カスタムルールバリデーション、全テスト100%合格(11/11成功)
 - v4.2.2 (2025年10月12日): **Phase 3.3完了 (@perfect品質達成)** - 全10YAMLルール正常動作、4カテゴリ完全サポート、全テスト100%合格(8/8成功、スキップ0)、YAML正規表現エスケープ修正(select-star, sql-injection, xss-vulnerability, float-money)、セキュリティルール動作確認
 - v4.2.1 (2025年10月12日): **Phase 3.2完了** - RuleCategoryクラス、グローバルルール関数(load_all_rules, group_rules_by_category, adjust_severity_by_tech_stack)実装、複数ルール管理テスト(8テスト、6成功+2スキップ)、技術スタック考慮の深刻度調整(Elasticsearch使用時N+1深刻度10→7)
-- v4.2.0 (2025年10月12日): **Phase 3.1完了** - 10個のYAMLルール定義作成(Database×3, Security×3, SOLID×2, Performance×2)、7言語サポート、詳細な修正提案、技術スタック別推奨方法
+- v4.2.0 (2025年10月12日): **Phase 3.1完了** - 10個のYAMLルール定義作成(Database×3, Security×3, SOLID×2, Performance×2)、9言語サポート、詳細な修正提案、技術スタック別推奨方法
 - v4.1.0 (2025年10月12日): **Phase 2完了** - 技術スタック自動検出エンジン、YAMLルールシステム、対話型設定ジェネレータ実装、全テスト合格(5/5)
 - v4.0.5 (2025年10月11日): **Phase 1完了** - BugSearch2リポジトリ新規作成、coreモジュール実装、MVPテスト合格(3/3)

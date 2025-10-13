@@ -202,10 +202,16 @@ class RuleEngine:
     def _evaluate_severity(
         self,
         rule: Rule,
-        code_context: str
+        code_context: str,
+        tags: Optional[List[str]] = None
     ) -> tuple[int, List[str]]:
         """
         技術スタックを考慮して深刻度を評価
+
+        Args:
+            rule: 解析ルール
+            code_context: コードのコンテキスト
+            tags: ファイルに付与されたタグリスト
 
         Returns:
             (調整後の深刻度, 追加ノートのリスト)
@@ -215,9 +221,9 @@ class RuleEngine:
             not self.project_config.severity_adjustments_enabled):
             return rule.base_severity, []
 
-        # 技術スタックを使って評価
+        # 技術スタックを使って評価（タグも渡す）
         tech_stack = self.project_config.tech_stack
-        return rule.evaluate_severity(tech_stack, code_context)
+        return rule.evaluate_severity(tech_stack, code_context, tags)
 
     def _get_relevant_fixes(self, rule: Rule) -> List[str]:
         """技術スタックに応じた修正方法を取得"""
@@ -706,7 +712,8 @@ def adjust_severity_by_tech_stack(
     rule: Rule,
     tech_stack: TechStack,
     base_severity: int,
-    code_context: str = ""
+    code_context: str = "",
+    tags: Optional[List[str]] = None
 ) -> tuple[int, List[str]]:
     """
     技術スタックに応じて深刻度を調整
@@ -716,6 +723,7 @@ def adjust_severity_by_tech_stack(
         tech_stack: プロジェクトの技術スタック
         base_severity: 基本深刻度
         code_context: コードのコンテキスト（オプション）
+        tags: ファイルに付与されたタグリスト（新タグシステム）
 
     Returns:
         (調整後の深刻度, 追加ノートのリスト)
@@ -727,5 +735,13 @@ def adjust_severity_by_tech_stack(
         >>> tech_stack = TechStack(databases=[DatabaseInfo(type="Elasticsearch")])
         >>> severity, notes = adjust_severity_by_tech_stack(rule, tech_stack, 10)
         >>> print(severity)  # 7
+
+        タグベースの深刻度調整（新機能）:
+
+        >>> rule = Rule(id="DB_N_PLUS_ONE", ...)
+        >>> tech_stack = TechStack()  # 空の設定
+        >>> tags = ["tech-elasticsearch", "lang-typescript"]
+        >>> severity, notes = adjust_severity_by_tech_stack(rule, tech_stack, 10, tags=tags)
+        >>> print(severity)  # 7（タグから自動検出）
     """
-    return rule.evaluate_severity(tech_stack, code_context)
+    return rule.evaluate_severity(tech_stack, code_context, tags)
