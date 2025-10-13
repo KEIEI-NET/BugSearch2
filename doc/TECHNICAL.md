@@ -1,12 +1,134 @@
 # 技術仕様書
 
-*バージョン: v4.11.5 (Phase 8.3 事前生成ルール完成)*
-*最終更新: 2025年10月14日 04:00 JST*
+*バージョン: v4.11.6 (Phase 8.4 チェックボックスデフォルト設定)*
+*最終更新: 2025年10月14日 10:00 JST*
 
 ## システムアーキテクチャ
 
 ### 概要
-BugSearch2 v4.11.5は、64個の事前生成データベース最適化ルールを追加し、Context7依存を排除して**4-6倍の高速化**を実現しました。Cassandra/Elasticsearch/Redis等の8データベースを完全サポートし、GUI Control Center v1.0.0の統合により16技術スタック（8フレームワーク+8データベース）から即座に深層分析が可能です。CustomTkinterベースのモダンUIで、プロセス管理、リアルタイムログ表示、ジョブキュー制御、統合テストを統合し、技術者と非技術者の両方が利用しやすいシステムとなっています。**@perfect品質（全テスト100%合格）**を維持しています。
+BugSearch2 v4.11.6は、チェックボックスデフォルト設定システム（Phase 8.4）を実装し、GUIとCUIの両方で統一されたデフォルト値管理を実現しました。v4.11.5の64個の事前生成データベース最適化ルールに加え、Context7統合分析と統合テストのデフォルト設定をYAMLファイルで一元管理できます。GUI Control Center v1.0.4では設定タブからデフォルト値の表示・編集・リセットが可能になり、CUIでは引数省略時に自動的にデフォルト設定が適用されます。**@perfect品質（全テスト100%合格）**を維持しています。
+
+### v4.11.6 チェックボックスデフォルト設定システム（Phase 8.4）の新機能（2025年10月14日実装）
+
+- ✅ **統一されたデフォルト設定管理** (`config/integration_test_defaults.yml` - マスター設定ファイル)
+  - Context7統合分析のデフォルト（技術スタック、トピック）
+  - 統合テストのデフォルト（プロジェクトタイプ、トピック、最大ファイルサイズ、ワーカー数）
+  - インデックス作成のデフォルト（最大ファイルサイズ、ワーカー数、除外言語）
+  - AI分析のデフォルト（完全レポート、最大完了項目数）
+  - データベース統合テストのデフォルト（データベースタイプ、トピック）
+
+- ✅ **IntegrationTestConfigManager** (`core/integration_test_config.py` - 375行)
+  - シングルトンパターン実装（`get_config_manager()`グローバル関数）
+  - YAML設定の読み込み・検証・保存
+  - 5セクション×13メソッドのGetter/Setter API
+  - 設定リセット機能（工場出荷時デフォルトに復元）
+  - 設定リロード機能（ファイル変更の動的反映）
+  - バリデーション機能（必須フィールド・セクション構造検証）
+
+- ✅ **GUI統合** (`gui_main.py` - 設定タブ拡張)
+  - **起動タブ**: チェックボックス初期化（行391-401, 455-462, 515-525, 570-580）
+    - デフォルト設定に含まれる項目を自動チェック
+    - Context7技術スタック×2、トピック×16
+    - 統合テストプロジェクトタイプ×16、トピック×16
+  - **設定タブ**: デフォルト設定管理UI（行769-834, 1264-1388）
+    - サマリー表示（読み取り専用テキストボックス）
+    - [設定ファイルを開く]ボタン（システムエディタで編集）
+    - [表示を更新]ボタン（設定再読み込み+UI更新）
+    - [デフォルトに戻す]ボタン（確認ダイアログ+リセット）
+
+- ✅ **CUI統合** (`core/integration_test_engine.py` - main関数拡張)
+  - オプション引数のデフォルト値対応（行678-778）
+  - `--project-type`、`--topics`、`--max-file-mb`、`--worker-count`を省略可能に
+  - 引数省略時にconfig_managerから自動取得
+  - フォールバック機能（config_manager未インストール時はハードコード値）
+  - INFOログでデフォルト使用を明示
+
+- ✅ **全テスト100%合格** (`test/test_integration_test_config.py` - 15/15成功)
+  ```python
+  # テスト内訳:
+  # - デフォルト設定ファイル自動生成
+  # - Context7デフォルト設定取得
+  # - 統合テストデフォルト設定取得
+  # - インデックスデフォルト設定取得
+  # - AI分析デフォルト設定取得
+  # - Context7デフォルト設定保存
+  # - 統合テストデフォルト設定保存
+  # - 設定バリデーション（正常/異常）
+  # - デフォルト設定へのリセット
+  # - 設定ファイル再読み込み
+  # - 利用可能技術スタック/トピック取得
+  # - シングルトンパターン検証
+  # - データベース統合テストデフォルト設定取得
+  ```
+
+**YAMLマスター設定構造**:
+```yaml
+version: "1.0.0"
+
+# Context7統合分析のデフォルト設定
+context7:
+  default_tech_stacks:
+    - react
+    - angular
+  default_topics:
+    - security
+    - performance
+    - best-practices
+
+# 統合テストのデフォルト設定
+integration_test:
+  default_project_types:
+    - react
+    - angular
+    - vue
+  default_topics:
+    - security
+    - performance
+    - best-practices
+    - error-handling
+    - testing
+  default_max_file_mb: 4
+  default_worker_count: 4
+
+# インデックス作成のデフォルト設定
+index:
+  default_max_file_mb: 4
+  default_worker_count: 4
+  default_exclude_langs: []
+
+# AI分析のデフォルト設定
+advise:
+  default_complete_report: false
+  default_max_complete_items: 100
+
+# データベース統合テストのデフォルト設定
+database_integration_test:
+  default_database_types:
+    - cassandra
+    - elasticsearch
+    - redis
+  default_topics:
+    - performance
+    - security
+    - best-practices
+```
+
+**GUI/CUI統合の動作フロー**:
+```python
+# GUI起動タブ - チェックボックス初期化
+config_manager = get_config_manager()
+default_tech_stacks = config_manager.get_context7_default_tech_stacks()
+
+for tech, desc in TECH_STACKS:
+    is_default = tech in default_tech_stacks  # デフォルト設定でチェック状態を決定
+    var = ctk.BooleanVar(value=is_default)
+    checkbox = ctk.CTkCheckBox(parent, text=desc, variable=var)
+
+# CUI integration_test_engine - デフォルト値適用
+if not args.project_type and config_manager:
+    args.project_type = config_manager.get_integration_test_default_project_types()[0]
+    print(f"[INFO] デフォルト設定からproject-type取得: {args.project_type}")
+```
 
 ### v4.11.5 事前生成データベースルールの新機能（2025年10月14日実装）
 
@@ -784,11 +906,12 @@ LANGUAGE_EXTENSIONS = {
 
 ---
 
-*最終更新: 2025年10月14日 04:00 JST*
-*バージョン: v4.11.5 (Phase 8.3 事前生成ルール完成)*
+*最終更新: 2025年10月14日 10:00 JST*
+*バージョン: v4.11.6 (Phase 8.4 チェックボックスデフォルト設定)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.11.6 (2025年10月14日): **Phase 8.4完了 (@perfect品質達成)** - チェックボックスデフォルト設定システム実装、IntegrationTestConfigManager(+375行)、config/integration_test_defaults.ymlマスター設定、GUI設定タブ拡張（デフォルト設定UI）、CUIオプション引数デフォルト対応、全15テスト合格（15/15成功）、シングルトンパターン、YAML一元管理
 - v4.11.5 (2025年10月14日): **Phase 8.3 事前生成データベースルール完成 (@perfect品質達成)** - 8データベース×64ルール事前生成（計4,776行）、Context7依存排除、4-6倍高速化、GUI統合拡張（16技術スタック）、統合テストシステム詳細仕様追加
 - v4.11.0 (2025年10月13日): **Phase 4.1 GUI Control Center v1.0.0実装** - CustomTkinter GUI（9ファイル、2,889行）、プロセス管理、ログストリーミング、キュー管理、状態管理、4タブUI、13/14テスト成功(93%)
 - v4.10.0 (2025年10月12日): **Phase 8.2完了** - Context7統合、AI自動YAML修正、完全自動実行フロー、5段階検証システム、全テスト100%合格(9/9成功)

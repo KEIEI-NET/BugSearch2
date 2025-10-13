@@ -2,15 +2,49 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.12.0 (Phase 3完了: Context7複数トピック対応 + GUIグリッドレイアウト)*
-*最終更新: 2025年10月13日 14:30 JST*
+*バージョン: v4.11.6 (Phase 8.4完了: チェックボックスデフォルト設定)*
+*最終更新: 2025年10月14日 10:00 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
-静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.11.2でGUI Control Center Phase 4.4を完全実装し、ファイルメニュー機能（設定ファイルを開く/レポートフォルダを開く/状態エクスポート・インポート）を追加しました。CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
+静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.11.6でPhase 8.4チェックボックスデフォルト設定システムを実装し、GUIとCUIで統一されたデフォルト値管理を実現しました。CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
-### 🆕 GUI Control Center v1.0.0 - Phase 4.4完了 (@perfect品質達成)
+### 🆕 Phase 8.4完了: チェックボックスデフォルト設定システム (@perfect品質達成)
+
+**Phase 8.4新機能 (v4.11.6):**
+- ✅ **統一されたデフォルト設定管理** (`config/integration_test_defaults.yml` - YAMLマスター設定ファイル)
+- ✅ **IntegrationTestConfigManager** (`core/integration_test_config.py` - 375行、シングルトンパターン)
+- ✅ **GUI設定タブ拡張** (デフォルト設定UI - 表示/編集/リフレッシュ/リセット)
+- ✅ **CUIオプション引数デフォルト対応** (引数省略時に自動適用)
+- ✅ **全テスト100%合格** (`test/test_integration_test_config.py` - 15/15成功)
+
+**使用例 - GUI:**
+```
+設定タブ → デフォルト設定セクション
+- [設定ファイルを開く]: config/integration_test_defaults.ymlを編集
+- [表示を更新]: 設定変更をGUIに反映
+- [デフォルトに戻す]: 工場出荷時設定に復元
+```
+
+**使用例 - CUI:**
+```bash
+# 引数省略時はデフォルト設定を使用
+python -m core.integration_test_engine
+
+# 出力例:
+# [INFO] デフォルト設定からproject-type取得: react
+# [INFO] デフォルト設定からtopics取得: security, performance
+# [INFO] デフォルト設定からmax-file-mb取得: 4
+# [INFO] デフォルト設定からworker-count取得: 4
+
+# 引数指定でデフォルトを上書き
+python -m core.integration_test_engine --project-type angular --topics security
+```
+
+**詳細ドキュメント**: `doc/guides/GUI_USER_GUIDE.md`（v1.0.4）、`doc/TECHNICAL.md`（v4.11.6）
+
+### 🆕 GUI Control Center v1.0.4 - Phase 8.4対応
 
 **GUI起動方法:**
 
@@ -1085,11 +1119,12 @@ pip install --only-binary :all: scikit-learn
 
 ---
 
-*最終更新: 2025年10月14日 00:15 JST*
-*バージョン: v4.11.2 (Phase 4.4完全実装)*
+*最終更新: 2025年10月14日 10:00 JST*
+*バージョン: v4.11.6 (Phase 8.4完了: チェックボックスデフォルト設定)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.11.6 (2025年10月14日): **Phase 8.4完了 (@perfect品質達成)** - チェックボックスデフォルト設定システム実装、IntegrationTestConfigManager(core/integration_test_config.py +375行、シングルトンパターン)、config/integration_test_defaults.yml(マスター設定ファイル)、GUI設定タブ拡張(デフォルト設定UI +4機能: 表示/編集/リフレッシュ/リセット)、CUIオプション引数デフォルト対応(core/integration_test_engine.py main関数修正)、全15テスト合格(test/test_integration_test_config.py 294行、15/15成功)、ドキュメント更新(CLAUDE.md/TECHNICAL.md/GUI_USER_GUIDE.md Phase 8.4セクション追加)
 - v4.11.2 (2025年10月14日): **Phase 4.4完了 (@perfect品質達成)** - ファイルメニュー完全実装(show_file_menu +158行、CTkToplevel使用)、5メニュー項目実装(open_config_file/open_reports_folder/export_state/import_state/quit_app)、クロスプラットフォーム対応(Windows/macOS/Linux、os.startfile/subprocess統合)、状態エクスポート/インポート(JSON形式、メタデータ付き、バリデーション機能)、テスト追加(test/test_phase4_4_file_menu.py 198行、6/6成功、100%成功率、1スキップ)、合計2ファイル変更 +356行、ドキュメント更新(CHANGELOG.md/CLAUDE.md)
 - v4.11.1 (2025年10月13日): **Phase 4.3完了 (@perfect品質達成)** - 履歴タブ完全実装(update_history_view/create_history_card +90行)、統計サマリー表示(合計ジョブ数・成功率・平均実行時間)、レポートファイル選択ダイアログ(tkinter.filedialog統合)、GUI終了時プロセス停止確認(実行中ジョブ検出・確認ダイアログ・全プロセス停止)、ジョブ履歴記録(periodic_update統合)、テスト追加(test/test_phase4_3_history.py 215行、5/5成功、100%成功率)、合計2ファイル変更 +110行
 - v4.11.0 (2025年10月13日): **Phase 4.1-4.2 GUI Control Center v1.0.0実装** - CustomTkinterベースのGUI実装（9ファイル、2,889行）、4タブUI（起動/監視/設定/履歴）、プロセス管理・ログ収集・キュー管理・状態管理モジュール、リアルタイムログストリーミング(ProcessManager + LogCollector統合)、カスタムウィジェット(ProgressWidget, LogViewer)、ジョブコントロール(一時停止/再開/停止)、Windows cp932対応、テスト結果（14/14テスト、93%成功率）
