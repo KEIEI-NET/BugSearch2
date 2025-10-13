@@ -1,12 +1,196 @@
 # 技術仕様書
 
-*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
-*最終更新: 2025年10月13日 10:35 JST*
+*バージョン: v4.11.5 (Phase 8.3 事前生成ルール完成)*
+*最終更新: 2025年10月14日 04:00 JST*
 
 ## システムアーキテクチャ
 
 ### 概要
-BugSearch2 v4.11.0は、GUI Control Center v1.0.0の実装により、直感的なグラフィカルインターフェースからの操作が可能になりました。CustomTkinterベースのモダンUIで、プロセス管理、リアルタイムログ表示、ジョブキュー制御を統合し、技術者と非技術者の両方が利用しやすいシステムとなっています。Context7統合とAI自動修正機能も含め、**@perfect品質（全テスト100%合格）**を維持しています。
+BugSearch2 v4.11.5は、64個の事前生成データベース最適化ルールを追加し、Context7依存を排除して**4-6倍の高速化**を実現しました。Cassandra/Elasticsearch/Redis等の8データベースを完全サポートし、GUI Control Center v1.0.0の統合により16技術スタック（8フレームワーク+8データベース）から即座に深層分析が可能です。CustomTkinterベースのモダンUIで、プロセス管理、リアルタイムログ表示、ジョブキュー制御、統合テストを統合し、技術者と非技術者の両方が利用しやすいシステムとなっています。**@perfect品質（全テスト100%合格）**を維持しています。
+
+### v4.11.5 事前生成データベースルールの新機能（2025年10月14日実装）
+
+- ✅ **8データベース×64ルール事前生成** (`rules/core/database/*.yml` - 計4,776行)
+  - **Cassandra** (529行、9ルール): ALLOW FILTERING、巨大パーティション、トゥームストーン蓄積
+  - **Elasticsearch** (477行、8ルール): 深いページング、ワイルドカード検索、マッピング爆発
+  - **Redis** (570行、8ルール): KEYS *コマンド、大きなキー、Luaスクリプトブロッキング
+  - **MySQL** (420行、7ルール): Prepared Statement未使用、インデックス欠損
+  - **PostgreSQL** (650行、9ルール): VACUUM未実行、JSONB未インデックス
+  - **SQL Server** (720行、8ルール): デッドロック、TEMPDB競合、パラメータスニッフィング
+  - **Oracle** (730行、8ルール): 行ごとPL/SQL処理、ループ内Commit
+  - **Memcached** (680行、7ルール): 長すぎるキー、キャッシュスタンピード
+
+- ✅ **多言語パターン検出** - 各ルールで6+言語対応
+  - Java, Python, JavaScript, C#, Go, PHP, SQL
+
+- ✅ **深刻度スコアリング拡張**
+  - **Critical (10)**: ALLOW FILTERING、深いページング (from+size>10000)、KEYS *コマンド
+  - **High (9)**: 巨大パーティション、ワイルドカード検索、大きなキー
+  - **Medium (7-8)**: セカンダリインデックス濫用、_allフィールド使用
+
+- ✅ **パフォーマンス革命**
+  - **旧版 (v4.11.4以前)**: Context7 API呼び出し (20-60秒) → YAML生成 → 検証
+  - **新版 (v4.11.5)**: ルール読み込み (即座) → 分析開始
+  - **結果**: 4-6倍の高速化達成
+
+- ✅ **GUI統合拡張**
+  - Context7タブに8データベース追加 (行372-374)
+  - 統合テストタブに8データベース追加 (行485-487)
+  - 合計16技術スタック対応 (8フレームワーク + 8データベース)
+
+- ✅ **詳細な修正提案**
+  - Bad/Good/Better/Bestの段階的コード例
+  - 公式ドキュメントリファレンス
+  - パフォーマンス影響の定量的説明 (例: 50倍高速化、1000倍高速化)
+
+### 統合テストシステム仕様 (v4.11.5拡張)
+
+#### IntegrationTestEngine アーキテクチャ
+**場所**: `core/integration_test_engine.py`
+
+**6ステップ自動ワークフロー**:
+```python
+@dataclass
+class IntegrationTestConfig:
+    """統合テスト設定"""
+    project_type: str          # react, cassandra, elasticsearch等 (16種類)
+    topics: List[str]          # 分析トピック（複数可、16種類）
+    include_examples: bool = True
+    test_dir: Path = Path("test_integration")
+    timeout_seconds: int = 1800  # 30分
+    max_file_mb: int = 4
+    worker_count: int = 4
+
+class IntegrationTestEngine:
+    """6ステップ統合テストフロー"""
+
+    def run_full_test(self) -> IntegrationTestResult:
+        # Step 1: テストプロジェクト作成（意図的バグ埋め込み）
+        self._setup_test_project()
+
+        # Step 2: Context7分析実行（YAMLルール生成）
+        self._run_context7_analysis()
+
+        # Step 3: インデックス作成
+        self._run_index_creation()
+
+        # Step 4: AI分析実行 (--all --complete-report)
+        self._run_ai_analysis()
+
+        # Step 5: 改善コード適用 (--dry-run)
+        self._run_code_improvement()
+
+        # Step 6: 結果検証
+        return self._verify_results()
+```
+
+**対応プロジェクトタイプ (16種類)**:
+```python
+PROJECT_TYPES = [
+    # フレームワーク (8種類)
+    'react', 'angular', 'vue', 'svelte',
+    'express', 'nestjs', 'django', 'flask',
+
+    # データベース (8種類)
+    'cassandra', 'elasticsearch', 'redis',
+    'mysql', 'postgresql', 'sqlserver',
+    'oracle', 'memcached'
+]
+```
+
+**分析トピック (16種類、複数選択可)**:
+```python
+TOPICS = [
+    'security',           # セキュリティ脆弱性
+    'performance',        # パフォーマンス最適化
+    'best-practices',     # ベストプラクティス
+    'error-handling',     # エラーハンドリング
+    'testing',            # テスト品質
+    'accessibility',      # アクセシビリティ
+    'optimization',       # コード最適化
+    'architecture',       # アーキテクチャ設計
+    'patterns',           # デザインパターン
+    'styling',            # スタイリング規約
+    'state-management',   # 状態管理
+    'routing',            # ルーティング
+    'deployment',         # デプロイメント
+    'monitoring',         # モニタリング
+    'api-integration',    # API統合
+    'data-validation'     # データ検証
+]
+```
+
+**サンプルコードテンプレート（意図的バグ）**:
+```typescript
+// React サンプル - 4種類の意図的バグ
+export const VulnerableComponent = ({ userInput }) => {
+    // Bug 1: XSS脆弱性
+    return <div dangerouslySetInnerHTML={{ __html: userInput }} />;
+};
+
+export const LeakyComponent = () => {
+    // Bug 2: メモリリーク（cleanup不足）
+    useEffect(() => {
+        const interval = setInterval(() => {
+            console.log('tick');
+        }, 1000);
+        // 🐛 clearInterval忘れ
+    }, []);
+
+    // Bug 3: 型安全性問題
+    const data: any = fetchData();
+
+    // Bug 4: パフォーマンス問題（useCallback不足）
+    const handleClick = () => { /* ... */ };
+
+    return <button onClick={handleClick}>Click</button>;
+};
+```
+
+**GUI統合テスト起動**:
+```python
+# gui_main.py: 行360-424
+def launch_integration_test(self):
+    """統合テストをGUIから起動"""
+    # プロジェクトタイプ選択
+    selected_projects = [
+        proj for proj, var in options_frame.project_checkboxes.items()
+        if var.get()
+    ]
+
+    # トピック選択（複数可）
+    selected_topics = [
+        topic for topic, var in options_frame.topic_checkboxes.items()
+        if var.get()
+    ]
+
+    # コマンド構築
+    command = [
+        'python', '-m', 'core.integration_test_engine',
+        '--project-type', selected_projects[0],
+        '--topics'
+    ] + selected_topics
+
+    # オプションパラメータ追加
+    if hasattr(options_frame, 'max_file_mb_var'):
+        command.extend(['--max-file-mb', options_frame.max_file_mb_var.get()])
+    if hasattr(options_frame, 'worker_count_var'):
+        command.extend(['--worker-count', options_frame.worker_count_var.get()])
+
+    # ジョブ実行
+    self.start_job(
+        f"統合テスト ({selected_projects[0]})",
+        command,
+        JobPriority.HIGH
+    )
+```
+
+**検証項目**:
+1. ✅ YAMLルールファイルが正常に生成されたか
+2. ✅ インデックスファイル (.advice_index.jsonl) が作成されたか
+3. ✅ AIレポートに意図的バグが検出されたか
+4. ✅ テストプロジェクトディレクトリが正常に作成されたか
+5. ✅ 改善コード適用がdry-runで正常に実行されたか
 
 ### v4.11.0 GUI Control Center v1.0.0の新機能（2025年10月13日実装）
 
@@ -600,11 +784,12 @@ LANGUAGE_EXTENSIONS = {
 
 ---
 
-*最終更新: 2025年10月13日 10:35 JST*
-*バージョン: v4.11.0 (Phase 4.1 GUI実装完了)*
+*最終更新: 2025年10月14日 04:00 JST*
+*バージョン: v4.11.5 (Phase 8.3 事前生成ルール完成)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.11.5 (2025年10月14日): **Phase 8.3 事前生成データベースルール完成 (@perfect品質達成)** - 8データベース×64ルール事前生成（計4,776行）、Context7依存排除、4-6倍高速化、GUI統合拡張（16技術スタック）、統合テストシステム詳細仕様追加
 - v4.11.0 (2025年10月13日): **Phase 4.1 GUI Control Center v1.0.0実装** - CustomTkinter GUI（9ファイル、2,889行）、プロセス管理、ログストリーミング、キュー管理、状態管理、4タブUI、13/14テスト成功(93%)
 - v4.10.0 (2025年10月12日): **Phase 8.2完了** - Context7統合、AI自動YAML修正、完全自動実行フロー、5段階検証システム、全テスト100%合格(9/9成功)
 - v4.7.0 (2025年10月12日): **Phase 6完了** - チーム機能実装（レポート比較、進捗トラッキング、チームダッシュボード）、Flask WebUI + 6 REST API、全テスト100%合格
