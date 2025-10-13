@@ -1,0 +1,63 @@
+# BugSearch2 統合テストデフォルト設定
+# このファイルは各ジョブタイプのデフォルトチェックボックス設定を管理します
+# Version: v4.11.5
+
+version: "1.0.0"
+
+# Context7統合分析のデフォルト設定
+context7:
+  # デフォルトで選択される技術スタック（複数可）
+  default_tech_stacks:
+    - react
+    - angular
+
+  # デフォルトで選択されるトピック（複数可）
+  default_topics:
+    - security
+    - performance
+    - best-practices
+
+# 統合テストのデフォルト設定
+integration_test:
+  # デフォルトで選択されるプロジェクトタイプ（複数可）
+  default_project_types:
+    - react
+    - angular
+    - vue
+
+  # デフォルトで選択されるトピック（複数可）
+  default_topics:
+    - security
+    - performance
+    - best-practices
+    - error-handling
+    - testing
+
+  # インデックス作成オプション
+  default_max_file_mb: 4
+  default_worker_count: 4
+
+# インデックス作成のデフォルト設定
+index:
+  default_max_file_mb: 4
+  default_worker_count: 4
+  default_exclude_langs: []  # 除外する言語リスト（空=除外なし）
+
+# AI分析のデフォルト設定
+advise:
+  default_complete_report: false
+  default_max_complete_items: 100
+
+# データベース統合テストのデフォルト設定
+database_integration_test:
+  # デフォルトで選択されるデータベースタイプ（複数可）
+  default_database_types:
+    - cassandra
+    - elasticsearch
+    - redis
+
+  # デフォルトで選択されるトピック（複数可）
+  default_topics:
+    - performance
+    - security
+    - best-practices

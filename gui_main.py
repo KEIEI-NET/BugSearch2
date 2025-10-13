@@ -27,6 +27,9 @@ from gui.queue_manager import QueueManager, JobPriority
 from gui.state_manager import StateManager
 from gui.widgets import ProgressWidget, LogViewer
 
+# 統合テスト設定管理 (Phase 8.4)
+from core.integration_test_config import get_config_manager
+
 
 class BugSearchGUI(ctk.CTk):
     """
@@ -49,6 +52,9 @@ class BugSearchGUI(ctk.CTk):
         self.log_collector = LogCollector()
         self.queue_manager = QueueManager(max_concurrent=3)
         self.state_manager = StateManager()
+
+        # 統合テスト設定マネージャー初期化 (Phase 8.4)
+        self.config_manager = get_config_manager()
 
         # ジョブウィジェット管理
         self.job_widgets = {}  # {job_id: {'frame': CTkFrame, 'progress': ProgressWidget, 'buttons': {...}}}
