@@ -388,11 +388,16 @@ class BugSearchGUI(ctk.CTk):
             tech_grid = ctk.CTkFrame(parent)
             tech_grid.pack(fill="x", padx=10, pady=(0, 10))
 
+            # デフォルト設定を取得 (Phase 8.4)
+            default_tech_stacks = self.config_manager.get_context7_default_tech_stacks()
+
             for i, (tech, desc) in enumerate(tech_stacks):
                 row = i // 2
                 col = i % 2
 
-                var = ctk.BooleanVar(value=False)
+                # デフォルト設定に含まれている場合はチェック済みに (Phase 8.4)
+                is_default = tech in default_tech_stacks
+                var = ctk.BooleanVar(value=is_default)
                 parent.tech_checkboxes[tech] = var
 
                 checkbox = ctk.CTkCheckBox(
@@ -447,8 +452,13 @@ class BugSearchGUI(ctk.CTk):
 
             max_rows = 8  # 8行で折り返し
 
+            # デフォルト設定を取得 (Phase 8.4)
+            default_topics = self.config_manager.get_context7_default_topics()
+
             for i, (topic, desc) in enumerate(topics):
-                var = ctk.BooleanVar(value=False)
+                # デフォルト設定に含まれている場合はチェック済みに (Phase 8.4)
+                is_default = topic in default_topics
+                var = ctk.BooleanVar(value=is_default)
                 parent.topic_checkboxes[topic] = var
 
                 # 行と列を計算（8行で折り返し、左から右、上から下）
@@ -502,11 +512,16 @@ class BugSearchGUI(ctk.CTk):
             project_grid = ctk.CTkFrame(parent)
             project_grid.pack(fill="x", padx=10, pady=(0, 10))
 
+            # デフォルト設定を取得 (Phase 8.4)
+            default_projects = self.config_manager.get_integration_test_default_project_types()
+
             for i, (proj, desc) in enumerate(project_types):
                 row = i // 2
                 col = i % 2
 
-                var = ctk.BooleanVar(value=False)
+                # デフォルト設定に含まれている場合はチェック済みに (Phase 8.4)
+                is_default = proj in default_projects
+                var = ctk.BooleanVar(value=is_default)
                 parent.project_checkboxes[proj] = var
 
                 checkbox = ctk.CTkCheckBox(
@@ -551,11 +566,17 @@ class BugSearchGUI(ctk.CTk):
 
             # 2列レイアウト（8行で折り返し）
             max_rows = 8
+
+            # デフォルト設定を取得 (Phase 8.4)
+            default_topics = self.config_manager.get_integration_test_default_topics()
+
             for i, (topic, desc) in enumerate(topics):
                 col = i // max_rows
                 row = i % max_rows
 
-                var = ctk.BooleanVar(value=False)
+                # デフォルト設定に含まれている場合はチェック済みに (Phase 8.4)
+                is_default = topic in default_topics
+                var = ctk.BooleanVar(value=is_default)
                 parent.topic_checkboxes[topic] = var
 
                 checkbox = ctk.CTkCheckBox(
