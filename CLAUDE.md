@@ -10,6 +10,36 @@
 
 静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.11.8でC++/Angular誤検出の重大バグ修正とYAML構文エラーを完全解決し、全データベースルールが正常動作を達成しました。CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
+## ⚠️ 重要: Serena MCP優先使用ルール
+
+**このプロジェクトでは、すべてのコードベース操作にSerena MCPツールを必ず使用してください。**
+
+### 必須ルール
+
+1. **ファイル読み取り**: `mcp__serena__read_file` を使用（Read toolではなく）
+2. **ファイル検索**: `mcp__serena__find_file` を使用（Glob toolではなく）
+3. **コード検索**: `mcp__serena__search_for_pattern` を使用（Grep toolではなく）
+4. **シンボル検索**: `mcp__serena__find_symbol` を使用
+5. **参照検索**: `mcp__serena__find_referencing_symbols` を使用
+6. **コード編集**: `mcp__serena__replace_regex` または `mcp__serena__replace_symbol_body` を使用（Edit toolではなく）
+7. **ファイル作成**: `mcp__serena__create_text_file` を使用（Write toolではなく）
+8. **ディレクトリ一覧**: `mcp__serena__list_dir` を使用
+
+### Serenaツールを使用する理由
+
+- ✅ **シンボル理解**: クラス、関数、メソッドなどのコード構造を理解
+- ✅ **正確な検索**: コンテキストを考慮した検索が可能
+- ✅ **安全な編集**: シンボル単位での正確な編集
+- ✅ **参照追跡**: 関数・クラスの使用箇所を追跡
+- ✅ **メモリ効率**: 大規模コードベースでも効率的
+
+### 例外
+
+以下の場合のみ、標準ツールの使用を許可:
+- Git操作: `Bash` tool (git commit, git push等)
+- テスト実行: `Bash` tool (python test/...)
+- パッケージ管理: `Bash` tool (pip install...)
+
 ### 🆕 v4.11.8: YAMLルール構文エラー修正 + Angular/C++誤検出修正 (@perfect品質達成)
 
 **重大バグ修正 (2025年10月17日):**
