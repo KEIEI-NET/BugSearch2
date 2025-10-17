@@ -1,0 +1,254 @@
+# DRY原則違反検出ルール
+# Don't Repeat Yourself - コードの重複を検出
+
+rule:
+  id: DRY_VIOLATION
+  category: best-practices
+  name: DRY原則違反
+  description: |
+    DRY原則（Don't Repeat Yourself）違反を検出します。
+    コードの重複は保守性を低下させ、バグの温床となります。
+
+    検出対象:
+    - 重複した関数/メソッド定義
+    - 繰り返される同一ロジック
+    - マジックナンバーの重複使用
+    - 同じ文字列リテラルの繰り返し
+    - コピー＆ペーストされたコードブロック
+
+  base_severity: 5
+
+  patterns:
+    # 重複した関数定義（同じ名前パターン）
+    csharp:
+      - pattern: '(public|private|protected|internal)\s+(static\s+)?[\w<>]+\s+(\w+)\s*\([^)]*\)\s*\{[^}]{50,}\}\s*[\s\S]{0,500}\1\s+(?:static\s+)?[\w<>]+\s+\3\s*\('
+        context: '重複した関数定義の可能性'
+
+      # マジックナンバーの重複
+      - pattern: '(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*(\d{2,})\b[\s\S]{0,200}(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      # 同じ文字列リテラルの繰り返し
+      - pattern: '"([^"]{10,})"[\s\S]{0,300}"?\1"'
+        context: '同じ文字列リテラルの繰り返し'
+
+      # 類似したif文の連続
+      - pattern: 'if\s*\([^)]+\)\s*\{[^}]{20,}\}\s*(?:else\s+)?if\s*\([^)]+\)\s*\{[^}]{20,}\}'
+        context: '類似した条件分岐の連続'
+
+    java:
+      - pattern: '(public|private|protected)\s+(static\s+)?[\w<>]+\s+(\w+)\s*\([^)]*\)\s*\{[^}]{50,}\}\s*[\s\S]{0,500}\1\s+(?:static\s+)?[\w<>]+\s+\3\s*\('
+        context: '重複した関数定義の可能性'
+
+      - pattern: '(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*(\d{2,})\b[\s\S]{0,200}(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      - pattern: '"([^"]{10,})"[\s\S]{0,300}"?\1"'
+        context: '同じ文字列リテラルの繰り返し'
+
+    javascript:
+      - pattern: 'function\s+(\w+)\s*\([^)]*\)\s*\{[^}]{50,}\}\s*[\s\S]{0,500}function\s+\1\s*\('
+        context: '重複した関数定義の可能性'
+
+      - pattern: '(?:const|let|var)\s+\w+\s*=\s*(\d{2,})\b[\s\S]{0,200}(?:const|let|var)\s+\w+\s*=\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      - pattern: '[''"]([^''"]{10,})[''"][\s\S]{0,300}[''"]?\1[''"]'
+        context: '同じ文字列リテラルの繰り返し'
+
+      - pattern: 'if\s*\([^)]+\)\s*\{[^}]{20,}\}\s*else\s+if\s*\([^)]+\)\s*\{[^}]{20,}\}\s*else\s+if'
+        context: '類似した条件分岐の連続（switch文を検討）'
+
+    typescript:
+      - pattern: 'function\s+(\w+)\s*\([^)]*\):\s*[\w<>]+\s*\{[^}]{50,}\}\s*[\s\S]{0,500}function\s+\1\s*\('
+        context: '重複した関数定義の可能性'
+
+      - pattern: '(?:const|let|var)\s+\w+:\s*number\s*=\s*(\d{2,})\b[\s\S]{0,200}(?:const|let|var)\s+\w+:\s*number\s*=\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      - pattern: '[''"]([^''"]{10,})[''"][\s\S]{0,300}[''"]?\1[''"]'
+        context: '同じ文字列リテラルの繰り返し'
+
+    python:
+      - pattern: 'def\s+(\w+)\s*\([^)]*\):[^:]{50,}(?:return|pass)\s*[\s\S]{0,500}def\s+\1\s*\('
+        context: '重複した関数定義の可能性'
+
+      - pattern: '(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*(\d{2,})\b[\s\S]{0,200}(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      - pattern: '[''"]([^''"]{10,})[''"][\s\S]{0,300}[''"]?\1[''"]'
+        context: '同じ文字列リテラルの繰り返し'
+
+      - pattern: 'if\s+[^:]+:[^:]{20,}elif\s+[^:]+:[^:]{20,}elif'
+        context: '類似した条件分岐の連続'
+
+    php:
+      - pattern: 'function\s+(\w+)\s*\([^)]*\)\s*\{[^}]{50,}\}\s*[\s\S]{0,500}function\s+\1\s*\('
+        context: '重複した関数定義の可能性'
+
+      - pattern: '(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*(\d{2,})\b[\s\S]{0,200}(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      - pattern: '[''"]([^''"]{10,})[''"][\s\S]{0,300}[''"]?\1[''"]'
+        context: '同じ文字列リテラルの繰り返し'
+
+    go:
+      - pattern: 'func\s+(\w+)\s*\([^)]*\)[^{]*\{[^}]{50,}\}\s*[\s\S]{0,500}func\s+\1\s*\('
+        context: '重複した関数定義の可能性'
+
+      - pattern: '(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*(\d{2,})\b[\s\S]{0,200}(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      - pattern: '"([^"]{10,})"[\s\S]{0,300}"?\1"'
+        context: '同じ文字列リテラルの繰り返し'
+
+    cpp:
+      - pattern: '[\w<>]+\s+(\w+)\s*\([^)]*\)\s*\{[^}]{50,}\}\s*[\s\S]{0,500}[\w<>]+\s+\1\s*\('
+        context: '重複した関数定義の可能性'
+
+      - pattern: '(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*(\d{2,})\b[\s\S]{0,200}(?:=|==|!=|<|>|<=|>=|\+|-|\*|/)\s*\1\b'
+        context: 'マジックナンバーの重複使用'
+
+      - pattern: '"([^"]{10,})"[\s\S]{0,300}"?\1"'
+        context: '同じ文字列リテラルの繰り返し'
+
+  fixes:
+    description: |
+      DRY原則を適用してコードの重複を削減してください。
+
+      推奨される対策:
+      1. 共通機能を関数/メソッドに抽出
+      2. マジックナンバーを定数として定義
+      3. 文字列リテラルを定数または設定ファイルに移動
+      4. 類似したロジックをパラメータ化された共通関数に統合
+      5. テンプレートメソッドパターンやストラテジーパターンの適用
+      6. 継承や合成を使用した共通処理の再利用
+
+      リファクタリング手法:
+      - Extract Method（メソッドの抽出）
+      - Extract Constant（定数の抽出）
+      - Extract Class（クラスの抽出）
+      - Pull Up Method（メソッドの引き上げ）
+      - Form Template Method（テンプレートメソッドの形成）
+
+    examples:
+      csharp: |
+        // ❌ 悪い例: マジックナンバーの重複
+        if (age > 18) { /* 処理 */ }
+        if (memberAge > 18) { /* 処理 */ }
+
+        // ✅ 良い例: 定数として定義
+        private const int ADULT_AGE = 18;
+        if (age > ADULT_AGE) { /* 処理 */ }
+        if (memberAge > ADULT_AGE) { /* 処理 */ }
+
+        // ❌ 悪い例: 重複したロジック
+        public void ProcessUserData() {
+            ValidateInput();
+            var data = LoadData();
+            TransformData(data);
+            SaveData(data);
+        }
+        public void ProcessAdminData() {
+            ValidateInput();
+            var data = LoadData();
+            TransformData(data);
+            SaveData(data);
+        }
+
+        // ✅ 良い例: 共通処理を抽出
+        public void ProcessData(UserType userType) {
+            ValidateInput();
+            var data = LoadData(userType);
+            TransformData(data);
+            SaveData(data);
+        }
+
+      javascript: |
+        // ❌ 悪い例: 同じ文字列リテラルの繰り返し
+        fetch('/api/users').then(/* 処理 */);
+        fetch('/api/users').then(/* 処理 */);
+
+        // ✅ 良い例: 定数として定義
+        const USERS_API_ENDPOINT = '/api/users';
+        fetch(USERS_API_ENDPOINT).then(/* 処理 */);
+        fetch(USERS_API_ENDPOINT).then(/* 処理 */);
+
+        // ❌ 悪い例: 類似した条件分岐
+        if (status === 'pending') {
+            return 'yellow';
+        } else if (status === 'approved') {
+            return 'green';
+        } else if (status === 'rejected') {
+            return 'red';
+        }
+
+        // ✅ 良い例: マッピングオブジェクトを使用
+        const STATUS_COLORS = {
+            pending: 'yellow',
+            approved: 'green',
+            rejected: 'red'
+        };
+        return STATUS_COLORS[status] || 'gray';
+
+      python: |
+        # ❌ 悪い例: 重複した関数
+        def calculate_user_discount(price):
+            tax = price * 0.1
+            discount = price * 0.2
+            return price + tax - discount
+
+        def calculate_member_discount(price):
+            tax = price * 0.1
+            discount = price * 0.25
+            return price + tax - discount
+
+        # ✅ 良い例: パラメータ化
+        TAX_RATE = 0.1
+
+        def calculate_discount(price, discount_rate):
+            tax = price * TAX_RATE
+            discount = price * discount_rate
+            return price + tax - discount
+
+        user_total = calculate_discount(100, 0.2)
+        member_total = calculate_discount(100, 0.25)
+
+    references:
+      - 'The Pragmatic Programmer - DRY原則'
+      - 'Clean Code - コードの重複'
+      - 'Refactoring - Martin Fowler'
+      - 'DRY原則: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself'
+
+  context_modifiers:
+    - condition:
+        tech_stack_has: "React"
+        code_context: "component|hook"
+      action:
+        severity_adjustment: +1
+        note: "React コンポーネントでの重複は再利用性を低下させます"
+
+    - condition:
+        tech_stack_has: "Angular"
+        code_context: "service|component"
+      action:
+        severity_adjustment: +1
+        note: "Angular サービス/コンポーネントでの重複は保守性を低下させます"
+
+    - condition:
+        code_context: "test|spec"
+      action:
+        severity_adjustment: -2
+        note: "テストコードでは明示性のために一定の重複は許容されます"
+
+    - condition:
+        code_context: "config|constant"
+      action:
+        severity_adjustment: -1
+        note: "設定ファイルや定数定義では重複が必要な場合があります"
+
+  tags:
+    - best-practices
+    - maintainability
+    - refactoring
+    - code-quality
