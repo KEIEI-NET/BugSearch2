@@ -1,0 +1,83 @@
+# BugSearch2 - GUI版 Dockerfile
+# Version: v1.0.0
+# Python 3.11+ 対応
+# X11フォワーディング対応（Linux/Mac直接、Windows via Xming/VcXsrv）
+
+FROM python:3.11-slim
+
+# メンテナ情報
+LABEL maintainer="BugSearch2 Team"
+LABEL description="BugSearch2 GUI Control Center with X11 support"
+LABEL version="4.11.2"
+
+# 環境変数
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    DEBIAN_FRONTEND=noninteractive \
+    DISPLAY=:0
+
+# 作業ディレクトリ作成
+WORKDIR /app
+
+# システム依存パッケージのインストール
+# GUI関連:
+# - libx11-6, libxext6, libxrender1, libxrandr2: X11基本ライブラリ
+# - libxinerama1, libxcursor1, libxi6: X11拡張機能
+# - libfontconfig1, libfreetype6: フォントレンダリング
+# - libglib2.0-0: GLib（一部のGUIライブラリが依存）
+# - libsm6, libice6: セッション管理
+# - libgl1, libglu1-mesa: OpenGL（CustomTkinterが使用する可能性）
+# - x11-apps: xclock等のテストアプリ（オプション）
+# その他:
+# - git: 技術スタック検出
+# - gcc/g++: scikit-learnビルド
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    gcc \
+    g++ \
+    libgomp1 \
+    libx11-6 \
+    libxext6 \
+    libxrender1 \
+    libxrandr2 \
+    libxinerama1 \
+    libxcursor1 \
+    libxi6 \
+    libfontconfig1 \
+    libfreetype6 \
+    libglib2.0-0 \
+    libsm6 \
+    libice6 \
+    libgl1 \
+    libglu1-mesa \
+    x11-apps \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python依存パッケージのインストール
+COPY requirements.txt requirements_gui.txt ./
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir -r requirements_gui.txt
+
+# pyyamlの追加インストール
+RUN pip install --no-cache-dir pyyaml>=6.0.0
+
+# アプリケーションコードのコピー
+COPY . .
+
+# 生成ファイル用ディレクトリの作成
+RUN mkdir -p reports .cache backups .bugsearch/rules
+
+# 実行権限付与
+RUN chmod +x gui_main.py codex_review_severity.py
+
+# ボリュームマウントポイント定義
+VOLUME ["/app/src", "/app/reports", "/app/.cache", "/app/backups", "/app/.bugsearch"]
+
+# ヘルスチェック（GUI版はX11接続確認）
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+    CMD xdpyinfo -display $DISPLAY > /dev/null 2>&1 || exit 1
+
+# デフォルトコマンド（GUI起動）
+CMD ["python", "gui_main.py"]

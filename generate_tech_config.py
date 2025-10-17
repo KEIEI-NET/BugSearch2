@@ -148,6 +148,7 @@ def interactive_mode():
     print()
     print("  データベース:")
     print("    - elasticsearch, cassandra, mongodb, redis")
+    print("    - mysql, postgresql, sqlserver, oracle, memcached")
     print()
     print("  その他:")
     print("    - typescript, nodejs, go")
@@ -160,11 +161,14 @@ def interactive_mode():
             break
         print("⚠️  技術名を入力してください")
 
-    # トピック入力（オプション）
+    # トピック入力（オプション、複数可）- Phase 3実装
     print()
     print("フォーカスするトピックを指定できます（Enter=全般）:")
-    print("  例: security, performance, best practices, testing")
-    topic = input("トピック (オプション): ").strip() or None
+    print("  複数指定する場合はカンマ区切りで入力してください")
+    print("  例: security, performance")
+    print("  例: security, best-practices, testing")
+    topics_input = input("トピック (オプション、複数可): ").strip()
+    topics = [t.strip() for t in topics_input.split(',')] if topics_input else None
 
     # サンプルコード含める？
     print()
@@ -187,7 +191,7 @@ def interactive_mode():
     print("=" * 80)
     print("📋 生成設定:")
     print(f"  技術スタック: {tech_name}")
-    print(f"  トピック: {topic or '全般'}")
+    print(f"  トピック: {', '.join(topics) if topics else '全般'}")  # Phase 3: 複数トピック表示
     print(f"  サンプルコード: {'含める' if include_examples else '含めない'}")
     print(f"  ファイル名: {custom_filename or '自動生成'}")
     print(f"  完全自動実行: {'有効' if auto_run else '無効'}")
@@ -201,10 +205,10 @@ def interactive_mode():
 
     print()
 
-    # 生成実行
+    # 生成実行（Phase 3: 複数トピック対応）
     success, filepath, message = generator.generate_config(
         tech_name=tech_name,
-        topic=topic,
+        topics=topics,
         include_examples=include_examples,
         custom_filename=custom_filename
     )
@@ -272,12 +276,20 @@ def interactive_mode():
 
 
 def command_mode(args):
-    """コマンドラインモードで設定ファイルを生成"""
+    """コマンドラインモードで設定ファイルを生成（Phase 3: 複数トピック対応）"""
     generator = ConfigGenerator()
+
+    # トピックの処理（複数指定 + カンマ区切り対応）
+    topics = None
+    if args.topics:
+        # 各トピックをカンマで分割してフラット化
+        topics = []
+        for topic_group in args.topics:
+            topics.extend([t.strip() for t in topic_group.split(',')])
 
     success, filepath, message = generator.generate_config(
         tech_name=args.tech,
-        topic=args.topic,
+        topics=topics,
         include_examples=not args.no_examples,
         custom_filename=args.output
     )
@@ -332,7 +344,8 @@ def main():
 サポートされている技術:
   フロントエンド: react, angular, vue, svelte
   バックエンド: express, nestjs, fastapi, django, flask, spring-boot
-  データベース: elasticsearch, cassandra, mongodb, redis
+  データベース: elasticsearch, cassandra, mongodb, redis, mysql, postgresql,
+               sqlserver, oracle, memcached
   その他: typescript, nodejs, go
 
 Phase 8新機能:
@@ -350,8 +363,10 @@ Phase 8新機能:
     parser.add_argument(
         "--topic",
         type=str,
+        action='append',
+        dest='topics',
         default=None,
-        help="フォーカスするトピック (例: security, performance)"
+        help="フォーカスするトピック (複数指定可、例: --topic security --topic performance、またはカンマ区切り: --topic security,performance)"
     )
 
     parser.add_argument(

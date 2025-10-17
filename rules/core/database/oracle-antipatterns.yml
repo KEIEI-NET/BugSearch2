@@ -128,7 +128,7 @@ rule:
         context: 'SELECT FOR UPDATE without NOWAIT/SKIP LOCKED'
 
     java:
-      - pattern: 'SELECT.*FOR\\s+UPDATE[\'"]'
+      - pattern: "SELECT.*FOR\\s+UPDATE[\"']"
         context: 'Java SQL with SELECT FOR UPDATE'
 
   fixes:
@@ -580,7 +580,7 @@ rule:
     sql:
       - pattern: 'CREATE\\s+MATERIALIZED\\s+VIEW.*REFRESH\\s+COMPLETE'
         context: 'Materialized view with COMPLETE refresh'
-      - pattern: 'DBMS_MVIEW\\.REFRESH\\([^)]*method\\s*=>\\s*[\'"]C[\'"]'
+      - pattern: "DBMS_MVIEW\.REFRESH\([^)]*method\s*=>\s*[\"']C[\"']"
         context: 'Manual refresh with COMPLETE method'
 
   fixes:

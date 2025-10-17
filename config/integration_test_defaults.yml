@@ -6,32 +6,107 @@ version: "1.0.0"
 
 # Context7統合分析のデフォルト設定
 context7:
-  # デフォルトで選択される技術スタック（複数可）
+  # デフォルトで選択される技術スタック（複数可）- 全22種類
   default_tech_stacks:
-    - react
-    - angular
-
-  # デフォルトで選択されるトピック（複数可）
-  default_topics:
-    - security
-    - performance
-    - best-practices
-
-# 統合テストのデフォルト設定
-integration_test:
-  # デフォルトで選択されるプロジェクトタイプ（複数可）
-  default_project_types:
+    # フロントエンド
     - react
     - angular
     - vue
+    - svelte
+    # バックエンド
+    - express
+    - nestjs
+    - fastapi
+    - django
+    - flask
+    - spring-boot
+    # データベース
+    - elasticsearch
+    - cassandra
+    - mongodb
+    - redis
+    - mysql
+    - postgresql
+    - sqlserver
+    - oracle
+    - memcached
+    # その他
+    - typescript
+    - nodejs
+    - go
 
-  # デフォルトで選択されるトピック（複数可）
+  # デフォルトで選択されるトピック（複数可）- 全18種類
   default_topics:
     - security
     - performance
+    - database
+    - solid
     - best-practices
     - error-handling
     - testing
+    - accessibility
+    - optimization
+    - architecture
+    - patterns
+    - styling
+    - state-management
+    - routing
+    - deployment
+    - monitoring
+    - api-integration
+    - data-validation
+
+# 統合テストのデフォルト設定
+integration_test:
+  # デフォルトで選択されるプロジェクトタイプ（複数可）- 全22種類
+  default_project_types:
+    # フロントエンド
+    - react
+    - angular
+    - vue
+    - svelte
+    # バックエンド
+    - express
+    - nestjs
+    - fastapi
+    - django
+    - flask
+    - spring-boot
+    # データベース
+    - elasticsearch
+    - cassandra
+    - mongodb
+    - redis
+    - mysql
+    - postgresql
+    - sqlserver
+    - oracle
+    - memcached
+    # その他
+    - typescript
+    - nodejs
+    - go
+
+  # デフォルトで選択されるトピック（複数可）- 全18種類
+  default_topics:
+    - security
+    - performance
+    - database
+    - solid
+    - best-practices
+    - error-handling
+    - testing
+    - accessibility
+    - optimization
+    - architecture
+    - patterns
+    - styling
+    - state-management
+    - routing
+    - deployment
+    - monitoring
+    - api-integration
+    - data-validation
 
   # インデックス作成オプション
   default_max_file_mb: 4
@@ -50,14 +125,35 @@ advise:
 
 # データベース統合テストのデフォルト設定
 database_integration_test:
-  # デフォルトで選択されるデータベースタイプ（複数可）
+  # デフォルトで選択されるデータベースタイプ（複数可）- データベース関連9種類
   default_database_types:
-    - cassandra
     - elasticsearch
+    - cassandra
+    - mongodb
     - redis
+    - mysql
+    - postgresql
+    - sqlserver
+    - oracle
+    - memcached
 
-  # デフォルトで選択されるトピック（複数可）
+  # デフォルトで選択されるトピック（複数可）- 全18種類
   default_topics:
-    - performance
     - security
+    - performance
+    - database
+    - solid
     - best-practices
+    - error-handling
+    - testing
+    - accessibility
+    - optimization
+    - architecture
+    - patterns
+    - styling
+    - state-management
+    - routing
+    - deployment
+    - monitoring
+    - api-integration
+    - data-validation

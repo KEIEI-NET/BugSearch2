@@ -1,0 +1,9 @@
+[INFO] 使用AIプロバイダー: anthropic
+[INFO] Calling Claude API with model: claude-sonnet-4-5
+[SUCCESS] Got 1338 chars from claude-sonnet-4-5
+Traceback (most recent call last):
+  File "C:\Users\kenji\Dropbox\AI開発\dev\Tools\BugSearch2\codex_review_severity.py", line 2880, in <module>
+    cmd_query(args.query, args.topk, args.mode, pathlib.Path(args.index), out)
+  File "C:\Users\kenji\Dropbox\AI開発\dev\Tools\BugSearch2\codex_review_severity.py", line 2478, in cmd_query
+    print(rep)
+UnicodeEncodeError: 'cp932' codec can't encode character '\U0001f534' in position 122: illegal multibyte sequence

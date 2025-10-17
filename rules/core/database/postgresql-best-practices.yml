@@ -105,11 +105,11 @@ rule:
         context: 'C# Npgsql without connection pooling'
 
     go:
-      - pattern: 'sql\.Open\(['"]postgres'
+      - pattern: "sql\\.Open\\([\"']postgres"
         context: 'Go database/sql (check max_open_conns setting)'
 
     php:
-      - pattern: 'new\s+PDO\([\'"]pgsql:'
+      - pattern: "new\\s+PDO\\([\"']pgsql:"
         context: 'PHP PDO without persistent connections'
 
   fixes:
@@ -340,7 +340,7 @@ rule:
         context: 'Java JDBC JSONB query'
 
     python:
-      - pattern: '\.filter\(.*\[[\'"]\w+[\'"]'
+      - pattern: "\.filter\(.*\[[\"']\\w+[\"']"
         context: 'SQLAlchemy JSONB filter'
 
   fixes:

@@ -24,19 +24,19 @@ rule:
 
   patterns:
     java:
-      - pattern: 'set\\([\'"][^\'"]{250,}[\'"]|add\\([\'"][^\'"]{250,}[\'"]'
+      - pattern: "set\\([\"'][^\"']{250,}[\"']|add\\([\"'][^\"']{250,}[\"']"
         context: 'Java Memcached set/add with long key (>250 chars)'
 
     python:
-      - pattern: 'set\\([\'"][^\'"]{250,}[\'"]|add\\([\'"][^\'"]{250,}[\'"]'
+      - pattern: "set\\([\"'][^\"']{250,}[\"']|add\\([\"'][^\"']{250,}[\"']"
         context: 'Python Memcached set/add with long key'
 
     php:
-      - pattern: '->set\\([\'"][^\'"]{250,}|->add\\([\'"][^\'"]{250,}'
+      - pattern: "->set\\([\"'][^\"']{250,}|->add\\([\"'][^\"']{250,}"
         context: 'PHP Memcached long key'
 
     javascript:
-      - pattern: 'set\\([\'"][^\'"]{250,}[\'"]'
+      - pattern: "set\\([\"'][^\"']{250,}[\"']"
         context: 'Node.js Memcached long key'
 
   fixes:

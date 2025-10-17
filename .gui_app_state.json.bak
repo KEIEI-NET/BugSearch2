@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "timestamp": 1760671678.093027,
+  "window": {
+    "width": 2880,
+    "height": 1500,
+    "x": 152,
+    "y": 152,
+    "maximized": false
+  },
+  "settings": {
+    "theme": "dark",
+    "max_concurrent_jobs": 3,
+    "log_buffer_size": 10000,
+    "auto_cleanup_hours": 24,
+    "notification_enabled": true,
+    "auto_save_enabled": true,
+    "auto_save_interval": 300
+  },
+  "job_history": {
+    "job_20251014_003933_061848": {
+      "name": "統合テスト (angular)",
+      "status": "failed",
+      "elapsed_time": 6250.041462659836,
+      "recorded_at": 1760376223.103311
+    },
+    "job_20251014_024010_519949": {
+      "name": "統合テスト (react)",
+      "status": "failed",
+      "elapsed_time": 779.9650499820709,
+      "recorded_at": 1760377990.485
+    },
+    "job_20251014_024126_692899": {
+      "name": "インデックス作成",
+      "status": "failed",
+      "elapsed_time": 703.7941009998322,
+      "recorded_at": 1760377990.4870002
+    },
+    "job_20251014_025014_375527": {
+      "name": "Context7統合分析",
+      "status": "failed",
+      "elapsed_time": 176.11247324943542,
+      "recorded_at": 1760377990.4880002
+    },
+    "job_20251014_025414_616584": {
+      "name": "インデックス作成",
+      "status": "failed",
+      "elapsed_time": 4179.2896683216095,
+      "recorded_at": 1760382233.906253
+    },
+    "job_20251014_025528_955890": {
+      "name": "統合テスト (react)",
+      "status": "failed",
+      "elapsed_time": 4104.953669548035,
+      "recorded_at": 1760382233.9095597
+    },
+    "job_20251014_085506_100568": {
+      "name": "統合テスト (react)",
+      "status": "failed",
+      "elapsed_time": 271971.8268749714,
+      "recorded_at": 1760671677.9274433
+    }
+  },
+  "custom": {}
+}

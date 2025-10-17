@@ -247,27 +247,27 @@ rule:
 
   patterns:
     java:
-      - pattern: 'executeQuery\(["\'][^"\']*\+|executeQuery\([^"\']*\+.*["\']'
+      - pattern: "executeQuery\\([\"'][^\"']*\\+|executeQuery\\([^\"']*\\+.*[\"']"
         context: 'Java JDBC executeQuery with string concatenation'
       - pattern: 'createStatement\(\)\.execute'
         context: 'Java Statement instead of PreparedStatement'
 
     python:
-      - pattern: 'execute\(["\'][^"\']*%|execute\(["\'][^"\']*\+'
+      - pattern: "execute\\([\"'][^\"']*%|execute\\([\"'][^\"']*\\+"
         context: 'Python SQL execute with string formatting'
-      - pattern: 'execute\(f["\']'
+      - pattern: "execute\\(f[\"']"
         context: 'Python SQL execute with f-string'
 
     php:
-      - pattern: 'query\(["\'][^"\']*\$|query\(["\'][^"\']*\.'
+      - pattern: "query\\([\"'][^\"']*\\$|query\\([\"'][^\"']*\\."
         context: 'PHP mysqli_query with string concatenation'
 
     csharp:
-      - pattern: 'ExecuteReader\(["\'][^"\']*\+|ExecuteNonQuery\(["\'][^"\']*\+'
+      - pattern: "ExecuteReader\\([\"'][^\"']*\\+|ExecuteNonQuery\\([\"'][^\"']*\\+"
         context: 'C# SQL command with string concatenation'
 
     javascript:
-      - pattern: 'query\(["\'][^"\']*\$\{|query\(`[^`]*\$\{'
+      - pattern: "query\\([\"'][^\"']*\\$\\{|query\\(`[^`]*\\$\\{"
         context: 'Node.js MySQL query with template literals'
 
   fixes:
@@ -345,7 +345,7 @@ rule:
         context: 'Spring @Transactional READ UNCOMMITTED'
 
     python:
-      - pattern: 'isolation_level\s*=\s*["\']READ UNCOMMITTED["\']'
+      - pattern: "isolation_level\\s*=\\s*[\"']READ UNCOMMITTED[\"']"
         context: 'Python SQLAlchemy READ UNCOMMITTED'
 
   fixes:
@@ -526,11 +526,11 @@ rule:
 
   patterns:
     java:
-      - pattern: 'WHERE\s+\w+\s*=\s*["\']?\d+["\']?'
+      - pattern: "WHERE\s+\w+\s*=\s*[\"']?\d+[\"']?"
         context: 'SQL WHERE with potential type mismatch'
 
     python:
-      - pattern: 'WHERE\s+\w+\s*=\s*["\']?\d+["\']?'
+      - pattern: "WHERE\s+\w+\s*=\s*[\"']?\d+[\"']?"
         context: 'Python SQL type conversion issue'
 
   fixes:

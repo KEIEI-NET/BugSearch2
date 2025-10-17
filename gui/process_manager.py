@@ -116,15 +116,15 @@ class ProcessManager:
         )
 
         try:
-            # サブプロセス起動
+            # サブプロセス起動（バイトモード - Windows cp932エラー対策）
+            # text=Falseでバイナリモード、log_collectorで手動UTF-8デコード
             process = subprocess.Popen(
                 command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True,
+                text=False,  # バイナリモード
                 bufsize=1,
-                cwd=cwd,
-                universal_newlines=True
+                cwd=cwd
             )
 
             proc_info.pid = process.pid

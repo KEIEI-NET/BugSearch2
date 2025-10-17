@@ -66,6 +66,19 @@ rule:
       - pattern: 'for\s+[^{]+\{[^}]*\.First\('
         context: "for loop with GORM First"
 
+    delphi:
+      - pattern: 'for\s+\w+\s*:=.*\s+do\s+begin.*Query.*\.Open'
+        context: "for loop with Query.Open"
+
+      - pattern: 'while.*\.Eof.*do\s+begin.*Query.*\.(Open|ExecSQL)'
+        context: "while loop with Query execution"
+
+      - pattern: 'for\s+\w+\s*:=.*\s+do\s+begin.*\.Locate\('
+        context: "for loop with Locate"
+
+      - pattern: 'while\s+not\s+.*\.Eof\s+do\s+begin.*ADOQuery.*\.Open'
+        context: "while not Eof with ADOQuery"
+
   # 技術スタックによる深刻度調整
   context_modifiers:
     # Elasticsearchを使用している場合

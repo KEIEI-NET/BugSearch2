@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "timestamp": 1760671679.5865233,
+  "window": {
+    "width": 2880,
+    "height": 1500,
+    "x": 0,
+    "y": 0,
+    "maximized": false
+  },
+  "settings": {
+    "theme": "dark",
+    "max_concurrent_jobs": 3,
+    "log_buffer_size": 10000,
+    "auto_cleanup_hours": 24,
+    "notification_enabled": true,
+    "auto_save_enabled": true,
+    "auto_save_interval": 300
+  },
+  "job_history": {
+    "job_20251014_003933_061848": {
+      "name": "統合テスト (angular)",
+      "status": "failed",
+      "elapsed_time": 6250.041462659836,
+      "recorded_at": 1760376223.103311
+    }
+  },
+  "custom": {}
+}

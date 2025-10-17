@@ -16,8 +16,8 @@ from dataclasses import dataclass, asdict
 @dataclass
 class WindowState:
     """ウィンドウ状態"""
-    width: int = 1200
-    height: int = 800
+    width: int = 1600  # 1920x1024画面に最適化
+    height: int = 900  # タスクバー考慮で1000以下
     x: Optional[int] = None
     y: Optional[int] = None
     maximized: bool = False

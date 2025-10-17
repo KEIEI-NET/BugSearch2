@@ -23,19 +23,19 @@ rule:
 
   patterns:
     java:
-      - pattern: '\.keys\(["\']?\*["\']?\)'
+      - pattern: "\\.keys\\([\"']?\\*[\"']?\\)"
         context: 'Java Jedis/Lettuce KEYS * command'
       - pattern: 'KEYS\s+\*'
         context: 'Java Redis KEYS * command string'
 
     python:
-      - pattern: 'keys\(["\']?\*["\']?\)'
+      - pattern: "keys\\([\"']?\\*[\"']?\\)"
         context: 'Python redis-py KEYS * command'
       - pattern: 'r\.keys\(\)'
         context: 'Python redis-py keys() without pattern'
 
     javascript:
-      - pattern: 'keys\(["\']?\*["\']?\)'
+      - pattern: "keys\([\"']?\\*[\"']?\)"
         context: 'Node.js ioredis/node-redis KEYS * command'
       - pattern: '\.KEYS\(["\']?\*'
         context: 'Node.js Redis KEYS command'

@@ -1,108 +1,77 @@
-# BugSearch2 プロジェクト設定
-# 自動生成日: 2025-10-12
-# 総合テスト用設定
+# BugSearch2 デフォルト設定ファイル
+# このファイルはサンプルです。プロジェクトルートに .bugsearch.yml をコピーして編集してください。
 
 project:
-  name: "BugSearch2 Integration Test"
-  version: "4.8.0"
-  description: "Phase 7総合テスト - 技術スタック完全版"
+  name: "Sample Project"
+  version: "1.0"
 
 # 技術スタック定義
 tech_stack:
-  # フロントエンド
+  # フロントエンド（オプション）
   frontend:
-    - TypeScript      # 18,265件 - メイン言語
-    - JavaScript      # 2,252件
-    - React           # 3プロジェクト検出
-    - Angular         # ユーザー指定
+    framework: "Angular"  # Angular, React, Vue.js, Svelte, etc.
+    version: "15.0.0"
+    state_management: "NgRx"  # NgRx, Redux, Vuex, etc.
+    routing: "Angular Router"
 
   # バックエンド
   backend:
-    - C#/.NET         # 799件 (.cs), 66プロジェクト (.csproj)
-    - Go              # 175件 (.go)
-    - Python          # 78件 (.py)
-    - Node.js         # 61プロジェクト (package.json)
+    language: "C#"  # C#, Java, Python, PHP, Go, Node.js
+    version: "11.0"
+    framework: "ASP.NET Core"  # ASP.NET Core, Spring Boot, Laravel, etc.
+    framework_version: "8.0"
 
-  # データベース
-  database:
-    - MySQL           # スキーマファイル多数検出
-    - Redis           # 設定・スクリプト検出
-    - Cassandra       # ユーザー指定
-    - Elasticsearch   # ユーザー指定
+  # データベース（複数指定可）
+  databases:
+    - type: "SQL Server"
+      version: "2022"
+      purpose: "primary"  # primary, cache, search
+      library: "Entity Framework Core"
 
-# カスタムチェックパターン
-custom_checks:
-  validation:
-    enabled: true
-    description: "バリデーションチェック強化"
-    patterns:
-      - name: "input_validation"
-        severity: 8
-        description: "入力値検証の不足"
-        targets:
-          - "*.cs"
-          - "*.ts"
-          - "*.js"
-          - "*.go"
-          - "*.py"
+    - type: "Redis"
+      version: "7.x"
+      purpose: "cache"
+      library: "StackExchange.Redis"
 
-      - name: "null_check"
-        severity: 7
-        description: "null/undefined チェック不足"
-        targets:
-          - "*.cs"
-          - "*.ts"
-          - "*.js"
+  # キャッシュ（オプション）
+  cache:
+    type: "Redis"
+    version: "7.x"
+    library: "StackExchange.Redis"
 
-      - name: "range_validation"
-        severity: 6
-        description: "範囲チェック不足"
-        targets:
-          - "*.cs"
-          - "*.go"
-          - "*.py"
+  # メッセージング（オプション）
+  messaging:
+    type: "RabbitMQ"
+    version: "3.x"
+    library: "MassTransit"
 
-# 分析設定
+  # 認証・認可（オプション）
+  authentication:
+    type: "OAuth2"
+    library: "IdentityServer"
+
+# 開発プラクティス
+practices:
+  - "Repository Pattern"
+  - "CQRS"
+  - "Domain-Driven Design"
+  - "Microservices"
+
+# 解析設定
 analysis:
-  # 対象ディレクトリ
-  source_dirs:
-    - "./src"
+  # 技術スタックに基づく深刻度の自動調整
+  severity_adjustments:
+    enabled: true
 
-  # 除外パターン
-  exclude_patterns:
-    - "**/node_modules/**"
-    - "**/bin/**"
-    - "**/obj/**"
-    - "**/.git/**"
-    - "**/dist/**"
-    - "**/build/**"
+  # カスタムルールファイル（オプション）
+  custom_rules: []
+    # - "rules/custom/company-standards.yml"
 
-  # ファイルサイズ制限
-  max_file_size_mb: 4
+  # 除外するルール（オプション）
+  exclude_rules: []
+    # - "DB_N_PLUS_ONE"
 
-  # 並列処理
-  worker_count: 4
-
-# レポート設定
-reporting:
-  output_dir: "./reports"
-  formats:
-    - markdown
-    - json
-
-  include_improvements: true
-  max_items_per_report: 100
-
-# 深刻度調整
-severity_adjustments:
-  # Elasticsearch使用時はN+1問題の深刻度を下げる
-  elasticsearch_n_plus_one:
-    from: 10
-    to: 7
-    reason: "Elasticsearch使用時は検索クエリのバッチ処理が一般的"
-
-  # Cassandra使用時はSELECT *の深刻度を下げる
-  cassandra_select_star:
-    from: 8
-    to: 6
-    reason: "Cassandraは列指向DBで全カラム取得が効率的なケースがある"
+  # AI分析設定
+  ai_analysis:
+    include_tech_stack: true
+    context_depth: "standard"  # minimal, standard, detailed

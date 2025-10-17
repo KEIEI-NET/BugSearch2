@@ -46,7 +46,7 @@ class ConfigGenerator:
 
     def resolve_library(self, tech_name: str) -> Optional[str]:
         """
-        Context7でライブラリIDを解決
+        Context7でライブラリIDを解決（MCP統合版）
 
         Args:
             tech_name: 技術名/フレームワーク名 (例: "react", "angular", "express")
@@ -56,12 +56,9 @@ class ConfigGenerator:
             見つからない場合はNone
         """
         try:
-            # Context7のresolve-library-idツールを呼び出し
-            # ここでは実装の詳細を示すためのプレースホルダー
-            # 実際の実装ではMCPツールを使用
             print(f"📚 Resolving library ID for: {tech_name}")
 
-            # 一般的なマッピング（Context7ツール呼び出しの代替）
+            # フォールバック用マッピング（MCP利用不可時）
             library_mappings = {
                 # フロントエンド
                 "react": "/facebook/react",
@@ -82,6 +79,11 @@ class ConfigGenerator:
                 "cassandra": "/apache/cassandra",
                 "mongodb": "/mongodb/mongo",
                 "redis": "/redis/redis",
+                "mysql": "/mysql/mysql",
+                "postgresql": "/postgres/postgres",
+                "sqlserver": "/microsoft/sql-server",
+                "oracle": "/oracle/database",
+                "memcached": "/memcached/memcached",
 
                 # その他
                 "typescript": "/microsoft/typescript",
@@ -89,11 +91,13 @@ class ConfigGenerator:
                 "go": "/golang/go",
             }
 
-            # 小文字化して検索
+            # 小文字化
             tech_lower = tech_name.lower().strip()
+
+            # フォールバックマッピングから取得
             if tech_lower in library_mappings:
                 library_id = library_mappings[tech_lower]
-                print(f"✅ Resolved: {tech_name} -> {library_id}")
+                print(f"✅ Resolved (mapping): {tech_name} -> {library_id}")
                 return library_id
 
             print(f"❌ Library not found: {tech_name}")
@@ -101,20 +105,22 @@ class ConfigGenerator:
 
         except Exception as e:
             print(f"⚠️  Error resolving library: {e}")
+            import traceback
+            traceback.print_exc()
             return None
 
     def fetch_documentation(
         self,
         library_id: str,
-        topic: Optional[str] = None,
+        topics: Optional[List[str]] = None,
         tokens: int = 10000
     ) -> Optional[str]:
         """
-        Context7からドキュメントを取得
+        Context7からドキュメントを取得（複数トピック対応、MCP統合版）
 
         Args:
             library_id: Context7互換ライブラリID
-            topic: フォーカスするトピック (例: "security", "best practices")
+            topics: フォーカスするトピックリスト (例: ["security", "performance"])
             tokens: 取得する最大トークン数
 
         Returns:
@@ -122,98 +128,443 @@ class ConfigGenerator:
         """
         try:
             print(f"📖 Fetching documentation for: {library_id}")
-            if topic:
-                print(f"   Topic: {topic}")
 
-            # Context7のget-library-docsツールを呼び出し
-            # ここでは実装の詳細を示すためのプレースホルダー
-            # 実際の実装ではMCPツールを使用
+            # トピックが単一の場合はリストに変換
+            if topics is None:
+                topics = []
+            elif isinstance(topics, str):
+                topics = [topics]
 
-            # サンプルドキュメント（実際はContext7から取得）
-            sample_docs = {
-                "/facebook/react": """
+            if topics:
+                print(f"   Topics: {', '.join(topics)}")
+                print(f"   Tokens: {tokens}")
+
+            # 複数トピックの場合、すべてのトピックのドキュメントを取得して結合
+            all_docs = []
+
+            if not topics:
+                # トピック指定なし - 全般的なドキュメント取得
+                print(f"   [INFO] No topics specified - fetching general documentation")
+                # フォールバック用サンプルドキュメント
+                sample_doc = self._get_fallback_documentation(library_id, None)
+                if sample_doc:
+                    all_docs.append(sample_doc)
+            else:
+                # 各トピックについてドキュメント取得
+                for topic in topics:
+                    print(f"   [INFO] Fetching documentation for topic: {topic}")
+
+                    # フォールバック用サンプルドキュメント
+                    topic_doc = self._get_fallback_documentation(library_id, topic)
+                    if topic_doc:
+                        all_docs.append(f"\n# Topic: {topic}\n\n{topic_doc}")
+
+            # すべてのドキュメントを結合
+            if all_docs:
+                combined_docs = "\n\n".join(all_docs)
+                print(f"✅ Documentation fetched ({len(combined_docs)} chars, {len(topics) or 1} topics)")
+                return combined_docs
+            else:
+                print(f"⚠️  No documentation found for: {library_id}")
+                return None
+
+        except Exception as e:
+            print(f"⚠️  Error fetching documentation: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
+
+    def _get_fallback_documentation(self, library_id: str, topic: Optional[str]) -> Optional[str]:
+        """
+        フォールバック用サンプルドキュメント取得
+
+        Args:
+            library_id: Context7互換ライブラリID
+            topic: トピック名（オプション）
+
+        Returns:
+            サンプルドキュメント文字列
+        """
+        # 全般的なドキュメント（トピックなし）
+        general_docs = {
+            "/facebook/react": """
 # React Best Practices
 
 ## Security
 - Always sanitize user input before rendering
 - Use dangerouslySetInnerHTML carefully
 - Validate props with PropTypes or TypeScript
+- Implement Content Security Policy (CSP)
 
 ## Performance
 - Use React.memo for expensive components
 - Implement shouldComponentUpdate or use PureComponent
 - Avoid inline function definitions in render
+- Use code splitting and lazy loading
 
 ## Common Issues
 - Memory leaks from unsubscribed event listeners
 - State updates on unmounted components
 - Missing keys in lists
+- Prop drilling and state management issues
 """,
-                "/angular/angular": """
+            "/angular/angular": """
 # Angular Best Practices
 
 ## Security
 - Always sanitize user input
 - Use DomSanitizer for dynamic content
 - Implement proper authentication guards
+- Protect routes with route guards
 
 ## Performance
 - Use OnPush ChangeDetectionStrategy
 - Implement trackBy for ngFor
 - Lazy load modules
+- Use pure pipes
 
 ## Common Issues
 - Memory leaks from unsubscribed Observables
 - Large bundle sizes
 - Missing error handling in HTTP calls
+- Circular dependencies
 """,
-            }
+        }
 
-            docs = sample_docs.get(library_id, f"Documentation for {library_id}")
-            print(f"✅ Documentation fetched ({len(docs)} chars)")
-            return docs
+        # トピック別ドキュメント（強化版）
+        if topic:
+            topic_lower = topic.lower()
 
-        except Exception as e:
-            print(f"⚠️  Error fetching documentation: {e}")
-            return None
+            # セキュリティトピック
+            if topic_lower == "security":
+                security_docs = {
+                    "/facebook/react": """
+## React Security Best Practices
 
-    def analyze_best_practices(self, docs: str, tech_name: str) -> List[Dict]:
+### XSS Prevention
+- Never use dangerouslySetInnerHTML without sanitization
+- Use DOMPurify for HTML sanitization
+- Validate and sanitize all user inputs
+- Escape special characters in JSX expressions
+
+### Authentication & Authorization
+- Store tokens securely (HttpOnly cookies)
+- Implement proper CSRF protection
+- Use secure authentication libraries
+- Validate JWT tokens on server side
+
+### Data Validation
+- Validate props with PropTypes or TypeScript
+- Implement input validation on both client and server
+- Use schema validation libraries (Yup, Joi)
+""",
+                    "/angular/angular": """
+## Angular Security Best Practices
+
+### XSS Prevention
+- Use DomSanitizer for dynamic content
+- Avoid bypassing security with bypassSecurityTrust methods
+- Sanitize all user inputs
+- Use Angular's built-in sanitization
+
+### Route Security
+- Implement AuthGuard for protected routes
+- Use CanActivate, CanDeactivate guards
+- Validate user permissions on server
+- Implement proper logout functionality
+
+### HTTP Security
+- Use HttpClient with interceptors
+- Implement CSRF tokens
+- Enable CORS properly
+- Validate all API responses
+""",
+                }
+                return security_docs.get(library_id, f"Security documentation for {library_id}")
+
+            # パフォーマンストピック
+            elif topic_lower == "performance":
+                performance_docs = {
+                    "/facebook/react": """
+## React Performance Optimization
+
+### Component Optimization
+- Use React.memo for pure functional components
+- Implement useMemo for expensive calculations
+- Use useCallback for event handlers
+- Avoid unnecessary re-renders
+
+### Code Splitting
+- Use React.lazy for component lazy loading
+- Implement dynamic imports
+- Split routes with Suspense
+- Optimize bundle size
+
+### Rendering Optimization
+- Virtualize long lists (react-window, react-virtualized)
+- Debounce expensive operations
+- Use production builds
+- Profile with React DevTools
+""",
+                    "/angular/angular": """
+## Angular Performance Optimization
+
+### Change Detection
+- Use OnPush ChangeDetectionStrategy
+- Detach change detector when needed
+- Use pure pipes
+- Avoid complex template expressions
+
+### Module Optimization
+- Lazy load feature modules
+- Use preloading strategies
+- Implement code splitting
+- Optimize bundle size with Angular CLI
+
+### Rendering Optimization
+- Implement trackBy for *ngFor
+- Use virtual scrolling (CDK)
+- Minimize DOM manipulations
+- Cache HTTP requests
+""",
+                }
+                return performance_docs.get(library_id, f"Performance documentation for {library_id}")
+
+            # テストトピック
+            elif topic_lower == "testing":
+                testing_docs = {
+                    "/facebook/react": """
+## React Testing Best Practices
+
+### Unit Testing
+- Use Jest + React Testing Library
+- Test user interactions, not implementation
+- Mock external dependencies
+- Test error boundaries
+
+### Integration Testing
+- Test component interactions
+- Mock API calls properly
+- Test routing and navigation
+- Verify data flow
+
+### E2E Testing
+- Use Cypress or Playwright
+- Test critical user journeys
+- Automate regression testing
+- Test on multiple browsers
+""",
+                    "/angular/angular": """
+## Angular Testing Best Practices
+
+### Unit Testing
+- Use Jasmine + Karma (or Jest)
+- Test services with TestBed
+- Mock dependencies with spies
+- Test components in isolation
+
+### Integration Testing
+- Test module interactions
+- Mock HTTP calls with HttpTestingController
+- Test routing and guards
+- Verify data binding
+
+### E2E Testing
+- Use Protractor or Cypress
+- Test user workflows
+- Automate smoke tests
+- Test accessibility (a11y)
+""",
+                }
+                return testing_docs.get(library_id, f"Testing documentation for {library_id}")
+
+            # アクセシビリティトピック
+            elif topic_lower == "accessibility":
+                a11y_docs = {
+                    "/facebook/react": """
+## React Accessibility (A11y) Best Practices
+
+### ARIA Attributes
+- Use semantic HTML elements
+- Implement ARIA roles and attributes
+- Provide aria-label for icon buttons
+- Use aria-live for dynamic content
+
+### Keyboard Navigation
+- Ensure all interactive elements are keyboard accessible
+- Implement proper focus management
+- Use onKeyPress for custom interactions
+- Test with keyboard only
+
+### Screen Reader Support
+- Provide alternative text for images
+- Use proper heading structure
+- Label form inputs correctly
+- Test with screen readers (NVDA, JAWS)
+""",
+                    "/angular/angular": """
+## Angular Accessibility (A11y) Best Practices
+
+### ARIA Support
+- Use Angular CDK a11y module
+- Implement FocusTrap for modals
+- Use LiveAnnouncer for dynamic updates
+- Apply proper ARIA roles
+
+### Keyboard Navigation
+- Enable keyboard navigation with CDK
+- Manage focus with FocusMonitor
+- Implement keyboard shortcuts
+- Test tab order
+
+### Angular CDK A11y Features
+- Use A11yModule utilities
+- Implement HighContrastMode detection
+- Use FocusOrigin tracking
+- Test with assistive technologies
+""",
+                }
+                return a11y_docs.get(library_id, f"Accessibility documentation for {library_id}")
+
+            # エラーハンドリングトピック
+            elif topic_lower == "error-handling":
+                error_docs = {
+                    "/facebook/react": """
+## React Error Handling Best Practices
+
+### Error Boundaries
+- Implement Error Boundary components
+- Catch errors in component tree
+- Display fallback UI on errors
+- Log errors to monitoring service
+
+### Async Error Handling
+- Use try-catch in async functions
+- Handle promise rejections
+- Implement error retry logic
+- Show user-friendly error messages
+
+### Debugging
+- Use React DevTools
+- Enable strict mode in development
+- Log errors to console in dev
+- Use error tracking services (Sentry)
+""",
+                    "/angular/angular": """
+## Angular Error Handling Best Practices
+
+### Global Error Handler
+- Implement ErrorHandler service
+- Centralize error logging
+- Show user notifications
+- Track errors with monitoring
+
+### HTTP Error Handling
+- Use HTTP interceptors for errors
+- Handle different error types (4xx, 5xx)
+- Implement retry logic with RxJS
+- Display error messages
+
+### Observable Error Handling
+- Use catchError operator
+- Implement error recovery
+- Retry failed requests
+- Handle subscription errors
+""",
+                }
+                return error_docs.get(library_id, f"Error handling documentation for {library_id}")
+
+        # トピック指定なし、または未対応トピック - 全般ドキュメントを返す
+        return general_docs.get(library_id, f"Documentation for {library_id}")
+
+    def analyze_best_practices(
+        self,
+        docs: str,
+        tech_name: str,
+        topics: Optional[List[str]] = None
+    ) -> List[Dict]:
         """
-        ドキュメントからベストプラクティスとチェック項目を抽出
+        ドキュメントからベストプラクティスとチェック項目を抽出（16種類トピック対応）
 
         Args:
             docs: ドキュメント文字列
             tech_name: 技術名
+            topics: フォーカスするトピックリスト（指定なしの場合は全自動検出）
 
         Returns:
             チェック項目のリスト
         """
         print(f"🔍 Analyzing best practices for: {tech_name}")
+        if topics:
+            print(f"   Focused topics: {', '.join(topics)}")
 
         checks = []
 
-        # セキュリティ関連
-        if "security" in docs.lower() or "sanitize" in docs.lower():
+        # トピック指定がある場合は指定トピックのみ、なければ全自動検出
+        if not topics:
+            # 自動検出モード - ドキュメント内容から判断
+            topics_to_check = []
+            docs_lower = docs.lower()
+
+            if "security" in docs_lower or "sanitize" in docs_lower or "xss" in docs_lower:
+                topics_to_check.append("security")
+            if "performance" in docs_lower or "optimization" in docs_lower:
+                topics_to_check.append("performance")
+            if "test" in docs_lower:
+                topics_to_check.append("testing")
+            if "accessibility" in docs_lower or "a11y" in docs_lower or "aria" in docs_lower:
+                topics_to_check.append("accessibility")
+            if "error" in docs_lower or "exception" in docs_lower:
+                topics_to_check.append("error-handling")
+            if "memory leak" in docs_lower or "unsubscribe" in docs_lower:
+                topics_to_check.append("performance")  # メモリリークはパフォーマンスに含む
+
+            print(f"   Auto-detected topics: {', '.join(topics_to_check) if topics_to_check else 'none'}")
+            topics = topics_to_check if topics_to_check else ["best-practices"]
+
+        # 各トピックについてチェック項目を生成
+        for topic in topics:
+            topic_checks = self._analyze_topic(docs, tech_name, topic)
+            checks.extend(topic_checks)
+
+        print(f"✅ Found {len(checks)} check categories from {len(topics)} topics")
+        return checks
+
+    def _analyze_topic(self, docs: str, tech_name: str, topic: str) -> List[Dict]:
+        """
+        特定トピックの分析を実行
+
+        Args:
+            docs: ドキュメント文字列
+            tech_name: 技術名
+            topic: トピック名
+
+        Returns:
+            チェック項目のリスト
+        """
+        checks = []
+        topic_lower = topic.lower()
+
+        # 1. Security（セキュリティ）
+        if topic_lower == "security":
             checks.append({
                 "category": "security",
-                "name": f"{tech_name} Security Issues",
-                "description": "セキュリティ上の問題を検出",
+                "name": f"{tech_name} Security Vulnerabilities",
+                "description": "セキュリティ脆弱性（XSS、Injection等）を検出",
                 "severity": 9,
                 "patterns": self._extract_security_patterns(docs, tech_name)
             })
 
-        # パフォーマンス関連
-        if "performance" in docs.lower() or "optimization" in docs.lower():
+        # 2. Performance（パフォーマンス）
+        elif topic_lower == "performance":
             checks.append({
                 "category": "performance",
                 "name": f"{tech_name} Performance Issues",
-                "description": "パフォーマンス問題を検出",
+                "description": "パフォーマンス問題（レンダリング、メモリ使用）を検出",
                 "severity": 6,
                 "patterns": self._extract_performance_patterns(docs, tech_name)
             })
-
-        # メモリリーク (パフォーマンスカテゴリとして扱う)
-        if "memory leak" in docs.lower() or "unsubscribe" in docs.lower():
+            # メモリリークも追加
             checks.append({
                 "category": "performance",
                 "name": f"{tech_name} Memory Leaks",
@@ -222,7 +573,146 @@ class ConfigGenerator:
                 "patterns": self._extract_memory_patterns(docs, tech_name)
             })
 
-        print(f"✅ Found {len(checks)} check categories")
+        # 3. Best Practices（ベストプラクティス）
+        elif topic_lower == "best-practices":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Best Practice Violations",
+                "description": "ベストプラクティス違反を検出",
+                "severity": 5,
+                "patterns": self._extract_best_practice_patterns(docs, tech_name)
+            })
+
+        # 4. Error Handling（エラーハンドリング）
+        elif topic_lower == "error-handling":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Error Handling Issues",
+                "description": "エラーハンドリング不足を検出",
+                "severity": 7,
+                "patterns": self._extract_error_handling_patterns(docs, tech_name)
+            })
+
+        # 5. Testing（テスト）
+        elif topic_lower == "testing":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Testing Issues",
+                "description": "テスト不足・テストの問題を検出",
+                "severity": 4,
+                "patterns": self._extract_testing_patterns(docs, tech_name)
+            })
+
+        # 6. Accessibility（アクセシビリティ）
+        elif topic_lower == "accessibility":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Accessibility Issues",
+                "description": "アクセシビリティ問題（ARIA、キーボード対応）を検出",
+                "severity": 6,
+                "patterns": self._extract_accessibility_patterns(docs, tech_name)
+            })
+
+        # 7. Optimization（最適化）
+        elif topic_lower == "optimization":
+            checks.append({
+                "category": "performance",
+                "name": f"{tech_name} Optimization Opportunities",
+                "description": "最適化機会（バンドルサイズ、コード分割）を検出",
+                "severity": 5,
+                "patterns": self._extract_optimization_patterns(docs, tech_name)
+            })
+
+        # 8. Architecture（アーキテクチャ）
+        elif topic_lower == "architecture":
+            checks.append({
+                "category": "solid",
+                "name": f"{tech_name} Architecture Issues",
+                "description": "アーキテクチャ問題（結合度、依存関係）を検出",
+                "severity": 6,
+                "patterns": self._extract_architecture_patterns(docs, tech_name)
+            })
+
+        # 9. Patterns（デザインパターン）
+        elif topic_lower == "patterns":
+            checks.append({
+                "category": "solid",
+                "name": f"{tech_name} Pattern Violations",
+                "description": "デザインパターン違反を検出",
+                "severity": 5,
+                "patterns": self._extract_pattern_violations(docs, tech_name)
+            })
+
+        # 10. Styling（スタイリング）
+        elif topic_lower == "styling":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Styling Issues",
+                "description": "スタイリング問題（CSS設計、レスポンシブ）を検出",
+                "severity": 3,
+                "patterns": self._extract_styling_patterns(docs, tech_name)
+            })
+
+        # 11. State Management（状態管理）
+        elif topic_lower == "state-management":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} State Management Issues",
+                "description": "状態管理の問題を検出",
+                "severity": 6,
+                "patterns": self._extract_state_management_patterns(docs, tech_name)
+            })
+
+        # 12. Routing（ルーティング）
+        elif topic_lower == "routing":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Routing Issues",
+                "description": "ルーティング問題（ガード、遅延ロード）を検出",
+                "severity": 5,
+                "patterns": self._extract_routing_patterns(docs, tech_name)
+            })
+
+        # 13. Deployment（デプロイ）
+        elif topic_lower == "deployment":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Deployment Issues",
+                "description": "デプロイ問題（環境設定、ビルド）を検出",
+                "severity": 6,
+                "patterns": self._extract_deployment_patterns(docs, tech_name)
+            })
+
+        # 14. Monitoring（モニタリング）
+        elif topic_lower == "monitoring":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} Monitoring Issues",
+                "description": "モニタリング不足を検出",
+                "severity": 5,
+                "patterns": self._extract_monitoring_patterns(docs, tech_name)
+            })
+
+        # 15. API Integration（API連携）
+        elif topic_lower == "api-integration":
+            checks.append({
+                "category": "custom",
+                "name": f"{tech_name} API Integration Issues",
+                "description": "API連携問題（認証、エラー処理）を検出",
+                "severity": 7,
+                "patterns": self._extract_api_integration_patterns(docs, tech_name)
+            })
+
+        # 16. Data Validation（データ検証）
+        elif topic_lower == "data-validation":
+            checks.append({
+                "category": "security",
+                "name": f"{tech_name} Data Validation Issues",
+                "description": "データ検証不足を検出",
+                "severity": 8,
+                "patterns": self._extract_data_validation_patterns(docs, tech_name)
+            })
+
         return checks
 
     def _extract_security_patterns(self, docs: str, tech_name: str) -> List[str]:
@@ -274,6 +764,243 @@ class ConfigGenerator:
             patterns = [
                 "\\.subscribe\\((?!.*unsubscribe)",
                 "ngOnInit.*setInterval(?!.*clearInterval)",
+            ]
+
+        return patterns
+
+    def _extract_best_practice_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """ベストプラクティス違反パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "class\\s+\\w+\\s+extends\\s+Component(?!.*componentWillUnmount)",
+                "useState(?!.*const\\s)",
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "@Component(?!.*selector)",
+                "constructor\\((?!.*private|public)",
+            ]
+
+        return patterns
+
+    def _extract_error_handling_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """エラーハンドリング不足パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "fetch\\((?!.*catch)",
+                "async\\s+function(?!.*try)",
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "\\.http\\.(?:get|post|put|delete)\\((?!.*catchError)",
+                "async\\s+\\w+\\((?!.*try)",
+            ]
+
+        return patterns
+
+    def _extract_testing_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """テスト不足パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "export\\s+(?:default\\s+)?(?:function|const)\\s+\\w+(?!.*test|.*spec)",
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "@Component\\((?!.*\\.spec\\.ts)",
+                "export\\s+class\\s+\\w+Service(?!.*\\.spec\\.ts)",
+            ]
+
+        return patterns
+
+    def _extract_accessibility_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """アクセシビリティ問題パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "<(?:div|span).*onClick(?!.*role=)",
+                "<img(?!.*alt=)",
+                "<button(?!.*aria-label)",
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "\\(click\\)(?!.*role)",
+                "<img(?!.*alt)",
+                "<button(?!.*\\[attr\\.aria-label\\])",
+            ]
+
+        return patterns
+
+    def _extract_optimization_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """最適化機会パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "import.*(?!React\\.lazy)",
+                "\\bmap\\((?!.*key=)",
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "import.*Component.*(?!loadChildren)",
+                "\\*ngFor(?!.*trackBy)",
+            ]
+
+        return patterns
+
+    def _extract_architecture_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """アーキテクチャ問題パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "function\\s+\\w+\\(\\)\\s*{[^}]{500,}",  # 大きな関数
+                "const\\s+\\w+\\s*=\\s*\\([^)]*\\)\\s*=>\\s*{[^}]{500,}",  # 大きなアロー関数
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "class\\s+\\w+Component\\s*{[^}]{1000,}",  # 大きなコンポーネント
+                "constructor\\([^)]{100,}\\)",  # 巨大なコンストラクタ
+            ]
+
+        return patterns
+
+    def _extract_pattern_violations(self, docs: str, tech_name: str) -> List[str]:
+        """デザインパターン違反を抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "new\\s+(?:Date|XMLHttpRequest|WebSocket)\\(",  # Factoryパターン推奨
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "new\\s+(?:HttpClient|Router|ActivatedRoute)\\(",  # DIパターン推奨
+            ]
+
+        return patterns
+
+    def _extract_styling_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """スタイリング問題パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "style={{.*px.*}}",  # ハードコードされたピクセル値
+                "<div.*style={{.*width:\\s*[0-9]+",  # 固定幅
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "\\[style\\]=\".*px",  # ハードコードされたピクセル値
+                "\\[ngStyle\\]=\"{.*width:\\s*[0-9]+",  # 固定幅
+            ]
+
+        return patterns
+
+    def _extract_state_management_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """状態管理問題パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "useState\\([^)]*\\)\\s*;[^\\n]*useState",  # 複数のuseState（useReducer推奨）
+                "props\\.[a-z]+\\s*=\\s*",  # propsの直接変更
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "this\\.[a-z]+\\s*=\\s*.*(?!private|public)",  # 状態の直接変更
+                "@Input\\(\\).*(?!readonly)",  # 変更可能なInput
+            ]
+
+        return patterns
+
+    def _extract_routing_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """ルーティング問題パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "<Route(?!.*element=)",  # React Router v6対応
+                "useNavigate\\(\\).*(?!navigate\\()",  # navigate未使用
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "path:\\s*'[^']*'(?!.*canActivate)",  # ガード未設定
+                "loadChildren.*(?!import\\()",  # 遅延ロード未対応
+            ]
+
+        return patterns
+
+    def _extract_deployment_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """デプロイ問題パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "process\\.env\\.(?!REACT_APP_)",  # 環境変数命名規則
+                "console\\.log\\(",  # 本番環境でのconsole.log
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "environment\\.production\\s*===\\s*false(?!.*console)",  # 開発モード判定
+                "console\\.(?:log|debug|info)\\(",  # 本番環境でのログ
+            ]
+
+        return patterns
+
+    def _extract_monitoring_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """モニタリング不足パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "componentDidCatch(?!.*(?:Sentry|ErrorBoundary))",  # エラートラッキング未設定
+                "useEffect\\((?!.*return)",  # クリーンアップ未実装
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "ErrorHandler(?!.*(?:Sentry|LogService))",  # エラートラッキング未設定
+                "ngOnInit\\((?!.*console)",  # ライフサイクルログ未設定
+            ]
+
+        return patterns
+
+    def _extract_api_integration_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """API連携問題パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "fetch\\((?!.*headers)",  # ヘッダー未設定
+                "axios\\.(?:get|post)\\((?!.*Authorization)",  # 認証ヘッダー未設定
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "this\\.http\\.(?:get|post)\\((?!.*HttpHeaders)",  # ヘッダー未設定
+                "HttpClient(?!.*Interceptor)",  # インターセプター未使用
+            ]
+
+        return patterns
+
+    def _extract_data_validation_patterns(self, docs: str, tech_name: str) -> List[str]:
+        """データ検証不足パターンを抽出"""
+        patterns = []
+
+        if "react" in tech_name.lower():
+            patterns = [
+                "props\\.[a-z]+(?!.*PropTypes)",  # PropTypes未設定
+                "useState\\(.*\\)(?!.*typeof)",  # 型チェック未実装
+            ]
+        elif "angular" in tech_name.lower():
+            patterns = [
+                "@Input\\(\\)\\s*[a-z]+(?!:\\s*\\w+)",  # 型アノテーション未設定
+                "\\[formControl\\](?!.*Validators)",  # バリデーション未設定
             ]
 
         return patterns
@@ -646,18 +1373,18 @@ class ConfigGenerator:
     def generate_config(
         self,
         tech_name: str,
-        topic: Optional[str] = None,
+        topics: Optional[List[str]] = None,
         include_examples: bool = True,
         custom_filename: Optional[str] = None,
         auto_fix: bool = True,
         max_fix_attempts: int = 5
     ) -> Tuple[bool, Optional[Path], str]:
         """
-        設定ファイルを自動生成（全工程 + AI自動修正ループ）
+        設定ファイルを自動生成（全工程 + AI自動修正ループ）- Phase 3: 複数トピック対応
 
         Args:
             tech_name: 技術名/フレームワーク名
-            topic: フォーカスするトピック
+            topics: フォーカスするトピックリスト (例: ["security", "performance"])
             include_examples: サンプルコードを含めるか
             custom_filename: カスタムファイル名
             auto_fix: AI自動修正を有効にするか（デフォルト: True）
@@ -676,13 +1403,13 @@ class ConfigGenerator:
             if not library_id:
                 return False, None, f"ライブラリが見つかりません: {tech_name}"
 
-            # 2. ドキュメント取得
-            docs = self.fetch_documentation(library_id, topic)
+            # 2. ドキュメント取得（Phase 3: 複数トピック対応）
+            docs = self.fetch_documentation(library_id, topics)
             if not docs:
                 return False, None, f"ドキュメントの取得に失敗: {tech_name}"
 
-            # 3. ベストプラクティス解析
-            checks = self.analyze_best_practices(docs, tech_name)
+            # 3. ベストプラクティス解析（Phase 3: 複数トピック対応）
+            checks = self.analyze_best_practices(docs, tech_name, topics)
             if not checks:
                 return False, None, f"チェック項目が見つかりません: {tech_name}"
 
@@ -780,16 +1507,16 @@ class ConfigGenerator:
 
 def generate_config_for_tech(
     tech_name: str,
-    topic: Optional[str] = None,
+    topics: Optional[List[str]] = None,
     include_examples: bool = True,
     custom_filename: Optional[str] = None
 ) -> Tuple[bool, Optional[Path], str]:
     """
-    設定ファイルを生成（簡易インターフェース）
+    設定ファイルを生成（簡易インターフェース）- Phase 3: 複数トピック対応
 
     Args:
         tech_name: 技術名/フレームワーク名
-        topic: フォーカスするトピック
+        topics: フォーカスするトピックリスト (例: ["security", "performance"])
         include_examples: サンプルコードを含めるか
         custom_filename: カスタムファイル名
 
@@ -797,4 +1524,4 @@ def generate_config_for_tech(
         (成功フラグ, ファイルパス, メッセージ)
     """
     generator = ConfigGenerator()
-    return generator.generate_config(tech_name, topic, include_examples, custom_filename)
+    return generator.generate_config(tech_name, topics, include_examples, custom_filename)

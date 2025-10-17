@@ -144,7 +144,7 @@ class LogCollector:
 
     def _log_reader_thread(self, job_id: str, pipe, source: str):
         """
-        ログ読み取りスレッド
+        ログ読み取りスレッド（バイトモード対応）
 
         Args:
             job_id: ジョブID
@@ -154,12 +154,20 @@ class LogCollector:
         stop_flag = self.stop_flags.get(job_id)
 
         try:
-            for line in iter(pipe.readline, ''):
+            # バイトモードで読み込み（Windows cp932エラー対策）
+            for line_bytes in iter(pipe.readline, b''):
                 # 停止フラグチェック
                 if stop_flag and stop_flag.is_set():
                     break
 
-                if line:
+                if line_bytes:
+                    # UTF-8でデコード（エラーは?に置換）
+                    try:
+                        line = line_bytes.decode('utf-8', errors='replace')
+                    except Exception as decode_error:
+                        # デコード失敗時はlatin1でフォールバック
+                        line = line_bytes.decode('latin1', errors='replace')
+
                     line = line.rstrip('\n\r')
                     if line:  # 空行はスキップ
                         # ログエントリー作成

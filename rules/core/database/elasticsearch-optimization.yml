@@ -114,23 +114,23 @@ rule:
 
   patterns:
     java:
-      - pattern: 'wildcardQuery\([^,]+,\s*["\'][\*\?]'
+      - pattern: "wildcardQuery\\([^,]+,\\s*[\"'][\\*\\?]"
         context: 'Java Elasticsearch wildcard query with leading wildcard'
-      - pattern: 'query:\s*["\'][*?][^"\']*["\']'
+      - pattern: "query:\\s*[\"'][*?][^\"']*[\"']"
         context: 'Java query with leading wildcard'
 
     python:
-      - pattern: 'wildcard["\']:\s*{.*["\']value["\']\s*:\s*["\'][*?]'
+      - pattern: "wildcard[\"']:\\s*{.*[\"']value[\"']\\s*:\\s*[\"'][*?]"
         context: 'Python Elasticsearch wildcard query'
-      - pattern: '[\'"]\*\w+["\']|["\']?\w+["\']'
+      - pattern: "[\"']\\*\\w+[\"']|[\"']?\\w+[\"']"
         context: 'Python wildcard pattern'
 
     javascript:
-      - pattern: 'wildcard:\s*{.*value:\s*["\'][*?]'
+      - pattern: "wildcard:\s*{.*value:\s*[\"'][*?]"
         context: 'JavaScript Elasticsearch wildcard query'
 
     csharp:
-      - pattern: 'Wildcard\([^,]+,\s*["\'][*?]'
+      - pattern: "Wildcard\([^,]+,\s*[\"'][*?]"
         context: 'C# NEST wildcard query with leading wildcard'
 
   fixes:

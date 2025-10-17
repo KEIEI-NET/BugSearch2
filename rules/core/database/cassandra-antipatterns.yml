@@ -167,7 +167,7 @@ rule:
         context: 'CQL WHERE with IN clause'
 
     python:
-      - pattern: 'IN\s*\(\s*[\'"]\s*,\s*[\'"]\s*,.*\)'
+      - pattern: "IN\\s*\\(\\s*[\"']\\s*,\\s*[\"']\\s*,.*\\)"
         context: 'Python CQL IN clause with multiple values'
 
     javascript:

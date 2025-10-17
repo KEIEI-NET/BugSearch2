@@ -581,7 +581,7 @@ rule:
         context: 'C# parameter type (verify matches column type)'
 
     sql:
-      - pattern: 'WHERE.*=\\s*[\'"][0-9]+[\'"]'
+      - pattern: "WHERE.*=\\\\s*[\"'][0-9]+[\"']"
         context: 'SQL comparing number column with string'
 
   fixes:

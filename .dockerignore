@@ -1,0 +1,83 @@
+# BugSearch2 .dockerignore
+# Dockerイメージに含めないファイル/ディレクトリ
+
+# Git関連
+.git
+.gitignore
+.gitattributes
+
+# Python関連
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# 環境変数（コンテナ起動時にマウント）
+.env
+.env.*
+
+# 仮想環境
+venv/
+env/
+ENV/
+.venv
+
+# IDE設定
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS固有
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 生成ファイル（コンテナ実行時に生成）
+*.jsonl
+*.pkl
+reports/
+.cache/
+backups/
+.batch_progress_parallel.json
+.gui_app_state.json
+
+# ログファイル
+*.log
+logs/
+
+# テスト関連
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ドキュメント（オプション: 含める場合はコメントアウト）
+# doc/
+# *.md
+
+# Dockerファイル自身
+Dockerfile
+Dockerfile.*
+docker-compose*.yml
+.dockerignore
+
+# CI/CD設定
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# 一時ファイル
+tmp/
+temp/
+*.tmp
+
+# プロジェクト固有の除外
+# 大きなサンプルファイルがあれば追加
+# test/samples/large_files/

@@ -1,0 +1,11 @@
+
+tech_stack:
+  frontend:
+    - react
+  language:
+    - typescript
+    - javascript
+
+analysis:
+  topics: ['security', 'performance', 'database', 'solid', 'best-practices', 'error-handling', 'testing', 'accessibility', 'optimization', 'architecture', 'patterns', 'styling', 'state-management', 'routing', 'deployment', 'monitoring', 'api-integration', 'data-validation']
+  include_examples: True

@@ -1,0 +1,139 @@
+# BugSearch2 Docker Compose Configuration
+# Version: v1.0.0
+# 全OS対応（Windows/Mac/Linux）
+
+services:
+  # CLI版サービス
+  bugsearch-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bugsearch2-cli
+    image: bugsearch2:cli-v4.11.2
+
+    # 環境変数（.envファイルから読み込み）
+    env_file:
+      - .env
+
+    # ボリュームマウント
+    volumes:
+      # ソースコード（読み取り専用推奨）
+      - ./src:/app/src:ro
+
+      # 生成ファイル（読み書き）
+      - ./reports:/app/reports
+      - ./.cache:/app/.cache
+      - ./backups:/app/backups
+
+      # プロジェクト設定
+      - ./.bugsearch.yml:/app/.bugsearch.yml
+      - ./.bugsearch:/app/.bugsearch
+
+      # インデックスファイル
+      - ./.advice_index.jsonl:/app/.advice_index.jsonl
+      - ./.advice_tfidf.pkl:/app/.advice_tfidf.pkl
+      - ./.advice_vectorizer.pkl:/app/.advice_vectorizer.pkl
+
+    # ネットワーク設定
+    networks:
+      - bugsearch-network
+
+    # ワーキングディレクトリ
+    working_dir: /app
+
+    # デフォルトコマンド（上書き可能）
+    command: /bin/bash
+
+    # インタラクティブモード
+    stdin_open: true
+    tty: true
+
+    # リソース制限（オプション）
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 512M
+
+  # GUI版サービス
+  bugsearch-gui:
+    build:
+      context: .
+      dockerfile: Dockerfile.gui
+    container_name: bugsearch2-gui
+    image: bugsearch2:gui-v4.11.2
+
+    # 環境変数
+    env_file:
+      - .env
+    environment:
+      # X11ディスプレイ設定（ホストOSに応じて調整）
+      - DISPLAY=${DISPLAY:-:0}
+
+    # ボリュームマウント
+    volumes:
+      # ソースコード
+      - ./src:/app/src:ro
+
+      # 生成ファイル
+      - ./reports:/app/reports
+      - ./.cache:/app/.cache
+      - ./backups:/app/backups
+
+      # プロジェクト設定
+      - ./.bugsearch.yml:/app/.bugsearch.yml
+      - ./.bugsearch:/app/.bugsearch
+
+      # GUI状態ファイル
+      - ./.gui_app_state.json:/app/.gui_app_state.json
+
+      # インデックスファイル
+      - ./.advice_index.jsonl:/app/.advice_index.jsonl
+      - ./.advice_tfidf.pkl:/app/.advice_tfidf.pkl
+      - ./.advice_vectorizer.pkl:/app/.advice_vectorizer.pkl
+
+      # X11ソケット（Linux/Mac）
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+
+      # Xauthority（認証用）
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority:ro
+
+    # ネットワーク設定
+    networks:
+      - bugsearch-network
+
+    # X11接続のためのセキュリティ設定緩和（開発環境のみ、Linuxのみ）
+    # 本番環境では適切な認証を設定してください
+    # network_mode: host  # Linuxユーザーのみコメント解除（Mac/Windowsは使用不可）
+    # 注意: network_modeを有効にする場合は、上記の「networks:」セクションをコメントアウトしてください
+
+    # デバイスアクセス（GPU対応する場合）
+    # devices:
+    #   - /dev/dri:/dev/dri
+
+    # インタラクティブモード
+    stdin_open: true
+    tty: true
+
+    # リソース制限
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 512M
+
+networks:
+  bugsearch-network:
+    driver: bridge
+
+# 名前付きボリューム（オプション: 永続化が必要な場合）
+# volumes:
+#   bugsearch-reports:
+#   bugsearch-cache:
+#   bugsearch-backups:

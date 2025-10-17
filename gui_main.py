@@ -2,7 +2,7 @@
 BugSearch2 GUI Control Center
 メインGUIアプリケーション
 
-バージョン: v4.11.5 (GUI v1.0.0)
+バージョン: v4.11.6 (GUI v1.0.1)
 """
 
 import os
@@ -16,7 +16,7 @@ from typing import Optional
 try:
     import customtkinter as ctk
 except ImportError:
-    print("✗ CustomTkinter not installed")
+    print("[ERROR] CustomTkinter not installed")
     print("  Install with: pip install customtkinter")
     sys.exit(1)
 
@@ -42,7 +42,7 @@ class BugSearchGUI(ctk.CTk):
         super().__init__()
 
         # ウィンドウ設定
-        self.title("BugSearch2 Control Center v4.11.5")
+        self.title("BugSearch2 Control Center v4.11.6")
 
         # プロジェクトルートディレクトリ
         self.project_root = Path.cwd()
@@ -176,6 +176,15 @@ class BugSearchGUI(ctk.CTk):
             command=self.show_help
         )
         help_btn.pack(side="left", padx=2)
+
+        # Aboutメニュー
+        about_btn = ctk.CTkButton(
+            menu_frame,
+            text="ℹ️ About",
+            width=80,
+            command=self.show_about
+        )
+        about_btn.pack(side="left", padx=2)
 
     def setup_launch_tab(self):
         """起動タブ - 詳細オプション対応"""
@@ -364,25 +373,31 @@ class BugSearchGUI(ctk.CTk):
             )
             tech_label.pack(anchor="w", padx=10, pady=(5, 2))
 
-            # メジャーな技術スタックのチェックボックス
+            # メジャーな技術スタックのチェックボックス（全22種類）
             parent.tech_checkboxes = {}
             tech_stacks = [
                 ("react", "React - JavaScriptライブラリ"),
                 ("angular", "Angular - TypeScriptフレームワーク"),
                 ("vue", "Vue.js - プログレッシブフレームワーク"),
+                ("svelte", "Svelte - コンパイル時フレームワーク"),
                 ("express", "Express - Node.jsバックエンド"),
-                ("django", "Django - Pythonフレームワーク"),
-                ("spring-boot", "Spring Boot - Javaフレームワーク"),
-                ("flask", "Flask - Python軽量フレームワーク"),
                 ("nestjs", "NestJS - TypeScriptバックエンド"),
-                ("cassandra", "Cassandra - 分散NoSQLデータベース"),
+                ("fastapi", "FastAPI - 高速Pythonフレームワーク"),
+                ("django", "Django - Pythonフレームワーク"),
+                ("flask", "Flask - Python軽量フレームワーク"),
+                ("spring-boot", "Spring Boot - Javaフレームワーク"),
                 ("elasticsearch", "Elasticsearch - 検索エンジン"),
+                ("cassandra", "Cassandra - 分散NoSQLデータベース"),
+                ("mongodb", "MongoDB - ドキュメント指向NoSQL"),
                 ("redis", "Redis - インメモリKVS"),
                 ("mysql", "MySQL - リレーショナルデータベース"),
                 ("postgresql", "PostgreSQL - オープンソースデータベース"),
                 ("sqlserver", "SQL Server - Microsoft データベース"),
                 ("oracle", "Oracle Database - エンタープライズデータベース"),
-                ("memcached", "Memcached - 分散メモリキャッシュ")
+                ("memcached", "Memcached - 分散メモリキャッシュ"),
+                ("typescript", "TypeScript - 型付きJavaScript"),
+                ("nodejs", "Node.js - JavaScriptランタイム"),
+                ("go", "Go - Googleシステム言語")
             ]
 
             tech_grid = ctk.CTkFrame(parent)
@@ -416,11 +431,13 @@ class BugSearchGUI(ctk.CTk):
             )
             topic_label.pack(anchor="w", padx=10, pady=(10, 2))
 
-            # トピックのチェックボックス（大幅に増量）
+            # トピックのチェックボックス（全18種類）
             parent.topic_checkboxes = {}
             topics = [
                 ("security", "セキュリティ - 脆弱性・認証・XSS・SQLi・CSRF対策"),
                 ("performance", "パフォーマンス - 速度最適化・メモリ管理・レンダリング"),
+                ("database", "データベース - DB設計・クエリ最適化・トランザクション"),
+                ("solid", "SOLID原則 - 単一責任・開放閉鎖・依存性逆転等"),
                 ("best-practices", "ベストプラクティス - コーディング規約・設計パターン"),
                 ("error-handling", "エラーハンドリング - 例外処理・リトライ・ロギング"),
                 ("testing", "テスト - ユニットテスト・統合テスト・E2Eテスト"),
@@ -493,19 +510,25 @@ class BugSearchGUI(ctk.CTk):
                 ("react", "React - JavaScriptライブラリ"),
                 ("angular", "Angular - TypeScriptフレームワーク"),
                 ("vue", "Vue.js - プログレッシブフレームワーク"),
+                ("svelte", "Svelte - コンパイル時フレームワーク"),
                 ("express", "Express - Node.jsバックエンド"),
-                ("django", "Django - Pythonフレームワーク"),
-                ("spring-boot", "Spring Boot - Javaフレームワーク"),
-                ("flask", "Flask - Python軽量フレームワーク"),
                 ("nestjs", "NestJS - TypeScriptバックエンド"),
-                ("cassandra", "Cassandra - 分散NoSQLデータベース"),
+                ("fastapi", "FastAPI - 高速Pythonフレームワーク"),
+                ("django", "Django - Pythonフレームワーク"),
+                ("flask", "Flask - Python軽量フレームワーク"),
+                ("spring-boot", "Spring Boot - Javaフレームワーク"),
                 ("elasticsearch", "Elasticsearch - 検索エンジン"),
+                ("cassandra", "Cassandra - 分散NoSQLデータベース"),
+                ("mongodb", "MongoDB - ドキュメント指向NoSQL"),
                 ("redis", "Redis - インメモリKVS"),
                 ("mysql", "MySQL - リレーショナルデータベース"),
                 ("postgresql", "PostgreSQL - オープンソースデータベース"),
                 ("sqlserver", "SQL Server - Microsoft データベース"),
                 ("oracle", "Oracle Database - エンタープライズデータベース"),
-                ("memcached", "Memcached - 分散メモリキャッシュ")
+                ("memcached", "Memcached - 分散メモリキャッシュ"),
+                ("typescript", "TypeScript - 型付きJavaScript"),
+                ("nodejs", "Node.js - JavaScriptランタイム"),
+                ("go", "Go - Googleシステム言語")
             ]
 
             parent.project_checkboxes = {}
@@ -540,11 +563,13 @@ class BugSearchGUI(ctk.CTk):
             )
             topic_label.pack(anchor="w", padx=10, pady=(10, 2))
 
-            # トピックのチェックボックス（Context7と完全同期 - 16種類）
+            # トピックのチェックボックス（Context7と完全同期 - 全18種類）
             parent.topic_checkboxes = {}
             topics = [
                 ("security", "セキュリティ - 脆弱性・認証・XSS・SQLi・CSRF対策"),
                 ("performance", "パフォーマンス - 速度最適化・メモリ管理・レンダリング"),
+                ("database", "データベース - DB設計・クエリ最適化・トランザクション"),
+                ("solid", "SOLID原則 - 単一責任・開放閉鎖・依存性逆転等"),
                 ("best-practices", "ベストプラクティス - コーディング規約・設計パターン"),
                 ("error-handling", "エラーハンドリング - 例外処理・リトライ・ロギング"),
                 ("testing", "テスト - ユニットテスト・統合テスト・E2Eテスト"),
@@ -617,12 +642,45 @@ class BugSearchGUI(ctk.CTk):
         entry.pack(side="left", fill="x", expand=True)
 
     def setup_monitor_tab(self):
-        """監視タブ - Phase 4.2完全実装"""
+        """監視タブ - Phase 4.2完全実装 + システムモニター追加"""
         tab = self.tabview.tab("📊 監視")
 
-        # 上部: 実行中ジョブ
+        # 上部: システムモニター（全体CPU・メモリ）
+        system_frame = ctk.CTkFrame(tab)
+        system_frame.pack(fill="x", padx=10, pady=10)
+
+        system_label = ctk.CTkLabel(
+            system_frame,
+            text="システムリソース",
+            font=ctk.CTkFont(size=14, weight="bold")
+        )
+        system_label.pack(anchor="w", padx=10, pady=(10, 5))
+
+        # システムモニター表示
+        system_info_frame = ctk.CTkFrame(system_frame)
+        system_info_frame.pack(fill="x", padx=10, pady=(0, 10))
+
+        # システム全体のCPU使用率
+        self.system_cpu_label = ctk.CTkLabel(
+            system_info_frame,
+            text="CPU: 0.0%",
+            font=ctk.CTkFont(size=12),
+            anchor="w"
+        )
+        self.system_cpu_label.pack(side="left", padx=10, pady=5)
+
+        # システム全体のメモリ使用率
+        self.system_memory_label = ctk.CTkLabel(
+            system_info_frame,
+            text="メモリ: 0.0 MB / 0.0 MB (0.0%)",
+            font=ctk.CTkFont(size=12),
+            anchor="w"
+        )
+        self.system_memory_label.pack(side="left", padx=20, pady=5)
+
+        # 中部: 実行中ジョブ
         jobs_frame = ctk.CTkFrame(tab)
-        jobs_frame.pack(fill="both", expand=True, padx=10, pady=10)
+        jobs_frame.pack(fill="both", expand=True, padx=10, pady=(0, 10))
 
         jobs_label = ctk.CTkLabel(
             jobs_frame,
@@ -1101,7 +1159,7 @@ class BugSearchGUI(ctk.CTk):
             self.show_error(f"ジョブ起動失敗: {str(e)}")
 
     def create_job_card(self, job_id: str, name: str):
-        """ジョブカードを作成 - Phase 4.2新機能"""
+        """ジョブカードを作成 - Phase 4.2新機能 + CPU/メモリ表示追加"""
         # ジョブフレーム
         job_frame = ctk.CTkFrame(self.jobs_list)
         job_frame.pack(fill="x", padx=5, pady=5)
@@ -1151,6 +1209,34 @@ class BugSearchGUI(ctk.CTk):
         )
         stop_btn.pack(side="left", padx=2)
 
+        # CPU・メモリ表示
+        resource_frame = ctk.CTkFrame(job_frame)
+        resource_frame.pack(fill="x", padx=10, pady=(0, 5))
+
+        cpu_label = ctk.CTkLabel(
+            resource_frame,
+            text="CPU: 0.0%",
+            font=ctk.CTkFont(size=10),
+            anchor="w"
+        )
+        cpu_label.pack(side="left", padx=5)
+
+        memory_label = ctk.CTkLabel(
+            resource_frame,
+            text="メモリ: 0.0 MB",
+            font=ctk.CTkFont(size=10),
+            anchor="w"
+        )
+        memory_label.pack(side="left", padx=10)
+
+        threads_label = ctk.CTkLabel(
+            resource_frame,
+            text="スレッド: 0",
+            font=ctk.CTkFont(size=10),
+            anchor="w"
+        )
+        threads_label.pack(side="left", padx=10)
+
         # プログレスウィジェット
         progress_widget = ProgressWidget(job_frame)
         progress_widget.pack(fill="x", padx=10, pady=(0, 10))
@@ -1164,6 +1250,11 @@ class BugSearchGUI(ctk.CTk):
                 'pause': pause_btn,
                 'resume': resume_btn,
                 'stop': stop_btn
+            },
+            'resource_labels': {  # CPU/メモリラベル
+                'cpu': cpu_label,
+                'memory': memory_label,
+                'threads': threads_label
             }
         }
 
@@ -1466,7 +1557,29 @@ class BugSearchGUI(ctk.CTk):
     def show_help(self):
         """ヘルプ表示 - 改善版（モーダルダイアログ）"""
         help_text = """
-BugSearch2 GUI Control Center v4.11.5
+BugSearch2 GUI Control Center v4.11.6
+
+【システム能力】
+📋 対応言語: 9言語
+   Delphi, Go, C++, C, C#, Java, JavaScript,
+   TypeScript, PHP, Python
+
+🔧 技術スタック: 22種類
+   フロントエンド: React, Angular, Vue, Svelte
+   バックエンド: Express, NestJS, FastAPI, Django,
+                Flask, Spring Boot
+   データベース: Elasticsearch, Cassandra, MongoDB,
+                Redis, MySQL, PostgreSQL, SQL Server,
+                Oracle, Memcached
+   その他: TypeScript, Node.js, Go
+
+🎯 分析トピック: 18種類
+   Security, Performance, Database, SOLID,
+   Best Practices, Error Handling, Testing,
+   Accessibility, Optimization, Architecture,
+   Patterns, Styling, State Management,
+   Routing, Deployment, Monitoring,
+   API Integration, Data Validation
 
 【使用方法】
 1. 設定タブでソースフォルダを設定
@@ -1489,8 +1602,8 @@ BugSearch2 GUI Control Center v4.11.5
         # モーダルダイアログ作成
         dialog = ctk.CTkToplevel(self)
         dialog.title("ヘルプ - BugSearch2")
-        dialog.geometry("500x450")
-        dialog.resizable(False, False)
+        dialog.geometry("650x700")
+        dialog.resizable(True, True)
 
         # メインウィンドウの中央に配置
         dialog.transient(self)
@@ -1499,14 +1612,145 @@ BugSearch2 GUI Control Center v4.11.5
         dialog.grab_set()
 
         # メインウィンドウの中央に配置計算
-        x = self.winfo_x() + (self.winfo_width() // 2) - (500 // 2)
-        y = self.winfo_y() + (self.winfo_height() // 2) - (450 // 2)
+        x = self.winfo_x() + (self.winfo_width() // 2) - (650 // 2)
+        y = self.winfo_y() + (self.winfo_height() // 2) - (700 // 2)
         dialog.geometry(f"+{x}+{y}")
 
         # テキストボックス
         text = ctk.CTkTextbox(dialog, wrap="word")
         text.pack(fill="both", expand=True, padx=10, pady=(10, 5))
         text.insert("1.0", help_text)
+        text.configure(state="disabled")
+
+        # 閉じるボタン
+        close_btn = ctk.CTkButton(
+            dialog,
+            text="閉じる",
+            command=dialog.destroy,
+            width=120,
+            height=36
+        )
+        close_btn.pack(pady=(5, 10))
+
+    def show_about(self):
+        """Aboutダイアログ表示 - システム詳細情報"""
+        about_text = """
+BugSearch2 - AI-Powered Code Analysis System
+Version: v4.11.6 (GUI v1.0.1)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 対応プログラミング言語 (9言語)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Delphi        (.pas, .dfm, .dpr)
+  2. Go            (.go)
+  3. C++           (.cpp, .hpp, .cc, .hh, .cxx, .hxx)
+  4. C             (.c, .h)
+  5. C#            (.cs, .csx)
+  6. Java          (.java)
+  7. JavaScript    (.js, .mjs, .cjs, .jsx)
+  8. TypeScript    (.ts, .tsx)
+  9. PHP           (.php)
+  10. Python       (.py)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 技術スタック対応 (22種類)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【フロントエンド】
+  • React          JavaScriptライブラリ
+  • Angular        TypeScriptフレームワーク
+  • Vue.js         プログレッシブフレームワーク
+  • Svelte         コンパイル時フレームワーク
+
+【バックエンド】
+  • Express        Node.jsバックエンド
+  • NestJS         TypeScriptバックエンド
+  • FastAPI        高速Pythonフレームワーク
+  • Django         Pythonフレームワーク
+  • Flask          Python軽量フレームワーク
+  • Spring Boot    Javaフレームワーク
+
+【データベース】
+  • Elasticsearch  検索エンジン
+  • Cassandra      分散NoSQLデータベース
+  • MongoDB        ドキュメント指向NoSQL
+  • Redis          インメモリKVS
+  • MySQL          リレーショナルデータベース
+  • PostgreSQL     オープンソースデータベース
+  • SQL Server     Microsoft データベース
+  • Oracle         エンタープライズデータベース
+  • Memcached      分散メモリキャッシュ
+
+【その他】
+  • TypeScript     型付きJavaScript
+  • Node.js        JavaScriptランタイム
+  • Go             Googleシステム言語
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 分析トピック (18種類)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  • Security            セキュリティ・脆弱性検出
+  • Performance         パフォーマンス最適化
+  • Database            DB設計・クエリ最適化
+  • SOLID               SOLID原則チェック
+  • Best Practices      ベストプラクティス
+  • Error Handling      エラーハンドリング
+  • Testing             テストコード品質
+  • Accessibility       アクセシビリティ
+  • Optimization        最適化
+  • Architecture        アーキテクチャ設計
+  • Patterns            デザインパターン
+  • Styling             スタイリング
+  • State Management    状態管理
+  • Routing             ルーティング
+  • Deployment          デプロイ
+  • Monitoring          モニタリング
+  • API Integration     API連携
+  • Data Validation     データ検証
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 主要機能
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✓ 静的コード解析 + AI分析の統合
+  ✓ Context7による最新技術情報取得
+  ✓ マルチAIプロバイダー対応
+  ✓ リアルタイムログストリーミング
+  ✓ 30,000+ファイル対応の大規模解析
+  ✓ カスタムルール管理システム
+  ✓ チーム機能・進捗トラッキング
+  ✓ 改善コード自動適用機能
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+© 2025 BugSearch2 Project
+Repository: https://github.com/KEIEI-NET/BugSearch2
+License: MIT License
+        """
+
+        # モーダルダイアログ作成
+        dialog = ctk.CTkToplevel(self)
+        dialog.title("About - BugSearch2")
+        dialog.geometry("700x800")
+        dialog.resizable(True, True)
+
+        # メインウィンドウの中央に配置
+        dialog.transient(self)
+
+        # モーダル化（他の操作をブロック）
+        dialog.grab_set()
+
+        # メインウィンドウの中央に配置計算
+        x = self.winfo_x() + (self.winfo_width() // 2) - (700 // 2)
+        y = self.winfo_y() + (self.winfo_height() // 2) - (800 // 2)
+        dialog.geometry(f"+{x}+{y}")
+
+        # テキストボックス
+        text = ctk.CTkTextbox(dialog, wrap="word", font=ctk.CTkFont(family="Consolas", size=11))
+        text.pack(fill="both", expand=True, padx=10, pady=(10, 5))
+        text.insert("1.0", about_text)
         text.configure(state="disabled")
 
         # 閉じるボタン
@@ -1621,7 +1865,26 @@ BugSearch2 GUI Control Center v4.11.5
             timestamp_label.pack(side="right", padx=5)
 
     def periodic_update(self):
-        """定期更新 - Phase 4.2完全実装"""
+        """定期更新 - Phase 4.2完全実装 + システムモニター更新"""
+        # システムモニター更新
+        try:
+            import psutil
+            # システム全体のCPU使用率
+            cpu_percent = psutil.cpu_percent(interval=0.1)
+            self.system_cpu_label.configure(text=f"CPU: {cpu_percent:.1f}%")
+
+            # システム全体のメモリ使用率
+            memory = psutil.virtual_memory()
+            memory_used_mb = memory.used / (1024 * 1024)
+            memory_total_mb = memory.total / (1024 * 1024)
+            memory_percent = memory.percent
+            self.system_memory_label.configure(
+                text=f"メモリ: {memory_used_mb:.0f} MB / {memory_total_mb:.0f} MB ({memory_percent:.1f}%)"
+            )
+        except Exception as e:
+            # psutilインポートエラーの場合はスキップ
+            pass
+
         # キュー状態更新
         status = self.queue_manager.get_status()
         self.update_status(
@@ -1632,7 +1895,7 @@ BugSearch2 GUI Control Center v4.11.5
         # 各ジョブのログと進捗を更新
         for job_id in list(self.job_widgets.keys()):
             # ログを取得して表示
-            logs = self.log_collector.get_logs(job_id, limit=50)  # 最新50件
+            logs = self.log_collector.get_logs(job_id, max_lines=50)  # 最新50件
             if logs:
                 # LogViewerに追加
                 self.log_viewer.add_logs(logs)
@@ -1648,6 +1911,22 @@ BugSearch2 GUI Control Center v4.11.5
                 if proc_info:
                     status_text = f"{proc_info['status']}"
                     widget.set_progress(progress, status_text)
+
+                    # CPU・メモリ情報を更新
+                    if 'resource_labels' in self.job_widgets[job_id]:
+                        labels = self.job_widgets[job_id]['resource_labels']
+
+                        # CPU使用率
+                        if 'cpu_percent' in proc_info:
+                            labels['cpu'].configure(text=f"CPU: {proc_info['cpu_percent']:.1f}%")
+
+                        # メモリ使用量
+                        if 'memory_mb' in proc_info:
+                            labels['memory'].configure(text=f"メモリ: {proc_info['memory_mb']:.1f} MB")
+
+                        # スレッド数
+                        if 'num_threads' in proc_info:
+                            labels['threads'].configure(text=f"スレッド: {proc_info['num_threads']}")
 
             # 完了したジョブをチェック
             proc_status = self.process_manager.check_process_status(job_id)
@@ -1767,7 +2046,7 @@ BugSearch2 GUI Control Center v4.11.5
                 # エクスポート用メタデータ追加
                 export_data = {
                     'exported_at': datetime.datetime.now().isoformat(),
-                    'version': 'v4.11.5',
+                    'version': 'v4.11.6',
                     'state': state_data
                 }
 
