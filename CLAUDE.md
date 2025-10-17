@@ -2,13 +2,45 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.11.7 (Phase 8.5完了: レポート生成重大バグ修正)*
-*最終更新: 2025年10月14日 19:30 JST*
+*バージョン: v4.11.8 (YAMLルール構文エラー修正 + Angular/C++誤検出修正)*
+*最終更新: 2025年10月17日 22:43 JST*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
-静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.11.7でPhase 8.5レポート生成の重大バグを修正し、ソースコード読み込みエラー0件、レポートフォーマット完全準拠を達成しました。CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
+静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.11.8でC++/Angular誤検出の重大バグ修正とYAML構文エラーを完全解決し、全データベースルールが正常動作を達成しました。CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
+
+### 🆕 v4.11.8: YAMLルール構文エラー修正 + Angular/C++誤検出修正 (@perfect品質達成)
+
+**重大バグ修正 (2025年10月17日):**
+- ✅ **C++/Angular誤検出バグ修正** - memory-leak.ymlのパターン修正
+  - 問題: `'new\s+\w+(?!\s*\([^)]*\))(?!.*delete)'` がAngularの`new HttpClient()`をC++メモリリークと誤検出
+  - 解決: C++ポインタ特化パターン `'\w+\s*\*\s*\w+\s*=\s*new\s+\w+'` に変更
+  - 効果: TypeScript/Angularコードで誤検出ゼロ、C++のみ正確に検出
+
+- ✅ **6ファイル13+パターンのYAML構文エラー修正**
+  - elasticsearch-optimization.yml (4パターン)
+  - mysql-optimization.yml (3パターン)
+  - oracle-antipatterns.yml (1パターン)
+  - postgresql-best-practices.yml (1パターン)
+  - redis-best-practices.yml (3パターン)
+  - sqlserver-performance.yml (1パターン)
+  - 原因: YAMLシングルクォートはバックスラッシュエスケープ非対応
+  - 解決: ダブルクォート変換+バックスラッシュ2重化
+
+- ✅ **言語別検出パターン大幅強化** (29パターン追加)
+  - C#: 6パターン (Stream/DB接続/Timer/Task.Run等のリソースリーク)
+  - Go: 8パターン (ファイル/DB/HTTP/context/Mutex等のリーク)
+  - JS/TS/Angular: 15パターン (Observable/Timer/EventListener/Observer等のリーク)
+
+- ✅ **複数ドキュメントYAMLサポート** - yaml.safe_load_all()実装
+  - cassandra-antipatterns.yml (9ルール)
+  - elasticsearch-optimization.yml (10ルール)
+
+**テスト結果:**
+- ✅ test/test_multiple_rules.py: 8/8成功 (100%合格)
+- ✅ 全YAMLファイル正常ロード確認
+- ✅ Git commit: 3be9753c (main branch)
 
 ### 🆕 Phase 8.5完了: レポート生成重大バグ修正 (@perfect品質達成)
 
@@ -1306,11 +1338,12 @@ pip install --only-binary :all: scikit-learn
 
 ---
 
-*最終更新: 2025年10月14日 19:30 JST*
-*バージョン: v4.11.7 (Phase 8.5完了: レポート生成重大バグ修正)*
+*最終更新: 2025年10月17日 22:43 JST*
+*バージョン: v4.11.8 (YAMLルール構文エラー修正 + Angular/C++誤検出修正)*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v4.11.8 (2025年10月17日): **YAMLルール構文エラー修正 + Angular/C++誤検出修正 (@perfect品質達成)** - C++/Angular誤検出重大バグ修正(memory-leak.yml: new演算子パターンをC++ポインタ特化に変更)、6ファイル13+パターンYAML構文エラー修正(シングルクォート→ダブルクォート変換、バックスラッシュ2重化)、言語別検出パターン大幅強化(C# 6パターン、Go 8パターン、JS/TS/Angular 15パターン追加)、複数ドキュメントYAMLサポート(yaml.safe_load_all実装)、全テスト8/8成功(test/test_multiple_rules.py 100%合格)
 - v4.11.7 (2025年10月14日): **Phase 8.5完了 (@perfect品質達成)** - レポート生成重大バグ修正、ソースコード読み込みエラー完全解決(265件→0件、codex_review_severity.py インデックスtextフィールド優先使用)、レポートフォーマット仕様準拠(doc/AI_IMPROVED_CODE_GENERATOR.md完全準拠、見出しレベル・生成日時・セクション名修正)、Windows cp932エンコーディング対応(core/integration_test_engine.py subprocess UTF-8デコード)、ルールID検証改善(core/rule_engine.py 数字付きID許可)、タイムアウト設定延長(batch_config.json 60秒→360秒、大規模AI分析対応)、1件テスト合格(フォーマット仕様準拠確認、ソースコード読み込みエラー0件)
 - v4.11.6 (2025年10月14日): **Phase 8.4完了 (@perfect品質達成)** - チェックボックスデフォルト設定システム実装、IntegrationTestConfigManager(core/integration_test_config.py +375行、シングルトンパターン)、config/integration_test_defaults.yml(マスター設定ファイル)、GUI設定タブ拡張(デフォルト設定UI +4機能: 表示/編集/リフレッシュ/リセット)、CUIオプション引数デフォルト対応(core/integration_test_engine.py main関数修正)、全15テスト合格(test/test_integration_test_config.py 294行、15/15成功)、ドキュメント更新(CLAUDE.md/TECHNICAL.md/GUI_USER_GUIDE.md Phase 8.4セクション追加)
 - v4.11.2 (2025年10月14日): **Phase 4.4完了 (@perfect品質達成)** - ファイルメニュー完全実装(show_file_menu +158行、CTkToplevel使用)、5メニュー項目実装(open_config_file/open_reports_folder/export_state/import_state/quit_app)、クロスプラットフォーム対応(Windows/macOS/Linux、os.startfile/subprocess統合)、状態エクスポート/インポート(JSON形式、メタデータ付き、バリデーション機能)、テスト追加(test/test_phase4_4_file_menu.py 198行、6/6成功、100%成功率、1スキップ)、合計2ファイル変更 +356行、ドキュメント更新(CHANGELOG.md/CLAUDE.md)
