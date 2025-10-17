@@ -11,8 +11,9 @@
 ## 📚 ドキュメント
 
 ### 🚀 クイックスタート
-- 🎯 **NEW**: [GUI起動ガイド](GUI_STARTUP.md) - ワンクリックでGUI起動（Windows/macOS/Linux対応）
-- 🖥️ [GUI使用ガイド](doc/guides/GUI_USER_GUIDE.md) - GUI Control Center v1.0.0完全マニュアル
+- ⚠️ **GUI機能について**: 現在開発中です。GUIは動作保証できません。CLIモードをご利用ください。
+  - ~~🎯 [GUI起動ガイド](GUI_STARTUP.md) - 開発中（動作保証なし）~~
+  - ~~🖥️ [GUI使用ガイド](doc/guides/GUI_USER_GUIDE.md) - 開発中（動作保証なし）~~
 - [Claude.ai コンテキスト](CLAUDE.md) - Claude CLIで開発する際の重要情報
 - 🖥️ [複数PC環境セットアップ](QUICK_START_MULTI_PC.md) - Dropbox同期で他のPCでも作業継続（5分）
 - 📖 [複数PC環境詳細ガイド](SETUP_GUIDE_MULTI_PC.md) - キャッシュ共有・トラブルシューティング
@@ -165,11 +166,13 @@
 
 ---
 
-## 🎉 バージョン4.11.0の新機能 - GUI Control Center v1.0.0実装
+## ⚠️ バージョン4.11.0の新機能 - GUI Control Center v1.0.0実装（開発中・動作保証なし）
 
-### 🖥️ GUI Control Center v1.0.0（2025年10月13日）
+> **重要な注意**: GUI機能は現在開発中です。動作保証できません。本番環境ではCLIモードをご利用ください。
 
-1. **CustomTkinterモダンUI**
+### 🖥️ GUI Control Center v1.0.0（2025年10月13日）- 開発中
+
+1. **CustomTkinterモダンUI**（開発中）
    - 4タブ構成: 起動/監視/設定/履歴
    - ダーク/ライトテーマ対応
    - Windows/Mac/Linux完全対応

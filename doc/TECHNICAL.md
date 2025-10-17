@@ -818,9 +818,11 @@ def launch_integration_test(self):
 4. ✅ テストプロジェクトディレクトリが正常に作成されたか
 5. ✅ 改善コード適用がdry-runで正常に実行されたか
 
-### v4.11.0 GUI Control Center v1.0.0の新機能（2025年10月13日実装）
+### ⚠️ v4.11.0 GUI Control Center v1.0.0の新機能（2025年10月13日実装）- 開発中・動作保証なし
 
-- ✅ **GUI Control Center** (`gui_main.py` - 348行)
+> **重要な注意**: GUI機能は現在開発中です。動作保証できません。本番環境ではCLIモードをご利用ください。
+
+- ✅ **GUI Control Center** (`gui_main.py` - 348行) - 開発中
   - CustomTkinter 5.2.0+によるモダンUI
   - 4タブ構成（起動/監視/設定/履歴）
   - ダーク/ライトテーマ対応

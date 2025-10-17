@@ -113,9 +113,11 @@ python -m core.integration_test_engine --project-type angular --topics security
 
 **詳細ドキュメント**: `doc/guides/GUI_USER_GUIDE.md`（v1.0.4）、`doc/TECHNICAL.md`（v4.11.6）
 
-### 🆕 GUI Control Center v1.0.4 - Phase 8.4対応
+### ⚠️ GUI Control Center v1.0.4 - Phase 8.4対応（開発中・動作保証なし）
 
-**GUI起動方法:**
+> **重要な注意**: GUI機能は現在開発中です。動作保証できません。本番環境ではCLIモードをご利用ください。
+
+**GUI起動方法:**（開発中）
 
 **🎯 簡単起動（推奨）:**
 ```bash
