@@ -42,15 +42,17 @@ class RuleEngine:
         loaded_count = 0
         for rule_file in rule_files:
             try:
-                rule = self._load_rule_file(rule_file)
-                if rule:
-                    self.rules.append(rule)
+                # 複数ルール対応: 1ファイルに複数のルール定義が含まれる場合に対応
+                rules = self._load_rule_file(rule_file)
+                if rules:
+                    for rule in rules:
+                        self.rules.append(rule)
 
-                    # 言語ごとにインデックス化
-                    for language in rule.patterns.keys():
-                        self.rules_by_language[language].append(rule)
+                        # 言語ごとにインデックス化
+                        for language in rule.patterns.keys():
+                            self.rules_by_language[language].append(rule)
 
-                    loaded_count += 1
+                        loaded_count += 1
 
             except Exception as e:
                 print(f"[WARNING] ルール読み込みエラー: {rule_file}")
@@ -58,52 +60,63 @@ class RuleEngine:
 
         print(f"[OK] {loaded_count}個のルールを読み込みました")
 
-    def _load_rule_file(self, rule_file: Path) -> Optional[Rule]:
-        """YAMLルールファイルを読み込んでRuleオブジェクトに変換"""
+    def _load_rule_file(self, rule_file: Path) -> List[Rule]:
+        """
+        YAMLルールファイルを読み込んでRuleオブジェクトのリストに変換
+
+        複数ルール対応: YAMLファイルに複数のルール定義（`---`区切り）が
+        含まれる場合にも対応します。
+        """
+        rules = []
+
         with open(rule_file, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
+            # yaml.safe_load_all()で複数ドキュメントに対応
+            for data in yaml.safe_load_all(f):
+                if not data or 'rule' not in data:
+                    continue
 
-        if not data or 'rule' not in data:
-            return None
+                rule_data = data['rule']
 
-        rule_data = data['rule']
+                # パターンの変換
+                patterns = {}
+                if 'patterns' in rule_data:
+                    for language, pattern_list in rule_data['patterns'].items():
+                        patterns[language] = [
+                            RulePattern(
+                                pattern=p['pattern'],
+                                context=p['context'],
+                                language=language
+                            )
+                            for p in pattern_list
+                        ]
 
-        # パターンの変換
-        patterns = {}
-        if 'patterns' in rule_data:
-            for language, pattern_list in rule_data['patterns'].items():
-                patterns[language] = [
-                    RulePattern(
-                        pattern=p['pattern'],
-                        context=p['context'],
-                        language=language
-                    )
-                    for p in pattern_list
-                ]
+                # コンテキスト修飾子の変換
+                context_modifiers = []
+                if 'context_modifiers' in rule_data:
+                    for modifier_data in rule_data['context_modifiers']:
+                        context_modifiers.append(ContextModifier(
+                            condition=modifier_data['condition'],
+                            severity_adjustment=modifier_data['action']['severity_adjustment'],
+                            note=modifier_data['action'].get('note')
+                        ))
 
-        # コンテキスト修飾子の変換
-        context_modifiers = []
-        if 'context_modifiers' in rule_data:
-            for modifier_data in rule_data['context_modifiers']:
-                context_modifiers.append(ContextModifier(
-                    condition=modifier_data['condition'],
-                    severity_adjustment=modifier_data['action']['severity_adjustment'],
-                    note=modifier_data['action'].get('note')
-                ))
+                # 修正方法の取得
+                fixes = rule_data.get('fixes', {})
 
-        # 修正方法の取得
-        fixes = rule_data.get('fixes', {})
+                rule = Rule(
+                    id=rule_data['id'],
+                    category=rule_data['category'],
+                    name=rule_data['name'],
+                    description=rule_data['description'],
+                    base_severity=rule_data['base_severity'],
+                    patterns=patterns,
+                    context_modifiers=context_modifiers,
+                    fixes=fixes
+                )
 
-        return Rule(
-            id=rule_data['id'],
-            category=rule_data['category'],
-            name=rule_data['name'],
-            description=rule_data['description'],
-            base_severity=rule_data['base_severity'],
-            patterns=patterns,
-            context_modifiers=context_modifiers,
-            fixes=fixes
-        )
+                rules.append(rule)
+
+        return rules
 
     def analyze_code(
         self,
