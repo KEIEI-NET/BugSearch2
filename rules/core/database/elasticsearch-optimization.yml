@@ -31,7 +31,7 @@ rule:
         context: 'Java SearchRequest from parameter'
 
     python:
-      - pattern: '[\'"](from|From)[\'"]\s*:\s*\d{5,}'
+      - pattern: "[\"'](from|From)[\"']\\s*:\\s*\\d{5,}"
         context: 'Python Elasticsearch deep pagination'
       - pattern: 'from_=\d{5,}'
         context: 'Python elasticsearch-py from parameter'

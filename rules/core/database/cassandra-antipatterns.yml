@@ -28,27 +28,27 @@ rule:
         context: 'CQL SELECT * query'
       - pattern: 'SELECT\s+\*\s+FROM\s+[a-zA-Z_][a-zA-Z0-9_]*'
         context: 'CQL SELECT * query (uppercase)'
-      - pattern: 'session\.execute\(["\']select\s+\*\s+from'
+      - pattern: "session\\.execute\\([\"']select\\s+\\*\\s+from"
         context: 'Cassandra session execute with SELECT *'
 
     python:
-      - pattern: 'execute\(["\']select\s+\*\s+from'
+      - pattern: "execute\\([\"']select\\s+\\*\\s+from"
         context: 'Python Cassandra driver SELECT *'
-      - pattern: 'session\.execute\(["\']SELECT\s+\*\s+FROM'
+      - pattern: "session\\.execute\\([\"']SELECT\\s+\\*\\s+FROM"
         context: 'Python Cassandra driver SELECT * (uppercase)'
 
     javascript:
-      - pattern: 'client\.execute\(["\']select\s+\*\s+from'
+      - pattern: "client\\.execute\\([\"']select\\s+\\*\\s+from"
         context: 'Node.js Cassandra driver SELECT *'
 
     csharp:
-      - pattern: 'session\.Execute\(["\']select\s+\*\s+from'
+      - pattern: "session\\.Execute\\([\"']select\\s+\\*\\s+from"
         context: 'C# Cassandra driver SELECT *'
-      - pattern: 'QueryAsync\(["\']SELECT\s+\*\s+FROM'
+      - pattern: "QueryAsync\\([\"']SELECT\\s+\\*\\s+FROM"
         context: 'C# Cassandra async query SELECT *'
 
     go:
-      - pattern: 'session\.Query\(["\']select\s+\*\s+from'
+      - pattern: "session\\.Query\\([\"']select\\s+\\*\\s+from"
         context: 'Go Cassandra driver SELECT *'
 
   fixes:
@@ -102,7 +102,7 @@ rule:
         context: 'Cassandra session execute with ALLOW FILTERING'
 
     python:
-      - pattern: 'execute\(.*["\'].*ALLOW\s+FILTERING'
+      - pattern: "execute\\(.*[\"'].*ALLOW\\s+FILTERING"
         context: 'Python Cassandra driver ALLOW FILTERING'
 
     javascript:
@@ -280,7 +280,7 @@ rule:
         context: 'Java BatchStatement without UNLOGGED'
 
     python:
-      - pattern: 'execute\(["\']BEGIN\s+BATCH'
+      - pattern: "execute\\([\"']BEGIN\\s+BATCH"
         context: 'Python CQL BATCH statement'
       - pattern: 'BatchStatement\('
         context: 'Python BatchStatement'
@@ -340,7 +340,7 @@ rule:
         context: 'CQL UPDATE with TTL'
 
     python:
-      - pattern: 'execute\(["\']DELETE\s+FROM'
+      - pattern: "execute\\([\"']DELETE\\s+FROM"
         context: 'Python CQL DELETE'
       - pattern: 'TTL\s+\d+'
         context: 'Python CQL with TTL'

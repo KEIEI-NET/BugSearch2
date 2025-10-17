@@ -7,17 +7,32 @@ rule:
   description: "メモリリークの可能性: 動的メモリ確保後のdelete/free忘れ、リソースの未解放"
   base_severity: 10
 
-  # 言語ごとの検出パターン
+  # 言語ごとの検出パターン（C++とTypeScript/Angularを厳密に区別）
   patterns:
     cpp:
-      - pattern: 'new\s+\w+(?!\s*\([^)]*\))(?!.*delete)'
-        context: "new without corresponding delete"
+      # C++ポインタ型のnewのみ検出（型名*形式でTypeScript/Angularと区別）
+      - pattern: '\w+\s*\*\s*\w+\s*=\s*new\s+\w+(?!.*delete\s+\w+)'
+        context: "C++ pointer new without corresponding delete"
 
-      - pattern: 'malloc\s*\([^)]*\)(?!.*free)'
+      # C++配列new（new Type[]形式）
+      - pattern: 'new\s+\w+\s*\[.*?\](?!.*delete\s*\[\s*\])'
+        context: "C++ array new without delete[]"
+
+      - pattern: 'malloc\s*\([^)]*\)(?!.*free\s*\()'
         context: "malloc without free"
 
-      - pattern: 'fopen\s*\([^)]*\)(?!.*fclose)'
+      - pattern: 'calloc\s*\([^)]*\)(?!.*free\s*\()'
+        context: "calloc without free"
+
+      - pattern: 'realloc\s*\([^)]*\)(?!.*free\s*\()'
+        context: "realloc without free"
+
+      - pattern: 'fopen\s*\([^)]*\)(?!.*fclose\s*\()'
         context: "fopen without fclose"
+
+      # ファイルハンドル（C++）
+      - pattern: 'std::fstream|std::ifstream|std::ofstream(?!.*\.close\(\))'
+        context: "C++ file stream without close()"
 
     c:
       - pattern: 'malloc\s*\([^)]*\)(?!.*free)'
@@ -33,22 +48,142 @@ rule:
       - pattern: 'IDisposable(?!.*using\s*\(|.*Dispose\(\))'
         context: "IDisposable not in using statement"
 
-      - pattern: 'new\s+(FileStream|StreamReader|StreamWriter|SqlConnection|DbContext)(?!.*using)'
-        context: "Resource not in using statement"
+      - pattern: 'new\s+(FileStream|StreamReader|StreamWriter|SqlConnection|SqlCommand|DbContext|HttpClient|WebClient)(?!.*using\s*\(|.*Dispose\(\))'
+        context: "Resource not in using statement or Dispose()"
+
+      # 非同期Streamリソース
+      - pattern: 'new\s+(MemoryStream|NetworkStream|CryptoStream)(?!.*using|.*await.*DisposeAsync)'
+        context: "Stream resource without proper disposal"
+
+      # データベース接続
+      - pattern: '\.Open\(\)(?!.*\.Close\(\)|.*using)'
+        context: "Database connection Open() without Close() or using"
+
+      # Timerリソース
+      - pattern: 'new\s+System\.Threading\.Timer(?!.*\.Dispose\(\))'
+        context: "Timer without Dispose()"
+
+      # CancellationTokenSource
+      - pattern: 'new\s+CancellationTokenSource(?!.*\.Dispose\(\)|.*using)'
+        context: "CancellationTokenSource without Dispose()"
+
+      # Task並列処理
+      - pattern: 'Task\.Run\s*\([^)]*\)(?!.*await|.*\.Wait\(\)|.*\.Result)'
+        context: "Fire-and-forget Task without await (potential unhandled exception)"
+
+      # Semaphore/Mutex
+      - pattern: 'new\s+(Semaphore|SemaphoreSlim|Mutex)(?!.*\.Dispose\(\)|.*using)'
+        context: "Semaphore/Mutex without Dispose()"
 
     javascript:
       - pattern: 'setInterval\s*\([^)]*\)(?!.*clearInterval)'
         context: "setInterval without clearInterval"
 
+      - pattern: 'setTimeout\s*\([^)]*\)(?!.*clearTimeout)'
+        context: "setTimeout without clearTimeout"
+
       - pattern: 'addEventListener\s*\([^)]*\)(?!.*removeEventListener)'
         context: "addEventListener without removeEventListener"
+
+      # WebSocket/EventSource リソースリーク
+      - pattern: 'new\s+WebSocket\s*\([^)]*\)(?!.*\.close\(\))'
+        context: "WebSocket without close()"
+
+      - pattern: 'new\s+EventSource\s*\([^)]*\)(?!.*\.close\(\))'
+        context: "EventSource without close()"
+
+      # IndexedDB コネクションリーク
+      - pattern: 'indexedDB\.open\s*\([^)]*\)(?!.*\.close\(\))'
+        context: "IndexedDB connection without close()"
+
+      # IntersectionObserver/MutationObserver リソースリーク
+      - pattern: 'new\s+IntersectionObserver\s*\([^)]*\)(?!.*\.disconnect\(\))'
+        context: "IntersectionObserver without disconnect()"
+
+      - pattern: 'new\s+MutationObserver\s*\([^)]*\)(?!.*\.disconnect\(\))'
+        context: "MutationObserver without disconnect()"
 
     typescript:
       - pattern: 'setInterval\s*\([^)]*\)(?!.*clearInterval)'
         context: "setInterval without clearInterval"
 
+      - pattern: 'setTimeout\s*\([^)]*\)(?!.*clearTimeout)'
+        context: "setTimeout without clearTimeout"
+
       - pattern: '\.subscribe\s*\([^)]*\)(?!.*unsubscribe|.*pipe\(.*takeUntil)'
         context: "RxJS subscribe without unsubscribe/takeUntil"
+
+      # Angular HttpClient（async pipeまたはtakeUntilなしのsubscribe）
+      - pattern: 'http\.(get|post|put|delete|patch)\s*\([^)]*\)\.subscribe\s*\((?!.*\|[\s]*async|.*pipe\(.*takeUntil)'
+        context: "Angular HttpClient subscribe without async pipe or takeUntil"
+
+      # WebSocket/EventSource リソースリーク
+      - pattern: 'new\s+WebSocket\s*\([^)]*\)(?!.*\.close\(\))'
+        context: "WebSocket without close()"
+
+      - pattern: 'new\s+EventSource\s*\([^)]*\)(?!.*\.close\(\))'
+        context: "EventSource without close()"
+
+      # IndexedDB コネクションリーク
+      - pattern: 'indexedDB\.open\s*\([^)]*\)(?!.*\.close\(\))'
+        context: "IndexedDB connection without close()"
+
+      # Angular Renderer2 listen（unlisten関数未呼び出し）
+      - pattern: 'renderer2?\.listen\s*\([^)]*\)(?!.*unlisten|.*\(\s*\))'
+        context: "Angular Renderer2 listen without calling unlisten function"
+
+      # Observable.create/new Observable（teardown logic不足）
+      - pattern: 'new\s+Observable\s*\([^)]*\)(?!.*return\s+(?:function|\(\s*\)\s*=>))'
+        context: "Custom Observable without teardown/cleanup function"
+
+      - pattern: 'Observable\.create\s*\([^)]*\)(?!.*return\s+(?:function|\(\s*\)\s*=>))'
+        context: "Observable.create without teardown function"
+
+    delphi:
+      - pattern: '\.Create\s*(?:\([^)]*\))?(?!.*\.Free(?:AndNil)?)'
+        context: "Object creation without Free"
+
+      - pattern: 'GetMem\s*\([^)]*\)(?!.*FreeMem)'
+        context: "GetMem without FreeMem"
+
+      - pattern: 'TStringList\.Create(?!.*\.Free)'
+        context: "TStringList creation without Free"
+
+      - pattern: 'AssignFile\s*\([^)]*\)(?!.*CloseFile)'
+        context: "File handle without CloseFile"
+
+    go:
+      # ファイルハンドル（defer file.Close()忘れ）
+      - pattern: 'os\.(Open|Create|OpenFile)\s*\([^)]*\)(?!.*defer.*\.Close\(\))'
+        context: "Go file handle without defer Close()"
+
+      # データベースクエリ（defer rows.Close()忘れ）
+      - pattern: '(db|tx)\.(Query|QueryRow|QueryContext|QueryRowContext)\s*\([^)]*\)(?!.*defer.*rows?\.Close\(\))'
+        context: "SQL query without defer rows.Close()"
+
+      # HTTPレスポンスボディ（defer Body.Close()忘れ）
+      - pattern: 'http\.(Get|Post|Head|Do)\s*\([^)]*\)(?!.*defer.*\.Body\.Close\(\))'
+        context: "HTTP response without defer Body.Close()"
+
+      # io.ReadCloser/WriteCloser（defer Close()忘れ）
+      - pattern: 'io\.(ReadCloser|WriteCloser|ReadWriteCloser)\s*\([^)]*\)(?!.*defer.*\.Close\(\))'
+        context: "io.Closer without defer Close()"
+
+      # net.Conn（defer Close()忘れ）
+      - pattern: 'net\.(Dial|DialTimeout|Listen)\s*\([^)]*\)(?!.*defer.*\.Close\(\))'
+        context: "net.Conn without defer Close()"
+
+      # time.Timer/Ticker（defer Stop()忘れ）
+      - pattern: 'time\.(NewTimer|NewTicker)\s*\([^)]*\)(?!.*defer.*\.Stop\(\))'
+        context: "Timer/Ticker without defer Stop()"
+
+      # context.WithCancel/WithTimeout（defer cancel()忘れ）
+      - pattern: 'context\.With(Cancel|Timeout|Deadline)\s*\([^)]*\)(?!.*defer.*cancel\(\))'
+        context: "context.With* without defer cancel()"
+
+      # sync.Mutex/RWMutex（defer Unlock()忘れ）
+      - pattern: '(mu|mutex|lock)\.(Lock|RLock)\s*\(\s*\)(?!.*defer.*\.(Unlock|RUnlock)\(\))'
+        context: "Mutex Lock without defer Unlock()"
 
   # 技術スタックによる深刻度調整
   context_modifiers:
@@ -109,6 +244,13 @@ rule:
       - "RxJS: .pipe(takeUntil(this.destroy$)) で自動unsubscribe"
       - "Angular: ngOnDestroy() で subscription.unsubscribe()"
       - "React: useEffect(() => { return () => cleanup(); })"
+
+    go:
+      - "defer パターンを徹底: file, _ := os.Open(\"file.txt\"); defer file.Close()"
+      - "エラーハンドリングと組み合わせる: if err != nil { return err }; defer cleanup()"
+      - "context.WithCancel/WithTimeout は必ず defer cancel() する"
+      - "sync.Mutex は defer mu.Unlock() で確実にアンロック"
+      - "複数リソースは逆順でdefer（最後に開いたものから閉じる）"
 
   # 追加情報
   references:
