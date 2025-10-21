@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="CLI Workflow v5.0.0">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル -->
+        <mxCell id="title" value="CLI Workflow v5.0.0&#xa;BugSearch2 - 3段階パイプライン: Index → Advise → Query" style="text;html=1;fontSize=18;fontStyle=1;fontColor=#000000;align=center" vertex="1" parent="1">
+          <mxGeometry x="700" y="30" width="800" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- メタデータ -->
+        <mxCell id="metadata" value="作成日: 2025年10月21日 | 作成者: KEIEI.NET INC. | v5.0.0" style="text;html=1;fontSize=10;fontColor=#666666;align=center" vertex="1" parent="1">
+          <mxGeometry x="700" y="90" width="800" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 開始ノード -->
+        <mxCell id="start" value="開始" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="975" y="130" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- コマンド選択分岐 -->
+        <mxCell id="command_branch" value="コマンド選択?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1000" y="250" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- INDEX コマンドフロー -->
+        <mxCell id="index_command" value="1. Index コマンド" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_cli" value="python codex_review_severity.py index" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;strokeWidth=2;fontSize=12;fontStyle=0;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_params" value="パラメータ指定&#xa;&#xa;• --src-dir ./src (デフォルト)&#xa;• --max-file-mb 4&#xa;• --worker-count 4&#xa;• --exclude-langs delphi java&#xa;&#xa;短い形式:&#xa;-mfmb 4 -wc 4 -excl delphi java" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="200" y="640" width="280" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_static" value="静的解析実行&#xa;&#xa;• ファイル収集 (9言語対応)&#xa;• タグ生成 (56種類)&#xa;  - lang-* (9種類)&#xa;  - tech-* (22種類)&#xa;  - topic-* (18種類)&#xa;• 言語自動検出&#xa;• エンコーディング検出&#xa;  (UTF-8/Shift_JIS/CP932)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="200" y="880" width="280" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_output" value=".advice_index.jsonl 作成&#xa;&#xa;• 検索可能インデックス&#xa;• ファイルパス、言語、タグ&#xa;• ソースコード (text)&#xa;• メタデータ&#xa;&#xa;TF-IDFベクトル生成:&#xa;• .advice_index.pkl&#xa;• セマンティック検索用" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="200" y="1160" width="280" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_complete" value="完了" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="1420" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ADVISE コマンドフロー -->
+        <mxCell id="advise_command" value="2. Advise コマンド" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="860" y="400" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_cli" value="python codex_review_severity.py advise" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;strokeWidth=2;fontSize=12;fontStyle=0;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="860" y="520" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_params" value="パラメータ指定&#xa;&#xa;⚠️ デフォルト: 80ファイルのみ!&#xa;&#xa;• --all (全ファイル対象)&#xa;• --out reports/analysis&#xa;• --complete-report&#xa;• --max-complete-items 100&#xa;&#xa;短い形式:&#xa;-call --out reports/analysis" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="860" y="640" width="280" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_tech_detect" value="技術スタック検出&#xa;&#xa;• .bugsearch.yml 読み込み&#xa;• タグベース自動検出&#xa;  (tech-* タグ活用)&#xa;• 22技術スタック対応&#xa;• 深刻度調整準備" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="860" y="920" width="280" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_rules" value="ルールエンジン実行&#xa;&#xa;64 YAMLルール適用:&#xa;• コアルール (rules/core/)&#xa;• 技術スタック別 (config/)&#xa;• カスタムルール&#xa;  (.bugsearch/rules/)&#xa;&#xa;優先度: カスタム &gt; Config &gt; コア&#xa;&#xa;深刻度スコアリング (1-10):&#xa;• 技術スタック考慮調整&#xa;• 例: Elasticsearch使用時&#xa;  N+1問題 10→7" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="860" y="1120" width="280" height="300" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_ai" value="AI分析実行&#xa;&#xa;モデル選択 (深刻度別):&#xa;• 15以上: Opus 4.1 / GPT-4o&#xa;• 10-14: Sonnet 4.5 / GPT-4o&#xa;• 5-9: Sonnet 4.1 / GPT-4o-mini&#xa;&#xa;マルチプロバイダー:&#xa;• Claude (Primary)&#xa;• OpenAI (Fallback)&#xa;&#xa;MD5キャッシュ利用:&#xa;• .cache/analysis/&#xa;• ファイル内容ハッシュ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="860" y="1460" width="280" height="300" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_report" value="レポート生成&#xa;&#xa;Markdown形式:&#xa;• ファイルパス&#xa;• 深刻度スコア&#xa;• AI分析結果&#xa;• AI改善コード (100点満点)&#xa;  - 修正前コード&#xa;  - 修正後コード&#xa;  - 詳細な説明&#xa;  - セキュリティ考慮" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="860" y="1800" width="280" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_output" value="reports/*.md 出力" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="860" y="2080" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_complete" value="完了" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="860" y="2200" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- QUERY コマンドフロー -->
+        <mxCell id="query_command" value="3. Query コマンド" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1520" y="400" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_cli" value="python codex_review_severity.py query" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;strokeWidth=2;fontSize=12;fontStyle=0;fontFamily=Courier New" vertex="1" parent="1">
+          <mxGeometry x="1520" y="520" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_input" value="検索クエリ指定&#xa;&#xa;• キーワード入力&#xa;• 正規表現サポート&#xa;• タグフィルタ&#xa;  (lang-*, tech-*, topic-*)&#xa;• 複数条件組み合わせ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1520" y="640" width="280" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_search" value="TF-IDFベクトル検索&#xa;&#xa;• セマンティック検索&#xa;• コサイン類似度計算&#xa;• スコアリング&#xa;• 結果ランキング&#xa;• 上位N件取得" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1520" y="860" width="280" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_result" value="結果表示&#xa;&#xa;• ファイルパス&#xa;• スコア (類似度)&#xa;• コードスニペット&#xa;• タグ情報&#xa;• メタデータ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1520" y="1080" width="280" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_complete" value="完了" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1520" y="1280" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- 接続線 -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="start" target="command_branch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Index 分岐 -->
+        <mxCell id="flow_index" value="Index" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1976d2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="command_branch" target="index_command">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_index2" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_command" target="index_cli">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index3" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_cli" target="index_params">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index4" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_params" target="index_static">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index5" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_static" target="index_output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index6" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_output" target="index_complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Advise 分岐 -->
+        <mxCell id="flow_advise" value="Advise" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;fontColor=#7b1fa2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="command_branch" target="advise_command">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise2" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_command" target="advise_cli">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise3" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_cli" target="advise_params">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise4" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_params" target="advise_tech_detect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise5" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_tech_detect" target="advise_rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise6" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_rules" target="advise_ai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise7" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_ai" target="advise_report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise8" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_report" target="advise_output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise9" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_output" target="advise_complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Query 分岐 -->
+        <mxCell id="flow_query" value="Query" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontColor=#f57f17;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="command_branch" target="query_command">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1660" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_query2" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_command" target="query_cli">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_query3" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_cli" target="query_input">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_query4" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_input" target="query_search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_query5" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_search" target="query_result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_query6" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_result" target="query_complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

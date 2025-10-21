@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Tech Stack Detection v5.0.0">
+    <mxGraphModel dx="2200" dy="1300" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル -->
+        <mxCell id="title" value="Tech Stack Detection v5.0.0&#xa;BugSearch2 - 自動検出システム: 56種類のタグ生成" style="text;html=1;fontSize=18;fontStyle=1;fontColor=#000000;align=center" vertex="1" parent="1">
+          <mxGeometry x="700" y="30" width="700" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- メタデータ -->
+        <mxCell id="metadata" value="作成日: 2025年10月21日 | 作成者: KEIEI.NET INC. | v5.0.0" style="text;html=1;fontSize=10;fontColor=#666666;align=center" vertex="1" parent="1">
+          <mxGeometry x="700" y="90" width="700" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 開始ノード -->
+        <mxCell id="start" value="開始: Index実行" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="875" y="130" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ファイル読み込み -->
+        <mxCell id="read_files" value="ファイル読み込み&#xa;&#xa;ソースファイル収集:&#xa;• 9言語対応&#xa;• 自動エンコーディング検出&#xa;  (UTF-8/Shift_JIS/CP932/EUC-JP)&#xa;• 最大ファイルサイズ: 4MB" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="250" width="250" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- 言語検出 -->
+        <mxCell id="lang_detect" value="言語検出&#xa;&#xa;拡張子ベース判定:&#xa;&#xa;• .ts / .tsx → lang-typescript&#xa;• .cs → lang-csharp&#xa;• .java → lang-java&#xa;• .js / .jsx → lang-javascript&#xa;• .py → lang-python&#xa;• .php → lang-php&#xa;• .go → lang-go&#xa;• .cpp / .cc / .cxx → lang-cpp&#xa;• .pas → lang-delphi&#xa;&#xa;合計9種類の言語タグ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="470" width="250" height="320" as="geometry" />
+        </mxCell>
+
+        <!-- コード内容解析 -->
+        <mxCell id="code_analysis" value="コード内容解析&#xa;&#xa;正規表現パターンマッチング&#xa;キーワード検出" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="875" y="830" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- 技術検出分岐 -->
+        <mxCell id="tech_branch" value="技術スタック&#xa;検出?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="970" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- フロントエンド検出 -->
+        <mxCell id="frontend_detect" value="フロントエンド検出 (4種類)&#xa;&#xa;React:&#xa;• import React → tech-react&#xa;• from &apos;react&apos;&#xa;• React.Component&#xa;• useState, useEffect&#xa;&#xa;Angular:&#xa;• @angular/core → tech-angular&#xa;• @Component&#xa;• @Injectable&#xa;&#xa;Vue:&#xa;• import Vue → tech-vue&#xa;• from &apos;vue&apos;&#xa;• Vue.component&#xa;&#xa;Svelte:&#xa;• import Svelte → tech-svelte&#xa;• from &apos;svelte&apos;" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="200" y="1120" width="280" height="340" as="geometry" />
+        </mxCell>
+
+        <!-- バックエンド検出 -->
+        <mxCell id="backend_detect" value="バックエンド検出 (6種類)&#xa;&#xa;Express:&#xa;• express() → tech-express&#xa;• app.listen&#xa;&#xa;NestJS:&#xa;• @nestjs/common → tech-nestjs&#xa;• @Module, @Controller&#xa;&#xa;FastAPI:&#xa;• FastAPI → tech-fastapi&#xa;• from fastapi&#xa;&#xa;Django:&#xa;• Django → tech-django&#xa;• from django&#xa;&#xa;Flask:&#xa;• Flask → tech-flask&#xa;• from flask&#xa;&#xa;Spring Boot:&#xa;• @SpringBootApplication → tech-springboot&#xa;• @RestController" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="540" y="1120" width="280" height="420" as="geometry" />
+        </mxCell>
+
+        <!-- データベース検出 -->
+        <mxCell id="database_detect" value="データベース検出 (9種類)&#xa;&#xa;Elasticsearch:&#xa;• Elasticsearch → tech-elasticsearch&#xa;• @elastic/elasticsearch&#xa;&#xa;Cassandra:&#xa;• Cassandra → tech-cassandra&#xa;• cassandra-driver&#xa;&#xa;MongoDB:&#xa;• MongoDB → tech-mongodb&#xa;• mongoose&#xa;&#xa;Redis:&#xa;• Redis → tech-redis&#xa;• ioredis&#xa;&#xa;MySQL:&#xa;• MySQL → tech-mysql&#xa;• mysql2&#xa;&#xa;PostgreSQL:&#xa;• PostgreSQL → tech-postgresql&#xa;• pg&#xa;&#xa;SQL Server:&#xa;• SqlConnection → tech-sqlserver&#xa;• mssql&#xa;&#xa;Oracle:&#xa;• OracleConnection → tech-oracle&#xa;• oracledb&#xa;&#xa;Memcached:&#xa;• Memcached → tech-memcached" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="880" y="1120" width="280" height="540" as="geometry" />
+        </mxCell>
+
+        <!-- その他技術検出 -->
+        <mxCell id="other_detect" value="その他技術検出 (3種類)&#xa;&#xa;TypeScript:&#xa;• .ts拡張子 → tech-typescript&#xa;• interface, type&#xa;• &lt;T&gt; ジェネリクス&#xa;&#xa;Node.js:&#xa;• require() → tech-nodejs&#xa;• process.env&#xa;• __dirname&#xa;&#xa;Go:&#xa;• package main → tech-go&#xa;• func main()&#xa;• import (" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1220" y="1120" width="280" height="300" as="geometry" />
+        </mxCell>
+
+        <!-- トピック検出 -->
+        <mxCell id="topic_detect" value="トピック検出 (18種類)&#xa;&#xa;コード内容から自動検出:&#xa;&#xa;• topic-security&#xa;  (SQL injection, XSS, CSRF等)&#xa;• topic-performance&#xa;  (N+1, SELECT *, メモリリーク等)&#xa;• topic-database&#xa;  (クエリ最適化、インデックス等)&#xa;• topic-solid&#xa;  (単一責任、依存性逆転等)&#xa;• topic-best-practices&#xa;  (コーディング規約等)&#xa;• topic-error-handling&#xa;  (例外処理、ログ等)&#xa;• topic-testing&#xa;  (ユニットテスト、統合テスト等)&#xa;• topic-accessibility&#xa;  (WAI-ARIA、キーボード操作等)&#xa;• topic-optimization&#xa;  (パフォーマンス最適化等)&#xa;• topic-architecture&#xa;  (設計パターン、構造等)&#xa;• topic-patterns&#xa;  (デザインパターン等)&#xa;• topic-styling&#xa;  (CSS、UI/UX等)&#xa;• topic-state-management&#xa;  (Redux、Vuex等)&#xa;• topic-routing&#xa;  (ルーティング設定等)&#xa;• topic-deployment&#xa;  (デプロイ、CI/CD等)&#xa;• topic-monitoring&#xa;  (ログ、メトリクス等)&#xa;• topic-api-integration&#xa;  (REST、GraphQL等)&#xa;• topic-data-validation&#xa;  (バリデーション、型チェック等)" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="875" y="1700" width="250" height="680" as="geometry" />
+        </mxCell>
+
+        <!-- タグ生成 -->
+        <mxCell id="tag_generation" value="タグ生成&#xa;&#xa;56種類のタグ:&#xa;&#xa;言語タグ (9種類):&#xa;• lang-*&#xa;&#xa;技術スタックタグ (22種類):&#xa;• tech-*&#xa;&#xa;トピックタグ (18種類):&#xa;• topic-*&#xa;&#xa;レガシータグ (6種類):&#xa;• money, print, uiux&#xa;• db, net, io&#xa;&#xa;言語固有タグ (4種類):&#xa;• go-concurrent&#xa;• cpp-memory&#xa;• php-web&#xa;• delphi-memory&#xa;&#xa;ファイルごとに&#xa;複数タグを付与" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="2420" width="250" height="440" as="geometry" />
+        </mxCell>
+
+        <!-- インデックス保存 -->
+        <mxCell id="save_index" value="インデックス保存&#xa;&#xa;.advice_index.jsonl:&#xa;&#xa;各行のJSON構造:&#xa;{&#xa;  &quot;path&quot;: &quot;src/file.ts&quot;,&#xa;  &quot;language&quot;: &quot;typescript&quot;,&#xa;  &quot;text&quot;: &quot;ソースコード&quot;,&#xa;  &quot;tags&quot;: [&#xa;    &quot;lang-typescript&quot;,&#xa;    &quot;tech-react&quot;,&#xa;    &quot;tech-typescript&quot;,&#xa;    &quot;topic-security&quot;,&#xa;    &quot;topic-performance&quot;&#xa;  ],&#xa;  &quot;metadata&quot;: { ... }&#xa;}&#xa;&#xa;タグ情報を含む" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="2900" width="250" height="380" as="geometry" />
+        </mxCell>
+
+        <!-- .bugsearch.yml 生成提案 -->
+        <mxCell id="config_suggest" value=".bugsearch.yml 生成提案&#xa;&#xa;検出された技術スタック:&#xa;&#xa;tech_stack:&#xa;  frontend:&#xa;    - type: React&#xa;  backend:&#xa;    - type: Node.js&#xa;      framework: Express&#xa;  databases:&#xa;    - type: PostgreSQL&#xa;    - type: Redis&#xa;&#xa;推奨設定を提案:&#xa;• 検出された技術に基づく&#xa;• 手動調整可能" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="3320" width="250" height="340" as="geometry" />
+        </mxCell>
+
+        <!-- 完了 -->
+        <mxCell id="complete" value="完了" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="875" y="3700" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- 接続線 -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="start" target="read_files">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow2" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="read_files" target="lang_detect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow3" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="lang_detect" target="code_analysis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow4" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="code_analysis" target="tech_branch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 技術検出分岐線 -->
+        <mxCell id="flow_frontend" value="Frontend" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1976d2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tech_branch" target="frontend_detect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="1020" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_backend" value="Backend" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;fontColor=#7b1fa2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tech_branch" target="backend_detect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="1020" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_database" value="Database" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontColor=#f57f17;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tech_branch" target="database_detect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_other" value="Other" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;fontColor=#424242;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tech_branch" target="other_detect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1360" y="1020" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 合流線 -->
+        <mxCell id="flow_merge1" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="frontend_detect" target="topic_detect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="1600" />
+              <mxPoint x="1000" y="1600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_merge2" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="backend_detect" target="topic_detect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="1600" />
+              <mxPoint x="1000" y="1600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_merge3" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="database_detect" target="topic_detect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="1670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_merge4" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="other_detect" target="topic_detect">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1360" y="1600" />
+              <mxPoint x="1000" y="1600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow5" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="topic_detect" target="tag_generation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow6" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tag_generation" target="save_index">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow7" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="save_index" target="config_suggest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow8" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="config_suggest" target="complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="GUI Production v1.0.0 Workflow">
+    <mxGraphModel dx="2000" dy="1200" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- タイトル -->
+        <mxCell id="title" value="GUI Production v1.0.0 Workflow&#xa;BugSearch2 v5.0.0 - 実測: 34,125ファイル @ 97 files/sec" style="text;html=1;fontSize=18;fontStyle=1;fontColor=#000000;align=center" vertex="1" parent="1">
+          <mxGeometry x="700" y="30" width="600" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- メタデータ -->
+        <mxCell id="metadata" value="作成日: 2025年10月21日 | 作成者: KEIEI.NET INC. | v5.0.0" style="text;html=1;fontSize=10;fontColor=#666666;align=center" vertex="1" parent="1">
+          <mxGeometry x="700" y="90" width="600" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 開始ノード -->
+        <mxCell id="start" value="開始" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="875" y="130" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- start_gui.bat/sh 実行 -->
+        <mxCell id="launch_script" value="start_gui.bat/sh 実行&#xa;&#xa;自動セットアップ:&#xa;• 仮想環境作成&#xa;• 依存パッケージインストール&#xa;• GUIアプリケーション起動" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="875" y="250" width="250" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- GUI起動 -->
+        <mxCell id="gui_start" value="GUI Production v1.0.0 起動&#xa;&#xa;CustomTkinter UI表示&#xa;• 3タブインターフェース&#xa;• リアルタイムログ表示&#xa;• 進捗トラッキング" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="875" y="430" width="250" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- 3タブUI分岐 -->
+        <mxCell id="tab_branch" value="タブ選択?" style="rhombus;whiteSpace=wrap;html=1;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="610" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Index タブフロー -->
+        <mxCell id="index_tab" value="Index タブ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="750" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_dir_select" value="ディレクトリ選択&#xa;&#xa;• ソースディレクトリ指定&#xa;• デフォルト: ./src" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="870" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_params" value="パラメータ設定&#xa;&#xa;• 最大ファイルサイズ: 4 MB&#xa;• ワーカー数: 4&#xa;• 除外言語指定" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="1010" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_execute" value="Index 実行ボタン&#xa;クリック" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="1170" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_preparing" value="準備中メッセージ表示&#xa;&#xa;📁 ファイルの読み込み&#xa;　 準備をしています..." style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="1290" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_realtime_log" value="リアルタイムログ表示&#xa;&#xa;500ファイルごとに進捗表示:&#xa;[INFO] Indexed 500 files...&#xa;[INFO] Indexed 1000 files...&#xa;&#xa;実測: 34,125ファイル処理" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="1430" width="250" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_progress" value="進捗トラッキング&#xa;&#xa;• ファイル数: 12,500 / 34,125&#xa;• 処理速度: 97 files/sec&#xa;• 残り時間: 3分15秒&#xa;&#xa;プログレスバー表示" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="1630" width="250" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_complete" value="完了メッセージ&#xa;&#xa;✅ Success!&#xa;34,125 files indexed&#xa;&#xa;処理時間: 5分51秒&#xa;平均速度: 97 files/sec" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="1830" width="250" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="index_output" value=".advice_index.jsonl 作成&#xa;&#xa;• 検索可能インデックス&#xa;• 56種類のタグ付与&#xa;• TF-IDFベクトル生成" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="300" y="2030" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Advise タブフロー -->
+        <mxCell id="advise_tab" value="Advise タブ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="875" y="750" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_output_select" value="出力先ディレクトリ選択&#xa;&#xa;• reports/ ディレクトリ&#xa;• カスタムパス指定可" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="870" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_options" value="AI分析オプション設定&#xa;&#xa;• --all フラグ (全ファイル)&#xa;• --complete-report&#xa;• AI Provider選択" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="1010" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_execute" value="Advise 実行ボタン&#xa;クリック" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="875" y="1170" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_ai_analysis" value="AI分析実行&#xa;&#xa;• Claude Sonnet 4.5&#xa;• OpenAI GPT-4o (fallback)&#xa;• MD5キャッシュ利用&#xa;• リアルタイムログ表示&#xa;&#xa;深刻度別モデル選択" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="1290" width="250" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="advise_output" value="reports/*.md 作成&#xa;&#xa;• Markdown形式レポート&#xa;• AI改善コード付き&#xa;• 深刻度スコア表示&#xa;• 修正前後のコード比較" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="875" y="1510" width="250" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Query タブフロー -->
+        <mxCell id="query_tab" value="Query タブ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1450" y="750" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_input" value="検索クエリ入力&#xa;&#xa;• キーワード入力&#xa;• 正規表現サポート&#xa;• タグフィルタ" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1450" y="870" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_execute" value="Query 実行ボタン&#xa;クリック" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1030" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_search" value="インデックス検索&#xa;&#xa;• TF-IDFベクトル検索&#xa;• セマンティック検索&#xa;• スコアリング&#xa;• 結果ランキング" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1150" width="250" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="query_result" value="結果表示&#xa;&#xa;• ファイルパス&#xa;• スコア&#xa;• コードスニペット&#xa;• タグ情報" style="rounded=0;whiteSpace=wrap;html=1;spacing=10;spacingTop=10;spacingLeft=10;spacingRight=10;spacingBottom=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1330" width="250" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- 接続線 -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="start" target="launch_script">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow2" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="launch_script" target="gui_start">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow3" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="gui_start" target="tab_branch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Index タブ分岐 -->
+        <mxCell id="flow_index" value="Index" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#1976d2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tab_branch" target="index_tab">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_index2" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_tab" target="index_dir_select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index3" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_dir_select" target="index_params">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index4" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_params" target="index_execute">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index5" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_execute" target="index_preparing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index6" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_preparing" target="index_realtime_log">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index7" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_realtime_log" target="index_progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index8" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_progress" target="index_complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_index9" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="index_complete" target="index_output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Advise タブ分岐 -->
+        <mxCell id="flow_advise" value="Advise" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;fontColor=#7b1fa2;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tab_branch" target="advise_tab">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise2" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_tab" target="advise_output_select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise3" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_output_select" target="advise_options">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise4" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_options" target="advise_execute">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise5" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_execute" target="advise_ai_analysis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_advise6" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="advise_ai_analysis" target="advise_output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Query タブ分岐 -->
+        <mxCell id="flow_query" value="Query" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;fontColor=#f57f17;fontSize=11;fontStyle=1;labelBackgroundColor=#FFFFFF;labelBorderColor=none;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="tab_branch" target="query_tab">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1575" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="flow_query2" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_tab" target="query_input">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_query3" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_input" target="query_execute">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_query4" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_execute" target="query_search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_query5" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="query_search" target="query_result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
