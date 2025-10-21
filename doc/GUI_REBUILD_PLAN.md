@@ -547,21 +547,101 @@ env['PYTHONUNBUFFERED'] = '1'
 text = f"処理中: {self.current_files:,} / {self.total_files:,} files ({percentage:.1f}%) - {speed:.0f} files/sec - 残り約{eta_str}"
 ```
 
-### 次のステップ（Phase 4以降）
+### 次のステップ（Phase 4以降）- 将来の拡張機能
 
-Phase 0-3で本番環境に十分な品質を達成したため、以下は任意の拡張機能となります：
+Phase 0-3で本番環境に十分な品質を達成したため、以下は**任意の拡張機能**となります：
 
-- **Phase 4**: ProcessManager統合（複数ジョブ並列実行）
-- **Phase 5**: QueueManager統合（ジョブキュー管理）
-- **Phase 6**: 完全版GUI統合（gui_main.pyとの統合）
+#### Phase 4: ProcessManager統合（複数ジョブ並列実行）
 
-**現状の推奨:**
-- **本番環境**: `gui_production.py` v1.0.0を使用
-- **上級者向け**: `gui_main.py`（フル機能版、開発中）
+**目的**: 複数のコマンド（Index + Advise等）を同時に実行可能にする
+
+**実装内容**:
+- `gui/process_manager.py` の統合
+- ジョブID管理システム
+- 複数ジョブの独立したログ表示
+- ジョブ制御（一時停止・再開・停止）
+
+**想定時間**: 4-5時間
+
+**前提条件**:
+- Phase 3の実装を理解していること
+- subprocess + threading の仕組みを理解していること
+- `gui/process_manager.py` (459行) のコードレビュー完了
+
+**参照ファイル**:
+- `gui/process_manager.py` - プロセス管理モジュール
+- `test/test_process_manager.py` - 単体テスト
+
+---
+
+#### Phase 5: QueueManager統合（ジョブキュー管理）
+
+**目的**: ジョブの優先度管理と最大並列数制御
+
+**実装内容**:
+- `gui/queue_manager.py` の統合
+- 優先度付きキュー
+- 最大並列数の制限
+- ジョブ待機リストの表示
+
+**想定時間**: 3-4時間
+
+**前提条件**:
+- Phase 4完了
+- `gui/queue_manager.py` (462行) のコードレビュー完了
+
+**参照ファイル**:
+- `gui/queue_manager.py` - キュー管理モジュール
+- `test/test_queue_manager.py` - 単体テスト
+
+---
+
+#### Phase 6: 完全版GUI統合（gui_main.pyとの統合）
+
+**目的**: gui_main.pyの全機能をgui_production.pyに統合
+
+**実装内容**:
+- 4タブUI（起動/監視/設定/履歴）の統合
+- Context7統合分析
+- 統合テスト実行
+- 改善コード適用
+- ジョブ履歴表示
+
+**想定時間**: 2-3時間
+
+**前提条件**:
+- Phase 4-5完了
+- `gui_main.py` のアーキテクチャ理解
+- `gui/state_manager.py` (373行) のコードレビュー完了
+
+**参照ファイル**:
+- `gui_main.py` - フル機能版GUI
+- `gui/state_manager.py` - 状態管理モジュール
+- `test/test_gui_main.py` - 統合テスト
+
+---
+
+### 現状の推奨
+
+**本番環境**: `gui_production.py` v1.0.0を使用
+- 動作保証あり
+- 34,125ファイル処理成功実績
+- シンプルで安定した動作
+
+**上級者向け**: `gui_main.py`（フル機能版、開発中）
+- 4タブUI（起動/監視/設定/履歴）
+- 複数ジョブ管理
+- 高度な設定機能
+
+**Phase 4-6実装時の注意**:
+- 既存の`gui_production.py`の動作を維持すること
+- 後方互換性を100%維持すること
+- 各Phaseごとに完全なテストを実施すること
+- ドキュメントを同時に更新すること
 
 ---
 
 *End of GUI Rebuild Plan*
-*作成者: Claude Code (Sonnet 4.5)*
+*作成者: KEIEI.NET INC.*
 *作成日: 2025年10月17日*
 *Phase 0-3完了日: 2025年10月21日*

@@ -2,13 +2,14 @@
 
 このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスです。
 
-*バージョン: v4.11.8 (YAMLルール構文エラー修正 + Angular/C++誤検出修正)*
-*最終更新: 2025年10月17日 22:43 JST*
+*バージョン: v5.0.0 (GUI Production v1.0.0 正式リリース)*
+*最終更新: 2025年10月21日*
+*作成者: KEIEI.NET INC.*
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 ## プロジェクト概要
 
-静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。v4.11.8でC++/Angular誤検出の重大バグ修正とYAML構文エラーを完全解決し、全データベースルールが正常動作を達成しました。CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
+静的コード解析とAI分析を組み合わせた高度なコードレビューシステムです。**v5.0.0でGUI Production v1.0.0が正式リリース**され、34,125ファイルの処理成功実績（平均97 files/sec）を持つ本番環境動作保証GUIを提供します。初心者向けのシンプルなGUI版と上級者向けの高機能CLI版の両方をサポートし、CustomTkinterベースのモダンUIから全機能を操作可能です。C#、PHP、Go、C++、Python、JavaScript/TypeScript、Angularコードベースに対応しています。
 
 ## ⚠️ 重要: Serena MCP優先使用ルール
 
@@ -1405,6 +1406,7 @@ pip install --only-binary :all: scikit-learn
 *リポジトリ: https://github.com/KEIEI-NET/BugSearch2*
 
 **更新履歴:**
+- v5.0.0 (2025年10月21日): **GUI Production v1.0.0 メジャーリリース (@本番環境動作保証)** - GUI Production v1.0.0正式リリース（34,125ファイル処理成功、平均97 files/sec、5分52秒）、Phase 0-3 GUI開発完了（MVP→リアルタイムログ→複数コマンド対応→進捗トラッキング）、gui_production.py (v1.0.0、590行) 新規作成、起動スクリプト更新（start_gui.bat/sh → gui_production.py、start_gui_full.bat/sh → gui_main.py）、リアルタイム進捗トラッキング実装（ログパース、速度計算、ETA表示）、unbuffered output対応（-uフラグ + PYTHONUNBUFFERED=1）、準備中メッセージ表示、全ドキュメントv5.0.0統一（作成者: KEIEI.NET INC.）、DrawIOフローチャート4種追加（doc/flow/）、CLI/GUIデュアルアーキテクチャMermaidダイアグラム追加（doc/diagrams/）、CHANGELOG_v5.md新規作成、README.md/TECHNICAL.md/ARCHITECTURE.md/DEVELOPMENT.md/GUI_USER_GUIDE.md更新
 - v4.11.8 (2025年10月17日): **YAMLルール構文エラー修正 + Angular/C++誤検出修正 (@perfect品質達成)** - C++/Angular誤検出重大バグ修正(memory-leak.yml: new演算子パターンをC++ポインタ特化に変更)、6ファイル13+パターンYAML構文エラー修正(シングルクォート→ダブルクォート変換、バックスラッシュ2重化)、言語別検出パターン大幅強化(C# 6パターン、Go 8パターン、JS/TS/Angular 15パターン追加)、複数ドキュメントYAMLサポート(yaml.safe_load_all実装)、全テスト8/8成功(test/test_multiple_rules.py 100%合格)
 - v4.11.7 (2025年10月14日): **Phase 8.5完了 (@perfect品質達成)** - レポート生成重大バグ修正、ソースコード読み込みエラー完全解決(265件→0件、codex_review_severity.py インデックスtextフィールド優先使用)、レポートフォーマット仕様準拠(doc/AI_IMPROVED_CODE_GENERATOR.md完全準拠、見出しレベル・生成日時・セクション名修正)、Windows cp932エンコーディング対応(core/integration_test_engine.py subprocess UTF-8デコード)、ルールID検証改善(core/rule_engine.py 数字付きID許可)、タイムアウト設定延長(batch_config.json 60秒→360秒、大規模AI分析対応)、1件テスト合格(フォーマット仕様準拠確認、ソースコード読み込みエラー0件)
 - v4.11.6 (2025年10月14日): **Phase 8.4完了 (@perfect品質達成)** - チェックボックスデフォルト設定システム実装、IntegrationTestConfigManager(core/integration_test_config.py +375行、シングルトンパターン)、config/integration_test_defaults.yml(マスター設定ファイル)、GUI設定タブ拡張(デフォルト設定UI +4機能: 表示/編集/リフレッシュ/リセット)、CUIオプション引数デフォルト対応(core/integration_test_engine.py main関数修正)、全15テスト合格(test/test_integration_test_config.py 294行、15/15成功)、ドキュメント更新(CLAUDE.md/TECHNICAL.md/GUI_USER_GUIDE.md Phase 8.4セクション追加)
