@@ -61,8 +61,16 @@ python codex_review_severity.py advise --all --out reports/analysis
 - [変更履歴 v5.0.0](doc/changelog/CHANGELOG_v5.md) - v5.0.0の変更内容
 
 ### 📊 システム図
+
+#### Mermaidダイアグラム
 - [CLI アーキテクチャ図 v5.0.0](doc/diagrams/ARCHITECTURE_CLI_v5.0.0.mmd) - CLIシステム構成
 - [GUI アーキテクチャ図 v1.0.0](doc/diagrams/ARCHITECTURE_GUI_v1.0.0.mmd) - GUIシステム構成
+
+#### DrawIOフローチャート
+- [GUI Production ワークフロー v1.0.0](doc/flow/GUI_Production_Workflow_v1.0.0.drawio) - GUI操作フロー（3タブUI、リアルタイム進捗）
+- [CLI ワークフロー v5.0.0](doc/flow/CLI_Workflow_v5.0.0.drawio) - CLIコマンドフロー（Index/Advise/Query）
+- [AI分析パイプライン v5.0.0](doc/flow/AI_Analysis_Pipeline_v5.0.0.drawio) - AI分析処理フロー（深刻度別モデル選択）
+- [技術スタック検出 v5.0.0](doc/flow/Tech_Stack_Detection_v5.0.0.drawio) - 自動検出フロー（22技術、56タグ）
 
 ## 🎉 v5.0.0 新機能 - GUI Production v1.0.0 リリース
 

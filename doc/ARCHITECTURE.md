@@ -346,9 +346,23 @@ Log Levels
 
 ---
 
+## 📊 参照資料
+
+### Mermaidダイアグラム
+- [CLI アーキテクチャ図 v5.0.0](diagrams/ARCHITECTURE_CLI_v5.0.0.mmd) - CLIシステム構成
+- [GUI アーキテクチャ図 v1.0.0](diagrams/ARCHITECTURE_GUI_v1.0.0.mmd) - GUIシステム構成
+
+### DrawIOフローチャート
+- [GUI Production ワークフロー v1.0.0](flow/GUI_Production_Workflow_v1.0.0.drawio) - GUI操作フロー（3タブUI、リアルタイム進捗）
+- [CLI ワークフロー v5.0.0](flow/CLI_Workflow_v5.0.0.drawio) - CLIコマンドフロー（Index/Advise/Query）
+- [AI分析パイプライン v5.0.0](flow/AI_Analysis_Pipeline_v5.0.0.drawio) - AI分析処理フロー（深刻度別モデル選択）
+- [技術スタック検出 v5.0.0](flow/Tech_Stack_Detection_v5.0.0.drawio) - 自動検出フロー（22技術、56タグ）
+
+---
+
 *作成者: KEIEI.NET INC.*  
 *最終更新: 2025年10月21日*  
 *バージョン: v5.0.0*
 
 **更新履歴:**
-- v5.0.0 (2025年10月21日): GUI/CLIデュアルアーキテクチャ文書化、GUI Production v1.0.0対応
+- v5.0.0 (2025年10月21日): GUI/CLIデュアルアーキテクチャ文書化、GUI Production v1.0.0対応、DrawIOフローチャート追加
