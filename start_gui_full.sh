@@ -1,19 +1,16 @@
 #!/bin/bash
 # ========================================================================
-# BugSearch2 GUI Production - macOS/Linux起動スクリプト
-# 本番環境推奨版GUI起動スクリプト
+# BugSearch2 GUI Control Center - macOS/Linux起動スクリプト
 # ========================================================================
 #
 # このスクリプトは以下を自動実行します：
 # 1. Python仮想環境のチェック・作成
 # 2. 依存パッケージのインストール
-# 3. GUI Production アプリケーションの起動 (gui_production.py)
+# 3. GUIアプリケーションの起動
 #
 # 使用方法:
 #   chmod +x start_gui.sh  # 初回のみ（実行権限付与）
 #   ./start_gui.sh
-#
-# 注意: フル機能版を使用する場合は start_gui_full.sh を実行してください
 # ========================================================================
 
 # エラー時に即座に終了
@@ -45,7 +42,7 @@ log_error() {
 
 echo ""
 echo "========================================================================"
-echo "BugSearch2 GUI Production v1.0.0 - 起動中..."
+echo "BugSearch2 GUI Control Center - 起動中..."
 echo "========================================================================"
 echo ""
 
@@ -158,10 +155,23 @@ if [ $? -ne 0 ]; then
     fi
 fi
 
-# GUIファイルの存在確認
-if [ ! -f "gui_production.py" ]; then
+# psutilのインストール確認
+$PYTHON_CMD -c "import psutil" &> /dev/null
+if [ $? -ne 0 ]; then
     echo ""
-    log_error "gui_production.py が見つかりません。"
+    log_warn "psutil がインストールされていません。"
+    log_info "psutil をインストール中..."
+    $PIP_CMD install psutil
+    if [ $? -ne 0 ]; then
+        log_error "psutil のインストールに失敗しました。"
+        exit 1
+    fi
+fi
+
+# GUIファイルの存在確認
+if [ ! -f "gui_main.py" ]; then
+    echo ""
+    log_error "gui_main.py が見つかりません。"
     echo ""
     echo "プロジェクトルートディレクトリから実行してください。"
     exit 1
@@ -183,20 +193,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
-# GUI Production 起動
+# GUI起動
 echo ""
 echo "========================================================================"
-log_info "BugSearch2 GUI Production v1.0.0 を起動しています..."
+log_info "BugSearch2 GUI Control Center を起動しています..."
 echo "========================================================================"
-echo ""
-echo "[NOTE] これは推奨される本番環境版です"
-echo "[NOTE] フル機能版を使用する場合は start_gui_full.sh を実行してください"
 echo ""
 echo "[TIP] GUIウィンドウを閉じるとこのウィンドウも自動的に閉じます。"
 echo "[TIP] 強制終了する場合は Ctrl+C を押してください。"
 echo ""
 
-$PYTHON_CMD gui_production.py
+$PYTHON_CMD gui_main.py
 
 # 終了コードをチェック
 if [ $? -ne 0 ]; then
@@ -206,7 +213,7 @@ if [ $? -ne 0 ]; then
     echo "エラーが発生した場合は、以下を確認してください:"
     echo "  1. Python 3.11以上がインストールされているか"
     echo "  2. 必要なパッケージがインストールされているか"
-    echo "  3. gui_production.py ファイルが破損していないか"
+    echo "  3. gui_main.py ファイルが破損していないか"
     echo "  4. (macOS) Tkinter が正しくインストールされているか"
     echo ""
     exit 1

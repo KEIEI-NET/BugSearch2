@@ -1,22 +1,19 @@
 @echo off
 REM ========================================================================
-REM BugSearch2 GUI Production - Windows Startup Script
-REM 本番環境推奨版GUI起動スクリプト
+REM BugSearch2 GUI Control Center - Windows Startup Script
 REM ========================================================================
 REM
 REM This script automatically performs:
 REM 1. Check/Create Python virtual environment
 REM 2. Install dependencies
-REM 3. Launch GUI Production application (gui_production.py)
+REM 3. Launch GUI application
 REM
 REM Usage: Double-click start_gui.bat
-REM
-REM Note: For full-featured GUI, use start_gui_full.bat instead
 REM ========================================================================
 
 echo.
 echo ========================================================================
-echo BugSearch2 GUI Production v1.0.0 - Starting...
+echo BugSearch2 GUI Control Center - Starting...
 echo ========================================================================
 echo.
 
@@ -109,30 +106,41 @@ if %errorlevel% neq 0 (
     )
 )
 
-REM Check GUI file existence
-if not exist "gui_production.py" (
+REM Check psutil installation
+python -c "import psutil" >nul 2>&1
+if %errorlevel% neq 0 (
     echo.
-    echo [ERROR] gui_production.py not found.
+    echo [WARN] psutil not installed.
+    echo [INFO] Installing psutil...
+    pip install psutil
+    if %errorlevel% neq 0 (
+        echo [ERROR] Failed to install psutil.
+        pause
+        exit /b 1
+    )
+)
+
+REM Check GUI file existence
+if not exist "gui_main.py" (
+    echo.
+    echo [ERROR] gui_main.py not found.
     echo.
     echo Please run from project root directory.
     pause
     exit /b 1
 )
 
-REM Launch GUI Production
+REM Launch GUI
 echo.
 echo ========================================================================
-echo [INFO] Launching BugSearch2 GUI Production v1.0.0...
+echo [INFO] Launching BugSearch2 GUI Control Center...
 echo ========================================================================
-echo.
-echo [NOTE] This is the recommended production version
-echo [NOTE] For full-featured GUI, use start_gui_full.bat
 echo.
 echo [TIP] This window will close automatically when GUI is closed.
 echo [TIP] Press Ctrl+C to force quit.
 echo.
 
-python gui_production.py
+python gui_main.py
 
 REM Check exit code
 if %errorlevel% neq 0 (
@@ -142,7 +150,7 @@ if %errorlevel% neq 0 (
     echo If error occurred, please check:
     echo   1. Python 3.11 or later is installed
     echo   2. Required packages are installed
-    echo   3. gui_production.py file is not corrupted
+    echo   3. gui_main.py file is not corrupted
     echo.
     pause
     exit /b 1

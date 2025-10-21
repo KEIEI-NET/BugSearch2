@@ -1,0 +1,114 @@
+%%{init: {'theme':'dark'}}%%
+graph TB
+    %% BugSearch2 CLI Architecture v5.0.0
+    %% Created: 2025-10-21
+    %% Author: KEIEI.NET INC.
+
+    subgraph "Entry Point"
+        CLI[codex_review_severity.py<br/>Main CLI Entry]
+    end
+
+    subgraph "Commands"
+        INDEX[index Command<br/>Static Analysis]
+        ADVISE[advise Command<br/>AI Analysis]
+        QUERY[query Command<br/>Search Engine]
+    end
+
+    subgraph "Core Engine Layer"
+        subgraph "Analysis Engines"
+            RULE[Rule Engine<br/>64 YAML Rules]
+            AI[AI Analyzer<br/>Claude/GPT]
+            TECH[Tech Stack Detector<br/>22 Stacks]
+            TAG[Tag System<br/>56 Tags]
+        end
+
+        subgraph "Processing"
+            PARA[Parallel Processor<br/>10 Workers]
+            CACHE[Cache Manager<br/>MD5 Hash]
+            MEM[Memory Monitor<br/>Auto GC]
+            CHECK[Checkpoint Manager<br/>Resume Support]
+        end
+    end
+
+    subgraph "Data Layer"
+        subgraph "Input"
+            SRC[Source Files<br/>9 Languages]
+            YAML[YAML Rules<br/>rules/core/]
+            CUSTOM[Custom Rules<br/>.bugsearch/rules/]
+            CONFIG[Config Files<br/>.bugsearch.yml]
+        end
+
+        subgraph "Output"
+            INDEX_FILE[.advice_index.jsonl<br/>Search Index]
+            VECTOR[.advice_*.pkl<br/>TF-IDF Vectors]
+            REPORT[reports/*.md<br/>Analysis Reports]
+            CACHE_DIR[.cache/analysis/<br/>AI Response Cache]
+        end
+    end
+
+    subgraph "External Services"
+        CLAUDE[Anthropic Claude API<br/>Primary AI]
+        GPT[OpenAI GPT API<br/>Fallback AI]
+        GIT[Git Integration<br/>Diff Analysis]
+    end
+
+    %% Connections
+    CLI --> INDEX
+    CLI --> ADVISE
+    CLI --> QUERY
+
+    INDEX --> RULE
+    INDEX --> TECH
+    INDEX --> TAG
+    INDEX --> PARA
+
+    ADVISE --> AI
+    ADVISE --> RULE
+    ADVISE --> CACHE
+    ADVISE --> MEM
+
+    QUERY --> INDEX_FILE
+    QUERY --> VECTOR
+
+    RULE --> YAML
+    RULE --> CUSTOM
+    TECH --> CONFIG
+
+    AI --> CLAUDE
+    AI --> GPT
+
+    PARA --> CHECK
+    PARA --> MEM
+
+    SRC --> INDEX
+    INDEX --> INDEX_FILE
+    INDEX --> VECTOR
+    ADVISE --> REPORT
+    CACHE --> CACHE_DIR
+
+    %% Styling
+    classDef command fill:#2d3748,stroke:#4a5568,stroke-width:2px,color:#fff
+    classDef engine fill:#1a365d,stroke:#2c5282,stroke-width:2px,color:#fff
+    classDef data fill:#065666,stroke:#0e7490,stroke-width:2px,color:#fff
+    classDef external fill:#5b21b6,stroke:#7c3aed,stroke-width:2px,color:#fff
+    classDef entry fill:#dc2626,stroke:#ef4444,stroke-width:3px,color:#fff
+
+    class CLI entry
+    class INDEX,ADVISE,QUERY command
+    class RULE,AI,TECH,TAG,PARA,CACHE,MEM,CHECK engine
+    class SRC,YAML,CUSTOM,CONFIG,INDEX_FILE,VECTOR,REPORT,CACHE_DIR data
+    class CLAUDE,GPT,GIT external
+
+    %% Performance Metrics
+    subgraph "Performance"
+        PERF["""
+        Performance Metrics:
+        - 30,000+ files support
+        - 15,889 files/sec
+        - Memory: +3.79MB
+        - Parallel: 10 workers
+        - Cache hit: 80%+
+        """]
+    end
+
+    style PERF fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff
